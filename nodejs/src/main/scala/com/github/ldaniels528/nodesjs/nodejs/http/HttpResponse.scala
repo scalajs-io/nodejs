@@ -46,3 +46,33 @@ trait HttpResponse extends js.Object {
   def writeHead(statusCode: Int, mimeType: js.Dictionary[String])
 
 }
+
+/**
+  * Http Response
+  * @author lawrence.daniels@gmail.com
+  */
+object HttpResponse {
+
+  /**
+    * Http Response Enrichment
+    * @author lawrence.daniels@gmail.com
+    */
+  implicit class HttpResponseEnrich(val response: HttpResponse) extends AnyVal {
+
+    def badRequest() = response.sendStatus(400)
+
+    def badRequest(message: String) = response.sendStatus(400)
+
+    def internalServerError() = response.sendStatus(400)
+
+    def internalServerError(message: String) = response.sendStatus(400)
+
+    def internalServerError(cause: Throwable) = response.sendStatus(400)
+
+    def notFound() = response.sendStatus(404)
+
+    def notFound(message: String) = response.sendStatus(404)
+
+  }
+
+}

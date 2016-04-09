@@ -8,11 +8,18 @@ import scala.scalajs.js
 /**
   * Mongo Client Module
   * @author lawrence.daniels@gmail.com
+  * @see [[https://mongodb.github.io/node-mongodb-native/api-bson-generated/objectid.html]]
   */
 @js.native
 trait MongoClient extends js.Object {
 
   def connect(servers: String, callback: js.Function): Unit
+
+  def Db: MongoDatabase
+
+  def GridStore: MongoGridStore
+
+  def ObjectID: ObjectID
 
 }
 

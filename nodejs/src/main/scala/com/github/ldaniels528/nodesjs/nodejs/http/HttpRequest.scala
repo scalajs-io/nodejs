@@ -9,11 +9,19 @@ import scala.scalajs.js
 @js.native
 trait HttpRequest extends js.Object {
 
+  def body: js.Any
+
   def end(): Unit
 
   def end(text: String): Unit
 
   def on(event: String, callback: js.Function)
+
+  def param(name: String): js.UndefOr[String]
+
+  def params: js.Dynamic
+
+  def query: js.Dynamic
 
   def setNoDelay(): Unit
 
@@ -25,5 +33,23 @@ trait HttpRequest extends js.Object {
     * @param initialDelay
     */
   def setSocketKeepAlive(enable: js.UndefOr[Boolean] = js.undefined, initialDelay: js.UndefOr[Int] = js.undefined)
+
+}
+
+/**
+  * Http Request Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object HttpRequest {
+
+  /**
+    * Http Request Enrichment
+    * @author lawrence.daniels@gmail.com
+    */
+  implicit class HttpRequestEnrich(val request: HttpRequest) extends AnyVal {
+
+    def bodyAs[T <: js.Any] = request.body.asInstanceOf[T]
+
+  }
 
 }

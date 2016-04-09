@@ -11,10 +11,14 @@ trait Express extends js.Object {
 
   def apply(): Application
 
+  def bodyParser(): Router
+
   def Router(): Router
 
   def Router(options: RouterOptions): Router
 
-  def static(root: String, options: StaticServeOptions): Unit
+  def static(root: String): Router
+
+  def static(root: String, options: StaticServeOptions): Router
 
 }

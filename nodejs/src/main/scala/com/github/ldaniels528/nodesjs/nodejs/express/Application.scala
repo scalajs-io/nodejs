@@ -34,7 +34,7 @@ trait Application extends Router {
 
   def engine(name: String, value: js.Any): Unit
 
-  def get[T <: js.Any](name: String, callbacks: js.Function*): js.UndefOr[T]
+  //def get[T <: js.Any](name: String, callbacks: js.Function*): js.UndefOr[T]
 
   def listen(port: Int, callback: js.Function): Server
 
@@ -44,5 +44,16 @@ trait Application extends Router {
 
   def use(path: String, router: Router): Unit
 
+  def use(router: Router): Unit
+
 }
 
+/**
+  * Application Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object Application {
+
+  def __dirname = js.Dynamic.global.__dirname.asInstanceOf[js.UndefOr[String]]
+
+}

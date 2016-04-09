@@ -1,6 +1,6 @@
 package com.github.ldaniels528.nodesjs.angularjs
 
-import Module.EnrichedModule
+import com.github.ldaniels528.nodesjs.angularjs.Module.EnrichedModule
 import com.github.ldaniels528.nodesjs.angularjs.core.Injector
 import org.scalajs.dom.html.{Document, Element}
 import org.scalajs.jquery.JQuery

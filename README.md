@@ -1,10 +1,10 @@
-Node.sjs
+MEAN.sjs
 =============
 Type-safe Scala.js Bindings for the MEAN Stack (MongoDB ExpressJS AngularJS NodeJS)
 
 ## Introduction
 
-The goal of Node.sjs is to be complete set of type-safe Scala.js bindings for the entire MEAN Stack. Node.sjs goes to 
+The goal of MEAN.sjs is to be complete set of type-safe Scala.js bindings for the entire MEAN Stack. MEAN.sjs goes to 
 great lengths to make all the things you love about writing Scala on the back-end, to the front-end. To that end, various
 refinements have been added to make the transition more seamless.
 
@@ -47,7 +47,7 @@ module.run({ (WebSocketService: WebSocketService) =>
 })
 ```
 
-## ScalaScript Examples
+## MEAN.sjs Examples
 
 ### Filter Example
 
@@ -244,18 +244,18 @@ object ChangeArrowDirectiveScope {
 
 ### Durations
 
-ScalaScript provides implicit conversions so that you may use `scala.concurrent.duration.FiniteDuration`s with `$timeout`,
+MEAN.sjs provides implicit conversions so that you may use `scala.concurrent.duration.FiniteDuration`s with `$timeout`,
 `$interval`, and any other services that use time in milliseconds.
 
 ```scala
-import com.github.ldaniels528.nodesjs.core.TimerConversions._
+import com.github.ldaniels528.meansjs.angularjs.core.TimerConversions._
 
 $timeout(() => doSomething(), 5.minutes)
 ```
 
 ### JSON data as Scala objects
 
-ScalaScript allows you to utilize dynamic JavaScript objects or type-safe Scala objects using traits. 
+MEAN.sjs allows you to utilize dynamic JavaScript objects or type-safe Scala objects using traits. 
 Consider the following example:
 
 ```scala
@@ -272,7 +272,7 @@ one may want to retrieve the data as a `js.Dynamic` because of the flexibility i
 {"stateChanged":false,"active":false,"sysTime":1392092448795,"delay":-49848795,"start":1392042600000,"end":1392066000000}
 ```
 
-However, sometimes we instead want to retrieve the data as a type-safe Scala object. ScalaScript makes this as simple as:
+However, sometimes we instead want to retrieve the data as a type-safe Scala object. MEAN.sjs makes this as simple as:
 
 ```scala
 $http.get[MarketStatus]("/api/tradingClock/status") onComplete {
@@ -295,7 +295,7 @@ that `MarketStatus` extends `js.Object` is significant.
 
 ### For Comprehensions
 
-ScalaScript provides implicit conversions that convert a `HttpResponse[T]` into a `Future[T]`, we can also use `for`
+MEAN.sjs provides implicit conversions that convert a `HttpResponse[T]` into a `Future[T]`, we can also use `for`
 comprehensions when we need to combine data from multiple API calls.
 
 ```scala
@@ -345,7 +345,7 @@ Inside of your HTML index page:
 Within your Scala.js application, you can initialize the Facebook SDK:
 
 ```scala
-import com.github.ldaniels528.nodesjs.social.facebook.Facebook.FB
+import com.github.ldaniels528.meansjs.social.facebook.Facebook.FB
 
 val config = FacebookAppConfig(appId = "[YOUR_APP_KEY_GOES_HERE]", status = true, xfbml = true, version = "v2.5")
 FB.init(config)
@@ -360,7 +360,7 @@ module.serviceOf[FacebookService]("Facebook")
 Finally, within your AngularJS controller or service you invoke the Facebook login:   
   
 ```scala    
-import com.github.ldaniels528.nodesjs.util.ScalaJsHelper._
+import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 class SocialController($scope: SocialControllerScope, @injected("Facebook") facebook: FacebookService) extends Controller {
     private var facebookID: js.UndefOr[String] = js.undefined
@@ -384,7 +384,7 @@ trait SocialControllerScope extends Scope {
 Afterwards, you may call any Facebook API that you have the permissions to execute:
 
 ```scala
-import com.github.ldaniels528.nodesjs.util.ScalaJsHelper._
+import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 val outcome = for {
   // load the user"s Facebook profile
@@ -445,7 +445,7 @@ js.Dynamic.global.linkedInInit = () => {
 Afterwards, you may call any LinkedIn API that you have the permissions to execute: 
 
 ```scala
-import com.github.ldaniels528.nodesjs.social.linkedin.LinkedIn.IN
+import com.github.ldaniels528.meansjs.social.linkedin.LinkedIn.IN
 
 var linkedInID: js.UndefOr[String] = js.undefined
 

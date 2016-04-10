@@ -1,4 +1,4 @@
-val apiVersion = "0.2.25"
+val apiVersion = "0.1"
 val paradisePluginVersion = "2.1.0"
 val _scalaVersion = "2.11.8"
 val scalaJsDomVersion = "0.9.0"
@@ -9,7 +9,7 @@ val commonSettings = Seq(
   version := apiVersion,
   scalaVersion := _scalaVersion,
   scalacOptions ++= Seq("-feature", "-deprecation"),
-  homepage := Some(url("http://github.com.ldaniels528/nodesjs")),
+  homepage := Some(url("http://github.com.ldaniels528/meansjs")),
   addCompilerPlugin("org.scalamacros" % "paradise" % paradisePluginVersion cross CrossVersion.full),
   libraryDependencies ++= Seq(
     "be.doeraene" %%% "scalajs-jquery" % scalaJsJQueryVersion,
@@ -25,8 +25,8 @@ lazy val core = (project in file("core")).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
-    name := "nodesjs",
-    description := "Core utilities for ScalaScript"
+    name := "meansjs",
+    description := "Core utilities for MEAN.sjs"
   )
 
 lazy val angularjs = (project in file("angularjs")).
@@ -34,7 +34,7 @@ lazy val angularjs = (project in file("angularjs")).
   dependsOn(core).
   settings(commonSettings: _*).
   settings(
-    name := "nodesjs-angularjs",
+    name := "meansjs-angularjs",
     description := "AngularJS bindings for Scala.js"
   )
 
@@ -43,7 +43,7 @@ lazy val facebook = (project in file("facebook")).
   dependsOn(core, angularjs).
   settings(commonSettings: _*).
   settings(
-    name := "nodesjs-facebook",
+    name := "meansjs-facebook",
     description := "Facebook buildings for Scala.js"
   )
 
@@ -52,7 +52,7 @@ lazy val linkedin = (project in file("linkedin")).
   dependsOn(core, angularjs).
   settings(commonSettings: _*).
   settings(
-    name := "nodesjs-linkedin",
+    name := "meansjs-linkedin",
     description := "LinkedIn buildings for Scala.js"
   )
 
@@ -61,9 +61,9 @@ lazy val nodejs = (project in file("nodejs")).
   dependsOn(core).
   settings(commonSettings: _*).
   settings(
-    name := "nodesjs-nodejs",
+    name := "meansjs-nodejs",
     description := "NodeJS bindings for Scala.js"
   )
 
-// loads the ScalaScript "Core" project at sbt startup
+// loads the MEAN.sjs "Core" project at sbt startup
 onLoad in Global := (Command.process("project root", _: State)) compose (onLoad in Global).value

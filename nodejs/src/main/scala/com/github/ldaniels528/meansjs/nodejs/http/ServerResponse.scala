@@ -1,0 +1,153 @@
+package com.github.ldaniels528.meansjs.nodejs.http
+
+import scala.scalajs.js
+
+/**
+  * Node.js http.ServerResponse
+  * @author lawrence.daniels@gmail.com
+  * @see [[https://nodejs.org/api/http.html#http_class_http_serverresponse]]
+  */
+@js.native
+trait ServerResponse extends js.Object {
+
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Properties
+  /////////////////////////////////////////////////////////////////////////////////
+
+  /**
+    * Boolean value that indicates whether the response has completed. Starts as false.
+    * After response.end() executes, the value will be true.
+    */
+  def finished: Boolean
+
+  /**
+    * Boolean (read-only). True if headers were sent, false otherwise.
+    */
+  def headersSent: Boolean
+
+  /**
+    * When true, the Date header will be automatically generated and sent in the response
+    * if it is not already present in the headers. Defaults to true.
+    */
+  var sendDate: Boolean
+
+  /**
+    * When using implicit headers (not calling response.writeHead() explicitly), this property controls
+    * the status code that will be sent to the client when the headers get flushed.
+    */
+  var statusCode: Int
+
+  /**
+    * When using implicit headers (not calling response.writeHead() explicitly), this property controls
+    * the status message that will be sent to the client when the headers get flushed. If this is left
+    * as undefined then the standard message for the status code will be used.
+    */
+  var statusMessage: js.UndefOr[String]
+
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Methods
+  /////////////////////////////////////////////////////////////////////////////////
+
+  /**
+    * Reads out a header that's already been queued but not sent to the client.
+    * Note that the name is case insensitive. This can only be called before
+    * headers get implicitly flushed.
+    */
+  def getHeader(name: String): js.UndefOr[String]
+
+  def on(event: String, callback: js.Function): Unit
+
+  def render(path: String): Unit
+
+  def send(data: js.Any): Unit
+
+  def sendStatus(statusCode: Int): Unit
+
+  def set(name: String, value: js.Any): Unit
+
+  def set(headers: js.Any): Unit
+
+  def setEncoding(encoding: String): Unit
+
+  /**
+    * Sets the Socket's timeout value to msecs. If a callback is provided, then
+    * it is added as a listener on the 'timeout' event on the response object.
+    *
+    * If no 'timeout' listener is added to the request, the response, or the server,
+    * then sockets are destroyed when they time out. If you assign a handler on the
+    * request, the response, or the server's 'timeout' events, then it is your
+    * responsibility to handle timed out sockets.
+    *
+    * Returns response.
+    */
+  def setTimeout(msecs: Int, callback: js.Function)
+
+  def status(statusCode: Int): this.type
+
+  def `type`(mime: String): js.UndefOr[String]
+
+  /**
+    * If this method is called and response.writeHead() has not been called, it will switch to implicit header
+    * mode and flush the implicit headers. This sends a chunk of the response body. This method may be called
+    * multiple times to provide successive parts of the body.
+    * <p/>chunk can be a string or a buffer. If chunk is a string, the second parameter specifies how to encode it
+    * into a byte stream. By default the encoding is 'utf8'. The last parameter callback will be called when
+    * this chunk of data is flushed.
+    * <p/>Note: This is the raw HTTP body and has nothing to do with higher-level multi-part body encodings that may be used.
+    * The first time response.write() is called, it will send the buffered header information and the first body
+    * to the client. The second time response.write() is called, Node.js assumes you're going to be streaming data,
+    * and sends that separately. That is, the response is buffered up to the first chunk of body.
+    * <p/>Returns true if the entire data was flushed successfully to the kernel buffer.
+    * <p/>Returns false if all or part of the data was queued in user memory. 'drain' will be emitted when the
+    * buffer is free again.
+    * @example response.write(chunk[, encoding][, callback])
+    */
+  def write(chunk: js.Any, encoding: String, callback: js.Function): Unit
+
+  def write(chunk: js.Any, encoding: String): Unit
+
+  def write(chunk: js.Any): Unit
+
+  /**
+    * Sends a HTTP/1.1 100 Continue message to the client, indicating that the request body should be sent.
+    * See the 'checkContinue' event on Server.
+    */
+  def writeContinue(): Unit
+
+  /**
+    * Sends a response header to the request. The status code is a 3-digit HTTP status code, like 404.
+    * The last argument, headers, are the response headers. Optionally one can give a human-readable
+    * statusMessage as the second argument.
+    * @example response.writeHead(statusCode[, statusMessage][, headers])
+    */
+  def writeHead(statusCode: Int, statusMessage: String, headers: js.Any)
+
+  def writeHead(statusCode: Int, statusMessage: String)
+
+  def writeHead(statusCode: Int, headers: js.Any)
+
+}
+
+/**
+  * Server Response
+  * @author lawrence.daniels@gmail.com
+  */
+object ServerResponse {
+
+  /**
+    * Server Response Enrichment
+    * @author lawrence.daniels@gmail.com
+    */
+  implicit class ServerResponseEnrich(val response: ServerResponse) extends AnyVal {
+
+    def badRequest() = response.sendStatus(400)
+
+    def forbidden() = response.sendStatus(403)
+
+    def internalServerError() = response.sendStatus(500)
+
+    def notFound() = response.sendStatus(404)
+
+  }
+
+}

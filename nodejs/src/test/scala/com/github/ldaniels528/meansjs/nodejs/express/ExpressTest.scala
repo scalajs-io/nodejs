@@ -1,9 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.express
 
-import com.github.ldaniels528.meansjs.nodejs.NodeJsHelper
-import com.github.ldaniels528.meansjs.nodejs.http.{HttpRequest, HttpResponse}
-import NodeJsHelper._
-import com.github.ldaniels528.meansjs.nodejs.http.HttpRequest
+import com.github.ldaniels528.meansjs.nodejs.require
 import org.scalajs.dom.console
 
 import scala.scalajs.js
@@ -14,10 +11,10 @@ import scala.scalajs.js
   */
 class ExpressTest {
 
-  val express = require[Express]("express") getOrElse (throw new IllegalArgumentException("Module not found"))
+  val express = require[Express]("express")
   val app = express()
 
-  app.get("/", (req: HttpRequest, res: HttpResponse) => {
+  app.get("/", (req: Request, res: Response) => {
     res.send("Hello World")
   })
 

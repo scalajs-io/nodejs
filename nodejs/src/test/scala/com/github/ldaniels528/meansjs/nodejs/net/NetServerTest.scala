@@ -1,7 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.net
 
-import com.github.ldaniels528.meansjs.nodejs.NodeJsHelper
-import NodeJsHelper._
+import com.github.ldaniels528.meansjs.nodejs.require
 import org.scalajs.dom.console
 
 import scala.scalajs.js
@@ -12,7 +11,7 @@ import scala.scalajs.js
   */
 class NetServerTest {
 
-  val net = require[Net]("net") getOrElse (throw new IllegalArgumentException("Module not found"))
+  val net = require[Net]("net")
   val client = net.connect(Net.Options(port = 8124), connect)
 
   client.on("data", (data: js.Any) => {

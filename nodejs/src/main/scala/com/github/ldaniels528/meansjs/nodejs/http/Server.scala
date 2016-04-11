@@ -1,4 +1,4 @@
-package com.github.ldaniels528.meansjs.nodejs.net
+package com.github.ldaniels528.meansjs.nodejs.http
 
 import scala.scalajs.js
 
@@ -8,6 +8,16 @@ import scala.scalajs.js
   */
 @js.native
 trait Server extends js.Object {
+
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Properties
+  /////////////////////////////////////////////////////////////////////////////////
+
+  def maxHeadersCount: Int
+
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Methods
+  /////////////////////////////////////////////////////////////////////////////////
 
   def address(): Server.Address
 
@@ -21,7 +31,7 @@ trait Server extends js.Object {
 
   def listening: Boolean
 
-  def maxHeadersCount: Int
+  def on(event: String, callback: js.Function2[ClientRequest, ServerResponse, Unit]): Unit
 
   def setTimeout(msecs: Int, callback: js.Function): Unit
 

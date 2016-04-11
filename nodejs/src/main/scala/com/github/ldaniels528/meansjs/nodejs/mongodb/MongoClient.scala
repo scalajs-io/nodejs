@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.mongodb
 
-import MongoDB.MongoError
+import com.github.ldaniels528.meansjs.nodejs.mongodb.MongoDB.MongoError
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.concurrent.{ExecutionContext, Promise}
@@ -20,6 +20,13 @@ trait MongoClient extends js.Object {
     * @param callback the callback function
     */
   def close(callback: js.Function): Unit
+
+  /**
+    * Connect to MongoDB using a url
+    * @param url      the given connection URL
+    * @param callback the callback function
+    */
+  def connect(url: String, callback: js.Function): Unit
 
   /**
     * Connect to MongoDB using a url
@@ -63,6 +70,15 @@ object MongoClient {
     def closeAsync(implicit ec: ExecutionContext) = {
       val promise = Promise[MongoDatabase]()
       client.close((err: MongoError, conn: MongoDatabase) => {
+        if (!isDefined(err)) promise.success(conn)
+        else promise.failure(new RuntimeException(err.toString))
+      })
+      promise.future
+    }
+
+    def connectAsync(url: String)(implicit ec: ExecutionContext) = {
+      val promise = Promise[MongoDatabase]()
+      client.connect(url, (err: MongoError, conn: MongoDatabase) => {
         if (!isDefined(err)) promise.success(conn)
         else promise.failure(new RuntimeException(err.toString))
       })

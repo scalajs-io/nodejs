@@ -42,7 +42,7 @@ trait MongoDB extends js.Object {
   */
 object MongoDB {
 
-  type MongoError = js.Any
+  type MongoError = js.UndefOr[String]
 
   /**
     * MongoDB Enrichment

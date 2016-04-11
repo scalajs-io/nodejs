@@ -17,6 +17,8 @@ trait Router extends js.Object {
 
   def param(names: js.Array[String], callback: js.Function): Unit
 
+  def ws(path: String, callback: js.Function)
+
   ////////////////////////////////////////////////////
   //    HTTP Method-related Functions
   ////////////////////////////////////////////////////

@@ -1,7 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.http
 
-import com.github.ldaniels528.meansjs.nodejs.NodeJsHelper
-import NodeJsHelper._
+import com.github.ldaniels528.meansjs.nodejs.require
 
 import scala.scalajs.js
 
@@ -11,9 +10,9 @@ import scala.scalajs.js
   */
 class HttpServerTest {
 
-  val http = require[Http]("http") getOrElse (throw new IllegalArgumentException("Module not found"))
-  http.createServer((request: HttpRequest, response: HttpResponse) => {
-    response.writeHead(statusCode = 200, mimeType = js.Dictionary("Content-Type" -> "text/plain"))
+  val http = require[Http]("http")
+  http.createServer((request: ClientRequest, response: ServerResponse) => {
+    response.writeHead(statusCode = 200, headers = js.Dictionary("Content-Type" -> "text/plain"))
     response.write("Hello World")
     response.end()
   }).listen(8888)

@@ -1,8 +1,9 @@
 package com.github.ldaniels528.meansjs.nodejs.express
 
-import com.github.ldaniels528.meansjs.nodejs.net.Server
+import com.github.ldaniels528.meansjs.nodejs.http.Server
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSName
 
 /**
   * Express Application
@@ -34,13 +35,15 @@ trait Application extends Router {
 
   def engine(name: String, value: js.Any): Unit
 
-  //def get[T <: js.Any](name: String, callbacks: js.Function*): js.UndefOr[T]
+  def get[T <: js.Any](name: String): js.UndefOr[T]
 
   def listen(port: Int, callback: js.Function): Server
 
   def on(mount: String, callback: js.Function): Unit
 
   def set(name: String, value: js.Any): Unit
+
+  def set(values: js.Dictionary[Any]): Unit
 
   def use(path: String, router: Router): Unit
 
@@ -54,6 +57,8 @@ trait Application extends Router {
   */
 object Application {
 
-  def __dirname = js.Dynamic.global.__dirname.asInstanceOf[js.UndefOr[String]]
+  @js.native
+  @JSName("__dirname")
+  object __dirname extends js.GlobalScope
 
 }

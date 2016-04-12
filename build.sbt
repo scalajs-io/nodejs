@@ -1,4 +1,4 @@
-val apiVersion = "0.0.2"
+val apiVersion = "0.0.3"
 val paradisePluginVersion = "2.1.0"
 val _scalaVersion = "2.11.8"
 val scalaJsDomVersion = "0.9.0"

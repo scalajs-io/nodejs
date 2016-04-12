@@ -36,7 +36,7 @@ trait Response extends js.Object {
     * This property is useful for exposing request-level information such as the request path name,
     * authenticated user, user settings, and so on.
     */
-  def locals: String
+  def locals: js.Any
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -199,7 +199,7 @@ trait Response extends js.Object {
   /**
     * Sets the HTTP status for the response. It is a chainable alias of Node’s response.statusCode.
     */
-  def status(code: Int): this.type
+  def status(statusCode: Int): this.type
 
   /**
     * Sets the Content-Type HTTP header to the MIME type as determined by mime.lookup() for the specified type.
@@ -285,7 +285,7 @@ object Response {
     */
   @js.native
   trait FileTransferOptions extends js.Object {
-    /**  Sets the max-age property of the Cache-Control header in milliseconds or a string in ms format	(default: 0) */
+    /** Sets the max-age property of the Cache-Control header in milliseconds or a string in ms format	(default: 0) */
     var maxAge: js.UndefOr[Int]
 
     /** Root directory for relative filenames. */
@@ -331,21 +331,35 @@ object Response {
 
     def badRequest() = response.sendStatus(400)
 
-    def badRequest(message: String) = response.sendStatus(400)
+    def badRequest(json: js.Any) = response.status(400).json(json)
 
-    def badRequest(cause: Throwable) = response.sendStatus(400)
+    def badRequest(message: String) = response.status(400).send(message)
 
-    def internalServerError() = response.sendStatus(500)
+    def badRequest(cause: Throwable) = response.status(400).send(cause.getMessage)
 
-    def internalServerError(message: String) = response.sendStatus(500)
+    def forbidden() = response.sendStatus(403)
 
-    def internalServerError(cause: Throwable) = response.sendStatus(500)
+    def forbidden(json: js.Any) = response.status(403).json(json)
+
+    def forbidden(message: String) = response.status(403).send(message)
+
+    def forbidden(cause: Throwable) = response.status(403).send(cause.getMessage)
+
+    def internalServerError() = response.status(500)
+
+    def internalServerError(json: js.Any) = response.status(500).json(json)
+
+    def internalServerError(message: String) = response.status(500).send(message)
+
+    def internalServerError(cause: Throwable) = response.status(500).send(cause.getMessage)
 
     def notFound() = response.sendStatus(404)
 
-    def notFound(message: String) = response.sendStatus(404)
+    def notFound(json: js.Any) = response.status(404).json(json)
 
-    def notFound(cause: Throwable) = response.sendStatus(404)
+    def notFound(message: String) = response.status(404).send(message)
+
+    def notFound(cause: Throwable) = response.status(404).send(cause.getMessage)
 
   }
 

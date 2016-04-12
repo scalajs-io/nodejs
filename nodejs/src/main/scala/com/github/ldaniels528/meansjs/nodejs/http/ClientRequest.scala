@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.http
 
-import scala.concurrent.Promise
+import scala.concurrent.{ExecutionContext, Promise}
 import scala.scalajs.js
 
 /**
@@ -110,9 +110,15 @@ object ClientRequest {
     */
   implicit class ClientRequestEnrich(val request: ClientRequest) extends AnyVal {
 
-    def endAsync(data: js.Any, encoding: String) = {
+    def endAsync(data: js.Any, encoding: String)(implicit ec: ExecutionContext) = {
       val promise = Promise[Unit]()
       request.end(data, encoding, () => promise.success({}))
+      promise.future
+    }
+
+    def writeAsync(chunk: js.Any, encoding: String)(implicit ec: ExecutionContext) = {
+      val promise = Promise[js.Any]()
+      request.write(chunk, encoding, () => promise.success(chunk))
       promise.future
     }
 

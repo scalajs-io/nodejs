@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.http
 
-import com.github.ldaniels528.meansjs.nodejs.require
+import com.github.ldaniels528.meansjs.nodejs.Require.require
 
 import scala.scalajs.js
 

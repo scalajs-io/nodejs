@@ -1,7 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs.mongodb
 
 import com.github.ldaniels528.meansjs.nodejs.mongodb.MongoDB.MongoError
-import com.github.ldaniels528.meansjs.nodejs.require
+import com.github.ldaniels528.meansjs.nodejs.Require.require
 import org.scalajs.dom.console
 
 /**

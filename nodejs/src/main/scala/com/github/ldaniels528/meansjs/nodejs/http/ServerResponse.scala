@@ -49,6 +49,34 @@ trait ServerResponse extends js.Object {
   /////////////////////////////////////////////////////////////////////////////////
 
   /**
+    * This method adds HTTP trailing headers (a header but at the end of the message) to the response.
+    * Trailers will only be emitted if chunked encoding is used for the response; if it is not (e.g., if
+    * the request was HTTP/1.0), they will be silently discarded.
+    * <p><b>Note</b> that HTTP requires the Trailer header to be sent if you intend to emit trailers, with
+    * a list of the header fields in its value.
+    */
+  def addTrailers(headers: js.Any): Unit
+
+  /**
+    * This method signals to the server that all of the response headers and body have been sent;
+    * that server should consider this message complete. The method, response.end(), MUST be called on each response.
+    * <p/>If data is specified, it is equivalent to calling response.write(data, encoding) followed by response.end(callback).
+    * <p/>If callback is specified, it will be called when the response stream is finished.
+    * @example response.end([data][, encoding][, callback])
+    */
+  def end(data: js.Any, encoding: String, callback: js.Function)
+
+  def end(data: js.Any, encoding: String)
+
+  def end(data: js.Any, callback: js.Function)
+
+  def end(data: js.Any)
+
+  def end(callback: js.Function)
+
+  def end()
+
+  /**
     * Reads out a header that's already been queued but not sent to the client.
     * Note that the name is case insensitive. This can only be called before
     * headers get implicitly flushed.
@@ -56,6 +84,11 @@ trait ServerResponse extends js.Object {
   def getHeader(name: String): js.UndefOr[String]
 
   def on(event: String, callback: js.Function): Unit
+
+  /**
+    * Removes a header that's queued for implicit sending.
+    */
+  def removeHeader(name: String): Unit
 
   def render(path: String): Unit
 
@@ -68,6 +101,12 @@ trait ServerResponse extends js.Object {
   def set(headers: js.Any): Unit
 
   def setEncoding(encoding: String): Unit
+
+  /**
+    * Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers,
+    * its value will be replaced. Use an array of strings here if you need to send multiple headers with the same name.
+    */
+  def setHeader(name: String, value: String): Unit
 
   /**
     * Sets the Socket's timeout value to msecs. If a callback is provided, then
@@ -133,6 +172,8 @@ trait ServerResponse extends js.Object {
   * @author lawrence.daniels@gmail.com
   */
 object ServerResponse {
+  val EventClose = "close"
+  val EventFinish = "finish"
 
   /**
     * Server Response Enrichment

@@ -231,10 +231,8 @@ trait FileUploader extends js.Object {
   */
 object FileUploader {
 
-  def apply(jsClass: js.Any, config: FileUploaderConfig) = {
-    val inst = js.Dynamic.newInstance(jsClass.asInstanceOf[js.Dynamic])(config)
-    inst.asInstanceOf[FileUploader]
-  }
+  def apply(jsClass: js.Any, config: FileUploaderConfig) = jsClass.New[FileUploader](config)
+
 }
 
 /**

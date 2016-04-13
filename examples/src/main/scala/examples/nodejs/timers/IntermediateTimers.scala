@@ -7,7 +7,7 @@ import org.scalajs.dom.console
   * Intermediate Timers
   * @author lawrence.daniels@gmail.com
   */
-class IntermediateTimers {
+class IntermediateTimers(require: Require) {
 
   val timer = setImmediate(() => console.log("Hello"))
 

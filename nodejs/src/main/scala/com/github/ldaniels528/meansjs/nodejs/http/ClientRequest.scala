@@ -20,20 +20,20 @@ trait ClientRequest extends js.Object {
     * to be dropped and the socket to be destroyed.
     * @see [[https://nodejs.org/api/http.html#http_request_abort]]
     */
-  def abort(): Unit
+  def abort(): Unit = js.native
 
   /**
     * Finishes sending the request. If any parts of the body are unsent, it will flush them to the stream.
     * If the request is chunked, this will send the terminating '0\r\n\r\n'.
     * @see [[https://nodejs.org/api/http.html#http_request_end_data_encoding_callback]]
     */
-  def end(data: js.Any, encoding: String, callback: js.Function): Unit
+  def end(data: js.Any, encoding: String, callback: js.Function): Unit = js.native
 
-  def end(data: js.Any, encoding: String): Unit
+  def end(data: js.Any, encoding: String): Unit = js.native
 
-  def end(data: js.Any): Unit
+  def end(data: js.Any): Unit = js.native
 
-  def end(): Unit
+  def end(): Unit = js.native
 
   /**
     * Flush the request headers.
@@ -47,26 +47,26 @@ trait ClientRequest extends js.Object {
     * the request.
     * @see [[https://nodejs.org/api/http.html#http_request_flushheaders]]
     */
-  def flushHeaders(): Unit
+  def flushHeaders(): Unit = js.native
 
   /**
     * Once a socket is assigned to this request and is connected socket.setNoDelay() will be called.
     */
-  def setNoDelay(noDelay: Int): Unit
+  def setNoDelay(noDelay: Int): Unit = js.native
 
-  def setNoDelay(): Unit
+  def setNoDelay(): Unit = js.native
 
   /**
     * Once a socket is assigned to this request and is connected socket.setKeepAlive() will be called.
     * @see [[https://nodejs.org/api/http.html#http_request_setsocketkeepalive_enable_initialdelay]]
     */
-  def setSocketKeepAlive(enable: Boolean, initialDelay: Int): Unit
+  def setSocketKeepAlive(enable: Boolean, initialDelay: Int): Unit = js.native
 
-  def setSocketKeepAlive(enable: Boolean): Unit
+  def setSocketKeepAlive(enable: Boolean): Unit = js.native
 
-  def setSocketKeepAlive(initialDelay: Int): Unit
+  def setSocketKeepAlive(initialDelay: Int): Unit = js.native
 
-  def setSocketKeepAlive(): Unit
+  def setSocketKeepAlive(): Unit = js.native
 
   /**
     * Once a socket is assigned to this request and is connected socket.setTimeout() will be called.
@@ -76,9 +76,9 @@ trait ClientRequest extends js.Object {
     * Same as binding to the timeout event.</li>
     * </ul>
     */
-  def setTimeout(timeout: Int, callback: js.Function): Unit
+  def setTimeout(timeout: Int, callback: js.Function): Unit = js.native
 
-  def setTimeout(timeout: Int): Unit
+  def setTimeout(timeout: Int): Unit = js.native
 
   /**
     * Sends a chunk of the body. By calling this method many times, the user can stream a
@@ -90,11 +90,11 @@ trait ClientRequest extends js.Object {
     * The callback argument is optional and will be called when this chunk of data is flushed.
     * Returns request.
     */
-  def write(chunk: js.Any, encoding: String, callback: js.Function): Unit
+  def write(chunk: js.Any, encoding: String, callback: js.Function): Unit = js.native
 
-  def write(chunk: js.Any): Unit
+  def write(chunk: js.Any): Unit = js.native
 
-  def write(chunk: js.Any, encoding: String): Unit
+  def write(chunk: js.Any, encoding: String): Unit = js.native
 
 }
 

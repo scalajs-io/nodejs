@@ -22,7 +22,7 @@ trait MongoStream extends js.Object {
     * @param eventName the given event name
     * @param callback  the given callback function
     */
-  def on(eventName: String, callback: js.Function): Unit
+  def on(eventName: String, callback: js.Function): Unit = js.native
 
 }
 

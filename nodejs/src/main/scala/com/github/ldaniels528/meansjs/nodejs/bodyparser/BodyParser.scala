@@ -11,10 +11,10 @@ import scala.scalajs.js
 @js.native
 trait BodyParser extends js.Object {
 
-  def json(): Router
+  def json(): Router = js.native
 
-  def urlencoded(): Router
+  def urlencoded(): Router = js.native
 
-  def urlencoded(options: BodyParserOptions): Router
+  def urlencoded(options: BodyParserOptions): Router = js.native
 
 }

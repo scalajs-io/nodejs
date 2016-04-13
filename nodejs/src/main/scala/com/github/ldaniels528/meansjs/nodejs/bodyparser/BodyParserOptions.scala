@@ -10,7 +10,7 @@ import scala.scalajs.js
   */
 @js.native
 trait BodyParserOptions extends js.Object {
-  var extended: Boolean
+  var extended: Boolean = js.native
 }
 
 /**

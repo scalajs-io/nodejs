@@ -10,7 +10,7 @@ import scala.scalajs.js
   * Test Server
   * @author lawrence.daniels@gmail.com
   */
-class NetServerTest {
+class NetServerTest(require: Require) {
 
   val net = require[Net]("net")
   val client = net.connect(Net.Options(port = 8124), connect)

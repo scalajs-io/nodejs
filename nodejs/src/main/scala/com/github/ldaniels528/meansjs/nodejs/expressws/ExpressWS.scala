@@ -24,19 +24,19 @@ trait ExpressWS extends js.Object {
     * Express as well - see the [[ExpressWS.ConfigOptions.leaveRouterUntouched]] option for more information on disabling this.
     * @example expressWs(app[,server][, options])
     */
-  def apply(app: Application, server: Server, options: ExpressWS.ConfigOptions): WsInstance
+  def apply(app: Application, server: Server, options: ExpressWS.ConfigOptions): WsInstance = js.native
 
   /**
     * Sets up express-ws on the specified app.
     * @example expressWs(app[,server][, options])
     */
-  def apply(app: Application, server: Server): WsInstance
+  def apply(app: Application, server: Server): WsInstance = js.native
 
   /**
     * Sets up express-ws on the specified app.
     * @example expressWs(app[,server][, options])
     */
-  def apply(app: Application): WsInstance
+  def apply(app: Application): WsInstance = js.native
 
 }
 

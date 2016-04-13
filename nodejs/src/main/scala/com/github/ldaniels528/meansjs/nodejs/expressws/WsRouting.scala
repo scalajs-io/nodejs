@@ -14,7 +14,7 @@ trait WsRouting extends js.Object {
   /**
     * Registers the web socket listener for the given path
     */
-  def ws(path: String, callback: js.Function): Unit
+  def ws(path: String, callback: js.Function): Unit = js.native
 
 }
 

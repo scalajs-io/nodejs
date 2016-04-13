@@ -33,11 +33,11 @@ trait Router extends js.Object {
     * if name were just a string.
     * @example app.param([name], callback)
     */
-  def param(name: String, callback: js.Function): Unit
+  def param(name: String, callback: js.Function): Unit = js.native
 
-  def param(names: js.Array[String], callback: js.Function): Unit
+  def param(names: js.Array[String], callback: js.Function): Unit = js.native
 
-  def param(callback: js.Function): Unit
+  def param(callback: js.Function): Unit = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      HTTP Methods
@@ -52,14 +52,14 @@ trait Router extends js.Object {
     * can perform a task, then call next() to continue matching subsequent routes
     * @example app.all(path, callback [, callback ...])
     */
-  def all(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def all(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
   /**
     * Routes HTTP CONNECT requests to the specified path with the specified callback functions. For more information,
     * see the routing guide.
     * @example app.connect(path, callback [, callback ...])
     */
-  def connect(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def connect(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
   /**
     * Routes HTTP DELETE requests to the specified path with the specified callback functions.
@@ -69,7 +69,7 @@ trait Router extends js.Object {
     * then pass control to subsequent routes if there’s no reason to proceed with the current route.
     * @example app.delete(path, callback [, callback ...])
     */
-  def delete(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def delete(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
   /**
     * Routes HTTP GET requests to the specified path with the specified callback functions. For more information,
@@ -80,28 +80,28 @@ trait Router extends js.Object {
     * the current route.
     * @example app.get(path, callback [, callback ...])
     */
-  def get(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def get(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
   /**
     * Routes HTTP HEAD requests to the specified path with the specified callback functions. For more information,
     * see the routing guide.
     * @example app.head(path, callback [, callback ...])
     */
-  def head(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def head(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
   /**
     * Routes HTTP OPTIONS requests to the specified path with the specified callback functions. For more information,
     * see the routing guide.
     * @example app.options(path, callback [, callback ...])
     */
-  def options(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def options(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
   /**
     * Routes HTTP PATCH requests to the specified path with the specified callback functions. For more information,
     * see the routing guide.
     * @example app.patch(path, callback [, callback ...])
     */
-  def patch(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def patch(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
   /**
     * Routes HTTP POST requests to the specified path with the specified callback functions. For more information,
@@ -111,7 +111,7 @@ trait Router extends js.Object {
     * pre-conditions on a route, then pass control to subsequent routes if there’s no reason to proceed with the current route.
     * @example app.post(path, callback [, callback ...])
     */
-  def post(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def post(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
   /**
     * Routes HTTP PUT requests to the specified path with the specified callback functions. For more information,
@@ -121,14 +121,14 @@ trait Router extends js.Object {
     * pre-conditions on a route, then pass control to subsequent routes if there’s no reason to proceed with the current route.
     * @example app.put(path, callback [, callback ...])
     */
-  def put(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def put(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
   /**
     * Routes HTTP TRACE requests to the specified path with the specified callback functions. For more information,
     * see the routing guide.
     * @example app.trace(path, callback [, callback ...])
     */
-  def trace(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def trace(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Routing Methods
@@ -137,39 +137,39 @@ trait Router extends js.Object {
   //      http://expressjs.com/en/api.html#app.METHOD
   /////////////////////////////////////////////////////////////////////////////////
 
-  def checkout(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def checkout(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
-  def copy(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def copy(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
-  def lock(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def lock(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
-  def merge(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def merge(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
-  def mkactivity(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def mkactivity(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
-  def mkcol(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def mkcol(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
-  def move(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def move(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
   @JSName("m-search")
-  def m_search(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def m_search(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
-  def notify(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def notify(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
-  def propfind(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def propfind(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
-  def proppatch(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def proppatch(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
-  def purge(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def purge(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
-  def report(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def report(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
-  def search(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def search(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
-  def subscribe(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def subscribe(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
-  def unlock(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def unlock(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
-  def unsubscribe(path: String, callback: js.Function, callbacks: js.Function*): Unit
+  def unsubscribe(path: String, callback: js.Function, callbacks: js.Function*): Unit = js.native
 
 }

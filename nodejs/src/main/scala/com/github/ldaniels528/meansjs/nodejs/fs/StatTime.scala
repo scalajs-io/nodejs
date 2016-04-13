@@ -26,18 +26,18 @@ import scala.scalajs.js
   */
 @js.native
 trait StatTime extends js.Object {
-  var dev: Int
-  var mode: Int
-  var nlink: Int
-  var uid: Int
-  var gid: Int
-  var rdev: Int
-  var blksize: Int
-  var ino: Int
-  var size: Int
-  var blocks: Int
-  var atime: js.Date
-  var mtime: js.Date
-  var ctime: js.Date
-  var birthtime: js.Date
+  var dev: Int = js.native
+  var mode: Int = js.native
+  var nlink: Int = js.native
+  var uid: Int = js.native
+  var gid: Int = js.native
+  var rdev: Int = js.native
+  var blksize: Int = js.native
+  var ino: Int = js.native
+  var size: Int = js.native
+  var blocks: Int = js.native
+  var atime: js.Date = js.native
+  var mtime: js.Date = js.native
+  var ctime: js.Date = js.native
+  var birthtime: js.Date = js.native
 }

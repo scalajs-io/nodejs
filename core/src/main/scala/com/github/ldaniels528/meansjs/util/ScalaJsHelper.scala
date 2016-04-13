@@ -14,7 +14,7 @@ import scala.util.{Failure, Success, Try}
   * @author lawrence.daniels@gmail.com
   */
 object ScalaJsHelper {
-  val HttpError = "Failed to process HTTP request:"
+  private val HttpError = "Failed to process HTTP request:"
 
   ////////////////////////////////////////////////////////////////////////
   //    Convenience Functions
@@ -118,6 +118,10 @@ object ScalaJsHelper {
     * @param obj the given [[js.Dynamic object]]
     */
   implicit class JsAnyExtensions(val obj: js.Any) extends AnyVal {
+
+    def New[T <: js.Any](args: js.Any*): T = {
+      js.Dynamic.newInstance(obj.asInstanceOf[js.Dynamic])(args).asInstanceOf[T]
+    }
 
     def ===[T](value: T): Boolean = {
       if (value == null) !isDefined(obj)
@@ -229,7 +233,7 @@ object ScalaJsHelper {
       case index => Some(index)
     }
 
-    @inline def isBlank: Boolean = string == null && string.trim.isEmpty
+    @inline def isBlank: Boolean = string == null || string.trim.isEmpty
 
     @inline def nonBlank: Boolean = string != null && string.trim.nonEmpty
 

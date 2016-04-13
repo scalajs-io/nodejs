@@ -10,7 +10,7 @@ import scala.scalajs.js
   */
 @js.native
 trait CollectionOptions extends js.Object {
-  var strict: Boolean
+  var strict: Boolean = js.native
 }
 
 /**

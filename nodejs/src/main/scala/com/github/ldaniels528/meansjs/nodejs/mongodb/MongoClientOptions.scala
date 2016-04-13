@@ -11,20 +11,20 @@ import scala.scalajs.js
   */
 @js.native
 trait MongoClientOptions extends js.Object {
-  var w: js.UndefOr[js.Any]
-  var wtimeout: js.UndefOr[Int]
-  var fsync: js.UndefOr[Boolean]
-  var j: js.UndefOr[Boolean]
-  var readPreference: js.UndefOr[String]
-  var native_parser: js.UndefOr[Boolean]
-  var forceServerObjectId: js.UndefOr[Boolean]
-  var pkFactory: js.UndefOr[js.Object]
-  var serializeFunctions: js.UndefOr[Boolean]
-  var raw: js.UndefOr[Boolean]
-  var recordQueryStats: js.UndefOr[Boolean]
-  var retryMiliSeconds: js.UndefOr[Int]
-  var numberOfRetries: js.UndefOr[Int]
-  var bufferMaxEntries: js.UndefOr[Int]
+  var w: js.UndefOr[js.Any] = js.native
+  var wtimeout: js.UndefOr[Int] = js.native
+  var fsync: js.UndefOr[Boolean] = js.native
+  var j: js.UndefOr[Boolean] = js.native
+  var readPreference: js.UndefOr[String] = js.native
+  var native_parser: js.UndefOr[Boolean] = js.native
+  var forceServerObjectId: js.UndefOr[Boolean] = js.native
+  var pkFactory: js.UndefOr[js.Object] = js.native
+  var serializeFunctions: js.UndefOr[Boolean] = js.native
+  var raw: js.UndefOr[Boolean] = js.native
+  var recordQueryStats: js.UndefOr[Boolean] = js.native
+  var retryMiliSeconds: js.UndefOr[Int] = js.native
+  var numberOfRetries: js.UndefOr[Int] = js.native
+  var bufferMaxEntries: js.UndefOr[Int] = js.native
 
 }
 

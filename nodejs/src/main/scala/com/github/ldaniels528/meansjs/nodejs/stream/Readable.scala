@@ -21,14 +21,14 @@ trait Readable extends EventEmitter {
     * without a corresponding stream.resume()).
     * @example readable.isPaused()
     */
-  def isPaused(): Boolean
+  def isPaused(): Boolean = js.native
 
   /**
     * This method will cause a stream in flowing mode to stop emitting 'data' events, switching out of flowing mode.
     * Any data that becomes available will remain in the internal buffer.
     * @example readable.pause()
     */
-  def pause(): this.type
+  def pause(): this.type = js.native
 
   /**
     * This method pulls all the data out of a readable stream, and writes it to the supplied destination,
@@ -36,7 +36,7 @@ trait Readable extends EventEmitter {
     * Multiple destinations can be piped to safely.
     * @example readable.pipe(destination[, options])
     */
-  def pipe(destination: js.Any, options: js.Any): this.type
+  def pipe(destination: js.Any, options: js.Any): this.type = js.native
 
   /**
     * This method pulls all the data out of a readable stream, and writes it to the supplied destination,
@@ -44,7 +44,7 @@ trait Readable extends EventEmitter {
     * Multiple destinations can be piped to safely.
     * @example readable.pipe(destination[, options])
     */
-  def pipe(destination: js.Any): this.type
+  def pipe(destination: js.Any): this.type = js.native
 
   /**
     * The read() method pulls some data out of the internal buffer and returns it. If there is no data available,
@@ -56,7 +56,7 @@ trait Readable extends EventEmitter {
     * until the internal buffer is drained.
     * @example readable.read([size])
     */
-  def read(size: Int): js.Any
+  def read(size: Int): js.Any = js.native
 
   /**
     * The read() method pulls some data out of the internal buffer and returns it. If there is no data available,
@@ -68,7 +68,7 @@ trait Readable extends EventEmitter {
     * until the internal buffer is drained.
     * @example readable.read([size])
     */
-  def read(): js.Any
+  def read(): js.Any = js.native
 
   /**
     * This method will cause the readable stream to resume emitting 'data' events.
@@ -77,7 +77,7 @@ trait Readable extends EventEmitter {
     * stream.resume() to open the flow of data.
     * @example readable.resume()
     */
-  def resume(): this.type
+  def resume(): this.type = js.native
 
   /**
     * Call this function to cause the stream to return strings of the specified encoding instead of Buffer objects.
@@ -91,7 +91,7 @@ trait Readable extends EventEmitter {
     * if you deal with binary data or with large multi-byte strings spread out over multiple chunks.
     * @example readable.setEncoding(encoding)
     */
-  def setEncoding(encoding: String): this.type
+  def setEncoding(encoding: String): this.type = js.native
 
   /**
     * This method will remove the hooks set up for a previous stream.pipe() call.
@@ -99,7 +99,7 @@ trait Readable extends EventEmitter {
     * <p/>If the destination is specified, but no pipe is set up for it, then this is a no-op.
     * @example readable.unpipe([destination])
     */
-  def unpipe(destination: js.Any): Unit
+  def unpipe(destination: js.Any): Unit = js.native
 
   /**
     * This method will remove the hooks set up for a previous stream.pipe() call.
@@ -107,7 +107,7 @@ trait Readable extends EventEmitter {
     * <p/>If the destination is specified, but no pipe is set up for it, then this is a no-op.
     * @example readable.unpipe([destination])
     */
-  def unpipe(): Unit
+  def unpipe(): Unit = js.native
 
   /**
     * This is useful in certain cases where a stream is being consumed by a parser, which needs
@@ -119,7 +119,7 @@ trait Readable extends EventEmitter {
     * a Transform stream instead.
     * @example readable.unshift(chunk)
     */
-  def unshift(chunk: js.Any)
+  def unshift(chunk: js.Any): Unit = js.native
 
   /**
     * Versions of Node.js prior to v0.10 had streams that did not implement the entire Streams API as it is today.
@@ -131,6 +131,6 @@ trait Readable extends EventEmitter {
     * old Node.js programs and libraries.
     * @example readable.wrap(stream)
     */
-  def wrap(stream: js.Any): Unit
+  def wrap(stream: js.Any): Unit = js.native
 
 }

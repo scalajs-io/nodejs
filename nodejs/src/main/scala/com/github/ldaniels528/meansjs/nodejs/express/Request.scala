@@ -20,14 +20,14 @@ trait Request extends js.Object {
     * a module that just exports a middleware function and require() it in your main
     * file, then the middleware can access the Express instance via req.app
     */
-  def app: Application
+  def app: Application = js.native
 
   /**
     * The URL path on which a router instance was mounted. The req.baseUrl property is
     * similar to the mountpath property of the app object, except app.mountpath returns
     * the matched path pattern(s).
     */
-  def baseUrl: String
+  def baseUrl: String = js.native
 
   /**
     * Contains key-value pairs of data submitted in the request body. By default,
@@ -35,13 +35,13 @@ trait Request extends js.Object {
     * as body-parser and multer. The following example shows how to use body-parsing
     * middleware to populate req.body
     */
-  def body: js.Any
+  def body: js.Any = js.native
 
   /**
     * When using cookie-parser middleware, this property is an object that contains
     * cookies sent by the request. If the request contains no cookies, it defaults to {}.
     */
-  def cookies: js.Any
+  def cookies: js.Any = js.native
 
   /**
     * Indicates whether the request is “fresh.” It is the opposite of req.stale.
@@ -55,21 +55,21 @@ trait Request extends js.Object {
     * does not match the etag response header.</li>
     * </ul>
     */
-  def fresh: Boolean
+  def fresh: Boolean = js.native
 
   /**
     * Contains the hostname derived from the Host HTTP header. When the trust proxy setting
     * does not evaluate to false, this property will instead have the value of
     * the X-Forwarded-Host header field. This header can be set by the client or by the proxy.
     */
-  def hostname: String
+  def hostname: String = js.native
 
   /**
     * Contains the remote IP address of the request. When the trust proxy setting does
     * not evaluate to false, the value of this property is derived from the left-most
     * entry in the X-Forwarded-For header. This header can be set by the client or by the proxy.
     */
-  def ip: String
+  def ip: String = js.native
 
   /**
     * When the trust proxy setting does not evaluate to false, this property contains
@@ -79,12 +79,12 @@ trait Request extends js.Object {
     * For example, if X-Forwarded-For is client, proxy1, proxy2, req.ips would be ["client", "proxy1", "proxy2"],
     * where proxy2 is the furthest downstream.
     */
-  def ips: js.Array[String]
+  def ips: js.Array[String] = js.native
 
   /**
     * Contains a string corresponding to the HTTP method of the request: GET, POST, PUT, and so on.
     */
-  def method: String
+  def method: String = js.native
 
   /**
     * This property is much like req.url; however, it retains the original request URL,
@@ -92,19 +92,19 @@ trait Request extends js.Object {
     * the “mounting” feature of [[com.github.ldaniels528.meansjs.nodejs.express.Application.use app.use()]]
     * will rewrite req.url to strip the mount point.
     */
-  def originalUrl: String
+  def originalUrl: String = js.native
 
   /**
     * This property is an object containing properties mapped to the named route “parameters”.
     * For example, if you have the route /user/:name, then the “name” property is available as
     * req.params.name. This object defaults to {}.
     */
-  def params: js.Object
+  def params: js.Object = js.native
 
   /**
     * Contains the path part of the request URL.
     */
-  def path: String
+  def path: String = js.native
 
   /**
     * Contains the request protocol string: either http or (for TLS requests) https.
@@ -112,24 +112,24 @@ trait Request extends js.Object {
     * the value of the X-Forwarded-Proto header field if present. This header can be
     * set by the client or by the proxy.
     */
-  def protocol: String
+  def protocol: String = js.native
 
   /**
     * Returns an object containing a property for each query string parameter in the route.
     * If there is no query string, it is the empty object, {}.
     */
-  def query: js.Object
+  def query: js.Object = js.native
 
   /**
     * Contains the currently-matched route, a string.
     */
-  def route: String
+  def route: String = js.native
 
   /**
     * A Boolean property that is true if a TLS connection is established. Equivalent to:
     * <code>'https' == req.protocol</code>.
     */
-  def secure: Boolean
+  def secure: Boolean = js.native
 
   /**
     * When using cookie-parser middleware, this property contains signed cookies sent by the request,
@@ -140,24 +140,24 @@ trait Request extends js.Object {
     *
     * If no signed cookies are sent, the property defaults to {}.
     */
-  def signedCookies: js.Any
+  def signedCookies: js.Any = js.native
 
   /**
     * Indicates whether the request is “stale,” and is the opposite of req.fresh.
     * @see [[Request.fresh]]
     */
-  def stale: Boolean
+  def stale: Boolean = js.native
 
   /**
     * An array of subdomains in the domain name of the request.
     */
-  def subdomains: js.Array[String]
+  def subdomains: js.Array[String] = js.native
 
   /**
     * A Boolean property that is true if the request’s X-Requested-With header field is “XMLHttpRequest”,
     * indicating that the request was issued by a client library such as jQuery.
     */
-  def xhr: Boolean
+  def xhr: Boolean = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -171,34 +171,34 @@ trait Request extends js.Object {
     * The type value may be a single MIME type string (such as “application/json”), an extension name such as “json”,
     * a comma-delimited list, or an array. For a list or array, the method returns the best match (if any).
     */
-  def accepts(`type`: String): String
+  def accepts(`type`: String): String = js.native
 
   /**
     * @see [[Request.accepts(String)]]
     */
-  def accepts(types: js.Array[String]): String
+  def accepts(types: js.Array[String]): String = js.native
 
   /**
     * Returns the specified HTTP request header field (case-insensitive match).
     * The Referrer and Referer fields are interchangeable.
     */
-  def get(field: String): js.UndefOr[String]
+  def get(field: String): js.UndefOr[String] = js.native
 
   /**
     * Returns true if the incoming request’s “Content-Type” HTTP header field matches
     * the MIME type specified by the type parameter. Returns false otherwise.
     */
-  def is(`type`: String): Boolean
+  def is(`type`: String): Boolean = js.native
 
   /**
     * Returns the value of param name when present.
     */
-  def param(name: String, defaultValue: String): String
+  def param(name: String, defaultValue: String): String = js.native
 
   /**
     * Returns the value of param name when present.
     */
-  def param(name: String): js.UndefOr[String]
+  def param(name: String): js.UndefOr[String] = js.native
 
 }
 

@@ -19,7 +19,7 @@ trait WsInstance extends js.Object {
     * This property contains the app that express-ws was set up on.
     * @example wsInstance.app
     */
-  def app: Application
+  def app: Application = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -35,14 +35,14 @@ trait WsInstance extends js.Object {
     * In most cases, you won't need this at all.
     * @example wsInstance.applyTo(router)
     */
-  def applyTo(router: Router): Unit
+  def applyTo(router: Router): Unit = js.native
 
   /**
     * Returns the underlying WebSocket server/handler. You can use wsInstance.getWss().clients
     * to obtain a list of all the connected WebSocket clients for this server.
     * @example wsInstance.getWss()
     */
-  def getWss(): WsInstance.WssInfo
+  def getWss(): WsInstance.WssInfo = js.native
 
 }
 

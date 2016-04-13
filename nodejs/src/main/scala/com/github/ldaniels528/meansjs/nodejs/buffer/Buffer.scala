@@ -24,26 +24,26 @@ trait Buffer extends js.Object {
     * will share the same allocated memory as the TypedArray.
     * @example Buffer.from(arrayBuffer[, byteOffset[, length]])
     **/
-  def from(arrayBuffer: ArrayBuffer, byteOffset: Int, length: Int): this.type
+  def from(arrayBuffer: ArrayBuffer, byteOffset: Int, length: Int): this.type = js.native
 
   /**
     * When passed a reference to the .buffer property of a TypedArray instance, the newly created Buffer
     * will share the same allocated memory as the TypedArray.
     * @example Buffer.from(arrayBuffer[, byteOffset[, length]])
     **/
-  def from(arrayBuffer: ArrayBuffer, byteOffset: Int): this.type
+  def from(arrayBuffer: ArrayBuffer, byteOffset: Int): this.type = js.native
 
   /**
     * When passed a reference to the .buffer property of a TypedArray instance, the newly created Buffer
     * will share the same allocated memory as the TypedArray.
     * @example Buffer.from(arrayBuffer[, byteOffset[, length]])
     **/
-  def from(arrayBuffer: ArrayBuffer): this.type
+  def from(arrayBuffer: ArrayBuffer): this.type = js.native
 
   /**
     * Allocates a new Buffer using an array of octets.
     * @example Buffer.from(array)
     */
-  def from(array: js.Array[js.Any]): this.type
+  def from(array: js.Array[js.Any]): this.type = js.native
 
 }

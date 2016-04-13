@@ -22,13 +22,13 @@ trait Application extends Router {
     * The app.locals object has properties that are local variables within the application.
     * @see [[http://expressjs.com/en/api.html#app.locals]]
     */
-  var locals: js.Any
+  var locals: js.Any = js.native
 
   /**
     * The app.mountpath property contains one or more path patterns on which a sub-app was mounted.
     * @see [[http://expressjs.com/en/api.html#app.mountpath]]
     */
-  var mountpath: js.Any
+  var mountpath: js.Any = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -39,34 +39,34 @@ trait Application extends Router {
     * @example app.configure(init)
     */
   @deprecated("app.configure has been removed", "4.x")
-  def configure(init: js.Function): Unit
+  def configure(init: js.Function): Unit = js.native
 
   /**
     * Sets the Boolean setting name to false, where name is one of the properties from the app settings table.
     * Calling app.set('foo', false) for a Boolean property is the same as calling app.disable('foo').
     * @example app.disable(name)
     */
-  def disable(name: String): Unit
+  def disable(name: String): Unit = js.native
 
   /**
     * Returns true if the Boolean setting name is disabled (false), where name is one of the properties
     * from the app settings table.
     * @example app.disabled(name)
     */
-  def disabled(name: String): Boolean
+  def disabled(name: String): Boolean = js.native
 
   /**
     * Sets the Boolean setting name to true, where name is one of the properties from the app settings table.
     * Calling app.set('foo', true) for a Boolean property is the same as calling app.enable('foo').
     * @example app.enable(name)
     */
-  def enable(name: String): Unit
+  def enable(name: String): Unit = js.native
 
   /**
     * Returns true if the setting name is enabled (true), where name is one of the properties from the app settings table.
     * @example app.enabled(name)
     */
-  def enabled(name: String): Boolean
+  def enabled(name: String): Boolean = js.native
 
   /**
     * Registers the given template engine callback as ext. By default, Express will require() the engine based on
@@ -74,38 +74,38 @@ trait Application extends Router {
     * internally, and caches the require() on subsequent calls to increase performance.
     * @example app.engine(ext, callback)
     */
-  def engine(name: String, callback: js.Function): Unit
+  def engine(name: String, callback: js.Function): Unit = js.native
 
   /**
     * Returns the value of name app setting, where name is one of strings in the app settings table.
     * @example app.get(name)
     */
-  def get(name: String): js.UndefOr[String]
+  def get(name: String): js.UndefOr[String] = js.native
 
   /**
     * Binds and listens for connections on the specified host and port.
     * This method is identical to Node’s http.Server.listen().
     * @example app.listen(port, [hostname], [backlog], [callback])
     */
-  def listen(port: Int, hostname: String, backlog: js.Any, callback: js.Function): Server
+  def listen(port: Int, hostname: String, backlog: js.Any, callback: js.Function): Server = js.native
 
-  def listen(port: Int, hostname: String, backlog: js.Any): Server
+  def listen(port: Int, hostname: String, backlog: js.Any): Server = js.native
 
-  def listen(port: Int, hostname: String, callback: js.Function): Server
+  def listen(port: Int, hostname: String, callback: js.Function): Server = js.native
 
-  def listen(port: Int, hostname: String): Server
+  def listen(port: Int, hostname: String): Server = js.native
 
-  def listen(port: Int, callback: js.Function): Server
+  def listen(port: Int, callback: js.Function): Server = js.native
 
-  def listen(port: Int): Server
+  def listen(port: Int): Server = js.native
 
-  def on(mount: String, callback: js.Function): Unit
+  def on(mount: String, callback: js.Function): Unit = js.native
 
   /**
     * Returns the canonical path of the app, a string.
     * @example app.path()
     */
-  def path(): String
+  def path(): String = js.native
 
   /**
     * Returns the rendered HTML of a view via the callback function. It accepts an optional parameter
@@ -113,14 +113,14 @@ trait Application extends Router {
     * cannot send the rendered view to the client on its own.
     * @example app.render(view, [locals], callback)
     */
-  def render(view: String, locals: js.Any, callback: js.Function): Unit
+  def render(view: String, locals: js.Any, callback: js.Function): Unit = js.native
 
   /**
     * Returns an instance of a single route, which you can then use to handle HTTP verbs with
     * optional middleware. Use app.route() to avoid duplicate route names (and thus typo errors).
     * @example app.route(path)
     */
-  def route(path: String): js.Any
+  def route(path: String): js.Any = js.native
 
   /**
     * Assigns setting name to value, where name is one of the properties from the app settings table.
@@ -129,29 +129,18 @@ trait Application extends Router {
     * Retrieve the value of a setting with app.get().
     * @example app.set(name, value)
     */
-  def set(name: String, value: js.Any): Unit
+  def set(name: String, value: js.Any): Unit = js.native
 
-  def set(headers: js.Any): Unit // TODO ????
+  def set(headers: js.Any): Unit = js.native // TODO ????
 
   /**
     * Mounts the specified middleware function or functions at the specified path.
     * If path is not specified, it defaults to “/”.
     * @example app.use([path,] function [, function...])
     */
-  def use(path: String, router: Router): Unit
+  def use(path: String, router: Router): Unit = js.native
 
-  def use(router: Router): Unit
-
-}
-
-/**
-  * Application Companion
-  * @author lawrence.daniels@gmail.com
-  */
-object Application {
-
-  @js.native
-  @JSName("__dirname")
-  object __dirname extends js.GlobalScope
+  def use(router: Router): Unit = js.native
 
 }
+

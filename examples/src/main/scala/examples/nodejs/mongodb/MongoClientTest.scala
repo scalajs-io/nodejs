@@ -9,7 +9,7 @@ import org.scalajs.dom.console
   * Mongo Client Test
   * @author lawrence.daniels@gmail.com 
   */
-class MongoClientTest {
+class MongoClientTest(require: Require) {
 
   // lets require/import the mongodb native drivers.
   val mongodb = require[MongoDB]("mongodb")

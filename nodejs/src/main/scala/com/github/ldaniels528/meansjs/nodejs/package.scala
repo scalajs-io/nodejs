@@ -11,6 +11,22 @@ import scala.scalajs.js.annotation.JSName
   */
 package object nodejs {
 
+  @JSName("__dirname")
+  @js.native
+  object __dirname extends js.Object
+
+  @JSName("Error")
+  @js.native
+  object Error extends NodeError
+
+  @JSName("module")
+  @js.native
+  object module extends ModuleObject
+
+  @JSName("process")
+  @js.native
+  object process extends ProcessObject
+
   @js.native
   @JSName("require")
   object require extends Require

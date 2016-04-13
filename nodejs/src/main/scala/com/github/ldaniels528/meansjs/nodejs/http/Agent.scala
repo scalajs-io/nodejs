@@ -25,34 +25,34 @@ trait Agent extends js.Object {
     * An object which contains arrays of sockets currently awaiting use by the Agent when HTTP KeepAlive is used. Do not modify.
     * @example agent.freeSockets
     */
-  def freeSockets: js.Object
+  def freeSockets: js.Object = js.native
 
   /**
     * By default set to 256. For Agents supporting HTTP KeepAlive, this sets the maximum number of sockets
     * that will be left open in the free state.
     * @example agent.maxFreeSockets
     */
-  var maxFreeSockets: Int
+  var maxFreeSockets: Int = js.native
 
   /**
     * By default set to Infinity. Determines how many concurrent sockets the agent can have open per origin.
     * Origin is either a 'host:port' or 'host:port:localAddress' combination.
     * @example agent.maxSockets
     */
-  var maxSockets: Int
+  var maxSockets: Int = js.native
 
   /**
     * An object which contains queues of requests that have not yet been assigned to sockets. Do not modify.
     * @example agent.requests
     */
-  def requests: js.Object
+  def requests: js.Object = js.native
 
   /**
     * An object which contains arrays of sockets currently in use by the Agent. Do not modify.
     * @example agent.sockets
     */
   // TODO what is the underlying object?
-  def sockets: js.Array[js.Any]
+  def sockets: js.Array[js.Any] = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -69,7 +69,7 @@ trait Agent extends js.Object {
     * callback has a signature of (err, stream).
     * @example agent.createConnection(options[, callback])
     */
-  def createConnection(options: Agent.ConnectionOptions, callback: js.Function): Unit
+  def createConnection(options: Agent.ConnectionOptions, callback: js.Function): Unit = js.native
 
   /**
     * Destroy any sockets that are currently in use by the agent.
@@ -79,7 +79,7 @@ trait Agent extends js.Object {
     * Otherwise, sockets may hang open for quite a long time before the server terminates them.
     * @example agent.destroy()
     */
-  def destroy(): Unit
+  def destroy(): Unit = js.native
 
 }
 

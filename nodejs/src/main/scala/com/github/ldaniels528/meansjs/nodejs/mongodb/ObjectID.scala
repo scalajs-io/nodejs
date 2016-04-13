@@ -16,7 +16,7 @@ trait ObjectID extends js.Object {
     * @param hexString the given 24-byte hex string.
     * @return the created ObjectID
     */
-  def createFromHexString(hexString: String): ObjectID
+  def createFromHexString(hexString: String): ObjectID = js.native
 
   /**
     * Creates an ObjectID from a second based number, with the rest of the ObjectID zeroed out.
@@ -24,32 +24,32 @@ trait ObjectID extends js.Object {
     * @param time an integer number representing a number of seconds.
     * @return the created ObjectID
     */
-  def createFromTime(time: Number): ObjectID
+  def createFromTime(time: Number): ObjectID = js.native
 
   /**
     * Compares the equality of this ObjectID with <code>otherID</code>.
     * @param otherID the ObjectID instance to compare against.
     * @return the result of comparing two ObjectID’s
     */
-  def equals(otherID: ObjectID): Boolean
+  def equals(otherID: ObjectID): Boolean = js.native
 
   /**
     * Returns the generation date (accurate up to the second) that this ID was generated.
     * @return the generation [[js.Date date]]
     */
-  def getTimestamp(): js.Date
+  def getTimestamp(): js.Date = js.native
 
   /**
     * Checks if a value is a valid BSON ObjectId
     * @return true if the value is a valid BSON ObjectId; returns false otherwise.
     */
-  def isValid(): Boolean
+  def isValid(): Boolean = js.native
 
   /**
     * Returns the ObjectID id as a 24 byte hex string representation
     * @return a 24 byte hex string representation
     */
-  def toHexString(): String
+  def toHexString(): String = js.native
 
 }
 
@@ -65,9 +65,9 @@ object ObjectID {
     */
   implicit class MongoObjectIDEnrich(val objectID: ObjectID) extends AnyVal {
 
-    def apply() = js.Dynamic.newInstance(objectID.asInstanceOf[js.Dynamic])().as[ObjectID]
+    def apply() = objectID.New[ObjectID]()
 
-    def apply(id: js.Any) = js.Dynamic.newInstance(objectID.asInstanceOf[js.Dynamic])(id).as[ObjectID]
+    def apply(id: js.Any) = objectID.New[ObjectID](id)
 
   }
 

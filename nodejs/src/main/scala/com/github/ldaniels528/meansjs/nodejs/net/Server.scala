@@ -20,13 +20,13 @@ trait Server extends EventEmitter {
     * A Boolean indicating whether or not the server is listening for connections.
     * @example server.listening
     */
-  def listening: Boolean
+  def listening: Boolean = js.native
 
   /**
     * Limits maximum incoming headers count, equal to 1000 by default. If set to 0 - no limit will be applied.
     * @example server.maxHeadersCount
     */
-  var maxHeadersCount: Int
+  var maxHeadersCount: Int = js.native
 
   /**
     * The number of milliseconds of inactivity before a socket is presumed to have timed out.
@@ -36,7 +36,7 @@ trait Server extends EventEmitter {
     * Default = 120000 (2 minutes)
     * @example server.timeout
     */
-  var timeout: Int
+  var timeout: Int = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -49,7 +49,7 @@ trait Server extends EventEmitter {
     * its only argument if the server was not open when it was closed.
     * @example server.close([callback])
     */
-  def close(callback: js.Function): Unit
+  def close(callback: js.Function): Unit = js.native
 
   /**
     * Stops the server from accepting new connections and keeps existing connections. This function is asynchronous,
@@ -58,7 +58,7 @@ trait Server extends EventEmitter {
     * its only argument if the server was not open when it was closed.
     * @example server.close([callback])
     */
-  def close(): Unit
+  def close(): Unit = js.native
 
   /**
     * The port, host, and backlog properties of options, as well as the optional callback function, behave as
@@ -66,7 +66,7 @@ trait Server extends EventEmitter {
     * option can be used to specify a UNIX socket.
     * @example server.listen(options[, callback])
     */
-  def listen(options: Server.ListenerOptions, callback: js.Function): Unit
+  def listen(options: Server.ListenerOptions, callback: js.Function): Unit = js.native
 
   /**
     * The port, host, and backlog properties of options, as well as the optional callback function, behave as
@@ -74,27 +74,27 @@ trait Server extends EventEmitter {
     * option can be used to specify a UNIX socket.
     * @example server.listen(options[, callback])
     */
-  def listen(options: Server.ListenerOptions): Unit
+  def listen(options: Server.ListenerOptions): Unit = js.native
 
   /**
     * @example server.listen(port[, hostname][, backlog][, callback])
     */
-  def listen(port: Int, hostname: String, backlog: Int, callback: js.Function): Unit
+  def listen(port: Int, hostname: String, backlog: Int, callback: js.Function): Unit = js.native
 
   /**
     * @example server.listen(port[, hostname][, backlog][, callback])
     */
-  def listen(port: Int, hostname: String, backlog: Int): Unit
+  def listen(port: Int, hostname: String, backlog: Int): Unit = js.native
 
   /**
     * @example server.listen(port[, hostname][, backlog][, callback])
     */
-  def listen(port: Int, hostname: String): Unit
+  def listen(port: Int, hostname: String): Unit = js.native
 
   /**
     * @example server.listen(port[, hostname][, backlog][, callback])
     */
-  def listen(port: Int): Unit
+  def listen(port: Int): Unit = js.native
 
   /**
     * Sets the timeout value for sockets, and emits a 'timeout' event on the Server object, passing the socket
@@ -104,7 +104,7 @@ trait Server extends EventEmitter {
     * By default, the Server's timeout value is 2 minutes, and sockets are destroyed automatically if they time out. However, if you assign a callback to the Server's 'timeout' event, then you are responsible for handling socket timeouts.
     * Returns server.
     */
-  def setTimeout(msecs: Int, callback: js.Function): this.type
+  def setTimeout(msecs: Int, callback: js.Function): this.type = js.native
 
 }
 

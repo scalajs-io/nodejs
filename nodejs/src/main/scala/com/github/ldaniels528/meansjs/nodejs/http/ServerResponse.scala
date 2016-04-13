@@ -18,31 +18,31 @@ trait ServerResponse extends js.Object {
     * Boolean value that indicates whether the response has completed. Starts as false.
     * After response.end() executes, the value will be true.
     */
-  def finished: Boolean
+  def finished: Boolean = js.native
 
   /**
     * Boolean (read-only). True if headers were sent, false otherwise.
     */
-  def headersSent: Boolean
+  def headersSent: Boolean = js.native
 
   /**
     * When true, the Date header will be automatically generated and sent in the response
     * if it is not already present in the headers. Defaults to true.
     */
-  var sendDate: Boolean
+  var sendDate: Boolean = js.native
 
   /**
     * When using implicit headers (not calling response.writeHead() explicitly), this property controls
     * the status code that will be sent to the client when the headers get flushed.
     */
-  var statusCode: Int
+  var statusCode: Int = js.native
 
   /**
     * When using implicit headers (not calling response.writeHead() explicitly), this property controls
     * the status message that will be sent to the client when the headers get flushed. If this is left
     * as undefined then the standard message for the status code will be used.
     */
-  var statusMessage: js.UndefOr[String]
+  var statusMessage: js.UndefOr[String] = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -55,7 +55,7 @@ trait ServerResponse extends js.Object {
     * <p><b>Note</b> that HTTP requires the Trailer header to be sent if you intend to emit trailers, with
     * a list of the header fields in its value.
     */
-  def addTrailers(headers: js.Any): Unit
+  def addTrailers(headers: js.Any): Unit = js.native
 
   /**
     * This method signals to the server that all of the response headers and body have been sent;
@@ -64,49 +64,49 @@ trait ServerResponse extends js.Object {
     * <p/>If callback is specified, it will be called when the response stream is finished.
     * @example response.end([data][, encoding][, callback])
     */
-  def end(data: js.Any, encoding: String, callback: js.Function)
+  def end(data: js.Any, encoding: String, callback: js.Function): Unit = js.native
 
-  def end(data: js.Any, encoding: String)
+  def end(data: js.Any, encoding: String): Unit = js.native
 
-  def end(data: js.Any, callback: js.Function)
+  def end(data: js.Any, callback: js.Function): Unit = js.native
 
-  def end(data: js.Any)
+  def end(data: js.Any): Unit = js.native
 
-  def end(callback: js.Function)
+  def end(callback: js.Function): Unit = js.native
 
-  def end()
+  def end(): Unit = js.native
 
   /**
     * Reads out a header that's already been queued but not sent to the client.
     * Note that the name is case insensitive. This can only be called before
     * headers get implicitly flushed.
     */
-  def getHeader(name: String): js.UndefOr[String]
+  def getHeader(name: String): js.UndefOr[String] = js.native
 
-  def on(event: String, callback: js.Function): Unit
+  def on(event: String, callback: js.Function): Unit = js.native
 
   /**
     * Removes a header that's queued for implicit sending.
     */
-  def removeHeader(name: String): Unit
+  def removeHeader(name: String): Unit = js.native
 
-  def render(path: String): Unit
+  def render(path: String): Unit = js.native
 
-  def send(data: js.Any): Unit
+  def send(data: js.Any): Unit = js.native
 
-  def sendStatus(statusCode: Int): Unit
+  def sendStatus(statusCode: Int): Unit = js.native
 
-  def set(name: String, value: js.Any): Unit
+  def set(name: String, value: js.Any): Unit = js.native
 
-  def set(headers: js.Any): Unit
+  def set(headers: js.Any): Unit = js.native
 
-  def setEncoding(encoding: String): Unit
+  def setEncoding(encoding: String): Unit = js.native
 
   /**
     * Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers,
     * its value will be replaced. Use an array of strings here if you need to send multiple headers with the same name.
     */
-  def setHeader(name: String, value: String): Unit
+  def setHeader(name: String, value: String): Unit = js.native
 
   /**
     * Sets the Socket's timeout value to msecs. If a callback is provided, then
@@ -119,11 +119,11 @@ trait ServerResponse extends js.Object {
     *
     * Returns response.
     */
-  def setTimeout(msecs: Int, callback: js.Function)
+  def setTimeout(msecs: Int, callback: js.Function): Unit = js.native
 
-  def status(statusCode: Int): this.type
+  def status(statusCode: Int): this.type = js.native
 
-  def `type`(mime: String): js.UndefOr[String]
+  def `type`(mime: String): js.UndefOr[String] = js.native
 
   /**
     * If this method is called and response.writeHead() has not been called, it will switch to implicit header
@@ -141,17 +141,17 @@ trait ServerResponse extends js.Object {
     * buffer is free again.
     * @example response.write(chunk[, encoding][, callback])
     */
-  def write(chunk: js.Any, encoding: String, callback: js.Function): Unit
+  def write(chunk: js.Any, encoding: String, callback: js.Function): Unit = js.native
 
-  def write(chunk: js.Any, encoding: String): Unit
+  def write(chunk: js.Any, encoding: String): Unit = js.native
 
-  def write(chunk: js.Any): Unit
+  def write(chunk: js.Any): Unit = js.native
 
   /**
     * Sends a HTTP/1.1 100 Continue message to the client, indicating that the request body should be sent.
     * See the 'checkContinue' event on Server.
     */
-  def writeContinue(): Unit
+  def writeContinue(): Unit = js.native
 
   /**
     * Sends a response header to the request. The status code is a 3-digit HTTP status code, like 404.
@@ -159,11 +159,11 @@ trait ServerResponse extends js.Object {
     * statusMessage as the second argument.
     * @example response.writeHead(statusCode[, statusMessage][, headers])
     */
-  def writeHead(statusCode: Int, statusMessage: String, headers: js.Any)
+  def writeHead(statusCode: Int, statusMessage: String, headers: js.Any): Unit = js.native
 
-  def writeHead(statusCode: Int, statusMessage: String)
+  def writeHead(statusCode: Int, statusMessage: String): Unit = js.native
 
-  def writeHead(statusCode: Int, headers: js.Any)
+  def writeHead(statusCode: Int, headers: js.Any): Unit = js.native
 
 }
 

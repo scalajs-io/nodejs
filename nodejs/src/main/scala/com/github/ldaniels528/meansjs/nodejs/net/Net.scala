@@ -12,7 +12,7 @@ import scala.scalajs.js
 @js.native
 trait Net extends js.Object {
 
-  def connect(options: Net.Options, callback: js.Function): Client
+  def connect(options: Net.Options, callback: js.Function): Client = js.native
 
 }
 

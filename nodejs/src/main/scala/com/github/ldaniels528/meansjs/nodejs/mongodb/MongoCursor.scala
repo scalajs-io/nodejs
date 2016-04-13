@@ -13,13 +13,13 @@ import scala.scalajs.js
 @js.native
 trait MongoCursor extends js.Object {
 
-  def each(callback: js.Function): Unit
+  def each(callback: js.Function): Unit = js.native
 
-  def nextObject(callback: js.Function): Unit
+  def nextObject(callback: js.Function): Unit = js.native
 
-  def stream(): MongoStream
+  def stream(): MongoStream = js.native
 
-  def toArray(callback: js.Function): Unit
+  def toArray(callback: js.Function): Unit = js.native
 
 }
 

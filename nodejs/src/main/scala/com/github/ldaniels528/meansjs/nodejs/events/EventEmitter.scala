@@ -19,7 +19,13 @@ trait EventEmitter extends js.Object {
     * for all EventEmitter instances, the EventEmitter.defaultMaxListeners property can be used.
     * @example EventEmitter.defaultMaxListeners
     */
-  var defaultMaxListeners: Int
+  var defaultMaxListeners: Int = js.native
+
+  var domain: String
+
+  def EventEmitter: js.Function0[EventEmitter] = js.native
+
+  var usingDomains: Boolean = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -30,14 +36,14 @@ trait EventEmitter extends js.Object {
     * @example EventEmitter.listenerCount(emitter, eventName)
     */
   @deprecated("Use listenerCount() instead", "4.x")
-  def listenerCount(emitter: js.Any, eventName: String): Unit
+  def listenerCount(emitter: js.Any, eventName: String): Unit = js.native
 
   /**
     * Alias for emitter.on(eventName, listener).
     * @example emitter.addListener(eventName, listener)
     * @see [[EventEmitter.on()]]
     */
-  def addListener(eventName: String, listener: js.Function): this.type
+  def addListener(eventName: String, listener: js.Function): this.type = js.native
 
   /**
     * Synchronously calls each of the listeners registered for the event named eventName, in the order
@@ -45,7 +51,7 @@ trait EventEmitter extends js.Object {
     * <p/>Returns true if the event had listeners, false otherwise.
     * @example emitter.emit(eventName[, arg1][, arg2][, ...])
     */
-  def emit(eventName: String, args: js.Any*): Boolean
+  def emit(eventName: String, arg: js.Any*): Boolean = js.native
 
   /**
     * Returns the current max listener value for the EventEmitter which is either set by
@@ -53,19 +59,19 @@ trait EventEmitter extends js.Object {
     * @example emitter.getMaxListeners()
     * @see [[EventEmitter.setMaxListeners()]]
     */
-  def getMaxListeners(): Int
+  def getMaxListeners(): Int = js.native
 
   /**
     * Returns the number of listeners listening to the event named eventName.
     * @example emitter.listenerCount(eventName)
     */
-  def listenerCount(eventName: String): Int
+  def listenerCount(eventName: String): Int = js.native
 
   /**
     * Returns a copy of the array of listeners for the event named eventName.
     * @example emitter.listeners(eventName)
     */
-  def listeners(eventName: String): js.Array[js.Function]
+  def listeners(eventName: String): js.Array[js.Function] = js.native
 
   /**
     * Adds the listener function to the end of the listeners array for the event named eventName.
@@ -75,14 +81,14 @@ trait EventEmitter extends js.Object {
     * <p/>Returns a reference to the EventEmitter so calls can be chained.
     * @example emitter.on(eventName, listener)
     */
-  def on(eventName: String, listener: js.Function): this.type
+  def on(eventName: String, listener: js.Function): this.type = js.native
 
   /**
     * Adds a one time listener function for the event named eventName. This listener is
     * invoked only the next time eventName is triggered, after which it is removed.
     * @example emitter.once(eventName, listener)
     */
-  def once(eventName: String, listener: js.Function): this.type
+  def once(eventName: String, listener: js.Function): this.type = js.native
 
   /**
     * Removes all listeners, or those of the specified eventName.
@@ -92,7 +98,7 @@ trait EventEmitter extends js.Object {
     * <p/>Returns a reference to the EventEmitter so calls can be chained.
     * @example emitter.removeAllListeners([eventName])
     */
-  def removeAllListeners(eventName: String): this.type
+  def removeAllListeners(eventName: String): this.type = js.native
 
   /**
     * Removes all listeners, or those of the specified eventName.
@@ -102,7 +108,7 @@ trait EventEmitter extends js.Object {
     * <p/>Returns a reference to the EventEmitter so calls can be chained.
     * @example emitter.removeAllListeners([eventName])
     */
-  def removeAllListeners(): this.type
+  def removeAllListeners(): this.type = js.native
 
   /**
     * Removes the specified listener from the listener array for the event named eventName.
@@ -115,7 +121,7 @@ trait EventEmitter extends js.Object {
     * will not remove them from emit() in progress. Subsequent events will behave as expected.
     * @example emitter.removeListener(eventName, listener)
     */
-  def removeListener(eventName: String, listener: js.Function): this.type
+  def removeListener(eventName: String, listener: js.Function): this.type = js.native
 
   /**
     * By default EventEmitters will print a warning if more than 10 listeners are added for a
@@ -126,6 +132,6 @@ trait EventEmitter extends js.Object {
     * <p/>Returns a reference to the EventEmitter so calls can be chained.
     * @example emitter.setMaxListeners(n)
     */
-  def setMaxListeners(n: Int): this.type
+  def setMaxListeners(n: Int): this.type = js.native
 
 }

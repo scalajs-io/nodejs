@@ -14,29 +14,29 @@ import scala.scalajs.js
 @js.native
 trait MongoCollection extends js.Object {
 
-  def drop(callback: js.Function): Unit
+  def drop(callback: js.Function): Unit = js.native
 
-  def find(): MongoCursor
+  def find(): MongoCursor = js.native
 
-  def find(selector: js.Any): MongoCursor
+  def find(selector: js.Any): MongoCursor = js.native
 
-  def findOne(selector: js.Any, callback: js.Function): Unit
+  def findOne(selector: js.Any, callback: js.Function): Unit = js.native
 
-  def insert(doc: js.Any): Unit
+  def insert(doc: js.Any): Unit = js.native
 
-  def insert(doc: js.Any, callback: js.Function): Unit
+  def insert(doc: js.Any, callback: js.Function): Unit = js.native
 
-  def insert(doc: js.Any, options: WriteOptions, callback: js.Function): Unit
+  def insert(doc: js.Any, options: WriteOptions, callback: js.Function): Unit = js.native
 
-  def insert(docs: js.Array[js.Any], options: WriteOptions, callback: js.Function): Unit
+  def insert(docs: js.Array[js.Any], options: WriteOptions, callback: js.Function): Unit = js.native
 
-  def remove(): Unit
+  def remove(): Unit = js.native
 
-  def remove(selector: js.Any): Unit
+  def remove(selector: js.Any): Unit = js.native
 
-  def remove(selector: js.Any, options: WriteOptions, callback: js.Function): Unit
+  def remove(selector: js.Any, options: WriteOptions, callback: js.Function): Unit = js.native
 
-  def update(selector: js.Any, modifier: js.Any, options: WriteOptions, callback: js.Function): Unit
+  def update(selector: js.Any, modifier: js.Any, options: WriteOptions, callback: js.Function): Unit = js.native
 
 }
 

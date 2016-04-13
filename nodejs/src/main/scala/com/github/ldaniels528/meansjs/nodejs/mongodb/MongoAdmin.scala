@@ -13,13 +13,13 @@ import scala.scalajs.js
 @js.native
 trait MongoAdmin extends js.Object {
 
-  def profilingInfo(callback: js.Function): Unit
+  def profilingInfo(callback: js.Function): Unit = js.native
 
-  def profilingLevel(callback: js.Function): Unit
+  def profilingLevel(callback: js.Function): Unit = js.native
 
-  def setProfilingLevel(level: String, callback: js.Function): Unit
+  def setProfilingLevel(level: String, callback: js.Function): Unit = js.native
 
-  def validateCollection(collectionName: String, callback: js.Function): Unit
+  def validateCollection(collectionName: String, callback: js.Function): Unit = js.native
 
 }
 

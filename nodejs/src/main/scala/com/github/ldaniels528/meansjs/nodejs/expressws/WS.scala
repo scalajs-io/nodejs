@@ -9,8 +9,8 @@ import scala.scalajs.js
 @js.native
 trait WS extends js.Object {
 
-  def on(eventName: String, callback: js.Function): Unit
+  def on(eventName: String, callback: js.Function): Unit = js.native
 
-  def send(message: js.Any): Unit
+  def send(message: js.Any): Unit = js.native
 
 }

@@ -12,27 +12,27 @@ import scala.scalajs.js
 @js.native
 trait MongoDB extends js.Object {
 
-  def connect(servers: String, callback: js.Function): Unit
+  def connect(servers: String, callback: js.Function): Unit = js.native
 
-  def pure(): js.Dynamic // BSON
+  def pure(): js.Dynamic = js.native // BSON
 
-  def Binary: js.Dynamic
+  def Binary: js.Dynamic = js.native
 
-  def Code: js.Dynamic
+  def Code: js.Dynamic = js.native
 
-  def Db: MongoDatabase
+  def Db: MongoDatabase = js.native
 
-  def Grid: js.Dynamic
+  def Grid: js.Dynamic = js.native
 
-  def GridStore: MongoGridStore
+  def GridStore: MongoGridStore = js.native
 
-  def MongoClient: MongoClient
+  def MongoClient: MongoClient = js.native
 
-  def ObjectID: ObjectID
+  def ObjectID: ObjectID = js.native
 
-  def ReplSetServers: js.Dynamic
+  def ReplSetServers: js.Dynamic = js.native
 
-  def Server: js.Dynamic
+  def Server: js.Dynamic = js.native
 
 }
 

@@ -14,29 +14,29 @@ import scala.scalajs.js
 @js.native
 trait MongoDatabase extends js.Object {
 
-  def admin(): MongoAdmin
+  def admin(): MongoAdmin = js.native
 
-  def close(): Unit
+  def close(): Unit = js.native
 
-  def collection(name: String, callback: js.Function): Unit
+  def collection(name: String, callback: js.Function): Unit = js.native
 
-  def collection(name: String, options: CollectionOptions, callback: js.Function): Unit
+  def collection(name: String, options: CollectionOptions, callback: js.Function): Unit = js.native
 
-  def collectionsInfo(): MongoCursor
+  def collectionsInfo(): MongoCursor = js.native
 
-  def collectionNames(callback: js.Function): Unit
+  def collectionNames(callback: js.Function): Unit = js.native
 
-  def createCollection(name: String, callback: js.Function): Unit
+  def createCollection(name: String, callback: js.Function): Unit = js.native
 
-  def createCollection(name: String, options: CollectionOptions, callback: js.Function): Unit
+  def createCollection(name: String, options: CollectionOptions, callback: js.Function): Unit = js.native
 
-  def createIndex(name: String, flag: Char, callback: js.Function): Unit
+  def createIndex(name: String, flag: Char, callback: js.Function): Unit = js.native
 
-  def dropCollection(name: String, callback: js.Function): Unit
+  def dropCollection(name: String, callback: js.Function): Unit = js.native
 
-  def dropDatabase(callback: js.Function): Unit
+  def dropDatabase(callback: js.Function): Unit = js.native
 
-  def indexInformation(name: String, callback: js.Function): Unit
+  def indexInformation(name: String, callback: js.Function): Unit = js.native
 
 }
 

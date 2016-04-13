@@ -10,7 +10,7 @@ import scala.scalajs.js
   */
 @js.native
 trait WriteOptions extends js.Object {
-  var w: Int
+  var w: Int = js.native
 }
 
 /**

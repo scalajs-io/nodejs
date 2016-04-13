@@ -11,11 +11,11 @@ import scala.scalajs.js
   */
 @js.native
 trait ConnectionOptions extends js.Object {
-  var uri_decode_auth: js.UndefOr[Boolean]
-  var db: js.UndefOr[js.Object]
-  var server: js.UndefOr[js.Object]
-  var replSet: js.UndefOr[js.Object]
-  var mongos: js.UndefOr[js.Object]
+  var uri_decode_auth: js.UndefOr[Boolean] = js.native
+  var db: js.UndefOr[js.Object] = js.native
+  var server: js.UndefOr[js.Object] = js.native
+  var replSet: js.UndefOr[js.Object] = js.native
+  var mongos: js.UndefOr[js.Object] = js.native
 }
 
 /**

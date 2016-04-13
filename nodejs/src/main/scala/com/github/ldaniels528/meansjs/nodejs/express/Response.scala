@@ -21,12 +21,12 @@ trait Response extends js.Object {
     * This property holds a reference to the instance of the Express application that is using the middleware.
     * res.app is identical to the [[Request.app]] property in the request object.
     */
-  def app: Application
+  def app: Application = js.native
 
   /**
     * Boolean property that indicates if the app sent HTTP headers for the response.
     */
-  def headersSent: Boolean
+  def headersSent: Boolean = js.native
 
   /**
     * An object that contains response local variables scoped to the request, and therefore available only
@@ -36,7 +36,7 @@ trait Response extends js.Object {
     * This property is useful for exposing request-level information such as the request path name,
     * authenticated user, user settings, and so on.
     */
-  def locals: js.Any
+  def locals: js.Any = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -47,33 +47,33 @@ trait Response extends js.Object {
     * it creates the header with the specified value. The value parameter can be a string or an array.
     * <b>Note</b>: calling [[Response.set()]] after [[Response.append()]] will reset the previously-set header value.
     */
-  def append(field: String, value: String): Unit
+  def append(field: String, value: String): Unit = js.native
 
-  def append(field: String): Unit
+  def append(field: String): Unit = js.native
 
   /**
     * Sets the HTTP response Content-Disposition header field to “attachment”. If a filename is given,
     * then it sets the Content-Type based on the extension name via res.type(), and sets the
     * Content-Disposition “filename=” parameter.
     */
-  def attachment(filename: String): Unit
+  def attachment(filename: String): Unit = js.native
 
-  def attachment(): Unit
+  def attachment(): Unit = js.native
 
   /**
     * Sets cookie name to value. The value parameter may be a string or object converted to JSON.
     */
-  def cookie(name: String, value: js.Any, options: Response.CookieOptions): Unit
+  def cookie(name: String, value: js.Any, options: Response.CookieOptions): Unit = js.native
 
-  def cookie(name: String, value: js.Any): Unit
+  def cookie(name: String, value: js.Any): Unit = js.native
 
   /**
     * Clears the cookie specified by name. For details about the options object.
     * @see [[Response.cookie()]]
     */
-  def clearCookie(name: String, options: Response.CookieOptions): Unit
+  def clearCookie(name: String, options: Response.CookieOptions): Unit = js.native
 
-  def clearCookie(name: String): Unit
+  def clearCookie(name: String): Unit = js.native
 
   /**
     * Transfers the file at path as an “attachment”. Typically, browsers will prompt the user for download.
@@ -83,22 +83,22 @@ trait Response extends js.Object {
     * When an error occurs or transfer is complete, the method calls the optional callback function fn.
     * This method uses res.sendFile() to transfer the file.
     */
-  def download(path: String, filename: String, callback: js.Function): Unit
+  def download(path: String, filename: String, callback: js.Function): Unit = js.native
 
-  def download(path: String, filename: String): Unit
+  def download(path: String, filename: String): Unit = js.native
 
-  def download(path: String): Unit
+  def download(path: String): Unit = js.native
 
   /**
     * Ends the response process. This method actually comes from Node core, specifically the response.end()
     * method of http.ServerResponse. Use to quickly end the response without any data. If you need to respond
     * with data, instead use methods such as res.send() and res.json()
     */
-  def end(data: js.Any, encoding: String): Unit
+  def end(data: js.Any, encoding: String): Unit = js.native
 
-  def end(data: js.Any): Unit
+  def end(data: js.Any): Unit = js.native
 
-  def end(): Unit
+  def end(): Unit = js.native
 
   /**
     * Performs content-negotiation on the Accept HTTP header on the request object, when present.
@@ -108,47 +108,47 @@ trait Response extends js.Object {
     * The Content-Type response header is set when a callback is selected. However, you may alter this
     * within the callback using methods such as res.set() or res.type().
     */
-  def format(`object`: js.Any): Unit
+  def format(`object`: js.Any): Unit = js.native
 
   /**
     * Returns the HTTP response header specified by field. The match is case-insensitive.
     */
-  def get(field: String): js.UndefOr[String]
+  def get(field: String): js.UndefOr[String] = js.native
 
   /**
     * Sends a JSON response. This method is identical to res.send() with an object or array as the parameter.
     * However, you can use it to convert other values to JSON, such as null, and undefined (although these
     * are technically not valid JSON).
     */
-  def json(body: js.Any): Unit
+  def json(body: js.Any): Unit = js.native
 
-  def json(): Unit
+  def json(): Unit = js.native
 
   /**
     * Sends a JSON response with JSONP support. This method is identical to res.json(),
     * except that it opts-in to JSONP callback support.
     */
-  def jsonp(body: js.Any): Unit
+  def jsonp(body: js.Any): Unit = js.native
 
-  def jsonp(): Unit
+  def jsonp(): Unit = js.native
 
   /**
     * Joins the links provided as properties of the parameter to populate the response’s Link HTTP header field.
     */
-  def links(links: js.Any): js.Array[String]
+  def links(links: js.Any): js.Array[String] = js.native
 
   /**
     * Sets the response Location HTTP header to the specified path parameter.
     */
-  def location(path: String): Unit
+  def location(path: String): Unit = js.native
 
   /**
     * Redirects to the URL derived from the specified path, with specified status, a positive integer
     * that corresponds to an HTTP status code . If not specified, status defaults to “302 “Found”.
     */
-  def redirect(status: Int, path: String): Unit
+  def redirect(status: Int, path: String): Unit = js.native
 
-  def redirect(path: String): Unit
+  def redirect(path: String): Unit = js.native
 
   /**
     * Renders a view and sends the rendered HTML string to the client. Optional parameters:
@@ -159,47 +159,47 @@ trait Response extends js.Object {
     * When an error occurs, the method invokes next(err) internally.</li>
     * </ul>
     */
-  def render(view: String, locals: String, callback: js.Function): Unit
+  def render(view: String, locals: String, callback: js.Function): Unit = js.native
 
-  def render(view: String, locals: String): Unit
+  def render(view: String, locals: String): Unit = js.native
 
-  def render(view: String): Unit
+  def render(view: String): Unit = js.native
 
   /**
     * Sends the HTTP response.
     * The body parameter can be a Buffer object, a String, an object, or an Array.
     */
-  def send(body: js.Any): Unit
+  def send(body: js.Any): Unit = js.native
 
-  def send(): Unit
+  def send(): Unit = js.native
 
   /**
     * Transfers the file at the given path. Sets the Content-Type response HTTP header
     * field based on the filename’s extension. Unless the root option is set in the
     * options object, path must be an absolute path to the file.
     */
-  def sendFile(path: String, options: Response.FileTransferOptions, callback: js.Function): Unit
+  def sendFile(path: String, options: Response.FileTransferOptions, callback: js.Function): Unit = js.native
 
-  def sendFile(path: String, options: Response.FileTransferOptions): Unit
+  def sendFile(path: String, options: Response.FileTransferOptions): Unit = js.native
 
-  def sendFile(path: String): Unit
+  def sendFile(path: String): Unit = js.native
 
   /**
     * Sets the response HTTP status code to statusCode and send its string representation as the response body.
     */
-  def sendStatus(statusCode: Int): Unit
+  def sendStatus(statusCode: Int): Unit = js.native
 
   /**
     * Sets the response’s HTTP header field to value. To set multiple fields at once, pass an object as the parameter.
     */
-  def set(name: String, value: String): Unit
+  def set(name: String, value: String): Unit = js.native
 
-  def set(`object`: js.Any): Unit
+  def set(`object`: js.Any): Unit = js.native
 
   /**
     * Sets the HTTP status for the response. It is a chainable alias of Node’s response.statusCode.
     */
-  def status(statusCode: Int): this.type
+  def status(statusCode: Int): this.type = js.native
 
   /**
     * Sets the Content-Type HTTP header to the MIME type as determined by mime.lookup() for the specified type.
@@ -210,7 +210,7 @@ trait Response extends js.Object {
   /**
     * Adds the field to the Vary response header, if it is not there already.
     */
-  def vary(field: String): this.type
+  def vary(field: String): this.type = js.native
 
 }
 

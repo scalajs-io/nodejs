@@ -1,6 +1,7 @@
-package com.github.ldaniels528.meansjs.nodejs.http
+package examples.nodejs.http
 
-import com.github.ldaniels528.meansjs.nodejs.Require.require
+import com.github.ldaniels528.meansjs.nodejs._
+import com.github.ldaniels528.meansjs.nodejs.http._
 
 import scala.scalajs.js
 
@@ -16,14 +17,5 @@ class HttpServerTest {
     response.write("Hello World")
     response.end()
   }).listen(8888)
-
-  /*
-    var http = require("http");
-    http.createServer(function(request, response) {
-      response.writeHead(200, {"Content-Type": "text/plain"});
-      response.write("Hello World");
-      response.end();
-    }).listen(8888);
- */
 
 }

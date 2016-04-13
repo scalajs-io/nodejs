@@ -109,6 +109,7 @@ object Agent {
     * Connection Options
     * @author lawrence.daniels@gmail.com
     */
+  @js.native
   trait ConnectionOptions extends js.Object {
     /** Keep sockets around in a pool to be used by other requests in the future. Default = false */
     var keepAlive: js.UndefOr[Boolean]

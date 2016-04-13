@@ -1,4 +1,10 @@
-val apiVersion = "0.0.3"
+import org.scalajs.sbtplugin.ScalaJSPlugin
+import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
+import sbt.Keys._
+import sbt.Project.projectToRef
+import sbt._
+
+val apiVersion = "0.0.4"
 val paradisePluginVersion = "2.1.0"
 val _scalaVersion = "2.11.8"
 val scalaJsDomVersion = "0.9.0"
@@ -26,7 +32,7 @@ lazy val core = (project in file("core")).
   settings(commonSettings: _*).
   settings(
     name := "meansjs",
-    description := "Core utilities for MEAN.sjs"
+    description := "Core utilities for MEANS.js"
   )
 
 lazy val angularjs = (project in file("angularjs")).
@@ -65,5 +71,20 @@ lazy val nodejs = (project in file("nodejs")).
     description := "NodeJS bindings for Scala.js"
   )
 
-// loads the MEAN.sjs "Core" project at sbt startup
+lazy val examples = (project in file("examples")).
+  aggregate(core, nodejs).
+  enablePlugins(ScalaJSPlugin).
+  dependsOn(core, nodejs).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "meansjs-examples",
+    description := "MEANS.js examples",
+    pipelineStages := Seq(gzip),
+    compile in Compile <<=
+      (compile in Compile) dependsOn (fastOptJS in(nodejs, Compile)),
+    ivyScala := ivyScala.value map (_.copy(overrideScalaVersion = true))
+  )
+
+// loads the MEANS.js "Core" project at sbt startup
 onLoad in Global := (Command.process("project root", _: State)) compose (onLoad in Global).value

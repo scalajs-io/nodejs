@@ -38,7 +38,7 @@ trait Application extends Router {
     * app.configure has been removed in Express 4.x.
     * @example app.configure(init)
     */
-  @deprecated("app.configure has been removed in Express 4.x")
+  @deprecated("app.configure has been removed", "4.x")
   def configure(init: js.Function): Unit
 
   /**

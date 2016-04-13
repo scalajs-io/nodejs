@@ -1,6 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSName
 
 /**
   * Node.js require function
@@ -10,14 +11,5 @@ import scala.scalajs.js
 trait Require extends js.Any {
 
   def apply[T](name: String): T = js.native
-
-}
-
-/**
-  * Require Companion
-  * @author lawrence.daniels@gmail.com
-  */
-object Require {
-  def require = js.Dynamic.global.require.asInstanceOf[Require]
 
 }

@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.expressws
 
-import com.github.ldaniels528.meansjs.nodejs.express.{Application, Router}
+import com.github.ldaniels528.meansjs.nodejs.express.Application
 import com.github.ldaniels528.meansjs.nodejs.http.Server
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
@@ -45,16 +45,6 @@ trait ExpressWS extends js.Object {
   * @author lawrence.daniels@gmail.com
   */
 object ExpressWS {
-
-  /**
-    * Web Socket Router Enrichment
-    * @param router the given [[Router router]]
-    */
-  implicit class WsRouterEnrich[T <: Router](val router: T) extends AnyVal {
-
-    def withWsRouting = router.asInstanceOf[T with WsRouting]
-
-  }
 
   /**
     * Configuration Options

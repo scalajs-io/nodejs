@@ -15,9 +15,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Duplex extends Readable with Writable {
-
-}
+trait Duplex extends Readable with Writable
 
 /**
   * Duplex Companion
@@ -29,6 +27,7 @@ object Duplex {
     * Duplex Options
     * @author lawrence.daniels@gmail.com
     */
+  @js.native
   trait Options extends js.Object
 
 }

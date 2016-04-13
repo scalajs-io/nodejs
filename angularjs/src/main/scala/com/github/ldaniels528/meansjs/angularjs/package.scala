@@ -3,7 +3,7 @@ package com.github.ldaniels528.meansjs
 import scala.language.implicitConversions
 
 /**
- * MEAN.sjs Package Object
+ * MEANS.js Package Object
  * @author lawrence.daniels@gmail.com
  */
 package object angularjs {

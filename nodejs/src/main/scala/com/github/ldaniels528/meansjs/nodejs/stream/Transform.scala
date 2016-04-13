@@ -8,6 +8,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Transform extends Duplex {
-
-}
+trait Transform extends Duplex

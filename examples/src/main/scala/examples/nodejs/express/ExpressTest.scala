@@ -1,6 +1,7 @@
-package com.github.ldaniels528.meansjs.nodejs.express
+package examples.nodejs.express
 
-import com.github.ldaniels528.meansjs.nodejs.Require.require
+import com.github.ldaniels528.meansjs.nodejs._
+import com.github.ldaniels528.meansjs.nodejs.express._
 import org.scalajs.dom.console
 
 import scala.scalajs.js
@@ -26,23 +27,5 @@ class ExpressTest {
 
     console.log("Example app listening at http://%s:%s", host, port)
   }
-
-  /*
-    var express = require('express');
-    var app = express();
-
-    app.get('/', function (req, res) {
-       res.send('Hello World');
-    })
-
-    var server = app.listen(8081, function () {
-
-      var host = server.address().address
-      var port = server.address().port
-
-      console.log("Example app listening at http://%s:%s", host, port)
-
-    })
-   */
 
 }

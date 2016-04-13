@@ -1,5 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs.expressws
 
+import com.github.ldaniels528.meansjs.nodejs.express.Router
+
 import scala.scalajs.js
 
 /**
@@ -13,5 +15,23 @@ trait WsRouting extends js.Object {
     * Registers the web socket listener for the given path
     */
   def ws(path: String, callback: js.Function): Unit
+
+}
+
+/**
+  * WsRouting Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object WsRouting {
+
+  /**
+    * WsRouting Enrichment
+    * @param router the given [[Router router]]
+    */
+  implicit class WsRouterEnrich[T <: Router](val router: T) extends AnyVal {
+
+    def withWsRouting = router.asInstanceOf[T with WsRouting]
+
+  }
 
 }

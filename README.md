@@ -1,45 +1,77 @@
 MEANS.js
 =============
 Type-safe Scala.js Bindings for the MEAN Stack (MongoDB ExpressJS AngularJS NodeJS)
+ 
+Table of Contents
 
+* <a href="#Introduction">Introduction</a>
+* <a href="#Development">Development</a>
+    * <a href="#Requirements">Build Requirements</a>
+    * <a href="#Build">Building the SDK</a>
+* <a href="#MongoDB">MongoDB bindings</a>
+* <a href="#Express">Express.js bindings</a>
+* <a href="#Angular">Angular.js bindings</a>    
+* <a href="#Node">Node.js bindings</a>
+
+<a name="Introduction"></a>
 ## Introduction
 
 The goal of MEANS.js is to be complete set of type-safe Scala.js bindings for the entire MEAN Stack. MEANS.js goes to 
 great lengths to make all the things you love about writing Scala on the MEAN Stack.
 
-## Node.js
+<a name="Development"></a>
+## Development
 
-I've provided a few examples to demonstrate how similar the Scala.js code is to the JavaScript
-that it replaces.
+<a name="Requirements"></a>
+#### Build Requirements
 
-#### Example 1
+* [Java SDK 1.8] (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Scala 2.11.8+] (http://scala-lang.org/download/)
+* [SBT 0.13.11+] (http://www.scala-sbt.org/download.html)
 
-The following is a simple Hello World app in Node using JavaScript.
+<a name="Build"></a>
+#### Build/publish the SDK
 
-```javascript
-
-    var http = require("http");
-    http.createServer(function(request, response) {
-      response.writeHead(200, {"Content-Type": "text/plain"});
-      response.write("Hello World");
-      response.end();
-    }).listen(8888);
+```bash
+ $ sbt 
+ > clean
+ > publish-local
 ```
+    
+<a name="MongoDB"></a>
+## MongoDB
 
-Here's the same example using MEANS.js + Scala.js:
+The following example demonstrates establishing a connection to MongoDB using Scala.js:
 
 ```scala
 
-  val http = require[Http]("http")
-  http.createServer((request: ClientRequest, response: ServerResponse) => {
-    response.writeHead(200, js.Dictionary("Content-Type" -> "text/plain"))
-    response.write("Hello World")
-    response.end()
-  }).listen(8888)
+  // lets require/import the mongodb native drivers.
+  val mongodb = require[MongoDB]("mongodb")
 
+  // We need to work with "MongoClient" interface in order to connect to a mongodb server.
+  val mongoClient = mongodb.MongoClient
+
+  // Connection URL. This is where your mongodb server is running.
+  val url = "mongodb://localhost:27017/test"
+
+  // Use connect method to connect to the Server
+  mongoClient.connect(url, (err: MongoError, db: MongoDatabase) => {
+    if (err.isDefined) {
+      console.log("Unable to connect to the mongoDB server. Error:", err)
+    } else {
+      //HURRAY!! We are connected. :)
+      console.log("Connection established to", url)
+
+      // do some work here with the database.
+
+      //Close connection
+      db.close()
+    }
+  })
 ```
 
-#### Example 2
+<a name="Express"></a>
+## Express.js
 
 The following is a simple Hello World app in Node and Express using JavaScript.
 
@@ -83,6 +115,7 @@ Here's the same example using Scala.js:
     }
 ```
 
+<a name="Angular"></a>
 ## Angular.js
 
 #### Defining a Module
@@ -533,4 +566,35 @@ IN.API.Profile(js.Array("me")) onComplete {
   case Failure(e) =>
     console.error(s"Failed to retrieve LinkedIn profile - ${e.getMessage}")
 }
+```
+
+<a name="Node"></a>
+## Node.js
+
+I've provided an example to demonstrate how similar the Scala.js code is to the JavaScript
+that it replaces.
+
+The following is a simple Hello World app in Node using JavaScript.
+
+```javascript
+
+    var http = require("http");
+    http.createServer(function(request, response) {
+      response.writeHead(200, {"Content-Type": "text/plain"});
+      response.write("Hello World");
+      response.end();
+    }).listen(8888);
+```
+
+Here's the same example using MEANS.js + Scala.js:
+
+```scala
+
+  val http = require[Http]("http")
+  http.createServer((request: ClientRequest, response: ServerResponse) => {
+    response.writeHead(200, js.Dictionary("Content-Type" -> "text/plain"))
+    response.write("Hello World")
+    response.end()
+  }).listen(8888)
+
 ```

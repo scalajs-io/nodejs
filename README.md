@@ -10,6 +10,7 @@ Table of Contents
     * <a href="#Build">Building the SDK</a>
     * <a href="#Run_Examples">Building and run examples</a>
 * <a href="#NodeJS">Node.js bindings</a>
+    * <a href="#NodeJS_Modules">Modules</a>
     * <a href="#NodeJS_Integration">Integration Guidance</a>    
 * <a href="#Express">Express.js bindings</a>
 * <a href="#MongoDB">MongoDB bindings</a>
@@ -53,7 +54,12 @@ MEANS.js goes to great lengths to make all the things you love about writing Sca
 ## Node.js
 
 The Node.js integration is by no means complete; however, there should be a sufficient number of
-modules implemented for most web applications. The following modules have been implemented thus far:
+modules implemented for most web applications. 
+
+<a name="NodeJS_Modules">
+#### Modules
+
+The following modules have been implemented thus far:
 
 * body-parser
 * events

@@ -2,6 +2,8 @@ package com.github.ldaniels528.meansjs
 
 import com.github.ldaniels528.meansjs.nodejs.timer._
 
+import scala.concurrent.duration.FiniteDuration
+import scala.language.implicitConversions
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
 
@@ -10,6 +12,10 @@ import scala.scalajs.js.annotation.JSName
   * @author lawrence.daniels@gmail.com
   */
 package object nodejs {
+
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Built-in Properties
+  /////////////////////////////////////////////////////////////////////////////////
 
   @JSName("__dirname")
   @js.native
@@ -66,5 +72,19 @@ package object nodejs {
   @js.native
   @JSName("unref")
   object unref extends UnRef
+
+  /**
+    * Implicit conversation to translate durations into an integer
+    * @param duration the given [[FiniteDuration duration]]
+    * @return the time in milliseconds as an integer
+    */
+  implicit def duration2Int(duration: FiniteDuration): Int = duration.toMillis.toInt
+
+  /**
+    * Implicit conversation to translate durations into a double
+    * @param duration the given [[FiniteDuration duration]]
+    * @return the time in milliseconds as a double
+    */
+  implicit def duration2Double(duration: FiniteDuration): Double = duration.toMillis.toDouble
 
 }

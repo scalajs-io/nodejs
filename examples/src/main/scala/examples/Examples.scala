@@ -18,6 +18,7 @@ import scala.scalajs.js.annotation.JSExportAll
   */
 @JSExportAll
 object Examples extends js.JSApp {
+  private val names = js.Array("events", "express", "http", "mongodb", "net", "timers")
 
   override def main(): Unit = ()
 
@@ -30,7 +31,7 @@ object Examples extends js.JSApp {
       case "net" => new NetServerTest(require)
       case "timers" => new IntermediateTimers(require)
       case arg =>
-        console.warn(s"No example found for $arg")
+        console.warn(s"No example found for $arg - Choose from ${names.mkString(", ")}")
         new IntermediateTimers(require)
     }
   }

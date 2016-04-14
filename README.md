@@ -9,8 +9,8 @@ Table of Contents
     * <a href="#Requirements">Build Requirements</a>
     * <a href="#Build">Building the SDK</a>
     * <a href="#Run_Examples">Building and run examples</a>
-* <a href="#NodeJS_Integration">Node.js bindings</a>
-    * <a href="#Social_Networks">Integration Guidance</a>    
+* <a href="#NodeJS">Node.js bindings</a>
+    * <a href="#NodeJS_Integration">Integration Guidance</a>    
 * <a href="#Express">Express.js bindings</a>
 * <a href="#MongoDB">MongoDB bindings</a>
 * <a href="#Angular">Angular.js bindings</a>   
@@ -49,7 +49,7 @@ MEANS.js goes to great lengths to make all the things you love about writing Sca
  $ node ./examples.js timers
 ```
    
-<a name="Node"></a>
+<a name="NodeJS"></a>
 ## Node.js
 
 The Node.js integration is by no means complete; however, there should be a sufficient number of

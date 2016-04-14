@@ -1,6 +1,6 @@
 MEANS.js
 =============
-Type-safe Scala.js Bindings for the MEAN Stack (MongoDB ExpressJS AngularJS NodeJS)
+Type-safe Scala.js Bindings for the MEAN Stack (MongoDB ExpressJS AngularJS NodeJS).
  
 Table of Contents
 
@@ -10,14 +10,16 @@ Table of Contents
     * <a href="#Build">Building the SDK</a>
 * <a href="#MongoDB">MongoDB bindings</a>
 * <a href="#Express">Express.js bindings</a>
-* <a href="#Angular">Angular.js bindings</a>    
+* <a href="#Angular">Angular.js bindings</a>   
+    * <a href="#Refinements">Scala.js Refinements</a> 
+    * <a href="#Social_Networks">Social Network bindings</a> 
 * <a href="#Node">Node.js bindings</a>
 
 <a name="Introduction"></a>
 ## Introduction
 
-The goal of MEANS.js is to be complete set of type-safe Scala.js bindings for the entire MEAN Stack. MEANS.js goes to 
-great lengths to make all the things you love about writing Scala on the MEAN Stack.
+The goal of MEANS.js is to be complete set of type-safe Scala.js bindings for the entire MEAN Stack + Scala.js. 
+MEANS.js goes to great lengths to make all the things you love about writing Scala on the MEAN Stack.
 
 <a name="Development"></a>
 ## Development
@@ -37,37 +39,50 @@ great lengths to make all the things you love about writing Scala on the MEAN St
  > clean
  > publish-local
 ```
-    
-<a name="MongoDB"></a>
-## MongoDB
+   
+<a name="Node"></a>
+## Node.js
 
-The following example demonstrates establishing a connection to MongoDB using Scala.js:
+The Node.js integration is by no means complete; however, there should be a sufficient number of
+modules implemented for most web applications. The following modules have been implemented thus far:
+
+* body-parser
+* events
+* express
+* express-ws
+* fs
+* http
+* mongodb
+* net
+* stream
+* util
+
+I've provided an example to demonstrate how similar the Scala.js code is to the JavaScript
+that it replaces.
+
+The following is a simple Hello World app in Node using JavaScript.
+
+```javascript
+
+    var http = require("http");
+    http.createServer(function(request, response) {
+      response.writeHead(200, {"Content-Type": "text/plain"});
+      response.write("Hello World");
+      response.end();
+    }).listen(8888);
+```
+
+Here's the same example using MEANS.js + Scala.js:
 
 ```scala
 
-  // lets require/import the mongodb native drivers.
-  val mongodb = require[MongoDB]("mongodb")
+  val http = require[Http]("http")
+  http.createServer((request: ClientRequest, response: ServerResponse) => {
+    response.writeHead(200, js.Dictionary("Content-Type" -> "text/plain"))
+    response.write("Hello World")
+    response.end()
+  }).listen(8888)
 
-  // We need to work with "MongoClient" interface in order to connect to a mongodb server.
-  val mongoClient = mongodb.MongoClient
-
-  // Connection URL. This is where your mongodb server is running.
-  val url = "mongodb://localhost:27017/test"
-
-  // Use connect method to connect to the Server
-  mongoClient.connect(url, (err: MongoError, db: MongoDatabase) => {
-    if (err.isDefined) {
-      console.log("Unable to connect to the mongoDB server. Error:", err)
-    } else {
-      //HURRAY!! We are connected. :)
-      console.log("Connection established to", url)
-
-      // do some work here with the database.
-
-      //Close connection
-      db.close()
-    }
-  })
 ```
 
 <a name="Express"></a>
@@ -113,6 +128,38 @@ Here's the same example using Scala.js:
         
         console.log("Example app listening at http://%s:%s", host, port)
     }
+```
+    
+<a name="MongoDB"></a>
+## MongoDB
+
+The following example demonstrates establishing a connection to MongoDB using Scala.js:
+
+```scala
+
+  // lets require/import the mongodb native drivers.
+  val mongodb = require[MongoDB]("mongodb")
+
+  // We need to work with "MongoClient" interface in order to connect to a mongodb server.
+  val mongoClient = mongodb.MongoClient
+
+  // Connection URL. This is where your mongodb server is running.
+  val url = "mongodb://localhost:27017/test"
+
+  // Use connect method to connect to the Server
+  mongoClient.connect(url, (err: MongoError, db: MongoDatabase) => {
+    if (err.isDefined) {
+      console.log("Unable to connect to the mongoDB server. Error:", err)
+    } else {
+      //HURRAY!! We are connected. :)
+      console.log("Connection established to", url)
+
+      // do some work here with the database.
+
+      //Close connection
+      db.close()
+    }
+  })
 ```
 
 <a name="Angular"></a>
@@ -350,6 +397,7 @@ object ChangeArrowDirectiveScope {
 }
 ```
 
+<a name="Refinements"></a>
 ### The Refinements
 
 #### Durations
@@ -434,6 +482,7 @@ outcome onComplete {
 }
 ```
 
+<a name="Social_Networks"></a>
 ### Social Components (Facebook and LinkedIn)
 
 #### Sample Code for Facebook
@@ -566,49 +615,4 @@ IN.API.Profile(js.Array("me")) onComplete {
   case Failure(e) =>
     console.error(s"Failed to retrieve LinkedIn profile - ${e.getMessage}")
 }
-```
-
-<a name="Node"></a>
-## Node.js
-
-The Node.js integration is by no means complete; however, there should be a sufficient number of
-modules implemented for most web applications. The following modules have been implemented thus far:
-
-* body-parser
-* events
-* express
-* express-ws
-* fs
-* http
-* mongodb
-* net
-* stream
-* util
-
-I've provided an example to demonstrate how similar the Scala.js code is to the JavaScript
-that it replaces.
-
-The following is a simple Hello World app in Node using JavaScript.
-
-```javascript
-
-    var http = require("http");
-    http.createServer(function(request, response) {
-      response.writeHead(200, {"Content-Type": "text/plain"});
-      response.write("Hello World");
-      response.end();
-    }).listen(8888);
-```
-
-Here's the same example using MEANS.js + Scala.js:
-
-```scala
-
-  val http = require[Http]("http")
-  http.createServer((request: ClientRequest, response: ServerResponse) => {
-    response.writeHead(200, js.Dictionary("Content-Type" -> "text/plain"))
-    response.write("Hello World")
-    response.end()
-  }).listen(8888)
-
 ```

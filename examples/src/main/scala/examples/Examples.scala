@@ -7,6 +7,7 @@ import examples.nodejs.http.HttpServerTest
 import examples.nodejs.mongodb.MongoClientTest
 import examples.nodejs.net.NetServerTest
 import examples.nodejs.timers.IntermediateTimers
+import org.scalajs.dom.console
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSExportAll
@@ -29,7 +30,8 @@ object Examples extends js.JSApp {
       case "net" => new NetServerTest(require)
       case "timers" => new IntermediateTimers(require)
       case arg =>
-        throw new IllegalArgumentException(s"No example found for $arg")
+        console.warn(s"No example found for $arg")
+        new IntermediateTimers(require)
     }
   }
 

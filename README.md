@@ -8,12 +8,14 @@ Table of Contents
 * <a href="#Development">Development</a>
     * <a href="#Requirements">Build Requirements</a>
     * <a href="#Build">Building the SDK</a>
-* <a href="#MongoDB">MongoDB bindings</a>
+    * <a href="#Run_Examples">Building and run examples</a>
+* <a href="#NodeJS_Integration">Node.js bindings</a>
+    * <a href="#Social_Networks">Integration Guidance</a>    
 * <a href="#Express">Express.js bindings</a>
+* <a href="#MongoDB">MongoDB bindings</a>
 * <a href="#Angular">Angular.js bindings</a>   
     * <a href="#Refinements">Scala.js Refinements</a> 
     * <a href="#Social_Networks">Social Network bindings</a> 
-* <a href="#Node">Node.js bindings</a>
 
 <a name="Introduction"></a>
 ## Introduction
@@ -35,9 +37,16 @@ MEANS.js goes to great lengths to make all the things you love about writing Sca
 #### Build/publish the SDK
 
 ```bash
- $ sbt 
- > clean
- > publish-local
+ $ sbt clean publish-local
+```
+
+<a name="Run_Examples"></a>
+#### Buidling and running examples
+
+```bash
+ $ sbt "project examples" clean fastOptJS
+ $ cd examples
+ $ node ./examples.js timers
 ```
    
 <a name="Node"></a>
@@ -85,6 +94,29 @@ Here's the same example using MEANS.js + Scala.js:
 
 ```
 
+<a href="NodeJS_Integration">
+#### Integration Guidance
+
+Currently, the "require" function must be passed to the Scala.js application because of an issue
+with getting a reference to it. This can be accomplish inside a bootstrap JavaScript file as follows:
+
+```javascript
+
+    require("./target/scala-2.11/means-examples-fastopt.js");
+    var facade = examples.Examples();
+    facade.start(require);
+```
+
+Then with the Scala.js application:
+
+```scala
+
+    def start(require: Require) = {
+        .
+        .
+    }
+```
+
 <a name="Express"></a>
 ## Express.js
 
@@ -103,9 +135,8 @@ The following is a simple Hello World app in Node and Express using JavaScript.
     
       var host = server.address().address
       var port = server.address().port
-    
       console.log("Example app listening at http://%s:%s", host, port)
-    
+
     })
 ```
 
@@ -116,16 +147,13 @@ Here's the same example using Scala.js:
     val express = require[Express]("express")
     val app = express()
     
-    app.get("/", (req: Request, res: Response) => {
-        res.send("Hello World")
-    })
+    app.get("/", (req: Request, res: Response) => res.send("Hello World"))
     
     val server = app.listen(8081, connect)
     
     private def connect: js.Function = () => {
         val host = server.address().address
         val port = server.address().port
-        
         console.log("Example app listening at http://%s:%s", host, port)
     }
 ```

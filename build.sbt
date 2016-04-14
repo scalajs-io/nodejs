@@ -83,7 +83,7 @@ lazy val nodejs_mongodb = (project in file("nodejs-mongodb")).
 lazy val examples = (project in file("examples")).
   aggregate(core, nodejs, nodejs_mongodb).
   enablePlugins(ScalaJSPlugin).
-  dependsOn(core, nodejs).
+  dependsOn(core, nodejs, nodejs_mongodb).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(

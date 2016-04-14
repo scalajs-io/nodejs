@@ -1,5 +1,9 @@
 package com.github.ldaniels528.meansjs.nodejs
 
+import com.github.ldaniels528.meansjs.nodejs.stream.{Readable, Writable}
+import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+
+import scala.concurrent.Promise
 import scala.scalajs.js
 
 /**
@@ -96,7 +100,54 @@ trait ProcessObject extends js.Object {
     * and headers-only tarball.
     * @example process.release
     */
-  def release: js.Dictionary[String] = js.native
+  def release: ProcessObject.ReleaseInfo = js.native
+
+  /**
+    * process.stderr and process.stdout are unlike other streams in Node.js in that they cannot be
+    * closed (end() will throw), they never emit the finish event and that writes can block when output
+    * is redirected to a file (although disks are fast and operating systems normally employ write-back
+    * caching so it should be a very rare occurrence indeed.)
+    * @example process.stderr
+    */
+  def stderr: Writable = js.native
+
+  /**
+    * A Readable Stream for stdin (on fd 0).
+    * @example process.stdin
+    */
+  def stdin: Readable = js.native
+
+  /**
+    * process.stderr and process.stdout are unlike other streams in Node.js in that they cannot be
+    * closed (end() will throw), they never emit the finish event and that writes can block when output
+    * is redirected to a file (although disks are fast and operating systems normally employ write-back
+    * caching so it should be a very rare occurrence indeed.)
+    * @example process.stderr
+    */
+  def stdout: Writable = js.native
+
+  /**
+    * Getter/setter to set what is displayed in ps.
+    * When used as a setter, the maximum length is platform-specific and probably short.
+    * On Linux and OS X, it's limited to the size of the binary name plus the length of the command line
+    * arguments because it overwrites the argv memory.
+    * v0.8 allowed for longer process title strings by also overwriting the environ memory but that was
+    * potentially insecure/confusing in some (rather obscure) cases.
+    * @example process.title
+    */
+  var title: js.Any = js.native
+
+  /**
+    * A compiled-in property that exposes NODE_VERSION.
+    * @example process.version
+    */
+  def version: String = js.native
+
+  /**
+    * A property exposing version strings of Node.js and its dependencies.
+    * @example process.versions
+    */
+  def versions: ProcessObject.VersionInfo = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -215,6 +266,112 @@ trait ProcessObject extends js.Object {
     */
   def nextTick(callback: js.Function, args: js.Any*): Unit = js.native
 
+  /**
+    * When Node.js is spawned with an IPC channel attached, it can send messages to its parent process
+    * using process.send(). Each will be received as a 'message' event on the parent's ChildProcess object.
+    *
+    * <p/><b>Note</b>: this function uses JSON.stringify() internally to serialize the message.
+    * If Node.js was not spawned with an IPC channel, process.send() will be undefined.
+    * @example {{{ process.send(message[, sendHandle[, options]][, callback]) }}}
+    */
+  def send(message: js.Any, sendHandle: js.Any, options: ProcessObject.TransferOptions, callback: js.Function): Boolean = js.native
+
+  /**
+    * When Node.js is spawned with an IPC channel attached, it can send messages to its parent process
+    * using process.send(). Each will be received as a 'message' event on the parent's ChildProcess object.
+    *
+    * <p/><b>Note</b>: this function uses JSON.stringify() internally to serialize the message.
+    * If Node.js was not spawned with an IPC channel, process.send() will be undefined.
+    * @example {{{ process.send(message[, sendHandle[, options]][, callback]) }}}
+    */
+  def send(message: js.Any, sendHandle: js.Any, options: ProcessObject.TransferOptions): Boolean = js.native
+
+  /**
+    * When Node.js is spawned with an IPC channel attached, it can send messages to its parent process
+    * using process.send(). Each will be received as a 'message' event on the parent's ChildProcess object.
+    *
+    * <p/><b>Note</b>: this function uses JSON.stringify() internally to serialize the message.
+    * If Node.js was not spawned with an IPC channel, process.send() will be undefined.
+    * @example {{{ process.send(message[, sendHandle[, options]][, callback]) }}}
+    */
+  def send(message: js.Any, sendHandle: js.Any, callback: js.Function): Boolean = js.native
+
+  /**
+    * When Node.js is spawned with an IPC channel attached, it can send messages to its parent process
+    * using process.send(). Each will be received as a 'message' event on the parent's ChildProcess object.
+    *
+    * <p/><b>Note</b>: this function uses JSON.stringify() internally to serialize the message.
+    * If Node.js was not spawned with an IPC channel, process.send() will be undefined.
+    * @example {{{ process.send(message[, sendHandle[, options]][, callback]) }}}
+    */
+  def send(message: js.Any, callback: js.Function): Boolean = js.native
+
+  /**
+    * When Node.js is spawned with an IPC channel attached, it can send messages to its parent process
+    * using process.send(). Each will be received as a 'message' event on the parent's ChildProcess object.
+    *
+    * <p/><b>Note</b>: this function uses JSON.stringify() internally to serialize the message.
+    * If Node.js was not spawned with an IPC channel, process.send() will be undefined.
+    * @example {{{ process.send(message[, sendHandle[, options]][, callback]) }}}
+    */
+  def send(message: js.Any): Boolean = js.native
+
+  /**
+    * Sets the effective group identity of the process. This accepts either a numerical ID or a groupname string.
+    * If a groupname is specified, this method blocks while resolving it to a numerical ID.
+    * @example process.setegid(id)
+    */
+  def setegid(id: Int): Unit = js.native
+
+  /**
+    * Sets the effective user identity of the process. This accepts either a numerical ID or a username string.
+    * If a username is specified, this method blocks while resolving it to a numerical ID.
+    * @example process.seteuid(id)
+    */
+  def seteuid(id: Int): Unit = js.native
+
+  /**
+    * Sets the group identity of the process. This accepts either a numerical ID or a groupname string.
+    * If a groupname is specified, this method blocks while resolving it to a numerical ID.
+    * @example process.setgid(id)
+    */
+  def setgid(id: Int): Unit = js.native
+
+  /**
+    * Sets the supplementary group IDs. This is a privileged operation, meaning you need to be root or have the
+    * CAP_SETGID capability. The list can contain group IDs, group names or both.
+    * @example process.setgroups(groups)
+    */
+  def setgroups[T](groups: js.Array[T]): Unit = js.native
+
+  /**
+    * Sets the user identity of the process. This accepts either a numerical ID or a username string.
+    * If a username is specified, this method blocks while resolving it to a numerical ID.
+    * @example process.setuid(id)
+    */
+  def setuid(id: Int): Unit = js.native
+
+  /**
+    * Sets or reads the process's file mode creation mask. Child processes inherit the mask from the parent process.
+    * Returns the old mask if mask argument is given, otherwise returns the current mask.
+    * @example process.umask([mask])
+    */
+  def umask(mask: Int): Int = js.native
+
+  /**
+    * Sets or reads the process's file mode creation mask. Child processes inherit the mask from the parent process.
+    * Returns the old mask if mask argument is given, otherwise returns the current mask.
+    * @example process.umask([mask])
+    */
+  def umask(): Int = js.native
+
+  /**
+    * Number of seconds Node.js has been running.
+    * @example process.uptime()
+    */
+  def uptime(): Int = js.native
+
+
 }
 
 /**
@@ -222,6 +379,47 @@ trait ProcessObject extends js.Object {
   * @author lawrence.daniels@gmail.com
   */
 object ProcessObject {
+
+  /**
+    * Process Object Enrichment
+    * @author lawrence.daniels@gmail.com
+    */
+  implicit class ProcessEnrichment(val process: ProcessObject) extends AnyVal {
+
+    /**
+      * @see [[ProcessObject.send()]]
+      */
+    def sendAsync(message: js.Any, sendHandle: js.Any, options: ProcessObject.TransferOptions) = {
+      val promise = Promise[Boolean]()
+      process.send(message, sendHandle, options, (err: NodeError, success: Boolean) => {
+        if (!isDefined(err)) promise.success(success) else promise.failure(new RuntimeException(err.message))
+      })
+      promise.future
+    }
+
+    /**
+      * @see [[ProcessObject.send()]]
+      */
+    def sendAsync(message: js.Any, sendHandle: js.Any) = {
+      val promise = Promise[Boolean]()
+      process.send(message, sendHandle, (err: NodeError, success: Boolean) => {
+        if (!isDefined(err)) promise.success(success) else promise.failure(new RuntimeException(err.message))
+      })
+      promise.future
+    }
+
+    /**
+      * @see [[ProcessObject.send()]]
+      */
+    def sendAsync(message: js.Any) = {
+      val promise = Promise[Boolean]()
+      process.send(message, (err: NodeError, success: Boolean) => {
+        if (!isDefined(err)) promise.success(success) else promise.failure(new RuntimeException(err.message))
+      })
+      promise.future
+    }
+
+  }
 
   /**
     * Memory Usage
@@ -232,6 +430,44 @@ object ProcessObject {
     var rss: Double = js.native
     var heapTotal: Double = js.native
     var heapUsed: Double = js.native
+  }
+
+  /**
+    * Release Information
+    * @author lawrence.daniels@gmail.com
+    */
+  @js.native
+  trait ReleaseInfo extends js.Object {
+    var name: String = js.native
+    var sourceUrl: String = js.native
+    var headersUrl: String = js.native
+    var libUrl: String = js.native
+  }
+
+  /**
+    * Transfer Options
+    * @author lawrence.daniels@gmail.com
+    */
+  @js.native
+  trait TransferOptions extends js.Object {
+    // TODO what are the transfer options?
+  }
+
+  /**
+    * Node Version Information
+    * @author lawrence.daniels@gmail.com
+    */
+  @js.native
+  trait VersionInfo extends js.Object {
+    var http_parser: js.UndefOr[String] = js.native
+    var node: js.UndefOr[String] = js.native
+    var v8: js.UndefOr[String] = js.native
+    var uv: js.UndefOr[String] = js.native
+    var zlib: js.UndefOr[String] = js.native
+    var ares: js.UndefOr[String] = js.native
+    var modules: js.UndefOr[String] = js.native
+    var icu: js.UndefOr[String] = js.native
+    var openssl: js.UndefOr[String] = js.native
   }
 
 }

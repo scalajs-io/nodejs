@@ -571,6 +571,20 @@ IN.API.Profile(js.Array("me")) onComplete {
 <a name="Node"></a>
 ## Node.js
 
+The Node.js integration is by no means complete; however, there should be a sufficient number of
+modules implemented for most web applications. The following modules have been implemented thus far:
+
+* body-parser
+* events
+* express
+* express-ws
+* fs
+* http
+* mongodb
+* net
+* stream
+* util
+
 I've provided an example to demonstrate how similar the Scala.js code is to the JavaScript
 that it replaces.
 

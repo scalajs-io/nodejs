@@ -3,7 +3,6 @@ package com.github.ldaniels528.meansjs.nodejs.express
 import com.github.ldaniels528.meansjs.nodejs.http.Server
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSName
 
 /**
   * The app object conventionally denotes the Express application. Create it by calling the

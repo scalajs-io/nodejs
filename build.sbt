@@ -15,7 +15,7 @@ val commonSettings = Seq(
   version := apiVersion,
   scalaVersion := _scalaVersion,
   scalacOptions ++= Seq("-feature", "-deprecation"),
-  homepage := Some(url("http://github.com.ldaniels528/meansjs")),
+  homepage := Some(url("http://github.com.ldaniels528/means")),
   addCompilerPlugin("org.scalamacros" % "paradise" % paradisePluginVersion cross CrossVersion.full),
   libraryDependencies ++= Seq(
     "be.doeraene" %%% "scalajs-jquery" % scalaJsJQueryVersion,
@@ -25,13 +25,13 @@ val commonSettings = Seq(
 )
 
 lazy val root = (project in file(".")).
-  aggregate(core, angularjs, facebook, linkedin, nodejs)
+  aggregate(core, angularjs, facebook, linkedin, nodejs, nodejs_mongodb)
 
 lazy val core = (project in file("core")).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
-    name := "meansjs",
+    name := "means",
     description := "Core utilities for MEANS.js"
   )
 
@@ -40,7 +40,7 @@ lazy val angularjs = (project in file("angularjs")).
   dependsOn(core).
   settings(commonSettings: _*).
   settings(
-    name := "meansjs-angularjs",
+    name := "means-angularjs",
     description := "AngularJS bindings for Scala.js"
   )
 
@@ -49,7 +49,7 @@ lazy val facebook = (project in file("facebook")).
   dependsOn(core, angularjs).
   settings(commonSettings: _*).
   settings(
-    name := "meansjs-facebook",
+    name := "means-facebook",
     description := "Facebook buildings for Scala.js"
   )
 
@@ -58,7 +58,7 @@ lazy val linkedin = (project in file("linkedin")).
   dependsOn(core, angularjs).
   settings(commonSettings: _*).
   settings(
-    name := "meansjs-linkedin",
+    name := "means-linkedin",
     description := "LinkedIn buildings for Scala.js"
   )
 
@@ -67,18 +67,27 @@ lazy val nodejs = (project in file("nodejs")).
   dependsOn(core).
   settings(commonSettings: _*).
   settings(
-    name := "meansjs-nodejs",
-    description := "NodeJS bindings for Scala.js"
+    name := "means-nodejs",
+    description := "Node.js bindings for Scala.js"
+  )
+
+lazy val nodejs_mongodb = (project in file("nodejs-mongodb")).
+  enablePlugins(ScalaJSPlugin).
+  dependsOn(core, nodejs).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-nodejs-mongodb",
+    description := "MongoDB bindings for Node.js"
   )
 
 lazy val examples = (project in file("examples")).
-  aggregate(core, nodejs).
+  aggregate(core, nodejs, nodejs_mongodb).
   enablePlugins(ScalaJSPlugin).
   dependsOn(core, nodejs).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
-    name := "meansjs-examples",
+    name := "means-examples",
     description := "MEANS.js examples",
     pipelineStages := Seq(gzip),
     compile in Compile <<=

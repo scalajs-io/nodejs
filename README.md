@@ -98,7 +98,7 @@ Here's the same example using MEANS.js + Scala.js:
 #### Integration Guidance
 
 Currently, the "require" function must be passed to the Scala.js application because of an issue
-with getting a reference to it. This can be accomplish inside a bootstrap JavaScript file as follows:
+with getting a reference to it. This can be accomplished inside a bootstrap JavaScript file as follows:
 
 ```javascript
 
@@ -112,8 +112,10 @@ Then with the Scala.js application:
 ```scala
 
     def start(require: Require) = {
-        .
-        .
+        val express = require[Express]("express")
+            .
+            .
+            .
     }
 ```
 

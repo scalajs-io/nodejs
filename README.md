@@ -94,7 +94,7 @@ Here's the same example using MEANS.js + Scala.js:
 
 ```
 
-<a href="NodeJS_Integration">
+<a name="NodeJS_Integration">
 #### Integration Guidance
 
 Currently, the "require" function must be passed to the Scala.js application because of an issue

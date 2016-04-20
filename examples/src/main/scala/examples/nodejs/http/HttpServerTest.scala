@@ -6,7 +6,7 @@ import com.github.ldaniels528.meansjs.nodejs.http._
 import scala.scalajs.js
 
 /**
-  * Http Server Test
+  * Http Server Example
   * @author lawrence.daniels@gmail.com
   */
 class HttpServerTest(require: Require) {

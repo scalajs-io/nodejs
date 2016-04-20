@@ -120,7 +120,7 @@ object ScalaJsHelper {
   implicit class JsAnyExtensions(val obj: js.Any) extends AnyVal {
 
     def New[T <: js.Any](args: js.Any*): T = {
-      js.Dynamic.newInstance(obj.asInstanceOf[js.Dynamic])(args).asInstanceOf[T]
+      js.Dynamic.newInstance(obj.asInstanceOf[js.Dynamic])(args: _*).asInstanceOf[T]
     }
 
     def ===[T](value: T): Boolean = {

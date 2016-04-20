@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.stream
 
-import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
+import com.github.ldaniels528.meansjs.nodejs.events.EventEmitterInstance
 
 import scala.scalajs.js
 
@@ -9,7 +9,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Writable extends EventEmitter {
+trait Writable extends EventEmitterInstance {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods

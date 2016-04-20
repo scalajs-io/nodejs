@@ -2,25 +2,19 @@ package examples.nodejs.events
 
 import com.github.ldaniels528.meansjs.nodejs._
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-import org.scalajs.dom.console
-
-import scala.scalajs.js
 
 /**
-  * Event Emitting
+  * Event Emitting Example
   * @author lawrence.daniels@gmail.com
   */
 class EventEmitting(require: Require) {
-  val eventEmitter = require[js.Function0[EventEmitter]]("events")
-  val ee = eventEmitter.New[EventEmitter]()
-
-  console.log(Error)
+  val eventEmitter = require[EventEmitter]("events")
+  val ee = eventEmitter()
 
   setImmediate(() => {
     // This will crash the process because no "error" event
     // handler has been added.
-    ee.emit("error", Error.New("This will crash"))
+    ee.emit("error", Error("This will crash"))
   })
 
 }

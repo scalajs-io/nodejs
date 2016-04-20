@@ -1,8 +1,10 @@
+/**
+ * Event Emitting
+ * @author lawrence.daniels@gmail.com
+ */
 (function() {
     const EventEmitter = require("events");
     const ee = new EventEmitter();
-    
-    console.log(Error);
 
     setImmediate(function () {
         // This will crash the process because no "error" event

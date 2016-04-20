@@ -1,8 +1,8 @@
 package examples.nodejs.mongodb
 
+import com.github.ldaniels528.meansjs.mongodb.MongoDB.MongoError
+import com.github.ldaniels528.meansjs.mongodb.{MongoDB, MongoDatabase}
 import com.github.ldaniels528.meansjs.nodejs._
-import com.github.ldaniels528.meansjs.nodejs.mongodb.MongoDB.MongoError
-import com.github.ldaniels528.meansjs.nodejs.mongodb.{MongoDB, MongoDatabase}
 import org.scalajs.dom.console
 
 /**

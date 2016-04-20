@@ -1,6 +1,7 @@
 package com.github.ldaniels528.meansjs.angularjs.extensions
 
 import com.github.ldaniels528.meansjs.angularjs.core.HttpPromise
+import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 import org.scalajs.dom._
 
 import scala.scalajs.js
@@ -35,17 +36,16 @@ trait FileUploadConfig extends js.Object {
   * File Upload Configuration Singleton
   * @author lawrence.daniels@gmail.com
   */
-@js.native
-object FileUploadConfig extends js.Object {
+object FileUploadConfig {
 
-  def apply[T](url: String, file: File, data: Option[T] = None) = {
+  def apply(url: String, file: File, data: js.Any = js.undefined) = {
     require(url != null || url.isEmpty, "Required property 'url' is missing")
     require(file != null, "Required property 'file' is missing")
 
-    val config = new js.Object().asInstanceOf[FileUploadConfig]
+    val config = makeNew[FileUploadConfig]
     config.url = url
     config.file = file
-    data.foreach(config.data = _)
+    config.data = data
     config
   }
 }

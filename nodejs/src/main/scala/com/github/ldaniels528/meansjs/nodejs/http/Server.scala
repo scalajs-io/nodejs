@@ -81,14 +81,14 @@ object Server {
   val EVENT_LISTENING = "listening"
 
   /**
-    * Server Enrichment
+    * Server Extensions
     * @author lawrence.daniels@gmail.com
     */
-  implicit class ServerEnrichment(val server: Server) extends AnyVal {
+  implicit class ServerExtensions(val server: Server) extends AnyVal {
 
     def closeAsync(implicit ec: ExecutionContext) = {
       val promise = Promise[Unit]()
-      server.close((err: NodeError) => {
+      server.close((err: js.UndefOr[NodeError]) => {
         if (!isDefined(err)) promise.success({}) else promise.failure(new RuntimeException(err.toString))
       })
       promise.future
@@ -96,7 +96,7 @@ object Server {
 
     def getConnectionsAsync(implicit ec: ExecutionContext) = {
       val promise = Promise[Int]()
-      server.getConnections((err: NodeError, steam: Int) => {
+      server.getConnections((err: js.UndefOr[NodeError], steam: Int) => {
         if (!isDefined(err)) promise.success(steam) else promise.failure(new RuntimeException(err.toString))
       })
       promise.future
@@ -104,7 +104,7 @@ object Server {
 
     def listenAsync(options: ListenerOptions)(implicit ec: ExecutionContext) = {
       val promise = Promise[Unit]()
-      server.listen(options, (err: NodeError) => {
+      server.listen(options, (err: js.UndefOr[NodeError]) => {
         if (!isDefined(err)) promise.success({}) else promise.failure(new RuntimeException(err.toString))
       })
       promise.future

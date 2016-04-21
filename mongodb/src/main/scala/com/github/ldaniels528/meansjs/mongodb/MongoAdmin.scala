@@ -30,7 +30,7 @@ trait MongoAdmin extends js.Object {
 object MongoAdmin {
 
   /**
-    * Mongo Administrative Enrichment
+    * Mongo Administrative Extensions
     * @author lawrence.daniels@gmail.com
     */
   implicit class MongoAdminEnrich(val admin: MongoAdmin) extends AnyVal {

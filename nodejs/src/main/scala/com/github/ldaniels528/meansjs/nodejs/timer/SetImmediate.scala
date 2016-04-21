@@ -44,10 +44,10 @@ trait SetImmediate extends js.Object {
 object SetImmediate {
 
   /**
-    * Set Immediate Enrichment
+    * Set Immediate Extensions
     * @param command the given [[SetImmediate command]] instance
     */
-  implicit class SetImmediateEnrichment(val command: SetImmediate) extends AnyVal {
+  implicit class SetImmediateExtensions(val command: SetImmediate) extends AnyVal {
 
     def apply(callback: js.Function, args: js.Any*) = {
       command.apply(callback, js.Array(args: _*))

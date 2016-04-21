@@ -18,7 +18,7 @@ trait JQLite extends Element {
     * @param className the given class name
     * @return the [[JQLite instance]]
     */
-  def addClass(className: String): this.type
+  def addClass(className: String): this.type = js.native
 
   /**
     * A function returning one or more space-separated class names to be added to the existing class name(s).

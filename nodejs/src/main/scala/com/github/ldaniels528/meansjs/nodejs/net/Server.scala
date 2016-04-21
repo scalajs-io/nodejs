@@ -122,10 +122,10 @@ object Server {
   val EVENT_UPGRADE = "upgrade"
 
   /**
-    * Server Enrichment
+    * Server Extensions
     * @author lawrence.daniels@gmail.com
     */
-  implicit class ServerEnrichment(val server: Server) extends AnyVal {
+  implicit class ServerExtensions(val server: Server) extends AnyVal {
 
   }
 

@@ -45,7 +45,7 @@ object MongoDB {
   type MongoError = js.UndefOr[String]
 
   /**
-    * MongoDB Enrichment
+    * MongoDB Extensions
     * @author lawrence.daniels@gmail.com
     */
   implicit class MongoDBEnrich(val mongo: MongoDB) extends AnyVal {

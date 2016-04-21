@@ -36,11 +36,11 @@ object ScalaJsHelper {
   ////////////////////////////////////////////////////////////////////////
 
   /**
-    * Exception Enrichment
+    * Exception Extensions
     * @param cause the given [[Throwable exception]]
     * @author lawrence.daniels@gmail.com
     */
-  implicit class ExceptionEnrichment(val cause: Throwable) extends AnyVal {
+  implicit class ExceptionExtensions(val cause: Throwable) extends AnyVal {
 
     def displayMessage = Option(cause.getMessage) match {
       case Some(s) if s.startsWith(HttpError) => cleanUp(s.drop(HttpError.length))
@@ -69,11 +69,11 @@ object ScalaJsHelper {
   }
 
   /**
-    * Time Measurement Enrichment
+    * Time Measurement Extensions
     * @param task the given [[Future task]]
     * @tparam T the return type of the task
     */
-  implicit class TimeEnrichment[T](val task: Future[T]) extends AnyVal {
+  implicit class TimeExtensions[T](val task: Future[T]) extends AnyVal {
 
     def withTimer(action: String, showHeader: Boolean = true)(implicit ec: ExecutionContext) = time(action, task, showHeader)
 
@@ -232,10 +232,6 @@ object ScalaJsHelper {
       case -1 => None
       case index => Some(index)
     }
-
-    @inline def isBlank: Boolean = string == null || string.trim.isEmpty
-
-    @inline def nonBlank: Boolean = string != null && string.trim.nonEmpty
 
     @inline def isValidEmail: Boolean = string.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
 

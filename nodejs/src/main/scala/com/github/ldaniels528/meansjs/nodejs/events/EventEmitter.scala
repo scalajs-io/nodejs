@@ -12,13 +12,12 @@ import scala.scalajs.js
   */
 @js.native
 trait EventEmitter extends js.Object {
-  self: js.Object =>
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
   /////////////////////////////////////////////////////////////////////////////////
 
-  def EventEmitter: EventEmitterFactory = js.native
+  def EventEmitter: EventEmitterClass = js.native
 
   var usingDomains: Boolean = js.native
 
@@ -47,12 +46,12 @@ trait EventEmitter extends js.Object {
 object EventEmitter {
 
   /**
-    * Event Emitter Factory Enrichment
-    * @param factory the given [[EventEmitterFactory event emitter factory]]
+    * Event Emitter Factory Extensions
+    * @param `class` the given [[EventEmitterClass event emitter class]]
     */
-  implicit class EventEmitterEnrichment(val factory: EventEmitter) extends AnyVal {
+  implicit class EventEmitterExtensions(val `class`: EventEmitter) extends AnyVal {
 
-    def apply() = factory.New[EventEmitterInstance]()
+    def apply() = `class`.New[EventEmitterInstance]()
 
   }
 

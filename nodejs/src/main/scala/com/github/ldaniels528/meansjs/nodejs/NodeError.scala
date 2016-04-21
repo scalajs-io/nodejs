@@ -21,10 +21,10 @@ trait NodeError extends js.Object {
 object NodeError {
 
   /**
-    * Node Error Enrichment
+    * Node Error Extensions
     * @author lawrence.daniels@gmail.com
     */
-  implicit class ErrorEnrichment(val error: NodeError) extends AnyVal {
+  implicit class ErrorExtensions(val error: NodeError) extends AnyVal {
 
     /**
       * Creates a new Error instance

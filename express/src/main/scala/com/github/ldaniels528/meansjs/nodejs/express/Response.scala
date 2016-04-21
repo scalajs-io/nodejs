@@ -324,7 +324,7 @@ object Response {
   }
 
   /**
-    * Http Response Enrichment
+    * Http Response Extensions
     * @author lawrence.daniels@gmail.com
     */
   implicit class HttpResponseEnrich(val response: Response) extends AnyVal {

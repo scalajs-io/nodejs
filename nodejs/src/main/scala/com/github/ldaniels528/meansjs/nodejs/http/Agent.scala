@@ -90,14 +90,14 @@ trait Agent extends js.Object {
 object Agent {
 
   /**
-    * Agent Enrichment
+    * Agent Extensions
     * @author lawrence.daniels@gmail.com
     */
-  implicit class AgentEnrichment(val agent: Agent) extends AnyVal {
+  implicit class AgentExtensions(val agent: Agent) extends AnyVal {
 
     def createConnectionAsync(options: Agent.ConnectionOptions)(implicit ec: ExecutionContext) = {
       val promise = Promise[js.Any]()
-      agent.createConnection(options, (err: NodeError, steam: js.Any) => {
+      agent.createConnection(options, (err: js.UndefOr[NodeError], steam: js.Any) => {
         if (!isDefined(err)) promise.success(steam) else promise.failure(new RuntimeException(err.toString))
       })
       promise.future

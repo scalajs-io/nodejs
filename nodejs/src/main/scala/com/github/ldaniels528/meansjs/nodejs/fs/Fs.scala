@@ -83,7 +83,7 @@ trait Fs extends js.Object {
   * @author lawrence.daniels@gmail.com
   */
 object Fs {
-  type FileError = js.Any
+  type FileError = js.UndefOr[String]
 
   /**
     * File Access Options
@@ -108,7 +108,7 @@ object Fs {
   }
 
   /**
-    * File System Enrichment
+    * File System Extensions
     * @param fs the given [[Fs file system]] instance
     */
   implicit class FsEnrich(val fs: Fs) extends AnyVal {

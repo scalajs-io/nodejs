@@ -60,7 +60,7 @@ trait ObjectID extends js.Object {
 object ObjectID {
 
   /**
-    * Mongo Database Enrichment
+    * Mongo Database Extensions
     * @author lawrence.daniels@gmail.com
     */
   implicit class MongoObjectIDEnrich(val objectID: ObjectID) extends AnyVal {

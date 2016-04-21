@@ -47,10 +47,10 @@ trait SetTimeout extends js.Object {
 object SetTimeout {
 
   /**
-    * Set Timeout Enrichment
+    * Set Timeout Extensions
     * @param command the given [[SetTimeout command]] instance
     */
-  implicit class SetTimeoutEnrichment(val command: SetTimeout) extends AnyVal {
+  implicit class SetTimeoutExtensions(val command: SetTimeout) extends AnyVal {
 
     def apply(callback: js.Function, delay: Int, args: js.Any*) = {
       command.apply(callback, delay, js.Array(args: _*))

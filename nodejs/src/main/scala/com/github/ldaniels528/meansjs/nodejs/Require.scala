@@ -1,7 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSName
 
 /**
   * Node.js require function

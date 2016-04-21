@@ -10,6 +10,8 @@
     "express-ws": "^2.0.0-beta",
     "fs": "0.0.2",
     "html": "0.0.10",
-    "mongoose": "4.4.11"
+    "kafka-node": "^0.3.2",
+    "mongoose": "4.4.11",
+    "node-zookeeper-client": "^0.2.2"
   }
 }

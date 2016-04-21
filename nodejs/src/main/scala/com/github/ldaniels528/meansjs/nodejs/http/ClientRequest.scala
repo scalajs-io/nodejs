@@ -105,7 +105,7 @@ trait ClientRequest extends js.Object {
 object ClientRequest {
 
   /**
-    * Client Request Enrichment
+    * Client Request Extensions
     * @author lawrence.daniels@gmail.com
     */
   implicit class ClientRequestEnrich(val request: ClientRequest) extends AnyVal {

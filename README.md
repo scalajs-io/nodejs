@@ -47,7 +47,7 @@ MEANS.js goes to great lengths to make all the things you love about writing Sca
 ```bash
  $ sbt "project examples" clean fastOptJS
  $ cd examples
- $ node ./examples.js timers
+ $ node ./examples.js IntermediateTimers
 ```
    
 <a name="NodeJS"></a>
@@ -62,13 +62,16 @@ modules implemented for most web applications.
 The following modules have been implemented thus far:
 
 * body-parser
+* buffer
 * events
 * express
 * express-ws
 * fs
 * http
+* kafka-node
 * mongodb
 * net
+* node-zookeeper-client
 * stream
 * util
 

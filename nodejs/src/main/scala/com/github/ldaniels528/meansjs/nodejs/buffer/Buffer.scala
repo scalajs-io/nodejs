@@ -1,6 +1,9 @@
 package com.github.ldaniels528.meansjs.nodejs.buffer
 
+import com.github.ldaniels528.meansjs.nodejs.JsIterator
+
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSName
 
 /**
   * Prior to the introduction of TypedArray in ECMAScript 2015 (ES6), the JavaScript language had no mechanism for
@@ -20,30 +23,25 @@ import scala.scalajs.js
 trait Buffer extends js.Object {
 
   /**
-    * When passed a reference to the .buffer property of a TypedArray instance, the newly created Buffer
-    * will share the same allocated memory as the TypedArray.
-    * @example Buffer.from(arrayBuffer[, byteOffset[, length]])
-    **/
-  def from(arrayBuffer: ArrayBuffer, byteOffset: Int, length: Int): this.type = js.native
-
-  /**
-    * When passed a reference to the .buffer property of a TypedArray instance, the newly created Buffer
-    * will share the same allocated memory as the TypedArray.
-    * @example Buffer.from(arrayBuffer[, byteOffset[, length]])
-    **/
-  def from(arrayBuffer: ArrayBuffer, byteOffset: Int): this.type = js.native
-
-  /**
-    * When passed a reference to the .buffer property of a TypedArray instance, the newly created Buffer
-    * will share the same allocated memory as the TypedArray.
-    * @example Buffer.from(arrayBuffer[, byteOffset[, length]])
-    **/
-  def from(arrayBuffer: ArrayBuffer): this.type = js.native
-
-  /**
-    * Allocates a new Buffer using an array of octets.
-    * @example Buffer.from(array)
+    * @example {{{ buf.compare(target[, targetStart[, targetEnd[, sourceStart[, sourceEnd]]]]) }}}
     */
-  def from(array: js.Array[js.Any]): this.type = js.native
+  def compare(target: Buffer, targetStart: Int, targetEnd: Int, sourceStart: Int, sourceEnd: Int): Int = js.native
+
+  def compare(target: Buffer, targetStart: Int, targetEnd: Int, sourceStart: Int): Int = js.native
+
+  def compare(target: Buffer, targetStart: Int, targetEnd: Int): Int = js.native
+
+  def compare(target: Buffer, targetStart: Int): Int = js.native
+
+  def compare(target: Buffer): Int = js.native
+
+  /**
+    * Creates and returns an iterator of [index, byte] pairs from the Buffer contents.
+    */
+  def entries(): JsIterator = js.native
 
 }
+
+@js.native
+@JSName("Buffer")
+object Buffer extends BufferClass

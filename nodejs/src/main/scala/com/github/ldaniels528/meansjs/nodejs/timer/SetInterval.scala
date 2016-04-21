@@ -39,10 +39,10 @@ trait SetInterval extends js.Object {
 object SetInterval {
 
   /**
-    * Set Interval Enrichment
+    * Set Interval Extensions
     * @param command the given [[SetInterval command]] instance
     */
-  implicit class SetIntervalEnrichment(val command: SetInterval) extends AnyVal {
+  implicit class SetIntervalExtensions(val command: SetInterval) extends AnyVal {
 
     def apply(callback: js.Function, delay: Int, args: js.Any*) = {
       command.apply(callback, delay, js.Array(args: _*))

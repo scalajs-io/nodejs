@@ -209,7 +209,7 @@ trait Request extends js.Object {
 object Request {
 
   /**
-    * Http Request Enrichment
+    * Http Request Extensions
     * @author lawrence.daniels@gmail.com
     */
   implicit class HttpRequestEnrich(val request: Request) extends AnyVal {

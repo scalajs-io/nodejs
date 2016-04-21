@@ -47,7 +47,7 @@ trait MongoDatabase extends js.Object {
 object MongoDatabase {
 
   /**
-    * Mongo Database Enrichment
+    * Mongo Database Extensions
     * @author lawrence.daniels@gmail.com
     */
   implicit class MongoDatabaseEnrich(val db: MongoDatabase) extends AnyVal {

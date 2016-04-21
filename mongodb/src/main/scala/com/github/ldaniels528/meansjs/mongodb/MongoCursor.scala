@@ -30,7 +30,7 @@ trait MongoCursor extends js.Object {
 object MongoCursor {
 
   /**
-    * Mongo Cursor Enrichment
+    * Mongo Cursor Extensions
     * @author lawrence.daniels@gmail.com
     */
   implicit class MongoCursorEnrich(val cursor: MongoCursor) extends AnyVal {

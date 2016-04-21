@@ -381,18 +381,18 @@ trait ProcessObject extends js.Object {
 object ProcessObject {
 
   /**
-    * Process Object Enrichment
+    * Process Object Extensions
     * @author lawrence.daniels@gmail.com
     */
-  implicit class ProcessEnrichment(val process: ProcessObject) extends AnyVal {
+  implicit class ProcessExtensions(val process: ProcessObject) extends AnyVal {
 
     /**
       * @see [[ProcessObject.send()]]
       */
     def sendAsync(message: js.Any, sendHandle: js.Any, options: ProcessObject.TransferOptions) = {
       val promise = Promise[Boolean]()
-      process.send(message, sendHandle, options, (err: NodeError, success: Boolean) => {
-        if (!isDefined(err)) promise.success(success) else promise.failure(new RuntimeException(err.message))
+      process.send(message, sendHandle, options, (err: js.UndefOr[NodeError], success: Boolean) => {
+        if (!isDefined(err)) promise.success(success) else promise.failure(new RuntimeException(err.toString))
       })
       promise.future
     }
@@ -402,8 +402,8 @@ object ProcessObject {
       */
     def sendAsync(message: js.Any, sendHandle: js.Any) = {
       val promise = Promise[Boolean]()
-      process.send(message, sendHandle, (err: NodeError, success: Boolean) => {
-        if (!isDefined(err)) promise.success(success) else promise.failure(new RuntimeException(err.message))
+      process.send(message, sendHandle, (err: js.UndefOr[NodeError], success: Boolean) => {
+        if (!isDefined(err)) promise.success(success) else promise.failure(new RuntimeException(err.toString))
       })
       promise.future
     }
@@ -413,8 +413,8 @@ object ProcessObject {
       */
     def sendAsync(message: js.Any) = {
       val promise = Promise[Boolean]()
-      process.send(message, (err: NodeError, success: Boolean) => {
-        if (!isDefined(err)) promise.success(success) else promise.failure(new RuntimeException(err.message))
+      process.send(message, (err: js.UndefOr[NodeError], success: Boolean) => {
+        if (!isDefined(err)) promise.success(success) else promise.failure(new RuntimeException(err.toString))
       })
       promise.future
     }

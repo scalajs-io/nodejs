@@ -47,7 +47,7 @@ trait MongoCollection extends js.Object {
 object MongoCollection {
 
   /**
-    * Mongo Collection Enrichment
+    * Mongo Collection Extensions
     * @author lawrence.daniels@gmail.com
     */
   implicit class MongoCollectionEnrich(val coll: MongoCollection) extends AnyVal {

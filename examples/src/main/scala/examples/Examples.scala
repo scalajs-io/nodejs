@@ -1,13 +1,7 @@
 package examples
 
 import com.github.ldaniels528.meansjs.nodejs._
-import examples.nodejs.events.EventEmitting
-import examples.nodejs.express.ExpressTest
-import examples.nodejs.http.HttpServerTest
-import examples.nodejs.kafka.{ProducerEnhanced, ProducerExample}
-import examples.nodejs.mongodb.MongoClientTest
-import examples.nodejs.net.NetServerTest
-import examples.nodejs.timers.IntermediateTimers
+import examples.nodejs.{buffers, events, express, http, kafka, mongodb, net, timers, zookeeper}
 import org.scalajs.dom.console
 
 import scala.scalajs.js
@@ -19,23 +13,28 @@ import scala.scalajs.js.annotation.JSExportAll
   */
 @JSExportAll
 object Examples extends js.JSApp {
-  private val names = js.Array("events", "express", "http", "mongodb", "net", "timers")
+  private val names = js.Array(
+    "Buffers", "EventEmitting", "ExpressTest", "HttpServerTest", "IntermediateTimers", "MongoClientTest",
+    "NetServerTest", "ProducerExample", "ProducerEnhanced", "TransactionExample"
+  )
 
   override def main(): Unit = ()
 
   def start(require: Require) = {
     process.argv.drop(2) foreach {
-      case "EventEmitting" => new EventEmitting(require)
-      case "express" => new ExpressTest(require)
-      case "http" => new HttpServerTest(require)
-      case "mongodb" => new MongoClientTest(require)
-      case "net" => new NetServerTest(require)
-      case "ProducerExample" => new ProducerExample(require)
-      case "ProducerEnhanced" => new ProducerEnhanced(require)
-      case "timers" => new IntermediateTimers(require)
+      case "Buffers" => new buffers.Buffers(require)
+      case "EventEmitting" => new events.EventEmitting(require)
+      case "ExpressTest" => new express.ExpressTest(require)
+      case "HttpServerTest" => new http.HttpServerTest(require)
+      case "IntermediateTimers" => new timers.IntermediateTimers(require)
+      case "MongoClientTest" => new mongodb.MongoClientTest(require)
+      case "NetServerTest" => new net.NetServerTest(require)
+      case "ProducerExample" => new kafka.ProducerExample(require)
+      case "ProducerEnhanced" => new kafka.ProducerEnhanced(require)
+      case "StateExample" => new zookeeper.StateExample(require)
+      case "TransactionExample" => new zookeeper.TransactionExample(require)
       case arg =>
-        console.warn(s"No example found for $arg - Choose from ${names.mkString(", ")}")
-        new IntermediateTimers(require)
+        console.warn(s"Syntax: examples.js <exampleName> - Choose one: ${names.mkString(", ")}")
     }
   }
 

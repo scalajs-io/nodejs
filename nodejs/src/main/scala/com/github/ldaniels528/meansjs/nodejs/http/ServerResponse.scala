@@ -176,7 +176,7 @@ object ServerResponse {
   val EventFinish = "finish"
 
   /**
-    * Server Response Enrichment
+    * Server Response Extensions
     * @author lawrence.daniels@gmail.com
     */
   implicit class ServerResponseEnrich(val response: ServerResponse) extends AnyVal {

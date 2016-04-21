@@ -62,7 +62,7 @@ object MongoClient {
   }
 
   /**
-    * Mongo Client Enrichment
+    * Mongo Client Extensions
     * @author lawrence.daniels@gmail.com
     */
   implicit class MongoClientEnrich(val client: MongoClient) extends AnyVal {

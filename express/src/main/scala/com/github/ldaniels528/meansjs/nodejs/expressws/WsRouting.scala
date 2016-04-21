@@ -25,7 +25,7 @@ trait WsRouting extends js.Object {
 object WsRouting {
 
   /**
-    * WsRouting Enrichment
+    * WsRouting Extensions
     * @param router the given [[Router router]]
     */
   implicit class WsRouterEnrich[T <: Router](val router: T) extends AnyVal {

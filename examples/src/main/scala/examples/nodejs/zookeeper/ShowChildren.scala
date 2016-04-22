@@ -22,13 +22,12 @@ class ShowChildren(require: Require) {
 
   client.onceConnected(() => {
     console.log("Connected...")
-    client.getChildren("/x", (error: ZookeeperError, paths: js.Array[String]) => {
+    client.getChildren("/", (error: ZookeeperError, paths: js.Array[String]) => {
       if (isDefined(error)) {
         console.log(JSON.stringify(error))
         console.log("Failed to execute the getChildren: %s, results: %j", error, paths)
       }
       else console.log(JSON.stringify(paths))
-
 
       setTimeout(() =>
         paths foreach { path =>

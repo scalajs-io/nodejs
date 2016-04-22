@@ -23,7 +23,10 @@ object EventEmitterClass {
     */
   implicit class EventEmitterFactoryExtensions(val `class`: EventEmitterClass) extends AnyVal {
 
-    def apply() = `class`.New[EventEmitterInstance]()
+    /**
+      * @example new EventEmitter()
+      */
+    def apply() = `class`.New[EventEmitter]()
 
   }
 

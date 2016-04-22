@@ -1,15 +1,17 @@
 package examples.nodejs.mongodb
 
-import com.github.ldaniels528.meansjs.mongodb.MongoDB.MongoError
-import com.github.ldaniels528.meansjs.mongodb.{MongoDB, MongoDatabase}
+import com.github.ldaniels528.meansjs.mongodb.MongoDB
 import com.github.ldaniels528.meansjs.nodejs._
 import org.scalajs.dom.console
+
+import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
+import scala.util.{Failure, Success}
 
 /**
   * Mongo Client Test
   * @author lawrence.daniels@gmail.com 
   */
-class MongoClientTest(require: Require) {
+class MongoClientExample(require: Require) {
 
   // lets require/import the mongodb native drivers.
   val mongodb = require[MongoDB]("mongodb")
@@ -21,10 +23,8 @@ class MongoClientTest(require: Require) {
   val url = "mongodb://localhost:27017/test"
 
   // Use connect method to connect to the Server
-  mongoClient.connect(url, (err: MongoError, db: MongoDatabase) => {
-    if (err.isDefined) {
-      console.log("Unable to connect to the mongoDB server. Error:", err)
-    } else {
+  mongoClient.connectAsync(url) onComplete {
+    case Success(db) =>
       //HURRAY!! We are connected. :)
       console.log("Connection established to", url)
 
@@ -32,7 +32,8 @@ class MongoClientTest(require: Require) {
 
       //Close connection
       db.close()
-    }
-  })
+    case Failure(e) =>
+      console.log("Unable to connect to the mongoDB server. Error:", e.getMessage)
+  }
 
 }

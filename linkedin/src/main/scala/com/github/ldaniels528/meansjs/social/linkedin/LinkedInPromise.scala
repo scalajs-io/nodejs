@@ -3,6 +3,7 @@ package com.github.ldaniels528.meansjs.social.linkedin
 import scala.concurrent.{Future, Promise}
 import scala.language.implicitConversions
 import scala.scalajs.js
+import scala.scalajs.runtime.wrapJavaScriptException
 
 /**
   * LinkedIn Promise
@@ -37,7 +38,7 @@ object LinkedInPromise {
 
     def onSuccess(data: T): Unit = promise.success(data)
 
-    def onError(data: js.Any): Unit = promise.failure(new RuntimeException(data.toString))
+    def onError(data: js.Any): Unit = promise.failure(wrapJavaScriptException(data))
 
     inPromise.result(onSuccess _).error(onError _)
     promise.future

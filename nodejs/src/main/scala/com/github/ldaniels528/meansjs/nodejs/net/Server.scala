@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.net
 
-import com.github.ldaniels528.meansjs.nodejs.events.EventEmitterInstance
+import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
@@ -10,7 +10,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Server extends EventEmitterInstance {
+trait Server extends EventEmitter {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties

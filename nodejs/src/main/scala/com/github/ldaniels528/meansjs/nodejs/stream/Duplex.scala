@@ -1,6 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs.stream
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSName
 
 /**
   * A "duplex" stream is one that is both Readable and Writable, such as a TCP socket connection.
@@ -17,17 +18,6 @@ import scala.scalajs.js
 @js.native
 trait Duplex extends Readable with Writable
 
-/**
-  * Duplex Companion
-  * @author lawrence.daniels@gmail.com
-  */
-object Duplex {
-
-  /**
-    * Duplex Options
-    * @author lawrence.daniels@gmail.com
-    */
-  @js.native
-  trait Options extends js.Object
-
-}
+@js.native
+@JSName("Duplex")
+object Duplex extends DuplexClass

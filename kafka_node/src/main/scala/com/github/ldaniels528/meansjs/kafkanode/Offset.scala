@@ -1,9 +1,7 @@
 package com.github.ldaniels528.meansjs.kafkanode
 
-import com.github.ldaniels528.meansjs.kafkanode.KafkaNode.KafkaError
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
-import scala.concurrent.{ExecutionContext, Promise}
 import scala.scalajs.js
 
 /**
@@ -45,35 +43,17 @@ object Offset {
     /**
       * @see [[Offset.commit()]]
       */
-    def commitAsync(groupId: String, payloads: js.Array[Payload], callback: js.Function)(implicit ec: ExecutionContext) = {
-      val promise = Promise[js.Any]()
-      offset.commit(groupId, payloads, (err: KafkaError, result: js.Any) => {
-        if (!isDefined(err)) promise.success(result) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def commitAsync(groupId: String, payloads: js.Array[Payload]) = toFuture[js.Any](offset.commit(groupId, payloads, _))
 
     /**
       * @see [[Offset.fetch()]]
       */
-    def fetchAsync(payloads: js.Array[Payload], callback: js.Function)(implicit ec: ExecutionContext) = {
-      val promise = Promise[js.Any]()
-      offset.fetch(payloads, (err: KafkaError, result: js.Any) => {
-        if (!isDefined(err)) promise.success(result) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def fetchAsync(payloads: js.Array[Payload]) = toFuture[js.Any](offset.fetch(payloads, _))
 
     /**
       * @see [[Offset.fetchCommits()]]
       */
-    def fetchCommitsAsync(groupId: String, payloads: js.Array[Payload], callback: js.Function)(implicit ec: ExecutionContext) = {
-      val promise = Promise[js.Any]()
-      offset.fetchCommits(groupId, payloads, (err: KafkaError, result: js.Any) => {
-        if (!isDefined(err)) promise.success(result) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def fetchCommitsAsync(groupId: String, payloads: js.Array[Payload]) = toFuture[js.Any](offset.fetchCommits(groupId, payloads, _))
 
   }
 

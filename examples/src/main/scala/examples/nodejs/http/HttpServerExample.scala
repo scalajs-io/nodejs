@@ -9,7 +9,7 @@ import scala.scalajs.js
   * Http Server Example
   * @author lawrence.daniels@gmail.com
   */
-class HttpServerTest(require: Require) {
+class HttpServerExample(require: Require) {
 
   val http = require[Http]("http")
   http.createServer((request: ClientRequest, response: ServerResponse) => {

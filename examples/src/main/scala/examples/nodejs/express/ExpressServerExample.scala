@@ -7,10 +7,10 @@ import org.scalajs.dom.console
 import scala.scalajs.js
 
 /**
-  * Express Test Server
+  * Express Server Example
   * @author lawrence.daniels@gmail.com
   */
-class ExpressTest(require: Require) {
+class ExpressServerExample(require: Require) {
 
   val express = require[Express]("express")
   val app = express()

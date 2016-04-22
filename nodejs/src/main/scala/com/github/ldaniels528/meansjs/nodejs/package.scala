@@ -1,5 +1,6 @@
 package com.github.ldaniels528.meansjs
 
+import com.github.ldaniels528.meansjs.nodejs.errors.ErrorClass
 import com.github.ldaniels528.meansjs.nodejs.timer._
 
 import scala.concurrent.duration.FiniteDuration
@@ -23,15 +24,15 @@ package object nodejs {
 
   @JSName("Error")
   @js.native
-  object Error extends NodeError
+  object Error extends ErrorClass
 
   @JSName("module")
   @js.native
-  object module extends ModuleObject
+  object module extends ModuleClass
 
   @JSName("process")
   @js.native
-  object process extends ProcessObject
+  object process extends ProcessClass
 
   @js.native
   @JSName("require")

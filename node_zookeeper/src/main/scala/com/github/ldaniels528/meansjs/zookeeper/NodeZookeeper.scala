@@ -1,5 +1,7 @@
 package com.github.ldaniels528.meansjs.zookeeper
 
+import com.github.ldaniels528.meansjs.nodejs.NodeModule
+
 import scala.scalajs.js
 
 /**
@@ -7,7 +9,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait NodeZookeeper extends js.Object {
+trait NodeZookeeper extends NodeModule {
 
   def createClient(connectionString: String): Client = js.native
 

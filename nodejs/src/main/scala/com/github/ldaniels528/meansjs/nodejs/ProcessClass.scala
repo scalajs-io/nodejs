@@ -3,15 +3,15 @@ package com.github.ldaniels528.meansjs.nodejs
 import com.github.ldaniels528.meansjs.nodejs.stream.{Readable, Writable}
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
-import scala.concurrent.Promise
+import scala.concurrent.ExecutionContext
 import scala.scalajs.js
 
 /**
-  * Node.js Process Object
+  * Node.js Process Class
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait ProcessObject extends js.Object {
+trait ProcessClass extends js.Object {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -100,7 +100,7 @@ trait ProcessObject extends js.Object {
     * and headers-only tarball.
     * @example process.release
     */
-  def release: ProcessObject.ReleaseInfo = js.native
+  def release: ProcessClass.ReleaseInfo = js.native
 
   /**
     * process.stderr and process.stdout are unlike other streams in Node.js in that they cannot be
@@ -147,7 +147,7 @@ trait ProcessObject extends js.Object {
     * A property exposing version strings of Node.js and its dependencies.
     * @example process.versions
     */
-  def versions: ProcessObject.VersionInfo = js.native
+  def versions: ProcessClass.VersionInfo = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -255,7 +255,7 @@ trait ProcessObject extends js.Object {
     * Returns an object describing the memory usage of the Node.js process measured in bytes.
     * @example process.memoryUsage()
     */
-  def memoryUsage(): ProcessObject.MemoryUsage = js.native
+  def memoryUsage(): ProcessClass.MemoryUsage = js.native
 
   /**
     * Once the current event loop turn runs to completion, call the callback function.
@@ -274,7 +274,7 @@ trait ProcessObject extends js.Object {
     * If Node.js was not spawned with an IPC channel, process.send() will be undefined.
     * @example {{{ process.send(message[, sendHandle[, options]][, callback]) }}}
     */
-  def send(message: js.Any, sendHandle: js.Any, options: ProcessObject.TransferOptions, callback: js.Function): Boolean = js.native
+  def send(message: js.Any, sendHandle: js.Any, options: ProcessClass.TransferOptions, callback: js.Function): Boolean = js.native
 
   /**
     * When Node.js is spawned with an IPC channel attached, it can send messages to its parent process
@@ -284,7 +284,7 @@ trait ProcessObject extends js.Object {
     * If Node.js was not spawned with an IPC channel, process.send() will be undefined.
     * @example {{{ process.send(message[, sendHandle[, options]][, callback]) }}}
     */
-  def send(message: js.Any, sendHandle: js.Any, options: ProcessObject.TransferOptions): Boolean = js.native
+  def send(message: js.Any, sendHandle: js.Any, options: ProcessClass.TransferOptions): Boolean = js.native
 
   /**
     * When Node.js is spawned with an IPC channel attached, it can send messages to its parent process
@@ -378,46 +378,32 @@ trait ProcessObject extends js.Object {
   * Process Object Companion
   * @author lawrence.daniels@gmail.com
   */
-object ProcessObject {
+object ProcessClass {
 
   /**
     * Process Object Extensions
     * @author lawrence.daniels@gmail.com
     */
-  implicit class ProcessExtensions(val process: ProcessObject) extends AnyVal {
+  implicit class ProcessExtensions(val process: ProcessClass) extends AnyVal {
 
     /**
-      * @see [[ProcessObject.send()]]
+      * @see [[ProcessClass.send()]]
       */
-    def sendAsync(message: js.Any, sendHandle: js.Any, options: ProcessObject.TransferOptions) = {
-      val promise = Promise[Boolean]()
-      process.send(message, sendHandle, options, (err: js.UndefOr[NodeError], success: Boolean) => {
-        if (!isDefined(err)) promise.success(success) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
+    def sendAsync(message: js.Any, sendHandle: js.Any, options: ProcessClass.TransferOptions)(implicit ec: ExecutionContext) = {
+      toFuture[Boolean](process.send(message, sendHandle, options, _))
     }
 
     /**
-      * @see [[ProcessObject.send()]]
+      * @see [[ProcessClass.send()]]
       */
-    def sendAsync(message: js.Any, sendHandle: js.Any) = {
-      val promise = Promise[Boolean]()
-      process.send(message, sendHandle, (err: js.UndefOr[NodeError], success: Boolean) => {
-        if (!isDefined(err)) promise.success(success) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
+    def sendAsync(message: js.Any, sendHandle: js.Any)(implicit ec: ExecutionContext) = {
+      toFuture[Boolean](process.send(message, sendHandle, _))
     }
 
     /**
-      * @see [[ProcessObject.send()]]
+      * @see [[ProcessClass.send()]]
       */
-    def sendAsync(message: js.Any) = {
-      val promise = Promise[Boolean]()
-      process.send(message, (err: js.UndefOr[NodeError], success: Boolean) => {
-        if (!isDefined(err)) promise.success(success) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def sendAsync(message: js.Any)(implicit ec: ExecutionContext) = toFuture[Boolean](process.send(message, _))
 
   }
 

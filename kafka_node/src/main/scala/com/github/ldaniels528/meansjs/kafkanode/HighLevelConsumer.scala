@@ -1,9 +1,7 @@
 package com.github.ldaniels528.meansjs.kafkanode
 
-import com.github.ldaniels528.meansjs.kafkanode.KafkaNode.KafkaError
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
-import scala.concurrent.{ExecutionContext, Promise}
 import scala.scalajs.js
 
 /**
@@ -17,7 +15,13 @@ trait HighLevelConsumer extends KafkaNodeEventListener {
     * Add topics to current consumer, if any topic to be added not exists, return error
     * @example addTopics(topics, callback, fromOffset)
     */
-  def addTopics(topics: String, callback: js.Function, fromOffset: js.UndefOr[Boolean] = js.undefined): Unit = js.native
+  def addTopics(topics: String, callback: js.Function, fromOffset: Boolean): Unit = js.native
+
+  /**
+    * Add topics to current consumer, if any topic to be added not exists, return error
+    * @example addTopics(topics, callback, fromOffset)
+    */
+  def addTopics(topics: String, callback: js.Function): Unit = js.native
 
   /**
     * Closes the consumer
@@ -81,6 +85,36 @@ object HighLevelConsumer {
   implicit class HighLevelConsumerExtensions(val consumer: HighLevelConsumer) extends AnyVal {
 
     /**
+      * @see [[HighLevelConsumer.addTopics()]]
+      */
+    def addTopicsAsync(topics: String, fromOffset: Boolean) = toFuture[js.Any](consumer.addTopics(topics, _, fromOffset))
+
+    /**
+      * @see [[HighLevelConsumer.addTopics()]]
+      */
+    def addTopicsAsync(topics: String) = toFuture[js.Any](consumer.addTopics(topics, _))
+
+    /**
+      * @see [[HighLevelConsumer.close()]]
+      */
+    def closeAsync = toFuture[js.Any](consumer.close)
+
+    /**
+      * @see [[HighLevelConsumer.close()]]
+      */
+    def closeAsync(force: Boolean) = toFuture[js.Any](consumer.close(force, _))
+
+    /**
+      * @see [[HighLevelConsumer.commit()]]
+      */
+    def commitAsync[T <: js.Any] = toFuture[T](consumer.commit)
+
+    /**
+      * @see [[HighLevelConsumer.removeTopics()]]
+      */
+    def removeTopicsAsync(topics: js.Array[String]) = toFuture[Boolean](consumer.removeTopics(topics, _))
+
+    /**
       * @example consumer.on('error', function (message) {})
       * @see [[HighLevelConsumer.on()]]
       */
@@ -97,61 +131,6 @@ object HighLevelConsumer {
       * @see [[HighLevelConsumer.on()]]
       */
     def onOffsetOutOfRange(callback: js.Function) = consumer.on("offsetOutOfRange", callback)
-
-    /**
-      * @see [[HighLevelConsumer.addTopics()]]
-      */
-    def addTopicsAsync(topics: String, fromOffset: js.UndefOr[Boolean] = js.undefined) = {
-      val promise = Promise[js.Any]()
-      consumer.addTopics(topics, (err: KafkaError, result: js.Any) => {
-        if (!isDefined(err)) promise.success(result) else promise.failure(new RuntimeException(err.toString))
-      }, fromOffset)
-      promise.future
-    }
-
-    /**
-      * @see [[HighLevelConsumer.close()]]
-      */
-    def closeAsync(implicit ec: ExecutionContext) = {
-      val promise = Promise[js.Any]()
-      consumer.close((err: KafkaError, result: js.Any) => {
-        if (!isDefined(err)) promise.success(result) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
-
-    /**
-      * @see [[HighLevelConsumer.close()]]
-      */
-    def closeAsync(force: Boolean)(implicit ec: ExecutionContext) = {
-      val promise = Promise[js.Any]()
-      consumer.close(force, (err: KafkaError, result: js.Any) => {
-        if (!isDefined(err)) promise.success(result) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
-
-    /**
-      * @see [[HighLevelConsumer.commit()]]
-      */
-    def commitAsync[T <: js.Any](implicit ec: ExecutionContext) = {
-      val promise = Promise[T]()
-      consumer.commit((err: KafkaError, result: T) => {
-        if (!isDefined(err)) promise.success(result) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
-
-    /**
-      * @see [[HighLevelConsumer.removeTopics()]]
-      */
-    def removeTopicsAsync(topics: js.Array[String])(implicit ec: ExecutionContext) = {
-      val promise = Promise[Boolean]()
-      consumer.removeTopics(topics, (err: KafkaError, result: Boolean) => {
-        if (!isDefined(err)) promise.success(result) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
 
   }
 

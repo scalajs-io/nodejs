@@ -1,11 +1,9 @@
 package com.github.ldaniels528.meansjs.nodejs.http
 
 import com.github.ldaniels528.meansjs.nodejs
-import com.github.ldaniels528.meansjs.nodejs.NodeError
 import com.github.ldaniels528.meansjs.nodejs.net.Server.ListenerOptions
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
-import scala.concurrent.{ExecutionContext, Promise}
 import scala.scalajs.js
 
 /**
@@ -45,7 +43,7 @@ trait Server extends nodejs.net.Server {
     * three properties, e.g. { port: 12346, family: 'IPv4', address: '127.0.0.1' }
     * @example server.address()
     */
-  def address(): Server.IPAddress = js.native
+  def address(): IPAddress = js.native
 
   /**
     * Asynchronously get the number of concurrent connections on the server. Works when sockets were sent to forks.
@@ -77,8 +75,6 @@ trait Server extends nodejs.net.Server {
   * @author lawrence.daniels@gmail.com
   */
 object Server {
-  val EVENT_ERROR = "error"
-  val EVENT_LISTENING = "listening"
 
   /**
     * Server Extensions
@@ -86,40 +82,26 @@ object Server {
     */
   implicit class ServerExtensions(val server: Server) extends AnyVal {
 
-    def closeAsync(implicit ec: ExecutionContext) = {
-      val promise = Promise[Unit]()
-      server.close((err: js.UndefOr[NodeError]) => {
-        if (!isDefined(err)) promise.success({}) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def closeAsync = toFuture[Unit](server.close)
 
-    def getConnectionsAsync(implicit ec: ExecutionContext) = {
-      val promise = Promise[Int]()
-      server.getConnections((err: js.UndefOr[NodeError], steam: Int) => {
-        if (!isDefined(err)) promise.success(steam) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def getConnectionsAsync = toFuture[Int](server.getConnections)
 
-    def listenAsync(options: ListenerOptions)(implicit ec: ExecutionContext) = {
-      val promise = Promise[Unit]()
-      server.listen(options, (err: js.UndefOr[NodeError]) => {
-        if (!isDefined(err)) promise.success({}) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def listenAsync(options: ListenerOptions) = toFuture[Unit](server.listen(options, _))
 
-  }
+    def onCheckContinue(callback: js.Function) = server.on("checkContinue", callback)
 
-  /**
-    * Server IP Address
-    * @author lawrence.daniels@gmail.com
-    */
-  @js.native
-  trait IPAddress extends js.Object {
-    var address: js.UndefOr[String] = js.native
-    var port: js.UndefOr[Int] = js.native
+    def onClientError(callback: js.Function) = server.on("clientError", callback)
+
+    def onClose(callback: js.Function) = server.on("close", callback)
+
+    def onConnect(callback: js.Function) = server.on("connect", callback)
+
+    def onConnection(callback: js.Function) = server.on("connection", callback)
+
+    def onRequest(callback: js.Function) = server.on("request", callback)
+
+    def onUpgrade(callback: js.Function) = server.on("upgrade", callback)
+
   }
 
 }

@@ -18,8 +18,6 @@ class TransactionExample(require: Require) {
   val zookeeper = require[NodeZookeeper]("node-zookeeper-client")
   val client = zookeeper.createClient("dev528:2181")
 
-  console.log(zookeeper)
-
   client.onceConnected(() => {
     console.log("Connected...")
     client.transaction().

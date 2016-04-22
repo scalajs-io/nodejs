@@ -1,9 +1,7 @@
 package com.github.ldaniels528.meansjs.kafkanode
 
-import com.github.ldaniels528.meansjs.kafkanode.KafkaNode.KafkaError
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
-import scala.concurrent.{ExecutionContext, Promise}
 import scala.scalajs.js
 
 /**
@@ -36,13 +34,7 @@ object Client {
     /**
       * @see [[Client.close()]]
       */
-    def closeAsync()(implicit ec: ExecutionContext) = {
-      val promise = Promise[js.Any]()
-      client.close((err: KafkaError, result: js.Any) => {
-        if (!isDefined(err)) promise.success(result) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def closeAsync() = toFuture[js.Any](client.close)
 
   }
 

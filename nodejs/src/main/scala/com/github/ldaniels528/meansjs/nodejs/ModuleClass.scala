@@ -10,13 +10,13 @@ import scala.scalajs.js
   * @see [[https://nodejs.org/api/modules.html#modules_the_module_object]]
   */
 @js.native
-trait ModuleObject extends js.Object {
+trait ModuleClass extends js.Object {
 
   /**
     * The module objects required by this one.
     * @example module.children
     */
-  var children: js.Array[ModuleObject] = js.native
+  var children: js.Array[ModuleClass] = js.native
 
   /**
     * The module.exports object is created by the Module system. Sometimes this is not acceptable;

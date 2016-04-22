@@ -1,9 +1,7 @@
 package com.github.ldaniels528.meansjs.kafkanode
 
-import com.github.ldaniels528.meansjs.kafkanode.KafkaNode.KafkaError
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
-import scala.concurrent.{ExecutionContext, Promise}
 import scala.scalajs.js
 
 /**
@@ -43,6 +41,16 @@ object HighLevelProducer {
   implicit class HighLevelProducerExtensions(val producer: HighLevelProducer) extends AnyVal {
 
     /**
+      * @see [[HighLevelProducer.createTopics()]]
+      */
+    def createTopicsAsync(topics: js.Array[String], async: Boolean) = toFuture[js.Any](producer.createTopics(topics, async, _))
+
+    /**
+      * @see [[HighLevelProducer.send()]]
+      */
+    def sendAsync(payloads: js.Array[Payload]) = toFuture[js.Any](producer.send(payloads, _))
+
+    /**
       * @see [[HighLevelProducer.on()]]
       */
     def onError(callback: js.Function) = producer.on("error", callback)
@@ -52,27 +60,6 @@ object HighLevelProducer {
       */
     def onReady(callback: js.Function) = producer.on("ready", callback)
 
-    /**
-      * @see [[HighLevelProducer.createTopics()]]
-      */
-    def createTopicsAsync(topics: js.Array[String], async: Boolean, callback: js.Function)(implicit ec: ExecutionContext) = {
-      val promise = Promise[js.Any]()
-      producer.createTopics(topics, async, (err: KafkaError, result: js.Any) => {
-        if (!isDefined(err)) promise.success(result) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
-
-    /**
-      * @see [[HighLevelProducer.send()]]
-      */
-    def sendAsync(payloads: js.Array[Payload])(implicit ec: ExecutionContext) = {
-      val promise = Promise[js.Any]()
-      producer.send(payloads, (err: KafkaError, result: js.Any) => {
-        if (!isDefined(err)) promise.success(result) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
   }
 
 }

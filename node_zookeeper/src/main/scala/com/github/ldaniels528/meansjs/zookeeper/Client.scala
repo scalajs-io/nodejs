@@ -2,9 +2,7 @@ package com.github.ldaniels528.meansjs.zookeeper
 
 import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-import com.github.ldaniels528.meansjs.zookeeper.NodeZookeeper.ZookeeperError
 
-import scala.concurrent.{ExecutionContext, Promise}
 import scala.scalajs.js
 
 /**
@@ -191,6 +189,26 @@ object Client {
   implicit class ClientExtensions(val client: Client) extends AnyVal {
 
     /**
+      * @see [[Client.getChildren()]]
+      */
+    def getChildrenAsync(path: String, watcher: Watcher) = toFuture[js.Array[String]](client.getChildren(path, watcher, _))
+
+    /**
+      * @see [[Client.getChildren()]]
+      */
+    def getChildrenAsync(path: String) = toFuture[js.Any](client.getChildren(path, _))
+
+    /**
+      * @see [[Client.getData()]]
+      */
+    def getDataAsync[T](path: String, watcher: Watcher) = toFuture[js.Array[T]](client.getChildren(path, watcher, _))
+
+    /**
+      * @see [[Client.getData()]]
+      */
+    def getDataAsync[T](path: String) = toFuture[js.Array[T]](client.getChildren(path, _))
+
+    /**
       * @see [[Client.on()]]
       */
     def onConnected(callback: js.Function) = client.on("connected", callback)
@@ -204,54 +222,6 @@ object Client {
       * @see [[Client.on()]]
       */
     def onState(callback: js.Function) = client.on("state", callback)
-
-    /**
-      * @see [[Client.getChildren()]]
-      */
-    def getChildrenAsync(path: String, watcher: Watcher)(implicit ec: ExecutionContext) = {
-      val promise = Promise[js.Array[String]]()
-      client.getChildren(path, watcher, (err: ZookeeperError, results: js.Array[String]) => {
-        if (!isDefined(err)) promise.success(results)
-        else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
-
-    /**
-      * @see [[Client.getChildren()]]
-      */
-    def getChildrenAsync(path: String)(implicit ec: ExecutionContext) = {
-      val promise = Promise[js.Any]()
-      client.getChildren(path, (err: ZookeeperError, results: js.Any) => {
-        if (!isDefined(err)) promise.success(results)
-        else promise.failure(new RuntimeException(err.get))
-      })
-      promise.future
-    }
-
-    /**
-      * @see [[Client.getData()]]
-      */
-    def getDataAsync[T](path: String, watcher: Watcher) = {
-      val promise = Promise[js.Array[T]]()
-      client.getChildren(path, watcher, (err: ZookeeperError, results: js.Array[T]) => {
-        if (!isDefined(err)) promise.success(results)
-        else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
-
-    /**
-      * @see [[Client.getData()]]
-      */
-    def getDataAsync[T](path: String) = {
-      val promise = Promise[js.Array[T]]()
-      client.getChildren(path, (err: ZookeeperError, results: js.Array[T]) => {
-        if (!isDefined(err)) promise.success(results)
-        else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
 
   }
 

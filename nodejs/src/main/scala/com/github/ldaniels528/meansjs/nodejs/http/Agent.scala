@@ -1,9 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs.http
 
-import com.github.ldaniels528.meansjs.nodejs.NodeError
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
-import scala.concurrent.{ExecutionContext, Promise}
 import scala.scalajs.js
 
 /**
@@ -95,13 +93,7 @@ object Agent {
     */
   implicit class AgentExtensions(val agent: Agent) extends AnyVal {
 
-    def createConnectionAsync(options: Agent.ConnectionOptions)(implicit ec: ExecutionContext) = {
-      val promise = Promise[js.Any]()
-      agent.createConnection(options, (err: js.UndefOr[NodeError], steam: js.Any) => {
-        if (!isDefined(err)) promise.success(steam) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def createConnectionAsync(options: Agent.ConnectionOptions) = toFuture[js.Any](agent.createConnection(options, _))
 
   }
 

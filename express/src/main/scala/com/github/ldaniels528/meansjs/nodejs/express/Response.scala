@@ -1,7 +1,5 @@
 package com.github.ldaniels528.meansjs.nodejs.express
 
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-
 import scala.scalajs.js
 
 /**
@@ -63,7 +61,7 @@ trait Response extends js.Object {
   /**
     * Sets cookie name to value. The value parameter may be a string or object converted to JSON.
     */
-  def cookie(name: String, value: js.Any, options: Response.CookieOptions): Unit = js.native
+  def cookie(name: String, value: js.Any, options: CookieOptions): Unit = js.native
 
   def cookie(name: String, value: js.Any): Unit = js.native
 
@@ -71,7 +69,7 @@ trait Response extends js.Object {
     * Clears the cookie specified by name. For details about the options object.
     * @see [[Response.cookie()]]
     */
-  def clearCookie(name: String, options: Response.CookieOptions): Unit = js.native
+  def clearCookie(name: String, options: CookieOptions): Unit = js.native
 
   def clearCookie(name: String): Unit = js.native
 
@@ -178,9 +176,9 @@ trait Response extends js.Object {
     * field based on the filename’s extension. Unless the root option is set in the
     * options object, path must be an absolute path to the file.
     */
-  def sendFile(path: String, options: Response.FileTransferOptions, callback: js.Function): Unit = js.native
+  def sendFile(path: String, options: FileTransferOptions, callback: js.Function): Unit = js.native
 
-  def sendFile(path: String, options: Response.FileTransferOptions): Unit = js.native
+  def sendFile(path: String, options: FileTransferOptions): Unit = js.native
 
   def sendFile(path: String): Unit = js.native
 
@@ -221,113 +219,10 @@ trait Response extends js.Object {
 object Response {
 
   /**
-    * Cookie Options
-    * @author lawrence.daniels@gmail.com
-    */
-  @js.native
-  trait CookieOptions extends js.Object {
-    /** Domain name for the cookie. Defaults to the domain name of the app. */
-    var domain: js.UndefOr[String]
-
-    /** A synchronous function used for cookie value encoding. Defaults to encodeURIComponent. */
-    var encode: js.UndefOr[js.Function]
-
-    /** Expiry date of the cookie in GMT. If not specified or set to 0, creates a session cookie. */
-    var expires: js.UndefOr[js.Date]
-
-    /** Flags the cookie to be accessible only by the web server. */
-    var httpOnly: js.UndefOr[Boolean]
-
-    /** Convenient option for setting the expiry time relative to the current time in milliseconds. */
-    var maxAge: js.UndefOr[String]
-
-    /** Path for the cookie. Defaults to “/”. */
-    var path: js.UndefOr[String]
-
-    /** Marks the cookie to be used with HTTPS only. */
-    var secure: js.UndefOr[Boolean]
-
-    /** Indicates if the cookie should be signed. */
-    var signed: js.UndefOr[Boolean]
-  }
-
-  /**
-    * Cookie Options Companion
-    * @author lawrence.daniels@gmail.com
-    */
-  object CookieOptions {
-
-    def apply(domain: js.UndefOr[String] = js.undefined,
-              encode: js.UndefOr[js.Function] = js.undefined,
-              expires: js.UndefOr[js.Date] = js.undefined,
-              httpOnly: js.UndefOr[Boolean] = js.undefined,
-              maxAge: js.UndefOr[String] = js.undefined,
-              path: js.UndefOr[String] = js.undefined,
-              secure: js.UndefOr[Boolean] = js.undefined,
-              signed: js.UndefOr[Boolean] = js.undefined) = {
-      val options = makeNew[CookieOptions]
-      options.domain = domain
-      options.encode = encode
-      options.expires = expires
-      options.httpOnly = httpOnly
-      options.maxAge = maxAge
-      options.path = path
-      options.secure = secure
-      options.signed = signed
-      options
-    }
-
-  }
-
-  /**
-    * File Transfer Options
-    * @author lawrence.daniels@gmail.com
-    */
-  @js.native
-  trait FileTransferOptions extends js.Object {
-    /** Sets the max-age property of the Cache-Control header in milliseconds or a string in ms format	(default: 0) */
-    var maxAge: js.UndefOr[Int]
-
-    /** Root directory for relative filenames. */
-    var root: js.UndefOr[String]
-
-    /** Sets the Last-Modified header to the last modified date of the file on the OS. Set false to disable it.	Enabled	4.9.0+ */
-    var lastModified: js.UndefOr[js.Date]
-
-    /** Object containing HTTP headers to serve with the file. */
-    var headers: js.UndefOr[js.Any]
-
-    /** Option for serving dotfiles. Possible values are “allow”, “deny”, “ignore”.	“ignore” */
-    var dotfiles: js.UndefOr[js.Array[String]]
-  }
-
-  /**
-    * File Transfer Options Companion
-    * @author lawrence.daniels@gmail.com
-    */
-  object FileTransferOptions {
-
-    def apply(maxAge: js.UndefOr[Int] = js.undefined,
-              root: js.UndefOr[String] = js.undefined,
-              lastModified: js.UndefOr[js.Date] = js.undefined,
-              headers: js.UndefOr[js.Any] = js.undefined,
-              dotfiles: js.UndefOr[js.Array[String]] = js.undefined) = {
-      val options = makeNew[FileTransferOptions]
-      options.maxAge = maxAge
-      options.root = root
-      options.lastModified = lastModified
-      options.headers = headers
-      options.dotfiles = dotfiles
-      options
-    }
-
-  }
-
-  /**
     * Http Response Extensions
     * @author lawrence.daniels@gmail.com
     */
-  implicit class HttpResponseEnrich(val response: Response) extends AnyVal {
+  implicit class HttpResponseExtensions(val response: Response) extends AnyVal {
 
     def badRequest() = response.sendStatus(400)
 

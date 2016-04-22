@@ -4,7 +4,7 @@ import sbt.Keys._
 import sbt.Project.projectToRef
 import sbt._
 
-val apiVersion = "0.0.7"
+val apiVersion = "0.0.8"
 val paradisePluginVersion = "2.1.0"
 val _scalaVersion = "2.11.8"
 val scalaJsDomVersion = "0.9.0"
@@ -25,7 +25,7 @@ val commonSettings = Seq(
 )
 
 lazy val root = (project in file(".")).
-  aggregate(core, angularjs, express, facebook, kafka_node, linkedin, mongodb, nodejs)
+  aggregate(core, angularjs, express, facebook, kafka_node, linkedin, mongodb, node_zookeeper, nodejs, repl)
 
 lazy val core = (project in file("core")).
   enablePlugins(ScalaJSPlugin).
@@ -107,9 +107,18 @@ lazy val node_zookeeper = (project in file("node_zookeeper")).
     description := "Zookeeper client bindings for Scala.js"
   )
 
+lazy val repl = (project in file("repl")).
+  dependsOn(core, nodejs).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-repl",
+    description := "REPL bindings for Scala.js"
+  )
+
 lazy val examples = (project in file("examples")).
-  aggregate(core, express, kafka_node, mongodb, nodejs, node_zookeeper).
-  dependsOn(core, express, kafka_node, mongodb, nodejs, node_zookeeper).
+  aggregate(core, express, kafka_node, mongodb, nodejs, node_zookeeper, repl).
+  dependsOn(core, express, kafka_node, mongodb, nodejs, node_zookeeper, repl).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(

@@ -2,11 +2,12 @@ package com.github.ldaniels528.meansjs.util
 
 import org.scalajs.dom.console
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ExecutionContext, Future, Promise}
 import scala.language.implicitConversions
 import scala.scalajs.js
 import scala.scalajs.js.Dynamic.{global => g}
 import scala.scalajs.js.JSON
+import scala.scalajs.runtime.wrapJavaScriptException
 import scala.util.{Failure, Success, Try}
 
 /**
@@ -29,6 +30,18 @@ object ScalaJsHelper {
   def params(values: (String, Any)*): String = {
     val queryString = values map { case (k, v) => s"$k=${g.encodeURI(String.valueOf(v))}" } map (_.replaceAllLiterally("&", "%26")) mkString "&"
     if (queryString.nonEmpty) "?" + queryString else queryString
+  }
+
+  /**
+    * Converts a JavaScript-style callback to a Scala-style future
+    * @param f the given callback function
+    * @tparam T the return type
+    * @return a Scala-style future
+    */
+  def toFuture[T](f: js.Function => Unit): Future[T] = {
+    val promise = Promise[T]()
+    f((err: js.Any, result: T) => if (!isDefined(err)) promise.success(result) else promise.failure(wrapJavaScriptException(err)))
+    promise.future
   }
 
   ////////////////////////////////////////////////////////////////////////

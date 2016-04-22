@@ -11,7 +11,7 @@ import scala.scalajs.js
 @js.native
 trait JsIterator extends js.Object {
 
-  // TODO replace with offical js.iterator once released - https://github.com/scala-js/scala-js/issues/1141
+  // TODO replace with the offical js.iterator once released - https://github.com/scala-js/scala-js/issues/1141
 
   def next(): IteratorResult = js.native
 

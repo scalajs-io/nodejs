@@ -1,9 +1,7 @@
 package com.github.ldaniels528.meansjs.mongodb
 
-import MongoDB.MongoError
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
-import scala.concurrent.{ExecutionContext, Promise}
 import scala.scalajs.js
 
 /**
@@ -67,41 +65,13 @@ object MongoClient {
     */
   implicit class MongoClientEnrich(val client: MongoClient) extends AnyVal {
 
-    def closeAsync(implicit ec: ExecutionContext) = {
-      val promise = Promise[MongoDatabase]()
-      client.close((err: MongoError, conn: MongoDatabase) => {
-        if (!isDefined(err)) promise.success(conn)
-        else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def closeAsync = toFuture[MongoDatabase](client.close)
 
-    def connectAsync(url: String)(implicit ec: ExecutionContext) = {
-      val promise = Promise[MongoDatabase]()
-      client.connect(url, (err: MongoError, conn: MongoDatabase) => {
-        if (!isDefined(err)) promise.success(conn)
-        else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def connectAsync(url: String) = toFuture[MongoDatabase](client.connect(url, _))
 
-    def connectAsync(url: String, options: ConnectionOptions)(implicit ec: ExecutionContext) = {
-      val promise = Promise[MongoDatabase]()
-      client.connect(url, options, (err: MongoError, conn: MongoDatabase) => {
-        if (!isDefined(err)) promise.success(conn)
-        else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def connectAsync(url: String, options: ConnectionOptions) = toFuture[MongoDatabase](client.connect(url, options, _))
 
-    def openAsync(implicit ec: ExecutionContext) = {
-      val promise = Promise[MongoDatabase]()
-      client.open((err: MongoError, conn: MongoDatabase) => {
-        if (!isDefined(err)) promise.success(conn)
-        else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def openAsync = toFuture[MongoDatabase](client.open)
 
   }
 

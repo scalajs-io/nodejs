@@ -2,9 +2,8 @@ package com.github.ldaniels528.meansjs.zookeeper
 
 import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-import com.github.ldaniels528.meansjs.zookeeper.NodeZookeeper.ZookeeperError
 
-import scala.concurrent.{ExecutionContext, Promise}
+import scala.concurrent.ExecutionContext
 import scala.scalajs.js
 
 /**
@@ -97,13 +96,7 @@ object Transaction {
     /**
       * @see [[Transaction.commit()]]
       */
-    def commitAsync()(implicit ec: ExecutionContext) = {
-      val promise = Promise[js.Any]()
-      transaction.commit((err: ZookeeperError, result: js.Any) => {
-        if (!isDefined(err)) promise.success(result) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def commitAsync()(implicit ec: ExecutionContext) = toFuture[js.Any](transaction.commit)
 
   }
 

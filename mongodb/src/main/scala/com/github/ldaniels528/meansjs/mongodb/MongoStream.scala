@@ -1,5 +1,7 @@
 package com.github.ldaniels528.meansjs.mongodb
 
+import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
+
 import scala.scalajs.js
 
 /**
@@ -7,7 +9,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait MongoStream extends js.Object {
+trait MongoStream extends EventEmitter {
 
   /**
     * This is the preferred way if you have to retrieve a lot of data for streaming, as data is deserialized
@@ -22,7 +24,7 @@ trait MongoStream extends js.Object {
     * @param eventName the given event name
     * @param callback  the given callback function
     */
-  def on(eventName: String, callback: js.Function): Unit = js.native
+  override def on(eventName: String, callback: js.Function): this.type = js.native
 
 }
 

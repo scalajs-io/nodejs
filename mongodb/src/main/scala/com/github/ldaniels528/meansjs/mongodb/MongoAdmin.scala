@@ -1,9 +1,7 @@
 package com.github.ldaniels528.meansjs.mongodb
 
-import MongoDB.MongoError
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
-import scala.concurrent.{ExecutionContext, Promise}
 import scala.scalajs.js
 
 /**
@@ -35,37 +33,13 @@ object MongoAdmin {
     */
   implicit class MongoAdminEnrich(val admin: MongoAdmin) extends AnyVal {
 
-    def profilingInfoAsync(name: String)(implicit ec: ExecutionContext) = {
-      val promise = Promise[ProfilingInfo]()
-      admin.profilingInfo((err: MongoError, info: ProfilingInfo) => {
-        if (!isDefined(err)) promise.success(info) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def profilingInfoAsync(name: String) = toFuture[ProfilingInfo](admin.profilingInfo)
 
-    def profilingLevelAsync(name: String)(implicit ec: ExecutionContext) = {
-      val promise = Promise[String]()
-      admin.profilingLevel((err: MongoError, level: String) => {
-        if (!isDefined(err)) promise.success(level) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def profilingLevelAsync(name: String) = toFuture[String](admin.profilingLevel)
 
-    def setProfilingLevelAsync(level: String)(implicit ec: ExecutionContext) = {
-      val promise = Promise[String]()
-      admin.setProfilingLevel(level, (err: MongoError, level: String) => {
-        if (!isDefined(err)) promise.success(level) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def setProfilingLevelAsync(level: String) = toFuture[String](admin.setProfilingLevel(level, _))
 
-    def validateCollection(collectionName: String)(implicit ec: ExecutionContext) = {
-      val promise = Promise[ValidationResult]()
-      admin.validateCollection(collectionName, (err: MongoError, result: ValidationResult) => {
-        if (!isDefined(err)) promise.success(result) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def validateCollection(collectionName: String) = toFuture[ValidationResult](admin.validateCollection(collectionName, _))
 
   }
 

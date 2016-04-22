@@ -1,9 +1,7 @@
 package com.github.ldaniels528.meansjs.mongodb
 
-import MongoDB.MongoError
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
-import scala.concurrent.{ExecutionContext, Promise}
 import scala.scalajs.js
 
 /**
@@ -52,69 +50,21 @@ object MongoCollection {
     */
   implicit class MongoCollectionEnrich(val coll: MongoCollection) extends AnyVal {
 
-    def dropAsync(implicit ec: ExecutionContext) = {
-      val promise = Promise[OperationResult]()
-      coll.drop((err: MongoError, result: OperationResult) => {
-        if (!isDefined(err)) promise.success(result) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def dropAsync = toFuture[OperationResult](coll.drop)
 
-    def findAsync[T <: js.Any](implicit ec: ExecutionContext) = {
-      val promise = Promise[js.Array[T]]()
-      coll.find().toArray((err: MongoError, items: js.Array[T]) => {
-        if (!isDefined(err)) promise.success(items) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def findAsync[T <: js.Any] = toFuture[js.Array[T]](coll.find().toArray)
 
-    def findAsync[T <: js.Any](selector: js.Any)(implicit ec: ExecutionContext) = {
-      val promise = Promise[js.Array[T]]()
-      coll.find(selector).toArray((err: MongoError, items: js.Array[T]) => {
-        if (!isDefined(err)) promise.success(items) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def findAsync[T <: js.Any](selector: js.Any) = toFuture[js.Array[T]](coll.find(selector).toArray)
 
-    def findOneAsync[T <: js.Any](selector: js.Any)(implicit ec: ExecutionContext) = {
-      val promise = Promise[Option[T]]()
-      coll.findOne(selector, (err: MongoError, doc: T) => {
-        if (!isDefined(err)) promise.success(Option(doc)) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def findOneAsync[T <: js.Any](selector: js.Any) = toFuture[Option[T]](coll.findOne(selector, _))
 
-    def insertAsync(doc: js.Any)(implicit ec: ExecutionContext) = {
-      val promise = Promise[WriteResult]()
-      coll.insert(doc, WriteOptions(w = 1), (err: MongoError, result: WriteResult) => {
-        if (!isDefined(err)) promise.success(result) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def insertAsync(doc: js.Any) = toFuture[WriteResult](coll.insert(doc, WriteOptions(w = 1), _))
 
-    def insertAsync(docs: js.Array[js.Any])(implicit ec: ExecutionContext) = {
-      val promise = Promise[WriteResult]()
-      coll.insert(docs, WriteOptions(w = 1), (err: MongoError, result: WriteResult) => {
-        if (!isDefined(err)) promise.success(result) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def insertAsync(docs: js.Array[js.Any]) = toFuture[WriteResult](coll.insert(docs, WriteOptions(w = 1), _))
 
-    def removeAsync(doc: js.Any)(implicit ec: ExecutionContext) = {
-      val promise = Promise[WriteResult]()
-      coll.remove(doc, WriteOptions(w = 1), (err: MongoError, result: WriteResult) => {
-        if (!isDefined(err)) promise.success(result) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def removeAsync(doc: js.Any) = toFuture[WriteResult](coll.remove(doc, WriteOptions(w = 1), _))
 
-    def updateAsync(selector: js.Any, modifier: js.Any)(implicit ec: ExecutionContext) = {
-      val promise = Promise[WriteResult]()
-      coll.update(selector, modifier, WriteOptions(w = 1), (err: MongoError, result: WriteResult) => {
-        if (!isDefined(err)) promise.success(result) else promise.failure(new RuntimeException(err.toString))
-      })
-      promise.future
-    }
+    def updateAsync(selector: js.Any, modifier: js.Any) = toFuture[WriteResult](coll.update(selector, modifier, WriteOptions(w = 1), _))
 
   }
 

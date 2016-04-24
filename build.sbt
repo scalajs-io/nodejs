@@ -4,7 +4,7 @@ import sbt.Keys._
 import sbt.Project.projectToRef
 import sbt._
 
-val apiVersion = "0.0.8"
+val apiVersion = "0.0.9"
 val paradisePluginVersion = "2.1.0"
 val _scalaVersion = "2.11.8"
 val scalaJsDomVersion = "0.9.0"
@@ -25,14 +25,14 @@ val commonSettings = Seq(
 )
 
 lazy val root = (project in file(".")).
-  aggregate(core, angularjs, express, facebook, kafka_node, linkedin, mongodb, node_zookeeper, nodejs, repl)
+  aggregate(core, angularjs, express, facebook, kafka_node, linkedin, mongodb, node, node_os, node_zookeeper, repl)
 
 lazy val core = (project in file("core")).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
-    name := "means",
-    description := "Core bindings for MEANS.js"
+    name := "means-core",
+    description := "MEANS.js core utilities"
   )
 
 lazy val angularjs = (project in file("angularjs")).
@@ -41,84 +41,93 @@ lazy val angularjs = (project in file("angularjs")).
   settings(commonSettings: _*).
   settings(
     name := "means-angularjs",
-    description := "AngularJS bindings for Scala.js"
+    description := "AngularJS facade for Scala.js"
   )
 
-lazy val facebook = (project in file("facebook")).
+lazy val facebook = (project in file("social/facebook")).
   dependsOn(core, angularjs).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
-    name := "means-facebook",
-    description := "Facebook buildings for Scala.js"
+    name := "means-social-facebook",
+    description := "Social/Facebook facade for Scala.js"
   )
 
-lazy val express = (project in file("express")).
-  dependsOn(core, nodejs).
+lazy val express = (project in file("node/express")).
+  dependsOn(core, node).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
-    name := "means-express",
-    description := "Express.js bindings for Scala.js"
+    name := "means-node-express",
+    description := "NodeJS/Express facade for Scala.js"
   )
 
-lazy val linkedin = (project in file("linkedin")).
+lazy val linkedin = (project in file("social/linkedin")).
   dependsOn(core, angularjs).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
-    name := "means-linkedin",
-    description := "LinkedIn buildings for Scala.js"
+    name := "means-social-linkedin",
+    description := "Social/LinkedIn facade for Scala.js"
   )
 
-lazy val kafka_node = (project in file("kafka_node")).
-  dependsOn(core, nodejs, node_zookeeper).
+lazy val kafka_node = (project in file("node/kafka_node")).
+  dependsOn(core, node, node_zookeeper).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
-    name := "means-kafka-node",
-    description := "Kafka bindings for Scala.js"
+    name := "means-node-kafkanode",
+    description := "NodeJS/Kafka facade for Scala.js"
   )
 
-lazy val mongodb = (project in file("mongodb")).
-  dependsOn(core, nodejs).
+lazy val mongodb = (project in file("node/mongodb")).
+  dependsOn(core, node).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
-    name := "means-mongodb",
-    description := "MongoDB bindings for Scala.js"
+    name := "means-node-mongodb",
+    description := "NodeJS/MongoDB facade for Scala.js"
   )
 
-lazy val nodejs = (project in file("nodejs")).
+lazy val node = (project in file("node/core")).
   dependsOn(core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
-    name := "means-nodejs",
-    description := "Node.js bindings for Scala.js"
+    name := "means-node-core",
+    description := "NodeJS/Core facade for Scala.js"
   )
 
-lazy val node_zookeeper = (project in file("node_zookeeper")).
-  dependsOn(core, nodejs).
+lazy val node_os = (project in file("node/os")).
+  dependsOn(core, node).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-os",
+    description := "NodeJS/OS facade for Scala.js"
+  )
+
+lazy val node_zookeeper = (project in file("node/node_zookeeper")).
+  dependsOn(core, node).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "means-node-zookeeper-client",
-    description := "Zookeeper client bindings for Scala.js"
+    description := "NodeJS/Zookeeper-client facade for Scala.js"
   )
 
-lazy val repl = (project in file("repl")).
-  dependsOn(core, nodejs).
+lazy val repl = (project in file("node/repl")).
+  dependsOn(core, node).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "means-node-repl",
-    description := "REPL bindings for Scala.js"
+    description := "NodeJS/REPL facade for Scala.js"
   )
 
 lazy val examples = (project in file("examples")).
-  aggregate(core, express, kafka_node, mongodb, nodejs, node_zookeeper, repl).
-  dependsOn(core, express, kafka_node, mongodb, nodejs, node_zookeeper, repl).
+  aggregate(core, express, kafka_node, mongodb, node, node_os, node_zookeeper, repl).
+  dependsOn(core, express, kafka_node, mongodb, node, node_os, node_zookeeper, repl).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -126,7 +135,7 @@ lazy val examples = (project in file("examples")).
     description := "MEANS.js examples",
     pipelineStages := Seq(gzip),
     compile in Compile <<=
-      (compile in Compile) dependsOn (fastOptJS in(nodejs, Compile)),
+      (compile in Compile) dependsOn (fastOptJS in(node, Compile)),
     ivyScala := ivyScala.value map (_.copy(overrideScalaVersion = true))
   )
 

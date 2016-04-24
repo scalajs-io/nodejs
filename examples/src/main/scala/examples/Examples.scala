@@ -1,7 +1,7 @@
 package examples
 
 import com.github.ldaniels528.meansjs.nodejs._
-import examples.nodejs.{basics, buffers, events, express, http, kafka, mongodb, net, repl, timers, zookeeper}
+import examples.nodejs.{events, express, http, net, _}
 import org.scalajs.dom.console
 
 import scala.scalajs.js
@@ -21,16 +21,17 @@ object Examples extends js.JSApp {
 
   override def main(): Unit = ()
 
-  def start(require: Require) {
+  def start(require: Require, scope: js.Dynamic) {
     val args = process.argv.drop(2)
     if (args.isEmpty) usageError()
     else {
       args map { arg => console.log(s"Executing example '$arg'"); arg } foreach {
         case "Buffers" => new buffers.Buffers(require)
         case "Classes" => new basics.Classes(require)
-        case "EventEmitterExample" => new events.EventEmitterExample(require)
+        case "EventEmitterExample" => new events.EventEmitterExample(require, scope)
         case "ExpressRoutingExample" => new express.ExpressRoutingExample(require)
         case "ExpressServerExample" => new express.ExpressServerExample(require)
+        case "Files" => new basics.Files(require)
         case "HttpServerExample" => new http.HttpServerExample(require)
         case "IntermediateTimers" => new timers.IntermediateTimers(require)
         case "MongoClientExample" => new mongodb.MongoClientExample(require)
@@ -39,6 +40,7 @@ object Examples extends js.JSApp {
         case "ProducerEnhanced" => new kafka.ProducerEnhanced(require)
         case "REPLExample" => new repl.REPLExample(require)
         case "StateExample" => new zookeeper.StateExample(require)
+        case "StringDecoderExample" => new StringDecoderExample(require)
         case "TinyCLI" => new repl.TinyCLI(require)
         case "TransactionExample" => new zookeeper.TransactionExample(require)
         case arg => usageError()

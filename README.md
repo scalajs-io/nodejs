@@ -1,8 +1,8 @@
 MEANS.js
 =============
-Type-safe Scala.js Bindings for the MEAN Stack (MongoDB ExpressJS AngularJS NodeJS).
+MEANS.js is a Scala.js Facade for the MEAN Stack (MongoDB ExpressJS AngularJS NodeJS).
  
-Table of Contents
+## Table of Contents
 
 * <a href="#Introduction">Introduction</a>
 * <a href="#Development">Development</a>
@@ -21,8 +21,11 @@ Table of Contents
 <a name="Introduction"></a>
 ## Introduction
 
-The goal of MEANS.js is to be complete set of type-safe Scala.js bindings for the entire MEAN Stack + Scala.js. 
-MEANS.js goes to great lengths to make all the things you love about writing Scala on the MEAN Stack.
+The goal of MEANS.js is to be a complete Scala.js facade for the entire MEAN Stack. Why? Because I love NodeJS,
+ but I have a love/hate relationship with JavaScript. And many others feel the same way about JavaScript, which is why
+ there are so many languages that are designed to improve the experience (CoffeeScript, TypeScript, Scala.js and others). 
+ Simply put, MEANS.js let's me have my cake and eat it too! And as such, I've gone to great lengths to bring all the 
+ things you love about developing applications on the MEAN Stack to Scala.
 
 <a name="Development"></a>
 ## Development
@@ -30,7 +33,6 @@ MEANS.js goes to great lengths to make all the things you love about writing Sca
 <a name="Requirements"></a>
 #### Build Requirements
 
-* [Java SDK 1.8] (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Scala 2.11.8+] (http://scala-lang.org/download/)
 * [SBT 0.13.11+] (http://www.scala-sbt.org/download.html)
 
@@ -457,8 +459,8 @@ Consider the following example:
 
 ```scala
 $http.get[js.Dynamic]("/api/tradingClock/status") onComplete {
-    case Success(obj) => console.log(angular.toJson(obj))
-    case Failure(e) => ...
+    case Success(status) => console.log(angular.toJson(status))
+    case Failure(e) => console.error(e.getMessage)
 }
 ```
 
@@ -473,10 +475,11 @@ However, sometimes we instead want to retrieve the data as a type-safe Scala obj
 
 ```scala
 $http.get[MarketStatus]("/api/tradingClock/status") onComplete {
-    case Success(status) => ...
-    case Failure(e) => ...
+    case Success(status) => console.log(angular.toJson(status))
+    case Failure(e) => console.error(e.getMessage)
 }
 
+@js.native
 trait MarketStatus extends js.Object {
     var stateChanged: Boolean = js.native
     var active: Boolean = js.native

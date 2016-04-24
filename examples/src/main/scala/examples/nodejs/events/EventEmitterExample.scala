@@ -3,11 +3,13 @@ package examples.nodejs.events
 import com.github.ldaniels528.meansjs.nodejs._
 import com.github.ldaniels528.meansjs.nodejs.events.Events
 
+import scala.scalajs.js
+
 /**
   * Event Emitting Example
   * @author lawrence.daniels@gmail.com
   */
-class EventEmitterExample(require: Require) {
+class EventEmitterExample(require: Require, scope: js.Dynamic) {
   val eventEmitter = require[Events]("events")
   val ee = eventEmitter()
 

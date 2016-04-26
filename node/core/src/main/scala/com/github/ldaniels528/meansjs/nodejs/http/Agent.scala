@@ -67,7 +67,7 @@ trait Agent extends js.Object {
     * callback has a signature of (err, stream).
     * @example agent.createConnection(options[, callback])
     */
-  def createConnection(options: Agent.ConnectionOptions, callback: js.Function): Unit = js.native
+  def createConnection(options: ConnectionOptions, callback: js.Function): Unit = js.native
 
   /**
     * Destroy any sockets that are currently in use by the agent.
@@ -93,50 +93,10 @@ object Agent {
     */
   implicit class AgentExtensions(val agent: Agent) extends AnyVal {
 
-    def createConnectionAsync(options: Agent.ConnectionOptions) = toFuture[js.Any](agent.createConnection(options, _))
+    def createConnectionAsync(options: ConnectionOptions) = callbackWithErrorToFuture[js.Any](agent.createConnection(options, _))
 
   }
 
-  /**
-    * Connection Options
-    * @author lawrence.daniels@gmail.com
-    */
-  @js.native
-  trait ConnectionOptions extends js.Object {
-    /** Keep sockets around in a pool to be used by other requests in the future. Default = false */
-    var keepAlive: js.UndefOr[Boolean]
 
-    /**
-      * When using HTTP KeepAlive, how often to send TCP KeepAlive packets over sockets being kept alive.
-      * Default = 1000. Only relevant if keepAlive is set to true.
-      */
-    var keepAliveMsecs: js.UndefOr[Int]
-
-    /** Maximum number of sockets to allow per host. Default = Infinity. */
-    var maxSockets: js.UndefOr[Double]
-
-    /** Maximum number of sockets to leave open in a free state. Only relevant if keepAlive is set to true. Default = 256. */
-    var maxFreeSockets: js.UndefOr[Int]
-  }
-
-  /**
-    * Connection Options Companion
-    * @author lawrence.daniels@gmail.com
-    */
-  object ConnectionOptions {
-
-    def apply(keepAlive: js.UndefOr[Boolean] = js.undefined,
-              keepAliveMsecs: js.UndefOr[Int] = js.undefined,
-              maxSockets: js.UndefOr[Double] = js.undefined,
-              maxFreeSockets: js.UndefOr[Int] = js.undefined) = {
-      val options = makeNew[ConnectionOptions]
-      options.keepAlive = keepAlive
-      options.keepAliveMsecs = keepAliveMsecs
-      options.maxSockets = maxSockets
-      options.maxFreeSockets = maxFreeSockets
-      options
-    }
-
-  }
 
 }

@@ -50,21 +50,21 @@ object MongoCollection {
     */
   implicit class MongoCollectionEnrich(val coll: MongoCollection) extends AnyVal {
 
-    def dropAsync = toFuture[OperationResult](coll.drop)
+    def dropAsync = callbackWithErrorToFuture[OperationResult](coll.drop)
 
-    def findAsync[T <: js.Any] = toFuture[js.Array[T]](coll.find().toArray)
+    def findAsync[T <: js.Any] = callbackWithErrorToFuture[js.Array[T]](coll.find().toArray)
 
-    def findAsync[T <: js.Any](selector: js.Any) = toFuture[js.Array[T]](coll.find(selector).toArray)
+    def findAsync[T <: js.Any](selector: js.Any) = callbackWithErrorToFuture[js.Array[T]](coll.find(selector).toArray)
 
-    def findOneAsync[T <: js.Any](selector: js.Any) = toFuture[Option[T]](coll.findOne(selector, _))
+    def findOneAsync[T <: js.Any](selector: js.Any) = callbackWithErrorToFuture[js.UndefOr[T]](coll.findOne(selector, _))
 
-    def insertAsync(doc: js.Any) = toFuture[WriteResult](coll.insert(doc, WriteOptions(w = 1), _))
+    def insertAsync(doc: js.Any) = callbackWithErrorToFuture[WriteResult](coll.insert(doc, WriteOptions(w = 1), _))
 
-    def insertAsync(docs: js.Array[js.Any]) = toFuture[WriteResult](coll.insert(docs, WriteOptions(w = 1), _))
+    def insertAsync(docs: js.Array[js.Any]) = callbackWithErrorToFuture[WriteResult](coll.insert(docs, WriteOptions(w = 1), _))
 
-    def removeAsync(doc: js.Any) = toFuture[WriteResult](coll.remove(doc, WriteOptions(w = 1), _))
+    def removeAsync(doc: js.Any) = callbackWithErrorToFuture[WriteResult](coll.remove(doc, WriteOptions(w = 1), _))
 
-    def updateAsync(selector: js.Any, modifier: js.Any) = toFuture[WriteResult](coll.update(selector, modifier, WriteOptions(w = 1), _))
+    def updateAsync(selector: js.Any, modifier: js.Any) = callbackWithErrorToFuture[WriteResult](coll.update(selector, modifier, WriteOptions(w = 1), _))
 
   }
 

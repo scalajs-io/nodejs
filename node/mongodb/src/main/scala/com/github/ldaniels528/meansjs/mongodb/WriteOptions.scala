@@ -1,16 +1,15 @@
 package com.github.ldaniels528.meansjs.mongodb
 
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-
 import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * Write Options
   * @author lawrence.daniels@gmail.com
   */
-@js.native
-trait WriteOptions extends js.Object {
-  var w: Int = js.native
+@ScalaJSDefined
+class WriteOptions extends js.Object {
+  var w: Int = _
 }
 
 /**
@@ -20,7 +19,7 @@ trait WriteOptions extends js.Object {
 object WriteOptions {
 
   def apply(w: Int): WriteOptions = {
-    val options = makeNew[WriteOptions]
+    val options = new WriteOptions()
     options.w = w
     options
   }

@@ -1,16 +1,15 @@
 package com.github.ldaniels528.meansjs.mongodb
 
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-
 import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * Mongo Collection Retrieval Options
   * @author lawrence.daniels@gmail.com
   */
-@js.native
-trait CollectionOptions extends js.Object {
-  var strict: Boolean = js.native
+@ScalaJSDefined
+class CollectionOptions extends js.Object {
+  var strict: Boolean = _
 }
 
 /**
@@ -20,7 +19,7 @@ trait CollectionOptions extends js.Object {
 object CollectionOptions {
 
   def apply(strict: Boolean) = {
-    val options = makeNew[CollectionOptions]
+    val options = new CollectionOptions()
     options.strict = strict
     options
   }

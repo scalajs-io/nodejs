@@ -91,27 +91,27 @@ object Consumer {
     /**
       * @see [[Consumer.addTopics()]]
       */
-    def addTopicsAsync(topics: String, fromOffset: Boolean) = toFuture[js.Any](consumer.addTopics(topics, _, fromOffset))
+    def addTopicsAsync(topics: String, fromOffset: Boolean) = callbackWithErrorToFuture[js.Any](consumer.addTopics(topics, _, fromOffset))
 
     /**
       * @see [[Consumer.addTopics()]]
       */
-    def addTopicsAsync(topics: String) = toFuture[js.Any](consumer.addTopics(topics, _))
+    def addTopicsAsync(topics: String) = callbackWithErrorToFuture[js.Any](consumer.addTopics(topics, _))
 
     /**
       * @see [[Consumer.close()]]
       */
-    def closeAsync = toFuture[js.Any](consumer.close)
+    def closeAsync = callbackWithErrorToFuture[js.Any](consumer.close)
 
     /**
       * @see [[Consumer.commit()]]
       */
-    def commitAsync[T <: js.Any] = toFuture[T](consumer.commit)
+    def commitAsync[T <: js.Any] = callbackWithErrorToFuture[T](consumer.commit)
 
     /**
       * @see [[Consumer.removeTopics()]]
       */
-    def removeTopicsAsync(topics: js.Array[String]) = toFuture[Boolean](consumer.removeTopics(topics, _))
+    def removeTopicsAsync(topics: js.Array[String]) = callbackWithErrorToFuture[Boolean](consumer.removeTopics(topics, _))
 
     /**
       * @see [[Consumer.on()]]

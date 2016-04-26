@@ -1,16 +1,15 @@
 package com.github.ldaniels528.meansjs.nodejs.net
 
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-
 import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * Client Options
   * @author lawrence.daniels@gmail.com
   */
-@js.native
-trait ClientOptions extends js.Object {
-  var port: js.UndefOr[Int]
+@ScalaJSDefined
+class ClientOptions extends js.Object {
+  var port: js.UndefOr[Int] = _
 }
 
 /**
@@ -20,7 +19,7 @@ trait ClientOptions extends js.Object {
 object ClientOptions {
 
   def apply(port: js.UndefOr[Int] = js.undefined) = {
-    val options = makeNew[ClientOptions]
+    val options = new ClientOptions()
     options.port = port
     options
   }

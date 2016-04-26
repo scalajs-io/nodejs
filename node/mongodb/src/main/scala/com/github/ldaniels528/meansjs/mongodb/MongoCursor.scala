@@ -33,11 +33,11 @@ object MongoCursor {
     */
   implicit class MongoCursorEnrich(val cursor: MongoCursor) extends AnyVal {
 
-    def eachAsync[T <: js.Any] = toFuture[Option[T]](cursor.each)
+    def eachAsync[T <: js.Any] = callbackWithErrorToFuture[Option[T]](cursor.each)
 
-    def nextObjectAsync[T <: js.Any] = toFuture[Option[T]](cursor.toArray)
+    def nextObjectAsync[T <: js.Any] = callbackWithErrorToFuture[Option[T]](cursor.toArray)
 
-    def toArrayAsync[T <: js.Any] = toFuture[js.Array[T]](cursor.toArray)
+    def toArrayAsync[T <: js.Any] = callbackWithErrorToFuture[js.Array[T]](cursor.toArray)
 
   }
 

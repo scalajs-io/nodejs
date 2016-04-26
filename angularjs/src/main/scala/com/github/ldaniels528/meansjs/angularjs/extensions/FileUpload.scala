@@ -1,10 +1,10 @@
 package com.github.ldaniels528.meansjs.angularjs.extensions
 
 import com.github.ldaniels528.meansjs.angularjs.core.HttpPromise
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 import org.scalajs.dom._
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * AngularJS File Upload
@@ -21,14 +21,14 @@ trait FileUpload extends js.Object {
   * File Upload Configuration
   * @author lawrence.daniels@gmail.com
   */
-@js.native
-trait FileUploadConfig extends js.Object {
-  var data: Any = js.native
-  var file: File = js.native
-  var fileName: js.Any = js.native
-  var fileFormDataName: js.Any = js.native
-  var method: String = js.native
-  var url: String = js.native
+@ScalaJSDefined
+class FileUploadConfig extends js.Object {
+  var data: Any = _
+  var file: File = _
+  var fileName: js.Any = _
+  var fileFormDataName: js.Any = _
+  var method: String = _
+  var url: String = _
 
 }
 
@@ -42,7 +42,7 @@ object FileUploadConfig {
     require(url != null || url.isEmpty, "Required property 'url' is missing")
     require(file != null, "Required property 'file' is missing")
 
-    val config = makeNew[FileUploadConfig]
+    val config = new FileUploadConfig()
     config.url = url
     config.file = file
     config.data = data

@@ -43,17 +43,17 @@ object Offset {
     /**
       * @see [[Offset.commit()]]
       */
-    def commitAsync(groupId: String, payloads: js.Array[Payload]) = toFuture[js.Any](offset.commit(groupId, payloads, _))
+    def commitAsync(groupId: String, payloads: js.Array[Payload]) = callbackWithErrorToFuture[js.Any](offset.commit(groupId, payloads, _))
 
     /**
       * @see [[Offset.fetch()]]
       */
-    def fetchAsync(payloads: js.Array[Payload]) = toFuture[js.Any](offset.fetch(payloads, _))
+    def fetchAsync(payloads: js.Array[Payload]) = callbackWithErrorToFuture[js.Any](offset.fetch(payloads, _))
 
     /**
       * @see [[Offset.fetchCommits()]]
       */
-    def fetchCommitsAsync(groupId: String, payloads: js.Array[Payload]) = toFuture[js.Any](offset.fetchCommits(groupId, payloads, _))
+    def fetchCommitsAsync(groupId: String, payloads: js.Array[Payload]) = callbackWithErrorToFuture[js.Any](offset.fetchCommits(groupId, payloads, _))
 
   }
 

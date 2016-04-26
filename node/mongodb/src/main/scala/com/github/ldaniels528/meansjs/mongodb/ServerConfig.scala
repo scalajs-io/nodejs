@@ -1,16 +1,15 @@
 package com.github.ldaniels528.meansjs.mongodb
 
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-
 import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * Server Configuration
   * @author lawrence.daniels@gmail.com
   * @see [[https://mongodb.github.io/node-mongodb-native/api-generated/mongoclient.html#connect]]
   */
-@js.native
-trait ServerConfig extends js.Object {
+@ScalaJSDefined
+class ServerConfig extends js.Object {
 
 }
 
@@ -21,7 +20,7 @@ trait ServerConfig extends js.Object {
 object ServerConfig {
 
   def apply() = {
-    val config = makeNew[ServerConfig]
+    val config = new ServerConfig()
     config
   }
 

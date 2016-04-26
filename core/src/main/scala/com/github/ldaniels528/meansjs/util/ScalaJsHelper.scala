@@ -5,7 +5,6 @@ import org.scalajs.dom.console
 import scala.concurrent.{ExecutionContext, Future, Promise}
 import scala.language.implicitConversions
 import scala.scalajs.js
-import scala.scalajs.js.Dynamic.{global => g}
 import scala.scalajs.js.JSON
 import scala.scalajs.runtime.wrapJavaScriptException
 import scala.util.{Failure, Success, Try}
@@ -21,28 +20,35 @@ object ScalaJsHelper {
   //    Convenience Functions
   ////////////////////////////////////////////////////////////////////////
 
+  /**
+    * Converts a JavaScript-style callback to a Scala-style future
+    * @param f the given callback function
+    * @return a Scala-style future
+    */
   @inline
-  def emptyArray[T] = js.Array[T]()
-
-  @inline
-  def makeNew[T] = new js.Object().asInstanceOf[T]
-
-  def params(values: (String, Any)*): String = {
-    val queryString = values map { case (k, v) => s"$k=${g.encodeURI(String.valueOf(v))}" } map (_.replaceAllLiterally("&", "%26")) mkString "&"
-    if (queryString.nonEmpty) "?" + queryString else queryString
+  def callbackWithErrorToFuture[A](f: js.Function => Unit): Future[A] = {
+    val promise = Promise[A]()
+    f((err: js.Any, result: A) => if (!isDefined(err)) promise.success(result) else promise.failure(wrapJavaScriptException(err)))
+    promise.future
   }
 
   /**
     * Converts a JavaScript-style callback to a Scala-style future
     * @param f the given callback function
-    * @tparam T the return type
     * @return a Scala-style future
     */
-  def toFuture[T](f: js.Function => Unit): Future[T] = {
-    val promise = Promise[T]()
-    f((err: js.Any, result: T) => if (!isDefined(err)) promise.success(result) else promise.failure(wrapJavaScriptException(err)))
+  @inline
+  def callbackTupleToFuture[A, B](f: js.Function => Unit): Future[(A, B)] = {
+    val promise = Promise[(A, B)]()
+    f((valueA: A, valueB: B) => promise.success((valueA, valueB)))
     promise.future
   }
+
+  @inline
+  def emptyArray[T] = js.Array[T]()
+
+  @inline
+  def New[T <: js.Any] = new js.Object().asInstanceOf[T]
 
   ////////////////////////////////////////////////////////////////////////
   //    Error-Handling Functions
@@ -55,6 +61,7 @@ object ScalaJsHelper {
     */
   implicit class ExceptionExtensions(val cause: Throwable) extends AnyVal {
 
+    @inline
     def displayMessage = Option(cause.getMessage) match {
       case Some(s) if s.startsWith(HttpError) => cleanUp(s.drop(HttpError.length))
       case Some(s) => s
@@ -132,10 +139,12 @@ object ScalaJsHelper {
     */
   implicit class JsAnyExtensions(val obj: js.Any) extends AnyVal {
 
+    @inline
     def New[T <: js.Any](args: js.Any*): T = {
       js.Dynamic.newInstance(obj.asInstanceOf[js.Dynamic])(args: _*).asInstanceOf[T]
     }
 
+    @inline
     def ===[T](value: T): Boolean = {
       if (value == null) !isDefined(obj)
       else {
@@ -153,6 +162,8 @@ object ScalaJsHelper {
     @inline def asOpt[T] = obj.asInstanceOf[js.UndefOr[T]].toOption
 
     @inline def asArray[T] = obj.asInstanceOf[js.Array[T]]
+
+    @inline def dynamic = obj.asInstanceOf[js.Dynamic]
 
     @inline def isTrue = isDefined(obj) && Try(obj.asInstanceOf[Boolean]).toOption.contains(true)
 
@@ -207,22 +218,10 @@ object ScalaJsHelper {
   }
 
   /**
-    * js.Object Extensions
-    * @param obj the given [[js.Dynamic object]]
-    */
-  implicit class JsObjectExtensions(val obj: js.Object) extends AnyVal {
-
-    @inline def dynamic = obj.asInstanceOf[js.Dynamic]
-
-  }
-
-  /**
     * Option Extensions
     * @param valueA the given [[Option option]]
     */
   implicit class OptionExtensions[T](val valueA: Option[T]) extends AnyVal {
-
-    @inline def ?==(valueB: T): Boolean = valueA.contains(valueB)
 
     @inline def ?==(valueB: js.UndefOr[T]): Boolean = valueA.exists(v => valueB.exists(_ == v))
 

@@ -191,22 +191,22 @@ object Client {
     /**
       * @see [[Client.getChildren()]]
       */
-    def getChildrenAsync(path: String, watcher: Watcher) = toFuture[js.Array[String]](client.getChildren(path, watcher, _))
+    def getChildrenAsync(path: String, watcher: Watcher) = callbackWithErrorToFuture[js.Array[String]](client.getChildren(path, watcher, _))
 
     /**
       * @see [[Client.getChildren()]]
       */
-    def getChildrenAsync(path: String) = toFuture[js.Any](client.getChildren(path, _))
+    def getChildrenAsync(path: String) = callbackWithErrorToFuture[js.Any](client.getChildren(path, _))
 
     /**
       * @see [[Client.getData()]]
       */
-    def getDataAsync[T](path: String, watcher: Watcher) = toFuture[js.Array[T]](client.getChildren(path, watcher, _))
+    def getDataAsync[T](path: String, watcher: Watcher) = callbackWithErrorToFuture[js.Array[T]](client.getChildren(path, watcher, _))
 
     /**
       * @see [[Client.getData()]]
       */
-    def getDataAsync[T](path: String) = toFuture[js.Array[T]](client.getChildren(path, _))
+    def getDataAsync[T](path: String) = callbackWithErrorToFuture[js.Array[T]](client.getChildren(path, _))
 
     /**
       * @see [[Client.on()]]

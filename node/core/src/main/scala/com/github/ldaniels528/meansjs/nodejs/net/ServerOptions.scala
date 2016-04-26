@@ -1,17 +1,16 @@
 package com.github.ldaniels528.meansjs.nodejs.net
 
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-
 import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * Server Options
   * @author lawrence.daniels@gmail.com
   */
-@js.native
-trait ServerOptions extends js.Object {
-  var allowHalfOpen: js.UndefOr[Boolean] = js.native
-  var pauseOnConnect: js.UndefOr[Boolean] = js.native
+@ScalaJSDefined
+class ServerOptions extends js.Object {
+  var allowHalfOpen: js.UndefOr[Boolean] = _
+  var pauseOnConnect: js.UndefOr[Boolean] = _
 
 }
 
@@ -23,7 +22,7 @@ object ServerOptions {
 
   def apply(allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
             pauseOnConnect: js.UndefOr[Boolean] = js.undefined) = {
-    val options = makeNew[ServerOptions]
+    val options = new ServerOptions()
     options.allowHalfOpen = allowHalfOpen
     options.pauseOnConnect = pauseOnConnect
     options

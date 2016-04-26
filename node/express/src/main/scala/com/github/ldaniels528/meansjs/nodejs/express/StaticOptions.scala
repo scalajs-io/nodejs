@@ -1,24 +1,23 @@
 package com.github.ldaniels528.meansjs.nodejs.express
 
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-
 import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * Static Options
   * @author lawrence.daniels@gmail.com
   */
-@js.native
-trait StaticOptions extends js.Object {
-  var dotfiles: js.UndefOr[String]
-  var etag: js.UndefOr[Boolean]
-  var extensions: js.UndefOr[Boolean]
-  var fallthrough: js.UndefOr[Boolean]
-  var index: js.UndefOr[js.Any]
-  var lastModified: js.UndefOr[Boolean]
-  var maxAge: js.UndefOr[Double]
-  var redirect: js.UndefOr[Boolean]
-  var setHeaders: js.UndefOr[js.Function]
+@ScalaJSDefined
+class StaticOptions extends js.Object {
+  var dotfiles: js.UndefOr[String] = _
+  var etag: js.UndefOr[Boolean] = _
+  var extensions: js.UndefOr[Boolean] = _
+  var fallthrough: js.UndefOr[Boolean] = _
+  var index: js.UndefOr[js.Any] = _
+  var lastModified: js.UndefOr[Boolean] = _
+  var maxAge: js.UndefOr[Double] = _
+  var redirect: js.UndefOr[Boolean] = _
+  var setHeaders: js.UndefOr[js.Function] = _
 }
 
 /**
@@ -36,7 +35,7 @@ object StaticOptions {
             maxAge: js.UndefOr[Double] = js.undefined,
             redirect: js.UndefOr[Boolean] = js.undefined,
             setHeaders: js.UndefOr[js.Function] = js.undefined) = {
-    val options = makeNew[StaticOptions]
+    val options = new StaticOptions()
     options.dotfiles = dotfiles
     options.etag = etag
     options.extensions = extensions

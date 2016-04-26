@@ -1,18 +1,17 @@
 package com.github.ldaniels528.meansjs.kafkanode
 
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-
 import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * High Level Producer Payload
   * @author lawrence.daniels@gmail.com
   */
-@js.native
-trait Payload extends js.Object {
-  var topic: String = js.native
-  var messages: js.Any = js.native
-  var partition: js.UndefOr[Int] = js.native
+@ScalaJSDefined
+class Payload extends js.Object {
+  var topic: String = _
+  var messages: js.Any = _
+  var partition: js.UndefOr[Int] = _
 }
 
 /**
@@ -21,15 +20,10 @@ trait Payload extends js.Object {
   */
 object Payload {
 
-  def apply(topic: String, messages: js.Any) = {
-    val payload = makeNew[Payload]
-    payload.topic = topic
-    payload.messages = messages
-    payload
-  }
-
-  def apply(topic: String, messages: js.Any, partition: Int) = {
-    val payload = makeNew[Payload]
+  def apply(topic: String,
+            messages: js.Any,
+            partition: js.UndefOr[Int] = js.undefined) = {
+    val payload = new Payload()
     payload.topic = topic
     payload.messages = messages
     payload.partition = partition

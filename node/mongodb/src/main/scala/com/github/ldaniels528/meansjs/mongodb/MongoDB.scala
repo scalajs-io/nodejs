@@ -48,7 +48,7 @@ object MongoDB {
     */
   implicit class MongoDBEnrich(val mongo: MongoDB) extends AnyVal {
 
-    def connectAsync(servers: String) = toFuture[MongoDatabase](mongo.connect(servers, _))
+    def connectAsync(servers: String) = callbackWithErrorToFuture[MongoDatabase](mongo.connect(servers, _))
 
   }
 

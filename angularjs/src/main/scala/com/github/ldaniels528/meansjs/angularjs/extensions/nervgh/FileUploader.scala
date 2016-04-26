@@ -4,6 +4,7 @@ import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 import org.scalajs.dom.Element
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * Angular File Uploader (nervgh/angular-js-upload)
@@ -31,7 +32,7 @@ trait FileUploader extends js.Object {
     * Filters to be applied to the files before adding them to the queue.
     * If the filter returns true the file will be added to the queue
     */
-  var filters: js.Array[FileFilter] = js.native
+  var filters: js.Array[FileUploadFilter] = js.native
 
   /**
     * Data to be sent along with the files
@@ -201,7 +202,7 @@ trait FileUploader extends js.Object {
   //      Event Functions
   ///////////////////////////////////////////////////////////////////////////
 
-  var onWhenAddingFileFailed: js.Function3[FileItem, FileFilter, FileItem, Unit] = js.native //(item /*{File|FileLikeObject}*/, filter, options)
+  var onWhenAddingFileFailed: js.Function3[FileItem, FileUploadFilter, FileItem, Unit] = js.native //(item /*{File|FileLikeObject}*/, filter, options)
 
   var onAfterAddingFile: js.Function1[FileItem, Unit] = js.native //(fileItem)
 
@@ -239,16 +240,16 @@ object FileUploader {
   * File Upload Filter
   * @author lawrence.daniels@gmail.com
   */
-@js.native
-trait FileFilter extends js.Object {
-  var name: String = js.native
-  var fn: js.Function = js.native
+@ScalaJSDefined
+class FileUploadFilter extends js.Object {
+  var name: String = _
+  var fn: js.Function = _
 }
 
-object FileFilter {
+object FileUploadFilter {
 
   def apply(name: String, fn: js.Function) = {
-    val filter = makeNew[FileFilter]
+    val filter = new FileUploadFilter()
     filter.name = name
     filter.fn = fn
     filter

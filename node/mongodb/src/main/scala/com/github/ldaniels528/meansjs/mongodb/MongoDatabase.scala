@@ -50,19 +50,19 @@ object MongoDatabase {
     */
   implicit class MongoDatabaseEnrich(val db: MongoDatabase) extends AnyVal {
 
-    def collectionAsync(name: String) = toFuture[MongoCollection](db.collection(name, _))
+    def collectionAsync(name: String) = callbackWithErrorToFuture[MongoCollection](db.collection(name, _))
 
-    def collectionAsync(name: String, options: CollectionOptions) = toFuture[MongoCollection](db.collection(name, options, _))
+    def collectionAsync(name: String, options: CollectionOptions) = callbackWithErrorToFuture[MongoCollection](db.collection(name, options, _))
 
-    def collectionNamesAsync = toFuture[js.Array[String]](db.collectionNames)
+    def collectionNamesAsync = callbackWithErrorToFuture[js.Array[String]](db.collectionNames)
 
-    def createCollectionAsync(name: String) = toFuture[MongoCollection](db.createCollection(name, _))
+    def createCollectionAsync(name: String) = callbackWithErrorToFuture[MongoCollection](db.createCollection(name, _))
 
-    def createCollectionAsync(name: String, options: CollectionOptions) = toFuture[MongoCollection](db.createCollection(name, options, _))
+    def createCollectionAsync(name: String, options: CollectionOptions) = callbackWithErrorToFuture[MongoCollection](db.createCollection(name, options, _))
 
-    def dropCollectionAsync(name: String) = toFuture[OperationResult](db.dropCollection(name, _))
+    def dropCollectionAsync(name: String) = callbackWithErrorToFuture[OperationResult](db.dropCollection(name, _))
 
-    def dropDatabaseAsync = toFuture[OperationResult](db.dropDatabase)
+    def dropDatabaseAsync = callbackWithErrorToFuture[OperationResult](db.dropDatabase)
 
   }
 

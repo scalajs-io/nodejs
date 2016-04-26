@@ -1,18 +1,16 @@
 package com.github.ldaniels528.meansjs.kafkanode
 
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-
 import scala.scalajs.js
-
+import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * No Ack Batch Options
   * @author lawrence.daniels@gmail.com
   */
-@js.native
-trait NoAckBatchOptions extends js.Object {
-  var noAckBatchSize: js.UndefOr[Int] = js.native
-  var noAckBatchAge: js.UndefOr[Int] = js.native
+@ScalaJSDefined
+class NoAckBatchOptions extends js.Object {
+  var noAckBatchSize: js.UndefOr[Int] = _
+  var noAckBatchAge: js.UndefOr[Int] = _
 }
 
 /**
@@ -23,7 +21,7 @@ object NoAckBatchOptions {
 
   def apply(noAckBatchSize: js.UndefOr[Int] = js.undefined,
             noAckBatchAge: js.UndefOr[Int] = js.undefined) = {
-    val options = makeNew[NoAckBatchOptions]
+    val options = new NoAckBatchOptions()
     options.noAckBatchSize = noAckBatchSize
     options.noAckBatchAge = noAckBatchAge
     options

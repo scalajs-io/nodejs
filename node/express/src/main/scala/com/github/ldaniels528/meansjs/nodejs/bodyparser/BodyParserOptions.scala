@@ -1,16 +1,15 @@
 package com.github.ldaniels528.meansjs.nodejs.bodyparser
 
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-
 import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * Express Body Parser Options
   * @author lawrence.daniels@gmail.com
   */
-@js.native
-trait BodyParserOptions extends js.Object {
-  var extended: Boolean = js.native
+@ScalaJSDefined
+class BodyParserOptions extends js.Object {
+  var extended: Boolean = _
 }
 
 /**
@@ -20,7 +19,7 @@ trait BodyParserOptions extends js.Object {
 object BodyParserOptions {
 
   def apply(extended: Boolean) = {
-    val options = makeNew[BodyParserOptions]
+    val options = new BodyParserOptions()
     options.extended = extended
     options
   }

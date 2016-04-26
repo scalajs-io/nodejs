@@ -1,20 +1,21 @@
 package com.github.ldaniels528.meansjs.nodejs.fs
 
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import com.github.ldaniels528.meansjs.nodejs.fs.Fs.FileDescriptor
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * File Input Options
   * @author lawrence.daniels@gmail.com
   */
-@js.native
-trait FileInputOptions extends js.Object {
-  var flags: js.UndefOr[String] = js.native
-  var encoding: js.UndefOr[String] = js.native
-  var fd: js.UndefOr[FileDescriptor] = js.native
-  var mode: js.UndefOr[Int] = js.native
-  var autoClose: js.UndefOr[Boolean] = js.native
+@ScalaJSDefined
+class FileInputOptions extends js.Object {
+  var flags: js.UndefOr[String] = _
+  var encoding: js.UndefOr[String] = _
+  var fd: js.UndefOr[FileDescriptor] = _
+  var mode: js.UndefOr[Int] = _
+  var autoClose: js.UndefOr[Boolean] = _
 }
 
 /**
@@ -28,7 +29,7 @@ object FileInputOptions {
             fd: js.UndefOr[FileDescriptor] = js.undefined,
             mode: js.UndefOr[Int] = js.undefined,
             autoClose: js.UndefOr[Boolean] = js.undefined) = {
-    val options = makeNew[FileInputOptions]
+    val options = new FileInputOptions()
     options.flags = flags
     options.encoding = encoding
     options.fd = fd

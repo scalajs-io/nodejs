@@ -1,30 +1,29 @@
 package com.github.ldaniels528.meansjs.mongodb
 
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-
 import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * MongoDB Client Options
   * @author lawrence.daniels@gmail.com
   * @see [[https://mongodb.github.io/node-mongodb-native/api-generated/mongoclient.html#connect]]
   */
-@js.native
-trait MongoClientOptions extends js.Object {
-  var w: js.UndefOr[js.Any] = js.native
-  var wtimeout: js.UndefOr[Int] = js.native
-  var fsync: js.UndefOr[Boolean] = js.native
-  var j: js.UndefOr[Boolean] = js.native
-  var readPreference: js.UndefOr[String] = js.native
-  var native_parser: js.UndefOr[Boolean] = js.native
-  var forceServerObjectId: js.UndefOr[Boolean] = js.native
-  var pkFactory: js.UndefOr[js.Object] = js.native
-  var serializeFunctions: js.UndefOr[Boolean] = js.native
-  var raw: js.UndefOr[Boolean] = js.native
-  var recordQueryStats: js.UndefOr[Boolean] = js.native
-  var retryMiliSeconds: js.UndefOr[Int] = js.native
-  var numberOfRetries: js.UndefOr[Int] = js.native
-  var bufferMaxEntries: js.UndefOr[Int] = js.native
+@ScalaJSDefined
+class MongoClientOptions extends js.Object {
+  var w: js.UndefOr[js.Any] = _
+  var wtimeout: js.UndefOr[Int] = _
+  var fsync: js.UndefOr[Boolean] = _
+  var j: js.UndefOr[Boolean] = _
+  var readPreference: js.UndefOr[String] = _
+  var native_parser: js.UndefOr[Boolean] = _
+  var forceServerObjectId: js.UndefOr[Boolean] = _
+  var pkFactory: js.UndefOr[js.Object] = _
+  var serializeFunctions: js.UndefOr[Boolean] = _
+  var raw: js.UndefOr[Boolean] = _
+  var recordQueryStats: js.UndefOr[Boolean] = _
+  var retryMiliSeconds: js.UndefOr[Int] = _
+  var numberOfRetries: js.UndefOr[Int] = _
+  var bufferMaxEntries: js.UndefOr[Int] = _
 
 }
 
@@ -48,7 +47,7 @@ object MongoClientOptions {
             retryMiliSeconds: js.UndefOr[Int] = js.undefined,
             numberOfRetries: js.UndefOr[Int] = js.undefined,
             bufferMaxEntries: js.UndefOr[Int] = js.undefined) = {
-    val options = makeNew[MongoClientOptions]
+    val options = new MongoClientOptions()
     options.w = w
     options.wtimeout = wtimeout
     options.fsync = fsync

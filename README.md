@@ -61,7 +61,7 @@ modules implemented for most web applications.
 <a name="NodeJS_Modules">
 #### Modules
 
-The following modules have been implemented thus far:
+The following NodeJS modules have been implemented thus far:
 
 * body-parser
 * buffer
@@ -70,11 +70,16 @@ The following modules have been implemented thus far:
 * express-ws
 * fs
 * http
+* https
 * kafka-node
 * mongodb
 * net
+* os
 * node-zookeeper-client
+* readline
+* repl
 * stream
+* url
 * util
 
 I've provided an example to demonstrate how similar the Scala.js code is to the JavaScript

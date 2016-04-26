@@ -94,7 +94,7 @@ object Http {
     */
   implicit class HttpExtensions(val http: Http) extends AnyVal {
 
-    def requestAsync(options: RequestOptions) = toFuture[ServerResponse](http.request(options, _))
+    def requestAsync(options: RequestOptions) = callbackWithErrorToFuture[ServerResponse](http.request(options, _))
 
   }
 

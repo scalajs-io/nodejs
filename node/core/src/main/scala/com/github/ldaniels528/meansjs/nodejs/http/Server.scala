@@ -82,11 +82,11 @@ object Server {
     */
   implicit class ServerExtensions(val server: Server) extends AnyVal {
 
-    def closeAsync = toFuture[Unit](server.close)
+    def closeAsync = callbackWithErrorToFuture[Unit](server.close)
 
-    def getConnectionsAsync = toFuture[Int](server.getConnections)
+    def getConnectionsAsync = callbackWithErrorToFuture[Int](server.getConnections)
 
-    def listenAsync(options: ListenerOptions) = toFuture[Unit](server.listen(options, _))
+    def listenAsync(options: ListenerOptions) = callbackWithErrorToFuture[Unit](server.listen(options, _))
 
     def onCheckContinue(callback: js.Function) = server.on("checkContinue", callback)
 

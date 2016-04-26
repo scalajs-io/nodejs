@@ -34,7 +34,7 @@ object Client {
     /**
       * @see [[Client.close()]]
       */
-    def closeAsync() = toFuture[js.Any](client.close)
+    def closeAsync() = callbackWithErrorToFuture[js.Any](client.close)
 
   }
 

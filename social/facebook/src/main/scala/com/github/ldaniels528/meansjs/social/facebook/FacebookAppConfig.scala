@@ -1,19 +1,18 @@
 package com.github.ldaniels528.meansjs.social.facebook
 
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-
 import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * Facebook Application Configuration
   * @author lawrence.daniels@gmail.com
   */
-@js.native
-trait FacebookAppConfig extends js.Object {
-  var appId: String
-  var status: Boolean
-  var xfbml: Boolean
-  var version: String
+@ScalaJSDefined
+class FacebookAppConfig extends js.Object {
+  var appId: String = _
+  var status: Boolean = _
+  var xfbml: Boolean = _
+  var version: String = _
 }
 
 /**
@@ -26,7 +25,7 @@ object FacebookAppConfig {
             status: Boolean = true,
             xfbml: Boolean = true,
             version: String = "v2.5") = {
-    val config = makeNew[FacebookAppConfig]
+    val config = new FacebookAppConfig()
     config.appId = appId
     config.status = status
     config.xfbml = xfbml

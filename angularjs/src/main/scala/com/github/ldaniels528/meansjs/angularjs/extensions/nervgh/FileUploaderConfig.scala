@@ -3,15 +3,16 @@ package com.github.ldaniels528.meansjs.angularjs.extensions.nervgh
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * File Uploader Config
   * @author lawrence.daniels@gmail.com
   */
-@js.native
-trait FileUploaderConfig extends js.Object {
-  var url: String = js.native
-  var filters: js.Array[FileFilter] = js.native
+@ScalaJSDefined
+class FileUploaderConfig extends js.Object {
+  var url: String = _
+  var filters: js.Array[FileUploadFilter] = _
 }
 
 /**
@@ -20,8 +21,8 @@ trait FileUploaderConfig extends js.Object {
   */
 object FileUploaderConfig {
 
-  def apply(url: String, filters: js.Array[FileFilter] = emptyArray) = {
-    val config = makeNew[FileUploaderConfig]
+  def apply(url: String, filters: js.Array[FileUploadFilter] = emptyArray) = {
+    val config = new FileUploaderConfig()
     config.url = url
     config.filters = filters
     config

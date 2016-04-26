@@ -1,21 +1,20 @@
 package com.github.ldaniels528.meansjs.mongodb
 
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-
 import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * Mongo Client Connection Options
   * @author lawrence.daniels@gmail.com
   * @see [[https://mongodb.github.io/node-mongodb-native/api-generated/mongoclient.html#connect]]
   */
-@js.native
-trait ConnectionOptions extends js.Object {
-  var uri_decode_auth: js.UndefOr[Boolean] = js.native
-  var db: js.UndefOr[js.Object] = js.native
-  var server: js.UndefOr[js.Object] = js.native
-  var replSet: js.UndefOr[js.Object] = js.native
-  var mongos: js.UndefOr[js.Object] = js.native
+@ScalaJSDefined
+class ConnectionOptions extends js.Object {
+  var uri_decode_auth: js.UndefOr[Boolean] = _
+  var db: js.UndefOr[js.Object] = _
+  var server: js.UndefOr[js.Object] = _
+  var replSet: js.UndefOr[js.Object] = _
+  var mongos: js.UndefOr[js.Object] = _
 }
 
 /**
@@ -29,7 +28,7 @@ object ConnectionOptions {
             server: js.UndefOr[js.Object] = js.undefined,
             replSet: js.UndefOr[js.Object] = js.undefined,
             mongos: js.UndefOr[js.Object] = js.undefined) = {
-    val options = makeNew[ConnectionOptions]
+    val options = new ConnectionOptions()
     options.uri_decode_auth = uri_decode_auth
     options.db = db
     options.server = server

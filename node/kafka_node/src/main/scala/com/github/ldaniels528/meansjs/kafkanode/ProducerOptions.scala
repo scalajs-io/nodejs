@@ -1,23 +1,22 @@
 package com.github.ldaniels528.meansjs.kafkanode
 
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-
 import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * Producer Options
   * @author lawrence.daniels@gmail.com
   */
-@js.native
-trait ProducerOptions extends js.Object {
+@ScalaJSDefined
+class ProducerOptions extends js.Object {
   /** Configuration for when to consider a message as acknowledged, default 1  */
-  var requireAcks: js.UndefOr[Int] = js.native
+  var requireAcks: js.UndefOr[Int] = _
 
   /** The amount of time in milliseconds to wait for all acks before considered, default 100ms */
-  var ackTimeoutMs: js.UndefOr[Int] = js.native
+  var ackTimeoutMs: js.UndefOr[Int] = _
 
   /** Partitioner type (default = 0, random = 1, cyclic = 2, keyed = 3), default 0 */
-  var partitionerType: js.UndefOr[Int] = js.native
+  var partitionerType: js.UndefOr[Int] = _
 }
 
 /**
@@ -29,7 +28,7 @@ object ProducerOptions {
   def apply(requireAcks: js.UndefOr[Int] = js.undefined,
             ackTimeoutMs: js.UndefOr[Int] = js.undefined,
             partitionerType: js.UndefOr[Int] = js.undefined) = {
-    val options = makeNew[ProducerOptions]
+    val options = new ProducerOptions()
     options.requireAcks = requireAcks
     options.ackTimeoutMs = ackTimeoutMs
     options.partitionerType = partitionerType

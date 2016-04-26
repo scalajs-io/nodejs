@@ -1,9 +1,9 @@
 package com.github.ldaniels528.meansjs.nodejs.net
 
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * This class is used to create a TCP or local server.
@@ -133,13 +133,13 @@ object Server {
     * Listener Options
     * @author lawrence.daniels@gmail.com
     */
-  @js.native
-  trait ListenerOptions extends js.Object {
-    var host: js.UndefOr[String]
-    var port: js.UndefOr[Int]
-    var path: js.UndefOr[String]
-    var backlog: js.UndefOr[Int]
-    var exclusive: js.UndefOr[Boolean]
+  @ScalaJSDefined
+  class ListenerOptions extends js.Object {
+    var host: js.UndefOr[String] = _
+    var port: js.UndefOr[Int] = _
+    var path: js.UndefOr[String] = _
+    var backlog: js.UndefOr[Int] = _
+    var exclusive: js.UndefOr[Boolean] = _
   }
 
   /**
@@ -153,7 +153,7 @@ object Server {
               path: js.UndefOr[String] = js.undefined,
               backlog: js.UndefOr[Int] = js.undefined,
               exclusive: js.UndefOr[Boolean] = js.undefined) = {
-      val options = makeNew[ListenerOptions]
+      val options = new ListenerOptions()
       options.host = host
       options.port = port
       options.path = path

@@ -1,7 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs.util
 
+import com.github.ldaniels528.meansjs.nodejs.NodeModule
 import com.github.ldaniels528.meansjs.nodejs.fs.StatTime
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
 
@@ -15,13 +15,56 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Util extends js.Object {
+trait Util extends NodeModule {
+
+  /**
+    * Deprecated predecessor of console.error.
+    * @example util.debug(string)
+    */
+  @deprecated("Use console.debug() instead.", "4.x")
+  def debug(string: String): js.Any = js.native
+
+  /**
+    * This is used to create a function which conditionally writes to stderr based on the existence of a NODE_DEBUG
+    * environment variable. If the section name appears in that environment variable, then the returned function will
+    * be similar to console.error(). If not, then the returned function is a no-op.
+    * @example util.debuglog(section)
+    */
+  def debuglog(section: String): js.Function = js.native
+
+  /**
+    * Marks that a method should not be used any more.
+    * @example util.deprecate(function, string)
+    */
+  def deprecate(function: js.Function, string: String): js.Any = js.native
+
+  /**
+    * Deprecated predecessor of console.error.
+    * @example util.error([...])
+    */
+  @deprecated("Use console.error() instead.", "4.x")
+  def error(varargs: js.Any*): js.Any = js.native
+
+  /**
+    * Returns a formatted string using the first argument as a printf-like format.
+    * @example util.format(format[, ...])
+    */
+  def format(format: js.Any*): String = js.native
+
+  /**
+    * Inherit the prototype methods from one constructor into another. The prototype of constructor will be set to a
+    * new object created from superConstructor.
+    *
+    * As an additional convenience, superConstructor will be accessible through the constructor.super_ property.
+    * @example util.inherits(constructor, superConstructor)
+    */
+  def inherits(constructor: js.Any, superConstructor: js.Any): js.Any = js.native
 
   /**
     * Return a string representation of object, which is useful for debugging.
     * @example util.inspect(object[, options])
     */
-  def inspect(`object`: js.Any, options: Util.InspectOptions): StatTime = js.native
+  def inspect(`object`: js.Any, options: InspectOptions): StatTime = js.native
 
   /**
     * Returns true if the given "object" is an Array. Otherwise, returns false.
@@ -140,46 +183,5 @@ trait Util extends js.Object {
     */
   @deprecated("Use console.log() instead", "4.x")
   def puts(args: js.Array[js.Any]): Unit = js.native
-
-}
-
-/**
-  * Util Companion
-  * @author lawrence.daniels@gmail.com
-  */
-object Util {
-
-  /**
-    * Inspect Options
-    * @author lawrence.daniels@gmail.com
-    * @see [[https://nodejs.org/api/util.html#util_util_inspect_object_options]]
-    */
-  @js.native
-  trait InspectOptions extends js.Object {
-    var showHidden: js.UndefOr[Boolean] = js.native
-    var depth: js.UndefOr[Number] = js.native
-    var colors: js.UndefOr[Boolean] = js.native
-    var customInspect: js.UndefOr[Boolean] = js.native
-  }
-
-  /**
-    * Inspect Options Companion
-    * @author lawrence.daniels@gmail.com
-    */
-  object InspectOptions {
-
-    def apply(showHidden: js.UndefOr[Boolean] = js.undefined,
-              depth: js.UndefOr[Number] = js.undefined,
-              colors: js.UndefOr[Boolean] = js.undefined,
-              customInspect: js.UndefOr[Boolean] = js.undefined) = {
-      val options = makeNew[InspectOptions]
-      options.showHidden = showHidden
-      options.depth = depth
-      options.colors = colors
-      options.customInspect = customInspect
-      options
-    }
-
-  }
 
 }

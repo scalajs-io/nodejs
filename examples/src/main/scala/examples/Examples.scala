@@ -28,6 +28,7 @@ object Examples extends js.JSApp {
       args map { arg => console.log(s"Executing example '$arg'"); arg } foreach {
         case "Buffers" => new buffers.Buffers(require)
         case "Classes" => new basics.Classes(require)
+        case "Compression" => new basics.Compression(require)
         case "EventEmitterExample" => new events.EventEmitterExample(require, scope)
         case "ExpressRoutingExample" => new express.ExpressRoutingExample(require)
         case "ExpressServerExample" => new express.ExpressServerExample(require)
@@ -36,6 +37,7 @@ object Examples extends js.JSApp {
         case "IntermediateTimers" => new timers.IntermediateTimers(require)
         case "MongoClientExample" => new mongodb.MongoClientExample(require)
         case "NetServerExample" => new net.NetServerExample(require)
+        case "ProcessPlay" => new basics.ProcessPlay(require)
         case "ProducerExample" => new kafka.ProducerExample(require)
         case "ProducerEnhanced" => new kafka.ProducerEnhanced(require)
         case "REPLExample" => new repl.REPLExample(require)
@@ -43,6 +45,7 @@ object Examples extends js.JSApp {
         case "StringDecoderExample" => new StringDecoderExample(require)
         case "TinyCLI" => new repl.TinyCLI(require)
         case "TransactionExample" => new zookeeper.TransactionExample(require)
+        case "URLs" => new basics.URLs(require)
         case arg => usageError()
       }
     }

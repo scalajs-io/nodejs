@@ -26,6 +26,7 @@ object StateClass {
     /**
       * @example State(name, code)
       */
+    @inline
     def apply(name: String, code: Int) = `class`.New[State](name, code)
 
   }

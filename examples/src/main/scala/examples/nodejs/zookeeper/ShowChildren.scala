@@ -2,7 +2,6 @@ package examples.nodejs.zookeeper
 
 import com.github.ldaniels528.meansjs.nodejs.{Require, _}
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-import com.github.ldaniels528.meansjs.zookeeper.NodeZookeeper.ZookeeperError
 import com.github.ldaniels528.meansjs.zookeeper._
 import org.scalajs.dom.console
 
@@ -22,7 +21,7 @@ class ShowChildren(require: Require) {
 
   client.onceConnected(() => {
     console.log("Connected...")
-    client.getChildren("/", (error: ZookeeperError, paths: js.Array[String]) => {
+    client.getChildren("/", (error: String, paths: js.Array[String]) => {
       if (isDefined(error)) {
         console.log(JSON.stringify(error))
         console.log("Failed to execute the getChildren: %s, results: %j", error, paths)

@@ -3,9 +3,8 @@ package com.github.ldaniels528.meansjs.mongodb
 import scala.scalajs.js
 
 /**
-  * MongoDB GridStore
+  * BSON Instance
+  * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait MongoGridStore extends js.Object {
-
-}
+trait BSON extends js.Object

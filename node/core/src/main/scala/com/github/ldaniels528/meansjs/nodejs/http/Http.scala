@@ -94,6 +94,7 @@ object Http {
     */
   implicit class HttpExtensions(val http: Http) extends AnyVal {
 
+    @inline
     def requestAsync(options: RequestOptions) = callbackWithErrorToFuture[ServerResponse](http.request(options, _))
 
   }

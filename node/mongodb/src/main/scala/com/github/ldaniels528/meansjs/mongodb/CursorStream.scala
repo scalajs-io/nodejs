@@ -5,11 +5,11 @@ import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 import scala.scalajs.js
 
 /**
-  * Mongo Stream
+  * Cursor Stream
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait MongoStream extends EventEmitter {
+trait CursorStream extends EventEmitter {
 
   /**
     * This is the preferred way if you have to retrieve a lot of data for streaming, as data is deserialized
@@ -28,3 +28,24 @@ trait MongoStream extends EventEmitter {
 
 }
 
+/**
+  * Cursor Stream
+  * @author lawrence.daniels@gmail.com
+  */
+object CursorStream {
+
+  /**
+    * Cursor Stream Extensions
+    * @author lawrence.daniels@gmail.com
+    */
+  implicit class CursorStreamExtensions(val stream: CursorStream) extends AnyVal {
+
+    @inline
+    def onData(callback: js.Function) = stream.on("data", callback)
+
+    @inline
+    def onEnd(callback: js.Function) = stream.on("end", callback)
+
+  }
+
+}

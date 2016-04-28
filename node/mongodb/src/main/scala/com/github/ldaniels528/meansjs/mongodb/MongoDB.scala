@@ -1,7 +1,7 @@
 package com.github.ldaniels528.meansjs.mongodb
 
+import com.github.ldaniels528.meansjs.mongodb.gridfs.{GridClass, GridFSBucketClass, GridStoreClass}
 import com.github.ldaniels528.meansjs.nodejs.NodeModule
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
 
@@ -12,44 +12,32 @@ import scala.scalajs.js
 @js.native
 trait MongoDB extends NodeModule {
 
-  def connect(servers: String, callback: js.Function): Unit = js.native
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Properties
+  /////////////////////////////////////////////////////////////////////////////////
 
-  def pure(): js.Dynamic = js.native // BSON
+  def pure: PureClass = js.native
 
   def Binary: js.Dynamic = js.native
 
   def Code: js.Dynamic = js.native
 
-  def Db: MongoDatabase = js.native
+  def Connection: js.Dynamic = js.native
 
-  def Grid: js.Dynamic = js.native
+  def Db: DbClass = js.native
 
-  def GridStore: MongoGridStore = js.native
+  def Grid: GridClass = js.native
 
-  def MongoClient: MongoClient = js.native
+  def GridFSBucket: GridFSBucketClass = js.native
 
-  def ObjectID: ObjectID = js.native
+  def GridStore: GridStoreClass = js.native
 
-  def ReplSetServers: js.Dynamic = js.native
+  def MongoClient: MongoClientClass = js.native
 
-  def Server: js.Dynamic = js.native
+  def ObjectID: ObjectIDClass = js.native
 
-}
+  def ReplSetServers: ReplSetServersClass = js.native
 
-/**
-  * MongoDB Companion
-  * @author lawrence.daniels@gmail.com
-  */
-object MongoDB {
-
-  /**
-    * MongoDB Extensions
-    * @author lawrence.daniels@gmail.com
-    */
-  implicit class MongoDBEnrich(val mongo: MongoDB) extends AnyVal {
-
-    def connectAsync(servers: String) = callbackWithErrorToFuture[MongoDatabase](mongo.connect(servers, _))
-
-  }
+  def Server: ServerClass = js.native
 
 }

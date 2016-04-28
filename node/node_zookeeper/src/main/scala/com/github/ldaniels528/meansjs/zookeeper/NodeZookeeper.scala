@@ -28,12 +28,3 @@ trait NodeZookeeper extends NodeModule {
   def State: js.Any = js.native
 
 }
-
-/**
-  * Zookeeper Companion
-  * @author lawrence.daniels@gmail.com
-  */
-object NodeZookeeper {
-  type ZookeeperError = js.UndefOr[String]
-
-}

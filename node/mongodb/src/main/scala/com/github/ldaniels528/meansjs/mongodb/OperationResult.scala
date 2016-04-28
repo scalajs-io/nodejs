@@ -7,6 +7,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait OperationResult extends js.Object {
-
-}
+trait OperationResult extends js.Object

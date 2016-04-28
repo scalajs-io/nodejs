@@ -93,6 +93,12 @@ object Agent {
     */
   implicit class AgentExtensions(val agent: Agent) extends AnyVal {
 
+    /**
+      * Produces a socket/stream to be used for HTTP requests. By default, this function is the same
+      * as net.createConnection(). However, custom Agents may override this method in case greater
+      * flexibility is desired.
+      */
+    @inline
     def createConnectionAsync(options: ConnectionOptions) = callbackWithErrorToFuture[js.Any](agent.createConnection(options, _))
 
   }

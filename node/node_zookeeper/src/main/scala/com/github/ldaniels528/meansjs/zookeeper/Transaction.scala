@@ -96,6 +96,7 @@ object Transaction {
     /**
       * @see [[Transaction.commit()]]
       */
+    @inline
     def commitAsync()(implicit ec: ExecutionContext) = callbackWithErrorToFuture[js.Any](transaction.commit)
 
   }

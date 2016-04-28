@@ -23,6 +23,7 @@ object StringDecoderClass {
     */
   implicit class StringDecoderClassExtensions(val `class`: StringDecoderClass) extends AnyVal {
 
+    @inline
     def apply(encoding: String) = `class`.New[StringDecoderInstance](encoding)
 
   }

@@ -393,6 +393,7 @@ object ProcessClass {
     /**
       * @see [[ProcessClass.send()]]
       */
+    @inline
     def sendAsync(message: js.Any, sendHandle: js.Any, options: ProcessClass.TransferOptions) = {
       callbackWithErrorToFuture[Boolean](process.send(message, sendHandle, options, _))
     }
@@ -400,11 +401,13 @@ object ProcessClass {
     /**
       * @see [[ProcessClass.send()]]
       */
+    @inline
     def sendAsync(message: js.Any, sendHandle: js.Any) = callbackWithErrorToFuture[Boolean](process.send(message, sendHandle, _))
 
     /**
       * @see [[ProcessClass.send()]]
       */
+    @inline
     def sendAsync(message: js.Any) = callbackWithErrorToFuture[Boolean](process.send(message, _))
 
   }

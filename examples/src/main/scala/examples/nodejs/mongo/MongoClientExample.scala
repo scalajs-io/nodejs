@@ -1,10 +1,11 @@
-package examples.nodejs.mongodb
+package examples.nodejs.mongo
 
 import com.github.ldaniels528.meansjs.mongodb.MongoDB
 import com.github.ldaniels528.meansjs.nodejs._
 import org.scalajs.dom.console
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
+import scala.scalajs.js
 import scala.util.{Failure, Success}
 
 /**
@@ -18,6 +19,9 @@ class MongoClientExample(require: Require) {
 
   // We need to work with "MongoClient" interface in order to connect to a mongodb server.
   val mongoClient = mongodb.MongoClient
+
+  val replicas = mongodb.ReplSetServers(js.Array(mongodb.Server("localhost", 27017)))
+  console.log("replicas = %j", replicas)
 
   // Connection URL. This is where your mongodb server is running.
   val url = "mongodb://localhost:27017/test"

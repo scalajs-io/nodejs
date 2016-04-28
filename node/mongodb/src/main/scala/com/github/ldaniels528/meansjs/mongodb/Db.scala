@@ -10,7 +10,7 @@ import scala.scalajs.js
   * @see [[https://mongodb.github.io/node-mongodb-native/api-articles/nodekoarticle1.html]]
   */
 @js.native
-trait MongoDatabase extends js.Object {
+trait Db extends js.Object {
 
   def admin(): MongoAdmin = js.native
 
@@ -20,7 +20,7 @@ trait MongoDatabase extends js.Object {
 
   def collection(name: String, options: CollectionOptions, callback: js.Function): Unit = js.native
 
-  def collectionsInfo(): MongoCursor = js.native
+  def collectionsInfo(): Cursor = js.native
 
   def collectionNames(callback: js.Function): Unit = js.native
 
@@ -36,32 +36,41 @@ trait MongoDatabase extends js.Object {
 
   def indexInformation(name: String, callback: js.Function): Unit = js.native
 
+  def open(callback: js.Function): Unit = js.native
+
 }
 
 /**
   * Mongo Database Companion
   * @author lawrence.daniels@gmail.com
   */
-object MongoDatabase {
+object Db {
 
   /**
     * Mongo Database Extensions
     * @author lawrence.daniels@gmail.com
     */
-  implicit class MongoDatabaseEnrich(val db: MongoDatabase) extends AnyVal {
+  implicit class MongoDatabaseExtensions(val db: Db) extends AnyVal {
 
-    def collectionAsync(name: String) = callbackWithErrorToFuture[MongoCollection](db.collection(name, _))
+    @inline
+    def collectionAsync(name: String) = callbackWithErrorToFuture[Collection](db.collection(name, _))
 
-    def collectionAsync(name: String, options: CollectionOptions) = callbackWithErrorToFuture[MongoCollection](db.collection(name, options, _))
+    @inline
+    def collectionAsync(name: String, options: CollectionOptions) = callbackWithErrorToFuture[Collection](db.collection(name, options, _))
 
+    @inline
     def collectionNamesAsync = callbackWithErrorToFuture[js.Array[String]](db.collectionNames)
 
-    def createCollectionAsync(name: String) = callbackWithErrorToFuture[MongoCollection](db.createCollection(name, _))
+    @inline
+    def createCollectionAsync(name: String) = callbackWithErrorToFuture[Collection](db.createCollection(name, _))
 
-    def createCollectionAsync(name: String, options: CollectionOptions) = callbackWithErrorToFuture[MongoCollection](db.createCollection(name, options, _))
+    @inline
+    def createCollectionAsync(name: String, options: CollectionOptions) = callbackWithErrorToFuture[Collection](db.createCollection(name, options, _))
 
+    @inline
     def dropCollectionAsync(name: String) = callbackWithErrorToFuture[OperationResult](db.dropCollection(name, _))
 
+    @inline
     def dropDatabaseAsync = callbackWithErrorToFuture[OperationResult](db.dropDatabase)
 
   }

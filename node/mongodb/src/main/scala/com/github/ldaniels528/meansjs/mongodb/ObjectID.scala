@@ -1,11 +1,10 @@
 package com.github.ldaniels528.meansjs.mongodb
 
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSName
 
 /**
-  * MongoDB ObjectID Facade
+  * MongoDB ObjectID
   * @author lawrence.daniels@gmail.com
   */
 @js.native
@@ -54,21 +53,9 @@ trait ObjectID extends js.Object {
 }
 
 /**
-  * MongoDB ObjectID Companion
+  * ObjectID Class
   * @author lawrence.daniels@gmail.com
   */
-object ObjectID {
-
-  /**
-    * Mongo Database Extensions
-    * @author lawrence.daniels@gmail.com
-    */
-  implicit class MongoObjectIDEnrich(val objectID: ObjectID) extends AnyVal {
-
-    def apply() = objectID.New[ObjectID]()
-
-    def apply(id: js.Any) = objectID.New[ObjectID](id)
-
-  }
-
-}
+@js.native
+@JSName("ObjectID")
+object ObjectID extends ObjectIDClass

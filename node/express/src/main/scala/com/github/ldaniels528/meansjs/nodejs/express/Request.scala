@@ -99,7 +99,7 @@ trait Request extends js.Object {
     * For example, if you have the route /user/:name, then the “name” property is available as
     * req.params.name. This object defaults to {}.
     */
-  def params: js.Object = js.native
+  def params: js.Dictionary[String] = js.native
 
   /**
     * Contains the path part of the request URL.
@@ -198,6 +198,7 @@ trait Request extends js.Object {
   /**
     * Returns the value of param name when present.
     */
+  @deprecated
   def param(name: String): js.UndefOr[String] = js.native
 
 }
@@ -217,10 +218,6 @@ object Request {
     def bodyAs[T <: js.Any] = request.body.asInstanceOf[T]
 
     def cookiesAs[T <: js.Any] = request.cookies.asInstanceOf[T]
-
-    def paramAs[T <: js.Any](name: String): js.UndefOr[T] = request.param(name).map(_.asInstanceOf[T])
-
-    def paramsAs[T <: js.Object]: T = request.params.asInstanceOf[T]
 
     def queryAs[T <: js.Object]: T = request.query.asInstanceOf[T]
 

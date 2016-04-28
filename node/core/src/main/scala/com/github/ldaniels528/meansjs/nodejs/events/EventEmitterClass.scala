@@ -26,6 +26,7 @@ object EventEmitterClass {
     /**
       * @example new EventEmitter()
       */
+    @inline
     def apply() = `class`.New[EventEmitter]()
 
   }

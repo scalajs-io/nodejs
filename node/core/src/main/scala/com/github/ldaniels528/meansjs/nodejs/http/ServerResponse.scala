@@ -181,12 +181,16 @@ object ServerResponse {
     */
   implicit class ServerResponseEnrich(val response: ServerResponse) extends AnyVal {
 
+    @inline
     def badRequest() = response.sendStatus(400)
 
+    @inline
     def forbidden() = response.sendStatus(403)
 
+    @inline
     def internalServerError() = response.sendStatus(500)
 
+    @inline
     def notFound() = response.sendStatus(404)
 
   }

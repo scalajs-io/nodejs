@@ -34,16 +34,19 @@ object Client {
     /**
       * @see [[Client.on()]]
       */
+    @inline
     def onData(callback: js.Function) = client.on("data", callback)
 
     /**
       * @see [[Client.on()]]
       */
+    @inline
     def onEnd(callback: js.Function) = client.on("end", callback)
 
     /**
       * @see [[Client.on()]]
       */
+    @inline
     def onError(callback: js.Function) = client.on("error", callback)
 
   }

@@ -193,8 +193,8 @@ The following example demonstrates establishing a connection to MongoDB using Sc
   val url = "mongodb://localhost:27017/test"
 
   // Use connect method to connect to the Server
-  mongoClient.connect(url, (err: MongoError, db: MongoDatabase) => {
-    if (err.isDefined) {
+  mongoClient.connect(url, (err: js.Object, db: MongoDatabase) => {
+    if (isDefined(err) {
       console.log("Unable to connect to the mongoDB server. Error:", err)
     } else {
       //HURRAY!! We are connected. :)

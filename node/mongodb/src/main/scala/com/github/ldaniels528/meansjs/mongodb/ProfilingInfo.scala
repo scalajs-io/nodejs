@@ -7,6 +7,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait ProfilingInfo extends js.Object {
-
-}
+trait ProfilingInfo extends js.Object

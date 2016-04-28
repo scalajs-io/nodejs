@@ -78,41 +78,49 @@ object BufferClass {
     /**
       * new Buffer(size)
       */
+    @inline
     def apply(size: Int) = `class`.New[Buffer](size)
 
     /**
       * new Buffer(str, [encoding])
       */
+    @inline
     def apply(str: String, encoding: String) = `class`.New[Buffer](str)
 
     /**
       * new Buffer(str, [encoding])
       */
+    @inline
     def apply(str: String) = `class`.New[Buffer](str)
 
     /**
       * @example new Buffer(array)
       */
+    @inline
     def apply(array: js.Array[Int]) = `class`.New[Buffer](array)
 
     /**
       * @example new Buffer(buffer)
       */
+    @inline
     def apply(buffer: Buffer) = `class`.New[Buffer](buffer)
 
     /**
       * @example {{{ new Buffer(arrayBuffer[, byteOffset[, length]]) }}}
       */
+    @inline
     def apply(arrayBuffer: ArrayBuffer, byteOffset: Int, length: Int) = `class`.New[Buffer](arrayBuffer, byteOffset, length)
 
     /**
       * @example {{{ new Buffer(arrayBuffer[, byteOffset[, length]]) }}}
       */
+    @inline
     def apply(arrayBuffer: ArrayBuffer, byteOffset: Int) = `class`.New[Buffer](arrayBuffer, byteOffset)
 
     /**
       * @example {{{ new Buffer(arrayBuffer[, byteOffset[, length]]) }}}
       */
+    @inline
     def apply(arrayBuffer: ArrayBuffer) = `class`.New[Buffer](arrayBuffer)
 
   }

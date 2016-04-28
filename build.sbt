@@ -4,7 +4,7 @@ import sbt.Keys._
 import sbt.Project.projectToRef
 import sbt._
 
-val apiVersion = "0.1.0"
+val apiVersion = "0.1.1"
 val paradisePluginVersion = "2.1.0"
 val _scalaVersion = "2.11.8"
 val scalaJsDomVersion = "0.9.0"

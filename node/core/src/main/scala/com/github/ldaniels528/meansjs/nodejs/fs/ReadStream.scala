@@ -36,6 +36,7 @@ object ReadStream {
       * Emitted when the ReadStream's file is opened.
       * callback: fd <Integer> - file descriptor used by the ReadStream.
       */
+    @inline
     def onOpen(listener: js.Function1[Integer, Unit]) = rs.on("open", listener)
 
   }

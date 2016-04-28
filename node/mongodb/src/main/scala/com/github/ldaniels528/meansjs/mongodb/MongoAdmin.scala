@@ -33,12 +33,16 @@ object MongoAdmin {
     */
   implicit class MongoAdminEnrich(val admin: MongoAdmin) extends AnyVal {
 
+    @inline
     def profilingInfoAsync(name: String) = callbackWithErrorToFuture[ProfilingInfo](admin.profilingInfo)
 
+    @inline
     def profilingLevelAsync(name: String) = callbackWithErrorToFuture[String](admin.profilingLevel)
 
+    @inline
     def setProfilingLevelAsync(level: String) = callbackWithErrorToFuture[String](admin.setProfilingLevel(level, _))
 
+    @inline
     def validateCollection(collectionName: String) = callbackWithErrorToFuture[ValidationResult](admin.validateCollection(collectionName, _))
 
   }

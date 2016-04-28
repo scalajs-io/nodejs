@@ -224,36 +224,52 @@ object Response {
     */
   implicit class HttpResponseExtensions(val response: Response) extends AnyVal {
 
+    @inline
     def badRequest() = response.sendStatus(400)
 
+    @inline
     def badRequest(json: js.Any) = response.status(400).json(json)
 
+    @inline
     def badRequest(message: String) = response.status(400).send(message)
 
+    @inline
     def badRequest(cause: Throwable) = response.status(400).send(cause.getMessage)
 
+    @inline
     def forbidden() = response.sendStatus(403)
 
+    @inline
     def forbidden(json: js.Any) = response.status(403).json(json)
 
+    @inline
     def forbidden(message: String) = response.status(403).send(message)
 
+    @inline
     def forbidden(cause: Throwable) = response.status(403).send(cause.getMessage)
 
+    @inline
     def internalServerError() = response.status(500)
 
+    @inline
     def internalServerError(json: js.Any) = response.status(500).json(json)
 
+    @inline
     def internalServerError(message: String) = response.status(500).send(message)
 
+    @inline
     def internalServerError(cause: Throwable) = response.status(500).send(cause.getMessage)
 
+    @inline
     def notFound() = response.sendStatus(404)
 
+    @inline
     def notFound(json: js.Any) = response.status(404).json(json)
 
+    @inline
     def notFound(message: String) = response.status(404).send(message)
 
+    @inline
     def notFound(cause: Throwable) = response.status(404).send(cause.getMessage)
 
   }

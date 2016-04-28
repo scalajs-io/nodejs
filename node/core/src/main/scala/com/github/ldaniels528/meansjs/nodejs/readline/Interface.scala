@@ -102,6 +102,7 @@ object Interface {
       * the input stream receives {{{ ^D }}}, respectively known as EOT.
       * @see [[Readline.on()]]
       */
+    @inline
     def onClose(callback: js.Function) = readline.on("close", callback)
 
     /**
@@ -109,6 +110,7 @@ object Interface {
       * the user hits enter, or return. This is a good hook to listen for user input.
       * @see [[Readline.on()]]
       */
+    @inline
     def onLine(callback: js.Function) = readline.on("line", callback)
 
     /**
@@ -116,12 +118,14 @@ object Interface {
       * and receives the SIGCONT event. (See events SIGTSTP and SIGCONT)
       * @see [[Readline.on()]]
       */
+    @inline
     def onPause(callback: js.Function) = readline.on("pause", callback)
 
     /**
       * Emitted whenever the input stream is resumed.
       * @see [[Readline.on()]]
       */
+    @inline
     def onResume(callback: js.Function) = readline.on("resume", callback)
 
     /**
@@ -130,6 +134,7 @@ object Interface {
       * program to the background.
       * @see [[Readline.on()]]
       */
+    @inline
     def onSIGCONT(callback: js.Function) = readline.on("SIGCONT", callback)
 
     /**
@@ -137,6 +142,7 @@ object Interface {
       * SIGINT event listener present when the input stream receives a SIGINT, pause will be triggered.
       * @see [[Readline.on()]]
       */
+    @inline
     def onSIGINT(callback: js.Function) = readline.on("SIGINT", callback)
 
     /**
@@ -147,6 +153,7 @@ object Interface {
       * stream was paused before the program was sent to the background.
       * @see [[Readline.on()]]
       */
+    @inline
     def onSIGTSTP(callback: js.Function) = readline.on("SIGTSTP", callback)
 
   }

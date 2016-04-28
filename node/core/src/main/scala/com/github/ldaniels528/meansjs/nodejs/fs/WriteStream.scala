@@ -41,6 +41,7 @@ object WriteStream {
       * Emitted when the WriteStream's file is opened.
       * callback: fd <Integer> - file descriptor used by the WriteStream.
       */
+    @inline
     def onOpen(listener: js.Function1[Integer, Unit]) = rs.on("open", listener)
 
   }

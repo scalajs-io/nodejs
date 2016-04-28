@@ -40,6 +40,8 @@ trait Buffer extends js.Object {
     */
   def entries(): JsIterator = js.native
 
+  def toString(encoding: String): String = js.native
+
 }
 
 @js.native

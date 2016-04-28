@@ -54,6 +54,7 @@ object ErrorClass {
       * @param message the given error message
       * @return a new [[ErrorInstance Error instance]]
       */
+    @inline
     def apply(message: String) = `class`.New[ErrorInstance](message)
 
   }

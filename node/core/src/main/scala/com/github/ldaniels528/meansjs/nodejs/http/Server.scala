@@ -82,24 +82,34 @@ object Server {
     */
   implicit class ServerExtensions(val server: Server) extends AnyVal {
 
+    @inline
     def closeAsync = callbackWithErrorToFuture[Unit](server.close)
 
+    @inline
     def getConnectionsAsync = callbackWithErrorToFuture[Int](server.getConnections)
 
+    @inline
     def listenAsync(options: ListenerOptions) = callbackWithErrorToFuture[Unit](server.listen(options, _))
 
+    @inline
     def onCheckContinue(callback: js.Function) = server.on("checkContinue", callback)
 
+    @inline
     def onClientError(callback: js.Function) = server.on("clientError", callback)
 
+    @inline
     def onClose(callback: js.Function) = server.on("close", callback)
 
+    @inline
     def onConnect(callback: js.Function) = server.on("connect", callback)
 
+    @inline
     def onConnection(callback: js.Function) = server.on("connection", callback)
 
+    @inline
     def onRequest(callback: js.Function) = server.on("request", callback)
 
+    @inline
     def onUpgrade(callback: js.Function) = server.on("upgrade", callback)
 
   }

@@ -55,23 +55,23 @@ trait MongoClient extends js.Object {
   */
 object MongoClient {
 
-  def apply(config: ServerConfig, options: MongoClientOptions)(implicit mongo: MongoDB) = {
-    mongo.MongoClient.New[MongoClient](config, options)
-  }
-
   /**
     * Mongo Client Extensions
     * @author lawrence.daniels@gmail.com
     */
   implicit class MongoClientEnrich(val client: MongoClient) extends AnyVal {
 
-    def closeAsync = callbackWithErrorToFuture[MongoDatabase](client.close)
+    @inline
+    def closeAsync = callbackWithErrorToFuture[Db](client.close)
 
-    def connectAsync(url: String) = callbackWithErrorToFuture[MongoDatabase](client.connect(url, _))
+    @inline
+    def connectAsync(url: String) = callbackWithErrorToFuture[Db](client.connect(url, _))
 
-    def connectAsync(url: String, options: ConnectionOptions) = callbackWithErrorToFuture[MongoDatabase](client.connect(url, options, _))
+    @inline
+    def connectAsync(url: String, options: ConnectionOptions) = callbackWithErrorToFuture[Db](client.connect(url, options, _))
 
-    def openAsync = callbackWithErrorToFuture[MongoDatabase](client.open)
+    @inline
+    def openAsync = callbackWithErrorToFuture[Db](client.open)
 
   }
 

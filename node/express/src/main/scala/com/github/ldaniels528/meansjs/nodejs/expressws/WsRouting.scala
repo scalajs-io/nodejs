@@ -30,6 +30,7 @@ object WsRouting {
     */
   implicit class WsRouterEnrich[T <: Router](val router: T) extends AnyVal {
 
+    @inline
     def withWsRouting = router.asInstanceOf[T with WsRouting]
 
   }

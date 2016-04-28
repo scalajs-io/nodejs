@@ -170,13 +170,16 @@ object ClientRequest {
     */
   implicit class ClientRequestEnrich(val request: ClientRequest) extends AnyVal {
 
+    @inline
     def endAsync(data: js.Any, encoding: String) = callbackWithErrorToFuture[js.Any](request.end(data, encoding, _))
 
+    @inline
     def writeAsync(chunk: js.Any, encoding: String) = callbackWithErrorToFuture[js.Any](request.write(chunk, encoding, _))
 
     /**
       * Emitted when the request has been aborted by the client. This event is only emitted on the first call to abort().
       */
+    @inline
     def onAbort(callback: js.Function) = request.on("abort", callback)
 
     /**
@@ -184,35 +187,41 @@ object ClientRequest {
       * If this event isn't listened for, the server will automatically respond with a 417 Expectation Failed as appropriate.
       * <b>Note</b> that when this event is emitted and handled, the request event will not be emitted.
       */
+    @inline
     def onCheckExpectation(callback: js.Function) = request.on("checkExpectation", callback)
 
     /**
       * Emitted each time a server responds to a request with a CONNECT method. If this event isn't being listened for,
       * clients receiving a CONNECT method will have their connections closed.
       */
+    @inline
     def onConnect(callback: js.Function) = request.on("connect", callback)
 
     /**
       * Emitted when the server sends a '100 Continue' HTTP response, usually because the request
       * contained 'Expect: 100-continue'. This is an instruction that the client should send the request body.
       */
+    @inline
     def onContinue(callback: js.Function) = request.on("continue", callback)
 
     /**
       * Emitted when a response is received to this request. This event is emitted only once.
       * The response argument will be an instance of http.IncomingMessage.
       */
+    @inline
     def onResponse(callback: js.Function) = request.on("response", callback)
 
     /**
       * Emitted after a socket is assigned to this request.
       */
+    @inline
     def onSocket(callback: js.Function) = request.on("socket", callback)
 
     /**
       * Emitted each time a server responds to a request with an upgrade. If this event isn't being listened for,
       * clients receiving an upgrade header will have their connections closed.
       */
+    @inline
     def onUpgrade(callback: js.Function) = request.on("upgrade", callback)
 
   }

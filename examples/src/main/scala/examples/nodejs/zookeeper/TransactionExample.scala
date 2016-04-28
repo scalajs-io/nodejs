@@ -3,7 +3,6 @@ package examples.nodejs.zookeeper
 import com.github.ldaniels528.meansjs.nodejs._
 import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-import com.github.ldaniels528.meansjs.zookeeper.NodeZookeeper.ZookeeperError
 import com.github.ldaniels528.meansjs.zookeeper._
 import org.scalajs.dom.console
 
@@ -27,7 +26,7 @@ class TransactionExample(require: Require) {
       check("/txn/1").
       remove("/txn/1", -1).
       remove("/txn").
-      commit((error: ZookeeperError, results: js.Any) => {
+      commit((error: String, results: js.Any) => {
         if (isDefined(error)) console.log("Failed to execute the transaction: %s, results: %j", error, results)
         else console.log("Transaction completed.")
         client.close()

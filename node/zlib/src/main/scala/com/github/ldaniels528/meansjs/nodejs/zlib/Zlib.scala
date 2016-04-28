@@ -368,91 +368,109 @@ object Zlib {
     /**
       * Asynchronously compresses a Buffer or string with Deflate.
       */
+    @inline
     def deflateAsync(buf: Buffer) = callbackWithErrorToFuture(zlib.deflate(buf, _))
 
     /**
       * Asynchronously compresses a Buffer or string with Deflate.
       */
+    @inline
     def deflateAsync(buf: String) = callbackWithErrorToFuture(zlib.deflate(buf, _))
 
     /**
       * Asynchronously compresses a Buffer or string with Deflate.
       */
+    @inline
     def deflateAsync(buf: Buffer, options: CompressionOptions) = callbackWithErrorToFuture(zlib.deflate(buf, options, _))
 
     /**
       * Asynchronously compresses a Buffer or string with Deflate.
       */
+    @inline
     def deflateAsync(buf: String, options: CompressionOptions) = callbackWithErrorToFuture(zlib.deflate(buf, options, _))
 
     /**
       * Asynchronously compresses a Buffer or string with DeflateRaw.
       */
+    @inline
     def deflateRawAsync(buf: Buffer) = callbackWithErrorToFuture(zlib.deflateRaw(buf, _))
 
     /**
       * Asynchronously compresses a Buffer or string with DeflateRaw.
       */
+    @inline
     def deflateRawAsync(buf: String) = callbackWithErrorToFuture(zlib.deflateRaw(buf, _))
 
     /**
       * Asynchronously compresses a Buffer or string with DeflateRaw.
       */
+    @inline
     def deflateRawAsync(buf: Buffer, options: CompressionOptions) = callbackWithErrorToFuture(zlib.deflateRaw(buf, options, _))
 
     /**
       * Asynchronously compresses a Buffer or string with DeflateRaw.
       */
+    @inline
     def deflateRawAsync(buf: String, options: CompressionOptions) = callbackWithErrorToFuture(zlib.deflateRaw(buf, options, _))
 
     /**
       * Flush pending data. Don't call this frivolously, premature flushes negatively impact the effectiveness of the compression algorithm.
       */
+    @inline
     def flushAsync = callbackWithErrorToFuture(zlib.flush)
 
     /**
       * Flush pending data. Don't call this frivolously, premature flushes negatively impact the effectiveness of the compression algorithm.
       */
+    @inline
     def flushAsync(kind: CompressionFlush) = callbackWithErrorToFuture(zlib.flush(kind, _))
 
     /**
       * Decompress a Buffer or string with Gunzip.
       */
+    @inline
     def gunzipAsync(buf: Buffer) = callbackWithErrorToFuture(zlib.gunzip(buf, _))
 
     /**
       * Decompress a Buffer or string with Gunzip.
       */
+    @inline
     def gunzipAsync(buf: String) = callbackWithErrorToFuture(zlib.gunzip(buf, _))
 
     /**
       * Decompress a Buffer or string with Gunzip.
       */
+    @inline
     def gunzipAsync(buf: Buffer, options: CompressionOptions) = callbackWithErrorToFuture(zlib.gunzip(buf, options, _))
 
     /**
       * Decompress a Buffer or string with Gunzip.
       */
+    @inline
     def gunzipAsync(buf: String, options: CompressionOptions) = callbackWithErrorToFuture(zlib.gunzip(buf, options, _))
 
     /**
       * Decompress a Buffer or string with Inflate.
       */
+    @inline
     def inflateAsync(buf: Buffer, options: CompressionOptions) = callbackWithErrorToFuture(zlib.inflate(buf, options, _))
 
     /**
       * Decompress a Buffer or string with Inflate.
       */
+    @inline
     def inflateAsync(buf: String, options: CompressionOptions) = callbackWithErrorToFuture(zlib.inflate(buf, options, _))
 
     /**
       * Decompress a Buffer or string with Unzip.
       */
+    @inline
     def unzipAsync(buf: Buffer, options: CompressionOptions) = callbackWithErrorToFuture(zlib.unzip(buf, options, _))
 
     /**
       * Decompress a Buffer or string with Unzip.
       */
+    @inline
     def unzipAsync(buf: String, options: CompressionOptions) = callbackWithErrorToFuture(zlib.unzip(buf, options, _))
 
   }

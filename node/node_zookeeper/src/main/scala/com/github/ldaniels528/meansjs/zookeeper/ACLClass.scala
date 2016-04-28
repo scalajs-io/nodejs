@@ -30,6 +30,7 @@ object ACLClass {
     /**
       * @example ACL(permission, id)
       */
+    @inline
     def apply(permission: js.Any, id: js.Any) = `class`.New[ACL](permission, id)
 
   }

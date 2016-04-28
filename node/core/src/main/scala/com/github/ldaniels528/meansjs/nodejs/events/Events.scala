@@ -32,6 +32,7 @@ object Events {
     */
   implicit class EventEmitterExtensions(val `class`: Events) extends AnyVal {
 
+    @inline
     def apply() = `class`.New[EventEmitter]()
 
   }

@@ -42,6 +42,7 @@ object JsIterator {
     */
   implicit class IteratorResultExtensions(val result: IteratorResult) extends AnyVal {
 
+    @inline
     def valueAs[T <: js.Any]: js.UndefOr[T] = result.value.map(_.asInstanceOf[T])
 
   }

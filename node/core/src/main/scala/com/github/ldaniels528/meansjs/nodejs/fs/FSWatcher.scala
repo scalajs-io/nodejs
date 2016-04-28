@@ -38,11 +38,13 @@ object FSWatcher {
       * it will be provided as a Buffer if fs.watch() is called with it's encoding option set to 'buffer', otherwise
       * filename will be a string.
       */
+    @inline
     def onChange(listener: js.Function) = watcher.on("change", listener)
 
     /**
       * Emitted when an error occurs.
       */
+    @inline
     def onError(listener: js.Function) = watcher.on("error", listener)
 
   }

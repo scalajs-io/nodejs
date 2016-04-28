@@ -36,6 +36,7 @@ object DuplexClass {
       * @param options the given [[DuplexOptions options]]
       * @return a new [[Duplex Duplex instance]]
       */
+    @inline
     def apply(options: DuplexOptions) = `class`.New[Duplex](options)
 
   }

@@ -3,7 +3,6 @@ package com.github.ldaniels528.meansjs.nodejs.net
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * This class is used to create a TCP or local server.
@@ -66,7 +65,7 @@ trait Server extends EventEmitter {
     * option can be used to specify a UNIX socket.
     * @example server.listen(options[, callback])
     */
-  def listen(options: Server.ListenerOptions, callback: js.Function): Unit = js.native
+  def listen(options: ListenerOptions, callback: js.Function): Unit = js.native
 
   /**
     * The port, host, and backlog properties of options, as well as the optional callback function, behave as
@@ -74,7 +73,7 @@ trait Server extends EventEmitter {
     * option can be used to specify a UNIX socket.
     * @example server.listen(options[, callback])
     */
-  def listen(options: Server.ListenerOptions): Unit = js.native
+  def listen(options: ListenerOptions): Unit = js.native
 
   /**
     * @example server.listen(port[, hostname][, backlog][, callback])
@@ -113,13 +112,6 @@ trait Server extends EventEmitter {
   * @author lawrence.daniels@gmail.com
   */
 object Server {
-  val EVENT_CHECK_CONTINUE = "checkContinue"
-  val EVENT_CLIENT_ERROR = "clientError"
-  val EVENT_CLOSE = "close"
-  val EVENT_CONNECT = "connect"
-  val EVENT_CONNECTION = "connection"
-  val EVENT_REQUEST = "request"
-  val EVENT_UPGRADE = "upgrade"
 
   /**
     * Server Extensions
@@ -127,40 +119,26 @@ object Server {
     */
   implicit class ServerExtensions(val server: Server) extends AnyVal {
 
-  }
+    @inline
+    def onCheckContinue(callback: js.Function) = server.on("checkContinue", callback)
 
-  /**
-    * Listener Options
-    * @author lawrence.daniels@gmail.com
-    */
-  @ScalaJSDefined
-  class ListenerOptions extends js.Object {
-    var host: js.UndefOr[String] = _
-    var port: js.UndefOr[Int] = _
-    var path: js.UndefOr[String] = _
-    var backlog: js.UndefOr[Int] = _
-    var exclusive: js.UndefOr[Boolean] = _
-  }
+    @inline
+    def onClientError(callback: js.Function) = server.on("clientError", callback)
 
-  /**
-    * Listener Options Companion
-    * @author lawrence.daniels@gmail.com
-    */
-  object ListenerOptions {
+    @inline
+    def onClose(callback: js.Function) = server.on("close", callback)
 
-    def apply(host: js.UndefOr[String] = js.undefined,
-              port: js.UndefOr[Int] = js.undefined,
-              path: js.UndefOr[String] = js.undefined,
-              backlog: js.UndefOr[Int] = js.undefined,
-              exclusive: js.UndefOr[Boolean] = js.undefined) = {
-      val options = new ListenerOptions()
-      options.host = host
-      options.port = port
-      options.path = path
-      options.backlog = backlog
-      options.exclusive = exclusive
-      options
-    }
+    @inline
+    def onConnect(callback: js.Function) = server.on("connect", callback)
+
+    @inline
+    def onConnection(callback: js.Function) = server.on("connection", callback)
+
+    @inline
+    def onRequest(callback: js.Function) = server.on("request", callback)
+
+    @inline
+    def onUpgrade(callback: js.Function) = server.on("upgrade", callback)
 
   }
 

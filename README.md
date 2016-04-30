@@ -63,24 +63,28 @@ modules implemented for most web applications.
 
 The following NodeJS modules have been implemented thus far:
 
-* body-parser
-* buffer
-* events
-* express
-* express-ws
-* fs
-* http
-* https
-* kafka-node
-* mongodb
-* net
-* os
-* node-zookeeper-client
-* readline
-* repl
-* stream
-* url
-* util
+| Module            | Artifact              | Description |
+|-------------------|-----------------------|-------------|
+| body-parser       | means-node-express    | Node.js body parsing middleware. |
+| buffer            | means-node-core       | 
+| events            | means-node-core       |
+| express           | means-node-express    |
+| express-ws        | means-node-express    |
+| fs                | means-node-core       |
+| http              | means-node-core       |
+| https             | means-node-core       |
+| kafka-node        | means-node-kafkanode  |
+| mongodb           | means-node-mongodb    |
+| net               | means-node-core       |
+| os                | means-node-os         |
+| node-zookeeper-client | means-node-zookeeper-client |
+| readline          | means-node-core       |
+| repl              | means-node-repl       |
+| stream            | means-node-core       |
+| string-decoder    | means-node-string-decoder |
+| url               | means-node-core       |
+| util              | means-node-core       |
+| zlib              | means-node-zlib       |
 
 I've provided an example to demonstrate how similar the Scala.js code is to the JavaScript
 that it replaces.

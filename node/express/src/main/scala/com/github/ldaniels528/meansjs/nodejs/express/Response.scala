@@ -1,5 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs.express
 
+import com.github.ldaniels528.meansjs.nodejs.http.ServerResponse
+
 import scala.scalajs.js
 
 /**
@@ -9,7 +11,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Response extends js.Object {
+trait Response extends ServerResponse {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -20,11 +22,6 @@ trait Response extends js.Object {
     * res.app is identical to the [[Request.app]] property in the request object.
     */
   def app: Application = js.native
-
-  /**
-    * Boolean property that indicates if the app sent HTTP headers for the response.
-    */
-  def headersSent: Boolean = js.native
 
   /**
     * An object that contains response local variables scoped to the request, and therefore available only
@@ -86,17 +83,6 @@ trait Response extends js.Object {
   def download(path: String, filename: String): Unit = js.native
 
   def download(path: String): Unit = js.native
-
-  /**
-    * Ends the response process. This method actually comes from Node core, specifically the response.end()
-    * method of http.ServerResponse. Use to quickly end the response without any data. If you need to respond
-    * with data, instead use methods such as res.send() and res.json()
-    */
-  def end(data: js.Any, encoding: String): Unit = js.native
-
-  def end(data: js.Any): Unit = js.native
-
-  def end(): Unit = js.native
 
   /**
     * Performs content-negotiation on the Accept HTTP header on the request object, when present.
@@ -161,14 +147,6 @@ trait Response extends js.Object {
 
   def render(view: String, locals: String): Unit = js.native
 
-  def render(view: String): Unit = js.native
-
-  /**
-    * Sends the HTTP response.
-    * The body parameter can be a Buffer object, a String, an object, or an Array.
-    */
-  def send(body: js.Any): Unit = js.native
-
   def send(): Unit = js.native
 
   /**
@@ -183,27 +161,9 @@ trait Response extends js.Object {
   def sendFile(path: String): Unit = js.native
 
   /**
-    * Sets the response HTTP status code to statusCode and send its string representation as the response body.
-    */
-  def sendStatus(statusCode: Int): Unit = js.native
-
-  /**
     * Sets the response’s HTTP header field to value. To set multiple fields at once, pass an object as the parameter.
     */
   def set(name: String, value: String): Unit = js.native
-
-  def set(`object`: js.Any): Unit = js.native
-
-  /**
-    * Sets the HTTP status for the response. It is a chainable alias of Node’s response.statusCode.
-    */
-  def status(statusCode: Int): this.type = js.native
-
-  /**
-    * Sets the Content-Type HTTP header to the MIME type as determined by mime.lookup() for the specified type.
-    * If type contains the “/” character, then it sets the Content-Type to type.
-    */
-  def `type`(mime: String): js.UndefOr[String]
 
   /**
     * Adds the field to the Vary response header, if it is not there already.
@@ -223,6 +183,10 @@ object Response {
     * @author lawrence.daniels@gmail.com
     */
   implicit class HttpResponseExtensions(val response: Response) extends AnyVal {
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //      Response Shortcuts
+    /////////////////////////////////////////////////////////////////////////////////
 
     @inline
     def badRequest() = response.sendStatus(400)

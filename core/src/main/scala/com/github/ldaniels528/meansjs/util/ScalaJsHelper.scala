@@ -45,6 +45,18 @@ object ScalaJsHelper {
     * @return a Scala-style future
     */
   @inline
+  def callback2ToFuture[E <: js.Any, R](f: js.Function => Unit): Future[R] = {
+    val promise = Promise[R]()
+    f((err: E, result: R) => if (!isDefined(err)) promise.success(result) else promise.failure(wrapJavaScriptException(err)))
+    promise.future
+  }
+
+  /**
+    * Converts a JavaScript-style callback to a Scala-style future
+    * @param f the given callback function
+    * @return a Scala-style future
+    */
+  @inline
   def callbackTupleToFuture[A, B](f: js.Function => Unit): Future[(A, B)] = {
     val promise = Promise[(A, B)]()
     f((valueA: A, valueB: B) => promise.success((valueA, valueB)))

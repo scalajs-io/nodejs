@@ -8,8 +8,8 @@ import scala.scalajs.js
   */
 @js.native
 class Server extends js.Object {
-  var host: String = _
-  var port: Int = _
+  var host: String = js.native
+  var port: Int = js.native
 }
 
 /**

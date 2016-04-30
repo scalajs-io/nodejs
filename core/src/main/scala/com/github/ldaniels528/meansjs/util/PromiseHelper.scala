@@ -15,14 +15,16 @@ object PromiseHelper {
   //    Monitoring Functions
   ////////////////////////////////////////////////////////////////////////
 
-  def time[T](action: String, task: => Future[T], showHeader: Boolean = true)(implicit ec: ExecutionContext): Future[T] = {
+  def time[T](action: String, task: => Future[T], showHeader: Boolean = false)(implicit ec: ExecutionContext): Future[T] = {
     if (showHeader) console.info(s"$action...")
     val startTime = System.currentTimeMillis()
     task onComplete {
       case Success(_) =>
-        console.info(s"$action took ${System.currentTimeMillis() - startTime} msecs")
+        val elapsedTime = System.currentTimeMillis - startTime
+        console.info(f"$action took $elapsedTime msecs")
       case Failure(e) =>
-        console.warn(s"$action failed after ${System.currentTimeMillis() - startTime} msecs")
+        val elapsedTime = System.currentTimeMillis - startTime
+        console.info(f"$action took $elapsedTime msecs")
     }
     task
   }

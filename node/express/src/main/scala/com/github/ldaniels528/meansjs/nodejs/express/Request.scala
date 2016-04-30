@@ -1,5 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs.express
 
+import com.github.ldaniels528.meansjs.nodejs.http.ClientRequest
+
 import scala.scalajs.js
 
 /**
@@ -8,7 +10,7 @@ import scala.scalajs.js
   * @see [[http://expressjs.com/en/api.html]]
   */
 @js.native
-trait Request extends js.Object {
+trait Request extends ClientRequest {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -118,7 +120,7 @@ trait Request extends js.Object {
     * Returns an object containing a property for each query string parameter in the route.
     * If there is no query string, it is the empty object, {}.
     */
-  def query: js.Object = js.native
+  def query: js.Dictionary[String] = js.native
 
   /**
     * Contains the currently-matched route, a string.
@@ -213,7 +215,7 @@ object Request {
     * Http Request Extensions
     * @author lawrence.daniels@gmail.com
     */
-  implicit class HttpRequestEnrich(val request: Request) extends AnyVal {
+  implicit class HttpRequestExtensions(val request: Request) extends AnyVal {
 
     def bodyAs[T <: js.Any] = request.body.asInstanceOf[T]
 

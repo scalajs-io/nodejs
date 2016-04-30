@@ -172,14 +172,32 @@ trait ServerResponse extends js.Object {
   * @author lawrence.daniels@gmail.com
   */
 object ServerResponse {
-  val EventClose = "close"
-  val EventFinish = "finish"
 
   /**
     * Server Response Extensions
     * @author lawrence.daniels@gmail.com
     */
   implicit class ServerResponseEnrich(val response: ServerResponse) extends AnyVal {
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //      Events
+    /////////////////////////////////////////////////////////////////////////////////
+
+    /**
+      * Called on close of the request
+      */
+    @inline
+    def onClose(callback: js.Function) = response.on("close", callback)
+
+    /**
+      * Called on completion of the request
+      */
+    @inline
+    def onFinish(callback: js.Function) = response.on("finish", callback)
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //      Response Shortcuts
+    /////////////////////////////////////////////////////////////////////////////////
 
     @inline
     def badRequest() = response.sendStatus(400)

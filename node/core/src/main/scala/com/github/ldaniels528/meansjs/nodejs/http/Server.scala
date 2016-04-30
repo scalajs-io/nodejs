@@ -1,7 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs.http
 
 import com.github.ldaniels528.meansjs.nodejs
-import com.github.ldaniels528.meansjs.nodejs.net.Server.ListenerOptions
+import com.github.ldaniels528.meansjs.nodejs.net.ListenerOptions
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
@@ -90,27 +90,6 @@ object Server {
 
     @inline
     def listenAsync(options: ListenerOptions) = callbackWithErrorToFuture[Unit](server.listen(options, _))
-
-    @inline
-    def onCheckContinue(callback: js.Function) = server.on("checkContinue", callback)
-
-    @inline
-    def onClientError(callback: js.Function) = server.on("clientError", callback)
-
-    @inline
-    def onClose(callback: js.Function) = server.on("close", callback)
-
-    @inline
-    def onConnect(callback: js.Function) = server.on("connect", callback)
-
-    @inline
-    def onConnection(callback: js.Function) = server.on("connection", callback)
-
-    @inline
-    def onRequest(callback: js.Function) = server.on("request", callback)
-
-    @inline
-    def onUpgrade(callback: js.Function) = server.on("upgrade", callback)
 
   }
 

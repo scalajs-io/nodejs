@@ -18,20 +18,24 @@ package object nodejs {
   //      Built-in Properties
   /////////////////////////////////////////////////////////////////////////////////
 
-  @JSName("__dirname")
   @js.native
+  @JSName("console")
+  object console extends Console
+
+  @js.native
+  @JSName("__dirname")
   object __dirname extends js.Object
 
-  @JSName("Error")
   @js.native
+  @JSName("Error")
   object Error extends ErrorClass
 
-  @JSName("module")
   @js.native
+  @JSName("module")
   object module extends ModuleClass
 
-  @JSName("process")
   @js.native
+  @JSName("process")
   object process extends ProcessClass
 
   @js.native

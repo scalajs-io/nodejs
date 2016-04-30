@@ -34,7 +34,7 @@ trait ObjectID extends js.Object {
 
   /**
     * Returns the generation date (accurate up to the second) that this ID was generated.
-    * @return the generation [[js.Date date]]
+    * @return the generation [[scala.scalajs.js.Date date]]
     */
   def getTimestamp(): js.Date = js.native
 

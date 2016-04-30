@@ -1,11 +1,13 @@
 package com.github.ldaniels528.meansjs.mongodb
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * Mongo Database Options
   * @author lawrence.daniels@gmail.com
   */
+@ScalaJSDefined
 class DbOptions extends js.Object {
   var w: js.UndefOr[Int] = _
 }

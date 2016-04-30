@@ -22,6 +22,17 @@ trait Http extends NodeModule {
     */
   def globalAgent: js.Array[js.Any] = js.native
 
+  /**
+    * A list of the HTTP methods that are supported by the parser.
+    */
+  val METHODS: js.Array[String] = js.native
+
+  /**
+    * A collection of all the standard HTTP response status codes, and the short description of each.
+    * @example http.STATUS_CODES[404] === 'Not Found'.
+    */
+  val STATUS_CODES: js.Dictionary[String] = js.native
+
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
   /////////////////////////////////////////////////////////////////////////////////

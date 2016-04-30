@@ -139,6 +139,25 @@ trait Application extends Router {
     */
   def use(path: String, router: Router): Unit = js.native
 
+  /**
+    * Mounts the specified middleware function or functions at the specified path.
+    * If path is not specified, it defaults to “/”.
+    * @example app.use([path,] function [, function...])
+    */
+  def use(path: String, callback: js.Function, next: js.Function*): Unit = js.native
+
+  /**
+    * Mounts the specified middleware function or functions at the specified path.
+    * If path is not specified, it defaults to “/”.
+    * @example app.use([path,] function [, function...])
+    */
+  def use(callback: js.Function, next: js.Function*): Unit = js.native
+
+  /**
+    * Mounts the specified middleware function or functions at the specified path.
+    * If path is not specified, it defaults to “/”.
+    * @example app.use([path,] function [, function...])
+    */
   def use(router: Router): Unit = js.native
 
 }

@@ -745,6 +745,16 @@ object Collection {
       callback2ToFuture[MongoError, T](coll.find(selector, projection).limit(1).nextObject) map (Option(_))
     }
 
+    /**
+      * Find a document and update it in one atomic operation, requires a write lock for the duration of the operation.
+      * @param filter   Document selection filter.
+      * @param update   Update operations to be performed on the document
+      */
+    @inline
+    def findOneAndUpdateAsync[T](filter: js.Any, update: js.Any)(implicit ec: ExecutionContext) = {
+      callback2ToFuture[MongoError, T](coll.findOneAndUpdate(filter, update, _)) map (Option(_))
+    }
+
     @inline
     def insertAsync[T <: js.Any](doc: T) = callback2ToFuture[MongoError, WriteResult](coll.insert(doc, WriteOptions(w = 1), _))
 
@@ -752,6 +762,12 @@ object Collection {
     def insertAsync[T <: js.Any](docs: js.Array[T]) = {
       callback2ToFuture[MongoError, WriteResult](coll.insert(docs, WriteOptions(w = 1), _))
     }
+
+    /**
+      * Returns if the collection is a capped collection
+      */
+    @inline
+    def isCappedAsync = callback2ToFuture[MongoError, WriteResult](coll.isCapped)
 
     @inline
     def removeAsync(doc: js.Any) = callback2ToFuture[MongoError, WriteResult](coll.remove(doc, WriteOptions(w = 1), _))

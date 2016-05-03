@@ -1,6 +1,7 @@
 package com.github.ldaniels528.meansjs.repl
 
 import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 import com.github.ldaniels528.meansjs.nodejs.net.Socket
 
 import scala.scalajs.js
@@ -10,7 +11,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait REPL extends NodeModule {
+trait REPL extends NodeModule with EventEmitter {
   var REPL_MODE_SLOPPY: String = js.native
   var REPL_MODE_STRICT: String = js.native
   var REPL_MODE_MAGIC: String = js.native

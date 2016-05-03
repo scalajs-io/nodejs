@@ -63,8 +63,8 @@ modules implemented for most web applications.
 
 The following NodeJS modules have been implemented thus far:
 
-| Module            | Artifact              | Description |
-|-------------------|-----------------------|-------------|
+| Module            | Artifact              | Description                      |
+|-------------------|-----------------------|----------------------------------|
 | body-parser       | means-node-express    | Node.js body parsing middleware. |
 | buffer            | means-node-core       | 
 | events            | means-node-core       |
@@ -84,6 +84,7 @@ The following NodeJS modules have been implemented thus far:
 | string-decoder    | means-node-string-decoder |
 | url               | means-node-core       |
 | util              | means-node-core       |
+| xml2js            | means-node-xml2js     | Simple XML to JavaScript object converter. |
 | zlib              | means-node-zlib       |
 
 I've provided an example to demonstrate how similar the Scala.js code is to the JavaScript
@@ -197,7 +198,7 @@ The following example demonstrates establishing a connection to MongoDB using Sc
   val url = "mongodb://localhost:27017/test"
 
   // Use connect method to connect to the Server
-  mongoClient.connect(url, (err: js.Object, db: MongoDatabase) => {
+  mongoClient.connect(url, (err: MongoError, db: MongoDatabase) => {
     if (isDefined(err) {
       console.log("Unable to connect to the mongoDB server. Error:", err)
     } else {
@@ -297,32 +298,44 @@ type-safe. In addition, most IDE's will be unable to provide any useful type inf
 #### Controller Example 2: Type-Safe Implementation
 
 ```scala
-class AwardsController($scope: Scope, $http: Http, @injected("MySession") mySession: MySession)
+class AwardsController($scope: AwardsControllerScope, $http: Http,
+                       @injected("MySessionService") mySession: MySessionService)
   extends Controller {
 
-  ///////////////////////////////////////////////////////////////////////////
-  //          Public Functions
-  ///////////////////////////////////////////////////////////////////////////
+  $scope.getAwards = () => {
+    Award.AvailableAwards map { award =>
+      val myAward = award.asInstanceOf[MyAward]
+      myAward.owned = mySession.getMyAwards.contains(award.code)
+      myAward
+    } sortBy (_.owned) reverse
+  }
 
-  @scoped def getAwards = Award.AvailableAwards map { award =>
-    val myAward = award.asInstanceOf[MyAward]
-    myAward.owned = mySession.getMyAwards.contains(award.code)
-    myAward
-  } sortBy (_.owned) reverse
+  $scope.getAwardImage = (aCode: js.UndefOr[String]) => {
+    aCode.toOption.flatMap(code => AwardIconsByCode.get(code)).orUndefined
+  }
 
-  @scoped def getAwardImage(code: String) = AwardIconsByCode.get(code).orNull
-
-  @scoped def getMyAwards = mySession.getMyAwards map (code => AwardsByCode.get(code).orNull)
+  $scope.getMyAwards = () => {
+    mySession.getMyAwards flatMap (code => AwardsByCode.get(code))
+  }
 
 }
 
-trait Award extends js.Object {
-  var name: String = js.native
-  var code: String = js.native
-  var icon: String = js.native
-  var description: String = js.native
+object AwardsController {
+
+  private val AwardsByCode = js.Dictionary[Award](Award.AvailableAwards map { award => (award.code, award) }: _*)
+
+  private val AwardIconsByCode = js.Dictionary[String](Award.AvailableAwards map { award => (award.code, award.icon) }: _*)
+
 }
 
+@js.native
+trait AwardsControllerScope extends Scope {
+  var getAwards: js.Function0[js.Array[MyAward]] = js.native
+  var getAwardImage: js.Function1[js.UndefOr[String], js.UndefOr[String]] = js.native
+  var getMyAwards: js.Function0[js.Array[Award]] = js.native
+}
+
+@js.native
 trait MyAward extends Award {
   var owned: Boolean = js.native
 }
@@ -335,6 +348,7 @@ we're using the `@scope` macro annotation to attach our methods to the `$scope` 
 
 ```scala
 class InvitePlayerDialog($http: Http, $modal: Modal) extends Service {
+
   def popup(participant: Participant): Future[InvitePlayerDialogResult] = {
     val modalInstance = $modal.open[InvitePlayerDialogResult](ModalOptions(
       templateUrl = "invite_player_dialog.htm",
@@ -345,37 +359,46 @@ class InvitePlayerDialog($http: Http, $modal: Modal) extends Service {
 }
 
 class InvitePlayerDialogController($scope: InvitePlayerScope, $modalInstance: ModalInstance[InvitePlayerDialogResult],
-                                   @injected("MySession") mySession: MySession)
+                                   @injected("MySessionService") mySession: MySessionService)
   extends Controller {
 
   private val myFriends = mySession.fbFriends
   $scope.invites = emptyArray[TaggableFriend]
 
-  @scoped def getFriends = myFriends
+  $scope.getFriends = () => myFriends
 
-  @scoped def getInvitedCount = $scope.invites.count(invitee => isDefined(invitee))
+  $scope.getInvitedCount = () => $scope.invites.count(invitee => isDefined(invitee))
 
-  @scoped def getInvites = $scope.invites
+  $scope.getInvites = () => $scope.invites
 
-  @scoped def ok() = $modalInstance.close(getSelectedFriends)
+  $scope.ok = () => $modalInstance.close(getSelectedFriends)
 
-  @scoped def cancel() = $modalInstance.dismiss("cancel")
+  $scope.cancel = () => $modalInstance.dismiss("cancel")
 
   private def getSelectedFriends = {
-    val selectedFriends = emptyArray[TaggableFriend]
-    for (n <- 0 to $scope.invites.length) {
-      if (isDefined($scope.invites(n))) selectedFriends.push(myFriends(n))
-    }
-    selectedFriends
+    js.Array(
+      $scope.invites.indices flatMap { n =>
+        if (isDefined($scope.invites(n))) Some(myFriends(n)) else None
+      }: _*)
   }
-}
 
-trait InvitePlayerScope extends Scope {
-  var invites: js.Array[TaggableFriend] = js.native
 }
 
 object InvitePlayerDialogController {
   type InvitePlayerDialogResult = js.Array[TaggableFriend]
+}
+
+@js.native
+trait InvitePlayerScope extends Scope {
+  // variables
+  var invites: js.Array[TaggableFriend] = js.native
+
+  // functions
+  var cancel: js.Function0[Unit] = js.native
+  var getFriends: js.Function0[js.Array[TaggableFriend]] = js.native
+  var getInvitedCount: js.Function0[Int] = js.native
+  var getInvites: js.Function0[js.Array[TaggableFriend]] = js.native
+  var ok: js.Function0[Unit] = js.native
 }
 ```
 

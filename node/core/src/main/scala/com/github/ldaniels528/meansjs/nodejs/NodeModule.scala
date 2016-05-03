@@ -1,7 +1,5 @@
 package com.github.ldaniels528.meansjs.nodejs
 
-import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
-
 import scala.scalajs.js
 
 /**
@@ -9,4 +7,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait NodeModule extends EventEmitter
+trait NodeModule extends js.Object

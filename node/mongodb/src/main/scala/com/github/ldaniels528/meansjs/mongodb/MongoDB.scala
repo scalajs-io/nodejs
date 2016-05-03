@@ -2,6 +2,7 @@ package com.github.ldaniels528.meansjs.mongodb
 
 import com.github.ldaniels528.meansjs.mongodb.gridfs.{GridClass, GridFSBucketClass, GridStoreClass}
 import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 
 import scala.scalajs.js
 
@@ -10,7 +11,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait MongoDB extends NodeModule {
+trait MongoDB extends NodeModule with EventEmitter {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties

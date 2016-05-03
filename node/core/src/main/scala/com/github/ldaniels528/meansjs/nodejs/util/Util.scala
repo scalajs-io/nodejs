@@ -1,6 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs.util
 
 import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 import com.github.ldaniels528.meansjs.nodejs.fs.StatTime
 
 import scala.scalajs.js
@@ -15,7 +16,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Util extends NodeModule {
+trait Util extends NodeModule with EventEmitter {
 
   /**
     * Deprecated predecessor of console.error.

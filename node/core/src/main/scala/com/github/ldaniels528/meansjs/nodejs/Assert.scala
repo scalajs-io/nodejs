@@ -1,5 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs
 
+import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
+
 import scala.scalajs.js
 
 /**
@@ -13,7 +15,7 @@ import scala.scalajs.js
   * @see {{{ https://nodejs.org/api/assert.html }}}
   */
 @js.native
-trait Assert extends NodeModule {
+trait Assert extends NodeModule with EventEmitter {
 
   /**
     * An alias of assert.ok() .

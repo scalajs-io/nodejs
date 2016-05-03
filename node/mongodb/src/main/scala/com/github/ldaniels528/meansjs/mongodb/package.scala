@@ -2,6 +2,7 @@ package com.github.ldaniels528.meansjs
 
 import scala.language.implicitConversions
 import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * MongoDB package object
@@ -24,42 +25,76 @@ package object mongodb {
     * @example db.inventory.find( { $and: [ { price: { $ne: 1.99 } }, { price: { $exists: true } } ] } )
     */
   @inline
-  def $and(elems: (String, js.Any)*) = "$and" -> js.Array(elems.map(doc(_)): _*)
+  def $and(values: (String, js.Any)*) = "$and" -> js.Array(values.map(doc(_)): _*)
 
   /**
     * Joins query clauses with a logical AND returns all documents that match the conditions of both clauses.
     * @example db.inventory.find( { $and: [ { price: { $ne: 1.99 } }, { price: { $exists: true } } ] } )
     */
   @inline
-  def $and(array: js.Array[js.Any]) = "$and" -> array
+  def $and(array: => js.Array[js.Any]) = "$and" -> array
 
   /**
-    * Joins query clauses with a logical OR returns all documents that match the conditions of either clause.
-    * @example db.inventory.find( { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] } )
+    * Modifies the $push and $addToSet operators to append multiple items for array updates.
+    * @example $each: [ 90, 92, 85 ]
     */
-  @inline
-  def $or(elems: (String, js.Any)*) = "$or" -> js.Array(elems.map(doc(_)): _*)
+  def $each(values: js.Any*) = "$each" -> js.Array(values: _*)
 
   /**
-    * Joins query clauses with a logical OR returns all documents that match the conditions of either clause.
-    * @example db.inventory.find( { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] } )
+    * Modifies the $push and $addToSet operators to append multiple items for array updates.
+    * @example $each: [ 90, 92, 85 ]
     */
-  @inline
-  def $or(array: js.Array[js.Any]) = "$or" -> array
-
-  /**
-    * Joins query clauses with a logical NOR returns all documents that fail to match both clauses.
-    * @example db.inventory.find( { $nor: [ { price: 1.99 }, { sale: true } ]  } )
-    */
-  @inline
-  def $nor(elems: (String, js.Any)*) = "$nor" -> js.Array(elems.map(doc(_)): _*)
+  def $each(values: js.Array[js.Any]) = "$each" -> js.Array(values: _*)
 
   /**
     * Joins query clauses with a logical NOR returns all documents that fail to match both clauses.
     * @example db.inventory.find( { $nor: [ { price: 1.99 }, { sale: true } ]  } )
     */
   @inline
-  def $nor(array: js.Array[js.Any]) = "$nor" -> array
+  def $nor(values: (String, js.Any)*) = "$nor" -> js.Array(values.map(doc(_)): _*)
+
+  /**
+    * Joins query clauses with a logical NOR returns all documents that fail to match both clauses.
+    * @example db.inventory.find( { $nor: [ { price: 1.99 }, { sale: true } ]  } )
+    */
+  @inline
+  def $nor(array: => js.Array[js.Any]) = "$nor" -> array
+
+  /**
+    * Joins query clauses with a logical OR returns all documents that match the conditions of either clause.
+    * @example db.inventory.find( { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] } )
+    */
+  @inline
+  def $or(values: (String, js.Any)*) = "$or" -> js.Array(values.map(doc(_)): _*)
+
+  /**
+    * Joins query clauses with a logical OR returns all documents that match the conditions of either clause.
+    * @example db.inventory.find( { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] } )
+    */
+  @inline
+  def $or(array: => js.Array[js.Any]) = "$or" -> array
+
+  /**
+    * Modifies the $push operator to specify the position in the array to add elements.
+    * @example $position: 1
+    */
+  @inline
+  def $position(pos: => Int) = "$position" -> pos
+
+  /**
+    * Performs text search.
+    * @example db.articles.find( { $text: { $search: "coffee" } } )
+    * @see [[https://docs.mongodb.org/manual/reference/operator/query/text/#op._S_text]]
+    */
+  @inline
+  def $text(options: => TextSearchOptions) = "$text" -> options
+
+  /**
+    * Matches documents that satisfy a JavaScript expression.
+    * @example db.myCollection.find( { $where: "this.credits == this.debits" } )
+    */
+  @inline
+  def $where(code: => String) = "$where" -> code
 
   /**
     * Implicit conversion tuple sequence to [[js.Dictionary]]
@@ -70,13 +105,17 @@ package object mongodb {
     * Mongo DSL Extensions
     * @param attribute the given JSON attribute
     */
-  implicit class MongoDSLExtensions(val attribute: String) extends AnyVal {
+  implicit class DSLExtensions(val attribute: String) extends AnyVal {
 
     @inline
     def $oid(implicit mongo: MongoDB) = mongo.ObjectID(attribute)
 
+    /**
+      * Adds elements to an array only if they do not already exist in the set.
+      * @example { $addToSet: {letters: [ "c", "d" ] } }
+      */
     @inline
-    def $addToSet(value: js.Any) = "$addToSet" -> doc(attribute -> value)
+    def $addToSet(value: => js.Any) = "$addToSet" -> doc(attribute -> value)
 
     /**
       * The $all is equivalent to an $and operation of the specified values; i.e. the following statement:
@@ -90,7 +129,7 @@ package object mongodb {
       * @example { tags: { $all: [ "ssl" , "security" ] } }
       */
     @inline
-    def $all(array: js.Array[js.Any]) = attribute -> doc("$all" -> array)
+    def $all(array: => js.Array[js.Any]) = attribute -> doc("$all" -> array)
 
     /**
       * Projects the first element in an array that matches the specified $elemMatch condition.
@@ -178,7 +217,7 @@ package object mongodb {
       * @example db.inventory.find( { qty: { $mod: [ 4, 0 ] } } )
       */
     @inline
-    def $mod(array: js.Array[js.Any]) = attribute -> doc("$mod" -> array)
+    def $mod(array: => js.Array[js.Any]) = attribute -> doc("$mod" -> array)
 
     /**
       * Matches all values that are not equal to a specified value.
@@ -206,16 +245,50 @@ package object mongodb {
       * @example db.inventory.find( { qty: { $nin: [ 5, 15 ] } } )
       */
     @inline
-    def $nin(array: js.Array[js.Any]) = attribute -> doc("$nin" -> array)
+    def $nin(array: => js.Array[js.Any]) = attribute -> doc("$nin" -> array)
 
+    /**
+      * Removes the first or last item of an array.
+      * @example db.students.update( { _id: 1 }, { $pop: { scores: -1 } } )
+      */
+    def $pop(value: => js.Any) = "$pop" -> doc(attribute -> value)
+
+    /**
+      * The $pull operator removes from an existing array all instances of a value or values that match a specified condition.
+      * @example { $pull: { results: { $elemMatch: { score: 8 , item: "B" } } } }
+      */
     @inline
-    def $pull(value: js.Any) = "$pull" -> doc(attribute -> value)
+    def $pull(value: => js.Any) = "$pull" -> doc(attribute -> value)
+
+    /**
+      * The $pull operator removes from an existing array all instances of a value or values that match a specified condition.
+      * @example db.survey.update( { _id: 1 }, { $pullAll: { scores: [ 0, 5 ] } } )
+      */
+    @inline
+    def $pullAll(values: js.Any*) = "$pullAll" -> doc(attribute -> js.Array(values: _*))
+
+    /**
+      * The $pull operator removes from an existing array all instances of a value or values that match a specified condition.
+      * @example db.survey.update( { _id: 1 }, { $pullAll: { scores: [ 0, 5 ] } } )
+      */
+    @inline
+    def $pullAll(array: => js.Array[js.Any]) = "$pullAll" -> doc(attribute -> array)
 
     /**
       * Selects documents where values match a specified regular expression.
       * @example {{{ db.products.find( { sku: { $regex: /^ABC/i } } ) }}}
       */
-    def $regex(pattern: => String) = attribute -> doc("$type" -> pattern)
+    @inline
+    def $regex(pattern: => String, ignoreCase: Boolean = false) = {
+      attribute -> (if (ignoreCase) doc("$regex" -> pattern, "$options" -> "i") else doc("$regex" -> pattern))
+    }
+
+    /**
+      * Selects documents if the array field is a specified size.
+      * @example db.collection.find( { field: { $size: 1 } } )
+      */
+    @inline
+    def $size(count: => Int) = attribute -> doc("$size" -> count)
 
     /**
       * The $slice operator controls the number of items of an array that a query returns. For information on limiting
@@ -223,14 +296,7 @@ package object mongodb {
       * @example db.posts.find( {}, { comments: { $slice: 5 } } )
       */
     @inline
-    def $slice(count: Int) = attribute -> doc("$slice" -> count)
-
-    /**
-      * Performs text search.
-      * @example db.articles.find( { $text: { $search: "coffee" } } )
-      * @see [[https://docs.mongodb.org/manual/reference/operator/query/text/#op._S_text]]
-      */
-    def $text(pattern: => String) = attribute -> doc("$text" -> pattern)
+    def $slice(count: => Int) = attribute -> doc("$slice" -> count)
 
     /**
       * Selects documents if a field is of the specified type.
@@ -239,6 +305,36 @@ package object mongodb {
     @inline
     def $type(name: => String) = attribute -> doc("$type" -> name)
 
+  }
+
+  /**
+    * Text Search Options
+    * @author lawrence.daniels@gmail.com
+    */
+  @ScalaJSDefined
+  class TextSearchOptions extends js.Object {
+    var $search: js.UndefOr[String] = _
+    var $language: js.UndefOr[String] = _
+    var $caseSensitive: js.UndefOr[Boolean] = _
+    var $diacriticSensitive: js.UndefOr[Boolean] = _
+  }
+
+  /**
+    * Text Search Options Companion
+    * @author lawrence.daniels@gmail.com
+    */
+  object TextSearchOptions {
+    def apply($search: js.UndefOr[String] = js.undefined,
+              $language: js.UndefOr[String] = js.undefined,
+              $caseSensitive: js.UndefOr[Boolean] = js.undefined,
+              $diacriticSensitive: js.UndefOr[Boolean] = js.undefined) = {
+      val options = new TextSearchOptions()
+      options.$search = $search
+      options.$language = $language
+      options.$caseSensitive = $caseSensitive
+      options.$diacriticSensitive = $diacriticSensitive
+      options
+    }
   }
 
 }

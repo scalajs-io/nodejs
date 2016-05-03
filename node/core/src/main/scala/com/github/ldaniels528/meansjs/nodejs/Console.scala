@@ -33,12 +33,18 @@ trait Console extends js.Object {
   def assert(value: js.Any, args: js.Any*): Unit = js.native
 
   /**
-    * Prints to stdout with newline. Multiple arguments can be passed, with the first used as the primary message and
-    * all additional used as substitution values similar to printf(3) (the arguments are all passed to util.format()).
-    * @param data the given data arguments
-    * @example console.log([data][, ...])
+    * Uses util.inspect() on obj and prints the resulting string to stdout.
+    * This function bypasses any custom inspect() function defined on obj
+    * @example console.dir(obj[, options])
     */
-  def log(data: js.Any, args: js.Any*): Unit = js.native
+  def dir(obj: js.Any, options: ConsoleDirOptions): Unit = js.native
+
+  /**
+    * Uses util.inspect() on obj and prints the resulting string to stdout.
+    * This function bypasses any custom inspect() function defined on obj
+    * @example console.dir(obj[, options])
+    */
+  def dir(obj: js.Any): Unit = js.native
 
   /**
     * Prints to stderr with newline. Multiple arguments can be passed, with the first used as the primary message and
@@ -53,6 +59,14 @@ trait Console extends js.Object {
     * @example console.info([data][, ...])
     */
   def info(data: js.Any, args: js.Any*): Unit = js.native
+
+  /**
+    * Prints to stdout with newline. Multiple arguments can be passed, with the first used as the primary message and
+    * all additional used as substitution values similar to printf(3) (the arguments are all passed to util.format()).
+    * @param data the given data arguments
+    * @example console.log([data][, ...])
+    */
+  def log(data: js.Any, args: js.Any*): Unit = js.native
 
   /**
     * Starts a timer that can be used to compute the duration of an operation. Timers are identified by a unique label.

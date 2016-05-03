@@ -1,6 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs.readline
 
 import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 
 import scala.scalajs.js
 
@@ -9,7 +10,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Readline extends NodeModule {
+trait Readline extends NodeModule with EventEmitter {
 
   /**
     * Clears current line of given TTY stream in a specified direction. <tt>dir</tt> should have one of following values:

@@ -2,6 +2,7 @@ package com.github.ldaniels528.meansjs.nodejs.express
 
 import com.github.ldaniels528.meansjs.nodejs.NodeModule
 import com.github.ldaniels528.meansjs.nodejs.bodyparser.BodyParser
+import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 
 import scala.scalajs.js
 
@@ -10,7 +11,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Express extends NodeModule {
+trait Express extends NodeModule with EventEmitter {
 
   /**
     * Creates an Express application. The express() function is a top-level function exported by the express module.

@@ -12,7 +12,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Events extends NodeModule {
+trait Events extends NodeModule with EventEmitter {
 
   def init(): js.Any = js.native
 

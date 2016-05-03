@@ -2,6 +2,7 @@ package com.github.ldaniels528.meansjs.nodejs.fs
 
 import com.github.ldaniels528.meansjs.nodejs.NodeModule
 import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
+import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 import com.github.ldaniels528.meansjs.nodejs.fs.Fs.FileDescriptor
 import com.github.ldaniels528.meansjs.nodejs.stream.{Readable, Writable}
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
@@ -14,7 +15,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Fs extends NodeModule {
+trait Fs extends NodeModule with EventEmitter {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties

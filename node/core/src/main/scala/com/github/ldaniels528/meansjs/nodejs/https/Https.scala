@@ -1,6 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs.https
 
 import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 
 import scala.scalajs.js
 
@@ -9,7 +10,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Https extends NodeModule {
+trait Https extends NodeModule with EventEmitter {
 
   /**
     * Returns a new HTTPS web server object. The options is similar to tls.createServer().

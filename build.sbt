@@ -4,7 +4,7 @@ import sbt.Keys._
 import sbt.Project.projectToRef
 import sbt._
 
-val apiVersion = "0.1.2"
+val apiVersion = "0.1.3"
 val paradisePluginVersion = "2.1.0"
 val _scalaVersion = "2.11.8"
 val scalaJsDomVersion = "0.9.0"
@@ -15,7 +15,7 @@ val commonSettings = Seq(
   version := apiVersion,
   scalaVersion := _scalaVersion,
   scalacOptions ++= Seq("-feature", "-deprecation"),
-  scalacOptions in (Compile, doc) ++= Seq(
+  scalacOptions in(Compile, doc) ++= Seq(
     "-no-link-warnings" // Suppresses problems with Scaladoc @throws links
   ),
   homepage := Some(url("http://github.com.ldaniels528/MEANS.js")),
@@ -35,7 +35,8 @@ val commonSettings = Seq(
 lazy val root = (project in file(".")).
   aggregate(
     core, angularjs, facebook, linkedin,
-    node_core, node_express, node_kafka, node_mongodb, node_os, node_repl, node_string_decoder, node_zlib, node_zookeeper
+    node_core, node_express, node_kafka, node_mongodb, node_os, node_repl,
+    node_string_decoder, node_xml2js, node_zlib, node_zookeeper
   )
 
 lazy val core = (project in file("core")).
@@ -136,6 +137,15 @@ lazy val node_string_decoder = (project in file("node/string_decoder")).
     description := "NodeJS/REPL facade for Scala.js"
   )
 
+lazy val node_xml2js = (project in file("node/xml2js")).
+  dependsOn(core, node_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-xml2js",
+    description := "NodeJS/xml2js facade for Scala.js"
+  )
+
 lazy val node_zlib = (project in file("node/zlib")).
   dependsOn(core, node_core).
   enablePlugins(ScalaJSPlugin).
@@ -155,8 +165,8 @@ lazy val node_zookeeper = (project in file("node/node_zookeeper")).
   )
 
 lazy val examples = (project in file("examples")).
-  aggregate(core, node_core, node_express, node_kafka, node_mongodb, node_os, node_repl, node_string_decoder, node_zlib, node_zookeeper).
-  dependsOn(core, node_core, node_express, node_kafka, node_mongodb, node_os, node_repl, node_string_decoder, node_zlib, node_zookeeper).
+  aggregate(core, node_core, node_express, node_kafka, node_mongodb, node_os, node_repl, node_string_decoder, node_xml2js, node_zlib, node_zookeeper).
+  dependsOn(core, node_core, node_express, node_kafka, node_mongodb, node_os, node_repl, node_string_decoder, node_xml2js, node_zlib, node_zookeeper).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(

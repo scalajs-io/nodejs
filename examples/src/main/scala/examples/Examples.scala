@@ -16,7 +16,8 @@ object Examples extends js.JSApp {
   private val examples = js.Array(
     "Buffers", "EventEmitterExample", "ExpressRoutingExample", "ExpressServerExample",
     "HttpServerExample", "IntermediateTimers", "MongoClientExample", "NetServerExample",
-    "ProducerExample", "ProducerEnhanced", "REPLExample", "TinyCLI", "TransactionExample"
+    "ProducerExample", "ProducerEnhanced", "REPLExample", "TinyCLI", "TransactionExample",
+    "XMLParsingExample"
   )
 
   override def main(): Unit = ()
@@ -48,6 +49,7 @@ object Examples extends js.JSApp {
         case "StringDecoderExample" => new StringDecoderExample(require)
         case "TinyCLI" => new repl.TinyCLI(require)
         case "TransactionExample" => new zookeeper.TransactionExample(require)
+        case "XMLParsingExample" => new XMLParsingExample(require)
         case "URLs" => new basics.URLs(require)
         case arg => usageError()
       }

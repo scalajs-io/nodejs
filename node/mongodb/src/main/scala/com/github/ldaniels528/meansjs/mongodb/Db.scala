@@ -1,7 +1,5 @@
 package com.github.ldaniels528.meansjs.mongodb
 
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-
 import scala.scalajs.js
 
 /**
@@ -12,9 +10,43 @@ import scala.scalajs.js
 @js.native
 trait Db extends js.Object {
 
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Properties
+  /////////////////////////////////////////////////////////////////////////////////
+
+  // Server | ReplSet | Mongos  - Get the current db topology.
+  var serverConfig: js.Any = js.native
+
+  // Current bufferMaxEntries value for the database.
+  var bufferMaxEntries: Int = js.native
+
+  // The name of the database this instance represents.
+  var databaseName: String = js.native
+
+  // The options associated with the db instance.
+  var options: js.Any = js.native
+
+  // The current value of the parameter native_parser.
+  var native_parser: Boolean = js.native
+
+  // The current slaveOk value for the db instance.
+  var slaveOk: Boolean = js.native
+
+  // The current write concern values.
+  var writeConcern: js.Any = js.native
+
+  // Access the topology object (single server, replicaset or mongos).
+  var topology: js.Any = js.native
+
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Methods
+  /////////////////////////////////////////////////////////////////////////////////
+
   def admin(): MongoAdmin = js.native
 
   def close(): Unit = js.native
+
+  def collection(name: String): Collection = js.native
 
   def collection(name: String, callback: js.Function): Unit = js.native
 
@@ -53,25 +85,25 @@ object Db {
   implicit class MongoDatabaseExtensions(val db: Db) extends AnyVal {
 
     @inline
-    def collectionAsync(name: String) = callbackWithErrorToFuture[Collection](db.collection(name, _))
+    def collectionAsync(name: String) = callbackMongoFuture[Collection](db.collection(name, _))
 
     @inline
-    def collectionAsync(name: String, options: CollectionOptions) = callbackWithErrorToFuture[Collection](db.collection(name, options, _))
+    def collectionAsync(name: String, options: CollectionOptions) = callbackMongoFuture[Collection](db.collection(name, options, _))
 
     @inline
-    def collectionNamesAsync = callbackWithErrorToFuture[js.Array[String]](db.collectionNames)
+    def collectionNamesAsync = callbackMongoFuture[js.Array[String]](db.collectionNames)
 
     @inline
-    def createCollectionAsync(name: String) = callbackWithErrorToFuture[Collection](db.createCollection(name, _))
+    def createCollectionAsync(name: String) = callbackMongoFuture[Collection](db.createCollection(name, _))
 
     @inline
-    def createCollectionAsync(name: String, options: CollectionOptions) = callbackWithErrorToFuture[Collection](db.createCollection(name, options, _))
+    def createCollectionAsync(name: String, options: CollectionOptions) = callbackMongoFuture[Collection](db.createCollection(name, options, _))
 
     @inline
-    def dropCollectionAsync(name: String) = callbackWithErrorToFuture[OperationResult](db.dropCollection(name, _))
+    def dropCollectionAsync(name: String) = callbackMongoFuture[OperationResult](db.dropCollection(name, _))
 
     @inline
-    def dropDatabaseAsync = callbackWithErrorToFuture[OperationResult](db.dropDatabase)
+    def dropDatabaseAsync = callbackMongoFuture[OperationResult](db.dropDatabase)
 
   }
 

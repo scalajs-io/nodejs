@@ -11,13 +11,13 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 class DownloadStreamByNameOptions extends js.Object {
   /** The revision number relative to the oldest file with the given filename. 0 gets you the oldest file,
     * 1 gets you the 2nd oldest, -1 gets you the newest. */
-  var revision: js.UndefOr[Integer] = _
+  var revision: js.UndefOr[Int] = _
 
   /** Optional 0-based offset in bytes to start streaming from */
-  var start: js.UndefOr[Integer] = _
+  var start: js.UndefOr[Int] = _
 
   /** Optional 0-based offset in bytes to stop streaming before */
-  var end: js.UndefOr[Integer] = _
+  var end: js.UndefOr[Int] = _
 
 }
 
@@ -27,9 +27,9 @@ class DownloadStreamByNameOptions extends js.Object {
   */
 object DownloadStreamByNameOptions {
 
-  def apply(revision: js.UndefOr[Integer] = js.undefined,
-            start: js.UndefOr[Integer] = js.undefined,
-            end: js.UndefOr[Integer] = js.undefined) = {
+  def apply(revision: js.UndefOr[Int] = js.undefined,
+            start: js.UndefOr[Int] = js.undefined,
+            end: js.UndefOr[Int] = js.undefined) = {
     val options = new DownloadStreamByNameOptions()
     options.revision = revision
     options.start = start

@@ -1,6 +1,7 @@
 package com.github.ldaniels528.meansjs.mongodb
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSName
 
 /**
   * MongoDB Server
@@ -16,13 +17,6 @@ class Server extends js.Object {
   * MongoDB Server
   * @author lawrence.daniels@gmail.com
   */
-object Server {
-
-  def apply(host: String, port: Int) = {
-    val server = new Server()
-    server.host = host
-    server.port = port
-    server
-  }
-
-}
+@js.native
+@JSName("Server")
+object Server extends ServerClass

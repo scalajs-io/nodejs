@@ -12,6 +12,8 @@ import scala.scalajs.js
 @js.native
 trait Readable extends EventEmitter {
 
+  var _read: js.Function0[Any] = js.native
+
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
   /////////////////////////////////////////////////////////////////////////////////
@@ -36,7 +38,7 @@ trait Readable extends EventEmitter {
     * Multiple destinations can be piped to safely.
     * @example readable.pipe(destination[, options])
     */
-  def pipe(destination: js.Any, options: js.Any): this.type = js.native
+  def pipe(destination: Writable, options: js.Any): this.type = js.native
 
   /**
     * This method pulls all the data out of a readable stream, and writes it to the supplied destination,
@@ -44,7 +46,12 @@ trait Readable extends EventEmitter {
     * Multiple destinations can be piped to safely.
     * @example readable.pipe(destination[, options])
     */
-  def pipe(destination: js.Any): this.type = js.native
+  def pipe(destination: Writable): this.type = js.native
+
+  /**
+    * TODO find documentation for this method
+    */
+  def push(value: js.Any): this.type  = js.native
 
   /**
     * The read() method pulls some data out of the internal buffer and returns it. If there is no data available,
@@ -99,7 +106,7 @@ trait Readable extends EventEmitter {
     * <p/>If the destination is specified, but no pipe is set up for it, then this is a no-op.
     * @example readable.unpipe([destination])
     */
-  def unpipe(destination: js.Any): Unit = js.native
+  def unpipe(destination: Writable): Unit = js.native
 
   /**
     * This method will remove the hooks set up for a previous stream.pipe() call.
@@ -132,5 +139,61 @@ trait Readable extends EventEmitter {
     * @example readable.wrap(stream)
     */
   def wrap(stream: js.Any): Unit = js.native
+
+}
+
+/**
+  * Readable Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object Readable {
+
+  /**
+    * Readable Extensions
+    * @author lawrence.daniels@gmail.com
+    */
+  implicit class ReadableExtensions(val writable: Readable) extends AnyVal {
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //      Events
+    /////////////////////////////////////////////////////////////////////////////////
+
+    /**
+      * Emitted when the stream and any of its underlying resources (a file descriptor, for example) have been closed.
+      * The event indicates that no more events will be emitted, and no further computation will occur.
+      */
+    @inline
+    def onClose(callback: js.Function) = writable.on("close", callback)
+
+    /**
+      * Attaching a 'data' event listener to a stream that has not been explicitly paused will switch the stream into
+      * flowing mode. Data will then be passed as soon as it is available.
+      */
+    @inline
+    def onData(callback: js.Function) = writable.on("data", callback)
+
+    /**
+      * This event fires when there will be no more data to read. Note that the 'end' event will not fire unless the
+      * data is completely consumed. This can be done by switching into flowing mode, or by calling stream.read()
+      * repeatedly until you get to the end.
+      */
+    @inline
+    def onEnd(callback: js.Function) = writable.on("end", callback)
+
+    /**
+      * Emitted if there was an error when writing or piping data.
+      */
+    @inline
+    def onError(callback: js.Function) = writable.on("error", callback)
+
+    /**
+      * When a chunk of data can be read from the stream, it will emit a 'readable' event. In some cases, listening
+      * for a 'readable' event will cause some data to be read into the internal buffer from the underlying system,
+      * if it hadn't already.
+      */
+    @inline
+    def onReadable(callback: js.Function) = writable.on("readable", callback)
+
+  }
 
 }

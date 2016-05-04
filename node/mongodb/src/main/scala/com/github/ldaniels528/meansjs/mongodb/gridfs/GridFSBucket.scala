@@ -45,8 +45,8 @@ trait GridFSBucket extends js.Object {
 
   /**
     * Returns a readable stream (GridFSBucketReadStream) for streaming file data from GridFS.
-    * @param id      the id of the file doc
-    * @param options optional settings (default is null)
+    * @param id the id of the file document
+    * @param options the [[DownloadStreamOptions download options]]
     * @example openDownloadStream(id, options)
     */
   def openDownloadStream(id: js.Any, options: DownloadStreamOptions = null): GridFSBucketReadStream = js.native
@@ -55,6 +55,8 @@ trait GridFSBucket extends js.Object {
     * Returns a readable stream (GridFSBucketReadStream) for streaming the file with the given name from GridFS.
     * If there are multiple files with the same name, this will stream the most recent file with the given name
     * (as determined by the uploadDate field). You can set the revision option to change this behavior.
+    * @param file the name of the file to download
+    * @param options the [[DownloadStreamByNameOptions download options]]
     * @example bucket.openDownloadStreamByName('meistersinger.mp3')
     */
   def openDownloadStreamByName(file: String, options: DownloadStreamByNameOptions = null): Readable = js.native
@@ -62,6 +64,8 @@ trait GridFSBucket extends js.Object {
   /**
     * Returns a writable stream (GridFSBucketWriteStream) for writing buffers to GridFS. The stream's 'id' property
     * contains the resulting file's id.
+    * @param file the name of the file to download
+    * @param options the [[UploadStreamOptions upload options]]
     * @example bucket.openUploadStream('./meistersinger.mp3')
     */
   def openUploadStream(file: String, options: UploadStreamOptions = null): Writable = js.native

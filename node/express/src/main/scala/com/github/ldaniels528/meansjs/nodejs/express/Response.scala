@@ -44,6 +44,11 @@ trait Response extends ServerResponse {
     */
   def append(field: String, value: String): Unit = js.native
 
+  /**
+    * Appends the specified value to the HTTP response header field. If the header is not already set,
+    * it creates the header with the specified value. The value parameter can be a string or an array.
+    * <b>Note</b>: calling [[Response.set()]] after [[Response.append()]] will reset the previously-set header value.
+    */
   def append(field: String): Unit = js.native
 
   /**
@@ -53,6 +58,11 @@ trait Response extends ServerResponse {
     */
   def attachment(filename: String): Unit = js.native
 
+  /**
+    * Sets the HTTP response Content-Disposition header field to “attachment”. If a filename is given,
+    * then it sets the Content-Type based on the extension name via res.type(), and sets the
+    * Content-Disposition “filename=” parameter.
+    */
   def attachment(): Unit = js.native
 
   /**
@@ -60,6 +70,9 @@ trait Response extends ServerResponse {
     */
   def cookie(name: String, value: js.Any, options: CookieOptions): Unit = js.native
 
+  /**
+    * Sets cookie name to value. The value parameter may be a string or object converted to JSON.
+    */
   def cookie(name: String, value: js.Any): Unit = js.native
 
   /**
@@ -68,6 +81,10 @@ trait Response extends ServerResponse {
     */
   def clearCookie(name: String, options: CookieOptions): Unit = js.native
 
+  /**
+    * Clears the cookie specified by name. For details about the options object.
+    * @see [[Response.cookie()]]
+    */
   def clearCookie(name: String): Unit = js.native
 
   /**
@@ -80,8 +97,24 @@ trait Response extends ServerResponse {
     */
   def download(path: String, filename: String, callback: js.Function): Unit = js.native
 
+  /**
+    * Transfers the file at path as an “attachment”. Typically, browsers will prompt the user for download.
+    * By default, the Content-Disposition header “filename=” parameter is path (this typically appears in the
+    * browser dialog). Override this default with the filename parameter.
+    *
+    * When an error occurs or transfer is complete, the method calls the optional callback function fn.
+    * This method uses res.sendFile() to transfer the file.
+    */
   def download(path: String, filename: String): Unit = js.native
 
+  /**
+    * Transfers the file at path as an “attachment”. Typically, browsers will prompt the user for download.
+    * By default, the Content-Disposition header “filename=” parameter is path (this typically appears in the
+    * browser dialog). Override this default with the filename parameter.
+    *
+    * When an error occurs or transfer is complete, the method calls the optional callback function fn.
+    * This method uses res.sendFile() to transfer the file.
+    */
   def download(path: String): Unit = js.native
 
   /**
@@ -106,6 +139,11 @@ trait Response extends ServerResponse {
     */
   def json(body: js.Any): Unit = js.native
 
+  /**
+    * Sends a JSON response. This method is identical to res.send() with an object or array as the parameter.
+    * However, you can use it to convert other values to JSON, such as null, and undefined (although these
+    * are technically not valid JSON).
+    */
   def json(): Unit = js.native
 
   /**
@@ -114,6 +152,10 @@ trait Response extends ServerResponse {
     */
   def jsonp(body: js.Any): Unit = js.native
 
+  /**
+    * Sends a JSON response with JSONP support. This method is identical to res.json(),
+    * except that it opts-in to JSONP callback support.
+    */
   def jsonp(): Unit = js.native
 
   /**
@@ -132,6 +174,10 @@ trait Response extends ServerResponse {
     */
   def redirect(status: Int, path: String): Unit = js.native
 
+  /**
+    * Redirects to the URL derived from the specified path, with specified status, a positive integer
+    * that corresponds to an HTTP status code . If not specified, status defaults to “302 “Found”.
+    */
   def redirect(path: String): Unit = js.native
 
   /**
@@ -145,8 +191,26 @@ trait Response extends ServerResponse {
     */
   def render(view: String, locals: String, callback: js.Function): Unit = js.native
 
+  /**
+    * Renders a view and sends the rendered HTML string to the client. Optional parameters:
+    * <ul>
+    * <li>locals, an object whose properties define local variables for the view.</li>
+    * <li>callback, a callback function. If provided, the method returns both the
+    * possible error and rendered string, but does not perform an automated response.
+    * When an error occurs, the method invokes next(err) internally.</li>
+    * </ul>
+    */
   def render(view: String, locals: String): Unit = js.native
 
+  /**
+    * Renders a view and sends the rendered HTML string to the client. Optional parameters:
+    * <ul>
+    * <li>locals, an object whose properties define local variables for the view.</li>
+    * <li>callback, a callback function. If provided, the method returns both the
+    * possible error and rendered string, but does not perform an automated response.
+    * When an error occurs, the method invokes next(err) internally.</li>
+    * </ul>
+    */
   def send(): Unit = js.native
 
   /**
@@ -156,8 +220,18 @@ trait Response extends ServerResponse {
     */
   def sendFile(path: String, options: FileTransferOptions, callback: js.Function): Unit = js.native
 
+  /**
+    * Transfers the file at the given path. Sets the Content-Type response HTTP header
+    * field based on the filename’s extension. Unless the root option is set in the
+    * options object, path must be an absolute path to the file.
+    */
   def sendFile(path: String, options: FileTransferOptions): Unit = js.native
 
+  /**
+    * Transfers the file at the given path. Sets the Content-Type response HTTP header
+    * field based on the filename’s extension. Unless the root option is set in the
+    * options object, path must be an absolute path to the file.
+    */
   def sendFile(path: String): Unit = js.native
 
   /**

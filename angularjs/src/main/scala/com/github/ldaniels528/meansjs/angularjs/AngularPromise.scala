@@ -7,9 +7,3 @@ import scala.scalajs.js
  */
 @js.native
 trait AngularPromise extends js.Object
-
-/**
- * AngularJS Cancellable Promise
- */
-@js.native
-trait CancellablePromise extends AngularPromise

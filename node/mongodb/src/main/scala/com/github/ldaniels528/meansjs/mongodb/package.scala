@@ -1,8 +1,12 @@
 package com.github.ldaniels528.meansjs
 
+import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+
+import scala.concurrent.{Future, Promise}
 import scala.language.implicitConversions
 import scala.scalajs.js
 import scala.scalajs.js.annotation.ScalaJSDefined
+import scala.scalajs.runtime._
 
 /**
   * MongoDB package object
@@ -11,6 +15,18 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 package object mongodb {
 
   type ReadPreference = String
+
+  /**
+    * Converts a JavaScript-style callback to a Scala-style future
+    * @param f the given callback function
+    * @return a Scala-style future
+    */
+  @inline
+  def callbackMongoFuture[R](f: js.Function2[MongoError, R, Any] => Any): Future[R] = {
+    val promise = Promise[R]()
+    f((err: MongoError, result: R) => if (!isDefined(err)) promise.success(result) else promise.failure(wrapJavaScriptException(err)))
+    promise.future
+  }
 
   /**
     * Creates a new JSON document
@@ -115,7 +131,7 @@ package object mongodb {
       * @example { $addToSet: {letters: [ "c", "d" ] } }
       */
     @inline
-    def $addToSet(value: => js.Any) = "$addToSet" -> doc(attribute -> value)
+    def $addToSet(value: => js.Any) = attribute -> doc("$addToSet"  -> value)
 
     /**
       * The $all is equivalent to an $and operation of the specified values; i.e. the following statement:

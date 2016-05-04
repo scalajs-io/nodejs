@@ -13,6 +13,8 @@ class EventEmitterExample(require: Require, scope: js.Dynamic) {
   val eventEmitter = require[Events]("events")
   val ee = eventEmitter()
 
+  //console.log(scope)
+
   setImmediate(() => {
     // This will crash the process because no "error" event
     // handler has been added.

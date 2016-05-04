@@ -1,6 +1,5 @@
 package com.github.ldaniels528.meansjs.angularjs.core
 
-import com.github.ldaniels528.meansjs.angularjs.CancellablePromise
 import org.scalajs.dom.Element
 import org.w3c.dom.events.Event
 
@@ -66,7 +65,7 @@ trait Animate extends js.Object {
     * Cancels the provided animation.
     * @param animationPromise The animation promise that is returned when an animation is started.
     */
-  def cancel(animationPromise: CancellablePromise): Unit = js.native
+  def cancel(animationPromise: js.Promise[js.Any]): Unit = js.native
 
   /**
     * Inserts the element into the DOM either after the after element (if provided) or as the first child
@@ -76,9 +75,9 @@ trait Animate extends js.Object {
     * @param parent  the parent element which will append the element as a child (so long as the after element is not present)
     * @param after   the sibling element after which the element will be appended
     * @param options an optional collection of options/styles that will be applied to the element
-    * @return the animation [[CancellablePromise callback promise]]
+    * @return the animation [[js.Promise callback promise]]
     */
-  def enter(element: Element, parent: Element, after: Element = js.native, options: js.Object = js.native): CancellablePromise = js.native
+  def enter(element: Element, parent: Element, after: Element = js.native, options: js.Object = js.native): js.Promise[js.Any] = js.native
 
   /**
     * Inserts (moves) the element into its new position in the DOM either after the after element (if provided)
@@ -88,18 +87,18 @@ trait Animate extends js.Object {
     * @param parent  the parent element which will append the element as a child (so long as the after element is not present)
     * @param after   the sibling element after which the element will be appended
     * @param options an optional collection of options/styles that will be applied to the element
-    * @return the animation [[CancellablePromise callback promise]]
+    * @return the animation [[js.Promise[js.Any] callback promise]]
     */
-  def move(element: Element, parent: Element, after: Element, options: js.Object = js.native): CancellablePromise = js.native
+  def move(element: Element, parent: Element, after: Element, options: js.Object = js.native): js.Promise[js.Any] = js.native
 
   /**
     * Triggers an animation and then removes the element from the DOM. When the function is called a
     * promise is returned that will be resolved during the next digest once the animation has completed.
     * @param element the element which will be removed from the DOM
     * @param options an optional collection of options/styles that will be applied to the element
-    * @return the animation [[CancellablePromise callback promise]]
+    * @return the animation [[js.Promise[js.Any] callback promise]]
     */
-  def leave(element: Element, options: js.Object = js.native): CancellablePromise = js.native
+  def leave(element: Element, options: js.Object = js.native): js.Promise[js.Any] = js.native
 
   /**
     * Triggers an addClass animation surrounding the addition of the provided CSS class(es). Upon execution,
@@ -110,9 +109,9 @@ trait Animate extends js.Object {
     * @param element   the element which the CSS classes will be applied to
     * @param className the CSS class(es) that will be added (multiple classes are separated via spaces)
     * @param options   an optional collection of options/styles that will be applied to the element
-    * @return the animation [[CancellablePromise callback promise]]
+    * @return the animation [[js.Promise[js.Any] callback promise]]
     */
-  def addClass(element: Element, className: String, options: js.Object = js.native): CancellablePromise = js.native
+  def addClass(element: Element, className: String, options: js.Object = js.native): js.Promise[js.Any] = js.native
 
   /**
     * Triggers a removeClass animation surrounding the removal of the provided CSS class(es). Upon execution,
@@ -123,9 +122,9 @@ trait Animate extends js.Object {
     * @param element   the element which the CSS classes will be applied to
     * @param className the CSS class(es) that will be removed (multiple classes are separated via spaces)
     * @param options   an optional collection of options/styles that will be applied to the element
-    * @return the animation [[CancellablePromise callback promise]]
+    * @return the animation [[js.Promise[js.Any] callback promise]]
     */
-  def removeClass(element: Element, className: String, options: js.Object = js.native): CancellablePromise = js.native
+  def removeClass(element: Element, className: String, options: js.Object = js.native): js.Promise[js.Any] = js.native
 
   /**
     * Performs both the addition and removal of a CSS classes on an element and (during the process)
@@ -138,9 +137,9 @@ trait Animate extends js.Object {
     * @param add     the CSS class(es) that will be added (multiple classes are separated via spaces)
     * @param remove  the CSS class(es) that will be removed (multiple classes are separated via spaces)
     * @param options an optional collection of options/styles that will be applied to the element
-    * @return the animation [[CancellablePromise callback promise]]
+    * @return the animation [[js.Promise[js.Any] callback promise]]
     */
-  def setClass(element: Element, add: String, remove: String, options: js.Object = js.native): CancellablePromise = js.native
+  def setClass(element: Element, add: String, remove: String, options: js.Object = js.native): js.Promise[js.Any] = js.native
 
   /**
     * Performs an inline animation on the element which applies the provided to and from CSS styles to the element.
@@ -156,9 +155,9 @@ trait Animate extends js.Object {
     *                  If this value is left as empty then a CSS class of ng-inline-animate will be applied to the element.
     *                  (Note that if no animation is detected then this value will not be appplied to the element.)
     * @param options   an optional collection of options/styles that will be applied to the element
-    * @return the animation [[CancellablePromise callback promise]]
+    * @return the animation [[js.Promise[js.Any] callback promise]]
     */
-  def animate(element: Element, from: js.Object, to: js.Object, className: String, options: js.Object = js.native): CancellablePromise = js.native
+  def animate(element: Element, from: js.Object, to: js.Object, className: String, options: js.Object = js.native): js.Promise[js.Any] = js.native
 
 }
 

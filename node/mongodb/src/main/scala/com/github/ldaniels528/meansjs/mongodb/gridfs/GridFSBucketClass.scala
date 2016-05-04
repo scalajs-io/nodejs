@@ -28,7 +28,7 @@ object GridFSBucketClass {
     def apply(db: Db) = `class`.New[GridFSBucket](db)
 
     @inline
-    def apply(db: Db, options: GridFSBucketOptions) = `class`.New[GridFSBucket](db, options)
+    def apply(db: Db, options: GridFSOptions) = `class`.New[GridFSBucket](db, options)
 
   }
 

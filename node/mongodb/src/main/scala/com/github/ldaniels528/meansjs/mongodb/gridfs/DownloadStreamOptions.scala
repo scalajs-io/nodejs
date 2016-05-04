@@ -10,10 +10,10 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 @ScalaJSDefined
 class DownloadStreamOptions extends js.Object {
   // Optional 0-based offset in bytes to start streaming from
-  var start: js.UndefOr[Integer] = _
+  var start: js.UndefOr[Int] = _
 
   // Optional 0-based offset in bytes to stop streaming before
-  var end: js.UndefOr[Integer] = _
+  var end: js.UndefOr[Int] = _
 
 }
 
@@ -23,8 +23,8 @@ class DownloadStreamOptions extends js.Object {
   */
 object DownloadStreamOptions {
 
-  def apply(start: js.UndefOr[Integer] = js.undefined,
-            end: js.UndefOr[Integer] = js.undefined) = {
+  def apply(start: js.UndefOr[Int] = js.undefined,
+            end: js.UndefOr[Int] = js.undefined) = {
     val options = new DownloadStreamOptions()
     options.start = start
     options.end = end

@@ -15,6 +15,8 @@ object ScalaJsHelper {
   //    Convenience Functions
   ////////////////////////////////////////////////////////////////////////
 
+  implicit def promise2Future[T](promise: js.Promise[T]): Future[T] = promise.toFuture
+
   /**
     * Converts a JavaScript-style callback to a Scala-style future
     * @param f the given callback function
@@ -33,7 +35,7 @@ object ScalaJsHelper {
     * @return a Scala-style future
     */
   @inline
-  def callbackWithErrorToFuture[A](f: js.Function => Unit): Future[A] = {
+  def callbackWithErrorToFuture[A](f: js.Function => Any): Future[A] = {
     val promise = Promise[A]()
     f((err: js.Any, result: A) => if (!isDefined(err)) promise.success(result) else promise.failure(wrapJavaScriptException(err)))
     promise.future
@@ -45,7 +47,7 @@ object ScalaJsHelper {
     * @return a Scala-style future
     */
   @inline
-  def callback2ToFuture[E <: js.Any, R](f: js.Function => Unit): Future[R] = {
+  def callback2ToFuture[E <: js.Any, R](f: js.Function => Any): Future[R] = {
     val promise = Promise[R]()
     f((err: E, result: R) => if (!isDefined(err)) promise.success(result) else promise.failure(wrapJavaScriptException(err)))
     promise.future
@@ -57,7 +59,7 @@ object ScalaJsHelper {
     * @return a Scala-style future
     */
   @inline
-  def callbackTupleToFuture[A, B](f: js.Function => Unit): Future[(A, B)] = {
+  def callbackTupleToFuture[A, B](f: js.Function => Any): Future[(A, B)] = {
     val promise = Promise[(A, B)]()
     f((valueA: A, valueB: B) => promise.success((valueA, valueB)))
     promise.future

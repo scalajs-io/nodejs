@@ -70,7 +70,7 @@ trait Http extends NodeModule with EventEmitter {
     * Returns a new instance of http.Server.
     * @example http.createServer([requestListener])
     */
-  def createServer(callback: js.Function2[ClientRequest, ServerResponse, Unit]): Server = js.native
+  def createServer(callback: js.Function2[ClientRequest, ServerResponse, Any]): Server = js.native
 
   /**
     * Returns a new instance of http.Server.

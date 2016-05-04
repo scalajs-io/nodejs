@@ -1,5 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs.http
 
+import com.github.ldaniels528.meansjs.nodejs.stream.Writable
+
 import scala.scalajs.js
 
 /**
@@ -8,7 +10,7 @@ import scala.scalajs.js
   * @see [[https://nodejs.org/api/http.html#http_class_http_serverresponse]]
   */
 @js.native
-trait ServerResponse extends js.Object {
+trait ServerResponse extends Writable {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -19,6 +21,12 @@ trait ServerResponse extends js.Object {
     * After response.end() executes, the value will be true.
     */
   def finished: Boolean = js.native
+
+  /**
+    * The response headers
+    * @return
+    */
+  def headers: js.Dictionary[String] = js.native
 
   /**
     * Boolean (read-only). True if headers were sent, false otherwise.
@@ -58,32 +66,11 @@ trait ServerResponse extends js.Object {
   def addTrailers(headers: js.Any): Unit = js.native
 
   /**
-    * This method signals to the server that all of the response headers and body have been sent;
-    * that server should consider this message complete. The method, response.end(), MUST be called on each response.
-    * <p/>If data is specified, it is equivalent to calling response.write(data, encoding) followed by response.end(callback).
-    * <p/>If callback is specified, it will be called when the response stream is finished.
-    * @example response.end([data][, encoding][, callback])
-    */
-  def end(data: js.Any, encoding: String, callback: js.Function): Unit = js.native
-
-  def end(data: js.Any, encoding: String): Unit = js.native
-
-  def end(data: js.Any, callback: js.Function): Unit = js.native
-
-  def end(data: js.Any): Unit = js.native
-
-  def end(callback: js.Function): Unit = js.native
-
-  def end(): Unit = js.native
-
-  /**
     * Reads out a header that's already been queued but not sent to the client.
     * Note that the name is case insensitive. This can only be called before
     * headers get implicitly flushed.
     */
   def getHeader(name: String): js.UndefOr[String] = js.native
-
-  def on(event: String, callback: js.Function): Unit = js.native
 
   /**
     * Removes a header that's queued for implicit sending.
@@ -126,28 +113,6 @@ trait ServerResponse extends js.Object {
   def `type`(mime: String): js.UndefOr[String] = js.native
 
   /**
-    * If this method is called and response.writeHead() has not been called, it will switch to implicit header
-    * mode and flush the implicit headers. This sends a chunk of the response body. This method may be called
-    * multiple times to provide successive parts of the body.
-    * <p/>chunk can be a string or a buffer. If chunk is a string, the second parameter specifies how to encode it
-    * into a byte stream. By default the encoding is 'utf8'. The last parameter callback will be called when
-    * this chunk of data is flushed.
-    * <p/>Note: This is the raw HTTP body and has nothing to do with higher-level multi-part body encodings that may be used.
-    * The first time response.write() is called, it will send the buffered header information and the first body
-    * to the client. The second time response.write() is called, Node.js assumes you're going to be streaming data,
-    * and sends that separately. That is, the response is buffered up to the first chunk of body.
-    * <p/>Returns true if the entire data was flushed successfully to the kernel buffer.
-    * <p/>Returns false if all or part of the data was queued in user memory. 'drain' will be emitted when the
-    * buffer is free again.
-    * @example response.write(chunk[, encoding][, callback])
-    */
-  def write(chunk: js.Any, encoding: String, callback: js.Function): Unit = js.native
-
-  def write(chunk: js.Any, encoding: String): Unit = js.native
-
-  def write(chunk: js.Any): Unit = js.native
-
-  /**
     * Sends a HTTP/1.1 100 Continue message to the client, indicating that the request body should be sent.
     * See the 'checkContinue' event on Server.
     */
@@ -178,26 +143,6 @@ object ServerResponse {
     * @author lawrence.daniels@gmail.com
     */
   implicit class ServerResponseEnrich(val response: ServerResponse) extends AnyVal {
-
-    /////////////////////////////////////////////////////////////////////////////////
-    //      Events
-    /////////////////////////////////////////////////////////////////////////////////
-
-    /**
-      * Called on close of the request
-      */
-    @inline
-    def onClose(callback: js.Function) = response.on("close", callback)
-
-    /**
-      * Called on completion of the request
-      */
-    @inline
-    def onFinish(callback: js.Function) = response.on("finish", callback)
-
-    /////////////////////////////////////////////////////////////////////////////////
-    //      Response Shortcuts
-    /////////////////////////////////////////////////////////////////////////////////
 
     @inline
     def badRequest() = response.sendStatus(400)

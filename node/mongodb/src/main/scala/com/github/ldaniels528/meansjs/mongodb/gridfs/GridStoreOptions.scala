@@ -9,23 +9,32 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   */
 @ScalaJSDefined
 class GridStoreOptions extends js.Object {
-  var root: js.UndefOr[String] = _
   // root collection to use. Defaults to {GridStore.DEFAULT_ROOT_COLLECTION}.
-  var content_type: js.UndefOr[String] = _
+  var root: js.UndefOr[String] = _
+
   // mime type of the file. Defaults to {GridStore.DEFAULT_CONTENT_TYPE}.
-  var chunk_size: js.UndefOr[Int] = _
+  var content_type: js.UndefOr[String] = _
+
   // size for the chunk. Defaults to {Chunk.DEFAULT_CHUNK_SIZE}.
-  var metadata: js.UndefOr[js.Object] = _
+  var chunk_size: js.UndefOr[Int] = _
+
   // arbitrary data the user wants to store.
-  var readPreference: js.UndefOr[String] = _
+  var metadata: js.UndefOr[js.Object] = _
+
   // the prefered read preference (ReadPreference.PRIMARY, ReadPreference.PRIMARY_PREFERRED, ReadPreference.SECONDARY, ReadPreference.SECONDARY_PREFERRED, ReadPreference.NEAREST).
-  var w: js.Any = js.undefined
+  var readPreference: js.UndefOr[String] = _
+
   // {Int/String, > -1 || ‘majority’ || tag name} the write concern for the operation where < 1 is no acknowlegement of write and w >= 1, w = ‘majority’ or tag acknowledges the write
+  var w: js.UndefOr[js.Any] = js.undefined
+
+  // set the timeout for waiting for write concern to finish (combines with w option)
   var wtimeout: js.UndefOr[Int] = _
-  // 0} set the timeout for waiting for write concern to finish (combines with w option)
+
+  // (default:false) write waits for fsync before returning, from MongoDB 2.6 on, fsync cannot be combined with journal
   var fsync: js.UndefOr[Boolean] = _
-  // default:false) write waits for fsync before returning, from MongoDB 2.6 on, fsync cannot be combined with journal
-  var j: js.UndefOr[Boolean] = _ // default:false) write waits for journal sync before returning
+
+  // (default:false) write waits for journal sync before returning
+  var j: js.UndefOr[Boolean] = _
 
 }
 
@@ -40,7 +49,7 @@ object GridStoreOptions {
             chunk_size: js.UndefOr[Int] = js.undefined,
             metadata: js.UndefOr[js.Object] = js.undefined,
             readPreference: js.UndefOr[String] = js.undefined,
-            w: js.Any = js.undefined,
+            w: js.UndefOr[js.Any] = js.undefined,
             wtimeout: js.UndefOr[Int] = js.undefined,
             fsync: js.UndefOr[Boolean] = js.undefined,
             j: js.UndefOr[Boolean] = js.undefined) = {

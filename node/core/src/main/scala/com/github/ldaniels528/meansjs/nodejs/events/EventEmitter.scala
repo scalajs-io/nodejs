@@ -21,7 +21,7 @@ trait EventEmitter extends js.Object {
     */
   var defaultMaxListeners: Int = js.native
 
-  var domain: String
+  var domain: String = js.native
 
   def EventEmitter: js.Function0[EventEmitter] = js.native
 

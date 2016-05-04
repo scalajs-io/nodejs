@@ -1,5 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs
 
+import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 import com.github.ldaniels528.meansjs.nodejs.stream.{Readable, Writable}
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
@@ -10,7 +11,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait ProcessClass extends js.Object {
+trait ProcessClass extends EventEmitter {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties

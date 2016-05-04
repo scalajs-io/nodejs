@@ -15,13 +15,12 @@ import scala.util.{Failure, Success}
 class MongoClientExample(require: Require) {
 
   // lets require/import the mongodb native drivers.
-  val mongodb = require[MongoDB]("mongodb")
+  val mongo = require[MongoDB]("mongodb")
 
   // We need to work with "MongoClient" interface in order to connect to a mongodb server.
-  val mongoClient = mongodb.MongoClient
+  val mongoClient = mongo.MongoClient
 
-  val replicas = mongodb.ReplSetServers(js.Array(mongodb.Server("localhost", 27017)))
-  console.log("replicas = %j", replicas)
+  val replicas = mongo.ReplSetServers(js.Array(mongo.Server("localhost", 27017)))
 
   // Connection URL. This is where your mongodb server is running.
   val url = "mongodb://localhost:27017/test"

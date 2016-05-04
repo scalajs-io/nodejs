@@ -1,6 +1,7 @@
 package examples
 
 import com.github.ldaniels528.meansjs.nodejs._
+import examples.nodejs.http.ClientRequestExample
 import examples.nodejs.{events, express, http, net, _}
 import org.scalajs.dom.console
 
@@ -29,6 +30,7 @@ object Examples extends js.JSApp {
       args map { arg => console.log(s"Executing example '$arg'"); arg } foreach {
         case "Buffers" => new buffers.Buffers(require)
         case "Classes" => new basics.Classes(require)
+        case "ClientRequestExample" => new ClientRequestExample(require)
         case "Compression" => new basics.Compression(require)
         case "EventEmitterExample" => new events.EventEmitterExample(require, scope)
         case "ExpressRoutingExample" => new express.ExpressRoutingExample(require)
@@ -37,14 +39,17 @@ object Examples extends js.JSApp {
         case "HttpServerExample" => new http.HttpServerExample(require)
         case "IntermediateTimers" => new timers.IntermediateTimers(require)
         case "GridFSBucketExample" => new mongo.GridFSBucketExample(require)
+        case "MongoAggregateExample" => new mongo.MongoAggregateExample(require)
         case "MongoClientExample" => new mongo.MongoClientExample(require)
         case "MongoGridExample" => new mongo.MongoGridExample(require)
         case "MongoGridStoreExample" => new mongo.MongoGridStoreExample(require)
+        case "MongoStreamExample" => new mongo.MongoStreamExample(require)
         case "NetServerExample" => new net.NetServerExample(require)
         case "ProcessPlay" => new basics.ProcessPlay(require)
         case "ProducerExample" => new kafka.ProducerExample(require)
         case "ProducerEnhanced" => new kafka.ProducerEnhanced(require)
         case "REPLExample" => new repl.REPLExample(require)
+        case "ServerWithCompression" => new http.ServerWithCompression(require)
         case "StateExample" => new zookeeper.StateExample(require)
         case "StringDecoderExample" => new StringDecoderExample(require)
         case "TinyCLI" => new repl.TinyCLI(require)

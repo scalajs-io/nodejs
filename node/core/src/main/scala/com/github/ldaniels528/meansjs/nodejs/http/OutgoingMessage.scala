@@ -9,6 +9,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait OutgoingMessage extends stream.Writable {
-
-}
+trait OutgoingMessage extends stream.Writable

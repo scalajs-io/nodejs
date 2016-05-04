@@ -9,6 +9,6 @@ import scala.scalajs.js
 @js.native
 trait Pure extends js.Object {
 
-  val BSON: BSONClass = js.native
+  def BSON: js.Function0[BSON] = js.native
 
 }

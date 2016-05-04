@@ -1,7 +1,5 @@
 package com.github.ldaniels528.meansjs.angularjs.core
 
-import com.github.ldaniels528.meansjs.angularjs.CancellablePromise
-
 import scala.scalajs.js
 
 /**
@@ -20,14 +18,14 @@ trait Timeout extends js.Object {
     * @param pass        additional parameters to the executed function.
     * @return A promise which will be notified on each iteration.
     */
-  def apply(fn: js.Function, delay: Int = 0, invokeApply: Boolean = true, pass: js.Any = js.native): CancellablePromise = js.native
+  def apply(fn: js.Function, delay: Int = 0, invokeApply: Boolean = true, pass: js.Any = js.native): js.Promise[js.Any] = js.native
 
   /**
     * Cancels a task associated with the promise.
     * @param promise returned by the $interval function.
     * @return true if the task was successfully canceled.
     */
-  def cancel(promise: js.UndefOr[CancellablePromise] = js.undefined): Boolean = js.native
+  def cancel(promise: js.UndefOr[js.Promise[js.Any]] = js.undefined): Boolean = js.native
 
   /**
     * Synchronously flushes the queue of deferred functions.

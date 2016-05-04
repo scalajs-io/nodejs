@@ -1,7 +1,5 @@
 package com.github.ldaniels528.meansjs.mongodb
 
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-
 import scala.scalajs.js
 
 /**
@@ -34,16 +32,16 @@ object MongoAdmin {
   implicit class MongoAdminEnrich(val admin: MongoAdmin) extends AnyVal {
 
     @inline
-    def profilingInfoAsync(name: String) = callbackWithErrorToFuture[ProfilingInfo](admin.profilingInfo)
+    def profilingInfoAsync(name: String) = callbackMongoFuture[ProfilingInfo](admin.profilingInfo)
 
     @inline
-    def profilingLevelAsync(name: String) = callbackWithErrorToFuture[String](admin.profilingLevel)
+    def profilingLevelAsync(name: String) = callbackMongoFuture[String](admin.profilingLevel)
 
     @inline
-    def setProfilingLevelAsync(level: String) = callbackWithErrorToFuture[String](admin.setProfilingLevel(level, _))
+    def setProfilingLevelAsync(level: String) = callbackMongoFuture[String](admin.setProfilingLevel(level, _))
 
     @inline
-    def validateCollection(collectionName: String) = callbackWithErrorToFuture[ValidationResult](admin.validateCollection(collectionName, _))
+    def validateCollection(collectionName: String) = callbackMongoFuture[ValidationResult](admin.validateCollection(collectionName, _))
 
   }
 

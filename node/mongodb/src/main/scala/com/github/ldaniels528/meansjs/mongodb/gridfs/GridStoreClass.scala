@@ -17,11 +17,34 @@ trait GridStoreClass extends js.Object {
   //      Constants
   /////////////////////////////////////////////////////////////////////////////////
 
-  val DEFAULT_ROOT_COLLECTION: String = js.native
+  /**
+    * Default file mime type
+    */
   val DEFAULT_CONTENT_TYPE: String = js.native
+
+  /**
+    * TODO document this property
+    */
   val DEFAULT_CHUNK_SIZE: Int = js.native
+
+  /**
+    * The collection to be used for holding the files and chunks collection.
+    */
+  val DEFAULT_ROOT_COLLECTION: String = js.native
+
+  /**
+    * Seek mode where the given length is an offset to the current read/write head.
+    */
   val IO_SEEK_CUR: Int = js.native
+
+  /**
+    * Seek mode where the given length is an offset to the end of the file.
+    */
   val IO_SEEK_END: Int = js.native
+
+  /**
+    * Seek mode where the given length is absolute.
+    */
   val IO_SEEK_SET: Int = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -144,38 +167,38 @@ object GridStoreClass {
       * Checks if a file exists in the database.
       */
     @inline
-    def existAsync(db: Db, name: String, rootCollection: String) = callbackWithErrorToFuture[GridStore](`class`.exist(db, name, rootCollection, _))
+    def existAsync(db: Db, name: String, rootCollection: String) = callbackMongoFuture[GridStore](`class`.exist(db, name, rootCollection, _))
 
     /**
       * Checks if a file exists in the database.
       */
     @inline
-    def existAsync(db: Db, name: String) = callbackWithErrorToFuture[GridStore](`class`.exist(db, name, _))
+    def existAsync(db: Db, name: String) = callbackMongoFuture[GridStore](`class`.exist(db, name, _))
 
     /**
       * Gets the list of files stored in the GridFS.
       */
     @inline
-    def listAsync(db: Db, rootCollection: String) = callbackWithErrorToFuture[js.Array[String]](`class`.list(db, rootCollection, _))
+    def listAsync(db: Db, rootCollection: String) = callbackMongoFuture[js.Array[String]](`class`.list(db, rootCollection, _))
 
     /**
       * Gets the list of files stored in the GridFS.
       */
     @inline
-    def listAsync(db: Db) = callbackWithErrorToFuture[js.Array[String]](`class`.list(db, _))
+    def listAsync(db: Db) = callbackMongoFuture[js.Array[String]](`class`.list(db, _))
 
     /**
       * Reads the contents of a file.
       */
     @inline
-    def readAsync[T <: js.Any](db: Db, name: String) = callbackWithErrorToFuture[js.Array[T]](`class`.read(db, name, _))
+    def readAsync[T <: js.Any](db: Db, name: String) = callbackMongoFuture[js.Array[T]](`class`.read(db, name, _))
 
     /**
       * Reads the contents of a file.
       */
     @inline
     def readAsync[T <: js.Any](db: Db, name: String, length: Int) = {
-      callbackWithErrorToFuture[js.Array[T]](`class`.read(db, name, length, _))
+      callbackMongoFuture[js.Array[T]](`class`.read(db, name, length, _))
     }
 
     /**
@@ -183,7 +206,7 @@ object GridStoreClass {
       */
     @inline
     def readAsync[T <: js.Any](db: Db, name: String, length: Int, offset: Int) = {
-      callbackWithErrorToFuture[js.Array[T]](`class`.read(db, name, length, offset, _))
+      callbackMongoFuture[js.Array[T]](`class`.read(db, name, length, offset, _))
     }
 
     /**
@@ -191,7 +214,7 @@ object GridStoreClass {
       */
     @inline
     def readAsync[T <: js.Any](db: Db, name: String, length: Int, offset: Int, options: GridStoreOptions) = {
-      callbackWithErrorToFuture[js.Array[T]](`class`.read(db, name, length, offset, options, _))
+      callbackMongoFuture[js.Array[T]](`class`.read(db, name, length, offset, options, _))
     }
 
     /**
@@ -199,7 +222,7 @@ object GridStoreClass {
       */
     @inline
     def readlinesAsync(db: Db, name: String, separator: String, options: GridStoreOptions) = {
-      callbackWithErrorToFuture[js.Array[String]](`class`.readlines(db, name, separator, options, _))
+      callbackMongoFuture[js.Array[String]](`class`.readlines(db, name, separator, options, _))
     }
 
   }

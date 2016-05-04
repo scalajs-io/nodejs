@@ -65,25 +65,29 @@ The following NodeJS modules have been implemented thus far:
 
 | Module            | Artifact              | Description                      |
 |-------------------|-----------------------|----------------------------------|
-| body-parser       | means-node-express    | Node.js body parsing middleware. |
-| buffer            | means-node-core       | 
-| events            | means-node-core       |
-| express           | means-node-express    |
+| body-parser       | means-node-express    | Body parsing middleware. |
+| buffer            | means-node-core       | Node.js Core (Global) |
+| events            | means-node-core       | Node.js Core |
+| express           | means-node-express    | Fast, unopinionated, minimalist web framework for Node.js |
 | express-ws        | means-node-express    |
-| fs                | means-node-core       |
-| http              | means-node-core       |
-| https             | means-node-core       |
+| filed             | means-node-filed      | Simplified file library. |
+| fs                | means-node-core       | Node.js Core |
+| http              | means-node-core       | Node.js Core |
+| https             | means-node-core       | Node.js Core |
 | kafka-node        | means-node-kafkanode  |
-| mongodb           | means-node-mongodb    |
-| net               | means-node-core       |
-| os                | means-node-os         |
+| mongodb           | means-node-mongodb    | Node.js MongoDB Driver |
+| net               | means-node-core       | Node.js Core |
+| oppressor         | means-node-oppressor  | Streaming http compression response negotiator. |
+| os                | means-node-os         | Node.js Core |
 | node-zookeeper-client | means-node-zookeeper-client |
-| readline          | means-node-core       |
-| repl              | means-node-repl       |
-| stream            | means-node-core       |
-| string-decoder    | means-node-string-decoder |
-| url               | means-node-core       |
-| util              | means-node-core       |
+| readline          | means-node-core       | Node.js Core |
+| repl              | means-node-repl       | Node.js Core |
+| request           | means-node-request    | Simplified HTTP request client. |
+| splitargs         | means-node-elgs-splitargs | Splits strings into tokens by given separator except treating quoted part as a single token. |
+| stream            | means-node-core       | Node.js Core |
+| string-decoder    | means-node-string-decoder | Node.js Core |
+| url               | means-node-core       | Node.js Core |
+| util              | means-node-core       | Node.js Core |
 | xml2js            | means-node-xml2js     | Simple XML to JavaScript object converter. |
 | zlib              | means-node-zlib       |
 

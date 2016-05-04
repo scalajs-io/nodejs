@@ -151,7 +151,7 @@ trait Request extends ClientRequest {
   def stale: Boolean = js.native
 
   /**
-    * An array of subdomains in the domain name of the request.
+    * An array of sub-domains in the domain name of the request.
     */
   def subdomains: js.Array[String] = js.native
 
@@ -200,7 +200,7 @@ trait Request extends ClientRequest {
   /**
     * Returns the value of param name when present.
     */
-  @deprecated
+  @deprecated("Use params() instead", since = "2.0")
   def param(name: String): js.UndefOr[String] = js.native
 
 }

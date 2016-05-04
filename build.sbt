@@ -4,7 +4,7 @@ import sbt.Keys._
 import sbt.Project.projectToRef
 import sbt._
 
-val apiVersion = "0.1.3"
+val apiVersion = "0.1.4"
 val paradisePluginVersion = "2.1.0"
 val _scalaVersion = "2.11.8"
 val scalaJsDomVersion = "0.9.0"
@@ -35,8 +35,8 @@ val commonSettings = Seq(
 lazy val root = (project in file(".")).
   aggregate(
     core, angularjs, facebook, linkedin,
-    node_core, node_express, node_kafka, node_mongodb, node_os, node_repl,
-    node_string_decoder, node_xml2js, node_zlib, node_zookeeper
+    node_core, node_elgs_splitargs, node_express, node_filed, node_kafka, node_mongodb, node_oppressor,
+    node_os, node_repl, node_request, node_string_decoder, node_xml2js, node_zlib, node_zookeeper
   )
 
 lazy val core = (project in file("core")).
@@ -83,6 +83,15 @@ lazy val node_core = (project in file("node/core")).
     description := "NodeJS/Core facade for Scala.js"
   )
 
+lazy val node_elgs_splitargs = (project in file("node/elgs-splitargs")).
+  dependsOn(core, node_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-elgs-splitargs",
+    description := "NodeJS/elgs-splitargs facade for Scala.js"
+  )
+
 lazy val node_express = (project in file("node/express")).
   dependsOn(core, node_core).
   enablePlugins(ScalaJSPlugin).
@@ -90,6 +99,15 @@ lazy val node_express = (project in file("node/express")).
   settings(
     name := "means-node-express",
     description := "NodeJS/Express facade for Scala.js"
+  )
+
+lazy val node_filed = (project in file("node/filed")).
+  dependsOn(core, node_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-filed",
+    description := "NodeJS/filed facade for Scala.js"
   )
 
 lazy val node_kafka = (project in file("node/kafka_node")).
@@ -110,6 +128,15 @@ lazy val node_mongodb = (project in file("node/mongodb")).
     description := "NodeJS/MongoDB facade for Scala.js"
   )
 
+lazy val node_oppressor = (project in file("node/oppressor")).
+  dependsOn(core, node_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-oppressor",
+    description := "NodeJS/oppressor facade for Scala.js"
+  )
+
 lazy val node_os = (project in file("node/os")).
   dependsOn(core, node_core).
   enablePlugins(ScalaJSPlugin).
@@ -126,6 +153,15 @@ lazy val node_repl = (project in file("node/repl")).
   settings(
     name := "means-node-repl",
     description := "NodeJS/REPL facade for Scala.js"
+  )
+
+lazy val node_request = (project in file("node/request")).
+  dependsOn(core, node_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-request",
+    description := "NodeJS/Request facade for Scala.js"
   )
 
 lazy val node_string_decoder = (project in file("node/string_decoder")).
@@ -165,8 +201,12 @@ lazy val node_zookeeper = (project in file("node/node_zookeeper")).
   )
 
 lazy val examples = (project in file("examples")).
-  aggregate(core, node_core, node_express, node_kafka, node_mongodb, node_os, node_repl, node_string_decoder, node_xml2js, node_zlib, node_zookeeper).
-  dependsOn(core, node_core, node_express, node_kafka, node_mongodb, node_os, node_repl, node_string_decoder, node_xml2js, node_zlib, node_zookeeper).
+  aggregate(
+    core, node_core, node_elgs_splitargs, node_express, node_filed, node_kafka, node_mongodb, node_oppressor,
+    node_os, node_repl, node_request, node_string_decoder, node_xml2js, node_zlib, node_zookeeper).
+  dependsOn(
+    core, node_core, node_elgs_splitargs, node_express, node_filed, node_kafka, node_mongodb, node_oppressor,
+    node_os, node_repl, node_request, node_string_decoder, node_xml2js, node_zlib, node_zookeeper).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(

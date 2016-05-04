@@ -13,11 +13,6 @@ import scala.scalajs.js
 trait GridFSBucketReadStream extends nodejs.stream.Readable {
 
   /**
-    * Reads from the cursor and pushes to the stream.
-    */
-  def _read(): Unit = js.native
-
-  /**
     * Marks this stream as aborted (will never push another data event) and kills the underlying cursor.
     * Will emit the 'end' event, and then the 'close' event once the cursor is successfully killed.
     * @param callback called when the cursor is successfully closed or an error occurred.
@@ -54,28 +49,9 @@ object GridFSBucketReadStream {
   implicit class ReadStreamExtensions(val stream: GridFSBucketReadStream) extends AnyVal {
 
     /**
-      * Fired when the stream is exhausted and the underlying cursor is killed
-      */
-    def onClose(callback: js.Function) = stream.on("close", callback)
-
-    /**
-      * Emitted when a chunk of data is available to be consumed.
-      */
-    def onData(callback: js.Function) = stream.on("data", callback)
-
-    /**
-      * Fired when the stream is exhausted (no more data events).
-      */
-    def onEnd(callback: js.Function) = stream.on("end", callback)
-
-    /**
-      * An error occurred
-      */
-    def onError(callback: js.Function) = stream.on("error", callback)
-
-    /**
       * Fires when the stream loaded the file document corresponding to the provided id.
       */
+    @inline
     def onFile(callback: js.Function) = stream.on("file", callback)
 
   }

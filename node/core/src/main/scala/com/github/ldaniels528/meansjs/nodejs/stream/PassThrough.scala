@@ -9,6 +9,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait PassThrough extends Transform {
-
-}
+trait PassThrough extends Transform

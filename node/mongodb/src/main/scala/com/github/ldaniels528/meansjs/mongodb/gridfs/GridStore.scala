@@ -3,7 +3,6 @@ package com.github.ldaniels528.meansjs.mongodb.gridfs
 import com.github.ldaniels528.meansjs.mongodb._
 import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
 
@@ -126,8 +125,51 @@ trait GridStore extends EventEmitter {
 
   /**
     * Retrieves the position of the read/write head of this file.
+    * @param length   the number of characters to read. Reads all the characters from the read/write head to the
+    *                 EOF if not specified (optional).
+    * @param buffer   a String or Buffer to hold temporary data. This is used for storing the string data read so far when
+    *                 recursively calling this method (optional).
+    * @param callback the command callback.
+    * @example tell(length, buffer, callback)
     */
-  def tell(callback: js.Function): Unit = js.native
+  def tell(length: Int, buffer: Buffer, callback: js.Function2[MongoError, Int, Any]): Unit = js.native
+
+  /**
+    * Retrieves the position of the read/write head of this file.
+    * @param length the number of characters to read. Reads all the characters from the read/write head to the
+    *               EOF if not specified (optional).
+    * @param buffer a String or Buffer to hold temporary data. This is used for storing the string data read so far when
+    *               recursively calling this method (optional).
+    * @example tell(length, buffer, callback)
+    */
+  def tell(length: Int, buffer: Buffer): js.Promise[Int] = js.native
+
+  /**
+    * Retrieves the position of the read/write head of this file.
+    * @param length   the number of characters to read. Reads all the characters from the read/write head to the
+    *                 EOF if not specified (optional).
+    * @param buffer   a String or Buffer to hold temporary data. This is used for storing the string data read so far when
+    *                 recursively calling this method (optional).
+    * @param callback the command callback.
+    * @example tell(length, buffer, callback)
+    */
+  def tell(length: Int, buffer: String, callback: js.Function2[MongoError, Int, Any]): Unit = js.native
+
+  /**
+    * Retrieves the position of the read/write head of this file.
+    * @param length the number of characters to read. Reads all the characters from the read/write head to the
+    *               EOF if not specified (optional).
+    * @param buffer a String or Buffer to hold temporary data. This is used for storing the string data read so far when
+    *               recursively calling this method (optional).
+    * @example tell(length, buffer, callback)
+    */
+  def tell(length: Int, buffer: String): js.Promise[Int] = js.native
+
+  /**
+    * Retrieves the position of the read/write head of this file.
+    * @example tell(length, buffer, callback)
+    */
+  def tell(): js.Promise[Int] = js.native
 
   /**
     * Moves the read/write head to a new location.
@@ -167,16 +209,14 @@ trait GridStore extends EventEmitter {
 
   /**
     * Returns read stream based on this GridStore file.
-    * <p/>Events
-    * <ul>
-    * <li>data {function(item) {}} the data event triggers when a document is ready.</li>
-    * <li>end {function() {}} the end event triggers when there is no more documents available.</li>
-    * <li>close {function() {}} the close event triggers when the stream is closed.</li>
-    * <li>error {function(err) {}} the error event triggers if an error happens.</li>
-    * </ul>
+    */
+  def stream(): GridStoreStream = js.native
+
+  /**
+    * Returns read stream based on this GridStore file.
     * @param autoclose if true current GridStore will be closed when EOF and ‘close’ event will be fired
     */
-  def stream(autoclose: Boolean): Unit = js.native
+  def stream(autoclose: Boolean): GridStoreStream = js.native
 
   /**
     * Deletes all the chunks of this file in the database.
@@ -230,159 +270,129 @@ object GridStore {
       * Retrieve this file’s chunks collection.
       */
     @inline
-    def chunkCollectionAsync() = callbackWithErrorToFuture[Collection](gridStore.chunkCollection)
+    def chunkCollectionAsync() = callbackMongoFuture[Collection](gridStore.chunkCollection)
 
     /**
       * Saves this file to the database. This will overwrite the old entry if it already exists. This will work
       * properly only if mode was initialized to “w” or “w+”.
       */
     @inline
-    def closeAsync() = callbackWithErrorToFuture[js.Any](gridStore.close)
+    def closeAsync() = callbackMongoFuture[js.Any](gridStore.close)
 
     /**
       * Retrieves the file collection associated with this object.
       */
     @inline
-    def collectionAsync() = callbackWithErrorToFuture[js.Any](gridStore.collection)
+    def collectionAsync() = callbackMongoFuture[js.Any](gridStore.collection)
 
     /**
       * Retrieves a single character from this file.
       */
     @inline
-    def getcAsync() = callbackWithErrorToFuture[String](gridStore.getc)
-
-    /**
-      * The close event triggers when the stream is closed.
-      */
-    @inline
-    def onClose(callback: js.Function0[Unit]) = gridStore.on("close", callback)
-
-    /**
-      * The data event triggers when a document is ready.
-      */
-    @inline
-    def onData[T <: js.Any](callback: js.Function1[T, Unit]) = gridStore.on("data", callback)
-
-    /**
-      * The end event triggers when there is no more documents available.
-      */
-    @inline
-    def onEnd(callback: js.Function0[Unit]) = gridStore.on("end", callback)
-
-    /**
-      * The error event triggers if an error happens.
-      */
-    @inline
-    def onError(callback: js.Function1[js.Object, Unit]) = gridStore.on("error", callback)
+    def getcAsync() = callbackMongoFuture[String](gridStore.getc)
 
     /**
       * Opens the file from the database and initialize this object. Also creates a new one if file does not exist.
       */
     @inline
-    def openAsync() = callbackWithErrorToFuture[Db](gridStore.open)
+    def openAsync() = callbackMongoFuture[Db](gridStore.open)
 
     /**
       * Writes a string to the file with a newline character appended at the end if the given string does not have one.
       */
     @inline
-    def putsAsync(string: String) = callbackWithErrorToFuture[GridStore](gridStore.puts(string, _))
+    def putsAsync(string: String) = callbackMongoFuture[GridStore](gridStore.puts(string, _))
 
     /**
       * Retrieves the contents of this file and advances the read/write head. Works with Buffers only.
       */
     @inline
-    def readAsync[T <: js.Any](length: Int, buffer: Buffer) = callbackWithErrorToFuture[js.Array[T]](gridStore.read(length, buffer, _))
+    def readAsync[T <: js.Any](length: Int, buffer: Buffer) = callbackMongoFuture[js.Array[T]](gridStore.read(length, buffer, _))
 
     /**
       * Retrieves the contents of this file and advances the read/write head. Works with Buffers only.
       */
     @inline
-    def readAsync[T <: js.Any](buffer: Buffer) = callbackWithErrorToFuture[js.Array[T]](gridStore.read(buffer, _))
+    def readAsync[T <: js.Any](buffer: Buffer) = callbackMongoFuture[js.Array[T]](gridStore.read(buffer, _))
 
     /**
       * Retrieves the contents of this file and advances the read/write head. Works with Buffers only.
       */
     @inline
-    def readAsync[T <: js.Any]() = callbackWithErrorToFuture[js.Array[T]](gridStore.read)
+    def readAsync[T <: js.Any]() = callbackMongoFuture[js.Array[T]](gridStore.read)
 
     /**
       * Reads the data of this file.
       */
     @inline
-    def readlinesAsync(separator: String) = callbackWithErrorToFuture[js.Array[String]](gridStore.readlines(separator, _))
+    def readlinesAsync(separator: String) = callbackMongoFuture[js.Array[String]](gridStore.readlines(separator, _))
 
     /**
       * Reads the data of this file.
       */
     @inline
-    def readlinesAsync = callbackWithErrorToFuture[js.Array[String]](gridStore.readlines)
+    def readlinesAsync = callbackMongoFuture[js.Array[String]](gridStore.readlines)
 
     /**
       * Deletes all the chunks of this file in the database if mode was set to “w” or “w+” and resets the read/write
       * head to the initial position.
       */
     @inline
-    def rewindAsync() = callbackWithErrorToFuture[js.Any](gridStore.rewind)
+    def rewindAsync() = callbackMongoFuture[js.Any](gridStore.rewind)
 
     /**
       * Moves the read/write head to a new location.
       */
     @inline
-    def seekAsync(position: Int, seekLocation: Int) = callbackWithErrorToFuture[GridStore](gridStore.seek(position, seekLocation, _))
+    def seekAsync(position: Int, seekLocation: Int) = callbackMongoFuture[GridStore](gridStore.seek(position, seekLocation, _))
 
     /**
       * Moves the read/write head to a new location.
       */
     @inline
-    def seekAsync(seekLocation: Int) = callbackWithErrorToFuture[GridStore](gridStore.seek(seekLocation, _))
+    def seekAsync(seekLocation: Int) = callbackMongoFuture[GridStore](gridStore.seek(seekLocation, _))
 
     /**
       * Moves the read/write head to a new location.
       */
     @inline
-    def seekAsync() = callbackWithErrorToFuture[GridStore](gridStore.seek)
-
-    /**
-      * Retrieves the position of the read/write head of this file.
-      */
-    @inline
-    def tellAsync() = callbackWithErrorToFuture[Int](gridStore.tell)
+    def seekAsync() = callbackMongoFuture[GridStore](gridStore.seek)
 
     /**
       * Deletes all the chunks of this file in the database.
       */
     @inline
-    def unlinkAsync() = callbackWithErrorToFuture[Boolean](gridStore.unlink)
+    def unlinkAsync() = callbackMongoFuture[Boolean](gridStore.unlink)
 
     /**
       * Writes some data. This method will work properly only if initialized with mode “w” or “w+”.
       */
     @inline
-    def writeAsync(data: Buffer, close: Boolean) = callbackWithErrorToFuture[GridStore](gridStore.write(data, close, _))
+    def writeAsync(data: Buffer, close: Boolean) = callbackMongoFuture[GridStore](gridStore.write(data, close, _))
 
     /**
       * Writes some data. This method will work properly only if initialized with mode “w” or “w+”.
       */
     @inline
-    def writeAsync(data: String, close: Boolean) = callbackWithErrorToFuture[GridStore](gridStore.write(data, close, _))
+    def writeAsync(data: String, close: Boolean) = callbackMongoFuture[GridStore](gridStore.write(data, close, _))
 
     /**
       * Writes some data. This method will work properly only if initialized with mode “w” or “w+”.
       */
     @inline
-    def writeAsync(data: Buffer) = callbackWithErrorToFuture[GridStore](gridStore.write(data, _))
+    def writeAsync(data: Buffer) = callbackMongoFuture[GridStore](gridStore.write(data, _))
 
     /**
       * Writes some data. This method will work properly only if initialized with mode “w” or “w+”.
       */
     @inline
-    def writeAsync(data: String) = callbackWithErrorToFuture[GridStore](gridStore.write(data, _))
+    def writeAsync(data: String) = callbackMongoFuture[GridStore](gridStore.write(data, _))
 
     /**
       * Stores a file from the file system to the GridFS database.
       */
     @inline
-    def writeFileAsync(file: String) = callbackWithErrorToFuture[GridStore](gridStore.writeFile(file, _))
+    def writeFileAsync(file: String) = callbackMongoFuture[GridStore](gridStore.writeFile(file, _))
 
   }
 

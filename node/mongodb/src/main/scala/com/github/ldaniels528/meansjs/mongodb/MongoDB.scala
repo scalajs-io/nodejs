@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.mongodb
 
-import com.github.ldaniels528.meansjs.mongodb.gridfs.{GridClass, GridFSBucketClass, GridStoreClass}
+import com.github.ldaniels528.meansjs.mongodb.gridfs.{Grid, GridFSBucketClass, GridStoreClass}
 import com.github.ldaniels528.meansjs.nodejs.NodeModule
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 
@@ -17,17 +17,17 @@ trait MongoDB extends NodeModule with EventEmitter {
   //      Properties
   /////////////////////////////////////////////////////////////////////////////////
 
-  def pure: PureClass = js.native
+  def pure: js.Function0[Pure] = js.native
 
-  def Binary: js.Dynamic = js.native
+  def Binary: js.Function0[js.Dynamic] = js.native
 
-  def Code: js.Dynamic = js.native
+  def Code: js.Function0[js.Dynamic] = js.native
 
-  def Connection: js.Dynamic = js.native
+  def Connection: js.Function0[Connection] = js.native
 
   def Db: DbClass = js.native
 
-  def Grid: GridClass = js.native
+  def Grid: js.Function2[Db, String, Grid] = js.native
 
   def GridFSBucket: GridFSBucketClass = js.native
 
@@ -37,7 +37,7 @@ trait MongoDB extends NodeModule with EventEmitter {
 
   def ObjectID: ObjectIDClass = js.native
 
-  def ReplSetServers: ReplSetServersClass = js.native
+  def ReplSetServers: js.Function1[js.Array[Server], ReplSetServers] = js.native
 
   def Server: ServerClass = js.native
 

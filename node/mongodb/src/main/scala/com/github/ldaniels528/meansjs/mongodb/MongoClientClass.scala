@@ -15,7 +15,7 @@ trait MongoClientClass extends js.Object {
   //      Methods
   /////////////////////////////////////////////////////////////////////////////////
 
-  def connect(servers: String, callback: js.Function): Unit = js.native
+  def connect(servers: String, callback: js.Function2[MongoError, Db, Any]): Unit = js.native
 
 }
 
@@ -38,7 +38,7 @@ object MongoClientClass {
     def apply(server: Server, options: MongoClientOptions) = `class`.New[MongoClient](server, options)
 
     @inline
-    def connectAsync(servers: String) = callbackWithErrorToFuture[Db](`class`.connect(servers, _))
+    def connectAsync(servers: String) = callbackMongoFuture[Db](`class`.connect(servers, _))
 
   }
 

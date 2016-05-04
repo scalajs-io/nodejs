@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.http
 
-import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
+import com.github.ldaniels528.meansjs.nodejs
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
@@ -11,7 +11,7 @@ import scala.scalajs.js
   * @see [[https://nodejs.org/api/http.html#http_class_http_clientrequest]]
   */
 @js.native
-trait ClientRequest extends EventEmitter {
+trait ClientRequest extends nodejs.stream.Readable {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -142,7 +142,7 @@ trait ClientRequest extends EventEmitter {
     * The callback argument is optional and will be called when this chunk of data is flushed.
     * Returns request.
     */
-  def write(chunk: js.Any): Unit = js.native
+  def write(chunk: js.Any, encoding: String): Unit = js.native
 
   /**
     * Sends a chunk of the body. By calling this method many times, the user can stream a
@@ -154,7 +154,7 @@ trait ClientRequest extends EventEmitter {
     * The callback argument is optional and will be called when this chunk of data is flushed.
     * Returns request.
     */
-  def write(chunk: js.Any, encoding: String): Unit = js.native
+  def write(chunk: js.Any): Unit = js.native
 
 }
 

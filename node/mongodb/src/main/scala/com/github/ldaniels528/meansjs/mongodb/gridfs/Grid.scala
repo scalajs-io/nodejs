@@ -1,7 +1,7 @@
 package com.github.ldaniels528.meansjs.mongodb.gridfs
 
+import com.github.ldaniels528.meansjs.mongodb._
 import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
 
@@ -72,26 +72,26 @@ object Grid extends {
       * Delete file from grid
       * @param id the _id for file.
       */
-    def deleteAsync(id: js.Any) = callbackWithErrorToFuture[Grid](grid.delete(id, _))
+    def deleteAsync(id: js.Any) = callbackMongoFuture[Grid](grid.delete(id, _))
 
     /**
       * Get binary data to the grid
       * @param id the _id for file.
       */
-    def getAsync(id: js.Any) = callbackWithErrorToFuture[Buffer](grid.get(id, _))
+    def getAsync(id: js.Any) = callbackMongoFuture[Buffer](grid.get(id, _))
 
     /**
       * Puts binary data to the grid
       * @param data    buffer with Binary Data.
       * @param options the options for the files.
       */
-    def putAsync(data: Buffer, options: GridOptions) = callbackWithErrorToFuture[Grid](grid.put(data, options, _))
+    def putAsync(data: Buffer, options: GridOptions) = callbackMongoFuture[Grid](grid.put(data, options, _))
 
     /**
       * Puts binary data to the grid
       * @param data buffer with Binary Data.
       */
-    def putAsync(data: Buffer, callback: js.Function) = callbackWithErrorToFuture[Grid](grid.put(data, _))
+    def putAsync(data: Buffer, callback: js.Function) = callbackMongoFuture[Grid](grid.put(data, _))
 
   }
 

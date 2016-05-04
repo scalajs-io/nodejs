@@ -1,7 +1,5 @@
 package com.github.ldaniels528.meansjs.mongodb
 
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-
 import scala.scalajs.js
 
 /**
@@ -24,7 +22,7 @@ trait MongoClient extends js.Object {
     * @param url      the given connection URL
     * @param callback the callback function
     */
-  def connect(url: String, callback: js.Function): Unit = js.native
+  def connect(url: String, callback: js.Function2[MongoError, Db, Any]): Unit = js.native
 
   /**
     * Connect to MongoDB using a url
@@ -32,7 +30,7 @@ trait MongoClient extends js.Object {
     * @param options  the given [[ConnectionOptions options]]
     * @param callback the callback function
     */
-  def connect(url: String, options: ConnectionOptions, callback: js.Function): Unit = js.native
+  def connect(url: String, options: ConnectionOptions, callback: js.Function2[MongoError, Db, Any]): Unit = js.native
 
   /**
     * Create a new Db instance sharing the current socket connections.
@@ -59,19 +57,19 @@ object MongoClient {
     * Mongo Client Extensions
     * @author lawrence.daniels@gmail.com
     */
-  implicit class MongoClientEnrich(val client: MongoClient) extends AnyVal {
+  implicit class MongoClientExtensions(val client: MongoClient) extends AnyVal {
 
     @inline
-    def closeAsync = callbackWithErrorToFuture[Db](client.close)
+    def closeAsync = callbackMongoFuture[Db](client.close)
 
     @inline
-    def connectAsync(url: String) = callbackWithErrorToFuture[Db](client.connect(url, _))
+    def connectAsync(url: String) = callbackMongoFuture[Db](client.connect(url, _))
 
     @inline
-    def connectAsync(url: String, options: ConnectionOptions) = callbackWithErrorToFuture[Db](client.connect(url, options, _))
+    def connectAsync(url: String, options: ConnectionOptions) = callbackMongoFuture[Db](client.connect(url, options, _))
 
     @inline
-    def openAsync = callbackWithErrorToFuture[Db](client.open)
+    def openAsync = callbackMongoFuture[Db](client.open)
 
   }
 

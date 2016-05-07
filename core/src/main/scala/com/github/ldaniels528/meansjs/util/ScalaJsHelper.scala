@@ -17,6 +17,8 @@ object ScalaJsHelper {
 
   implicit def promise2Future[T](promise: js.Promise[T]): Future[T] = promise.toFuture
 
+  implicit def exception2JsError(cause: Throwable): js.Error = js.Error(cause.getMessage)
+
   /**
     * Converts a JavaScript-style callback to a Scala-style future
     * @param f the given callback function
@@ -47,9 +49,9 @@ object ScalaJsHelper {
     * @return a Scala-style future
     */
   @inline
-  def callback2ToFuture[E <: js.Any, R](f: js.Function => Any): Future[R] = {
-    val promise = Promise[R]()
-    f((err: E, result: R) => if (!isDefined(err)) promise.success(result) else promise.failure(wrapJavaScriptException(err)))
+  def futureCallbackA2[A, B](f: js.Function2[A, B, Any] => Any): Future[(A, B)] = {
+    val promise = Promise[(A, B)]()
+    f((valueA: A, valueB: B) => promise.success((valueA, valueB)))
     promise.future
   }
 
@@ -59,9 +61,21 @@ object ScalaJsHelper {
     * @return a Scala-style future
     */
   @inline
-  def callbackTupleToFuture[A, B](f: js.Function => Any): Future[(A, B)] = {
-    val promise = Promise[(A, B)]()
-    f((valueA: A, valueB: B) => promise.success((valueA, valueB)))
+  def futureCallbackE0[E](f: js.Function1[E, Any] => Any): Future[Unit] = {
+    val promise = Promise[Unit]()
+    f((err: E) => if (err == null) promise.success({}: Unit) else promise.failure(wrapJavaScriptException(err)))
+    promise.future
+  }
+
+  /**
+    * Converts a JavaScript-style callback to a Scala-style future
+    * @param f the given callback function
+    * @return a Scala-style future
+    */
+  @inline
+  def futureCallbackE1[E, R](f: js.Function2[E, R, Any] => Any): Future[R] = {
+    val promise = Promise[R]()
+    f((err: E, result: R) => if (err == null) promise.success(result) else promise.failure(wrapJavaScriptException(err)))
     promise.future
   }
 

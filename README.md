@@ -63,23 +63,26 @@ modules implemented for most web applications.
 
 The following NodeJS modules have been implemented thus far:
 
-| Module            | Artifact              | Description                      |
+| Module            | Artifact ID           | Description                      |
 |-------------------|-----------------------|----------------------------------|
+| async             | means-node-async      | Higher-order functions and common patterns for asynchronous code. |
+| bcrypt            | means-node-bcrypt     | A native JS bcrypt library for NodeJS. |
 | body-parser       | means-node-express    | Body parsing middleware. |
 | buffer            | means-node-core       | Node.js Core (Global) |
 | events            | means-node-core       | Node.js Core |
 | express           | means-node-express    | Fast, unopinionated, minimalist web framework for Node.js |
-| express-ws        | means-node-express    |
+| express-ws        | means-node-express    | WebSocket endpoints for Express applications |
 | filed             | means-node-filed      | Simplified file library. |
 | fs                | means-node-core       | Node.js Core |
 | http              | means-node-core       | Node.js Core |
 | https             | means-node-core       | Node.js Core |
-| kafka-node        | means-node-kafkanode  |
+| jwt-simple        | means-node-jwt-simple | JWT(JSON Web Token) encode and decode module |
+| kafka-node        | means-node-kafkanode  | A node binding for librdkafka |
 | mongodb           | means-node-mongodb    | Node.js MongoDB Driver |
 | net               | means-node-core       | Node.js Core |
 | oppressor         | means-node-oppressor  | Streaming http compression response negotiator. |
 | os                | means-node-os         | Node.js Core |
-| node-zookeeper-client | means-node-zookeeper-client |
+| node-zookeeper-client | means-node-zookeeper-client | A higher-level ZooKeeper client based on node-zookeeper with support for locking and master election. |
 | readline          | means-node-core       | Node.js Core |
 | repl              | means-node-repl       | Node.js Core |
 | request           | means-node-request    | Simplified HTTP request client. |
@@ -89,7 +92,10 @@ The following NodeJS modules have been implemented thus far:
 | url               | means-node-core       | Node.js Core |
 | util              | means-node-core       | Node.js Core |
 | xml2js            | means-node-xml2js     | Simple XML to JavaScript object converter. |
-| zlib              | means-node-zlib       |
+| zlib              | means-node-zlib       | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. |
+
+*NOTE*: The full SBT artifact expression is: "com.github.ldaniels528" %%% "means-node-xxxx" % version 
+(e.g. "com.github.ldaniels528" %%% "means-node-core" % "0.1.5")
 
 I've provided an example to demonstrate how similar the Scala.js code is to the JavaScript
 that it replaces.
@@ -582,7 +588,7 @@ Inside of your HTML index page:
 Within your Scala.js application, you can initialize the Facebook SDK:
 
 ```scala
-import com.github.ldaniels528.meansjs.social.facebook.Facebook.FB
+import com.github.ldaniels528.meansjs.social.facebook.FB
 
 val config = FacebookAppConfig(appId = "[YOUR_APP_KEY_GOES_HERE]", status = true, xfbml = true, version = "v2.5")
 FB.init(config)
@@ -682,7 +688,7 @@ js.Dynamic.global.linkedInInit = () => {
 Afterwards, you may call any LinkedIn API that you have the permissions to execute: 
 
 ```scala
-import com.github.ldaniels528.meansjs.social.linkedin.LinkedIn.IN
+import com.github.ldaniels528.meansjs.social.linkedin.IN
 
 var linkedInID: js.UndefOr[String] = js.undefined
 

@@ -10,7 +10,8 @@ import scala.scalajs.js
   * Net Server Example
   * @author lawrence.daniels@gmail.com
   */
-class NetServerExample(require: Require) {
+class NetServerExample(bootstrap: Bootstrap) {
+  import bootstrap._
 
   val net = require[Net]("net")
   val client = net.connect(ClientOptions(port = 8124), connect)

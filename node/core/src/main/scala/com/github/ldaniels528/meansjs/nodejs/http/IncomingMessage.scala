@@ -53,7 +53,13 @@ trait IncomingMessage extends stream.Readable {
     * Calls message.connection.setTimeout(msecs, callback).
     * @example message.setTimeout(msecs, callback)
     */
-  def setTimeout(msecs: Number, callback: js.Function): Unit = js.native
+  def setTimeout(msecs: Int, callback: js.Function): Unit = js.native
+
+  /**
+    * Calls message.connection.setTimeout(msecs, callback).
+    * @example message.setTimeout(msecs, callback)
+    */
+  def setTimeout(msecs: Double, callback: js.Function): Unit = js.native
 
   /**
     * Only valid for response obtained from http.ClientRequest. The 3-digit HTTP response status code (e.g. 404).
@@ -106,7 +112,7 @@ object IncomingMessage {
     def onClose(callback: js.Function) = message.on("close", callback)
 
     @inline
-    def setTimeout(duration: FiniteDuration, callback: js.Function) = message.setTimeout(duration.toMillis, callback)
+    def setTimeout(duration: FiniteDuration, callback: js.Function) = message.setTimeout(duration.toMillis.toDouble, callback)
 
   }
 

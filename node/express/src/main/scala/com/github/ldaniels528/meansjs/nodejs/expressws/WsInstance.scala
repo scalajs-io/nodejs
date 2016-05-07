@@ -74,7 +74,7 @@ object WsInstance {
   @js.native
   trait WssOptions extends js.Object {
     var host: String
-    var port: Number
+    var port: Integer
     var server: WssServer
     var verifyClient: js.Object
     var handleProtocols: String
@@ -93,8 +93,8 @@ object WsInstance {
   trait WssServer extends js.Object {
     var domain: String
     var _events: String
-    var _eventsCount: Number
-    var _connections: Number
+    var _eventsCount: Integer
+    var _connections: Integer
     var _handle: js.Any
     var _usingSlaves: Boolean
     var _slaves: js.Array[js.Any]
@@ -102,8 +102,8 @@ object WsInstance {
     var allowHalfOpen: Boolean
     var pauseOnConnect: Boolean
     var httpAllowHalfOpen: Boolean
-    var timeout: Number
-    var _pendingResponseData: Number
+    var timeout: Integer
+    var _pendingResponseData: Integer
   }
 
 }

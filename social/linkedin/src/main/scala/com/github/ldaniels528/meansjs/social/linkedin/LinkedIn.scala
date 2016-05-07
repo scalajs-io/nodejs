@@ -34,20 +34,6 @@ trait LinkedIn extends js.Object {
 }
 
 /**
-  * LinkedIn JavaScript API Companion Object
-  * @author lawrence.daniels@gmail.com
-  */
-object LinkedIn {
-  lazy val IN = js.Dynamic.global.IN.asInstanceOf[js.UndefOr[LinkedIn]]
-    .getOrElse(throw new IllegalStateException("LinkedIn API is not loaded"))
-
-}
-
-///////////////////////////////////////////////////////////////////////////
-//      Service Objects
-///////////////////////////////////////////////////////////////////////////
-
-/**
   * LinkedIn API Service
   * @author lawrence.daniels@gmail.com
   * @see [[http://java2practice.com/2013/03/14/how-to-use-linkedin-javascript-api/]]

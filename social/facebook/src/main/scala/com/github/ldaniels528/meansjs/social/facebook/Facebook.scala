@@ -25,16 +25,6 @@ trait Facebook extends js.Object {
 
 }
 
-/**
-  * Facebook SDK Companion Object
-  * @author lawrence.daniels@gmail.com
-  */
-object Facebook {
-  lazy val FB = js.Dynamic.global.FB.asInstanceOf[js.UndefOr[Facebook]]
-    .getOrElse(throw new IllegalStateException("Facebook SDK is not loaded"))
-
-}
-
 /*
  * Facebook Application Object
  * @author lawrence.daniels@gmail.com

@@ -11,6 +11,7 @@
     "fs": "0.0.2",
     "gridfs-stream": "^1.1.1",
     "html": "0.0.10",
+    "jwt-simple": "^0.5.0",
     "kafka-node": "^0.3.2",
     "mongodb": "^2.1.18",
     "node-zookeeper-client": "^0.2.2",

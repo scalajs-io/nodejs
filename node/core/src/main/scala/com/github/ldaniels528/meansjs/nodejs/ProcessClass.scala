@@ -41,7 +41,7 @@ trait ProcessClass extends EventEmitter {
     * If process.connected is false, it is no longer possible to send messages
     * @example process.connected
     */
-  def connected: Boolean = js.native
+  def connected: js.UndefOr[Boolean] = js.native
 
   /**
     * An object containing the user environment.

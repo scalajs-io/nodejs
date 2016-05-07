@@ -1,8 +1,11 @@
 package examples
 
 import com.github.ldaniels528.meansjs.nodejs._
-import examples.nodejs.http.ClientRequestExample
-import examples.nodejs.{events, express, http, net, _}
+import examples.nodejs.concurrency._
+import examples.nodejs.datastores._
+import examples.nodejs.general._
+import examples.nodejs.io._
+import examples.nodejs.net._
 import org.scalajs.dom.console
 
 import scala.scalajs.js
@@ -14,55 +17,64 @@ import scala.scalajs.js.annotation.JSExportAll
   */
 @JSExportAll
 object Examples extends js.JSApp {
-  private val examples = js.Array(
-    "Buffers", "EventEmitterExample", "ExpressRoutingExample", "ExpressServerExample",
-    "HttpServerExample", "IntermediateTimers", "MongoClientExample", "NetServerExample",
-    "ProducerExample", "ProducerEnhanced", "REPLExample", "TinyCLI", "TransactionExample",
-    "XMLParsingExample"
+  private val examples = Map(
+    "AsyncForEachOfExample" -> ((bootstrap: Bootstrap) => new AsyncForEachOfExample(bootstrap)),
+    "AsyncWaterfallExample" -> ((bootstrap: Bootstrap) => new AsyncWaterfallExample(bootstrap)),
+    "Buffers" -> ((bootstrap: Bootstrap) => new Buffers(bootstrap)),
+    "Classes" -> ((bootstrap: Bootstrap) => new Classes(bootstrap)),
+    "ClientRequestExample" -> ((bootstrap: Bootstrap) => new ClientRequestExample(bootstrap)),
+    "Compression" -> ((bootstrap: Bootstrap) => new Compression(bootstrap)),
+    "EventEmitterExample" -> ((bootstrap: Bootstrap) => new EventEmitterExample(bootstrap)),
+    "ExpressRoutingExample" -> ((bootstrap: Bootstrap) => new ExpressRoutingExample(bootstrap)),
+    "ExpressServerExample" -> ((bootstrap: Bootstrap) => new ExpressServerExample(bootstrap)),
+    "Files" -> ((bootstrap: Bootstrap) => new Files(bootstrap)),
+    "HttpServerExample" -> ((bootstrap: Bootstrap) => new HttpServerExample(bootstrap)),
+    "IntermediateTimers" -> ((bootstrap: Bootstrap) => new IntermediateTimers(bootstrap)),
+    "JwtSimpleExample" -> ((bootstrap: Bootstrap) => new JwtSimpleExample(bootstrap)),
+    "MongoAggregateExample" -> ((bootstrap: Bootstrap) => new MongoAggregateExample(bootstrap)),
+    "MongoClientExample" -> ((bootstrap: Bootstrap) => new MongoClientExample(bootstrap)),
+    "MongoGridExample" -> ((bootstrap: Bootstrap) => new MongoGridExample(bootstrap)),
+    "MongoGridFSBucketExample" -> ((bootstrap: Bootstrap) => new MongoGridFSBucketExample(bootstrap)),
+    "MongoGridStoreExample" -> ((bootstrap: Bootstrap) => new MongoGridStoreExample(bootstrap)),
+    "MongoStreamExample" -> ((bootstrap: Bootstrap) => new MongoStreamExample(bootstrap)),
+    "NetServerExample" -> ((bootstrap: Bootstrap) => new NetServerExample(bootstrap)),
+    "ProcessInfo" -> ((bootstrap: Bootstrap) => new ProcessInfo(bootstrap)),
+    "ProducerExample" -> ((bootstrap: Bootstrap) => new KafkaProducerExample(bootstrap)),
+    "ProducerEnhanced" -> ((bootstrap: Bootstrap) => new KafkaProducerEnhanced(bootstrap)),
+    "REPLExample" -> ((bootstrap: Bootstrap) => new REPLExample(bootstrap)),
+    "ServerWithCompression" -> ((bootstrap: Bootstrap) => new ServerWithCompression(bootstrap)),
+    "StringDecoderExample" -> ((bootstrap: Bootstrap) => new StringDecoderExample(bootstrap)),
+    "TinyCLI" -> ((bootstrap: Bootstrap) => new TinyCLI(bootstrap)),
+    "URLs" -> ((bootstrap: Bootstrap) => new URLs(bootstrap)),
+    "XMLParsingExample" -> ((bootstrap: Bootstrap) => new XMLParsingExample(bootstrap)),
+    "ZkShowChildren" -> ((bootstrap: Bootstrap) => new ZkShowChildren(bootstrap)),
+    "ZkStateExample" -> ((bootstrap: Bootstrap) => new ZkStateExample(bootstrap)),
+    "ZkTransactionExample" -> ((bootstrap: Bootstrap) => new ZkTransactionExample(bootstrap))
   )
 
   override def main(): Unit = ()
 
-  def start(require: Require, scope: js.Dynamic) {
+  def start(bootstrap: Bootstrap) {
     val args = process.argv.drop(2)
     if (args.isEmpty) usageError()
     else {
-      args map { arg => console.log(s"Executing example '$arg'"); arg } foreach {
-        case "Buffers" => new buffers.Buffers(require)
-        case "Classes" => new basics.Classes(require)
-        case "ClientRequestExample" => new ClientRequestExample(require)
-        case "Compression" => new basics.Compression(require)
-        case "EventEmitterExample" => new events.EventEmitterExample(require, scope)
-        case "ExpressRoutingExample" => new express.ExpressRoutingExample(require)
-        case "ExpressServerExample" => new express.ExpressServerExample(require)
-        case "Files" => new basics.Files(require)
-        case "HttpServerExample" => new http.HttpServerExample(require)
-        case "IntermediateTimers" => new timers.IntermediateTimers(require)
-        case "GridFSBucketExample" => new mongo.GridFSBucketExample(require)
-        case "MongoAggregateExample" => new mongo.MongoAggregateExample(require)
-        case "MongoClientExample" => new mongo.MongoClientExample(require)
-        case "MongoGridExample" => new mongo.MongoGridExample(require)
-        case "MongoGridStoreExample" => new mongo.MongoGridStoreExample(require)
-        case "MongoStreamExample" => new mongo.MongoStreamExample(require)
-        case "NetServerExample" => new net.NetServerExample(require)
-        case "ProcessPlay" => new basics.ProcessPlay(require)
-        case "ProducerExample" => new kafka.ProducerExample(require)
-        case "ProducerEnhanced" => new kafka.ProducerEnhanced(require)
-        case "REPLExample" => new repl.REPLExample(require)
-        case "ServerWithCompression" => new http.ServerWithCompression(require)
-        case "StateExample" => new zookeeper.StateExample(require)
-        case "StringDecoderExample" => new StringDecoderExample(require)
-        case "TinyCLI" => new repl.TinyCLI(require)
-        case "TransactionExample" => new zookeeper.TransactionExample(require)
-        case "XMLParsingExample" => new XMLParsingExample(require)
-        case "URLs" => new basics.URLs(require)
-        case arg => usageError()
+      val outcome = for {
+        arg <- args.headOption
+        _ = console.log(s"Searching for example '$arg'")
+        example <- examples.get(arg)
+      } yield (arg, example)
+
+      outcome match {
+        case Some((arg, example)) =>
+          console.log(s"Executing example '$arg'")
+          example(bootstrap)
+        case _ => usageError()
       }
     }
   }
 
   def usageError(): Unit = {
-    val choices = examples.sliding(4, 4) map (_.mkString(", ")) mkString "\n"
+    val choices = examples.keys.sliding(4, 4) map (_.mkString(", ")) mkString "\n"
     console.warn("Usage: examples.js <example1>[, <example2>[, <exampleN>]]\n")
     console.log("Choose any of the following:")
     console.log(choices)

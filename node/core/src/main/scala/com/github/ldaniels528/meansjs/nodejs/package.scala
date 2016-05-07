@@ -18,29 +18,32 @@ package object nodejs {
   //      Built-in Properties
   /////////////////////////////////////////////////////////////////////////////////
 
+  /**
+    * Used to print to stdout and stderr. See the console section.
+    */
   @js.native
   @JSName("console")
   object console extends Console
 
   @js.native
-  @JSName("__dirname")
-  object __dirname extends js.Object
-
-  @js.native
   @JSName("Error")
   object Error extends ErrorClass
 
+  /**
+    * In browsers, the top-level scope is the global scope. That means that in browsers if you're in the global scope
+    * var something will define a global variable. In Node.js this is different. The top-level scope is not the global
+    * scope; var something inside an Node.js module will be local to that module.
+    */
   @js.native
-  @JSName("module")
-  object module extends ModuleClass
+  @JSName("global")
+  object global extends js.Object
 
+  /**
+    * The process object. See the process object section.
+    */
   @js.native
   @JSName("process")
   object process extends ProcessClass
-
-  @js.native
-  @JSName("require")
-  object require extends Require
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Timers

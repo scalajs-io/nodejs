@@ -226,6 +226,37 @@ The following example demonstrates establishing a connection to MongoDB using Sc
 <a name="Angular"></a>
 ## Angular.js
 
+The following AngularJS services have been implemented thus far:
+
+| Service           | Artifact ID                | Description                      |
+|-------------------|----------------------------|----------------------------------|
+| $anchorScroll     | means-angular-core         | Anchor Scroll Service. |
+| $animate          | means-angular-animate      | The $animate service exposes a series of DOM utility methods that provide support for animation hooks. |
+| $cacheFactory     | means-angular-core         | Factory that constructs cache objects and gives access to them. |
+| $compile          | means-angular-core         | Compiles an HTML string or DOM into a template and produces a template function, which can then be used to link scope and the template together. |
+| $cookies          | means-angular-core         | Provides read/write access to browser's cookies. |
+| $cookieStore      | means-angular-core         | Provides a key-value (string-object) storage, that is backed by session cookies. |
+| $exceptionHandler | means-angular-core         | Any uncaught exception in angular expressions is delegated to this service. |
+| $http             | means-angular-core         | The $http service is a core Angular service that facilitates communication with the remote HTTP servers via the browser's XMLHttpRequest object or via JSONP. |
+| $injector         | means-angular-core         | $injector is used to retrieve object instances as defined by provider, instantiate types, invoke methods, and load modules. |
+| $interval         | means-angular-core         | Angular's wrapper for window.setInterval. The fn function is executed every delay milliseconds. |
+| $location         | means-angular-core         | The $location service parses the URL in the browser address bar (based on the window.location) and makes the URL available to your application. |
+| $log              | means-angular-core         | Simple service for logging. Default implementation safely writes the message into the browser's console (if present). |
+| $modal            | means-angular-ui-bootstrap | Modal Dialogs - Angular UI Bootstrap |
+| $parse            | means-angular-core         | Converts Angular expression into a function. |
+| $q                | means-angular-core         | A service that helps you run functions asynchronously, and use their return values (or exceptions) when they are done processing. |
+| $resource         | means-angular-core         | A factory which creates a resource object that lets you interact with RESTful server-side data sources. |
+| $route            | means-angular-ui-router    | $route is used for deep-linking URLs to controllers and views (HTML partials). It watches $location.url() and tries to map the path to an existing route definition. |
+| $sce              | means-angular-core         | $sce is a service that provides Strict Contextual Escaping services to AngularJS. |
+| $timeout          | means-angular-core         | Angular's wrapper for window.setTimeout. The fn function is wrapped into a try/catch block and delegates any exceptions to $exceptionHandler service. |
+| FacebookService   | means-angular-facebook     | AngularJS - Facebook service |
+| FileUploader      | means-angular-nergvh-fileupload | AngularJS File Uploader |
+| toaster           | means-angular-toaster      | AngularJS Toaster is a customized version of "toastr" non-blocking notification javascript library. |
+
+*NOTE*: The full SBT artifact expression is: "com.github.ldaniels528" %%% "means-node-xxxx" % version 
+(e.g. "com.github.ldaniels528" %%% "means-node-core" % "0.1.5")
+
+
 #### Defining a Module
 
 ```scala

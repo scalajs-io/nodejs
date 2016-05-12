@@ -85,10 +85,10 @@ object Db {
   implicit class MongoDatabaseExtensions(val db: Db) extends AnyVal {
 
     @inline
-    def collectionAsync(name: String) = callbackMongoFuture[Collection](db.collection(name, _))
+    def collectionFuture(name: String) = callbackMongoFuture[Collection](db.collection(name, _))
 
     @inline
-    def collectionAsync(name: String, options: CollectionOptions) = callbackMongoFuture[Collection](db.collection(name, options, _))
+    def collectionFuture(name: String, options: CollectionOptions) = callbackMongoFuture[Collection](db.collection(name, options, _))
 
     @inline
     def collectionNamesAsync = callbackMongoFuture[js.Array[String]](db.collectionNames)

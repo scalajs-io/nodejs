@@ -9,6 +9,8 @@ import scala.scalajs.js
 /**
   * MongoDB Module for Node.js
   * @author lawrence.daniels@gmail.com
+  * @see http://mongodb.github.io/node-mongodb-native/2.1/api/index.html
+  * @version 2.1
   */
 @js.native
 trait MongoDB extends NodeModule with EventEmitter {

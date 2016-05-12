@@ -1,7 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.express
 
 import com.github.ldaniels528.meansjs.nodejs.NodeModule
-import com.github.ldaniels528.meansjs.nodejs.bodyparser.BodyParser
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 
 import scala.scalajs.js
@@ -9,6 +8,8 @@ import scala.scalajs.js
 /**
   * NodeJS Express module
   * @author lawrence.daniels@gmail.com
+  * @see https://www.npmjs.com/package/express
+  * @version 4.13.4
   */
 @js.native
 trait Express extends NodeModule with EventEmitter {
@@ -20,10 +21,10 @@ trait Express extends NodeModule with EventEmitter {
   def apply(): Application = js.native
 
   /**
-    * `bodyParser()` middleware has been deprecated; use [[BodyParser.json()]] and [[BodyParser.urlencoded()]] as needed
+    * `bodyParser()` middleware has been deprecated; use BodyParser.json() and BodyParser.urlencoded() as needed
     * @see [[https://github.com/expressjs/body-parser/commit/b7420f8dc5c8b17a277c9e50d72bbaf3086a3900]]
     */
-  @deprecated("Use .json() and .urlencoded() as needed", "4.x")
+  @deprecated("Use BodyParser.json() and BodyParser.urlencoded() as needed", "4.x")
   def bodyParser(): Router = js.native
 
   /**

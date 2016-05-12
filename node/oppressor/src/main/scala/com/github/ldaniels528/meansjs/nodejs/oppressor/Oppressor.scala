@@ -9,6 +9,7 @@ import scala.scalajs.js
   * Oppressor - streaming http compression response negotiator
   * @author lawrence.daniels@gmail.com
   * @see [[https://github.com/substack/oppressor]]
+  * @version 0.0.1
   */
 @js.native
 trait Oppressor extends NodeModule {

@@ -80,7 +80,7 @@ object Transaction {
       * @see [[Transaction.commit()]]
       */
     @inline
-    def commitAsync() = futureCallbackE1[Exception, js.Any](transaction.commit)
+    def commitFuture() = futureCallbackE1[Exception, js.Any](transaction.commit)
 
   }
 

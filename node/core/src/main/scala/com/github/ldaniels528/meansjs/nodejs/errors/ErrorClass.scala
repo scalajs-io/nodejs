@@ -35,6 +35,8 @@ trait ErrorClass extends js.Object {
     */
   def captureStackTrace(targetObject: js.Any, constructorOpt: js.Any): Unit = js.native
 
+  def stack: js.Any = js.native
+
 }
 
 /**

@@ -59,7 +59,7 @@ class AsyncForEachOfExample(bootstrap: Bootstrap) {
     val envFiles = js.Dictionary("dev" -> "/dev.json", "test" -> "/test.json", "prod" -> "/prod.json")
     val configs = js.Dictionary[js.Any]()
 
-    async.forEachOf(envFiles) { (value: String, key: String, callback: js.Function1[js.Error, Any]) =>
+    async.forEachOfFuture(envFiles) { (value: String, key: String, callback: js.Function1[js.Error, Any]) =>
       fs.readFile(localPath + value, "utf8", (err: js.Error, data: String) => {
         if (isDefined(err)) callback(err)
         else {
@@ -83,7 +83,7 @@ class AsyncForEachOfExample(bootstrap: Bootstrap) {
     val files = js.Array("/dev.json", "/test.json", "/prod.json")
     val configs = js.Dictionary[js.Any]()
 
-    async.forEachOf(files) { (value: String, index: Int, callback: js.Function1[js.Error, Any]) =>
+    async.forEachOfFuture(files) { (value: String, index: Int, callback: js.Function1[js.Error, Any]) =>
       fs.readFile(localPath + value, "utf8", (err: js.Error, data: String) => {
         if (isDefined(err)) callback(err)
         else {

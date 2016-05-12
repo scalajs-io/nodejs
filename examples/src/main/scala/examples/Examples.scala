@@ -10,6 +10,8 @@ import org.scalajs.dom.console
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSExportAll
+import js.Dynamic.{global => g}
+import js.DynamicImplicits._
 
 /**
   * MEANS.js Examples
@@ -20,17 +22,18 @@ object Examples extends js.JSApp {
   private val examples = Map(
     "AsyncForEachOfExample" -> ((bootstrap: Bootstrap) => new AsyncForEachOfExample(bootstrap)),
     "AsyncWaterfallExample" -> ((bootstrap: Bootstrap) => new AsyncWaterfallExample(bootstrap)),
-    "Buffers" -> ((bootstrap: Bootstrap) => new Buffers(bootstrap)),
-    "Classes" -> ((bootstrap: Bootstrap) => new Classes(bootstrap)),
+    "BuffersExample" -> ((bootstrap: Bootstrap) => new BuffersExample(bootstrap)),
+    "ClassesExample" -> ((bootstrap: Bootstrap) => new ClassesExample(bootstrap)),
     "ClientRequestExample" -> ((bootstrap: Bootstrap) => new ClientRequestExample(bootstrap)),
-    "Compression" -> ((bootstrap: Bootstrap) => new Compression(bootstrap)),
+    "CompressionExample" -> ((bootstrap: Bootstrap) => new CompressionExample(bootstrap)),
     "EventEmitterExample" -> ((bootstrap: Bootstrap) => new EventEmitterExample(bootstrap)),
     "ExpressRoutingExample" -> ((bootstrap: Bootstrap) => new ExpressRoutingExample(bootstrap)),
     "ExpressServerExample" -> ((bootstrap: Bootstrap) => new ExpressServerExample(bootstrap)),
-    "Files" -> ((bootstrap: Bootstrap) => new Files(bootstrap)),
+    "FilesExample" -> ((bootstrap: Bootstrap) => new FilesExample(bootstrap)),
     "HttpServerExample" -> ((bootstrap: Bootstrap) => new HttpServerExample(bootstrap)),
-    "IntermediateTimers" -> ((bootstrap: Bootstrap) => new IntermediateTimers(bootstrap)),
     "JwtSimpleExample" -> ((bootstrap: Bootstrap) => new JwtSimpleExample(bootstrap)),
+    "KafkaProducerExample" -> ((bootstrap: Bootstrap) => new KafkaProducerExample(bootstrap)),
+    "KafkaProducerEnhanced" -> ((bootstrap: Bootstrap) => new KafkaProducerEnhanced(bootstrap)),
     "MongoAggregateExample" -> ((bootstrap: Bootstrap) => new MongoAggregateExample(bootstrap)),
     "MongoClientExample" -> ((bootstrap: Bootstrap) => new MongoClientExample(bootstrap)),
     "MongoGridExample" -> ((bootstrap: Bootstrap) => new MongoGridExample(bootstrap)),
@@ -38,14 +41,13 @@ object Examples extends js.JSApp {
     "MongoGridStoreExample" -> ((bootstrap: Bootstrap) => new MongoGridStoreExample(bootstrap)),
     "MongoStreamExample" -> ((bootstrap: Bootstrap) => new MongoStreamExample(bootstrap)),
     "NetServerExample" -> ((bootstrap: Bootstrap) => new NetServerExample(bootstrap)),
-    "ProcessInfo" -> ((bootstrap: Bootstrap) => new ProcessInfo(bootstrap)),
-    "ProducerExample" -> ((bootstrap: Bootstrap) => new KafkaProducerExample(bootstrap)),
-    "ProducerEnhanced" -> ((bootstrap: Bootstrap) => new KafkaProducerEnhanced(bootstrap)),
+    "ProcessExample" -> ((bootstrap: Bootstrap) => new ProcessExample(bootstrap)),
     "REPLExample" -> ((bootstrap: Bootstrap) => new REPLExample(bootstrap)),
     "ServerWithCompression" -> ((bootstrap: Bootstrap) => new ServerWithCompression(bootstrap)),
     "StringDecoderExample" -> ((bootstrap: Bootstrap) => new StringDecoderExample(bootstrap)),
+    "TimersExample" -> ((bootstrap: Bootstrap) => new TimersExample(bootstrap)),
     "TinyCLI" -> ((bootstrap: Bootstrap) => new TinyCLI(bootstrap)),
-    "URLs" -> ((bootstrap: Bootstrap) => new URLs(bootstrap)),
+    "URLsExample" -> ((bootstrap: Bootstrap) => new URLsExample(bootstrap)),
     "XMLParsingExample" -> ((bootstrap: Bootstrap) => new XMLParsingExample(bootstrap)),
     "ZkShowChildren" -> ((bootstrap: Bootstrap) => new ZkShowChildren(bootstrap)),
     "ZkStateExample" -> ((bootstrap: Bootstrap) => new ZkStateExample(bootstrap)),
@@ -74,10 +76,9 @@ object Examples extends js.JSApp {
   }
 
   def usageError(): Unit = {
-    val choices = examples.keys.sliding(4, 4) map (_.mkString(", ")) mkString "\n"
     console.warn("Usage: examples.js <example1>[, <example2>[, <exampleN>]]\n")
     console.log("Choose any of the following:")
-    console.log(choices)
+    console.log(examples.keys.sliding(4, 4) map (_.mkString(", ")) mkString "\n")
   }
 
 }

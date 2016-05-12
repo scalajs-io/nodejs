@@ -17,6 +17,7 @@ import scala.scalajs.js
   * This code is based on javascript-bcrypt and uses [crypto] (http://nodejs.org/api/crypto.html) to create random byte arrays.
   * @author lawrence.daniels@gmail.com
   * @see [[https://www.npmjs.com/package/bcrypt-nodejs]]
+  * @version 0.0.3
   */
 @js.native
 trait BCrypt extends NodeModule {
@@ -111,7 +112,8 @@ object BCrypt {
       * @param data      the given data to be compared
       * @param encrypted the encrypted data to be compared to.
       */
-    def compareAsync(data: js.Any, encrypted: Hash) = {
+    @inline
+    def compareFuture(data: js.Any, encrypted: Hash) = {
       futureCallbackE1[BCryptError, Boolean](bcrypt.compare(data, encrypted, _))
     }
 
@@ -119,7 +121,8 @@ object BCrypt {
       * Asynchronously generates the salt
       * @param rounds the number of rounds to process the data for. (default - 10)
       */
-    def genSaltAsync(rounds: Int = 10) = futureCallbackE1[BCryptError, Salt](bcrypt.genSalt(rounds, _))
+    @inline
+    def genSaltFuture(rounds: Int = 10) = futureCallbackE1[BCryptError, Salt](bcrypt.genSalt(rounds, _))
 
     /**
       * Asynchronously creates a hash using the given data
@@ -127,7 +130,8 @@ object BCrypt {
       * @param salt the salt to be used to hash the password.
       * @example bcrypt.hash(data, salt, progress, cb)
       */
-    def hash(data: js.Any, salt: Salt) = futureCallbackE1[BCryptError, Hash](bcrypt.hash(data, salt, _))
+    @inline
+    def hashFuture(data: js.Any, salt: Salt) = futureCallbackE1[BCryptError, Hash](bcrypt.hash(data, salt, _))
 
   }
 

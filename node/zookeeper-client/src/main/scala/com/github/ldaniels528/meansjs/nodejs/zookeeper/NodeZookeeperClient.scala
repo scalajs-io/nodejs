@@ -8,6 +8,7 @@ import scala.scalajs.js
 /**
   * Node Zookeeper Client
   * @author lawrence.daniels@gmail.com
+  * @version 0.2.2
   */
 @js.native
 trait NodeZookeeperClient extends NodeModule with EventEmitter {

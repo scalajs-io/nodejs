@@ -9,6 +9,7 @@ import scala.scalajs.js
   * jwt-simple - JWT(JSON Web Token) encode and decode module
   * @author lawrence.daniels@gmail.com
   * @see [[https://www.npmjs.com/package/jwt-simple]]
+  * @version 0.5.0
   */
 @js.native
 trait JwtSimple extends NodeModule {

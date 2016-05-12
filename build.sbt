@@ -4,7 +4,7 @@ import sbt.Keys._
 import sbt.Project.projectToRef
 import sbt._
 
-val apiVersion = "0.1.5"
+val apiVersion = "0.1.6"
 val paradisePluginVersion = "2.1.0"
 val _scalaVersion = "2.11.8"
 val scalaJsDomVersion = "0.9.0"
@@ -35,11 +35,11 @@ val commonSettings = Seq(
 lazy val root = (project in file(".")).
   aggregate(
     core, facebook, linkedin,
-    angular_core, angular_animate, angular_facebook, angular_nervgh_fileupload, angular_toaster,
-    angular_ui_bootstrap, angular_ui_router,
-    node_core, node_async, node_bcrypt, node_crypto, node_elgs_splitargs, node_express, node_filed, node_jwt_simple,
-    node_kafka, node_mongodb, node_oppressor, node_os, node_repl, node_request, node_string_decoder,
-    node_xml2js, node_zlib, node_zookeeper
+    angular_core, angular_animate, angular_cookies, angular_facebook, angular_nervgh_fileupload,
+    angular_sanitize, angular_toaster, angular_ui_bootstrap, angular_ui_router,
+    node_core, node_adal, node_async, node_azure, node_bcrypt, node_body_parser, node_crypto, node_elgs_splitargs,
+    node_express, node_express_ws, node_filed, node_jwt_simple, node_kafka, node_mongodb, node_oppressor, node_os,
+    node_repl, node_request, node_string_decoder, node_xml2js, node_zlib, node_zookeeper
   )
 
 lazy val core = (project in file("core")).
@@ -50,13 +50,17 @@ lazy val core = (project in file("core")).
     description := "MEANS.js core utilities"
   )
 
+  /////////////////////////////////////////////////////////////////////////////////
+  //      AngularJS sub-projects
+  /////////////////////////////////////////////////////////////////////////////////
+
 lazy val angular_core = (project in file("angularjs/core")).
   dependsOn(core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "means-angularjs-core",
-    description := "AngularJS facade for Scala.js"
+    description := "AngularJS/core facade for Scala.js"
   )
 
 lazy val angular_animate = (project in file("angularjs/animate")).
@@ -65,7 +69,16 @@ lazy val angular_animate = (project in file("angularjs/animate")).
   settings(commonSettings: _*).
   settings(
     name := "means-angularjs-animate",
-    description := "AngularJS facade for Scala.js"
+    description := "AngularJS/animate facade for Scala.js"
+  )
+
+lazy val angular_cookies = (project in file("angularjs/cookies")).
+  dependsOn(core, angular_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-angularjs-cookies",
+    description := "AngularJS/cookies facade for Scala.js"
   )
 
 lazy val angular_facebook = (project in file("angularjs/facebook")).
@@ -74,7 +87,7 @@ lazy val angular_facebook = (project in file("angularjs/facebook")).
   settings(commonSettings: _*).
   settings(
     name := "means-angularjs-facebook",
-    description := "AngularJS facebook facade for Scala.js"
+    description := "AngularJS/facebook facade for Scala.js"
   )
 
 lazy val angular_nervgh_fileupload = (project in file("angularjs/nervgh-fileupload")).
@@ -84,6 +97,15 @@ lazy val angular_nervgh_fileupload = (project in file("angularjs/nervgh-fileuplo
   settings(
     name := "means-angularjs-nervgh-fileupload",
     description := "AngularJS/nervgh-fileupload facade for Scala.js"
+  )
+
+lazy val angular_sanitize = (project in file("angularjs/sanitize")).
+  dependsOn(core, angular_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-angularjs-sanitize",
+    description := "AngularJS/sanitize facade for Scala.js"
   )
 
 lazy val angular_toaster = (project in file("angularjs/toaster")).
@@ -113,6 +135,10 @@ lazy val angular_ui_router = (project in file("angularjs/ui-router")).
     description := "AngularJS/ui-router facade for Scala.js"
   )
 
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Social sub-projects
+  /////////////////////////////////////////////////////////////////////////////////
+
 lazy val facebook = (project in file("social/facebook")).
   dependsOn(core, angular_core).
   enablePlugins(ScalaJSPlugin).
@@ -131,6 +157,10 @@ lazy val linkedin = (project in file("social/linkedin")).
     description := "Social/LinkedIn facade for Scala.js"
   )
 
+  /////////////////////////////////////////////////////////////////////////////////
+  //      NodeJS sub-projects
+  /////////////////////////////////////////////////////////////////////////////////
+
 lazy val node_core = (project in file("node/core")).
   dependsOn(core).
   enablePlugins(ScalaJSPlugin).
@@ -138,6 +168,15 @@ lazy val node_core = (project in file("node/core")).
   settings(
     name := "means-node-core",
     description := "NodeJS/Core facade for Scala.js"
+  )
+
+lazy val node_adal = (project in file("node/adal")).
+  dependsOn(core, node_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-adal-node",
+    description := "NodeJS/adal-node facade for Scala.js"
   )
 
 lazy val node_async = (project in file("node/async")).
@@ -149,6 +188,15 @@ lazy val node_async = (project in file("node/async")).
     description := "NodeJS/async facade for Scala.js"
   )
 
+lazy val node_azure = (project in file("node/azure")).
+  dependsOn(core, node_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-azure",
+    description := "NodeJS/azure facade for Scala.js"
+  )
+
 lazy val node_bcrypt = (project in file("node/bcrypt")).
   dependsOn(core, node_core).
   enablePlugins(ScalaJSPlugin).
@@ -156,6 +204,15 @@ lazy val node_bcrypt = (project in file("node/bcrypt")).
   settings(
     name := "means-node-bcrypt",
     description := "NodeJS/bcrypt facade for Scala.js"
+  )
+
+lazy val node_body_parser = (project in file("node/body-parser")).
+  dependsOn(core, node_express).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-body-parser",
+    description := "NodeJS/body-parser facade for Scala.js"
   )
 
 lazy val node_crypto = (project in file("node/crypto")).
@@ -183,6 +240,15 @@ lazy val node_express = (project in file("node/express")).
   settings(
     name := "means-node-express",
     description := "NodeJS/express facade for Scala.js"
+  )
+
+lazy val node_express_ws = (project in file("node/express-ws")).
+  dependsOn(core, node_express).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-express-ws",
+    description := "NodeJS/express-ws facade for Scala.js"
   )
 
 lazy val node_filed = (project in file("node/filed")).
@@ -295,11 +361,13 @@ lazy val node_zookeeper = (project in file("node/zookeeper-client")).
 
 lazy val examples = (project in file("examples")).
   aggregate(
-    core, node_core, node_async, node_bcrypt, node_crypto, node_elgs_splitargs, node_express, node_filed, node_jwt_simple, node_kafka,
-    node_mongodb, node_oppressor, node_os, node_repl, node_request, node_string_decoder, node_xml2js, node_zlib, node_zookeeper).
+    core, node_core, node_adal, node_async, node_azure, node_bcrypt, node_body_parser, node_crypto, node_elgs_splitargs,
+    node_express, node_express_ws, node_filed, node_jwt_simple, node_kafka, node_mongodb, node_oppressor, node_os,
+    node_repl, node_request, node_string_decoder, node_xml2js, node_zlib, node_zookeeper).
   dependsOn(
-    core, node_core, node_async, node_bcrypt, node_crypto, node_elgs_splitargs, node_express, node_filed, node_jwt_simple, node_kafka,
-    node_mongodb, node_oppressor, node_os, node_repl, node_request, node_string_decoder, node_xml2js, node_zlib, node_zookeeper).
+    core, node_core, node_adal, node_async, node_azure, node_bcrypt, node_body_parser, node_crypto, node_elgs_splitargs,
+    node_express, node_express_ws, node_filed, node_jwt_simple, node_kafka, node_mongodb, node_oppressor, node_os,
+    node_repl, node_request, node_string_decoder, node_xml2js, node_zlib, node_zookeeper).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(

@@ -63,36 +63,38 @@ modules implemented for most web applications.
 
 The following NodeJS modules have been implemented thus far:
 
-| Module            | Artifact ID           | Description                      |
-|-------------------|-----------------------|----------------------------------|
-| async             | means-node-async      | Higher-order functions and common patterns for asynchronous code. |
-| bcrypt            | means-node-bcrypt     | A native JS bcrypt library for NodeJS. |
-| body-parser       | means-node-express    | Body parsing middleware. |
-| buffer            | means-node-core       | Node.js Core (Global) |
-| events            | means-node-core       | Node.js Core |
-| express           | means-node-express    | Fast, unopinionated, minimalist web framework for Node.js |
-| express-ws        | means-node-express    | WebSocket endpoints for Express applications |
-| filed             | means-node-filed      | Simplified file library. |
-| fs                | means-node-core       | Node.js Core |
-| http              | means-node-core       | Node.js Core |
-| https             | means-node-core       | Node.js Core |
-| jwt-simple        | means-node-jwt-simple | JWT(JSON Web Token) encode and decode module |
-| kafka-node        | means-node-kafkanode  | A node binding for librdkafka |
-| mongodb           | means-node-mongodb    | Node.js MongoDB Driver |
-| net               | means-node-core       | Node.js Core |
-| oppressor         | means-node-oppressor  | Streaming http compression response negotiator. |
-| os                | means-node-os         | Node.js Core |
-| node-zookeeper-client | means-node-zookeeper-client | A higher-level ZooKeeper client based on node-zookeeper with support for locking and master election. |
-| readline          | means-node-core       | Node.js Core |
-| repl              | means-node-repl       | Node.js Core |
-| request           | means-node-request    | Simplified HTTP request client. |
-| splitargs         | means-node-elgs-splitargs | Splits strings into tokens by given separator except treating quoted part as a single token. |
-| stream            | means-node-core       | Node.js Core |
-| string-decoder    | means-node-string-decoder | Node.js Core |
-| url               | means-node-core       | Node.js Core |
-| util              | means-node-core       | Node.js Core |
-| xml2js            | means-node-xml2js     | Simple XML to JavaScript object converter. |
-| zlib              | means-node-zlib       | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. |
+| Node Module       | Version | Artifact ID           | Description                                             |
+|-------------------|---------|-----------------------|---------------------------------------------------------|
+| adal-node         | 0.1.19  | means-node-adal-node  | Windows Azure Active Directory Client Library for node. |
+| async             | 1.5.2   | means-node-async      | Higher-order functions and common patterns for asynchronous code. |
+| azure             | 0.10.6  | means-node-azure      | Microsoft Azure Client Library for node. |
+| bcrypt            | 0.0.3   | means-node-bcrypt     | A native JS bcrypt library for NodeJS. |
+| body-parser       | 1.15.1  | means-node-body-parser| Body parsing middleware. |
+| buffer            | 6.1.0   | means-node-core       | Node.js Core (Global) |
+| events            | 6.1.0   | means-node-core       | Node.js Core |
+| express           | 4.13.4  | means-node-express    | Fast, unopinionated, minimalist web framework for Node.js |
+| express-ws        |2.0.0-rc1| means-node-express-ws | WebSocket endpoints for Express applications |
+| filed             | 0.1.0   | means-node-filed      | Simplified file library. |
+| fs                | 6.1.0   | means-node-core       | Node.js Core |
+| http              | 6.1.0   | means-node-core       | Node.js Core |
+| https             | 6.1.0   | means-node-core       | Node.js Core |
+| jwt-simple        | 0.5.0   | means-node-jwt-simple | JWT(JSON Web Token) encode and decode module |
+| kafka-node        | 0.0.11  | means-node-kafkanode  | A node binding for librdkafka |
+| mongodb           | 2.1     | means-node-mongodb    | Node.js MongoDB Driver |
+| net               | 6.1.0   | means-node-core       | Node.js Core |
+| oppressor         | 0.0.1   | means-node-oppressor  | Streaming http compression response negotiator. |
+| os                | 6.1.0   | means-node-os         | Node.js Core |
+| node-zookeeper-client | 0.2.2   | means-node-zookeeper-client | A higher-level ZooKeeper client based on node-zookeeper with support for locking and master election. |
+| readline          | 6.1.0   | means-node-core       | Node.js Core |
+| repl              | 6.1.0   | means-node-repl       | Node.js Core |
+| request           | 2.72.1  | means-node-request    | Simplified HTTP request client. |
+| splitargs         | 0.0.7   | means-node-elgs-splitargs | Splits strings into tokens by given separator except treating quoted part as a single token. |
+| stream            | 6.1.0   | means-node-core       | Node.js Core |
+| string-decoder    | 6.1.0   | means-node-string-decoder | Node.js Core |
+| url               | 6.1.0   | means-node-core       | Node.js Core |
+| util              | 6.1.0   | means-node-core       | Node.js Core |
+| xml2js            | 0.4.16  | means-node-xml2js     | Simple XML to JavaScript object converter. |
+| zlib              | 6.1.0   | means-node-zlib       | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. |
 
 *NOTE*: The full SBT artifact expression is: "com.github.ldaniels528" %%% "means-node-xxxx" % version 
 (e.g. "com.github.ldaniels528" %%% "means-node-core" % "0.1.5")
@@ -128,21 +130,29 @@ Here's the same example using MEANS.js + Scala.js:
 <a name="NodeJS_Integration">
 #### Integration Guidance
 
-Currently, the "require" function must be passed to the Scala.js application because of an issue
-with getting a reference to it. This can be accomplished inside a bootstrap JavaScript file as follows:
+Currently, the "require" function (along with a few others) must be passed to the Scala.js application because of an issue
+with getting a reference to them. This can be accomplished inside a bootstrap JavaScript file as follows:
 
 ```javascript
 
     require("./target/scala-2.11/means-examples-fastopt.js");
     var facade = examples.Examples();
-    facade.start(require);
+    facade.start({
+         "__dirname": __dirname,
+         "__filename": __filename,
+         "exports": exports,
+         "module": module,
+         "require": require
+     });
 ```
 
 Then with the Scala.js application:
 
 ```scala
 
-    def start(require: Require) = {
+    def start(bootstrap: Bootstrap) = {
+        import bootstrap._
+        
         val express = require[Express]("express")
             .
             .
@@ -253,8 +263,8 @@ The following AngularJS services have been implemented thus far:
 | FileUploader      | means-angular-nergvh-fileupload | AngularJS File Uploader |
 | toaster           | means-angular-toaster      | AngularJS Toaster is a customized version of "toastr" non-blocking notification javascript library. |
 
-*NOTE*: The full SBT artifact expression is: "com.github.ldaniels528" %%% "means-node-xxxx" % version 
-(e.g. "com.github.ldaniels528" %%% "means-node-core" % "0.1.5")
+*NOTE*: The full SBT artifact expression is: "com.github.ldaniels528" %%% "means-angular-xxxx" % version 
+(e.g. "com.github.ldaniels528" %%% "means-angular-core" % "0.1.5")
 
 
 #### Defining a Module

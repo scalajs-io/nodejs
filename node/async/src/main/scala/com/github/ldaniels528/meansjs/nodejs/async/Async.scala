@@ -10,6 +10,7 @@ import scala.scalajs.js
   * Async module
   * @author lawrence.daniels@gmail.com
   * @see [[https://github.com/caolan/async/blob/v1.5.2/README.md]]
+  * @version 1.5.2
   */
 @js.native
 trait Async extends NodeModule {
@@ -219,7 +220,8 @@ object Async {
       *                 or with an explicit null argument. The array index is not passed to the iteratee. If you need the
       *                 index, use forEachOf.
       */
-    def each[A <: js.Any](coll: js.Array[A])(iteratee: (A, AsyncErrorCallback) => Any) = {
+    @inline
+    def eachFuture[A <: js.Any](coll: js.Array[A])(iteratee: (A, AsyncErrorCallback) => Any) = {
       futureCallbackE1[js.Error, A](async.each(coll, _))
     }
 
@@ -237,7 +239,8 @@ object Async {
       *                 or with an explicit null argument. The array index is not passed to the iteratee. If you need the
       *                 index, use forEachOf.
       */
-    def eachLimit[A <: js.Any](coll: js.Array[A], limit: Int)(iteratee: (A, AsyncErrorCallback) => Any) = {
+    @inline
+    def eachLimitFuture[A <: js.Any](coll: js.Array[A], limit: Int)(iteratee: (A, AsyncErrorCallback) => Any) = {
       futureCallbackE1[js.Error, A](async.eachLimit(coll, limit, _))
     }
 
@@ -254,7 +257,8 @@ object Async {
       *                 or with an explicit null argument. The array index is not passed to the iteratee. If you need the
       *                 index, use forEachOf.
       */
-    def eachSeries[A <: js.Any](coll: js.Array[A])(iteratee: (A, AsyncErrorCallback) => Any) = {
+    @inline
+    def eachSeriesFuture[A <: js.Any](coll: js.Array[A])(iteratee: (A, AsyncErrorCallback) => Any) = {
       futureCallbackE1[js.Error, A](async.eachSeries(coll, _))
     }
 
@@ -266,7 +270,8 @@ object Async {
       *                 callback(err, truthValue) , which must be called with a boolean argument once it has completed.
       *                 Callback arguments changed in 2.0
       */
-    def filter[A <: js.Any](coll: js.Array[A])(iteratee: (A, AsyncErrorCallback) => Boolean) = {
+    @inline
+    def filterFuture[A <: js.Any](coll: js.Array[A])(iteratee: (A, AsyncErrorCallback) => Boolean) = {
       futureCallbackE1[js.Error, js.Array[A]](async.filter(coll, _))
     }
 
@@ -278,7 +283,8 @@ object Async {
       *                 once it has completed. If no error has occurred, the callback should be run without arguments or
       *                 with an explicit null argument.
       */
-    def forEachOf[A](coll: js.Array[A])(iteratee: (A, Int, AsyncErrorCallback) => Any) = {
+    @inline
+    def forEachOfFuture[A](coll: js.Array[A])(iteratee: (A, Int, AsyncErrorCallback) => Any) = {
       futureCallbackE0[js.Error](async.forEachOf(coll, iteratee, _))
     }
 
@@ -289,7 +295,8 @@ object Async {
       *                 array. The iteratee is passed a callback(err) which must be called once it has completed.
       *                 If no error has occurred, the callback should be run without arguments or with an explicit null argument.
       */
-    def forEachOf[A](coll: js.Dictionary[A])(iteratee: (A, String, AsyncErrorCallback) => Any) = {
+    @inline
+    def forEachOfFuture[A](coll: js.Dictionary[A])(iteratee: (A, String, AsyncErrorCallback) => Any) = {
       futureCallbackE0[js.Error](async.forEachOf(coll, iteratee, _))
     }
 
@@ -300,6 +307,7 @@ object Async {
       * @param tasks A collection containing functions to run. Each function is passed a callback(err, result) which it
       *              must call on completion with an error err (which can be null) and an optional result value.
       */
+    @inline
     def parallelFuture[A <: js.Any](tasks: js.Array[js.Function]) = {
       futureCallbackE1[js.Error, A](async.parallel(tasks, _))
     }
@@ -311,7 +319,8 @@ object Async {
       *                 callback(err, truthValue) , which must be called with a boolean argument once it has completed.
       *                 Callback arguments changed in 2.0
       */
-    def reject[A <: js.Any](coll: js.Array[A])(iteratee: (A, Int) => Any) = {
+    @inline
+    def rejectFuture[A <: js.Any](coll: js.Array[A])(iteratee: (A, Int) => Any) = {
       futureCallbackE1[js.Error, A](async.reject(coll, iteratee, _))
     }
 
@@ -322,7 +331,8 @@ object Async {
       *                 callback(err, truthValue) , which must be called with a boolean argument once it has completed.
       *                 Callback arguments changed in 2.0
       */
-    def reject[A <: js.Any](coll: js.Dictionary[A])(iteratee: (A, String) => Any) = {
+    @inline
+    def rejectFuture[A <: js.Any](coll: js.Dictionary[A])(iteratee: (A, String) => Any) = {
       futureCallbackE1[js.Error, A](async.reject(coll, iteratee, _))
     }
 
@@ -334,6 +344,7 @@ object Async {
       *              call on completion. The first argument is an error (which can be null) and any further arguments will
       *              be passed as arguments in order to the next task.
       */
+    @inline
     def waterfallFuture[A](tasks: js.Array[_ <: js.Function]) = {
       futureCallbackE1[js.Error, A](async.waterfall(tasks, _))
     }

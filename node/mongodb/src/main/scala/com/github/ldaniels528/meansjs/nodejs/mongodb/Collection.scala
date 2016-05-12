@@ -837,17 +837,17 @@ object Collection {
       * @param pipeline Array containing all the aggregation framework commands for the execution.
       */
     @inline
-    def aggregateAsync[B <: js.Any](pipeline: js.Array[_ <: js.Any]) = {
+    def aggregateFuture[B <: js.Any](pipeline: js.Array[_ <: js.Any]) = {
       callbackMongoFuture[js.Array[B]](coll.aggregate(pipeline, _))
     }
 
     @inline
-    def findOneAsync[T <: js.Any](selector: js.Any)(implicit ec: ExecutionContext) = {
+    def findOneFuture[T <: js.Any](selector: js.Any)(implicit ec: ExecutionContext) = {
       callbackMongoFuture[T](coll.find(selector).limit(1).next) map (Option(_))
     }
 
     @inline
-    def findOneAsync[T <: js.Any](selector: js.Any, projection: js.Any)(implicit ec: ExecutionContext) = {
+    def findOneFuture[T <: js.Any](selector: js.Any, projection: js.Any)(implicit ec: ExecutionContext) = {
       callbackMongoFuture[T](coll.find(selector, projection).limit(1).next) map (Option(_))
     }
 

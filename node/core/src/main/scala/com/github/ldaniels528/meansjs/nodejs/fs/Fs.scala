@@ -355,7 +355,21 @@ trait Fs extends NodeModule with EventEmitter {
     * If the encoding option is specified then this function returns a string. Otherwise it returns a buffer.
     * @example fs.readFileSync(file[, options])
     */
-  def readFileSync(file: String, options: FileInputOptions = null): js.Any = js.native
+  def readFileSync(file: String, encoding: String, options: FileInputOptions): String = js.native
+
+  /**
+    * Synchronous version of fs.readFile. Returns the contents of the file.
+    * If the encoding option is specified then this function returns a string. Otherwise it returns a buffer.
+    * @example fs.readFileSync(file[, options])
+    */
+  def readFileSync(file: String, encoding: String): String = js.native
+
+  /**
+    * Synchronous version of fs.readFile. Returns the contents of the file.
+    * If the encoding option is specified then this function returns a string. Otherwise it returns a buffer.
+    * @example fs.readFileSync(file[, options])
+    */
+  def readFileSync(file: String, options: FileInputOptions = null): Buffer = js.native
 
   /**
     * Asynchronous realpath(2). The callback gets two arguments (err, resolvedPath).
@@ -602,75 +616,75 @@ object Fs {
   implicit class FsExtensions(val fs: Fs) extends AnyVal {
 
     @inline
-    def accessAsync(path: String) = futureCallbackE0[js.Error](fs.access(path, _))
+    def accessFuture(path: String) = futureCallbackE0[js.Error](fs.access(path, _))
 
     @inline
-    def accessAsync(path: String, mode: Integer) = futureCallbackE0[js.Error](fs.access(path, mode, _))
+    def accessFuture(path: String, mode: Integer) = futureCallbackE0[js.Error](fs.access(path, mode, _))
 
     @inline
-    def accessAsync(path: Buffer) = futureCallbackE0[js.Error](fs.access(path, _))
+    def accessFuture(path: Buffer) = futureCallbackE0[js.Error](fs.access(path, _))
 
     @inline
-    def accessAsync(path: Buffer, mode: Integer) = futureCallbackE0[js.Error](fs.access(path, mode, _))
+    def accessFuture(path: Buffer, mode: Integer) = futureCallbackE0[js.Error](fs.access(path, mode, _))
 
     @inline
-    def closeAsync(fd: FileDescriptor) = futureCallbackE0[js.Error](fs.close(fd, _))
+    def closeFuture(fd: FileDescriptor) = futureCallbackE0[js.Error](fs.close(fd, _))
 
     @inline
-    def fdatasyncAsync(fd: FileDescriptor) = futureCallbackE0[js.Error](fs.fdatasync(fd, _))
+    def fdatasyncFuture(fd: FileDescriptor) = futureCallbackE0[js.Error](fs.fdatasync(fd, _))
 
     @inline
-    def futimesAsync(fd: FileDescriptor, atime: Integer, mtime: Integer) = futureCallbackE0[js.Error](fs.futimes(fd, atime, mtime, _))
+    def futimesFuture(fd: FileDescriptor, atime: Integer, mtime: Integer) = futureCallbackE0[js.Error](fs.futimes(fd, atime, mtime, _))
 
     @inline
-    def lchmodAsync(path: String, mode: Integer) = futureCallbackE0[js.Error](fs.lchmod(path, mode, _))
+    def lchmodFuture(path: String, mode: Integer) = futureCallbackE0[js.Error](fs.lchmod(path, mode, _))
 
     @inline
-    def lchownAsync(path: String, uid: Integer, gid: Integer) = futureCallbackE0[js.Error](fs.lchown(path, uid, gid, _))
+    def lchownFuture(path: String, uid: Integer, gid: Integer) = futureCallbackE0[js.Error](fs.lchown(path, uid, gid, _))
 
     @inline
-    def linkAsync(srcpath: Buffer, dstpath: Buffer) = futureCallbackE0[js.Error](fs.link(srcpath, dstpath, _))
+    def linkFuture(srcpath: Buffer, dstpath: Buffer) = futureCallbackE0[js.Error](fs.link(srcpath, dstpath, _))
 
     @inline
-    def linkAsync(srcpath: Buffer, dstpath: String) = futureCallbackE0[js.Error](fs.link(srcpath, dstpath, _))
+    def linkFuture(srcpath: Buffer, dstpath: String) = futureCallbackE0[js.Error](fs.link(srcpath, dstpath, _))
 
     @inline
-    def linkAsync(srcpath: String, dstpath: Buffer) = futureCallbackE0[js.Error](fs.link(srcpath, dstpath, _))
+    def linkFuture(srcpath: String, dstpath: Buffer) = futureCallbackE0[js.Error](fs.link(srcpath, dstpath, _))
 
     @inline
-    def linkAsync(srcpath: String, dstpath: String) = futureCallbackE0[js.Error](fs.link(srcpath, dstpath, _))
+    def linkFuture(srcpath: String, dstpath: String) = futureCallbackE0[js.Error](fs.link(srcpath, dstpath, _))
 
     @inline
-    def mkdirAsync(path: Buffer, mode: Integer) = futureCallbackE0[js.Error](fs.mkdir(path, mode, _))
+    def mkdirFuture(path: Buffer, mode: Integer) = futureCallbackE0[js.Error](fs.mkdir(path, mode, _))
 
     @inline
-    def mkdirAsync(path: String, mode: Integer) = futureCallbackE0[js.Error](fs.mkdir(path, mode, _))
+    def mkdirFuture(path: String, mode: Integer) = futureCallbackE0[js.Error](fs.mkdir(path, mode, _))
 
     @inline
-    def readFileAsync(file: String, options: FileInputOptions = null) = futureCallbackE1[js.Error, js.Any](fs.readFile(file, options, _))
+    def readFileFuture(file: String, options: FileInputOptions = null) = futureCallbackE1[js.Error, js.Any](fs.readFile(file, options, _))
 
     @inline
-    def renameAsync(oldPath: String, newPath: String) = futureCallbackE0[js.Error](fs.rename(oldPath, newPath, _))
+    def renameFuture(oldPath: String, newPath: String) = futureCallbackE0[js.Error](fs.rename(oldPath, newPath, _))
 
     @inline
-    def realpathAsync(path: String, options: FileEncodingOptions = null) = futureCallbackE0[js.Error](fs.realpath(path, options, _))
+    def realpathFuture(path: String, options: FileEncodingOptions = null) = futureCallbackE0[js.Error](fs.realpath(path, options, _))
 
     @inline
-    def rmdirAsync(path: Buffer) = futureCallbackE0[js.Error](fs.rmdir(path, _))
+    def rmdirFuture(path: Buffer) = futureCallbackE0[js.Error](fs.rmdir(path, _))
 
     @inline
-    def rmdirAsync(path: String) = futureCallbackE0[js.Error](fs.rmdir(path, _))
+    def rmdirFuture(path: String) = futureCallbackE0[js.Error](fs.rmdir(path, _))
 
     @inline
-    def statAsync(path: String) = futureCallbackE1[js.Error, StatTime](fs.stat(path, _))
+    def statFuture(path: String) = futureCallbackE1[js.Error, StatTime](fs.stat(path, _))
 
     @inline
-    def watchAsync(filename: String, options: FSWatcherOptions = null) = {
+    def watchFuture(filename: String, options: FSWatcherOptions = null) = {
       futureCallbackA2[String, String](fs.watch(filename, options, _))
     }
 
     @inline
-    def writeFileAsync(file: String, data: Buffer, options: FileOutputOptions = null) = {
+    def writeFileFuture(file: String, data: Buffer, options: FileOutputOptions = null) = {
       futureCallbackE0[js.Error](fs.writeFile(file, data, options, _))
     }
 

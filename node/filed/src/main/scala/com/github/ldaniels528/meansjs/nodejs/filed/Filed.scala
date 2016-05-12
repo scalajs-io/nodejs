@@ -9,6 +9,7 @@ import scala.scalajs.js
   * filed - Simplified file library.
   * @author lawrence.daniels@gmail.com
   * @see [[https://www.npmjs.com/package/filed]]
+  * @version 0.1.0
   */
 @js.native
 trait Filed extends NodeModule {

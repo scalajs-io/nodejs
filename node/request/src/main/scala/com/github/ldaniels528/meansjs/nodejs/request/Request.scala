@@ -14,6 +14,7 @@ import scala.scalajs.runtime._
   * Simplified HTTP request client.
   * @author lawrence.daniels@gmail.com
   * @see [[https://github.com/request/request]]
+  * @version 2.72.1
   */
 @js.native
 trait Request extends NodeModule with EventEmitter {

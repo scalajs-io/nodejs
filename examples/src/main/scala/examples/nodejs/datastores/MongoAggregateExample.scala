@@ -33,14 +33,14 @@ class MongoAggregateExample(bootstrap: Bootstrap) {
         )))
 
     for {
-    // Create a collection
-      collection <- db.collectionAsync("aggregationExample1")
+      // Create a collection
+      collection <- db.collectionFuture("aggregationExample1")
 
       // Insert the docs
       writeResults <- collection.insertMany(docs, WriteOptions(w = 1))
 
       // Execute aggregate, notice the pipeline is expressed as an Array
-      result <- collection.aggregateAsync[Data](js.Array(
+      result <- collection.aggregateFuture[Data](js.Array(
         doc("$project" -> doc("author" -> 1, "tags" -> 1)),
         doc("$unwind" -> "$tags"),
         doc("$group" -> doc("_id" -> doc("tags" -> "$tags"), "authors" $addToSet "$author"))

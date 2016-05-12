@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "azure": "^0.10.6",
+    "azure-storage": "^0.10.0",
     "body-parser": "^1.15.0",
     "engine.io": "^1.6.8",
     "express": "4.13.4",

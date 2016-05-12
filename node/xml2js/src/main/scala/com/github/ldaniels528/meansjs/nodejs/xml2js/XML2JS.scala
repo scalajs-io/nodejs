@@ -8,6 +8,7 @@ import scala.scalajs.js
   * NodeJS/xml2js
   * @author lawrence.daniels@gmail.com
   * @see [[https://www.npmjs.com/package/xml2js]]
+  * @version 0.4.16
   */
 @js.native
 trait XML2JS extends NodeModule with Parser {

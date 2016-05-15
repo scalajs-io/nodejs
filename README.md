@@ -146,7 +146,7 @@ with getting a reference to them. This can be accomplished inside a bootstrap Ja
      });
 ```
 
-Then with the Scala.js application:
+Then within your Scala.js application:
 
 ```scala
 

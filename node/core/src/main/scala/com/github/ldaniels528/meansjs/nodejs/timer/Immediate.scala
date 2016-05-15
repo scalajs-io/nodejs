@@ -7,4 +7,8 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Immediate extends js.Object
+trait Immediate extends js.Object {
+
+  def _onImmediate: js.Function = js.native
+
+}

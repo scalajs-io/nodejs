@@ -38,7 +38,7 @@ object MongoClientClass {
     def apply(server: Server, options: MongoClientOptions) = `class`.New[MongoClient](server, options)
 
     @inline
-    def connectAsync(servers: String) = callbackMongoFuture[Db](`class`.connect(servers, _))
+    def connectFuture(servers: String) = callbackMongoFuture[Db](`class`.connect(servers, _))
 
   }
 

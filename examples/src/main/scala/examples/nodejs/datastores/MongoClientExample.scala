@@ -27,10 +27,10 @@ class MongoClientExample(bootstrap: Bootstrap) {
   val url = "mongodb://localhost:27017/test"
 
   // Use connect method to connect to the Server
-  mongoClient.connectAsync(url) onComplete {
+  mongoClient.connectFuture(url) onComplete {
     case Success(db) =>
       //HURRAY!! We are connected. :)
-      console.log("Connection established to", url)
+      console.log("Connection established to: %s", url)
 
       // do some work here with the database.
 

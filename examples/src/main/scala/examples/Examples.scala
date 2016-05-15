@@ -1,6 +1,7 @@
 package examples
 
 import com.github.ldaniels528.meansjs.nodejs._
+import examples.nodejs.actors.ActorsExample
 import examples.nodejs.concurrency._
 import examples.nodejs.datastores._
 import examples.nodejs.general._
@@ -10,8 +11,6 @@ import org.scalajs.dom.console
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSExportAll
-import js.Dynamic.{global => g}
-import js.DynamicImplicits._
 
 /**
   * MEANS.js Examples
@@ -20,6 +19,7 @@ import js.DynamicImplicits._
 @JSExportAll
 object Examples extends js.JSApp {
   private val examples = Map(
+    "ActorsExample" -> ((bootstrap: Bootstrap) => new ActorsExample(bootstrap)),
     "AsyncForEachOfExample" -> ((bootstrap: Bootstrap) => new AsyncForEachOfExample(bootstrap)),
     "AsyncWaterfallExample" -> ((bootstrap: Bootstrap) => new AsyncWaterfallExample(bootstrap)),
     "BuffersExample" -> ((bootstrap: Bootstrap) => new BuffersExample(bootstrap)),

@@ -1,5 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs
 
+import com.github.ldaniels528.meansjs.nodejs.errors.ErrorClass
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 import com.github.ldaniels528.meansjs.nodejs.stream.{Readable, Writable}
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
@@ -396,20 +397,24 @@ object ProcessClass {
       */
     @inline
     def sendAsync(message: js.Any, sendHandle: js.Any, options: ProcessClass.TransferOptions) = {
-      callbackWithErrorToFuture[Boolean](process.send(message, sendHandle, options, _))
+      futureCallbackE1[ErrorClass, Boolean](process.send(message, sendHandle, options, _))
     }
 
     /**
       * @see [[ProcessClass.send()]]
       */
     @inline
-    def sendAsync(message: js.Any, sendHandle: js.Any) = callbackWithErrorToFuture[Boolean](process.send(message, sendHandle, _))
+    def sendAsync(message: js.Any, sendHandle: js.Any) = {
+      futureCallbackE1[ErrorClass, Boolean](process.send(message, sendHandle, _))
+    }
 
     /**
       * @see [[ProcessClass.send()]]
       */
     @inline
-    def sendAsync(message: js.Any) = callbackWithErrorToFuture[Boolean](process.send(message, _))
+    def sendAsync(message: js.Any) = {
+      futureCallbackE1[ErrorClass, Boolean](process.send(message, _))
+    }
 
   }
 

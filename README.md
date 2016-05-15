@@ -49,7 +49,7 @@ The goal of MEANS.js is to be a complete Scala.js facade for the entire MEAN Sta
 ```bash
  $ sbt "project examples" clean fastOptJS
  $ cd examples
- $ node ./examples.js IntermediateTimers
+ $ node ./examples.js FilesExample
 ```
    
 <a name="NodeJS"></a>
@@ -66,11 +66,13 @@ The following NodeJS modules have been implemented thus far:
 | Node Module       | Version | Artifact ID           | Description                                             |
 |-------------------|---------|-----------------------|---------------------------------------------------------|
 | adal-node         | 0.1.19  | means-node-adal-node  | Windows Azure Active Directory Client Library for node. |
+| amqplib           | 0.4.1   | means-node-amqplib    | An AMQP 0-9-1 (e.g., RabbitMQ) library and client. |
 | async             | 1.5.2   | means-node-async      | Higher-order functions and common patterns for asynchronous code. |
 | azure             | 0.10.6  | means-node-azure      | Microsoft Azure Client Library for node. |
 | bcrypt            | 0.0.3   | means-node-bcrypt     | A native JS bcrypt library for NodeJS. |
 | body-parser       | 1.15.1  | means-node-body-parser| Body parsing middleware. |
 | buffer            | 6.1.0   | means-node-core       | Node.js Core (Global) |
+| drama             | 0.1.3   | means-node-drama      | drama is an Actor model implementation for JavaScript and Node.js |
 | events            | 6.1.0   | means-node-core       | Node.js Core |
 | express           | 4.13.4  | means-node-express    | Fast, unopinionated, minimalist web framework for Node.js |
 | express-ws        |2.0.0-rc1| means-node-express-ws | WebSocket endpoints for Express applications |
@@ -81,6 +83,7 @@ The following NodeJS modules have been implemented thus far:
 | jwt-simple        | 0.5.0   | means-node-jwt-simple | JWT(JSON Web Token) encode and decode module |
 | kafka-node        | 0.0.11  | means-node-kafkanode  | A node binding for librdkafka |
 | mongodb           | 2.1     | means-node-mongodb    | Node.js MongoDB Driver |
+| nactor            | 0.2.0   | means-node-nactor     | Event based actor model framework for games |
 | net               | 6.1.0   | means-node-core       | Node.js Core |
 | oppressor         | 0.0.1   | means-node-oppressor  | Streaming http compression response negotiator. |
 | os                | 6.1.0   | means-node-os         | Node.js Core |
@@ -97,7 +100,7 @@ The following NodeJS modules have been implemented thus far:
 | zlib              | 6.1.0   | means-node-zlib       | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. |
 
 *NOTE*: The full SBT artifact expression is: "com.github.ldaniels528" %%% "means-node-xxxx" % version 
-(e.g. "com.github.ldaniels528" %%% "means-node-core" % "0.1.5")
+(e.g. "com.github.ldaniels528" %%% "means-node-express" % "0.1.7")
 
 I've provided an example to demonstrate how similar the Scala.js code is to the JavaScript
 that it replaces.
@@ -105,26 +108,23 @@ that it replaces.
 The following is a simple Hello World app in Node using JavaScript.
 
 ```javascript
-
-    var http = require("http");
-    http.createServer(function(request, response) {
-      response.writeHead(200, {"Content-Type": "text/plain"});
-      response.write("Hello World");
-      response.end();
-    }).listen(8888);
+var http = require("http");
+http.createServer(function(request, response) {
+    response.writeHead(200, {"Content-Type": "text/plain"});
+    response.write("Hello World");
+    response.end();
+}).listen(8888);
 ```
 
-Here's the same example using MEANS.js + Scala.js:
+Here's the same example using MEANS.js:
 
 ```scala
-
-  val http = require[Http]("http")
-  http.createServer((request: ClientRequest, response: ServerResponse) => {
+val http = require[Http]("http")
+http.createServer((request: ClientRequest, response: ServerResponse) => {
     response.writeHead(200, js.Dictionary("Content-Type" -> "text/plain"))
     response.write("Hello World")
     response.end()
-  }).listen(8888)
-
+}).listen(8888)
 ```
 
 <a name="NodeJS_Integration">
@@ -134,30 +134,28 @@ Currently, the "require" function (along with a few others) must be passed to th
 with getting a reference to them. This can be accomplished inside a bootstrap JavaScript file as follows:
 
 ```javascript
-
-    require("./target/scala-2.11/means-examples-fastopt.js");
-    var facade = examples.Examples();
-    facade.start({
-         "__dirname": __dirname,
-         "__filename": __filename,
-         "exports": exports,
-         "module": module,
-         "require": require
-     });
+require("./target/scala-2.11/means-examples-fastopt.js");
+var facade = examples.Examples();
+facade.start({
+     "__dirname": __dirname,
+     "__filename": __filename,
+     "exports": exports,
+     "module": module,
+     "require": require
+ });
 ```
 
 Then within your Scala.js application:
 
 ```scala
-
-    def start(bootstrap: Bootstrap) = {
-        import bootstrap._
-        
-        val express = require[Express]("express")
-            .
-            .
-            .
-    }
+def start(bootstrap: Bootstrap) = {
+    import bootstrap._
+    
+    val express = require[Express]("express")
+        .
+        .
+        .
+}
 ```
 
 <a name="Express"></a>
@@ -166,39 +164,35 @@ Then within your Scala.js application:
 The following is a simple Hello World app in Node and Express using JavaScript.
 
 ```javascript
+var express = require('express');
+var app = express();
 
-    var express = require('express');
-    var app = express();
-    
-    app.get('/', function (req, res) {
-       res.send('Hello World');
-    })
-    
-    var server = app.listen(8081, function () {
-    
-      var host = server.address().address
-      var port = server.address().port
-      console.log("Example app listening at http://%s:%s", host, port)
+app.get('/', function (req, res) {
+   res.send('Hello World');
+})
 
-    })
+var server = app.listen(8081, function () {
+  var host = server.address().address
+  var port = server.address().port
+  console.log("Example app listening at http://%s:%s", host, port)
+})
 ```
 
 Here's the same example using Scala.js:
 
 ```scala
+val express = require[Express]("express")
+val app = express()
 
-    val express = require[Express]("express")
-    val app = express()
-    
-    app.get("/", (req: Request, res: Response) => res.send("Hello World"))
-    
-    val server = app.listen(8081, connect)
-    
-    private def connect: js.Function = () => {
-        val host = server.address().address
-        val port = server.address().port
-        console.log("Example app listening at http://%s:%s", host, port)
-    }
+app.get("/", (req: Request, res: Response) => res.send("Hello World"))
+
+val server = app.listen(8081, connect)
+
+private def connect: js.Function = () => {
+    val host = server.address().address
+    val port = server.address().port
+    console.log("Example app listening at http://%s:%s", host, port)
+}
 ```
     
 <a name="MongoDB"></a>
@@ -207,30 +201,68 @@ Here's the same example using Scala.js:
 The following example demonstrates establishing a connection to MongoDB using Scala.js:
 
 ```scala
+// lets require/import the mongodb native drivers.
+val mongodb = require[MongoDB]("mongodb")
 
-  // lets require/import the mongodb native drivers.
-  val mongodb = require[MongoDB]("mongodb")
+// We need to work with "MongoClient" interface in order to connect to a mongodb server.
+val mongoClient = mongodb.MongoClient
 
-  // We need to work with "MongoClient" interface in order to connect to a mongodb server.
-  val mongoClient = mongodb.MongoClient
+// Connection URL. This is where your mongodb server is running.
+val url = "mongodb://localhost:27017/test"
 
-  // Connection URL. This is where your mongodb server is running.
-  val url = "mongodb://localhost:27017/test"
-
-  // Use connect method to connect to the Server
-  mongoClient.connect(url, (err: MongoError, db: MongoDatabase) => {
+// Use connect method to connect to the Server
+mongoClient.connect(url, (err: MongoError, db: MongoDatabase) => {
     if (isDefined(err) {
-      console.log("Unable to connect to the mongoDB server. Error:", err)
+        console.log("Unable to connect to the mongoDB server. Error:", err)
     } else {
-      //HURRAY!! We are connected. :)
-      console.log("Connection established to", url)
-
-      // do some work here with the database.
-
-      //Close connection
-      db.close()
+        //HURRAY!! We are connected. :)
+        console.log("Connection established to: %s", url)
+        
+        // do some work here with the database.
+        
+        //Close connection
+        db.close()
     }
-  })
+})
+```
+
+Or, if you'd like to be more Scala idiomatic, the connection fragment could be written as follows:
+
+```scala
+mongoClient.connectFuture(url) onComplete {
+    case Success(db) =>
+        // HURRAY!! We are connected. :)
+        console.log("Connection established to: %s", url)
+
+        // do some work here with the database.
+
+        // close connection
+        db.close()
+    case Failure(e) =>
+        console.log("Unable to connect to the mongoDB server. Error:", e.getMessage)  
+}
+```
+
+MEANS.js exposes Future-based alternatives to most of the asynchronous functions found in MongoDB, Express, Angular and Node. 
+This means that you can use Scala's amazing *for* comprehensions to replace the dreaded pyramid of doom callbacks normally
+associated with JavaScript asynchronous code.
+
+Consider the following:
+
+```scala
+for {
+    // List all the virtual machine images you can use.
+    vmImages <- computeManagementClient.virtualMachineVMImages.listFuture
+    
+    // Create a cloud service.
+    computeManagementClient <- computeManagementClient.hostedServices.createFuture(
+      HostedServicesOptions(serviceName = serviceName, label = "cloud service 01", location = "West US"))
+    
+    // Create a virtual machine in the cloud service
+    deployment <- computeManagementClient.virtualMachines.createDeploymentFuture(serviceName, deploymentOptions)
+} {
+    console.info(deployment)
+}
 ```
 
 <a name="Angular"></a>
@@ -264,14 +296,14 @@ The following AngularJS services have been implemented thus far:
 | toaster           | means-angular-toaster      | AngularJS Toaster is a customized version of "toastr" non-blocking notification javascript library. |
 
 *NOTE*: The full SBT artifact expression is: "com.github.ldaniels528" %%% "means-angular-xxxx" % version 
-(e.g. "com.github.ldaniels528" %%% "means-angular-core" % "0.1.5")
+(e.g. "com.github.ldaniels528" %%% "means-angular-toaster" % "0.1.7")
 
 
 #### Defining a Module
 
 ```scala
 val module = angular.createModule("shocktrade",
-  js.Array("ngAnimate", "ngCookies", "ngRoute", "ngSanitize", "nvd3ChartDirectives", "toaster", "ui.bootstrap"))
+    js.Array("ngAnimate", "ngCookies", "ngRoute", "ngSanitize", "nvd3ChartDirectives", "toaster", "ui.bootstrap"))
 
 // add the custom directives
 module.directiveOf[AvatarDirective]("avatar")
@@ -289,20 +321,20 @@ module.serviceOf[QuoteService]
 
 // define the routes
 module.config({ ($routeProvider: RouteProvider) =>
-  $routeProvider
-    .when("/about/us", RouteTo(templateUrl = "/assets/views/about/us.htm"))
-    .when("/discover", RouteTo(templateUrl = "/assets/views/discover/discover.htm", controller = "DiscoverController"))
-    .when("/discover/:symbol", RouteTo(templateUrl = "/assets/views/discover/discover.htm", controller = "DiscoverController"))
-    .otherwise(RouteTo(redirectTo = "/about/us"))
+    $routeProvider
+        .when("/about/us", RouteTo(templateUrl = "/assets/views/about/us.htm"))
+        .when("/discover", RouteTo(templateUrl = "/assets/views/discover/discover.htm", controller = "DiscoverController"))
+        .when("/discover/:symbol", RouteTo(templateUrl = "/assets/views/discover/discover.htm", controller = "DiscoverController"))
+        .otherwise(RouteTo(redirectTo = "/about/us"))
 })
 
 // initialize the application
 module.run({ (WebSocketService: WebSocketService) =>
-  // inject Facebook's JavaScript SDK
-  FacebookInjector.init()
-
-  // initialize the web socket service
-  WebSocketService.init()
+    // inject Facebook's JavaScript SDK
+    FacebookInjector.init()
+    
+    // initialize the web socket service
+    WebSocketService.init()
 })
 ```
 
@@ -319,27 +351,26 @@ module.filter("yesno", yesNo)
 ```scala
 module.controllerOf[AwardsController]("AwardsCtrl")
 
-class AwardsController($scope: js.Dynamic, $http: Http, @injected("MySession") mySession: MySession) 
-    extends Controller {
+class AwardsController($scope: js.Dynamic, $http: Http, @injected("MySession") mySession: MySession) extends Controller {
 
-  $scope.getAwards = () => AvailableAwards
-
-  $scope.getMyAwards = () => getMyAwards
-
-  $scope.getAwardImage = (code: String) => AwardIconsByCode.get(code).orNull
-
-  $scope.setupAwards = () => setupAwards()
+    $scope.getAwards = () => AvailableAwards
     
-  private def getMyAwards: js.Array[js.Dynamic] = {
-    mySession.getMyAwards() map (code => AwardsByCode.get(code).orNull)
-  }
-
-  private def setupAwards() {
-    console.log("Setting up awards....")
-    AvailableAwards foreach { award =>
-      award.owned = mySession.getMyAwards().contains(award.code.as[String])
+    $scope.getMyAwards = () => getMyAwards
+    
+    $scope.getAwardImage = (code: String) => AwardIconsByCode.get(code).orNull
+    
+    $scope.setupAwards = () => setupAwards()
+    
+    private def getMyAwards: js.Array[js.Dynamic] = {
+        mySession.getMyAwards() map (code => AwardsByCode.get(code).orNull)
     }
-  }
+    
+    private def setupAwards() {
+        console.log("Setting up awards....")
+        AvailableAwards foreach { award =>
+            award.owned = mySession.getMyAwards().contains(award.code.as[String])
+        }
+    }
 }
 ```
 
@@ -573,8 +604,7 @@ trait MarketStatus extends js.Object {
 }
 ```
 
-Above, we retrieve a JSON object via the given API and return a Market Status object. *NOTE:* The fact 
-that `MarketStatus` extends `js.Object` is significant.
+Above, we retrieve a JSON object via the given API and return a Market Status object.
 
 #### For Comprehensions
 
@@ -599,11 +629,10 @@ Here's how it's handled via Scala.js:
 
 ```scala
 outcome onComplete {
-  case Success(updatedQuotes) =>
-    obj.quotes = updatedQuotes
-  case Failure(e) =>
-    toaster.error(s"Failed to load Held Securities")
-    console.error(s"Failed to load Held Securities: ${e.getMessage}")
+    case Success(updatedQuotes) => obj.quotes = updatedQuotes
+    case Failure(e) =>
+        toaster.error(s"Failed to load Held Securities")
+        console.error(s"Failed to load Held Securities: ${e.getMessage}")
 }
 ```
 
@@ -671,31 +700,29 @@ Afterwards, you may call any Facebook API that you have the permissions to execu
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 val outcome = for {
-  // load the user"s Facebook profile
-  fbProfile <- facebook.getUserProfile
-  fbFriends <- facebook.getTaggableFriends
+    fbProfile <- facebook.getUserProfile
+    fbFriends <- facebook.getTaggableFriends
 } yield (fbProfile, friends)
 
 outcome onComplete {
-  case Success((fbProfile, friends)) =>
-    console.log("fbProfile = ${angular.toJson(fbProfile, pretty = true)}")
-    console.log(s"fbFriends = ${angular.toJson(fbFriends, pretty = true)}")
-  case Failure(e) =>
-    toaster.error(s"Failed to retrieve Facebook profile and friends - ${e.displayMessage}")
+    case Success((fbProfile, friends)) =>
+        console.log("fbProfile = ${angular.toJson(fbProfile, pretty = true)}")
+        console.log(s"fbFriends = ${angular.toJson(fbFriends, pretty = true)}")
+    case Failure(e) =>
+        toaster.error(s"Failed to retrieve Facebook profile and friends - ${e.displayMessage}")
 }
-()
 ```
 
 If you're not using AngularJS, you can use the Facebook SDK directly:
 
 ```scala
 FB.login((response: js.UndefOr[FacebookLoginStatusResponse]) =>
-  response.toOption match {
-    case Some(resp) if resp.error.isEmpty =>
-        console.log(s"auth = ${angular.toJson(auth)}")
-    case Some(resp) => console.error(s"Error logging in to Facebook: ${resp.error}")
-    case None => console.error("No response from Facebook servers")
-  })     
+    response.toOption match {
+        case Some(resp) if resp.error.isEmpty => console.log(s"auth = ${angular.toJson(auth)}")
+        case Some(resp) => console.error(s"Error logging in to Facebook: ${resp.error}")
+        case None => console.error("No response from Facebook servers")
+    }
+)     
 ```
 
 #### Sample Code for LinkedIn
@@ -715,14 +742,14 @@ Within your Scala.js application:
 
 ```scala
 js.Dynamic.global.linkedInInit = () => {
-  val injector = angular.element(jQuery("#Main")).injector()
-  injector.get[MySessionService]("MySession").toOption match {
-    case Some(mySession) =>
-      console.info("Initializing LinkedIn API...")
-      mySession.initLinkedIn(LinkedIn.IN)
-    case None =>
-      console.error("MySession could not be retrieved.")
-  }
+    val injector = angular.element(jQuery("#Main")).injector()
+    injector.get[MySessionService]("MySession").toOption match {
+        case Some(mySession) =>
+            console.info("Initializing LinkedIn API...")
+            mySession.initLinkedIn(LinkedIn.IN)
+        case None =>
+            console.error("MySession could not be retrieved.")
+    }
 }
 ```
 
@@ -735,9 +762,9 @@ var linkedInID: js.UndefOr[String] = js.undefined
 
 // read the authenticated user's profile
 IN.API.Profile(js.Array("me")) onComplete {
-  case Success(response) =>
-    linkedInID = response.values.headOption.flatMap(_.id.toOption).orUndefined
-  case Failure(e) =>
-    console.error(s"Failed to retrieve LinkedIn profile - ${e.getMessage}")
+    case Success(response) =>
+        linkedInID = response.values.headOption.flatMap(_.id.toOption).orUndefined
+    case Failure(e) =>
+        console.error(s"Failed to retrieve LinkedIn profile - ${e.getMessage}")
 }
 ```

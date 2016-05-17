@@ -83,7 +83,6 @@ The following NodeJS modules have been implemented thus far:
 | jwt-simple        | 0.5.0   | means-node-jwt-simple | JWT(JSON Web Token) encode and decode module |
 | kafka-node        | 0.0.11  | means-node-kafkanode  | A node binding for librdkafka |
 | mongodb           | 2.1     | means-node-mongodb    | Node.js MongoDB Driver |
-| nactor            | 0.2.0   | means-node-nactor     | Event based actor model framework for games |
 | net               | 6.1.0   | means-node-core       | Node.js Core |
 | oppressor         | 0.0.1   | means-node-oppressor  | Streaming http compression response negotiator. |
 | os                | 6.1.0   | means-node-os         | Node.js Core |

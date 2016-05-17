@@ -1,6 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs.crypto
 
 import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
+import com.github.ldaniels528.meansjs.nodejs.stream
 
 import scala.scalajs.js
 
@@ -13,9 +14,10 @@ import scala.scalajs.js
   *
   * The crypto.createDecipher() or crypto.createDecipheriv() methods are used to create Decipher instances.
   * Decipher objects are not to be created directly using the new keyword.
+  * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Decipher extends js.Object {
+trait Decipher extends stream.Duplex {
 
   /**
     * Returns any remaining deciphered contents. If output_encoding parameter is one of 'binary', 'base64' or 'hex',

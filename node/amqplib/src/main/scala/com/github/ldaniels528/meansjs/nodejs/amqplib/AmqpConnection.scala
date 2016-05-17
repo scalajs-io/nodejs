@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.amqplib
 
-import com.github.ldaniels528.meansjs.nodejs.errors.ErrorClass
+import com.github.ldaniels528.meansjs.nodejs.errors
 
 import scala.scalajs.js
 
@@ -24,7 +24,7 @@ trait AmqpConnection extends js.Object {
     * are closed. The model will also emit 'close' at that point.
     * @return a promise of the closed status
     */
-  def close(): js.Promise[ErrorClass] = js.native
+  def close(): js.Promise[errors.Error] = js.native
 
   /**
     * Close the connection cleanly. Will immediately invalidate any unresolved operations, so it's best to make sure

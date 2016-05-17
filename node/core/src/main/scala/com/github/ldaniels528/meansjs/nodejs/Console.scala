@@ -23,14 +23,14 @@ trait Console extends js.Object {
     * If provided, the error message is formatted using util.format() and used as the error message.
     * @example console.assert(value[, message][, ...])
     */
-  def assert(value: js.Any, message: String, args: js.Any*): Unit = js.native
+  def assert(value: js.Any, message: String, args: Any*): Unit = js.native
 
   /**
     * A simple assertion test that verifies whether value is truthy. If it is not, an AssertionError is thrown.
     * If provided, the error message is formatted using util.format() and used as the error message.
     * @example console.assert(value[, message][, ...])
     */
-  def assert(value: js.Any, args: js.Any*): Unit = js.native
+  def assert(value: js.Any, args: Any*): Unit = js.native
 
   /**
     * Uses util.inspect() on obj and prints the resulting string to stdout.
@@ -52,13 +52,13 @@ trait Console extends js.Object {
     * @param data the given data arguments
     * @example console.error([data][, ...])
     */
-  def error(data: js.Any, args: js.Any*): Unit = js.native
+  def error(data: js.Any, args: Any*): Unit = js.native
 
   /**
     * The console.info() function is an alias for console.log().
     * @example console.info([data][, ...])
     */
-  def info(data: js.Any, args: js.Any*): Unit = js.native
+  def info(data: js.Any, args: Any*): Unit = js.native
 
   /**
     * Prints to stdout with newline. Multiple arguments can be passed, with the first used as the primary message and
@@ -66,7 +66,7 @@ trait Console extends js.Object {
     * @param data the given data arguments
     * @example console.log([data][, ...])
     */
-  def log(data: js.Any, args: js.Any*): Unit = js.native
+  def log(data: js.Any, args: Any*): Unit = js.native
 
   /**
     * Starts a timer that can be used to compute the duration of an operation. Timers are identified by a unique label.
@@ -87,7 +87,7 @@ trait Console extends js.Object {
     * current position in the code.
     * @example console.trace(message[, ...])
     */
-  def trace(message: String, args: js.Any*): Unit = js.native
+  def trace(message: String, args: Any*): Unit = js.native
 
   /**
     * Prints to stdout with newline. Multiple arguments can be passed, with the first used as the primary message and
@@ -95,6 +95,6 @@ trait Console extends js.Object {
     * @param data the given data arguments
     * @example console.log([data][, ...])
     */
-  def warn(data: js.Any, args: js.Any*): Unit = js.native
+  def warn(data: js.Any, args: Any*): Unit = js.native
 
 }

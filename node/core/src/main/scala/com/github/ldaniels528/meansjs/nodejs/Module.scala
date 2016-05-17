@@ -25,7 +25,7 @@ trait Module extends js.Object {
     * the local exports variable, which is probably not what you want to do.
     * @example module.exports
     */
-  var exports: js.Any = js.native
+  var exports: js.Dictionary[js.Any] = js.native
 
   /**
     * The fully resolved filename to the module.

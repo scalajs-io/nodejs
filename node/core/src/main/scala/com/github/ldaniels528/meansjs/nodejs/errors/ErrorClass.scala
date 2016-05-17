@@ -1,7 +1,5 @@
 package com.github.ldaniels528.meansjs.nodejs.errors
 
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
-
 import scala.scalajs.js
 
 /**
@@ -35,8 +33,6 @@ trait ErrorClass extends js.Object {
     */
   def captureStackTrace(targetObject: js.Any, constructorOpt: js.Any): Unit = js.native
 
-  def stack: js.Any = js.native
-
 }
 
 /**
@@ -53,11 +49,11 @@ object ErrorClass {
 
     /**
       * Creates a new Error instance
-      * @param message the given error message
-      * @return a new [[ErrorInstance Error instance]]
+      * @param cause the given cause of the error
+      * @return a new [[Error Error instance]]
       */
     @inline
-    def apply(message: String) = `class`.New[ErrorInstance](message)
+    def apply(cause: Throwable) = new Error(cause.getMessage)
 
   }
 

@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.adal
 
-import com.github.ldaniels528.meansjs.nodejs.errors.ErrorClass
+import com.github.ldaniels528.meansjs.nodejs.errors
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
@@ -34,17 +34,17 @@ object AuthenticationContext {
 
     @inline
     def acquireTokenWithAuthorizationCodeFuture(authorizationCode: String, redirectUri: String, resourceId: String, clientId: String, clientSecret: String) = {
-      futureCallbackE1[ErrorClass, AuthenticationResponse](context.acquireTokenWithAuthorizationCode(authorizationCode, redirectUri, resourceId, clientId, clientSecret, _))
+      futureCallbackE1[errors.Error, AuthenticationResponse](context.acquireTokenWithAuthorizationCode(authorizationCode, redirectUri, resourceId, clientId, clientSecret, _))
     }
 
     @inline
     def acquireTokenWithClientCredentialsFuture(resourceId: String, clientId: String, clientSecret: String) = {
-      futureCallbackE1[ErrorClass, AuthenticationResponse](context.acquireTokenWithClientCredentials(resourceId, clientId, clientSecret, _))
+      futureCallbackE1[errors.Error, AuthenticationResponse](context.acquireTokenWithClientCredentials(resourceId, clientId, clientSecret, _))
     }
 
     @inline
     def acquireTokenWithUsernamePasswordFuture(resourceId: String, userName: String, password: String, clientId: String) = {
-      futureCallbackE1[ErrorClass, AuthenticationResponse](context.acquireTokenWithUsernamePassword(resourceId, userName, password, clientId, _))
+      futureCallbackE1[errors.Error, AuthenticationResponse](context.acquireTokenWithUsernamePassword(resourceId, userName, password, clientId, _))
     }
 
   }

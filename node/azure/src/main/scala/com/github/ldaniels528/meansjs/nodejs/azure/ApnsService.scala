@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.azure
 
-import com.github.ldaniels528.meansjs.nodejs.errors.ErrorClass
+import com.github.ldaniels528.meansjs.nodejs.errors
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
@@ -84,7 +84,7 @@ object ApnsService {
       */
     @inline
     def createNativeRegistrationFuture(token: String, tags: String, options: js.Any = null) = {
-      futureCallbackE1[ErrorClass, js.Any](apns.createNativeRegistration(token, tags, options, _))
+      futureCallbackE1[errors.Error, js.Any](apns.createNativeRegistration(token, tags, options, _))
     }
 
     /**
@@ -95,7 +95,7 @@ object ApnsService {
       */
     @inline
     def createNativeRegistrationsFuture(token: String, tags: js.Array[String], options: js.Any = null) = {
-      futureCallbackE1[ErrorClass, js.Any](apns.createNativeRegistration(token, tags, options, _))
+      futureCallbackE1[errors.Error, js.Any](apns.createNativeRegistration(token, tags, options, _))
     }
 
   }

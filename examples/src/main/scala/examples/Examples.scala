@@ -2,6 +2,7 @@ package examples
 
 import com.github.ldaniels528.meansjs.nodejs._
 import examples.nodejs.actors.ActorsExample
+import examples.nodejs.codecs.MD5Example
 import examples.nodejs.concurrency._
 import examples.nodejs.datastores._
 import examples.nodejs.general._
@@ -34,6 +35,7 @@ object Examples extends js.JSApp {
     "JwtSimpleExample" -> ((bootstrap: Bootstrap) => new JwtSimpleExample(bootstrap)),
     "KafkaProducerExample" -> ((bootstrap: Bootstrap) => new KafkaProducerExample(bootstrap)),
     "KafkaProducerEnhanced" -> ((bootstrap: Bootstrap) => new KafkaProducerEnhanced(bootstrap)),
+    "MD5Example"-> ((bootstrap: Bootstrap) => new MD5Example(bootstrap)),
     "MongoAggregateExample" -> ((bootstrap: Bootstrap) => new MongoAggregateExample(bootstrap)),
     "MongoClientExample" -> ((bootstrap: Bootstrap) => new MongoClientExample(bootstrap)),
     "MongoGridExample" -> ((bootstrap: Bootstrap) => new MongoGridExample(bootstrap)),
@@ -41,8 +43,10 @@ object Examples extends js.JSApp {
     "MongoGridStoreExample" -> ((bootstrap: Bootstrap) => new MongoGridStoreExample(bootstrap)),
     "MongoStreamExample" -> ((bootstrap: Bootstrap) => new MongoStreamExample(bootstrap)),
     "NetServerExample" -> ((bootstrap: Bootstrap) => new NetServerExample(bootstrap)),
+    "PathExamples" -> ((bootstrap: Bootstrap) => new PathExamples(bootstrap)),
     "ProcessExample" -> ((bootstrap: Bootstrap) => new ProcessExample(bootstrap)),
     "REPLExample" -> ((bootstrap: Bootstrap) => new REPLExample(bootstrap)),
+    "ScopingTest" -> ((bootstrap: Bootstrap) => new ScopingTest(bootstrap)),
     "ServerWithCompression" -> ((bootstrap: Bootstrap) => new ServerWithCompression(bootstrap)),
     "StringDecoderExample" -> ((bootstrap: Bootstrap) => new StringDecoderExample(bootstrap)),
     "TimersExample" -> ((bootstrap: Bootstrap) => new TimersExample(bootstrap)),

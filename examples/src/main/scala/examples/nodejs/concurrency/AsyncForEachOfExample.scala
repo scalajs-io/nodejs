@@ -33,7 +33,7 @@ class AsyncForEachOfExample(bootstrap: Bootstrap) {
     val configs = js.Dictionary[js.Any]()
 
     async.forEachOf(obj, (value: String, key: String, callback: js.Function1[Any, Any]) => {
-      fs.readFile(localPath + value, "utf8", (err: js.Error, data: String) => {
+      fs.readFile(localPath + value, "utf8", (err: errors.Error, data: String) => {
         if (isDefined(err)) callback(err)
         else {
           Try {
@@ -45,7 +45,7 @@ class AsyncForEachOfExample(bootstrap: Bootstrap) {
         }
         console.log("Done A")
       })
-    }, (err: js.Error) => {
+    }, (err: errors.Error) => {
       if (isDefined(err)) console.error(err.message)
       // configs is now a map of JSON data
       doSomethingWith("A", configs)
@@ -59,15 +59,15 @@ class AsyncForEachOfExample(bootstrap: Bootstrap) {
     val envFiles = js.Dictionary("dev" -> "/dev.json", "test" -> "/test.json", "prod" -> "/prod.json")
     val configs = js.Dictionary[js.Any]()
 
-    async.forEachOfFuture(envFiles) { (value: String, key: String, callback: js.Function1[js.Error, Any]) =>
-      fs.readFile(localPath + value, "utf8", (err: js.Error, data: String) => {
+    async.forEachOfFuture(envFiles) { (value: String, key: String, callback: js.Function1[errors.Error, Any]) =>
+      fs.readFile(localPath + value, "utf8", (err: errors.Error, data: String) => {
         if (isDefined(err)) callback(err)
         else {
           Try {
             configs(key) = JSON.parse(data)
           } match {
             case Success(_) => callback(null)
-            case Failure(e) => callback(e)
+            case Failure(e) => callback(errors.Error(e))
           }
         }
         console.log("Done B")
@@ -83,15 +83,15 @@ class AsyncForEachOfExample(bootstrap: Bootstrap) {
     val files = js.Array("/dev.json", "/test.json", "/prod.json")
     val configs = js.Dictionary[js.Any]()
 
-    async.forEachOfFuture(files) { (value: String, index: Int, callback: js.Function1[js.Error, Any]) =>
-      fs.readFile(localPath + value, "utf8", (err: js.Error, data: String) => {
+    async.forEachOfFuture(files) { (value: String, index: Int, callback: js.Function1[errors.Error, Any]) =>
+      fs.readFile(localPath + value, "utf8", (err: errors.Error, data: String) => {
         if (isDefined(err)) callback(err)
         else {
           Try {
             configs(envs(index)) = JSON.parse(data)
           } match {
             case Success(_) => callback(null)
-            case Failure(e) => callback(e)
+            case Failure(e) => callback(errors.Error(e))
           }
         }
         console.log("Done C")

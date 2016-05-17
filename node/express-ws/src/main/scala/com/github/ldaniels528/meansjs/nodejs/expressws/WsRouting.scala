@@ -17,22 +17,3 @@ trait WsRouting extends js.Object {
   def ws(path: String, callback: js.Function): Unit = js.native
 
 }
-
-/**
-  * WsRouting Companion
-  * @author lawrence.daniels@gmail.com
-  */
-object WsRouting {
-
-  /**
-    * WsRouting Extensions
-    * @param router the given [[Router router]]
-    */
-  implicit class WsRouterEnrich[T <: Router](val router: T) extends AnyVal {
-
-    @inline
-    def withWsRouting = router.asInstanceOf[T with WsRouting]
-
-  }
-
-}

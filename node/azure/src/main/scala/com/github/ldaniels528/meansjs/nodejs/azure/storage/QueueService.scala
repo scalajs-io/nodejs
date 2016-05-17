@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.azure.storage
 
-import com.github.ldaniels528.meansjs.nodejs.errors.ErrorClass
+import com.github.ldaniels528.meansjs.nodejs.errors
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
@@ -32,12 +32,12 @@ object QueueService {
 
     @inline
     def deleteMessageFuture(queueName: String, messageID: String, receiptID: String) = {
-      futureCallbackE1[ErrorClass, js.Any](queueService.deleteMessage(queueName, messageID, receiptID, _))
+      futureCallbackE1[errors.Error, js.Any](queueService.deleteMessage(queueName, messageID, receiptID, _))
     }
 
     @inline
     def getMessagesFuture(queueName: String) = {
-      futureCallbackE1[ErrorClass, js.Array[ServerMessage]](queueService.getMessages(queueName, _))
+      futureCallbackE1[errors.Error, js.Array[ServerMessage]](queueService.getMessages(queueName, _))
     }
 
   }

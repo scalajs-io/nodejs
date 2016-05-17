@@ -1,6 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs.crypto
 
 import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
+import com.github.ldaniels528.meansjs.nodejs.stream
 
 import scala.scalajs.js
 
@@ -16,7 +17,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Cipher extends js.Object {
+trait Cipher extends stream.Duplex {
 
   /**
     * Returns any remaining enciphered contents. If output_encoding parameter is one of 'binary', 'base64' or 'hex',

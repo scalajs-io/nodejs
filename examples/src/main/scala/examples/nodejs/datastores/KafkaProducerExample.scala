@@ -1,8 +1,7 @@
 package examples.nodejs.datastores
 
-import com.github.ldaniels528.meansjs.nodejs.Bootstrap
-import com.github.ldaniels528.meansjs.nodejs.kafkanode.KafkaNode.KafkaError
 import com.github.ldaniels528.meansjs.nodejs.kafkanode.{KafkaNode, Payload}
+import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, errors}
 import org.scalajs.dom.console
 
 import scala.scalajs.js
@@ -26,13 +25,13 @@ class KafkaProducerExample(bootstrap: Bootstrap) {
   producer.on("ready", () => {
     console.log("Received ready:")
 
-    producer.send(payloads, (err: KafkaError, data: js.Any) => {
+    producer.send(payloads, (err: errors.Error, data: js.Any) => {
       console.log("Received data:")
       console.log(data)
     })
   })
 
-  producer.on("error", (err: KafkaError) => {
+  producer.on("error", (err: errors.Error) => {
     console.log("Received error:")
     console.log(err)
   })

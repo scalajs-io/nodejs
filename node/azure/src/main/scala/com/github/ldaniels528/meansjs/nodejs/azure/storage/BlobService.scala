@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.azure.storage
 
-import com.github.ldaniels528.meansjs.nodejs.errors.ErrorClass
+import com.github.ldaniels528.meansjs.nodejs.errors
 import com.github.ldaniels528.meansjs.nodejs.stream.Readable
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
@@ -35,7 +35,7 @@ object BlobService {
 
     @inline
     def createContainerIfNotExistsFuture(containerName: String, options: SharedAccessPolicy) = {
-      futureCallbackE1[ErrorClass, js.Any](blobService.createContainerIfNotExists(containerName, options, _))
+      futureCallbackE1[errors.Error, js.Any](blobService.createContainerIfNotExists(containerName, options, _))
     }
 
   }

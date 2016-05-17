@@ -1,5 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.azure.asm.compute
 
+import com.github.ldaniels528.meansjs.nodejs.errors
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
@@ -29,7 +30,7 @@ object VirtualMachines {
 
     @inline
     def createDeploymentFuture(serviceName: String, options: DeploymentOptions) = {
-      futureCallbackE1[js.Error, Deployment](virtualMachines.createDeployment(serviceName, options, _))
+      futureCallbackE1[errors.Error, Deployment](virtualMachines.createDeployment(serviceName, options, _))
     }
 
   }

@@ -1,5 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs.expressws
 
+import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
+
 import scala.scalajs.js
 
 /**
@@ -7,9 +9,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait WS extends js.Object {
-
-  def on(eventName: String, callback: js.Function): Unit = js.native
+trait WS extends EventEmitter {
 
   def send(message: js.Any): Unit = js.native
 

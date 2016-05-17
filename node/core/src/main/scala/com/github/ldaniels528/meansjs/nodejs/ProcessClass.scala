@@ -1,6 +1,5 @@
 package com.github.ldaniels528.meansjs.nodejs
 
-import com.github.ldaniels528.meansjs.nodejs.errors.ErrorClass
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 import com.github.ldaniels528.meansjs.nodejs.stream.{Readable, Writable}
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
@@ -387,8 +386,18 @@ trait ProcessClass extends EventEmitter {
 object ProcessClass {
 
   /**
+    * Process Environment Extensions
+    * @param env the given environment dictionary
+    */
+  implicit class ProcessEnvExtensions(val env: js.Dictionary[String]) extends AnyVal {
+
+    def PATH = env.get("PATH")
+
+  }
+
+  /**
     * Process Object Extensions
-    * @author lawrence.daniels@gmail.com
+    * @param process the given [[ProcessClass process]]
     */
   implicit class ProcessExtensions(val process: ProcessClass) extends AnyVal {
 
@@ -397,7 +406,7 @@ object ProcessClass {
       */
     @inline
     def sendAsync(message: js.Any, sendHandle: js.Any, options: ProcessClass.TransferOptions) = {
-      futureCallbackE1[ErrorClass, Boolean](process.send(message, sendHandle, options, _))
+      futureCallbackE1[errors.Error, Boolean](process.send(message, sendHandle, options, _))
     }
 
     /**
@@ -405,7 +414,7 @@ object ProcessClass {
       */
     @inline
     def sendAsync(message: js.Any, sendHandle: js.Any) = {
-      futureCallbackE1[ErrorClass, Boolean](process.send(message, sendHandle, _))
+      futureCallbackE1[errors.Error, Boolean](process.send(message, sendHandle, _))
     }
 
     /**
@@ -413,7 +422,7 @@ object ProcessClass {
       */
     @inline
     def sendAsync(message: js.Any) = {
-      futureCallbackE1[ErrorClass, Boolean](process.send(message, _))
+      futureCallbackE1[errors.Error, Boolean](process.send(message, _))
     }
 
   }

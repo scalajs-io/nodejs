@@ -1,7 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs.amqplib
 
 import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
-import com.github.ldaniels528.meansjs.nodejs.errors.ErrorClass
+import com.github.ldaniels528.meansjs.nodejs.errors
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 
 import scala.concurrent.ExecutionContext
@@ -21,7 +21,7 @@ trait AmqpChannel extends EventEmitter {
     * such as exclusive locks on queues, so it is occasionally worth being deliberate about opening and closing channels.
     * @return a promise of the closed status
     */
-  def close(): js.Promise[ErrorClass] = js.native
+  def close(): js.Promise[errors.Error] = js.native
 
   /**
     * Close a channel. Will be resolved with no value once the closing handshake is complete.

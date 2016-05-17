@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.azure.asm.sql
 
-import com.github.ldaniels528.meansjs.nodejs.errors.ErrorClass
+import com.github.ldaniels528.meansjs.nodejs.errors
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
@@ -56,7 +56,7 @@ object DacOperations {
       */
     @inline
     def exportMethodFuture(serverName: String, parametersOrCallback: js.Any) = {
-      futureCallbackE1[ErrorClass, js.Any](dac.exportMethod(serverName, parametersOrCallback, _))
+      futureCallbackE1[errors.Error, js.Any](dac.exportMethod(serverName, parametersOrCallback, _))
     }
 
     /**
@@ -73,7 +73,7 @@ object DacOperations {
       */
     @inline
     def getStatusFuture(serverName: String, fullyQualifiedServerName: String, username: String, password: String, requestId: String) = {
-      futureCallbackE1[ErrorClass, js.Any](dac.getStatus(serverName, fullyQualifiedServerName, username, password, requestId, _))
+      futureCallbackE1[errors.Error, js.Any](dac.getStatus(serverName, fullyQualifiedServerName, username, password, requestId, _))
     }
 
   }

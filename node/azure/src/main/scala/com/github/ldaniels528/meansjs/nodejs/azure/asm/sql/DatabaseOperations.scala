@@ -1,5 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.azure.asm.sql
 
+import com.github.ldaniels528.meansjs.nodejs.errors
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
@@ -29,7 +30,7 @@ object DatabaseOperations {
 
     @inline
     def createFuture(databaseName: String, options: DatabaseOptions) = {
-      futureCallbackE1[js.Error, Database](dbOps.create(databaseName, options, _))
+      futureCallbackE1[errors.Error, Database](dbOps.create(databaseName, options, _))
     }
 
   }

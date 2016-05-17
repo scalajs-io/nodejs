@@ -1,6 +1,8 @@
 package com.github.ldaniels528.meansjs.nodejs.azure.asm.compute
 
+import com.github.ldaniels528.meansjs.nodejs.errors
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+
 import scala.scalajs.js
 
 /**
@@ -24,7 +26,7 @@ object HostedServices {
 
     @inline
     def createFuture(options: HostedServicesOptions) = {
-      futureCallbackE1[js.Error, ComputeManagementClient](hostedServices.create(options, _))
+      futureCallbackE1[errors.Error, ComputeManagementClient](hostedServices.create(options, _))
     }
 
   }

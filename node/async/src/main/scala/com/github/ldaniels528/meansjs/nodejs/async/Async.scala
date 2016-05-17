@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.async
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, errors}
 import com.github.ldaniels528.meansjs.nodejs.async.Async.{AsyncErrorCallback, AsyncResultCallback}
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
@@ -195,11 +195,11 @@ trait Async extends NodeModule {
   */
 object Async {
 
-  type AsyncErrorCallback = js.Function1[js.Error, Any]
+  type AsyncErrorCallback = js.Function1[errors.Error, Any]
 
   type AsyncResultCallback = js.Function
 
-  /*2[js.Error, Any, Any]*/
+  /*2[errors.Error, Any, Any]*/
 
   /**
     * Async Extensions
@@ -222,7 +222,7 @@ object Async {
       */
     @inline
     def eachFuture[A <: js.Any](coll: js.Array[A])(iteratee: (A, AsyncErrorCallback) => Any) = {
-      futureCallbackE1[js.Error, A](async.each(coll, _))
+      futureCallbackE1[errors.Error, A](async.each(coll, _))
     }
 
     /**
@@ -241,7 +241,7 @@ object Async {
       */
     @inline
     def eachLimitFuture[A <: js.Any](coll: js.Array[A], limit: Int)(iteratee: (A, AsyncErrorCallback) => Any) = {
-      futureCallbackE1[js.Error, A](async.eachLimit(coll, limit, _))
+      futureCallbackE1[errors.Error, A](async.eachLimit(coll, limit, _))
     }
 
     /**
@@ -259,7 +259,7 @@ object Async {
       */
     @inline
     def eachSeriesFuture[A <: js.Any](coll: js.Array[A])(iteratee: (A, AsyncErrorCallback) => Any) = {
-      futureCallbackE1[js.Error, A](async.eachSeries(coll, _))
+      futureCallbackE1[errors.Error, A](async.eachSeries(coll, _))
     }
 
     /**
@@ -272,7 +272,7 @@ object Async {
       */
     @inline
     def filterFuture[A <: js.Any](coll: js.Array[A])(iteratee: (A, AsyncErrorCallback) => Boolean) = {
-      futureCallbackE1[js.Error, js.Array[A]](async.filter(coll, _))
+      futureCallbackE1[errors.Error, js.Array[A]](async.filter(coll, _))
     }
 
     /**
@@ -285,7 +285,7 @@ object Async {
       */
     @inline
     def forEachOfFuture[A](coll: js.Array[A])(iteratee: (A, Int, AsyncErrorCallback) => Any) = {
-      futureCallbackE0[js.Error](async.forEachOf(coll, iteratee, _))
+      futureCallbackE0[errors.Error](async.forEachOf(coll, iteratee, _))
     }
 
     /**
@@ -297,7 +297,7 @@ object Async {
       */
     @inline
     def forEachOfFuture[A](coll: js.Dictionary[A])(iteratee: (A, String, AsyncErrorCallback) => Any) = {
-      futureCallbackE0[js.Error](async.forEachOf(coll, iteratee, _))
+      futureCallbackE0[errors.Error](async.forEachOf(coll, iteratee, _))
     }
 
     /**
@@ -309,7 +309,7 @@ object Async {
       */
     @inline
     def parallelFuture[A <: js.Any](tasks: js.Array[js.Function]) = {
-      futureCallbackE1[js.Error, A](async.parallel(tasks, _))
+      futureCallbackE1[errors.Error, A](async.parallel(tasks, _))
     }
 
     /**
@@ -321,7 +321,7 @@ object Async {
       */
     @inline
     def rejectFuture[A <: js.Any](coll: js.Array[A])(iteratee: (A, Int) => Any) = {
-      futureCallbackE1[js.Error, A](async.reject(coll, iteratee, _))
+      futureCallbackE1[errors.Error, A](async.reject(coll, iteratee, _))
     }
 
     /**
@@ -333,7 +333,7 @@ object Async {
       */
     @inline
     def rejectFuture[A <: js.Any](coll: js.Dictionary[A])(iteratee: (A, String) => Any) = {
-      futureCallbackE1[js.Error, A](async.reject(coll, iteratee, _))
+      futureCallbackE1[errors.Error, A](async.reject(coll, iteratee, _))
     }
 
     /**
@@ -346,7 +346,7 @@ object Async {
       */
     @inline
     def waterfallFuture[A](tasks: js.Array[_ <: js.Function]) = {
-      futureCallbackE1[js.Error, A](async.waterfall(tasks, _))
+      futureCallbackE1[errors.Error, A](async.waterfall(tasks, _))
     }
 
   }

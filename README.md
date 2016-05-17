@@ -72,6 +72,7 @@ The following NodeJS modules have been implemented thus far:
 | bcrypt            | 0.0.3   | means-node-bcrypt     | A native JS bcrypt library for NodeJS. |
 | body-parser       | 1.15.1  | means-node-body-parser| Body parsing middleware. |
 | buffer            | 6.1.0   | means-node-core       | Node.js Core (Global) |
+| crypto            | 6.1.0   | means-node-core       | The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions. |
 | drama             | 0.1.3   | means-node-drama      | drama is an Actor model implementation for JavaScript and Node.js |
 | events            | 6.1.0   | means-node-core       | Node.js Core |
 | express           | 4.13.4  | means-node-express    | Fast, unopinionated, minimalist web framework for Node.js |
@@ -83,11 +84,12 @@ The following NodeJS modules have been implemented thus far:
 | jwt-simple        | 0.5.0   | means-node-jwt-simple | JWT(JSON Web Token) encode and decode module |
 | kafka-node        | 0.0.11  | means-node-kafkanode  | A node binding for librdkafka |
 | mongodb           | 2.1     | means-node-mongodb    | Node.js MongoDB Driver |
-| nactor            | 0.2.0   | means-node-nactor     | Event based actor model framework for games |
+| multer            | 1.1.0   | means-node-multer     | Multer is a node.js middleware for handling multipart/form-data. |
 | net               | 6.1.0   | means-node-core       | Node.js Core |
 | oppressor         | 0.0.1   | means-node-oppressor  | Streaming http compression response negotiator. |
 | os                | 6.1.0   | means-node-os         | Node.js Core |
 | node-zookeeper-client | 0.2.2   | means-node-zookeeper-client | A higher-level ZooKeeper client based on node-zookeeper with support for locking and master election. |
+| path              | 6.1.0   | means-node-core       | This module contains utilities for handling and transforming file paths. |
 | readline          | 6.1.0   | means-node-core       | Node.js Core |
 | repl              | 6.1.0   | means-node-repl       | Node.js Core |
 | request           | 2.72.1  | means-node-request    | Simplified HTTP request client. |
@@ -95,7 +97,7 @@ The following NodeJS modules have been implemented thus far:
 | stream            | 6.1.0   | means-node-core       | Node.js Core |
 | string-decoder    | 6.1.0   | means-node-string-decoder | Node.js Core |
 | url               | 6.1.0   | means-node-core       | Node.js Core |
-| util              | 6.1.0   | means-node-core       | Node.js Core |
+| util              | 6.1.0   | means-node-core       | The util module is primarily designed to support the needs of Node.js's internal APIs.  |
 | xml2js            | 0.4.16  | means-node-xml2js     | Simple XML to JavaScript object converter. |
 | zlib              | 6.1.0   | means-node-zlib       | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. |
 

@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs
 
-import com.github.ldaniels528.meansjs.nodejs.errors.ErrorClass
+import com.github.ldaniels528.meansjs.nodejs.errors
 import com.github.ldaniels528.meansjs.nodejs.timer._
 
 import scala.concurrent.duration.FiniteDuration
@@ -24,10 +24,6 @@ package object nodejs {
   @js.native
   @JSName("console")
   object console extends Console
-
-  @js.native
-  @JSName("Error")
-  object Error extends ErrorClass
 
   /**
     * In browsers, the top-level scope is the global scope. That means that in browsers if you're in the global scope

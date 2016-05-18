@@ -1,7 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.kafkanode
 
 import com.github.ldaniels528.meansjs.nodejs.NodeModule
-import com.github.ldaniels528.meansjs.nodejs.errors.ErrorClass
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 
 import scala.scalajs.js
@@ -28,14 +27,5 @@ trait KafkaNode extends NodeModule with EventEmitter {
   def Offset: OffsetClass = js.native
 
   def Producer: ProducerClass = js.native
-
-}
-
-/**
-  * Kafka-Node Companion
-  * @author lawrence.daniels@gmail.com
-  */
-object KafkaNode {
-  type KafkaError = ErrorClass
 
 }

@@ -1,6 +1,9 @@
 package com.github.ldaniels528.meansjs.nodejs.express
 
+import com.github.ldaniels528.meansjs.nodejs.errors
+import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 import com.github.ldaniels528.meansjs.nodejs.http.Server
+import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
 
@@ -11,7 +14,7 @@ import scala.scalajs.js
   * @see [[http://expressjs.com/en/api.html]]
   */
 @js.native
-trait Application extends Router {
+trait Application extends Router with EventEmitter {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -86,19 +89,37 @@ trait Application extends Router {
     * This method is identical to Node’s http.Server.listen().
     * @example app.listen(port, [hostname], [backlog], [callback])
     */
-  def listen(port: Int, hostname: String, backlog: js.Any, callback: js.Function): Server = js.native
+  def listen(port: Int, hostname: String, backlog: Int, callback: js.Function): Server = js.native
 
-  def listen(port: Int, hostname: String, backlog: js.Any): Server = js.native
+  /**
+    * Binds and listens for connections on the specified host and port.
+    * This method is identical to Node’s http.Server.listen().
+    */
+  def listen(port: Int, hostname: String, backlog: Int): Server = js.native
 
+  /**
+    * Binds and listens for connections on the specified host and port.
+    * This method is identical to Node’s http.Server.listen().
+    */
   def listen(port: Int, hostname: String, callback: js.Function): Server = js.native
 
+  /**
+    * Binds and listens for connections on the specified host and port.
+    * This method is identical to Node’s http.Server.listen().
+    */
   def listen(port: Int, hostname: String): Server = js.native
 
+  /**
+    * Binds and listens for connections on the specified host and port.
+    * This method is identical to Node’s http.Server.listen().
+    */
   def listen(port: Int, callback: js.Function): Server = js.native
 
+  /**
+    * Binds and listens for connections on the specified host and port.
+    * This method is identical to Node’s http.Server.listen().
+    */
   def listen(port: Int): Server = js.native
-
-  def on(mount: String, callback: js.Function): Unit = js.native
 
   /**
     * Returns the canonical path of the app, a string.
@@ -162,3 +183,33 @@ trait Application extends Router {
 
 }
 
+/**
+  * Application Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object Application {
+
+  /**
+    * Application Extensions
+    * @param app the given [[Application application]]
+    */
+  implicit class ApplicationExtensions(val app: Application) extends AnyVal {
+
+    /**
+      * Binds and listens for connections on the specified host and port.
+      */
+    def listenFuture(port: Int) = futureCallbackE1[errors.Error, Server](app.listen(port, _))
+
+    /**
+      * Binds and listens for connections on the specified host and port.
+      */
+    def listenFuture(port: Int, hostname: String) = futureCallbackE1[errors.Error, Server](app.listen(port, hostname, _))
+
+    /**
+      * Binds and listens for connections on the specified host and port.
+      */
+    def listenFuture(port: Int, hostname: String, backlog: Int) = futureCallbackE1[errors.Error, Server](app.listen(port, hostname, backlog, _))
+
+  }
+
+}

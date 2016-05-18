@@ -44,13 +44,13 @@ trait Crypto extends js.Object {
 
   def ECDH: js.Function0[js.Dynamic] = js.native
 
-  def Hash: js.Function0[js.Dynamic] = js.native
+  def Hash: js.Function0[Hash] = js.native
 
-  def Hmac: js.Function0[js.Dynamic] = js.native
+  def Hmac: js.Function0[Hmac] = js.native
 
-  def Sign: js.Function0[js.Dynamic] = js.native
+  def Sign: js.Function0[Sign] = js.native
 
-  def Verify: js.Function0[js.Dynamic] = js.native
+  def Verify: js.Function0[Verify] = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -101,5 +101,46 @@ trait Crypto extends js.Object {
     * @example crypto.createDecipher(algorithm, password)
     */
   def createDecipher(algorithm: String, password: String): Decipher = js.native
+
+  /**
+    * Creates and returns a Hash object that can be used to generate hash digests using the given algorithm.
+    *
+    * The algorithm is dependent on the available algorithms supported by the version of OpenSSL on the platform.
+    * Examples are 'sha256', 'sha512', etc. On recent releases of OpenSSL, openssl list-message-digest-algorithms
+    * will display the available digest algorithms.
+    * @param algorithm the given algorithm (e.g. 'sha256', 'sha512')
+    */
+  def createHash(algorithm: String): Hash = js.native
+
+  /**
+    * Creates and returns an Hmac object that uses the given algorithm and key.
+    *
+    * The algorithm is dependent on the available algorithms supported by the version of OpenSSL on the platform.
+    * Examples are 'sha256', 'sha512', etc. On recent releases of OpenSSL, openssl list-message-digest-algorithms
+    * will display the available digest algorithms.
+    * @param algorithm the given algorithm (e.g. 'sha256', 'sha512')
+    * @param key       The key is the HMAC key used to generate the cryptographic HMAC hash.
+    */
+  def createHmac(algorithm: String, key: String): Hmac = js.native
+
+  /**
+    * Creates and returns a Sign object that uses the given algorithm. On recent OpenSSL releases, openssl
+    * list-public-key-algorithms will display the available signing algorithms. One example is 'RSA-SHA256'.
+    * @param algorithm the given algorithm (e.g. 'RSA-SHA256')
+    */
+  def createSign(algorithm: String): Sign = js.native
+
+  /**
+    * Creates and returns a Verify object that uses the given algorithm. On recent OpenSSL releases, openssl
+    * list-public-key-algorithms will display the available signing algorithms. One example is 'RSA-SHA256'.
+    * @param algorithm the given algorithm (e.g. 'RSA-SHA256')
+    */
+  def createVerify(algorithm: String): Verify = js.native
+
+  /**
+    * Returns an array with the names of the supported cipher algorithms.
+    * @return the names of the supported cipher algorithms. // ['aes-128-cbc', 'aes-128-ccm', ...]
+    */
+  def getCiphers(): js.Array[String] = js.native
 
 }

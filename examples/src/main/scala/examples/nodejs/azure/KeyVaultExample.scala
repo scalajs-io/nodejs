@@ -3,8 +3,7 @@ package examples.nodejs.azure
 import com.github.ldaniels528.meansjs.nodejs.adal.{AdalNode, AuthenticationResponse}
 import com.github.ldaniels528.meansjs.nodejs.azure.arm.keyvault.AzureArmKeyVault
 import com.github.ldaniels528.meansjs.nodejs.azure.common.{AzureCommon, KeyVaultParameters, TokenCloudCredentialOptions}
-import com.github.ldaniels528.meansjs.nodejs.errors.ErrorClass
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console, process}
+import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console, errors, process}
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
@@ -14,6 +13,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 class KeyVaultExample(bootstrap: Bootstrap) {
+
   import bootstrap._
 
   val AzureCommon = require[AzureCommon]("azure-common")
@@ -28,9 +28,9 @@ class KeyVaultExample(bootstrap: Bootstrap) {
   val resourceId = process.argv.drop(3).headOption getOrElse ""
 
   val context = AdalNode.AuthenticationContext("https://login.windows.net/myorg.com")
-  context.acquireTokenWithUsernamePassword(resourceId, userName, password, clientId, (err: ErrorClass, response: AuthenticationResponse) => {
+  context.acquireTokenWithUsernamePassword(resourceId, userName, password, clientId, (err: errors.Error, response: AuthenticationResponse) => {
     if (isDefined(err)) {
-      throw new Error("Unable to authenticate: " + err.stack)
+      throw new RuntimeException("Unable to authenticate: " + err.stack)
     }
 
     val credentials = AzureCommon.TokenCloudCredentials(TokenCloudCredentialOptions(
@@ -58,7 +58,7 @@ class KeyVaultExample(bootstrap: Bootstrap) {
     )
 
     console.info("Creating vault...")
-    client.vaults.createOrUpdate(resourceGroup, vaultName, parameters, (err: js.Error, result: js.Any) => {
+    client.vaults.createOrUpdate(resourceGroup, vaultName, parameters, (err: errors.Error, result: js.Any) => {
       if (isDefined(err)) throw new IllegalStateException(err.message)
       console.info("Vault created: %j", result)
     })

@@ -32,6 +32,12 @@ object ReadStream {
     */
   implicit class ReadStreamExtensions(val rs: ReadStream) extends AnyVal {
 
+    @inline
+    def onData(listener: js.Function) = rs.on("data", listener)
+
+    @inline
+    def onEnd(listener: js.Function) = rs.on("end", listener)
+
     /**
       * Emitted when the ReadStream's file is opened.
       * callback: fd <Integer> - file descriptor used by the ReadStream.

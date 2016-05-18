@@ -1,5 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.azure
 
+import com.github.ldaniels528.meansjs.nodejs.errors
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
@@ -65,13 +66,13 @@ object RoleEnvironment {
       * Obtains values from the role's .cscfg file.
       */
     @inline
-    def getConfigurationSettingsFuture = futureCallbackE1[js.Error, js.Dictionary[String]](roleEnvironment.getConfigurationSettings(_))
+    def getConfigurationSettingsFuture = futureCallbackE1[errors.Error, js.Dictionary[String]](roleEnvironment.getConfigurationSettings(_))
 
     /**
       * Obtains information about endpoints defined for the current role instance.
       */
     @inline
-    def getCurrentRoleInstanceFuture = futureCallbackE1[js.Error, Role](roleEnvironment.getCurrentRoleInstance(_))
+    def getCurrentRoleInstanceFuture = futureCallbackE1[errors.Error, Role](roleEnvironment.getCurrentRoleInstance(_))
 
     /**
       * Finds the path to defined local storage resources for the current role.
@@ -79,20 +80,20 @@ object RoleEnvironment {
       * diagnostics and logs.
       */
     @inline
-    def getLocalResourcesFuture = futureCallbackE1[js.Error, js.Array[Resource]](roleEnvironment.getLocalResources(_))
+    def getLocalResourcesFuture = futureCallbackE1[errors.Error, js.Array[Resource]](roleEnvironment.getLocalResources(_))
 
     /**
       * Obtains information about endpoints in role instances running on other machines
       */
     @inline
-    def getRolesFuture = futureCallbackE1[js.Error, js.Array[Role]](roleEnvironment.getRoles(_))
+    def getRolesFuture = futureCallbackE1[errors.Error, js.Array[Role]](roleEnvironment.getRoles(_))
 
     /**
       * Determines whether the service runtime endpoint is running on the local machine.
       * It is good practice to enclose any code that uses service runtime in the isAvailable callback.
       */
     @inline
-    def isAvailableFuture = futureCallbackE1[js.Error, Boolean](roleEnvironment.isAvailable(_))
+    def isAvailableFuture = futureCallbackE1[errors.Error, Boolean](roleEnvironment.isAvailable(_))
 
   }
 

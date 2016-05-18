@@ -4,7 +4,7 @@ import sbt.Keys._
 import sbt.Project.projectToRef
 import sbt._
 
-val apiVersion = "0.1.7"
+val apiVersion = "0.1.8"
 val paradisePluginVersion = "3.0.0-M1" //"2.1.0"
 val _scalaVersion = "2.11.8"
 val scalaJsDomVersion = "0.9.0"
@@ -41,7 +41,8 @@ lazy val root = (project in file(".")).
     // node
     node_core, node_adal, node_amqp, node_async, node_azure, node_bcrypt, node_body_parser, node_crypto,
     node_drama, node_elgs_splitargs, node_express, node_express_ws, node_filed, node_jwt_simple, node_kafka,
-    node_mongodb, node_oppressor, node_os, node_repl, node_request, node_string_decoder, node_xml2js, node_zlib, node_zookeeper
+    node_mongodb, node_multer, node_oppressor, node_os, node_repl, node_request, node_string_decoder, node_xml2js,
+    node_zlib, node_zookeeper
   )
 
 lazy val core = (project in file("core")).
@@ -307,6 +308,15 @@ lazy val node_mongodb = (project in file("node/mongodb")).
     description := "NodeJS/mongodb facade for Scala.js"
   )
 
+lazy val node_multer = (project in file("node/multer")).
+  dependsOn(core, node_express).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-multer",
+    description := "NodeJS/multer facade for Scala.js"
+  )
+
 lazy val node_oppressor = (project in file("node/oppressor")).
   dependsOn(core, node_core).
   enablePlugins(ScalaJSPlugin).
@@ -322,7 +332,7 @@ lazy val node_os = (project in file("node/os")).
   settings(commonSettings: _*).
   settings(
     name := "means-node-os",
-    description := "NodeJS/os facade for Scala.js"
+    description := "NodeJS/OS facade for Scala.js"
   )
 
 lazy val node_repl = (project in file("node/repl")).
@@ -382,11 +392,11 @@ lazy val node_zookeeper = (project in file("node/zookeeper-client")).
 lazy val examples = (project in file("examples")).
   aggregate(
     core, node_core, node_adal, node_amqp, node_async, node_azure, node_bcrypt, node_body_parser, node_crypto, node_drama,
-    node_elgs_splitargs, node_express, node_express_ws, node_filed, node_jwt_simple, node_kafka, node_mongodb,
+    node_elgs_splitargs, node_express, node_express_ws, node_filed, node_jwt_simple, node_kafka, node_mongodb, node_multer,
     node_oppressor, node_os, node_repl, node_request, node_string_decoder, node_xml2js, node_zlib, node_zookeeper).
   dependsOn(
     core, node_core, node_adal, node_amqp, node_async, node_azure, node_bcrypt, node_body_parser, node_crypto, node_drama,
-    node_elgs_splitargs, node_express, node_express_ws, node_filed, node_jwt_simple, node_kafka, node_mongodb,
+    node_elgs_splitargs, node_express, node_express_ws, node_filed, node_jwt_simple, node_kafka, node_mongodb, node_multer,
     node_oppressor, node_os, node_repl, node_request, node_string_decoder, node_xml2js, node_zlib, node_zookeeper).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).

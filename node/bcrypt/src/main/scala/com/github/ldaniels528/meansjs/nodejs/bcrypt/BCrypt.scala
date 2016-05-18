@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.bcrypt
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, errors}
 import com.github.ldaniels528.meansjs.nodejs.bcrypt.BCrypt._
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
@@ -95,7 +95,7 @@ trait BCrypt extends NodeModule {
   */
 object BCrypt {
 
-  type BCryptError = String
+  type BCryptError = errors.Error
 
   type Hash = js.Any
 

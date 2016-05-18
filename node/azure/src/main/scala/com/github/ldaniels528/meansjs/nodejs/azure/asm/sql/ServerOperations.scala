@@ -1,5 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.azure.asm.sql
 
+import com.github.ldaniels528.meansjs.nodejs.errors
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
@@ -28,7 +29,7 @@ object ServerOperations {
   implicit class ServersExtensions(val serverOps: ServerOperations) extends AnyVal {
 
     @inline
-    def createFuture(options: ServerOptions) = futureCallbackE1[js.Error, Server](serverOps.create(options, _))
+    def createFuture(options: ServerOptions) = futureCallbackE1[errors.Error, Server](serverOps.create(options, _))
 
   }
 

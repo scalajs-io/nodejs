@@ -1,6 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs.azure.storage
 
-import com.github.ldaniels528.meansjs.nodejs.errors.ErrorClass
+import com.github.ldaniels528.meansjs.nodejs.errors
+import com.github.ldaniels528.meansjs.nodejs.errors
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
@@ -52,17 +53,17 @@ object TableService {
 
     @inline
     def createTableIfNotExistsFuture(tableName: String) = {
-      futureCallbackE1[ErrorClass, js.Any](tableService.createTableIfNotExists(tableName, _))
+      futureCallbackE1[errors.Error, js.Any](tableService.createTableIfNotExists(tableName, _))
     }
 
     @inline
     def insertEntityFuture(tableName: String, entity: js.Any) = {
-      futureCallbackE1[ErrorClass, js.Any](tableService.insertEntity(tableName, entity, _))
+      futureCallbackE1[errors.Error, js.Any](tableService.insertEntity(tableName, entity, _))
     }
 
     @inline
     def queryEntityFuture(tableName: String, args0: String, args1: String) = {
-      futureCallbackE1[ErrorClass, js.Any](tableService.queryEntity(tableName, args0, args1, _))
+      futureCallbackE1[errors.Error, js.Any](tableService.queryEntity(tableName, args0, args1, _))
     }
 
   }

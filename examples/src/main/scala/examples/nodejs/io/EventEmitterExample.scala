@@ -1,6 +1,6 @@
 package examples.nodejs.io
 
-import com.github.ldaniels528.meansjs.nodejs._
+import com.github.ldaniels528.meansjs.nodejs.{errors, _}
 import com.github.ldaniels528.meansjs.nodejs.events.Events
 
 /**
@@ -10,13 +10,12 @@ import com.github.ldaniels528.meansjs.nodejs.events.Events
 class EventEmitterExample(bootstrap: Bootstrap) {
   import bootstrap._
 
-  val eventEmitter = require[Events]("events")
-  val ee = eventEmitter()
+  val ee = require[Events]("events")()
 
   setImmediate(() => {
     // This will crash the process because no "error" event
     // handler has been added.
-    ee.emit("error", Error("This will crash"))
+    ee.emit("error", errors.Error("This will crash"))
   })
 
 }

@@ -1,5 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.azure.asm.compute
 
+import com.github.ldaniels528.meansjs.nodejs.errors
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
@@ -28,7 +29,7 @@ object VirtualMachineVMImages {
   implicit class VirtualMachineVMImagesExtensions(val vm: VirtualMachineVMImages) extends AnyVal {
 
     @inline
-    def listFuture = futureCallbackE1[js.Error, js.Array[VMImage]](vm.list(_))
+    def listFuture = futureCallbackE1[errors.Error, js.Array[VMImage]](vm.list(_))
 
   }
 

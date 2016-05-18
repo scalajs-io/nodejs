@@ -89,25 +89,25 @@ trait Application extends Router with EventEmitter {
     * This method is identical to Node’s http.Server.listen().
     * @example app.listen(port, [hostname], [backlog], [callback])
     */
-  def listen(port: Int, hostname: String, backlog: Int, callback: js.Function): Server = js.native
+  def listen(port: Int, hostname: String, backlog: Int, callback: js.Function): Unit = js.native
 
   /**
     * Binds and listens for connections on the specified host and port.
     * This method is identical to Node’s http.Server.listen().
     */
-  def listen(port: Int, hostname: String, backlog: Int): Server = js.native
+  def listen(port: Int, hostname: String, backlog: Int): Unit = js.native
 
   /**
     * Binds and listens for connections on the specified host and port.
     * This method is identical to Node’s http.Server.listen().
     */
-  def listen(port: Int, hostname: String, callback: js.Function): Server = js.native
+  def listen(port: Int, hostname: String, callback: js.Function): Unit = js.native
 
   /**
     * Binds and listens for connections on the specified host and port.
     * This method is identical to Node’s http.Server.listen().
     */
-  def listen(port: Int, hostname: String): Server = js.native
+  def listen(port: Int, hostname: String): Unit = js.native
 
   /**
     * Binds and listens for connections on the specified host and port.
@@ -119,7 +119,7 @@ trait Application extends Router with EventEmitter {
     * Binds and listens for connections on the specified host and port.
     * This method is identical to Node’s http.Server.listen().
     */
-  def listen(port: Int): Server = js.native
+  def listen(port: Int): Unit = js.native
 
   /**
     * Returns the canonical path of the app, a string.

@@ -1,5 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.http
 
+import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 import com.github.ldaniels528.meansjs.nodejs.stream.Writable
 
 import scala.scalajs.js
@@ -10,7 +11,7 @@ import scala.scalajs.js
   * @see [[https://nodejs.org/api/http.html#http_class_http_serverresponse]]
   */
 @js.native
-trait ServerResponse extends Writable {
+trait ServerResponse extends EventEmitter with Writable {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -142,7 +143,7 @@ object ServerResponse {
     * Server Response Extensions
     * @author lawrence.daniels@gmail.com
     */
-  implicit class ServerResponseEnrich(val response: ServerResponse) extends AnyVal {
+  implicit class ServerResponseExtensions(val response: ServerResponse) extends AnyVal {
 
     @inline
     def badRequest() = response.sendStatus(400)

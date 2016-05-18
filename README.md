@@ -83,7 +83,7 @@ The following NodeJS modules have been implemented thus far:
 | https             | 6.1.0   | means-node-core       | Node.js Core |
 | jwt-simple        | 0.5.0   | means-node-jwt-simple | JWT(JSON Web Token) encode and decode module |
 | kafka-node        | 0.0.11  | means-node-kafkanode  | A node binding for librdkafka |
-| mongodb           | 2.1     | means-node-mongodb    | Node.js MongoDB Driver |
+| mongodb           | 2.1.18  | means-node-mongodb    | Node.js MongoDB Driver |
 | multer            | 1.1.0   | means-node-multer     | Multer is a node.js middleware for handling multipart/form-data. |
 | net               | 6.1.0   | means-node-core       | Node.js Core |
 | oppressor         | 0.0.1   | means-node-oppressor  | Streaming http compression response negotiator. |

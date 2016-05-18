@@ -51,7 +51,9 @@ object InsertWriteOpResult {
     */
   @js.native
   trait Result extends js.Object {
+    // ok == 1 when successful
     var ok: Int = js.native
+
     // Is 1 if the command executed correctly.
     var n: Int = js.native // The total count of documents inserted.
   }

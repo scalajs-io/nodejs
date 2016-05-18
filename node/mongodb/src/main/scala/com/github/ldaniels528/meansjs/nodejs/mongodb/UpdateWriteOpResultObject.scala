@@ -44,13 +44,14 @@ object UpdateWriteOpResultObject {
   @js.native
   trait Result extends js.Object {
     // Is 1 if the command executed correctly.
-    var ok: js.Any = js.native
+    var ok: Int = js.native
 
     // The total count of documents scanned.
-    var n: js.Any = js.native
+    var n: Int = js.native
 
     // The total count of documents modified.
-    var nModified: js.Any = js.native
+    var nModified: Int = js.native
+
   }
 
 }

@@ -8,9 +8,12 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class WriteOptions extends js.Object {
-  var w: Int = _
-}
+class WriteOptions(w: js.UndefOr[Int],
+                   wtimeout: js.UndefOr[Int],
+                   j: js.UndefOr[Boolean],
+                   upsert: js.UndefOr[Boolean],
+                   multi: js.UndefOr[Boolean],
+                   bypassDocumentValidation: js.UndefOr[Boolean]) extends js.Object
 
 /**
   * Write Options Companion
@@ -18,10 +21,13 @@ class WriteOptions extends js.Object {
   */
 object WriteOptions {
 
-  def apply(w: Int): WriteOptions = {
-    val options = new WriteOptions()
-    options.w = w
-    options
+  def apply(w: js.UndefOr[Int] = js.undefined,
+            wtimeout: js.UndefOr[Int] = js.undefined,
+            j: js.UndefOr[Boolean] = js.undefined,
+            upsert: js.UndefOr[Boolean] = js.undefined,
+            multi: js.UndefOr[Boolean] = js.undefined,
+            bypassDocumentValidation: js.UndefOr[Boolean] = js.undefined) = {
+    new WriteOptions(w, wtimeout, j, upsert, multi, bypassDocumentValidation)
   }
 
 }

@@ -3,6 +3,7 @@ package com.github.ldaniels528.meansjs.util
 import scala.concurrent.{Future, Promise}
 import scala.language.implicitConversions
 import scala.scalajs.js
+import scala.scalajs.js.JSConverters._
 import scala.scalajs.runtime.wrapJavaScriptException
 
 /**
@@ -12,12 +13,10 @@ import scala.scalajs.runtime.wrapJavaScriptException
 object ScalaJsHelper {
 
   ////////////////////////////////////////////////////////////////////////
-  //    Convenience Functions
+  //    Concurrency Functions
   ////////////////////////////////////////////////////////////////////////
 
   implicit def promise2Future[T](promise: js.Promise[T]): Future[T] = promise.toFuture
-
-  implicit def exception2JsError(cause: Throwable): js.Error = js.Error(cause.getMessage)
 
   /**
     * Converts a JavaScript-style callback to a Scala-style future
@@ -78,6 +77,10 @@ object ScalaJsHelper {
     f((err: E, result: R) => if (err == null) promise.success(result) else promise.failure(wrapJavaScriptException(err)))
     promise.future
   }
+
+  ////////////////////////////////////////////////////////////////////////
+  //    Convenience Functions
+  ////////////////////////////////////////////////////////////////////////
 
   @inline
   def die[T](message: String): T = throw new IllegalStateException(message)
@@ -167,6 +170,8 @@ object ScalaJsHelper {
     @inline def ??(optB: => js.UndefOr[T]): js.UndefOr[T] = if (valueA.isDefined) valueA else optB
 
     @inline def contains(value: T): Boolean = valueA.exists(_ == value)
+
+    @inline def flat = valueA.flatMap(Option(_).orUndefined)
 
     @inline def orDie(message: String): js.UndefOr[T] = if (valueA.isDefined) valueA else throw new IllegalArgumentException(message)
 

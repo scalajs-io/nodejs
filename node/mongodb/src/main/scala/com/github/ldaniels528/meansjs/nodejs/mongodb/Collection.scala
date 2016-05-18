@@ -6,7 +6,7 @@ import scala.scalajs.js
 /**
   * Mongo Collection
   * @author lawrence.daniels@gmail.com
-  * @see [[https://mongodb.github.io/node-mongodb-native/api-articles/nodekoarticle1.html]]
+  * @see [[http://mongodb.github.io/node-mongodb-native/2.1/api/index.html]]
   */
 @js.native
 trait Collection extends js.Object {
@@ -765,7 +765,7 @@ trait Collection extends js.Object {
     * @param options  Optional settings.
     * @param callback The command result callback
     */
-  def updateMany(filter: js.Any, update: js.Any, options: js.Any, callback: js.Function2[MongoError, UpdateWriteOpResultObject, Any]): Unit = js.native
+  def updateMany(filter: js.Any, update: js.Any, options: UpdateOptions, callback: js.Function2[MongoError, UpdateWriteOpResultObject, Any]): Unit = js.native
 
   /**
     * Update multiple documents on MongoDB
@@ -773,7 +773,7 @@ trait Collection extends js.Object {
     * @param update   The update operations to be applied to the document
     * @param callback The command result callback
     */
-  def updateMany(filter: js.Any, update: js.Any, callback: js.Function2[MongoError, UpdateWriteOpResultObject, Any]): Unit = js.native
+  def updateMany(filter: js.Any, update: UpdateOptions, callback: js.Function2[MongoError, UpdateWriteOpResultObject, Any]): Unit = js.native
 
   /**
     * Update multiple documents on MongoDB
@@ -781,7 +781,7 @@ trait Collection extends js.Object {
     * @param update  The update operations to be applied to the document
     * @param options Optional settings.
     */
-  def updateMany(filter: js.Any, update: js.Any, options: js.Any = null): js.Promise[UpdateWriteOpResultObject] = js.native
+  def updateMany(filter: js.Any, update: js.Any, options: UpdateOptions = null): js.Promise[UpdateWriteOpResultObject] = js.native
 
   /**
     * Update a single document on MongoDB
@@ -791,7 +791,7 @@ trait Collection extends js.Object {
     * @param callback The command result callback
     * @return [[js.Promise]] if no callback passed
     */
-  def updateOne(filter: js.Any, update: js.Any, options: js.Any, callback: js.Function2[MongoError, UpdateWriteOpResultObject, Any]): Unit = js.native
+  def updateOne(filter: js.Any, update: js.Any, options: UpdateOptions, callback: js.Function2[MongoError, UpdateWriteOpResultObject, Any]): Unit = js.native
 
   /**
     * Update a single document on MongoDB
@@ -809,7 +809,7 @@ trait Collection extends js.Object {
     * @param options Optional settings.
     * @return [[js.Promise]] if no callback passed
     */
-  def updateOne(filter: js.Any, update: js.Any, options: js.Any = null): js.Promise[UpdateWriteOpResultObject] = js.native
+  def updateOne(filter: js.Any, update: js.Any, options: UpdateOptions = null): js.Promise[UpdateWriteOpResultObject] = js.native
 
 }
 

@@ -98,6 +98,13 @@ package object mongodb {
   def $position(pos: => Int) = "$position" -> pos
 
   /**
+    * The $set operator replaces the value of a field with the specified value.
+    * @example { $set: { field1: value1, ... } }
+    */
+  @inline
+  def $set(value: => js.Any) = "$set" -> value
+
+  /**
     * Performs text search.
     * @example db.articles.find( { $text: { $search: "coffee" } } )
     * @see [[https://docs.mongodb.org/manual/reference/operator/query/text/#op._S_text]]
@@ -131,7 +138,7 @@ package object mongodb {
       * @example { $addToSet: {letters: [ "c", "d" ] } }
       */
     @inline
-    def $addToSet(value: => js.Any) = attribute -> doc("$addToSet"  -> value)
+    def $addToSet(value: => js.Any) = attribute -> doc("$addToSet" -> value)
 
     /**
       * The $all is equivalent to an $and operation of the specified values; i.e. the following statement:

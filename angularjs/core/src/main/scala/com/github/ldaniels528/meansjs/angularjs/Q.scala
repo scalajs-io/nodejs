@@ -3,7 +3,6 @@ package com.github.ldaniels528.meansjs.angularjs
 import scala.concurrent.{Future, Promise}
 import scala.language.implicitConversions
 import scala.scalajs.js
-import scala.scalajs.runtime._
 import scala.util.{Failure, Success, Try}
 
 /**
@@ -31,7 +30,7 @@ trait Q extends js.Object {
     * @param reason Constant, message, exception or an object representing the rejection reason.
     * @return a promise that was already resolved as rejected with the reason.
     */
-  def reject[T](reason: js.Any): QPromise[T] = js.native
+  def reject[T](reason: js.Any): js.Promise[T] = js.native
 
   /**
     * Wraps an object that might be a value or a (3rd party) then-able promise into a $q promise.
@@ -40,14 +39,14 @@ trait Q extends js.Object {
     * @param value Value or a promise
     * @return Returns a promise of the passed value or promise
     */
-  def when[T](value: js.Any): QPromise[T] = js.native
+  def when[T](value: js.Any): js.Promise[T] = js.native
 
   /**
     * Alias of when to maintain naming consistency with ES6.
     * @param value Value or a promise
     * @return Returns a promise of the passed value or promise
     */
-  def resolve[T](value: js.Any): QPromise[T] = js.native
+  def resolve[T](value: js.Any): js.Promise[T] = js.native
 
   /**
     * Combines multiple promises into a single promise that is resolved when all of the input promises are resolved.
@@ -56,9 +55,9 @@ trait Q extends js.Object {
     *         to the promise at the same index/key in the promises array/hash. If any of the promises is resolved with
     *         a rejection, this resulting promise will be rejected with the same rejection value.
     */
-  def all[T](promises: js.Array[Any]): QPromise[T] = js.native
+  def all[T](promises: js.Array[Any]): js.Promise[T] = js.native
 
-  def all[T](promises: js.Object): QPromise[T] = js.native
+  def all[T](promises: js.Object): js.Promise[T] = js.native
 
 }
 
@@ -94,7 +93,7 @@ trait QDefer[T] extends js.Object {
     * Returns the promise
     * @return the promise
     */
-  def promise: QPromise[T] = js.native
+  def promise: js.Promise[T] = js.native
 
 }
 
@@ -112,7 +111,7 @@ object QDefer {
   implicit class DeferredPromise[T](defer: QDefer[T]) extends Promise[T] {
     private var completed = false
 
-    override def future: Future[T] = QPromise.angularPromise2Future(defer.promise)
+    override def future: Future[T] = defer.promise.toFuture
 
     override def isCompleted: Boolean = completed
 
@@ -132,67 +131,4 @@ object QDefer {
     }
   }
 
-}
-
-/**
-  * AngularJS Q-Promise
-  * @author lawrence.daniels@gmail.com
-  */
-@js.native
-trait QPromise[T] extends AngularPromise {
-
-  /**
-    * regardless of when the promise was or will be resolved or rejected, then calls one of the success or error
-    * callbacks asynchronously as soon as the result is available. The callbacks are called with a
-    * single argument: the result or rejection reason. Additionally, the notify callback may be called
-    * zero or more times to provide a progress indication, before the promise is resolved or rejected.
-    * @param successCallback the given success callback function
-    * @return self
-    */
-  def `then`(successCallback: js.Function1[T, T],
-             errorCallback: js.Function1[T, Unit] = js.native,
-             notifyCallback: js.Function1[T, Unit] = js.native): this.type = js.native
-
-  /**
-    * Shorthand for promise.then(null, errorCallback)
-    * @param callback the given callback function
-    * @return self
-    */
-  def `catch`(callback: js.Function1[T, Unit]): this.type = js.native
-
-  /**
-    * Allows you to observe either the fulfillment or rejection of a promise, but to do so without modifying the
-    * final value. This is useful to release resources or do some clean-up that needs to be done whether the promise
-    * was rejected or resolved. See the full specification for more information.
-    * @param callback the given callback function
-    */
-  def `finally`(callback: js.Function1[T, Unit]): Unit = js.native
-
-}
-
-/**
-  * Angular Q-Promise Singleton
-  * @author lawrence.daniels@gmail.com
-  */
-object QPromise {
-
-  /**
-    * AngularJS Promise to Scala Future Conversion
-    * @param qPromise the given [[QPromise promise]]
-    * @tparam T the generic type of the promise
-    * @return a Scala Future
-    */
-  implicit def angularPromise2Future[T](qPromise: QPromise[T]): Future[T] = {
-    val promise = Promise[T]()
-
-    def onSuccess(data: T): T = {
-      promise.success(data)
-      data
-    }
-
-    def onError(error: T): Unit = promise.failure(wrapJavaScriptException(error))
-
-    qPromise.`then`(onSuccess _).`catch`(onError _)
-    promise.future
-  }
 }

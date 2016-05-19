@@ -32,7 +32,9 @@ object FindAndModifyWriteOpResult {
     */
   implicit class FindAndModifyWriteOpResultExtensions(val result: FindAndModifyWriteOpResult) extends AnyVal {
 
-    def valueAs[T] = Option(result.value).map(_.asInstanceOf[T])
+    @inline def isOk = result.ok == 1
+
+    @inline def valueAs[T] = Option(result.value).map(_.asInstanceOf[T])
 
   }
 

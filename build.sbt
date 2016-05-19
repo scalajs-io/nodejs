@@ -4,8 +4,8 @@ import sbt.Keys._
 import sbt.Project.projectToRef
 import sbt._
 
-val apiVersion = "0.1.9"
-val paradisePluginVersion = "3.0.0-M1" //"2.1.0"
+val apiVersion = "0.1.10"
+val paradisePluginVersion = "3.0.0-M1"
 val _scalaVersion = "2.11.8"
 val scalaJsDomVersion = "0.9.0"
 val scalaJsJQueryVersion = "0.9.0"
@@ -39,10 +39,11 @@ lazy val root = (project in file(".")).
     angular_core, angular_animate, angular_cookies, angular_facebook, angular_nervgh_fileupload,
     angular_sanitize, angular_toaster, angular_ui_bootstrap, angular_ui_router,
     // node
-    node_core, node_adal, node_amqp, node_async, node_azure, node_bcrypt, node_body_parser, node_crypto,
-    node_drama, node_elgs_splitargs, node_express, node_express_ws, node_filed, node_jwt_simple, node_kafka,
-    node_mongodb, node_multer, node_oppressor, node_os, node_repl, node_request, node_string_decoder, node_xml2js,
-    node_zlib, node_zookeeper
+    node_core, node_adal, node_amqplib, node_assert, node_async, node_azure, node_bcrypt, node_body_parser,
+    node_colors, node_crypto, node_drama, node_elgs_splitargs, node_express, node_express_fileupload, node_express_ws,
+    node_filed, node_fs, node_http, node_https, node_jwt_simple, node_kafka, node_mongodb, node_multer, node_net,
+    node_oppressor, node_os, node_path, node_readline, node_repl, node_request, node_string_decoder, node_url,
+    node_util, node_xml2js, node_zlib, node_zookeeper
   )
 
 lazy val core = (project in file("core")).
@@ -174,7 +175,7 @@ lazy val node_core = (project in file("node/core")).
   )
 
 lazy val node_adal = (project in file("node/adal")).
-  dependsOn(core, node_core).
+  dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -182,8 +183,8 @@ lazy val node_adal = (project in file("node/adal")).
     description := "NodeJS/adal-node facade for Scala.js"
   )
 
-lazy val node_amqp = (project in file("node/amqplib")).
-  dependsOn(core, node_core).
+lazy val node_amqplib = (project in file("node/amqplib")).
+  dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -191,8 +192,17 @@ lazy val node_amqp = (project in file("node/amqplib")).
     description := "NodeJS/amqplib facade for Scala.js"
   )
 
+lazy val node_assert = (project in file("node/assert")).
+  dependsOn(node_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-assert",
+    description := "NodeJS/assert facade for Scala.js"
+  )
+
 lazy val node_async = (project in file("node/async")).
-  dependsOn(core, node_core).
+  dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -201,7 +211,7 @@ lazy val node_async = (project in file("node/async")).
   )
 
 lazy val node_azure = (project in file("node/azure")).
-  dependsOn(core, node_core).
+  dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -210,7 +220,7 @@ lazy val node_azure = (project in file("node/azure")).
   )
 
 lazy val node_bcrypt = (project in file("node/bcrypt")).
-  dependsOn(core, node_core).
+  dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -219,7 +229,7 @@ lazy val node_bcrypt = (project in file("node/bcrypt")).
   )
 
 lazy val node_body_parser = (project in file("node/body-parser")).
-  dependsOn(core, node_express).
+  dependsOn(node_express).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -227,8 +237,17 @@ lazy val node_body_parser = (project in file("node/body-parser")).
     description := "NodeJS/body-parser facade for Scala.js"
   )
 
+lazy val node_colors = (project in file("node/colors")).
+  dependsOn(node_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-colors",
+    description := "NodeJS/colors facade for Scala.js"
+  )
+
 lazy val node_crypto = (project in file("node/crypto")).
-  dependsOn(core, node_core).
+  dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -237,7 +256,7 @@ lazy val node_crypto = (project in file("node/crypto")).
   )
 
 lazy val node_drama = (project in file("node/drama")).
-  dependsOn(core, node_core).
+  dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -246,7 +265,7 @@ lazy val node_drama = (project in file("node/drama")).
   )
 
 lazy val node_elgs_splitargs = (project in file("node/elgs-splitargs")).
-  dependsOn(core, node_core).
+  dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -255,7 +274,7 @@ lazy val node_elgs_splitargs = (project in file("node/elgs-splitargs")).
   )
 
 lazy val node_express = (project in file("node/express")).
-  dependsOn(core, node_core).
+  dependsOn(node_http).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -263,8 +282,17 @@ lazy val node_express = (project in file("node/express")).
     description := "NodeJS/express facade for Scala.js"
   )
 
+lazy val node_express_fileupload = (project in file("node/express-fileupload")).
+  dependsOn(node_express).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-express-fileupload",
+    description := "NodeJS/express-fileupload facade for Scala.js"
+  )
+
 lazy val node_express_ws = (project in file("node/express-ws")).
-  dependsOn(core, node_express).
+  dependsOn(node_express).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -273,7 +301,7 @@ lazy val node_express_ws = (project in file("node/express-ws")).
   )
 
 lazy val node_filed = (project in file("node/filed")).
-  dependsOn(core, node_core).
+  dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -281,8 +309,35 @@ lazy val node_filed = (project in file("node/filed")).
     description := "NodeJS/filed facade for Scala.js"
   )
 
+lazy val node_fs = (project in file("node/fs")).
+  dependsOn(node_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-fs",
+    description := "NodeJS/fs facade for Scala.js"
+  )
+
+lazy val node_http = (project in file("node/http")).
+  dependsOn(node_net).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-http",
+    description := "NodeJS/http facade for Scala.js"
+  )
+
+lazy val node_https = (project in file("node/https")).
+  dependsOn(node_http).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-https",
+    description := "NodeJS/https facade for Scala.js"
+  )
+
 lazy val node_jwt_simple = (project in file("node/jwt-simple")).
-  dependsOn(core, node_core).
+  dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -291,7 +346,7 @@ lazy val node_jwt_simple = (project in file("node/jwt-simple")).
   )
 
 lazy val node_kafka = (project in file("node/kafka_node")).
-  dependsOn(core, node_core, node_zookeeper).
+  dependsOn(node_core, node_zookeeper).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -300,7 +355,7 @@ lazy val node_kafka = (project in file("node/kafka_node")).
   )
 
 lazy val node_mongodb = (project in file("node/mongodb")).
-  dependsOn(core, node_core).
+  dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -309,7 +364,7 @@ lazy val node_mongodb = (project in file("node/mongodb")).
   )
 
 lazy val node_multer = (project in file("node/multer")).
-  dependsOn(core, node_express).
+  dependsOn(node_express).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -317,8 +372,26 @@ lazy val node_multer = (project in file("node/multer")).
     description := "NodeJS/multer facade for Scala.js"
   )
 
+lazy val node_mysql = (project in file("node/mysql")).
+  dependsOn(node_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-mysql",
+    description := "NodeJS/mysql facade for Scala.js"
+  )
+
+lazy val node_net = (project in file("node/net")).
+  dependsOn(node_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-net",
+    description := "NodeJS/net facade for Scala.js"
+  )
+
 lazy val node_oppressor = (project in file("node/oppressor")).
-  dependsOn(core, node_core).
+  dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -327,7 +400,7 @@ lazy val node_oppressor = (project in file("node/oppressor")).
   )
 
 lazy val node_os = (project in file("node/os")).
-  dependsOn(core, node_core).
+  dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -335,8 +408,26 @@ lazy val node_os = (project in file("node/os")).
     description := "NodeJS/OS facade for Scala.js"
   )
 
+lazy val node_path = (project in file("node/path")).
+  dependsOn(node_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-path",
+    description := "NodeJS/path facade for Scala.js"
+  )
+
+lazy val node_readline = (project in file("node/readline")).
+  dependsOn(node_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-readline",
+    description := "NodeJS/readline facade for Scala.js"
+  )
+
 lazy val node_repl = (project in file("node/repl")).
-  dependsOn(core, node_core).
+  dependsOn(node_net, node_readline).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -345,7 +436,7 @@ lazy val node_repl = (project in file("node/repl")).
   )
 
 lazy val node_request = (project in file("node/request")).
-  dependsOn(core, node_core).
+  dependsOn(node_http).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -354,7 +445,7 @@ lazy val node_request = (project in file("node/request")).
   )
 
 lazy val node_string_decoder = (project in file("node/string_decoder")).
-  dependsOn(core, node_core).
+  dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -362,8 +453,26 @@ lazy val node_string_decoder = (project in file("node/string_decoder")).
     description := "NodeJS/string-decoder facade for Scala.js"
   )
 
+lazy val node_url = (project in file("node/url")).
+  dependsOn(node_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-url",
+    description := "NodeJS/url facade for Scala.js"
+  )
+
+lazy val node_util = (project in file("node/util")).
+  dependsOn(node_fs).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-util",
+    description := "NodeJS/util facade for Scala.js"
+  )
+
 lazy val node_xml2js = (project in file("node/xml2js")).
-  dependsOn(core, node_core).
+  dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -372,7 +481,7 @@ lazy val node_xml2js = (project in file("node/xml2js")).
   )
 
 lazy val node_zlib = (project in file("node/zlib")).
-  dependsOn(core, node_core).
+  dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -381,7 +490,7 @@ lazy val node_zlib = (project in file("node/zlib")).
   )
 
 lazy val node_zookeeper = (project in file("node/zookeeper-client")).
-  dependsOn(core, node_core).
+  dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -391,13 +500,15 @@ lazy val node_zookeeper = (project in file("node/zookeeper-client")).
 
 lazy val examples = (project in file("examples")).
   aggregate(
-    core, node_core, node_adal, node_amqp, node_async, node_azure, node_bcrypt, node_body_parser, node_crypto, node_drama,
-    node_elgs_splitargs, node_express, node_express_ws, node_filed, node_jwt_simple, node_kafka, node_mongodb, node_multer,
-    node_oppressor, node_os, node_repl, node_request, node_string_decoder, node_xml2js, node_zlib, node_zookeeper).
+    node_core, node_adal, node_amqplib, node_assert, node_async, node_azure, node_bcrypt, node_body_parser, node_colors,
+    node_crypto, node_drama, node_elgs_splitargs, node_express, node_express_ws, node_filed, node_fs, node_http, node_https,
+    node_jwt_simple, node_kafka, node_mongodb, node_multer, node_net, node_oppressor, node_os, node_path, node_readline,
+    node_repl, node_request, node_string_decoder, node_url, node_util, node_xml2js, node_zlib, node_zookeeper).
   dependsOn(
-    core, node_core, node_adal, node_amqp, node_async, node_azure, node_bcrypt, node_body_parser, node_crypto, node_drama,
-    node_elgs_splitargs, node_express, node_express_ws, node_filed, node_jwt_simple, node_kafka, node_mongodb, node_multer,
-    node_oppressor, node_os, node_repl, node_request, node_string_decoder, node_xml2js, node_zlib, node_zookeeper).
+    node_core, node_adal, node_amqplib, node_assert, node_async, node_azure, node_bcrypt, node_body_parser, node_colors,
+    node_crypto, node_drama, node_elgs_splitargs, node_express, node_express_ws, node_filed, node_fs, node_http, node_https,
+    node_jwt_simple, node_kafka, node_mongodb, node_multer, node_net, node_oppressor, node_os, node_path, node_readline,
+    node_repl, node_request, node_string_decoder, node_url, node_util, node_xml2js, node_zlib, node_zookeeper).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(

@@ -11,6 +11,8 @@ import scala.scalajs.js
 @js.native
 trait Stream extends NodeModule {
 
+  def PassThrough: js.Function0[PassThrough] = js.native
+
   def Readable: js.Function0[Readable] = js.native
 
   def Writable: js.Function0[Writable] = js.native

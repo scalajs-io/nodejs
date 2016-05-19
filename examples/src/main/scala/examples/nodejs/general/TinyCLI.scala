@@ -12,7 +12,7 @@ class TinyCLI(bootstrap: Bootstrap) {
   import bootstrap._
 
   val readline = require[Readline]("readline")
-  val rl = readline.createInterface(ReadlineOptions(input = process.stdin, output = process.stdout))
+  val rl = readline.createInterface(new ReadlineOptions(input = process.stdin, output = process.stdout))
 
   rl.setPrompt("OHAI> ")
   rl.prompt()

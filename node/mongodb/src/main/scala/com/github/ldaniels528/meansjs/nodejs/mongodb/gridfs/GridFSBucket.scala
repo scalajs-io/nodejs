@@ -68,7 +68,7 @@ trait GridFSBucket extends js.Object {
     * @param options the [[UploadStreamOptions upload options]]
     * @example bucket.openUploadStream('./meistersinger.mp3')
     */
-  def openUploadStream(file: String, options: UploadStreamOptions = null): Writable = js.native
+  def openUploadStream(file: String, options: UploadStreamOptions = null): GridFSBucketWriteStream = js.native
 
 }
 

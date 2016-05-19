@@ -1,6 +1,7 @@
 package examples.nodejs.datastores
 
 import com.github.ldaniels528.meansjs.nodejs._
+import com.github.ldaniels528.meansjs.nodejs.core.Assert
 import com.github.ldaniels528.meansjs.nodejs.fs.Fs
 import com.github.ldaniels528.meansjs.nodejs.mongodb.{Db, MongoDB}
 import org.scalajs.dom.console

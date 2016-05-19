@@ -1,8 +1,9 @@
 package examples.nodejs.io
 
 import com.github.ldaniels528.meansjs.nodejs.ProcessClass._
+import com.github.ldaniels528.meansjs.nodejs.core.Assert
 import com.github.ldaniels528.meansjs.nodejs.path.{Path, PathObject}
-import com.github.ldaniels528.meansjs.nodejs.{Assert, Bootstrap, console, process}
+import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console, process}
 
 import scala.scalajs.js.JSConverters._
 

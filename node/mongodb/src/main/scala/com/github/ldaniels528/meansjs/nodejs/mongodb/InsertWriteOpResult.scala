@@ -40,8 +40,9 @@ object InsertWriteOpResult {
     */
   implicit class WriteResultExtensions(val result: InsertWriteOpResult) extends AnyVal {
 
-    @inline
-    def opsAs[T]: js.Array[T] = result.ops.asInstanceOf[js.Array[T]]
+    @inline def isOk = result.insertedCount >= 1
+
+    @inline def opsAs[T]: js.Array[T] = result.ops.asInstanceOf[js.Array[T]]
 
   }
 

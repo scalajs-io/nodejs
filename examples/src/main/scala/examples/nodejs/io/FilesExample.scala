@@ -17,7 +17,7 @@ class FilesExample(bootstrap: Bootstrap) {
   var lineNo = 0
 
   val file = __dirname + "/../README.md"
-  val reader = readline.createInterface(ReadlineOptions(
+  val reader = readline.createInterface(new ReadlineOptions(
     input = fs.createReadStream(file),
     output = process.stdout,
     terminal = false

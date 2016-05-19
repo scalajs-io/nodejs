@@ -377,20 +377,20 @@ object Cursor {
       * @param batchSize the new batch size.
       */
     @inline
-    def batchSizeAsync(batchSize: Int) = callbackMongoFuture[Cursor](cursor.batchSize(batchSize, _))
+    def batchSizeFuture(batchSize: Int) = callbackMongoFuture[Cursor](cursor.batchSize(batchSize, _))
 
     /**
       * Close the cursor.
       */
     @inline
-    def close() = callbackMongoFuture[Cursor](cursor.close)
+    def closeFuture() = callbackMongoFuture[Cursor](cursor.close)
 
     /**
       * Determines how many result the query for this cursor will return
       * @param applySkipLimit if set to true will apply the skip and limits set on the cursor. Defaults to false.
       */
     @inline
-    def countAsync(applySkipLimit: Boolean) = callbackMongoFuture[Cursor](cursor.count(applySkipLimit, _))
+    def countFuture(applySkipLimit: Boolean) = callbackMongoFuture[Cursor](cursor.count(applySkipLimit, _))
 
     /**
       * Iterates over all the documents for this cursor. As with {cursor.toArray}, not all of the elements will be
@@ -400,20 +400,20 @@ object Cursor {
       * result can fit the memory.
       */
     @inline
-    def eachAsync[T <: js.Any] = callbackMongoFuture[js.UndefOr[T]](cursor.each)
+    def eachFuture[T <: js.Any] = callbackMongoFuture[js.UndefOr[T]](cursor.each)
 
     /**
       * Gets a detailed information about how the query is performed on this cursor and how long it took the database to process it.
       */
     @inline
-    def explainAsync[T <: js.Any] = callbackMongoFuture[T](cursor.explain)
+    def explainFuture[T <: js.Any] = callbackMongoFuture[T](cursor.explain)
 
     /**
       * Sets the limit parameter of this cursor to the given value.
       * @param limit the new limit.
       */
     @inline
-    def limitAsync(limit: Int) = callbackMongoFuture[Cursor](cursor.limit(limit, _))
+    def limitFuture(limit: Int) = callbackMongoFuture[Cursor](cursor.limit(limit, _))
 
     /**
       * Specifies a time limit for a query operation. After the specified time is exceeded, the operation will be
@@ -421,13 +421,13 @@ object Cursor {
       * @param maxTimeMS the maxTimeMS for the query.
       */
     @inline
-    def maxTimeMSAsync(maxTimeMS: Int) = callbackMongoFuture[Cursor](cursor.maxTimeMS(maxTimeMS, _))
+    def maxTimeMSFuture(maxTimeMS: Int) = callbackMongoFuture[Cursor](cursor.maxTimeMS(maxTimeMS, _))
 
     /**
       * Gets the next document from the cursor.
       */
     @inline
-    def nextAsync[T <: js.Any] = callbackMongoFuture[js.UndefOr[T]](cursor.next)
+    def nextFuture[T <: js.Any] = callbackMongoFuture[js.UndefOr[T]](cursor.next)
 
     @inline
     def onOnce(callback: js.Function) = cursor.on("once", callback)
@@ -438,14 +438,14 @@ object Cursor {
       *             [[ServerClass.READ_SECONDARY Server.READ_SECONDARY]], [[ServerClass.READ_SECONDARY Server.READ_SECONDARY_ONLY]]
       */
     @inline
-    def setReadPreferenceAsync(pref: String) = callbackMongoFuture[Cursor](cursor.setReadPreference(pref, _))
+    def setReadPreferenceFuture(pref: String) = callbackMongoFuture[Cursor](cursor.setReadPreference(pref, _))
 
     /**
       * Sets the skip parameter of this cursor to the given value.
       * @param skip the new skip value.
       */
     @inline
-    def skipAsync(skip: Int) = callbackMongoFuture[Cursor](cursor.skip(skip, _))
+    def skipFuture(skip: Int) = callbackMongoFuture[Cursor](cursor.skip(skip, _))
 
     /**
       * Sets the sort parameter of this cursor to the given value.
@@ -457,7 +457,7 @@ object Cursor {
       *                  <b>Note</b> that the strings are case insensitive.
       */
     @inline
-    def sortAsync(keyOrList: js.Array[js.Any], direction: Int) = {
+    def sortFuture(keyOrList: js.Array[js.Any], direction: Int) = {
       callbackMongoFuture[Cursor](cursor.sort(keyOrList, direction, _))
     }
 
@@ -471,7 +471,7 @@ object Cursor {
       *                  <b>Note</b> that the strings are case insensitive.
       */
     @inline
-    def sortAsync(keyOrList: js.Array[js.Any], direction: String) = {
+    def sortFuture(keyOrList: js.Array[js.Any], direction: String) = {
       callbackMongoFuture[Cursor](cursor.sort(keyOrList, direction, _))
     }
 
@@ -481,7 +481,7 @@ object Cursor {
       * In that case, cursor.rewind() can be used to reset the cursor.
       */
     @inline
-    def toArrayAsync[T <: js.Any] = callbackMongoFuture[js.Array[T]](cursor.toArray)
+    def toArrayFuture[T <: js.Any] = callbackMongoFuture[js.Array[T]](cursor.toArray)
 
   }
 

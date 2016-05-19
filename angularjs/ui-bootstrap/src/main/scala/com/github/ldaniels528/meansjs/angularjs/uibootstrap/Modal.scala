@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.angularjs.uibootstrap
 
-import com.github.ldaniels528.meansjs.angularjs.{Controller, QPromise}
+import com.github.ldaniels528.meansjs.angularjs.Controller
 
 import scala.scalajs.js
 
@@ -35,9 +35,9 @@ trait ModalInstance[T] extends js.Object {
 
   def dismiss(reason: js.Any): Unit = js.native
 
-  def result: QPromise[T] = js.native
+  def result: js.Promise[T] = js.native
 
-  def opened: QPromise[js.Any] = js.native
+  def opened: js.Promise[js.Any] = js.native
 
 }
 

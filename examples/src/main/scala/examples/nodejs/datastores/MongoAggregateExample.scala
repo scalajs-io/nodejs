@@ -1,7 +1,8 @@
 package examples.nodejs.datastores
 
 import com.github.ldaniels528.meansjs.nodejs.mongodb.{Db, MongoDB, MongoError, WriteOptions, _}
-import com.github.ldaniels528.meansjs.nodejs.{Assert, Bootstrap}
+import com.github.ldaniels528.meansjs.nodejs.Bootstrap
+import com.github.ldaniels528.meansjs.nodejs.core.Assert
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 import examples.nodejs.datastores.MongoAggregateExample.Data
 

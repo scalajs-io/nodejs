@@ -1,7 +1,9 @@
 package com.github.ldaniels528.meansjs.nodejs.stream
 
 import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
+import com.github.ldaniels528.meansjs.nodejs.errors
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
+import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
 
@@ -169,6 +171,16 @@ object Writable {
     */
   implicit class WritableExtensions(val writable: Writable) extends AnyVal {
 
+    def endFuture(buffer: Buffer) = futureCallbackE0[errors.Error](writable.end(buffer, _))
+
+    def endFuture(data: String, encoding: String) = futureCallbackE0[errors.Error](writable.end(data, encoding, _))
+
+    def endFuture() = futureCallbackE0[errors.Error](writable.end(_))
+
+    def writeFuture(buffer: Buffer) = futureCallbackE0[errors.Error](writable.write(buffer, _))
+
+    def writeFuture(data: String, encoding: String) = futureCallbackE0[errors.Error](writable.write(data, encoding, _))
+    
     /////////////////////////////////////////////////////////////////////////////////
     //      Events
     /////////////////////////////////////////////////////////////////////////////////

@@ -138,7 +138,7 @@ package object mongodb {
       * @example { $addToSet: {letters: [ "c", "d" ] } }
       */
     @inline
-    def $addToSet(value: => js.Any) = attribute -> doc("$addToSet" -> value)
+    def $addToSet(value: => js.Any) = "$addToSet" -> doc(attribute -> value)
 
     /**
       * The $all is equivalent to an $and operation of the specified values; i.e. the following statement:

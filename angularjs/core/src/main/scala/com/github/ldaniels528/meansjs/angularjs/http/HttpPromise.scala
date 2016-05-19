@@ -1,8 +1,5 @@
 package com.github.ldaniels528.meansjs.angularjs.http
 
-import com.github.ldaniels528.meansjs.angularjs._
-
-import scala.concurrent.{Future, Promise}
 import scala.language.implicitConversions
 import scala.scalajs.js
 import scala.scalajs.js.UndefOr
@@ -12,7 +9,7 @@ import scala.scalajs.js.UndefOr
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait HttpPromise[T <: js.Any] extends AngularPromise {
+trait HttpPromise[T <: js.Any] extends js.Promise[HttpResponse[T]] {
 
   def error(callback: js.Function): HttpPromise[T] = js.native
 
@@ -38,32 +35,5 @@ trait HttpPromise[T <: js.Any] extends AngularPromise {
 
   def success(callback: js.Function5[T, Int, js.Any, js.Any, js.Any, Unit]): HttpPromise[T] = js.native
 
-  def `then`(success: js.Function1[js.Any, Unit], failure: js.Function1[js.Any, Unit] = js.native, callback: js.Function = js.native): HttpPromise[T] = js.native
-
 }
 
-/**
-  * AngularJS HTTP Promise Singleton
-  * @author lawrence.daniels@gmail.com
-  */
-object HttpPromise {
-
-  /**
-    * Implicit conversion to transform an AngularJS HTTP Promise into a Scala Future
-    * @param httpPromise the given [[HttpPromise HTTP Promise]]
-    * @return the wrapped [[Future Future]]
-    */
-  implicit def promise2future[T <: js.Any](httpPromise: HttpPromise[T]): Future[T] = {
-    val promise = Promise[T]()
-
-    def onSuccess(data: T): Unit = promise.success(data)
-
-    def onError(data: js.Any, status: Int, config: js.Any, headers: js.Any, statusText: UndefOr[String]): Unit = {
-      promise failure HttpError(status, statusText getOrElse s"Failed to process HTTP request: '${angular.toJson(data)}'")
-    }
-
-    httpPromise.success(onSuccess _).error(onError _)
-    promise.future
-  }
-
-}

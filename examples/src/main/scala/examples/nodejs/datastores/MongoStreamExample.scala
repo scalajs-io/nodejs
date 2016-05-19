@@ -1,7 +1,8 @@
 package examples.nodejs.datastores
 
+import com.github.ldaniels528.meansjs.nodejs.core.Assert
 import com.github.ldaniels528.meansjs.nodejs.mongodb._
-import com.github.ldaniels528.meansjs.nodejs.{Assert, Bootstrap, console}
+import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
 
 import scala.scalajs.js
 import scala.scalajs.js.JSON

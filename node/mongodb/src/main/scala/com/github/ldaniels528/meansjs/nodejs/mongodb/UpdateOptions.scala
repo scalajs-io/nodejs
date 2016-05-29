@@ -11,23 +11,9 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @param upsert   Update operation is an upsert.
   */
 @ScalaJSDefined
-class UpdateOptions(w: js.UndefOr[Int],
-                    wtimeout: js.UndefOr[Int],
-                    j: js.UndefOr[Boolean],
-                    upsert: js.UndefOr[Boolean]) extends js.Object
+class UpdateOptions(var w: js.UndefOr[Int] = js.undefined,
+                    var wtimeout: js.UndefOr[Int] = js.undefined,
+                    var j: js.UndefOr[Boolean] = js.undefined,
+                    var upsert: js.UndefOr[Boolean] = js.undefined) extends js.Object
 
-/**
-  * Update Options Companion
-  * @author lawrence.daniels@gmail.com
-  */
-object UpdateOptions {
-
-  def apply(w: js.UndefOr[Int] = js.undefined,
-            wtimeout: js.UndefOr[Int] = js.undefined,
-            j: js.UndefOr[Boolean] = js.undefined,
-            upsert: js.UndefOr[Boolean] = js.undefined) = {
-    new UpdateOptions(w, wtimeout, j, upsert)
-  }
-
-}
 

@@ -8,20 +8,4 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class DbOptions extends js.Object {
-  var w: js.UndefOr[Int] = _
-}
-
-/**
-  * Mongo Database Options Companion
-  * @author lawrence.daniels@gmail.com
-  */
-object DbOptions {
-
-  def apply(w: js.UndefOr[Int] = js.undefined) = {
-    val options = new DbOptions()
-    options.w = w
-    options
-  }
-
-}
+class DbOptions(var w: js.UndefOr[Int] = js.undefined) extends js.Object

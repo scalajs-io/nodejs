@@ -8,20 +8,4 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class CollectionOptions extends js.Object {
-  var strict: Boolean = _
-}
-
-/**
-  * Mongo Collection Retrieval Options Companion
-  * @author lawrence.daniels@gmail.com
-  */
-object CollectionOptions {
-
-  def apply(strict: Boolean) = {
-    val options = new CollectionOptions()
-    options.strict = strict
-    options
-  }
-
-}
+class CollectionOptions(var strict: Boolean = false) extends js.Object

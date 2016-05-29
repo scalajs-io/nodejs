@@ -38,7 +38,7 @@ class MongoAggregateExample(bootstrap: Bootstrap) {
       collection <- db.collectionFuture("aggregationExample1")
 
       // Insert the docs
-      writeResults <- collection.insertMany(docs, WriteOptions(w = 1))
+      writeResults <- collection.insertMany(docs, new WriteOptions(w = 1))
 
       // Execute aggregate, notice the pipeline is expressed as an Array
       result <- collection.aggregateFuture[Data](js.Array(

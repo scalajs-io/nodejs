@@ -119,7 +119,7 @@ trait Collection extends js.Object {
     * @param callback The command result callback
     * @example deleteMany(filter, options, callback)
     */
-  def deleteMany[T <: js.Any](filter: js.Any, options: DeleteOptions, callback: js.Function2[MongoError, T, Any]): Unit = js.native
+  def deleteMany(filter: js.Any, options: DeleteOptions, callback: js.Function2[MongoError, DeleteWriteOpResult, Any]): Unit = js.native
 
   /**
     * Delete multiple documents on MongoDB
@@ -127,7 +127,7 @@ trait Collection extends js.Object {
     * @param callback The command result callback
     * @example deleteMany(filter, options, callback)
     */
-  def deleteMany[T <: js.Any](filter: js.Any, callback: js.Function2[MongoError, T, Any]): Unit = js.native
+  def deleteMany(filter: js.Any, callback: js.Function2[MongoError, DeleteWriteOpResult, Any]): Unit = js.native
 
   /**
     * Delete multiple documents on MongoDB
@@ -135,7 +135,7 @@ trait Collection extends js.Object {
     * @param options Optional settings.
     * @example deleteMany(filter, options, callback)
     */
-  def deleteMany[T <: js.Any](filter: js.Any, options: DeleteOptions = null): js.Promise[T] = js.native
+  def deleteMany(filter: js.Any, options: DeleteOptions = null): js.Promise[DeleteWriteOpResult] = js.native
 
   /**
     * Delete a document on MongoDB
@@ -144,6 +144,20 @@ trait Collection extends js.Object {
     * @param callback The command result callback
     */
   def deleteOne(filter: js.Any, options: js.Any, callback: js.Function): Unit = js.native
+
+  /**
+    * Delete a document on MongoDB
+    * @param filter   The Filter used to select the document to remove
+    * @param callback The command result callback
+    */
+  def deleteOne(filter: js.Any, callback: js.Function): Unit = js.native
+
+  /**
+    * Delete a document on MongoDB
+    * @param filter  The Filter used to select the document to remove
+    * @param options Optional settings.
+    */
+  def deleteOne(filter: js.Any, options: js.Any = null): js.Promise[DeleteWriteOpResult] = js.native
 
   /**
     * The distinct command returns returns a list of distinct values for the given key across a collection.
@@ -669,11 +683,19 @@ trait Collection extends js.Object {
 
   /**
     * Replace a document on MongoDB
+    * @param filter   The Filter used to select the document to update
+    * @param doc      The Document that replaces the matching document
+    * @param callback The results callback
+    */
+  def replaceOne(filter: js.Any, doc: js.Any, callback: js.Function): Unit = js.native
+
+  /**
+    * Replace a document on MongoDB
     * @param filter  The Filter used to select the document to update
     * @param doc     The Document that replaces the matching document
     * @param options Optional settings.
     */
-  def replaceOne[T <: js.Any](filter: js.Any, doc: js.Any, options: js.Any): js.Promise[T] = js.native
+  def replaceOne[T <: js.Any](filter: js.Any, doc: js.Any, options: js.Any = null): js.Promise[T] = js.native
 
   /**
     * Save a document. Simple full document replacement function. Not recommended for efficiency, use atomic operators
@@ -847,8 +869,8 @@ object Collection {
     }
 
     @inline
-    def findOneFuture[T <: js.Any](selector: js.Any, projection: js.Any)(implicit ec: ExecutionContext) = {
-      callbackMongoFuture[T](coll.find(selector, projection).limit(1).next) map (Option(_))
+    def findOneFuture[T <: js.Any](selector: js.Any, fields: js.Array[String])(implicit ec: ExecutionContext) = {
+      callbackMongoFuture[T](coll.find(selector, js.Dictionary(fields.map(_ -> 1): _*)).limit(1).next) map (Option(_))
     }
 
   }

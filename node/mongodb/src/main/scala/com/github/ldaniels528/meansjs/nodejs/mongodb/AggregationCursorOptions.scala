@@ -5,24 +5,7 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * Aggregation Cursor Options
-  * @author lawrence.daniels@gmail.com
+  * @param batchSize The batchSize for the cursor
   */
 @ScalaJSDefined
-class AggregationCursorOptions extends js.Object {
-  /** The batchSize for the cursor */
-  var batchSize: js.UndefOr[Integer] = _
-}
-
-/**
-  * Aggregation Cursor Options
-  * @author lawrence.daniels@gmail.com
-  */
-object AggregationCursorOptions {
-
-  def apply(batchSize: js.UndefOr[Integer] = js.undefined) = {
-    val options = new AggregationCursorOptions()
-    options.batchSize = batchSize
-    options
-  }
-
-}
+class AggregationCursorOptions(var batchSize: Integer = null) extends js.Object

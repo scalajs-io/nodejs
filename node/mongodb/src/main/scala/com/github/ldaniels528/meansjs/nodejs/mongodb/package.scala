@@ -195,14 +195,7 @@ package object mongodb {
       * @example db.inventory.find( { qty: { $in: [ 5, 15 ] } } )
       */
     @inline
-    def $in(values: js.Any*) = attribute -> doc("$in" -> js.Array(values: _*))
-
-    /**
-      * Matches any of the values specified in an array.
-      * @example db.inventory.find( { qty: { $in: [ 5, 15 ] } } )
-      */
-    @inline
-    def $in(array: js.Array[js.Any]) = attribute -> doc("$in" -> array)
+    def $in(array: js.Array[_ <: Any]) = attribute -> doc("$in" -> array)
 
     @inline
     def $inc(delta: => Double) = "$inc" -> doc(attribute -> delta)

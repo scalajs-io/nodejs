@@ -8,26 +8,9 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class WriteOptions(w: js.UndefOr[Int],
-                   wtimeout: js.UndefOr[Int],
-                   j: js.UndefOr[Boolean],
-                   upsert: js.UndefOr[Boolean],
-                   multi: js.UndefOr[Boolean],
-                   bypassDocumentValidation: js.UndefOr[Boolean]) extends js.Object
-
-/**
-  * Write Options Companion
-  * @author lawrence.daniels@gmail.com
-  */
-object WriteOptions {
-
-  def apply(w: js.UndefOr[Int] = js.undefined,
-            wtimeout: js.UndefOr[Int] = js.undefined,
-            j: js.UndefOr[Boolean] = js.undefined,
-            upsert: js.UndefOr[Boolean] = js.undefined,
-            multi: js.UndefOr[Boolean] = js.undefined,
-            bypassDocumentValidation: js.UndefOr[Boolean] = js.undefined) = {
-    new WriteOptions(w, wtimeout, j, upsert, multi, bypassDocumentValidation)
-  }
-
-}
+class WriteOptions(var w: js.UndefOr[Int] = js.undefined,
+                   var wtimeout: js.UndefOr[Int] = js.undefined,
+                   var j: js.UndefOr[Boolean] = js.undefined,
+                   var upsert: js.UndefOr[Boolean] = js.undefined,
+                   var multi: js.UndefOr[Boolean] = js.undefined,
+                   var bypassDocumentValidation: js.UndefOr[Boolean] = js.undefined) extends js.Object

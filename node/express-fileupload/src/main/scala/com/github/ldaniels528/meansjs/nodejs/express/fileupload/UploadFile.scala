@@ -1,6 +1,8 @@
 package com.github.ldaniels528.meansjs.nodejs.express.fileupload
 
 import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
+import com.github.ldaniels528.meansjs.nodejs.errors
+import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
 
@@ -19,6 +21,25 @@ trait UploadFile extends js.Object {
 
   def mimetype: String = js.native
 
-  def mv(path: String, callback: js.Function): js.Any = js.native
+  def mv(path: String, callback: js.Function): Unit = js.native
+
+}
+
+/**
+  * Upload File Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object UploadFile {
+
+  /**
+    * Upload File Extensions
+    * @author lawrence.daniels@gmail.com
+    */
+  implicit class UploadFileExtensions(val file: UploadFile) extends AnyVal {
+
+    @inline
+    def mvFuture(path: String) = futureCallbackE0[errors.Error](file.mv(path, _))
+
+  }
 
 }

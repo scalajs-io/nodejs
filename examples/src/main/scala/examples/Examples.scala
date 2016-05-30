@@ -28,6 +28,7 @@ object Examples extends js.JSApp {
     "ClientRequestExample" -> ((bootstrap: Bootstrap) => new ClientRequestExample(bootstrap)),
     "ColorsExample" -> ((bootstrap: Bootstrap) => new ColorsExample(bootstrap)),
     "CompressionExample" -> ((bootstrap: Bootstrap) => new CompressionExample(bootstrap)),
+    "EscapeHtmlExample" -> ((bootstrap: Bootstrap) => new EscapeHtmlExample(bootstrap)),
     "EventEmitterExample" -> ((bootstrap: Bootstrap) => new EventEmitterExample(bootstrap)),
     "ExpressRoutingExample" -> ((bootstrap: Bootstrap) => new ExpressRoutingExample(bootstrap)),
     "ExpressServerExample" -> ((bootstrap: Bootstrap) => new ExpressServerExample(bootstrap)),

@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.mongodb.gridfs
 
-import com.github.ldaniels528.meansjs.nodejs.stream._
+import com.github.ldaniels528.meansjs.nodejs.mongodb.Cursor
 
 import scala.scalajs.js
 
@@ -41,7 +41,7 @@ trait GridFSBucket extends js.Object {
     * Convenience wrapper around find on the files collection
     * @example find(filter, options)
     */
-  def find(filter: js.Any, options: GridFSBucketFindOptions): Unit = js.native
+  def find(filter: js.Any, options: GridFSBucketFindOptions = null): Cursor = js.native
 
   /**
     * Returns a readable stream (GridFSBucketReadStream) for streaming file data from GridFS.
@@ -59,7 +59,7 @@ trait GridFSBucket extends js.Object {
     * @param options the [[DownloadStreamByNameOptions download options]]
     * @example bucket.openDownloadStreamByName('meistersinger.mp3')
     */
-  def openDownloadStreamByName(file: String, options: DownloadStreamByNameOptions = null): Readable = js.native
+  def openDownloadStreamByName(file: String, options: DownloadStreamByNameOptions = null): GridFSBucketReadStream = js.native
 
   /**
     * Returns a writable stream (GridFSBucketWriteStream) for writing buffers to GridFS. The stream's 'id' property

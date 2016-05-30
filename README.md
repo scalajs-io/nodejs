@@ -9,6 +9,7 @@ MEANS.js is a Scala.js Facade for the MEAN Stack (MongoDB ExpressJS AngularJS No
     * <a href="#Requirements">Build Requirements</a>
     * <a href="#Build">Building the SDK</a>
     * <a href="#Run_Examples">Building and run examples</a>
+    * <a href="#Developed_using_MEANS">Developed using MEANS.js</a>
 * <a href="#NodeJS">Node.js bindings</a>
     * <a href="#NodeJS_Modules">Modules</a>
     * <a href="#NodeJS_Integration">Integration Guidance</a>    
@@ -34,6 +35,7 @@ The goal of MEANS.js is to be a complete Scala.js facade for the entire MEAN Sta
 #### Build Requirements
 
 * [Scala 2.11.8+] (http://scala-lang.org/download/)
+* [Scala.js 0.6.8] (http://www.scala-js.org/)
 * [SBT 0.13.11+] (http://www.scala-sbt.org/download.html)
 
 <a name="Build"></a>
@@ -51,6 +53,13 @@ The goal of MEANS.js is to be a complete Scala.js facade for the entire MEAN Sta
  $ cd examples
  $ node ./examples.js FilesExample
 ```
+
+<a name="Developed_using_MEANS"></a>
+### Developed using MEANS.js
+   
+The following applications were developed using MEANS.js:
+* [Socialized](https://github.com/ldaniels528/socialized)
+* [Trifecta](https://github.com/ldaniels528/trifecta)   
    
 <a name="NodeJS"></a>
 ## Node.js
@@ -75,6 +84,7 @@ The following NodeJS modules have been implemented thus far:
 | buffer                | 6.1.0   | means-node-core       | Node.js Core (Global) |
 | crypto                | 6.1.0   | means-node-core       | The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions. |
 | drama                 | 0.1.3   | means-node-drama      | drama is an Actor model implementation for JavaScript and Node.js |
+| escape-html           | 1.0.3   | means-node-escape-html| Escape string for use in HTML |
 | events                | 6.1.0   | means-node-core       | Node.js Core |
 | express               | 4.13.4  | means-node-express    | Fast, unopinionated, minimalist web framework for Node.js |
 | express-fileupload    | 0.0.5   | means-node-express-fileupload | Simple express file upload middleware that wraps around connect-busboy |

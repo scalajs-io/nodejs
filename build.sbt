@@ -40,10 +40,10 @@ lazy val root = (project in file(".")).
     angular_sanitize, angular_toaster, angular_ui_bootstrap, angular_ui_router,
     // node
     node_core, node_adal, node_amqplib, node_assert, node_async, node_azure, node_bcrypt, node_body_parser,
-    node_colors, node_crypto, node_drama, node_elgs_splitargs, node_express, node_express_fileupload, node_express_ws,
-    node_filed, node_fs, node_http, node_https, node_jwt_simple, node_kafka, node_mongodb, node_multer, node_net,
-    node_oppressor, node_os, node_path, node_readline, node_repl, node_request, node_string_decoder, node_url,
-    node_util, node_xml2js, node_zlib, node_zookeeper
+    node_colors, node_crypto, node_drama, node_escape_html, node_elgs_splitargs, node_express,
+    node_express_fileupload, node_express_ws, node_filed, node_fs, node_http, node_https, node_jwt_simple,
+    node_kafka, node_mongodb, node_multer, node_net, node_oppressor, node_os, node_path, node_readline,
+    node_repl, node_request, node_string_decoder, node_url, node_util, node_xml2js, node_zlib, node_zookeeper
   )
 
 lazy val core = (project in file("core")).
@@ -271,6 +271,15 @@ lazy val node_elgs_splitargs = (project in file("node/elgs-splitargs")).
   settings(
     name := "means-node-elgs-splitargs",
     description := "NodeJS/elgs-splitargs facade for Scala.js"
+  )
+
+lazy val node_escape_html = (project in file("node/escape-html")).
+  dependsOn(node_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-escape-html",
+    description := "NodeJS/escape-html facade for Scala.js"
   )
 
 lazy val node_express = (project in file("node/express")).
@@ -501,14 +510,16 @@ lazy val node_zookeeper = (project in file("node/zookeeper-client")).
 lazy val examples = (project in file("examples")).
   aggregate(
     node_core, node_adal, node_amqplib, node_assert, node_async, node_azure, node_bcrypt, node_body_parser, node_colors,
-    node_crypto, node_drama, node_elgs_splitargs, node_express, node_express_ws, node_filed, node_fs, node_http, node_https,
-    node_jwt_simple, node_kafka, node_mongodb, node_multer, node_net, node_oppressor, node_os, node_path, node_readline,
-    node_repl, node_request, node_string_decoder, node_url, node_util, node_xml2js, node_zlib, node_zookeeper).
+    node_crypto, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_ws, node_filed, node_fs,
+    node_http, node_https, node_jwt_simple, node_kafka, node_mongodb, node_multer, node_net, node_oppressor, node_os,
+    node_path, node_readline, node_repl, node_request, node_string_decoder, node_url, node_util, node_xml2js, node_zlib,
+    node_zookeeper).
   dependsOn(
     node_core, node_adal, node_amqplib, node_assert, node_async, node_azure, node_bcrypt, node_body_parser, node_colors,
-    node_crypto, node_drama, node_elgs_splitargs, node_express, node_express_ws, node_filed, node_fs, node_http, node_https,
-    node_jwt_simple, node_kafka, node_mongodb, node_multer, node_net, node_oppressor, node_os, node_path, node_readline,
-    node_repl, node_request, node_string_decoder, node_url, node_util, node_xml2js, node_zlib, node_zookeeper).
+    node_crypto, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_ws, node_filed, node_fs,
+    node_http, node_https, node_jwt_simple, node_kafka, node_mongodb, node_multer, node_net, node_oppressor, node_os,
+    node_path, node_readline, node_repl, node_request, node_string_decoder, node_url, node_util, node_xml2js, node_zlib,
+    node_zookeeper).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(

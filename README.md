@@ -28,10 +28,11 @@ The goal of MEANS.js is to be a complete Scala.js facade for the entire MEAN Sta
  Simply put, MEANS.js let's me have my cake and eat it too! And as such, I've gone to great lengths to bring all the 
  things you love about developing applications on the MEAN Stack to Scala.
  
-MEANS.js is componentized; allowing developers to include just the features they want. Additionally, there are currently at least three application use cases for MEANS.js:
+MEANS.js is componentized; allowing developers to use include just the features they want. Additionally, there are currently at least four development use cases for MEANS.js:
  
 * Building rich thin-client web frontends using AngularJS bindings only.
 * Building full MEAN stack applications using AngularJS and Node bindings.
+* Building REST services using Node bindings only.
 * Building CLI applications using Node bindings only.
 
 <a name="Development"></a>
@@ -582,8 +583,6 @@ MEANS.js provides implicit conversions so that you may use `scala.concurrent.dur
 `$interval`, and any other services that use time in milliseconds.
 
 ```scala
-import com.github.ldaniels528.meansjs.angularjs.core.TimerConversions._
-
 $timeout(() => doSomething(), 5.minutes)
 ```
 
@@ -652,7 +651,7 @@ Here's how it's handled via Scala.js:
 outcome onComplete {
     case Success(updatedQuotes) => obj.quotes = updatedQuotes
     case Failure(e) =>
-        toaster.error(s"Failed to load Held Securities")
+        toaster.error("Failed to load Held Securities")
         console.error(s"Failed to load Held Securities: ${e.getMessage}")
 }
 ```

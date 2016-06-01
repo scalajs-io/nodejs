@@ -726,7 +726,7 @@ val outcome = for {
 
 outcome onComplete {
     case Success((fbProfile, friends)) =>
-        console.log("fbProfile = ${angular.toJson(fbProfile, pretty = true)}")
+        console.log(s"fbProfile = ${angular.toJson(fbProfile, pretty = true)}")
         console.log(s"fbFriends = ${angular.toJson(fbFriends, pretty = true)}")
     case Failure(e) =>
         toaster.error(s"Failed to retrieve Facebook profile and friends - ${e.displayMessage}")

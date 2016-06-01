@@ -1,6 +1,6 @@
 MEANS.js
 =============
-MEANS.js is a Scala.js Facade for the MEAN Stack (MongoDB ExpressJS AngularJS NodeJS).
+MEANS.js is a Scala.js binding/facade for the MEAN Stack (MongoDB ExpressJS AngularJS NodeJS).
  
 ## Table of Contents
 
@@ -27,6 +27,12 @@ The goal of MEANS.js is to be a complete Scala.js facade for the entire MEAN Sta
  there are so many languages that are designed to improve the experience (CoffeeScript, TypeScript, Scala.js and others). 
  Simply put, MEANS.js let's me have my cake and eat it too! And as such, I've gone to great lengths to bring all the 
  things you love about developing applications on the MEAN Stack to Scala.
+ 
+MEANS.js is componentized; allowing developers to use include just the features they want. Additionally, there are currently at least three application use cases for MEANS.js:
+ 
+* Building rich thin-client web frontends using AngularJS bindings only.
+* Building full MEAN stack applications using AngularJS and Node bindings.
+* Building CLI applications using Node bindings only.
 
 <a name="Development"></a>
 ## Development

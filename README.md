@@ -71,6 +71,11 @@ The following applications were developed using MEANS.js:
 | [Socialized](https://github.com/ldaniels528/socialized) | MEANS.js/AngularJS    | MEANS.js/NodeJS    | A Social networking portal written in Scala.js and MEANS.js. |
 | [Trifecta](https://github.com/ldaniels528/trifecta)     | MEANS.js/AngularJS    | Play 2.4.x + Scala | Trifecta is a web-based and CLI tool that simplifies inspecting Kafka messages and Zookeeper data. |
  
+ 
+<a name="Discussions"></a>
+### Discussions
+ 
+There's currently an on-going discussion about [MEANS.js on Reddit](https://www.reddit.com/r/scala/comments/4loosi/meansjs_scalajs_facades_for_the_nodejs_api/).    
    
 <a name="NodeJS"></a>
 ## Node.js

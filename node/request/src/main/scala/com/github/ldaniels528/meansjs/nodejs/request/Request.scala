@@ -61,7 +61,7 @@ object Request {
     */
   implicit class RequestExtensions(val request: Request) extends AnyVal {
 
-    def getAsync(url: String) = {
+    def getFuture(url: String) = {
       val promise = Promise[(IncomingMessage, String)]()
       request.get(url, (error: String, response: IncomingMessage, body: String) => {
         if (!isDefined(error)) promise.success((response, body)) else promise.failure(wrapJavaScriptException(error))

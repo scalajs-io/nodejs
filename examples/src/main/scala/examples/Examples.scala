@@ -24,6 +24,7 @@ object Examples extends js.JSApp {
     "AsyncForEachOfExample" -> ((bootstrap: Bootstrap) => new AsyncForEachOfExample(bootstrap)),
     "AsyncWaterfallExample" -> ((bootstrap: Bootstrap) => new AsyncWaterfallExample(bootstrap)),
     "BuffersExample" -> ((bootstrap: Bootstrap) => new BuffersExample(bootstrap)),
+    "CassandraExample" -> ((bootstrap: Bootstrap) => new CassandraExample(bootstrap)),
     "ClassesExample" -> ((bootstrap: Bootstrap) => new ClassesExample(bootstrap)),
     "ClientRequestExample" -> ((bootstrap: Bootstrap) => new ClientRequestExample(bootstrap)),
     "ColorsExample" -> ((bootstrap: Bootstrap) => new ColorsExample(bootstrap)),

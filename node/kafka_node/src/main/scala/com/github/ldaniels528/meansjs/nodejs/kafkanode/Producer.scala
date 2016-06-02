@@ -43,22 +43,22 @@ object Producer {
     /**
       * @see [[Producer.on()]]
       */
-    def onError(callback: js.Function) = producer.on("error", callback)
+    @inline def onError(callback: js.Function) = producer.on("error", callback)
 
     /**
       * @see [[Producer.on()]]
       */
-    def onReady(callback: js.Function) = producer.on("ready", callback)
+    @inline def onReady(callback: js.Function) = producer.on("ready", callback)
 
     /**
       * @see [[Producer.createTopics()]]
       */
-    def createTopicsAsync(topics: js.Array[String], async: Boolean) = callbackWithErrorToFuture[js.Any](producer.createTopics(topics, async, _))
+    @inline def createTopicsFuture(topics: js.Array[String], async: Boolean) = callbackWithErrorToFuture[js.Any](producer.createTopics(topics, async, _))
 
     /**
       * @see [[Producer.send()]]
       */
-    def sendAsync(payloads: js.Array[Payload]) = callbackWithErrorToFuture[js.Any](producer.send(payloads, _))
+    @inline def sendFuture(payloads: js.Array[Payload]) = callbackWithErrorToFuture[js.Any](producer.send(payloads, _))
 
   }
 

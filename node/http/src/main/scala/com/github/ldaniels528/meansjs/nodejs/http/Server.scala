@@ -83,13 +83,13 @@ object Server {
   implicit class ServerExtensions(val server: Server) extends AnyVal {
 
     @inline
-    def closeAsync = callbackWithErrorToFuture[Unit](server.close)
+    def closeFuture() = callbackWithErrorToFuture[Unit](server.close)
 
     @inline
-    def getConnectionsAsync = callbackWithErrorToFuture[Int](server.getConnections)
+    def getConnectionsFuture = callbackWithErrorToFuture[Int](server.getConnections)
 
     @inline
-    def listenAsync(options: ListenerOptions) = callbackWithErrorToFuture[Unit](server.listen(options, _))
+    def listenFuture(options: ListenerOptions) = callbackWithErrorToFuture[Unit](server.listen(options, _))
 
   }
 

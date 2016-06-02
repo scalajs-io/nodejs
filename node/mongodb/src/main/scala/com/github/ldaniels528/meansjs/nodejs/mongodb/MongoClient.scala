@@ -60,16 +60,16 @@ object MongoClient {
   implicit class MongoClientExtensions(val client: MongoClient) extends AnyVal {
 
     @inline
-    def closeAsync = callbackMongoFuture[Db](client.close)
+    def closeFuture() = callbackMongoFuture[Db](client.close)
 
     @inline
-    def connectAsync(url: String) = callbackMongoFuture[Db](client.connect(url, _))
+    def connectFuture(url: String) = callbackMongoFuture[Db](client.connect(url, _))
 
     @inline
-    def connectAsync(url: String, options: ConnectionOptions) = callbackMongoFuture[Db](client.connect(url, options, _))
+    def connectFuture(url: String, options: ConnectionOptions) = callbackMongoFuture[Db](client.connect(url, options, _))
 
     @inline
-    def openAsync = callbackMongoFuture[Db](client.open)
+    def openFuture() = callbackMongoFuture[Db](client.open)
 
   }
 

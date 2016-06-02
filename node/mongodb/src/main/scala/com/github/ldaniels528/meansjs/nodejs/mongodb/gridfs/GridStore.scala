@@ -271,129 +271,129 @@ object GridStore {
       * Retrieve this file’s chunks collection.
       */
     @inline
-    def chunkCollectionAsync() = callbackMongoFuture[Collection](gridStore.chunkCollection)
+    def chunkCollectionFuture() = callbackMongoFuture[Collection](gridStore.chunkCollection)
 
     /**
       * Saves this file to the database. This will overwrite the old entry if it already exists. This will work
       * properly only if mode was initialized to “w” or “w+”.
       */
     @inline
-    def closeAsync() = callbackMongoFuture[js.Any](gridStore.close)
+    def closeFuture() = callbackMongoFuture[js.Any](gridStore.close)
 
     /**
       * Retrieves the file collection associated with this object.
       */
     @inline
-    def collectionAsync() = callbackMongoFuture[js.Any](gridStore.collection)
+    def collectionFuture() = callbackMongoFuture[js.Any](gridStore.collection)
 
     /**
       * Retrieves a single character from this file.
       */
     @inline
-    def getcAsync() = callbackMongoFuture[String](gridStore.getc)
+    def getcFuture() = callbackMongoFuture[String](gridStore.getc)
 
     /**
       * Opens the file from the database and initialize this object. Also creates a new one if file does not exist.
       */
     @inline
-    def openAsync() = callbackMongoFuture[Db](gridStore.open)
+    def openFuture() = callbackMongoFuture[Db](gridStore.open)
 
     /**
       * Writes a string to the file with a newline character appended at the end if the given string does not have one.
       */
     @inline
-    def putsAsync(string: String) = callbackMongoFuture[GridStore](gridStore.puts(string, _))
+    def putsFuture(string: String) = callbackMongoFuture[GridStore](gridStore.puts(string, _))
 
     /**
       * Retrieves the contents of this file and advances the read/write head. Works with Buffers only.
       */
     @inline
-    def readAsync[T <: js.Any](length: Int, buffer: Buffer) = callbackMongoFuture[js.Array[T]](gridStore.read(length, buffer, _))
+    def readFuture[T <: js.Any](length: Int, buffer: Buffer) = callbackMongoFuture[js.Array[T]](gridStore.read(length, buffer, _))
 
     /**
       * Retrieves the contents of this file and advances the read/write head. Works with Buffers only.
       */
     @inline
-    def readAsync[T <: js.Any](buffer: Buffer) = callbackMongoFuture[js.Array[T]](gridStore.read(buffer, _))
+    def readFuture[T <: js.Any](buffer: Buffer) = callbackMongoFuture[js.Array[T]](gridStore.read(buffer, _))
 
     /**
       * Retrieves the contents of this file and advances the read/write head. Works with Buffers only.
       */
     @inline
-    def readAsync[T <: js.Any]() = callbackMongoFuture[js.Array[T]](gridStore.read)
+    def readFuture[T <: js.Any]() = callbackMongoFuture[js.Array[T]](gridStore.read)
 
     /**
       * Reads the data of this file.
       */
     @inline
-    def readlinesAsync(separator: String) = callbackMongoFuture[js.Array[String]](gridStore.readlines(separator, _))
+    def readlinesFuture(separator: String) = callbackMongoFuture[js.Array[String]](gridStore.readlines(separator, _))
 
     /**
       * Reads the data of this file.
       */
     @inline
-    def readlinesAsync = callbackMongoFuture[js.Array[String]](gridStore.readlines)
+    def readlinesFuture = callbackMongoFuture[js.Array[String]](gridStore.readlines)
 
     /**
       * Deletes all the chunks of this file in the database if mode was set to “w” or “w+” and resets the read/write
       * head to the initial position.
       */
     @inline
-    def rewindAsync() = callbackMongoFuture[js.Any](gridStore.rewind)
+    def rewindFuture() = callbackMongoFuture[js.Any](gridStore.rewind)
 
     /**
       * Moves the read/write head to a new location.
       */
     @inline
-    def seekAsync(position: Int, seekLocation: Int) = callbackMongoFuture[GridStore](gridStore.seek(position, seekLocation, _))
+    def seekFuture(position: Int, seekLocation: Int) = callbackMongoFuture[GridStore](gridStore.seek(position, seekLocation, _))
 
     /**
       * Moves the read/write head to a new location.
       */
     @inline
-    def seekAsync(seekLocation: Int) = callbackMongoFuture[GridStore](gridStore.seek(seekLocation, _))
+    def seekFuture(seekLocation: Int) = callbackMongoFuture[GridStore](gridStore.seek(seekLocation, _))
 
     /**
       * Moves the read/write head to a new location.
       */
     @inline
-    def seekAsync() = callbackMongoFuture[GridStore](gridStore.seek)
+    def seekFuture() = callbackMongoFuture[GridStore](gridStore.seek)
 
     /**
       * Deletes all the chunks of this file in the database.
       */
     @inline
-    def unlinkAsync() = callbackMongoFuture[Boolean](gridStore.unlink)
+    def unlinkFuture() = callbackMongoFuture[Boolean](gridStore.unlink)
 
     /**
       * Writes some data. This method will work properly only if initialized with mode “w” or “w+”.
       */
     @inline
-    def writeAsync(data: Buffer, close: Boolean) = callbackMongoFuture[GridStore](gridStore.write(data, close, _))
+    def writeFuture(data: Buffer, close: Boolean) = callbackMongoFuture[GridStore](gridStore.write(data, close, _))
 
     /**
       * Writes some data. This method will work properly only if initialized with mode “w” or “w+”.
       */
     @inline
-    def writeAsync(data: String, close: Boolean) = callbackMongoFuture[GridStore](gridStore.write(data, close, _))
+    def writeFuture(data: String, close: Boolean) = callbackMongoFuture[GridStore](gridStore.write(data, close, _))
 
     /**
       * Writes some data. This method will work properly only if initialized with mode “w” or “w+”.
       */
     @inline
-    def writeAsync(data: Buffer) = callbackMongoFuture[GridStore](gridStore.write(data, _))
+    def writeFuture(data: Buffer) = callbackMongoFuture[GridStore](gridStore.write(data, _))
 
     /**
       * Writes some data. This method will work properly only if initialized with mode “w” or “w+”.
       */
     @inline
-    def writeAsync(data: String) = callbackMongoFuture[GridStore](gridStore.write(data, _))
+    def writeFuture(data: String) = callbackMongoFuture[GridStore](gridStore.write(data, _))
 
     /**
       * Stores a file from the file system to the GridFS database.
       */
     @inline
-    def writeFileAsync(file: String) = callbackMongoFuture[GridStore](gridStore.writeFile(file, _))
+    def writeFileFuture(file: String) = callbackMongoFuture[GridStore](gridStore.writeFile(file, _))
 
   }
 

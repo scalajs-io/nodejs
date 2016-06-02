@@ -9,7 +9,7 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   *              as it's been sent over the wire. Default is false, that is, you will be expected to acknowledge the message.
   */
 @ScalaJSDefined
-class NoAckOptions(noAck: js.UndefOr[Boolean]) extends js.Object
+class NoAckOptions(noAck: js.UndefOr[Boolean] = js.undefined) extends js.Object
 
 /**
   * Ack / No Ack Options Companion

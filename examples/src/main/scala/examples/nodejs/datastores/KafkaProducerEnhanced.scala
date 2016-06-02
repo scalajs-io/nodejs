@@ -26,7 +26,7 @@ class KafkaProducerEnhanced(bootstrap: Bootstrap) {
   producer.onReady(() => {
     console.log("Received ready:")
 
-    producer.sendAsync(payloads) foreach { data =>
+    producer.sendFuture(payloads) foreach { data =>
       console.log("Received data:")
       console.log(data)
     }

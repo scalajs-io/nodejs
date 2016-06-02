@@ -91,19 +91,22 @@ object Db {
     def collectionFuture(name: String, options: CollectionOptions) = callbackMongoFuture[Collection](db.collection(name, options, _))
 
     @inline
-    def collectionNamesAsync = callbackMongoFuture[js.Array[String]](db.collectionNames)
+    def collectionNamesFuture = callbackMongoFuture[js.Array[String]](db.collectionNames)
 
     @inline
-    def createCollectionAsync(name: String) = callbackMongoFuture[Collection](db.createCollection(name, _))
+    def createCollectionFuture(name: String) = callbackMongoFuture[Collection](db.createCollection(name, _))
 
     @inline
-    def createCollectionAsync(name: String, options: CollectionOptions) = callbackMongoFuture[Collection](db.createCollection(name, options, _))
+    def createCollectionFuture(name: String, options: CollectionOptions) = callbackMongoFuture[Collection](db.createCollection(name, options, _))
 
     @inline
-    def dropCollectionAsync(name: String) = callbackMongoFuture[OperationResult](db.dropCollection(name, _))
+    def dropCollectionFuture(name: String) = callbackMongoFuture[OperationResult](db.dropCollection(name, _))
 
     @inline
-    def dropDatabaseAsync = callbackMongoFuture[OperationResult](db.dropDatabase)
+    def dropDatabaseFuture() = callbackMongoFuture[OperationResult](db.dropDatabase)
+
+    @inline
+    def openFuture() = callbackMongoFuture[Db](db.open)
 
   }
 

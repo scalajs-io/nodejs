@@ -33,7 +33,7 @@ class ZkStateExample(bootstrap: Bootstrap) {
     console.log("on: Connected")
   })
 
-  client.getChildrenAsync("/") onComplete {
+  client.getChildrenFuture("/") onComplete {
     case Success(path) =>
       console.log("path = %j", path)
     case Failure(e) =>

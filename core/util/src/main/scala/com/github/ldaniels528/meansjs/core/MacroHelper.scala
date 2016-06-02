@@ -1,4 +1,4 @@
-package com.github.ldaniels528.meansjs.angularjs
+package com.github.ldaniels528.meansjs.core
 
 import scala.reflect.macros.blackbox
 

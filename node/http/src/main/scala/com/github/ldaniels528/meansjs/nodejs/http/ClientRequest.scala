@@ -173,10 +173,10 @@ object ClientRequest {
   implicit class ClientRequestEnrich(val request: ClientRequest) extends AnyVal {
 
     @inline
-    def endAsync(data: js.Any, encoding: String) = callbackWithErrorToFuture[js.Any](request.end(data, encoding, _))
+    def endFuture(data: js.Any, encoding: String) = callbackWithErrorToFuture[js.Any](request.end(data, encoding, _))
 
     @inline
-    def writeAsync(chunk: js.Any, encoding: String) = callbackWithErrorToFuture[js.Any](request.write(chunk, encoding, _))
+    def writeFuture(chunk: js.Any, encoding: String) = callbackWithErrorToFuture[js.Any](request.write(chunk, encoding, _))
 
     /**
       * Emitted when the request has been aborted by the client. This event is only emitted on the first call to abort().

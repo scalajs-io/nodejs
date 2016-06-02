@@ -207,25 +207,25 @@ object Client {
       * @see [[Client.getChildren()]]
       */
     @inline
-    def getChildrenAsync(path: String, watcher: Watcher) = callbackWithErrorToFuture[js.Array[String]](client.getChildren(path, watcher, _))
+    def getChildrenFuture(path: String, watcher: Watcher) = callbackWithErrorToFuture[js.Array[String]](client.getChildren(path, watcher, _))
 
     /**
       * @see [[Client.getChildren()]]
       */
     @inline
-    def getChildrenAsync(path: String) = callbackWithErrorToFuture[js.Any](client.getChildren(path, _))
+    def getChildrenFuture(path: String) = callbackWithErrorToFuture[js.Any](client.getChildren(path, _))
 
     /**
       * @see [[Client.getData()]]
       */
     @inline
-    def getDataAsync[T](path: String, watcher: Watcher) = callbackWithErrorToFuture[js.Array[T]](client.getChildren(path, watcher, _))
+    def getDataFuture[T](path: String, watcher: Watcher) = callbackWithErrorToFuture[js.Array[T]](client.getChildren(path, watcher, _))
 
     /**
       * @see [[Client.getData()]]
       */
     @inline
-    def getDataAsync[T](path: String) = callbackWithErrorToFuture[js.Array[T]](client.getChildren(path, _))
+    def getDataFuture[T](path: String) = callbackWithErrorToFuture[js.Array[T]](client.getChildren(path, _))
 
     /**
       * Client is connected and ready.

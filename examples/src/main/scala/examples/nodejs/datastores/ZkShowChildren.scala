@@ -38,7 +38,7 @@ class ZkShowChildren(bootstrap: Bootstrap) {
       setTimeout(() =>
         paths foreach { path =>
           val childPath = s"/$path"
-          client.getDataAsync[js.Object](childPath) foreach { data =>
+          client.getDataFuture[js.Object](childPath) foreach { data =>
             console.log(s"$path => ${JSON.stringify(data)}")
           }
         }, 1.second)

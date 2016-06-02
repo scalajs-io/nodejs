@@ -30,8 +30,8 @@ The goal of MEANS.js is to be a complete Scala.js facade for the entire MEAN Sta
  
 MEANS.js is componentized; allowing developers to use include just the features they want. Additionally, there are currently at least four development use cases for MEANS.js:
  
-* Building rich thin-client web frontends using AngularJS bindings only.
 * Building full MEAN stack applications using AngularJS and Node bindings.
+* Building rich thin-client web frontends using AngularJS bindings only (with any backend).
 * Building REST services using Node bindings only.
 * Building CLI applications using Node bindings only.
 
@@ -65,8 +65,12 @@ MEANS.js is componentized; allowing developers to use include just the features 
 ### Developed using MEANS.js
    
 The following applications were developed using MEANS.js:
-* [Socialized](https://github.com/ldaniels528/socialized)
-* [Trifecta](https://github.com/ldaniels528/trifecta)   
+
+| Application                                             | Frontend              | Backend            | Description                                                  |
+|---------------------------------------------------------|-----------------------|--------------------|--------------------------------------------------------------|
+| [Socialized](https://github.com/ldaniels528/socialized) | MEANS.js/AngularJS    | MEANS.js/NodeJS    | A Social networking portal written in Scala.js and MEANS.js. |
+| [Trifecta](https://github.com/ldaniels528/trifecta)     | MEANS.js/AngularJS    | Play 2.4.x + Scala | Trifecta is a web-based and CLI tool that simplifies inspecting Kafka messages and Zookeeper data. |
+ 
    
 <a name="NodeJS"></a>
 ## Node.js

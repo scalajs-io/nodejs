@@ -98,38 +98,38 @@ The following NodeJS modules have been implemented thus far:
 | adal-node             | 0.1.19  | means-node-adal-node  | Windows Azure Active Directory Client Library for node. | Tesing required |
 | amqplib               | 0.4.1   | means-node-amqplib    | An AMQP 0-9-1 (e.g., RabbitMQ) library and client. | Tesing required |
 | async                 | 1.5.2   | means-node-async      | Higher-order functions and common patterns for asynchronous code. | Tesing required |
-| assert                | 6.1.0   | means-node-assert     | Provides a simple set of assertion tests that can be used to test invariants. |
+| assert                | 6.1.0   | means-node-assert     | Provides a simple set of assertion tests that can be used to test invariants. | Tesing required |
 | azure                 | 0.10.6  | means-node-azure      | Microsoft Azure Client Library for node. | WIP - Unusable |
-| bcrypt                | 0.0.3   | means-node-bcrypt     | A native JS bcrypt library for NodeJS. | Tesing required |
-| body-parser           | 1.15.1  | means-node-body-parser| Body parsing middleware. | Tesing required |
-| buffer                | 6.1.0   | means-node-core       | The Buffer class was introduced as part of the Node.js API to make it possible to interact with octet streams in the context of things like TCP streams and file system operations. | Tesing required |
+| bcrypt                | 0.0.3   | means-node-bcrypt     | A native JS bcrypt library for NodeJS. | Stable |
+| body-parser           | 1.15.1  | means-node-body-parser| Body parsing middleware. | Stable |
+| buffer                | 6.1.0   | means-node-core       | The Buffer class was introduced as part of the Node.js API to make it possible to interact with octet streams in the context of things like TCP streams and file system operations. | Stable |
 | crypto                | 6.1.0   | means-node-core       | The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions.| Tesing required |
 | cassandra-driver      | 3.0.2   | means-node-datastax-cassandra| DataStax Node.js Driver for Apache Cassandra | Tesing required |
 | drama                 | 0.1.3   | means-node-drama      | drama is an Actor model implementation for JavaScript and Node.js | Tesing required |
-| escape-html           | 1.0.3   | means-node-escape-html| Escape string for use in HTML | Tesing required |
-| events                | 6.1.0   | means-node-core       | Node.js Events Interface | Tesing required |
-| express               | 4.13.4  | means-node-express    | Fast, unopinionated, minimalist web framework for Node.js | Tesing required |
-| express-fileupload    | 0.0.5   | means-node-express-fileupload | Simple express file upload middleware that wraps around connect-busboy | Tesing required |
-| express-ws            |2.0.0-rc1| means-node-express-ws | WebSocket endpoints for Express applications | Tesing required |
-| filed                 | 0.1.0   | means-node-filed      | Simplified file library. | Tesing required |
-| fs                    | 6.1.0   | means-node-fs         | File I/O is provided by simple wrappers around standard POSIX functions. | Tesing required |
-| http                  | 6.1.0   | means-node-http       | Node.js HTTP Interface | Tesing required |
+| escape-html           | 1.0.3   | means-node-escape-html| Escape string for use in HTML | Stable |
+| events                | 6.1.0   | means-node-core       | Node.js Events Interface | Stable |
+| express               | 4.13.4  | means-node-express    | Fast, unopinionated, minimalist web framework for Node.js | Stable |
+| express-fileupload    | 0.0.5   | means-node-express-fileupload | Simple express file upload middleware that wraps around connect-busboy | Stable |
+| express-ws            |2.0.0-rc1| means-node-express-ws | WebSocket endpoints for Express applications | Stable |
+| filed                 | 0.1.0   | means-node-filed      | Simplified file library. | Stable |
+| fs                    | 6.1.0   | means-node-fs         | File I/O is provided by simple wrappers around standard POSIX functions. | Stable |
+| http                  | 6.1.0   | means-node-http       | Node.js HTTP Interface | Stable |
 | https                 | 6.1.0   | means-node-https      | Node.js HTTPS Interface | Tesing required |
-| jwt-simple            | 0.5.0   | means-node-jwt-simple | JWT(JSON Web Token) encode and decode module | Tesing required |
+| jwt-simple            | 0.5.0   | means-node-jwt-simple | JWT(JSON Web Token) encode and decode module | Stable |
 | kafka-node            | 0.0.11  | means-node-kafkanode  | A node binding for librdkafka | Tesing required |
-| mongodb               | 2.1.18  | means-node-mongodb    | Node.js MongoDB Driver | Tesing required |
-| multer                | 1.1.0   | means-node-multer     | Multer is a node.js middleware for handling multipart/form-data. | Tesing required |
+| mongodb               | 2.1.18  | means-node-mongodb    | Node.js MongoDB Driver | Stable |
+| multer                | 1.1.0   | means-node-multer     | Multer is a node.js middleware for handling multipart/form-data. | Stable |
 | mysql                 | 2.10.2  | means-node-mysql      | A node.js driver for mysql. | Tesing required |
 | net                   | 6.1.0   | means-node-net        | The net module provides you with an asynchronous network wrapper. | Tesing required |
 | oppressor             | 0.0.1   | means-node-oppressor  | Streaming http compression response negotiator. | Tesing required |
-| os                    | 6.1.0   | means-node-os         | Provides a few basic operating-system related utility functions. | Tesing required |
+| os                    | 6.1.0   | means-node-os         | Provides a few basic operating-system related utility functions. | Stable |
 | node-zookeeper-client | 0.2.2   | means-node-zookeeper-client | A higher-level ZooKeeper client based on node-zookeeper with support for locking and master election. | Tesing required |
-| path                  | 6.1.0   | means-node-path       | This module contains utilities for handling and transforming file paths. | Tesing required |
-| readline              | 6.1.0   | means-node-readline   | Readline allows reading of a stream on a line-by-line basis. | Tesing required |
-| repl                  | 6.1.0   | means-node-repl       | The REPL provides a way to interactively run JavaScript and see the results. | Tesing required |
+| path                  | 6.1.0   | means-node-path       | This module contains utilities for handling and transforming file paths. | Stable |
+| readline              | 6.1.0   | means-node-readline   | Readline allows reading of a stream on a line-by-line basis. | Stable |
+| repl                  | 6.1.0   | means-node-repl       | The REPL provides a way to interactively run JavaScript and see the results. | Stable |
 | request               | 2.72.1  | means-node-request    | Simplified HTTP request client. | Tesing required |
 | splitargs             | 0.0.7   | means-node-elgs-splitargs | Splits strings into tokens by given separator except treating quoted part as a single token. | Tesing required |
-| stream                | 6.1.0   | means-node-core       | A stream is an abstract interface implemented by various objects in Node.js. | Tesing required |
+| stream                | 6.1.0   | means-node-core       | A stream is an abstract interface implemented by various objects in Node.js. | Stable |
 | string-decoder        | 6.1.0   | means-node-string-decoder | The string_decoder module provides an API for decoding Buffer objects into strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16 characters. | Tesing required |
 | url                   | 6.1.0   | means-node-core       | The url module provides utilities for URL resolution and parsing. | Tesing required |
 | util                  | 6.1.0   | means-node-util       | The util module is primarily designed to support the needs of Node.js's internal APIs.  | Tesing required |

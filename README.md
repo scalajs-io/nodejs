@@ -98,7 +98,7 @@ The following NodeJS modules have been implemented thus far:
 | adal-node             | 0.1.19  | means-node-adal-node  | Windows Azure Active Directory Client Library for node. | Tesing required |
 | amqplib               | 0.4.1   | means-node-amqplib    | An AMQP 0-9-1 (e.g., RabbitMQ) library and client. | Tesing required |
 | async                 | 1.5.2   | means-node-async      | Higher-order functions and common patterns for asynchronous code. | Tesing required |
-| assert                | 6.1.0   | means-node-assert     | Provides a simple set of assertion tests that can be used to test invariants. | Tesing required |
+| assert                | 6.1.0   | means-node-assert     | Provides a simple set of assertion tests that can be used to test invariants. | Stable |
 | azure                 | 0.10.6  | means-node-azure      | Microsoft Azure Client Library for node. | WIP - Unusable |
 | bcrypt                | 0.0.3   | means-node-bcrypt     | A native JS bcrypt library for NodeJS. | Stable |
 | body-parser           | 1.15.1  | means-node-body-parser| Body parsing middleware. | Stable |
@@ -127,12 +127,12 @@ The following NodeJS modules have been implemented thus far:
 | path                  | 6.1.0   | means-node-path       | This module contains utilities for handling and transforming file paths. | Stable |
 | readline              | 6.1.0   | means-node-readline   | Readline allows reading of a stream on a line-by-line basis. | Stable |
 | repl                  | 6.1.0   | means-node-repl       | The REPL provides a way to interactively run JavaScript and see the results. | Stable |
-| request               | 2.72.1  | means-node-request    | Simplified HTTP request client. | Tesing required |
-| splitargs             | 0.0.7   | means-node-elgs-splitargs | Splits strings into tokens by given separator except treating quoted part as a single token. | Tesing required |
+| request               | 2.72.1  | means-node-request    | Simplified HTTP request client. | Stable |
+| splitargs             | 0.0.7   | means-node-elgs-splitargs | Splits strings into tokens by given separator except treating quoted part as a single token. | Stable |
 | stream                | 6.1.0   | means-node-core       | A stream is an abstract interface implemented by various objects in Node.js. | Stable |
-| string-decoder        | 6.1.0   | means-node-string-decoder | The string_decoder module provides an API for decoding Buffer objects into strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16 characters. | Tesing required |
-| url                   | 6.1.0   | means-node-core       | The url module provides utilities for URL resolution and parsing. | Tesing required |
-| util                  | 6.1.0   | means-node-util       | The util module is primarily designed to support the needs of Node.js's internal APIs.  | Tesing required |
+| string-decoder        | 6.1.0   | means-node-string-decoder | The string_decoder module provides an API for decoding Buffer objects into strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16 characters. | Stable |
+| url                   | 6.1.0   | means-node-core       | The url module provides utilities for URL resolution and parsing. | Stable |
+| util                  | 6.1.0   | means-node-util       | The util module is primarily designed to support the needs of Node.js's internal APIs.  | Stable |
 | xml2js                | 0.4.16  | means-node-xml2js     | Simple XML to JavaScript object converter. | Tesing required |
 | zlib                  | 6.1.0   | means-node-zlib       | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. | Tesing required |
 

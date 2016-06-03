@@ -72,26 +72,26 @@ object Grid extends {
       * Delete file from grid
       * @param id the _id for file.
       */
-    def deleteAsync(id: js.Any) = callbackMongoFuture[Grid](grid.delete(id, _))
+    def deleteFuture(id: js.Any) = callbackMongoFuture[Grid](grid.delete(id, _))
 
     /**
       * Get binary data to the grid
       * @param id the _id for file.
       */
-    def getAsync(id: js.Any) = callbackMongoFuture[Buffer](grid.get(id, _))
+    def getFuture(id: js.Any) = callbackMongoFuture[Buffer](grid.get(id, _))
 
     /**
       * Puts binary data to the grid
       * @param data    buffer with Binary Data.
       * @param options the options for the files.
       */
-    def putAsync(data: Buffer, options: GridOptions) = callbackMongoFuture[Grid](grid.put(data, options, _))
+    def putFuture(data: Buffer, options: GridOptions) = callbackMongoFuture[Grid](grid.put(data, options, _))
 
     /**
       * Puts binary data to the grid
       * @param data buffer with Binary Data.
       */
-    def putAsync(data: Buffer, callback: js.Function) = callbackMongoFuture[Grid](grid.put(data, _))
+    def putFuture(data: Buffer, callback: js.Function) = callbackMongoFuture[Grid](grid.put(data, _))
 
   }
 

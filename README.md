@@ -1,59 +1,64 @@
 MEANS.js
 =============
-MEANS.js is a Scala.js binding/facade for the MEAN Stack (MongoDB ExpressJS AngularJS NodeJS).
+MEANS.js is a Scala.js binding for the MEAN Stack (MongoDB ExpressJS AngularJS NodeJS).
  
 ## Table of Contents
 
-* <a href="#Introduction">Introduction</a>
-* <a href="#Development">Development</a>
-    * <a href="#Requirements">Build Requirements</a>
-    * <a href="#Build">Building the SDK</a>
-    * <a href="#Run_Examples">Building and run examples</a>
-    * <a href="#Developed_using_MEANS">Developed using MEANS.js</a>
+* <a href="#introduction">Introduction</a>
+* <a href="#development">Development</a>
+    * <a href="#build_requirements">Build Requirements</a>
+    * <a href="#building_sdk">Building the SDK</a>
+    * <a href="#running_examples">Building and run examples</a>
+    * <a href="#apps_using_means">Developed using MEANS.js</a>
+    * <a href="#discussions">Discussions</a>
 * <a href="#NodeJS">Node.js bindings</a>
-    * <a href="#NodeJS_Modules">Modules</a>
-    * <a href="#NodeJS_Integration">Integration Guidance</a>    
+    * <a href="#node_modules">Modules</a>
+    * <a href="#node_integration">Integration Guidance</a>    
 * <a href="#Express">Express.js bindings</a>
 * <a href="#MongoDB">MongoDB bindings</a>
 * <a href="#Angular">Angular.js bindings</a>   
     * <a href="#Refinements">Scala.js Refinements</a> 
-    * <a href="#Social_Networks">Social Network bindings</a> 
+    * <a href="#social_networks">Social Network bindings</a> 
 
-<a name="Introduction"></a>
+<a name="introduction"></a>
 ## Introduction
 
-The goal of MEANS.js is to be a complete Scala.js facade for the entire MEAN Stack. Why? Because I love NodeJS,
+The goal of MEANS.js is to be a complete Scala.js binding for the entire MEAN Stack. Why? Because I love NodeJS,
  but I have a love/hate relationship with JavaScript. And many others feel the same way about JavaScript, which is why
  there are so many languages that are designed to improve the experience (CoffeeScript, TypeScript, Scala.js and others). 
  Simply put, MEANS.js let's me have my cake and eat it too! And as such, I've gone to great lengths to bring all the 
  things you love about developing applications on the MEAN Stack to Scala.
  
-MEANS.js is componentized; allowing developers to use include just the features they want. Additionally, there are currently at least four development use cases for MEANS.js:
+MEANS.js is componentized; allowing developers to use include only the features they want. If all your application 
+requires is a binding for AngularJS, you can use just that. Alternatively, you could use only the Node bindings, or the 
+entire MEAN stack.
+
+Currently, there are at least four development use cases for MEANS.js:
  
 * Building full MEAN stack applications using AngularJS and Node bindings.
 * Building rich thin-client web frontends using AngularJS bindings only (with any backend).
 * Building REST services using Node bindings only.
 * Building CLI applications using Node bindings only.
 
-<a name="Development"></a>
+<a name="development"></a>
 ## Development
 
-<a name="Requirements"></a>
+<a name="build_requirements"></a>
 #### Build Requirements
 
 * [Scala 2.11.8+] (http://scala-lang.org/download/)
-* [Scala.js 0.6.8] (http://www.scala-js.org/)
+* [Scala.js 0.6.9] (http://www.scala-js.org/)
 * [SBT 0.13.11+] (http://www.scala-sbt.org/download.html)
 
-<a name="Build"></a>
+<a name="building_sdk"></a>
 #### Build/publish the SDK
 
 ```bash
  $ sbt clean publish-local
 ```
 
-<a name="Run_Examples"></a>
-#### Buidling and running examples
+<a name="running_examples"></a>
+#### Building and running examples
 
 ```bash
  $ sbt "project examples" clean fastOptJS
@@ -61,7 +66,7 @@ MEANS.js is componentized; allowing developers to use include just the features 
  $ node ./examples.js FilesExample
 ```
 
-<a name="Developed_using_MEANS"></a>
+<a name="apps_using_means"></a>
 ### Developed using MEANS.js
    
 The following applications were developed using MEANS.js:
@@ -72,7 +77,7 @@ The following applications were developed using MEANS.js:
 | [Trifecta](https://github.com/ldaniels528/trifecta)     | MEANS.js/AngularJS    | Play 2.4.x + Scala | Trifecta is a web-based and CLI tool that simplifies inspecting Kafka messages and Zookeeper data. |
  
  
-<a name="Discussions"></a>
+<a name="discussions"></a>
 ### Discussions
  
 There's currently an on-going discussion about [MEANS.js on Reddit](https://www.reddit.com/r/scala/comments/4loosi/meansjs_scalajs_facades_for_the_nodejs_api/).    
@@ -83,52 +88,53 @@ There's currently an on-going discussion about [MEANS.js on Reddit](https://www.
 The Node.js integration is by no means complete; however, there should be a sufficient number of
 modules implemented for most web applications. 
 
-<a name="NodeJS_Modules">
+<a name="node_modules">
 #### Modules
 
 The following NodeJS modules have been implemented thus far:
 
-| Node Module           | Version | Artifact ID           | Description                                             |
-|-----------------------|---------|-----------------------|---------------------------------------------------------|
-| adal-node             | 0.1.19  | means-node-adal-node  | Windows Azure Active Directory Client Library for node. |
-| amqplib               | 0.4.1   | means-node-amqplib    | An AMQP 0-9-1 (e.g., RabbitMQ) library and client. |
-| async                 | 1.5.2   | means-node-async      | Higher-order functions and common patterns for asynchronous code. |
+| Node Module           | Version | Artifact ID           | Description                                             | Status          |
+|-----------------------|---------|-----------------------|---------------------------------------------------------|-----------------|
+| adal-node             | 0.1.19  | means-node-adal-node  | Windows Azure Active Directory Client Library for node. | Tesing required |
+| amqplib               | 0.4.1   | means-node-amqplib    | An AMQP 0-9-1 (e.g., RabbitMQ) library and client. | Tesing required |
+| async                 | 1.5.2   | means-node-async      | Higher-order functions and common patterns for asynchronous code. | Tesing required |
 | assert                | 6.1.0   | means-node-assert     | Provides a simple set of assertion tests that can be used to test invariants. |
-| azure                 | 0.10.6  | means-node-azure      | Microsoft Azure Client Library for node. (WIP) |
-| bcrypt                | 0.0.3   | means-node-bcrypt     | A native JS bcrypt library for NodeJS. |
-| body-parser           | 1.15.1  | means-node-body-parser| Body parsing middleware. |
-| buffer                | 6.1.0   | means-node-core       | Node.js Core (Global) |
-| crypto                | 6.1.0   | means-node-core       | The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions. |
-| drama                 | 0.1.3   | means-node-drama      | drama is an Actor model implementation for JavaScript and Node.js |
-| escape-html           | 1.0.3   | means-node-escape-html| Escape string for use in HTML |
-| events                | 6.1.0   | means-node-core       | Node.js Core |
-| express               | 4.13.4  | means-node-express    | Fast, unopinionated, minimalist web framework for Node.js |
-| express-fileupload    | 0.0.5   | means-node-express-fileupload | Simple express file upload middleware that wraps around connect-busboy |
-| express-ws            |2.0.0-rc1| means-node-express-ws | WebSocket endpoints for Express applications |
-| filed                 | 0.1.0   | means-node-filed      | Simplified file library. |
-| fs                    | 6.1.0   | means-node-fs         | Node.js Core |
-| http                  | 6.1.0   | means-node-http       | Node.js Core |
-| https                 | 6.1.0   | means-node-https      | Node.js Core |
-| jwt-simple            | 0.5.0   | means-node-jwt-simple | JWT(JSON Web Token) encode and decode module |
-| kafka-node            | 0.0.11  | means-node-kafkanode  | A node binding for librdkafka |
-| mongodb               | 2.1.18  | means-node-mongodb    | Node.js MongoDB Driver |
-| multer                | 1.1.0   | means-node-multer     | Multer is a node.js middleware for handling multipart/form-data. |
-| mysql                 | 2.10.2  | means-node-mysql      | A node.js driver for mysql. |
-| net                   | 6.1.0   | means-node-net        | Node.js Core |
-| oppressor             | 0.0.1   | means-node-oppressor  | Streaming http compression response negotiator. |
-| os                    | 6.1.0   | means-node-os         | Node.js Core |
-| node-zookeeper-client | 0.2.2   | means-node-zookeeper-client | A higher-level ZooKeeper client based on node-zookeeper with support for locking and master election. |
-| path                  | 6.1.0   | means-node-path       | This module contains utilities for handling and transforming file paths. |
-| readline              | 6.1.0   | means-node-readline   | Node.js Core |
-| repl                  | 6.1.0   | means-node-repl       | Node.js Core |
-| request               | 2.72.1  | means-node-request    | Simplified HTTP request client. |
-| splitargs             | 0.0.7   | means-node-elgs-splitargs | Splits strings into tokens by given separator except treating quoted part as a single token. |
-| stream                | 6.1.0   | means-node-core       | Node.js Core |
-| string-decoder        | 6.1.0   | means-node-string-decoder | Node.js Core |
-| url                   | 6.1.0   | means-node-core       | Node.js Core |
-| util                  | 6.1.0   | means-node-util       | The util module is primarily designed to support the needs of Node.js's internal APIs.  |
-| xml2js                | 0.4.16  | means-node-xml2js     | Simple XML to JavaScript object converter. |
-| zlib                  | 6.1.0   | means-node-zlib       | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. |
+| azure                 | 0.10.6  | means-node-azure      | Microsoft Azure Client Library for node. | WIP - Unusable |
+| bcrypt                | 0.0.3   | means-node-bcrypt     | A native JS bcrypt library for NodeJS. | Tesing required |
+| body-parser           | 1.15.1  | means-node-body-parser| Body parsing middleware. | Tesing required |
+| buffer                | 6.1.0   | means-node-core       | The Buffer class was introduced as part of the Node.js API to make it possible to interact with octet streams in the context of things like TCP streams and file system operations. | Tesing required |
+| crypto                | 6.1.0   | means-node-core       | The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions.| Tesing required |
+| cassandra-driver      | 3.0.2   | means-node-datastax-cassandra| DataStax Node.js Driver for Apache Cassandra | Tesing required |
+| drama                 | 0.1.3   | means-node-drama      | drama is an Actor model implementation for JavaScript and Node.js | Tesing required |
+| escape-html           | 1.0.3   | means-node-escape-html| Escape string for use in HTML | Tesing required |
+| events                | 6.1.0   | means-node-core       | Node.js Events Interface | Tesing required |
+| express               | 4.13.4  | means-node-express    | Fast, unopinionated, minimalist web framework for Node.js | Tesing required |
+| express-fileupload    | 0.0.5   | means-node-express-fileupload | Simple express file upload middleware that wraps around connect-busboy | Tesing required |
+| express-ws            |2.0.0-rc1| means-node-express-ws | WebSocket endpoints for Express applications | Tesing required |
+| filed                 | 0.1.0   | means-node-filed      | Simplified file library. | Tesing required |
+| fs                    | 6.1.0   | means-node-fs         | File I/O is provided by simple wrappers around standard POSIX functions. | Tesing required |
+| http                  | 6.1.0   | means-node-http       | Node.js HTTP Interface | Tesing required |
+| https                 | 6.1.0   | means-node-https      | Node.js HTTPS Interface | Tesing required |
+| jwt-simple            | 0.5.0   | means-node-jwt-simple | JWT(JSON Web Token) encode and decode module | Tesing required |
+| kafka-node            | 0.0.11  | means-node-kafkanode  | A node binding for librdkafka | Tesing required |
+| mongodb               | 2.1.18  | means-node-mongodb    | Node.js MongoDB Driver | Tesing required |
+| multer                | 1.1.0   | means-node-multer     | Multer is a node.js middleware for handling multipart/form-data. | Tesing required |
+| mysql                 | 2.10.2  | means-node-mysql      | A node.js driver for mysql. | Tesing required |
+| net                   | 6.1.0   | means-node-net        | The net module provides you with an asynchronous network wrapper. | Tesing required |
+| oppressor             | 0.0.1   | means-node-oppressor  | Streaming http compression response negotiator. | Tesing required |
+| os                    | 6.1.0   | means-node-os         | Provides a few basic operating-system related utility functions. | Tesing required |
+| node-zookeeper-client | 0.2.2   | means-node-zookeeper-client | A higher-level ZooKeeper client based on node-zookeeper with support for locking and master election. | Tesing required |
+| path                  | 6.1.0   | means-node-path       | This module contains utilities for handling and transforming file paths. | Tesing required |
+| readline              | 6.1.0   | means-node-readline   | Readline allows reading of a stream on a line-by-line basis. | Tesing required |
+| repl                  | 6.1.0   | means-node-repl       | The REPL provides a way to interactively run JavaScript and see the results. | Tesing required |
+| request               | 2.72.1  | means-node-request    | Simplified HTTP request client. | Tesing required |
+| splitargs             | 0.0.7   | means-node-elgs-splitargs | Splits strings into tokens by given separator except treating quoted part as a single token. | Tesing required |
+| stream                | 6.1.0   | means-node-core       | A stream is an abstract interface implemented by various objects in Node.js. | Tesing required |
+| string-decoder        | 6.1.0   | means-node-string-decoder | The string_decoder module provides an API for decoding Buffer objects into strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16 characters. | Tesing required |
+| url                   | 6.1.0   | means-node-core       | The url module provides utilities for URL resolution and parsing. | Tesing required |
+| util                  | 6.1.0   | means-node-util       | The util module is primarily designed to support the needs of Node.js's internal APIs.  | Tesing required |
+| xml2js                | 0.4.16  | means-node-xml2js     | Simple XML to JavaScript object converter. | Tesing required |
+| zlib                  | 6.1.0   | means-node-zlib       | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. | Tesing required |
 
 *NOTE*: The full SBT artifact expression is: "com.github.ldaniels528" %%% "means-node-xxxx" % version 
 (e.g. "com.github.ldaniels528" %%% "means-node-express" % "0.1.7")
@@ -158,7 +164,7 @@ http.createServer((request: ClientRequest, response: ServerResponse) => {
 }).listen(8888)
 ```
 
-<a name="NodeJS_Integration">
+<a name="node_integration">
 #### Integration Guidance
 
 Currently, the "require" function (along with a few others) must be passed to the Scala.js application because of an issue
@@ -665,7 +671,7 @@ outcome onComplete {
 }
 ```
 
-<a name="Social_Networks"></a>
+<a name="social_networks"></a>
 ### Social Components (Facebook and LinkedIn)
 
 #### Sample Code for Facebook

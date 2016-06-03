@@ -13,10 +13,10 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   *                  high availability, TTL.
   */
 @ScalaJSDefined
-class QueueOptions(exclusive: js.UndefOr[Boolean],
-                   durable: js.UndefOr[Boolean],
-                   autoDelete: js.UndefOr[Boolean],
-                   arguments: js.UndefOr[String]) extends js.Object
+class QueueOptions(exclusive: js.UndefOr[Boolean] = js.undefined,
+                   durable: js.UndefOr[Boolean] = js.undefined,
+                   autoDelete: js.UndefOr[Boolean] = js.undefined,
+                   arguments: js.UndefOr[String] = js.undefined) extends js.Object
 
 /**
   * Assert Queue Options Companion

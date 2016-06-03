@@ -6,6 +6,7 @@
     "azure": "^0.10.6",
     "azure-storage": "^0.10.0",
     "body-parser": "^1.15.0",
+    "cassandra-driver": "^3.0.2",
     "colors": "^1.1.2",
     "drama": "^0.1.3",
     "engine.io": "^1.6.8",

@@ -4,7 +4,7 @@ import sbt.Keys._
 import sbt.Project.projectToRef
 import sbt._
 
-val apiVersion = "0.1.10"
+val apiVersion = "0.1.11"
 val paradisePluginVersion = "3.0.0-M1"
 val _scalaVersion = "2.11.8"
 val scalaJsDomVersion = "0.9.0"
@@ -20,6 +20,7 @@ val commonSettings = Seq(
   ),
   homepage := Some(url("http://github.com.ldaniels528/MEANS.js")),
   addCompilerPlugin("org.scalamacros" % "paradise" % paradisePluginVersion cross CrossVersion.full),
+  testFrameworks += new TestFramework("utest.runner.Framework"),
   libraryDependencies ++= Seq(
     "be.doeraene" %%% "scalajs-jquery" % scalaJsJQueryVersion,
     "org.scala-js" %%% "scalajs-dom" % scalaJsDomVersion,
@@ -27,6 +28,7 @@ val commonSettings = Seq(
     //
     // Testing dependencies
     //
+    "com.lihaoyi" %%% "utest" % "0.3.0" % "test",
     "org.mockito" % "mockito-all" % "1.9.5" % "test",
     "org.scalatest" %% "scalatest" % "2.2.2" % "test"
   )
@@ -34,24 +36,37 @@ val commonSettings = Seq(
 
 lazy val root = (project in file(".")).
   aggregate(
-    core, facebook, linkedin,
+    core, core_browser, facebook, linkedin,
     // angular
     angular_core, angular_animate, angular_cookies, angular_facebook, angular_nervgh_fileupload,
     angular_sanitize, angular_toaster, angular_ui_bootstrap, angular_ui_router,
     // node
     node_core, node_adal, node_amqplib, node_assert, node_async, node_azure, node_bcrypt, node_body_parser,
-    node_colors, node_crypto, node_drama, node_escape_html, node_elgs_splitargs, node_express,
+    node_cassandra, node_colors, node_crypto, node_drama, node_escape_html, node_elgs_splitargs, node_express,
     node_express_fileupload, node_express_ws, node_filed, node_fs, node_http, node_https, node_jwt_simple,
     node_kafka, node_mongodb, node_multer, node_net, node_oppressor, node_os, node_path, node_readline,
     node_repl, node_request, node_string_decoder, node_url, node_util, node_xml2js, node_zlib, node_zookeeper
   )
 
-lazy val core = (project in file("core")).
+/////////////////////////////////////////////////////////////////////////////////
+//      Core sub-projects
+/////////////////////////////////////////////////////////////////////////////////
+
+lazy val core = (project in file("core/util")).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "means-core",
-    description := "MEANS.js core utilities"
+    description := "MEANS.js core/utilities"
+  )
+
+lazy val core_browser = (project in file("core/browser")).
+  dependsOn(core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-core-browser",
+    description := "MEANS.js core/browser"
   )
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -59,7 +74,7 @@ lazy val core = (project in file("core")).
   /////////////////////////////////////////////////////////////////////////////////
 
 lazy val angular_core = (project in file("angularjs/core")).
-  dependsOn(core).
+  dependsOn(core_browser).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -235,6 +250,15 @@ lazy val node_body_parser = (project in file("node/body-parser")).
   settings(
     name := "means-node-body-parser",
     description := "NodeJS/body-parser facade for Scala.js"
+  )
+
+lazy val node_cassandra = (project in file("node/cassandra")).
+  dependsOn(node_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-datastax-cassandra",
+    description := "NodeJS/colors facade for Scala.js"
   )
 
 lazy val node_colors = (project in file("node/colors")).
@@ -509,15 +533,15 @@ lazy val node_zookeeper = (project in file("node/zookeeper-client")).
 
 lazy val examples = (project in file("examples")).
   aggregate(
-    node_core, node_adal, node_amqplib, node_assert, node_async, node_azure, node_bcrypt, node_body_parser, node_colors,
-    node_crypto, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_ws, node_filed, node_fs,
-    node_http, node_https, node_jwt_simple, node_kafka, node_mongodb, node_multer, node_net, node_oppressor, node_os,
+    node_core, node_adal, node_amqplib, node_assert, node_async, node_azure, node_bcrypt, node_body_parser, node_cassandra,
+    node_colors, node_crypto, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_ws, node_filed,
+    node_fs, node_http, node_https, node_jwt_simple, node_kafka, node_mongodb, node_multer, node_net, node_oppressor, node_os,
     node_path, node_readline, node_repl, node_request, node_string_decoder, node_url, node_util, node_xml2js, node_zlib,
     node_zookeeper).
   dependsOn(
-    node_core, node_adal, node_amqplib, node_assert, node_async, node_azure, node_bcrypt, node_body_parser, node_colors,
-    node_crypto, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_ws, node_filed, node_fs,
-    node_http, node_https, node_jwt_simple, node_kafka, node_mongodb, node_multer, node_net, node_oppressor, node_os,
+    node_core, node_adal, node_amqplib, node_assert, node_async, node_azure, node_bcrypt, node_body_parser, node_cassandra,
+    node_colors, node_crypto, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_ws, node_filed,
+    node_fs, node_http, node_https, node_jwt_simple, node_kafka, node_mongodb, node_multer, node_net, node_oppressor, node_os,
     node_path, node_readline, node_repl, node_request, node_string_decoder, node_url, node_util, node_xml2js, node_zlib,
     node_zookeeper).
   enablePlugins(ScalaJSPlugin).

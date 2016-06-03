@@ -1,4 +1,4 @@
-package com.github.ldaniels528.meansjs.core
+package com.github.ldaniels528.meansjs.core.browser
 
 import scala.scalajs.js
 

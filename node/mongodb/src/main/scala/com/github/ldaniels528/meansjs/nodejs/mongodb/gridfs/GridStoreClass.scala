@@ -168,37 +168,37 @@ object GridStoreClass {
       * Checks if a file exists in the database.
       */
     @inline
-    def existAsync(db: Db, name: String, rootCollection: String) = callbackMongoFuture[GridStore](`class`.exist(db, name, rootCollection, _))
+    def existFuture(db: Db, name: String, rootCollection: String) = callbackMongoFuture[GridStore](`class`.exist(db, name, rootCollection, _))
 
     /**
       * Checks if a file exists in the database.
       */
     @inline
-    def existAsync(db: Db, name: String) = callbackMongoFuture[GridStore](`class`.exist(db, name, _))
+    def existFuture(db: Db, name: String) = callbackMongoFuture[GridStore](`class`.exist(db, name, _))
 
     /**
       * Gets the list of files stored in the GridFS.
       */
     @inline
-    def listAsync(db: Db, rootCollection: String) = callbackMongoFuture[js.Array[String]](`class`.list(db, rootCollection, _))
+    def listFuture(db: Db, rootCollection: String) = callbackMongoFuture[js.Array[String]](`class`.list(db, rootCollection, _))
 
     /**
       * Gets the list of files stored in the GridFS.
       */
     @inline
-    def listAsync(db: Db) = callbackMongoFuture[js.Array[String]](`class`.list(db, _))
+    def listFuture(db: Db) = callbackMongoFuture[js.Array[String]](`class`.list(db, _))
 
     /**
       * Reads the contents of a file.
       */
     @inline
-    def readAsync[T <: js.Any](db: Db, name: String) = callbackMongoFuture[js.Array[T]](`class`.read(db, name, _))
+    def readFuture[T <: js.Any](db: Db, name: String) = callbackMongoFuture[js.Array[T]](`class`.read(db, name, _))
 
     /**
       * Reads the contents of a file.
       */
     @inline
-    def readAsync[T <: js.Any](db: Db, name: String, length: Int) = {
+    def readFuture[T <: js.Any](db: Db, name: String, length: Int) = {
       callbackMongoFuture[js.Array[T]](`class`.read(db, name, length, _))
     }
 
@@ -206,7 +206,7 @@ object GridStoreClass {
       * Reads the contents of a file.
       */
     @inline
-    def readAsync[T <: js.Any](db: Db, name: String, length: Int, offset: Int) = {
+    def readFuture[T <: js.Any](db: Db, name: String, length: Int, offset: Int) = {
       callbackMongoFuture[js.Array[T]](`class`.read(db, name, length, offset, _))
     }
 
@@ -214,7 +214,7 @@ object GridStoreClass {
       * Reads the contents of a file.
       */
     @inline
-    def readAsync[T <: js.Any](db: Db, name: String, length: Int, offset: Int, options: GridStoreOptions) = {
+    def readFuture[T <: js.Any](db: Db, name: String, length: Int, offset: Int, options: GridStoreOptions) = {
       callbackMongoFuture[js.Array[T]](`class`.read(db, name, length, offset, options, _))
     }
 
@@ -222,7 +222,7 @@ object GridStoreClass {
       * Reads the data of this file.
       */
     @inline
-    def readlinesAsync(db: Db, name: String, separator: String, options: GridStoreOptions) = {
+    def readlinesFuture(db: Db, name: String, separator: String, options: GridStoreOptions) = {
       callbackMongoFuture[js.Array[String]](`class`.readlines(db, name, separator, options, _))
     }
 

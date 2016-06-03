@@ -1,13 +1,13 @@
-package com.github.ldaniels528.meansjs
+package com.github.ldaniels528.meansjs.core
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
 
 /**
-  * MEANS.js Core Package Object
+  * MEANS.js Browser Package Object
   * @author lawrence.daniels@gmail.com
   */
-package object core {
+package object browser {
 
   @js.native
   @JSName("console")

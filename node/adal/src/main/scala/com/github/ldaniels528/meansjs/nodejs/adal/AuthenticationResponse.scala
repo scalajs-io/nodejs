@@ -8,9 +8,6 @@ import scala.scalajs.js
   */
 @js.native
 trait AuthenticationResponse extends js.Object {
-
   val tokenType: String = js.native
-
   val accessToken: String = js.native
-
 }

@@ -34,7 +34,7 @@ val commonSettings = Seq(
   )
 )
 
-lazy val root = (project in file(".")).
+lazy val means_js = (project in file(".")).
   aggregate(
     core, core_browser, facebook, linkedin,
     // angular
@@ -69,9 +69,9 @@ lazy val core_browser = (project in file("core/browser")).
     description := "MEANS.js core/browser"
   )
 
-  /////////////////////////////////////////////////////////////////////////////////
-  //      AngularJS sub-projects
-  /////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+//      AngularJS sub-projects
+/////////////////////////////////////////////////////////////////////////////////
 
 lazy val angular_core = (project in file("angularjs/core")).
   dependsOn(core_browser).
@@ -154,9 +154,9 @@ lazy val angular_ui_router = (project in file("angularjs/ui-router")).
     description := "AngularJS/ui-router facade for Scala.js"
   )
 
-  /////////////////////////////////////////////////////////////////////////////////
-  //      Social sub-projects
-  /////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+//      Social sub-projects
+/////////////////////////////////////////////////////////////////////////////////
 
 lazy val facebook = (project in file("social/facebook")).
   dependsOn(core, angular_core).
@@ -176,9 +176,9 @@ lazy val linkedin = (project in file("social/linkedin")).
     description := "Social/LinkedIn facade for Scala.js"
   )
 
-  /////////////////////////////////////////////////////////////////////////////////
-  //      NodeJS sub-projects
-  /////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+//      NodeJS sub-projects
+/////////////////////////////////////////////////////////////////////////////////
 
 lazy val node_core = (project in file("node/core")).
   dependsOn(core).
@@ -555,5 +555,5 @@ lazy val examples = (project in file("examples")).
     ivyScala := ivyScala.value map (_.copy(overrideScalaVersion = true))
   )
 
-// loads the MEANS.js "Core" project at sbt startup
-onLoad in Global := (Command.process("project root", _: State)) compose (onLoad in Global).value
+// loads the MEANS.js root project at sbt startup
+onLoad in Global := (Command.process("project means_js", _: State)) compose (onLoad in Global).value

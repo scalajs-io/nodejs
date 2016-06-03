@@ -103,8 +103,9 @@ The following NodeJS modules have been implemented thus far:
 | bcrypt                | 0.0.3   | means-node-bcrypt     | A native JS bcrypt library for NodeJS. | Stable |
 | body-parser           | 1.15.1  | means-node-body-parser| Body parsing middleware. | Stable |
 | buffer                | 6.1.0   | means-node-core       | The Buffer class was introduced as part of the Node.js API to make it possible to interact with octet streams in the context of things like TCP streams and file system operations. | Stable |
-| crypto                | 6.1.0   | means-node-core       | The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions.| Tesing required |
 | cassandra-driver      | 3.0.2   | means-node-datastax-cassandra| DataStax Node.js Driver for Apache Cassandra | Tesing required |
+| colors                | 1.1.2   | means-node-colors     | Get colors in your node.js console.| Stable |
+| crypto                | 6.1.0   | means-node-core       | The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions.| Tesing required |
 | drama                 | 0.1.3   | means-node-drama      | drama is an Actor model implementation for JavaScript and Node.js | Tesing required |
 | escape-html           | 1.0.3   | means-node-escape-html| Escape string for use in HTML | Stable |
 | events                | 6.1.0   | means-node-core       | Node.js Events Interface | Stable |
@@ -118,12 +119,12 @@ The following NodeJS modules have been implemented thus far:
 | jwt-simple            | 0.5.0   | means-node-jwt-simple | JWT(JSON Web Token) encode and decode module | Stable |
 | kafka-node            | 0.0.11  | means-node-kafkanode  | A node binding for librdkafka | Tesing required |
 | mongodb               | 2.1.18  | means-node-mongodb    | Node.js MongoDB Driver | Stable |
-| multer                | 1.1.0   | means-node-multer     | Multer is a node.js middleware for handling multipart/form-data. | Stable |
+| multer                | 1.1.0   | means-node-multer     | Multer is a node.js middleware for handling multipart/form-data. | Tesing required |
 | mysql                 | 2.10.2  | means-node-mysql      | A node.js driver for mysql. | Tesing required |
 | net                   | 6.1.0   | means-node-net        | The net module provides you with an asynchronous network wrapper. | Tesing required |
+| node-zookeeper-client | 0.2.2   | means-node-zookeeper-client | A higher-level ZooKeeper client based on node-zookeeper with support for locking and master election. | Tesing required |
 | oppressor             | 0.0.1   | means-node-oppressor  | Streaming http compression response negotiator. | Tesing required |
 | os                    | 6.1.0   | means-node-os         | Provides a few basic operating-system related utility functions. | Stable |
-| node-zookeeper-client | 0.2.2   | means-node-zookeeper-client | A higher-level ZooKeeper client based on node-zookeeper with support for locking and master election. | Tesing required |
 | path                  | 6.1.0   | means-node-path       | This module contains utilities for handling and transforming file paths. | Stable |
 | readline              | 6.1.0   | means-node-readline   | Readline allows reading of a stream on a line-by-line basis. | Stable |
 | repl                  | 6.1.0   | means-node-repl       | The REPL provides a way to interactively run JavaScript and see the results. | Stable |

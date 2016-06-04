@@ -1,18 +1,28 @@
 package com.github.ldaniels528.meansjs.nodejs.net
 
+import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * Socket Options
   * @author lawrence.daniels@gmail.com
   */
-@ScalaJSDefined
-class SocketOptions extends js.Object {
-  var fd: js.UndefOr[js.Object] = _
-  var allowHalfOpen: js.UndefOr[Boolean] = _
-  var readable: js.UndefOr[Boolean] = _
-  var writable: js.UndefOr[Boolean] = _
+@js.native
+trait SocketOptions extends js.Object {
+
+  /**
+    * fd allows you to specify the existing file descriptor of socket. Set readable and/or writable to true to allow
+    * reads and/or writes on this socket (NOTE: Works only when fd is passed). About allowHalfOpen, refer to createServer()
+    * and 'end' event.
+    */
+  var fd: js.UndefOr[FileDescriptor] = js.native
+
+  var allowHalfOpen: js.UndefOr[Boolean] = js.native
+
+  var readable: js.UndefOr[Boolean] = js.native
+
+  var writable: js.UndefOr[Boolean] = js.native
 }
 
 /**
@@ -21,11 +31,11 @@ class SocketOptions extends js.Object {
   */
 object SocketOptions {
 
-  def apply(fd: js.UndefOr[js.Object] = js.undefined,
+  def apply(fd: js.UndefOr[FileDescriptor] = js.undefined,
             allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
             readable: js.UndefOr[Boolean] = js.undefined,
             writable: js.UndefOr[Boolean] = js.undefined) = {
-    val options = new SocketOptions()
+    val options = New[SocketOptions]
     options.fd = fd
     options.allowHalfOpen = allowHalfOpen
     options.readable = readable

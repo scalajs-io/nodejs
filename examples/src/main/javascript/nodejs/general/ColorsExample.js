@@ -7,7 +7,7 @@
     var colors = require('colors');
 
     console.log('hello'.green); // outputs green text
-    console.log('i like cake and pies'.underline.red); // outputs red underlined text
+    console.log('I like cake and pies'.underline.red); // outputs red underlined text
     console.log('inverse the color'.inverse); // inverses the color
     console.log('OMG Rainbows!'.rainbow); // rainbow
     console.log('Run the trap'.trap); // Drops the bass
@@ -28,7 +28,8 @@
         help: 'cyan',
         warn: 'yellow',
         debug: 'blue',
-        error: 'red'
+        error: 'red',
+        test: ['blue', 'bold', 'underline']
     });
 
     // outputs red text
@@ -37,10 +38,7 @@
     // outputs yellow text
     console.log("this is a warning".warn);
 
-    colors.setTheme({
-        custom: ['red', 'underline']
-    });
-
-    console.log('test'.custom);
+    // outputs bold blue underlined text
+    console.log('this is test'.test);
 
 })();

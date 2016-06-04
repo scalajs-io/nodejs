@@ -1,6 +1,8 @@
 package com.github.ldaniels528.meansjs.nodejs.mysql
 
+import com.github.ldaniels528.meansjs.nodejs.errors
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
+import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
 
@@ -34,15 +36,20 @@ object Pool {
     */
   implicit class PoolExtensions(val pool: Pool) extends AnyVal {
 
+    @inline
+    def getConnectionFuture = futureCallbackE1[errors.Error, Connection](pool.getConnection(_))
+
     /**
       * The pool will emit a connection event when a new connection is made within the pool. If you need to set
       * session variables on the connection before it gets used, you can listen to the connection event.
       */
-    def onConnection(callback: js.Function1[Connection, Unit]) = pool.on("connection", callback)
+    @inline
+    def onConnection(callback: js.Function1[Connection, Any]) = pool.on("connection", callback)
 
     /**
       * The pool will emit an enqueue event when a callback has been queued to wait for an available connection.
       */
+    @inline
     def onEnqueue(callback: js.Function) = pool.on("enqueue", callback)
 
   }

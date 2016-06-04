@@ -16,66 +16,126 @@ object ScalaJsHelper {
   //    Concurrency Functions
   ////////////////////////////////////////////////////////////////////////
 
-  implicit def promise2Future[T](promise: js.Promise[T]): Future[T] = promise.toFuture
+  implicit def promise2Future[T](task: js.Promise[T]): Future[T] = task.toFuture
 
   /**
-    * Converts a JavaScript-style callback to a Scala-style future
+    * Converts a JavaScript-style callback to a Scala.js promise
     * @param f the given callback function
-    * @return a Scala-style future
+    * @return a Scala.js promise
     */
   @inline
-  def callbackToFuture[A](f: js.Function => Unit): Future[A] = {
-    val promise = Promise[A]()
-    f((result: A) => promise.success(result))
-    promise.future
+  def futureCallbackA0(f: js.Function0[Any] => Unit): Future[Unit] = {
+    val task = Promise[Unit]()
+    f(() => task.success({}))
+    task.future
   }
 
   /**
-    * Converts a JavaScript-style callback to a Scala-style future
+    * Converts a JavaScript-style callback to a Scala.js promise
     * @param f the given callback function
-    * @return a Scala-style future
+    * @return a Scala.js promise
     */
   @inline
-  def callbackWithErrorToFuture[A](f: js.Function => Any): Future[A] = {
-    val promise = Promise[A]()
-    f((err: js.Any, result: A) => if (!isDefined(err)) promise.success(result) else promise.failure(wrapJavaScriptException(err)))
-    promise.future
+  def futureCallbackA1[A](f: js.Function1[A, Any] => Unit): Future[A] = {
+    val task = Promise[A]()
+    f((a: A) => task.success(a))
+    task.future
   }
 
   /**
-    * Converts a JavaScript-style callback to a Scala-style future
+    * Converts a JavaScript-style callback to a Scala.js promise
     * @param f the given callback function
-    * @return a Scala-style future
+    * @return a Scala.js promise
     */
   @inline
-  def futureCallbackA2[A, B](f: js.Function2[A, B, Any] => Any): Future[(A, B)] = {
-    val promise = Promise[(A, B)]()
-    f((valueA: A, valueB: B) => promise.success((valueA, valueB)))
-    promise.future
+  def futureCallbackA2[A, B](f: js.Function2[A, B, Any] => Unit): Future[(A, B)] = {
+    val task = Promise[(A, B)]()
+    f((a: A, b: B) => task.success((a, b)))
+    task.future
   }
 
   /**
-    * Converts a JavaScript-style callback to a Scala-style future
+    * Converts a JavaScript-style callback to a Scala.js promise
     * @param f the given callback function
-    * @return a Scala-style future
+    * @return a Scala.js promise
     */
   @inline
-  def futureCallbackE0[E](f: js.Function1[E, Any] => Any): Future[Unit] = {
-    val promise = Promise[Unit]()
-    f((err: E) => if (err == null) promise.success({}: Unit) else promise.failure(wrapJavaScriptException(err)))
-    promise.future
+  def futureCallbackA3[A, B, C](f: js.Function3[A, B, C, Any] => Unit): Future[(A, B, C)] = {
+    val task = Promise[(A, B, C)]()
+    f((a: A, b: B, c: C) => task.success((a, b, c)))
+    task.future
   }
 
   /**
-    * Converts a JavaScript-style callback to a Scala-style future
+    * Converts a JavaScript-style callback to a Scala.js promise
     * @param f the given callback function
-    * @return a Scala-style future
+    * @return a Scala.js promise
     */
   @inline
-  def futureCallbackE1[E, R](f: js.Function2[E, R, Any] => Any): Future[R] = {
-    val promise = Promise[R]()
-    f((err: E, result: R) => if (err == null) promise.success(result) else promise.failure(wrapJavaScriptException(err)))
-    promise.future
+  def futureCallbackA4[A, B, C, D](f: js.Function4[A, B, C, D, Any] => Unit): Future[(A, B, C, D)] = {
+    val task = Promise[(A, B, C, D)]()
+    f((a: A, b: B, c: C, d: D) => task.success((a, b, c, d)))
+    task.future
+  }
+
+  /**
+    * Converts a JavaScript-style callback to a Scala.js promise
+    * @param f the given callback function
+    * @return a Scala.js promise
+    */
+  @inline
+  def futureCallbackE0[E <: js.Any](f: js.Function1[E, Any] => Unit): Future[Unit] = {
+    val task = Promise[Unit]()
+    f((err: E) => if (!isDefined(err)) task.success({}: Unit) else task.failure(wrapJavaScriptException(err)))
+    task.future
+  }
+
+  /**
+    * Converts a JavaScript-style callback to a Scala.js promise
+    * @param f the given callback function
+    * @return a Scala.js promise
+    */
+  @inline
+  def futureCallbackE1[E <: js.Any, R](f: js.Function2[E, R, Any] => Unit): Future[R] = {
+    val task = Promise[R]()
+    f((err: E, result: R) => if (!isDefined(err)) task.success(result) else task.failure(wrapJavaScriptException(err)))
+    task.future
+  }
+
+  /**
+    * Converts a JavaScript-style callback to a Scala.js promise
+    * @param f the given callback function
+    * @return a Scala.js promise
+    */
+  @inline
+  def futureCallbackE2[E <: js.Any, A, B](f: js.Function3[E, A, B, Any] => Unit): Future[(A, B)] = {
+    val task = Promise[(A, B)]()
+    f((err: E, a: A, b: B) => if (!isDefined(err)) task.success(a -> b) else task.failure(wrapJavaScriptException(err)))
+    task.future
+  }
+
+  /**
+    * Converts a JavaScript-style callback to a Scala.js promise
+    * @param f the given callback function
+    * @return a Scala.js promise
+    */
+  @inline
+  def futureCallbackE3[E <: js.Any, A, B, C](f: js.Function4[E, A, B, C, Any] => Unit): Future[(A, B, C)] = {
+    val task = Promise[(A, B, C)]()
+    f((err: E, a: A, b: B, c: C) => if (!isDefined(err)) task.success((a, b, c)) else task.failure(wrapJavaScriptException(err)))
+    task.future
+  }
+
+  /**
+    * Converts a JavaScript-style callback to a Scala.js promise
+    * @param f the given callback function
+    * @return a Scala.js promise
+    */
+  @inline
+  def futureCallbackE4[E <: js.Any, A, B, C, D](f: js.Function5[E, A, B, C, D, Any] => Unit): Future[(A, B, C, D)] = {
+    val task = Promise[(A, B, C, D)]()
+    f((err: E, a: A, b: B, c: C, d: D) => if (!isDefined(err)) task.success((a, b, c, d)) else task.failure(wrapJavaScriptException(err)))
+    task.future
   }
 
   ////////////////////////////////////////////////////////////////////////
@@ -108,6 +168,8 @@ object ScalaJsHelper {
     def New[T <: js.Any](args: js.Any*): T = {
       js.Dynamic.newInstance(obj.asInstanceOf[js.Dynamic])(args: _*).asInstanceOf[T]
     }
+
+    @inline def asUndefOr[T] = obj.asInstanceOf[js.UndefOr[T]].flat
 
     @inline def asOpt[T] = obj.asInstanceOf[js.UndefOr[T]].toOption
 

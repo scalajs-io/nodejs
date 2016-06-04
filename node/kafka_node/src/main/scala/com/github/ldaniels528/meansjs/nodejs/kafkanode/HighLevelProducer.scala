@@ -43,12 +43,12 @@ object HighLevelProducer {
     /**
       * @see [[HighLevelProducer.createTopics()]]
       */
-    def createTopicsAsync(topics: js.Array[String], async: Boolean) = callbackWithErrorToFuture[js.Any](producer.createTopics(topics, async, _))
+    def createTopicsAsync(topics: js.Array[String], async: Boolean) = futureCallbackE1[js.Error, js.Any](producer.createTopics(topics, async, _))
 
     /**
       * @see [[HighLevelProducer.send()]]
       */
-    def sendAsync(payloads: js.Array[Payload]) = callbackWithErrorToFuture[js.Any](producer.send(payloads, _))
+    def sendAsync(payloads: js.Array[Payload]) = futureCallbackE1[js.Error, js.Any](producer.send(payloads, _))
 
     /**
       * @see [[HighLevelProducer.on()]]

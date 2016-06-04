@@ -53,12 +53,12 @@ object Producer {
     /**
       * @see [[Producer.createTopics()]]
       */
-    @inline def createTopicsFuture(topics: js.Array[String], async: Boolean) = callbackWithErrorToFuture[js.Any](producer.createTopics(topics, async, _))
+    @inline def createTopicsFuture(topics: js.Array[String], async: Boolean) = futureCallbackE1[js.Error, js.Any](producer.createTopics(topics, async, _))
 
     /**
       * @see [[Producer.send()]]
       */
-    @inline def sendFuture(payloads: js.Array[Payload]) = callbackWithErrorToFuture[js.Any](producer.send(payloads, _))
+    @inline def sendFuture(payloads: js.Array[Payload]) = futureCallbackE1[js.Error, js.Any](producer.send(payloads, _))
 
   }
 

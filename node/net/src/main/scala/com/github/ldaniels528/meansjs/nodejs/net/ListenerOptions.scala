@@ -1,19 +1,20 @@
 package com.github.ldaniels528.meansjs.nodejs.net
 
+import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * Listener Options
   * @author lawrence.daniels@gmail.com
   */
-@ScalaJSDefined
-class ListenerOptions extends js.Object {
-  var host: js.UndefOr[String] = _
-  var port: js.UndefOr[Int] = _
-  var path: js.UndefOr[String] = _
-  var backlog: js.UndefOr[Int] = _
-  var exclusive: js.UndefOr[Boolean] = _
+@js.native
+trait ListenerOptions extends js.Object {
+  var host: js.UndefOr[String] = js.native
+  var port: js.UndefOr[Int] = js.native
+  var path: js.UndefOr[String] = js.native
+  var backlog: js.UndefOr[Int] = js.native
+  var exclusive: js.UndefOr[Boolean] = js.native
 }
 
 /**
@@ -27,7 +28,7 @@ object ListenerOptions {
             path: js.UndefOr[String] = js.undefined,
             backlog: js.UndefOr[Int] = js.undefined,
             exclusive: js.UndefOr[Boolean] = js.undefined) = {
-    val options = new ListenerOptions()
+    val options = New[ListenerOptions]
     options.host = host
     options.port = port
     options.path = path

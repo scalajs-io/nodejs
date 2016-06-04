@@ -107,7 +107,7 @@ object Http {
   implicit class HttpExtensions(val http: Http) extends AnyVal {
 
     @inline
-    def requestFuture(options: RequestOptions) = callbackWithErrorToFuture[ServerResponse](http.request(options, _))
+    def requestFuture(options: RequestOptions) = futureCallbackE1[js.Error, ServerResponse](http.request(options, _))
 
   }
 

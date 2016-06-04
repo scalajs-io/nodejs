@@ -2,7 +2,7 @@ package com.github.ldaniels528.meansjs.nodejs.util
 
 import com.github.ldaniels528.meansjs.nodejs.NodeModule
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
-import com.github.ldaniels528.meansjs.nodejs.fs.StatTime
+import com.github.ldaniels528.meansjs.nodejs.fs.Stats
 
 import scala.scalajs.js
 
@@ -65,7 +65,7 @@ trait Util extends NodeModule with EventEmitter {
     * Return a string representation of object, which is useful for debugging.
     * @example util.inspect(object[, options])
     */
-  def inspect(`object`: js.Any, options: InspectOptions): StatTime = js.native
+  def inspect(`object`: js.Any, options: InspectOptions): Stats = js.native
 
   /**
     * Returns true if the given "object" is an Array. Otherwise, returns false.

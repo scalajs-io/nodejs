@@ -87,32 +87,32 @@ object HighLevelConsumer {
     /**
       * @see [[HighLevelConsumer.addTopics()]]
       */
-    def addTopicsAsync(topics: String, fromOffset: Boolean) = callbackWithErrorToFuture[js.Any](consumer.addTopics(topics, _, fromOffset))
+    def addTopicsAsync(topics: String, fromOffset: Boolean) = futureCallbackE1[js.Error, js.Any](consumer.addTopics(topics, _, fromOffset))
 
     /**
       * @see [[HighLevelConsumer.addTopics()]]
       */
-    def addTopicsAsync(topics: String) = callbackWithErrorToFuture[js.Any](consumer.addTopics(topics, _))
+    def addTopicsAsync(topics: String) = futureCallbackE1[js.Error, js.Any](consumer.addTopics(topics, _))
 
     /**
       * @see [[HighLevelConsumer.close()]]
       */
-    def closeAsync = callbackWithErrorToFuture[js.Any](consumer.close)
+    def closeAsync = futureCallbackE1[js.Error, js.Any](consumer.close)
 
     /**
       * @see [[HighLevelConsumer.close()]]
       */
-    def closeAsync(force: Boolean) = callbackWithErrorToFuture[js.Any](consumer.close(force, _))
+    def closeAsync(force: Boolean) = futureCallbackE1[js.Error, js.Any](consumer.close(force, _))
 
     /**
       * @see [[HighLevelConsumer.commit()]]
       */
-    def commitAsync[T <: js.Any] = callbackWithErrorToFuture[T](consumer.commit)
+    def commitAsync[T <: js.Any] = futureCallbackE1[js.Error, T](consumer.commit)
 
     /**
       * @see [[HighLevelConsumer.removeTopics()]]
       */
-    def removeTopicsAsync(topics: js.Array[String]) = callbackWithErrorToFuture[Boolean](consumer.removeTopics(topics, _))
+    def removeTopicsAsync(topics: js.Array[String]) = futureCallbackE1[js.Error, Boolean](consumer.removeTopics(topics, _))
 
     /**
       * @example consumer.on('error', function (message) {})

@@ -1,4 +1,4 @@
-package examples.nodejs.net
+package examples.nodejs.express
 
 import com.github.ldaniels528.meansjs.nodejs._
 import com.github.ldaniels528.meansjs.nodejs.express._

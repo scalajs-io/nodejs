@@ -449,26 +449,26 @@ trait Fs extends NodeModule with EventEmitter {
     * See the fs.Stats section for more information.
     * @example fs.stat(path, callback)
     */
-  def stat(path: Buffer, callback: js.Function): StatTime = js.native
+  def stat(path: Buffer, callback: js.Function): Stats = js.native
 
   /**
     * Asynchronous stat(2). The callback gets two arguments (err, stats) where stats is a fs.[[Stats]] object.
     * See the fs.Stats section for more information.
     * @example fs.stat(path, callback)
     */
-  def stat(path: String, callback: js.Function): StatTime = js.native
+  def stat(path: String, callback: js.Function): Stats = js.native
 
   /**
     * Synchronous stat(2). Returns an instance of fs.[[Stats]].
     * @example fs.statSync(path)
     */
-  def statSync(path: Buffer): StatTime = js.native
+  def statSync(path: Buffer): Stats = js.native
 
   /**
     * Synchronous stat(2). Returns an instance of fs.[[Stats]].
     * @example fs.statSync(path)
     */
-  def statSync(path: String): StatTime = js.native
+  def statSync(path: String): Stats = js.native
 
   /**
     * Asynchronous symlink(2). No arguments other than a possible exception are given to the completion callback.
@@ -686,7 +686,7 @@ object Fs {
     def rmdirFuture(path: String) = futureCallbackE0[errors.Error](fs.rmdir(path, _))
 
     @inline
-    def statFuture(path: String) = futureCallbackE1[errors.Error, StatTime](fs.stat(path, _))
+    def statFuture(path: String) = futureCallbackE1[errors.Error, Stats](fs.stat(path, _))
 
     @inline
     def watchFuture(filename: String, options: FSWatcherOptions = null) = {

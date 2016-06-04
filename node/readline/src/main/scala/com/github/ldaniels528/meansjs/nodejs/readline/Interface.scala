@@ -100,7 +100,6 @@ object Interface {
       * Emitted when close() is called. Also emitted when the input stream receives its 'end' event.
       * The Interface instance should be considered "finished" once this is emitted. For example, when
       * the input stream receives {{{ ^D }}}, respectively known as EOT.
-      * @see [[Readline.on()]]
       */
     @inline
     def onClose(callback: js.Function) = readline.on("close", callback)
@@ -108,7 +107,6 @@ object Interface {
     /**
       * Emitted whenever the input stream receives an end of line (\n, \r, or \r\n), usually received when
       * the user hits enter, or return. This is a good hook to listen for user input.
-      * @see [[Readline.on()]]
       */
     @inline
     def onLine(callback: js.Function) = readline.on("line", callback)
@@ -116,14 +114,12 @@ object Interface {
     /**
       * Emitted whenever the input stream is paused. Also emitted whenever the input stream is not paused
       * and receives the SIGCONT event. (See events SIGTSTP and SIGCONT)
-      * @see [[Readline.on()]]
       */
     @inline
     def onPause(callback: js.Function) = readline.on("pause", callback)
 
     /**
       * Emitted whenever the input stream is resumed.
-      * @see [[Readline.on()]]
       */
     @inline
     def onResume(callback: js.Function) = readline.on("resume", callback)
@@ -132,7 +128,6 @@ object Interface {
       * Emitted whenever the input stream is sent to the background with {{{ ^Z }}}, respectively known as SIGTSTP,
       * and then continued with fg(1). This event only emits if the stream was not paused before sending the
       * program to the background.
-      * @see [[Readline.on()]]
       */
     @inline
     def onSIGCONT(callback: js.Function) = readline.on("SIGCONT", callback)
@@ -140,7 +135,6 @@ object Interface {
     /**
       * Emitted whenever the input stream receives a {{{ ^C }}}, respectively known as SIGINT. If there is no
       * SIGINT event listener present when the input stream receives a SIGINT, pause will be triggered.
-      * @see [[Readline.on()]]
       */
     @inline
     def onSIGINT(callback: js.Function) = readline.on("SIGINT", callback)
@@ -151,7 +145,6 @@ object Interface {
       * to the background. When the program is resumed with fg, the 'pause' and SIGCONT events will be emitted.
       * You can use either to resume the stream. The 'pause' and SIGCONT events will not be triggered if the
       * stream was paused before the program was sent to the background.
-      * @see [[Readline.on()]]
       */
     @inline
     def onSIGTSTP(callback: js.Function) = readline.on("SIGTSTP", callback)

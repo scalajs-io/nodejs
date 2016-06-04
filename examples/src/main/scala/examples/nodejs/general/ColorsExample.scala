@@ -1,8 +1,7 @@
 package examples.nodejs.general
 
 import com.github.ldaniels528.meansjs.nodejs._
-import com.github.ldaniels528.meansjs.nodejs.colors.Colors
-import com.github.ldaniels528.meansjs.nodejs.colors.Colors._
+import com.github.ldaniels528.meansjs.nodejs.colors._
 
 import scala.scalajs.js
 
@@ -15,6 +14,8 @@ class ColorsExample(bootstrap: Bootstrap) {
 
   implicit val colors = require[Colors]("colors")
 
+  console.log("supports color?", colors.supportsColor)
+
   console.log("hello".green) // outputs green text
   console.log("i like cake and pies".underline.red) // outputs red underlined text
   console.log("inverse the color".inverse) // inverses the color
@@ -25,7 +26,7 @@ class ColorsExample(bootstrap: Bootstrap) {
   console.log(colors.red.underline("i like cake and pies")) // outputs red underlined text
   console.log(colors.inverse("inverse the color")) // inverses the color 
   console.log(colors.rainbow("OMG Rainbows!")) // rainbow 
-  console.log(colors.trap("Run the trap")) // Drops the bass 
+  console.log(colors.trap("Run the trap")) // Drops the bass
 
   colors.setTheme(js.Dictionary(
     "silly" -> "rainbow",
@@ -37,19 +38,17 @@ class ColorsExample(bootstrap: Bootstrap) {
     "help" -> "cyan",
     "warn" -> "yellow",
     "debug" -> "blue",
-    "error" -> "red"
+    "error" -> "red",
+    "test" -> js.Array("blue", "underline")
   ))
 
   // outputs red text
-  console.log("this is an error" =/> "error")
+  console.log("this is an error" <<= "error")
 
   // outputs yellow text
-  console.log("this is a warning" =/> "warn")
+  console.log("this is a warning" <<= "warn")
 
-  colors.setTheme(js.Dictionary(
-    "custom" -> js.Array("red", "underline")
-  ))
-
-  console.log("test" =/> "custom")
+  // should output blue underlined text -- does not currently work
+  //console.log("this is a test" <<= "test")
 
 }

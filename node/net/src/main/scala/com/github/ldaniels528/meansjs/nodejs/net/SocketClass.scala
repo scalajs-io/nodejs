@@ -5,26 +5,35 @@ import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 import scala.scalajs.js
 
 /**
-  * Socket Class
+  * net.Socket class
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait SocketClass extends js.Object {
-
-}
+trait SocketClass extends js.Object
 
 /**
-  * Socket Class Companion
+  * Socket-class Companion
   * @author lawrence.daniels@gmail.com
   */
 object SocketClass {
 
   /**
-    * Socket Class Extensions
+    * Socket-class Extensions
     * @author lawrence.daniels@gmail.com
     */
   implicit class SocketClassExtensions(val `class`: SocketClass) extends AnyVal {
 
+    /**
+      * Socket Constructor
+      * @example new net.Socket()
+      */
+    @inline
+    def apply() = `class`.New[Socket]()
+
+    /**
+      * Socket Constructor
+      * @example new net.Socket(options)
+      */
     @inline
     def apply(options: SocketOptions) = `class`.New[Socket](options)
 

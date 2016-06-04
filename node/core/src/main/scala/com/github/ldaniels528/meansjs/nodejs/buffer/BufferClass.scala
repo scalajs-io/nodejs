@@ -59,6 +59,8 @@ trait BufferClass extends js.Object {
     */
   def from(array: js.Array[Int]): Buffer = js.native
 
+  def from(str: String, encoding: String): Buffer = js.native
+
   def from(str: String): Buffer = js.native
 
 }

@@ -74,7 +74,7 @@ object Actor {
       * @return the promise of the state
       */
     @inline
-    def askFuture(method: String) = callbackToFuture[js.Any](actor.ask(actor, method, _))
+    def askFuture(method: String) = futureCallbackA1[js.Any](actor.ask(actor, method, _))
 
   }
 

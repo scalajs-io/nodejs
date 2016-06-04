@@ -1,14 +1,12 @@
 package com.github.ldaniels528.meansjs.nodejs.http
 
 import com.github.ldaniels528.meansjs.nodejs
-import com.github.ldaniels528.meansjs.nodejs.net.ListenerOptions
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
 
 /**
-  * This class inherits from net.Server and has the following additional events
-  * @author lawrence.daniels@gmail.com
+  * http.Server - This class inherits from net.Server and has the following additional events
+  * @version 6.2.1
   */
 @js.native
 trait Server extends nodejs.net.Server {
@@ -38,14 +36,6 @@ trait Server extends nodejs.net.Server {
   /////////////////////////////////////////////////////////////////////////////////
 
   /**
-    * Returns the bound address, the address family name and port of the server as reported by the operating system.
-    * Useful to find which port was assigned when giving getting an OS-assigned address. Returns an object with
-    * three properties, e.g. { port: 12346, family: 'IPv4', address: '127.0.0.1' }
-    * @example server.address()
-    */
-  def address(): IPAddress = js.native
-
-  /**
     * Asynchronously get the number of concurrent connections on the server. Works when sockets were sent to forks.
     * Callback should take two arguments err and count.
     * @example server.getConnections(callback)
@@ -67,30 +57,5 @@ trait Server extends nodejs.net.Server {
     * @example server.unref()
     */
   def unref(): this.type = js.native
-
-}
-
-/**
-  * Server Companion
-  * @author lawrence.daniels@gmail.com
-  */
-object Server {
-
-  /**
-    * Server Extensions
-    * @author lawrence.daniels@gmail.com
-    */
-  implicit class ServerExtensions(val server: Server) extends AnyVal {
-
-    @inline
-    def closeFuture() = callbackWithErrorToFuture[Unit](server.close)
-
-    @inline
-    def getConnectionsFuture = callbackWithErrorToFuture[Int](server.getConnections)
-
-    @inline
-    def listenFuture(options: ListenerOptions) = callbackWithErrorToFuture[Unit](server.listen(options, _))
-
-  }
 
 }

@@ -51,7 +51,7 @@ trait Readable extends EventEmitter {
   /**
     * TODO find documentation for this method
     */
-  def push(value: js.Any): this.type  = js.native
+  def push(value: js.Any): this.type = js.native
 
   /**
     * The read() method pulls some data out of the internal buffer and returns it. If there is no data available,
@@ -152,7 +152,7 @@ object Readable {
     * Readable Extensions
     * @author lawrence.daniels@gmail.com
     */
-  implicit class ReadableExtensions(val writable: Readable) extends AnyVal {
+  implicit class ReadableExtensions(val readable: Readable) extends AnyVal {
 
     /////////////////////////////////////////////////////////////////////////////////
     //      Events
@@ -163,14 +163,14 @@ object Readable {
       * The event indicates that no more events will be emitted, and no further computation will occur.
       */
     @inline
-    def onClose(callback: js.Function) = writable.on("close", callback)
+    def onClose(callback: js.Function) = readable.on("close", callback)
 
     /**
       * Attaching a 'data' event listener to a stream that has not been explicitly paused will switch the stream into
       * flowing mode. Data will then be passed as soon as it is available.
       */
     @inline
-    def onData(callback: js.Function) = writable.on("data", callback)
+    def onData(callback: js.Function) = readable.on("data", callback)
 
     /**
       * This event fires when there will be no more data to read. Note that the 'end' event will not fire unless the
@@ -178,13 +178,13 @@ object Readable {
       * repeatedly until you get to the end.
       */
     @inline
-    def onEnd(callback: js.Function) = writable.on("end", callback)
+    def onEnd(callback: () => Any) = readable.on("end", callback)
 
     /**
       * Emitted if there was an error when writing or piping data.
       */
     @inline
-    def onError(callback: js.Function) = writable.on("error", callback)
+    def onError(callback: js.Function) = readable.on("error", callback)
 
     /**
       * When a chunk of data can be read from the stream, it will emit a 'readable' event. In some cases, listening
@@ -192,7 +192,7 @@ object Readable {
       * if it hadn't already.
       */
     @inline
-    def onReadable(callback: js.Function) = writable.on("readable", callback)
+    def onReadable(callback: js.Function) = readable.on("readable", callback)
 
   }
 

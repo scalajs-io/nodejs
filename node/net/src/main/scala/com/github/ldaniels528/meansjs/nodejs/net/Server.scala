@@ -3,10 +3,11 @@ package com.github.ldaniels528.meansjs.nodejs.net
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSName
 
 /**
-  * This class is used to create a TCP or local server.
-  * @author lawrence.daniels@gmail.com
+  * net.Server - This class is used to create a TCP or local server.
+  * @version 6.2.1
   */
 @js.native
 trait Server extends EventEmitter {
@@ -40,6 +41,14 @@ trait Server extends EventEmitter {
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
   /////////////////////////////////////////////////////////////////////////////////
+
+  /**
+    * Returns the bound address, the address family name and port of the server as reported by the operating system.
+    * Useful to find which port was assigned when giving getting an OS-assigned address. Returns an object with
+    * three properties, e.g. { port: 12346, family: 'IPv4', address: '127.0.0.1' }
+    * @example server.address()
+    */
+  def address(): Address = js.native
 
   /**
     * Stops the server from accepting new connections and keeps existing connections. This function is asynchronous,
@@ -108,38 +117,9 @@ trait Server extends EventEmitter {
 }
 
 /**
-  * Server Companion
+  * Server Singleton
   * @author lawrence.daniels@gmail.com
   */
-object Server {
-
-  /**
-    * Server Extensions
-    * @author lawrence.daniels@gmail.com
-    */
-  implicit class ServerExtensions(val server: Server) extends AnyVal {
-
-    @inline
-    def onCheckContinue(callback: js.Function) = server.on("checkContinue", callback)
-
-    @inline
-    def onClientError(callback: js.Function) = server.on("clientError", callback)
-
-    @inline
-    def onClose(callback: js.Function) = server.on("close", callback)
-
-    @inline
-    def onConnect(callback: js.Function) = server.on("connect", callback)
-
-    @inline
-    def onConnection(callback: js.Function) = server.on("connection", callback)
-
-    @inline
-    def onRequest(callback: js.Function) = server.on("request", callback)
-
-    @inline
-    def onUpgrade(callback: js.Function) = server.on("upgrade", callback)
-
-  }
-
-}
+@js.native
+@JSName("Server")
+object Server extends ServerClass

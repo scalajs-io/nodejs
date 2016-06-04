@@ -2,9 +2,10 @@ package examples
 
 import com.github.ldaniels528.meansjs.nodejs._
 import examples.nodejs.actors.ActorsExample
-import examples.nodejs.codecs.MD5Example
+import examples.nodejs.codecs._
 import examples.nodejs.concurrency._
 import examples.nodejs.datastores._
+import examples.nodejs.express._
 import examples.nodejs.general._
 import examples.nodejs.io._
 import examples.nodejs.net._
@@ -45,7 +46,8 @@ object Examples extends js.JSApp {
     "MongoGridFSBucketExample" -> ((bootstrap: Bootstrap) => new MongoGridFSBucketExample(bootstrap)),
     "MongoGridStoreExample" -> ((bootstrap: Bootstrap) => new MongoGridStoreExample(bootstrap)),
     "MongoStreamExample" -> ((bootstrap: Bootstrap) => new MongoStreamExample(bootstrap)),
-    "NetServerExample" -> ((bootstrap: Bootstrap) => new NetServerExample(bootstrap)),
+    "MySQLExample" -> ((bootstrap: Bootstrap) => new MySQLExample(bootstrap)),
+    "NetClientServerExample" -> ((bootstrap: Bootstrap) => new NetClientServerExample(bootstrap)),
     "PathExamples" -> ((bootstrap: Bootstrap) => new PathExamples(bootstrap)),
     "ProcessExample" -> ((bootstrap: Bootstrap) => new ProcessExample(bootstrap)),
     "REPLExample" -> ((bootstrap: Bootstrap) => new REPLExample(bootstrap)),
@@ -55,10 +57,12 @@ object Examples extends js.JSApp {
     "TimersExample" -> ((bootstrap: Bootstrap) => new TimersExample(bootstrap)),
     "TinyCLI" -> ((bootstrap: Bootstrap) => new TinyCLI(bootstrap)),
     "URLsExample" -> ((bootstrap: Bootstrap) => new URLsExample(bootstrap)),
+    "WatchExample" -> ((bootstrap: Bootstrap) => new WatchExample(bootstrap)),
     "XMLParsingExample" -> ((bootstrap: Bootstrap) => new XMLParsingExample(bootstrap)),
     "ZkShowChildren" -> ((bootstrap: Bootstrap) => new ZkShowChildren(bootstrap)),
     "ZkStateExample" -> ((bootstrap: Bootstrap) => new ZkStateExample(bootstrap)),
-    "ZkTransactionExample" -> ((bootstrap: Bootstrap) => new ZkTransactionExample(bootstrap))
+    "ZkTransactionExample" -> ((bootstrap: Bootstrap) => new ZkTransactionExample(bootstrap)),
+    "ZlibExample" -> ((bootstrap: Bootstrap) => new ZlibExample(bootstrap))
   )
 
   override def main(): Unit = ()

@@ -12,7 +12,6 @@ import scala.scalajs.js
 /**
   * This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes.
   * Each class takes the same options, and is a readable/writable Stream.
-  * @author lawrence.daniels@gmail.com
   * @see https://nodejs.org/docs/latest/api/zlib.html
   * @version 6.1.0
   */
@@ -372,109 +371,109 @@ object Zlib {
       * Asynchronously compresses a Buffer or string with Deflate.
       */
     @inline
-    def deflateFuture(buf: Buffer) = callbackWithErrorToFuture(zlib.deflate(buf, _))
+    def deflateFuture(buf: Buffer) = futureCallbackE1[js.Error, Buffer](zlib.deflate(buf, _))
 
     /**
       * Asynchronously compresses a Buffer or string with Deflate.
       */
     @inline
-    def deflateFuture(buf: String) = callbackWithErrorToFuture(zlib.deflate(buf, _))
+    def deflateFuture(buf: String) = futureCallbackE1[js.Error, Buffer](zlib.deflate(buf, _))
 
     /**
       * Asynchronously compresses a Buffer or string with Deflate.
       */
     @inline
-    def deflateFuture(buf: Buffer, options: CompressionOptions) = callbackWithErrorToFuture(zlib.deflate(buf, options, _))
+    def deflateFuture(buf: Buffer, options: CompressionOptions) = futureCallbackE1[js.Error, Buffer](zlib.deflate(buf, options, _))
 
     /**
       * Asynchronously compresses a Buffer or string with Deflate.
       */
     @inline
-    def deflateFuture(buf: String, options: CompressionOptions) = callbackWithErrorToFuture(zlib.deflate(buf, options, _))
+    def deflateFuture(buf: String, options: CompressionOptions) = futureCallbackE1[js.Error, Buffer](zlib.deflate(buf, options, _))
 
     /**
       * Asynchronously compresses a Buffer or string with DeflateRaw.
       */
     @inline
-    def deflateRawFuture(buf: Buffer) = callbackWithErrorToFuture(zlib.deflateRaw(buf, _))
+    def deflateRawFuture(buf: Buffer) = futureCallbackE1[js.Error, Buffer](zlib.deflateRaw(buf, _))
 
     /**
       * Asynchronously compresses a Buffer or string with DeflateRaw.
       */
     @inline
-    def deflateRawFuture(buf: String) = callbackWithErrorToFuture(zlib.deflateRaw(buf, _))
+    def deflateRawFuture(buf: String) = futureCallbackE1[js.Error, Buffer](zlib.deflateRaw(buf, _))
 
     /**
       * Asynchronously compresses a Buffer or string with DeflateRaw.
       */
     @inline
-    def deflateRawFuture(buf: Buffer, options: CompressionOptions) = callbackWithErrorToFuture(zlib.deflateRaw(buf, options, _))
+    def deflateRawFuture(buf: Buffer, options: CompressionOptions) = futureCallbackE1[js.Error, Buffer](zlib.deflateRaw(buf, options, _))
 
     /**
       * Asynchronously compresses a Buffer or string with DeflateRaw.
       */
     @inline
-    def deflateRawFuture(buf: String, options: CompressionOptions) = callbackWithErrorToFuture(zlib.deflateRaw(buf, options, _))
+    def deflateRawFuture(buf: String, options: CompressionOptions) = futureCallbackE1[js.Error, Buffer](zlib.deflateRaw(buf, options, _))
 
     /**
       * Flush pending data. Don't call this frivolously, premature flushes negatively impact the effectiveness of the compression algorithm.
       */
     @inline
-    def flushFuture = callbackWithErrorToFuture(zlib.flush)
+    def flushFuture = futureCallbackE1[js.Error, Buffer](zlib.flush)
 
     /**
       * Flush pending data. Don't call this frivolously, premature flushes negatively impact the effectiveness of the compression algorithm.
       */
     @inline
-    def flushFuture(kind: CompressionFlush) = callbackWithErrorToFuture(zlib.flush(kind, _))
+    def flushFuture(kind: CompressionFlush) = futureCallbackE1[js.Error, Buffer](zlib.flush(kind, _))
 
     /**
       * Decompress a Buffer or string with Gunzip.
       */
     @inline
-    def gunzipFuture(buf: Buffer) = callbackWithErrorToFuture(zlib.gunzip(buf, _))
+    def gunzipFuture(buf: Buffer) = futureCallbackE1[js.Error, Buffer](zlib.gunzip(buf, _))
 
     /**
       * Decompress a Buffer or string with Gunzip.
       */
     @inline
-    def gunzipFuture(buf: String) = callbackWithErrorToFuture(zlib.gunzip(buf, _))
+    def gunzipFuture(buf: String) = futureCallbackE1[js.Error, Buffer](zlib.gunzip(buf, _))
 
     /**
       * Decompress a Buffer or string with Gunzip.
       */
     @inline
-    def gunzipFuture(buf: Buffer, options: CompressionOptions) = callbackWithErrorToFuture(zlib.gunzip(buf, options, _))
+    def gunzipFuture(buf: Buffer, options: CompressionOptions) = futureCallbackE1[js.Error, Buffer](zlib.gunzip(buf, options, _))
 
     /**
       * Decompress a Buffer or string with Gunzip.
       */
     @inline
-    def gunzipFuture(buf: String, options: CompressionOptions) = callbackWithErrorToFuture(zlib.gunzip(buf, options, _))
+    def gunzipFuture(buf: String, options: CompressionOptions) = futureCallbackE1[js.Error, Buffer](zlib.gunzip(buf, options, _))
 
     /**
       * Decompress a Buffer or string with Inflate.
       */
     @inline
-    def inflateFuture(buf: Buffer, options: CompressionOptions) = callbackWithErrorToFuture(zlib.inflate(buf, options, _))
+    def inflateFuture(buf: Buffer, options: CompressionOptions) = futureCallbackE1[js.Error, Buffer](zlib.inflate(buf, options, _))
 
     /**
       * Decompress a Buffer or string with Inflate.
       */
     @inline
-    def inflateFuture(buf: String, options: CompressionOptions) = callbackWithErrorToFuture(zlib.inflate(buf, options, _))
+    def inflateFuture(buf: String, options: CompressionOptions) = futureCallbackE1[js.Error, Buffer](zlib.inflate(buf, options, _))
 
     /**
       * Decompress a Buffer or string with Unzip.
       */
     @inline
-    def unzipFuture(buf: Buffer, options: CompressionOptions) = callbackWithErrorToFuture(zlib.unzip(buf, options, _))
+    def unzipFuture(buf: Buffer, options: CompressionOptions) = futureCallbackE1[js.Error, Buffer](zlib.unzip(buf, options, _))
 
     /**
       * Decompress a Buffer or string with Unzip.
       */
     @inline
-    def unzipFuture(buf: String, options: CompressionOptions) = callbackWithErrorToFuture(zlib.unzip(buf, options, _))
+    def unzipFuture(buf: String, options: CompressionOptions) = futureCallbackE1[js.Error, Buffer](zlib.unzip(buf, options, _))
 
   }
 

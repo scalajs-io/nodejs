@@ -63,7 +63,7 @@ Currently, there are at least four development use cases for MEANS.js:
 ```bash
  $ sbt "project examples" clean fastOptJS
  $ cd examples
- $ node ./examples.js FilesExample
+ $ node ./examples.js ColorsExample
 ```
 
 <a name="apps_using_means"></a>
@@ -120,8 +120,8 @@ The following NodeJS modules have been implemented thus far:
 | kafka-node            | 0.0.11  | means-node-kafkanode  | A node binding for librdkafka | Tesing required |
 | mongodb               | 2.1.18  | means-node-mongodb    | Node.js MongoDB Driver | Stable |
 | multer                | 1.1.0   | means-node-multer     | Multer is a node.js middleware for handling multipart/form-data. | Tesing required |
-| mysql                 | 2.10.2  | means-node-mysql      | A node.js driver for mysql. | Tesing required |
-| net                   | 6.1.0   | means-node-net        | The net module provides you with an asynchronous network wrapper. | Tesing required |
+| mysql                 | 2.10.2  | means-node-mysql      | A node.js driver for mysql. | Stable |
+| net                   | 6.2.1   | means-node-net        | The net module provides you with an asynchronous network wrapper. | Tesing required |
 | node-zookeeper-client | 0.2.2   | means-node-zookeeper-client | A higher-level ZooKeeper client based on node-zookeeper with support for locking and master election. | Tesing required |
 | oppressor             | 0.0.1   | means-node-oppressor  | Streaming http compression response negotiator. | Tesing required |
 | os                    | 6.1.0   | means-node-os         | Provides a few basic operating-system related utility functions. | Stable |
@@ -134,7 +134,8 @@ The following NodeJS modules have been implemented thus far:
 | string-decoder        | 6.1.0   | means-node-string-decoder | The string_decoder module provides an API for decoding Buffer objects into strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16 characters. | Stable |
 | url                   | 6.1.0   | means-node-core       | The url module provides utilities for URL resolution and parsing. | Stable |
 | util                  | 6.1.0   | means-node-util       | The util module is primarily designed to support the needs of Node.js's internal APIs.  | Stable |
-| xml2js                | 0.4.16  | means-node-xml2js     | Simple XML to JavaScript object converter. | Tesing required |
+| watch                 | 0.18.0  | means-node-watch      | Utilities for watching file trees. | Stable |
+| xml2js                | 0.4.16  | means-node-xml2js     | Simple XML to JavaScript object converter. | Stable |
 | zlib                  | 6.1.0   | means-node-zlib       | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. | Tesing required |
 
 *NOTE*: The full SBT artifact expression is: "com.github.ldaniels528" %%% "means-node-xxxx" % version 

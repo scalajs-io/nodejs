@@ -1,4 +1,4 @@
-package com.github.ldaniels528.meansjs.nodejs.http
+package com.github.ldaniels528.meansjs.nodejs.net
 
 import scala.scalajs.js
 
@@ -7,7 +7,8 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait IPAddress extends js.Object {
+trait Address extends js.Object {
   var address: js.UndefOr[String] = js.native
+  var family: js.UndefOr[String] = js.native
   var port: js.UndefOr[Int] = js.native
 }

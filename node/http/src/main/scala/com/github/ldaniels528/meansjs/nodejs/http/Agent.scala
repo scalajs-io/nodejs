@@ -99,7 +99,7 @@ object Agent {
       * flexibility is desired.
       */
     @inline
-    def createConnectionAsync(options: ConnectionOptions) = callbackWithErrorToFuture[js.Any](agent.createConnection(options, _))
+    def createConnectionAsync(options: ConnectionOptions) = futureCallbackE1[js.Error, js.Any](agent.createConnection(options, _))
 
   }
 

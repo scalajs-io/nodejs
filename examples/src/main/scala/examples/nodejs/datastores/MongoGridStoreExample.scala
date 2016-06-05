@@ -5,7 +5,7 @@ import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
 import com.github.ldaniels528.meansjs.nodejs.core.Assert
 import com.github.ldaniels528.meansjs.nodejs.mongodb.{Db, MongoDB}
 import com.github.ldaniels528.meansjs.nodejs.mongodb.gridfs.GridStore
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, Require}
+import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, NodeRequire}
 import examples.nodejs.datastores.MongoGridStoreExample.FileData
 
 import scala.scalajs.js

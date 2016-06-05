@@ -39,7 +39,7 @@ trait RouteTo extends js.Object {
    * instantiated. If all the promises are resolved successfully, the values of the resolved promises are injected
    * and \$routeChangeSuccess event is fired.
    */
-  var resolve: js.Dictionary[js.Any] = js.native
+  var resolve: js.Dictionary[_ <: js.Any] = js.native
 
   /**
    * Value to update $location path with and trigger route redirection (string or function).
@@ -71,7 +71,7 @@ object RouteTo {
             templateFn: UndefOr[js.Function] = js.undefined,
             templateUrl: UndefOr[String] = js.undefined,
             templateUrlFn: UndefOr[js.Function] = js.undefined,
-            resolve: UndefOr[js.Dictionary[js.Any]] = js.undefined,
+            resolve: js.Dictionary[_ <: js.Any] = null,
             redirectTo: UndefOr[String] = js.undefined,
             redirectToFn: UndefOr[js.Function] = js.undefined,
             reloadOnSearch: UndefOr[Boolean] = js.undefined,
@@ -84,7 +84,7 @@ object RouteTo {
     templateFn.foreach(route.template = _)
     templateUrl.foreach(route.templateUrl = _)
     templateUrlFn.foreach(route.templateUrl = _)
-    resolve.foreach(route.resolve = _)
+    route.resolve = resolve
     redirectTo.foreach(route.redirectTo = _)
     redirectToFn.foreach(route.redirectTo = _)
     reloadOnSearch.foreach(route.reloadOnSearch = _)

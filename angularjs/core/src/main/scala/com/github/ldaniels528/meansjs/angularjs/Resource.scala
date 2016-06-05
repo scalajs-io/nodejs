@@ -27,10 +27,10 @@ trait Resource extends js.Object {
    * @return A resource "class" object with methods for the default set of resource actions optionally extended
    *         with custom actions
    */
-  def apply[T <: ResourceClass](url: String,
+  def apply[T <: ResourceClass[T]](url: String,
                                 paramDefaults: js.Any = js.native,
                                 actions: js.Any = js.native,
-                                options: js.Dictionary[Any]): T = js.native
+                                options: ResourceOptions): T = js.native
 
 }
 
@@ -48,17 +48,17 @@ trait Resource extends js.Object {
  * </pre>
  */
 @js.native
-trait ResourceClass extends js.Object {
+trait ResourceClass[T] extends js.Object {
 
-  def get[T](params: js.Dictionary[Any], callback: js.Function0[Unit]): T = js.native
+  def get(params: js.Dictionary[Any], callback: js.Function0[Unit]): T = js.native
 
-  def save[T](params: js.Dictionary[Any], callback: js.Function0[Unit]): T = js.native
+  def save(params: js.Dictionary[Any], callback: js.Function0[Unit]): T = js.native
 
-  def query[T](params: js.Dictionary[Any], callback: js.Function0[Unit]): T = js.native
+  def query(params: js.Dictionary[Any], callback: js.Function0[Unit]): T = js.native
 
-  def remove[T](params: js.Dictionary[Any], callback: js.Function0[Unit]): T = js.native
+  def remove(params: js.Dictionary[Any], callback: js.Function0[Unit]): T = js.native
 
-  def delete[T](params: js.Dictionary[Any], callback: js.Function0[Unit]): T = js.native
+  def delete(params: js.Dictionary[Any], callback: js.Function0[Unit]): T = js.native
 
 }
 

@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.angularjs.fileupload.nervgh
 
-import com.github.ldaniels528.meansjs.angularjs.http.HttpPromise
+import com.github.ldaniels528.meansjs.angularjs.http.HttpResponse
 import org.scalajs.dom._
 
 import scala.scalajs.js
@@ -13,7 +13,7 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 @js.native
 trait FileUpload extends js.Object {
 
-  def upload[T <: js.Any](config: FileUploadConfig): FileUploadPromise[T] = js.native
+  def upload[T](config: FileUploadConfig): FileUploadPromise[T] = js.native
 
 }
 
@@ -55,11 +55,12 @@ object FileUploadConfig {
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait FileUploadPromise[T <: js.Any] extends HttpPromise[T] {
+trait FileUploadPromise[+T] extends HttpResponse[T] {
 
   def progress(listener: js.Function1[ProgressEvent, Unit]): this.type = js.native
 
   def abort(): Unit = js.native
+
 }
 
 /**

@@ -1,26 +1,29 @@
 package com.github.ldaniels528.meansjs.angularjs.http
 
+import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * AngularJS HTTP Service Configuration
   * @author lawrence.daniels@gmail.com
   */
-@ScalaJSDefined
-class HttpConfig(var method: String,
-                 var url: String,
-                 var params: js.Dictionary[js.Any],
-                 var data: js.Any,
-                 var headers: js.Dictionary[js.Any],
-                 var xsrfHeaderName: String,
-                 var xsrfCookieName: String,
-                 var transformResponse: js.Array[js.Function], // js.Function2[js.Any, js.Any, js.Any]
-                 var transformRequest: js.Array[js.Function], // js.Function2[js.Any, js.Any, js.Any]
-                 var cache: js.Any,
-                 var withCredentials: Boolean,
-                 var timeout: js.Any,
-                 var responseType: String) extends js.Object
+@js.native
+trait HttpConfig extends js.Object {
+  var method: String = js.native
+  var url: String = js.native
+  var params: js.Dictionary[js.Any] = js.native
+  var data: js.Any = js.native
+  var headers: js.Dictionary[js.Any] = js.native
+  var xsrfHeaderName: String = js.native
+  var xsrfCookieName: String = js.native
+  var transformResponse: js.Array[js.Function] = js.native // js.Function2[js.Any = js.native js.Any, js.Any]
+  var transformRequest: js.Array[js.Function] = js.native // js.Function2[js.Any, js.Any, js.Any]
+  var cache: js.Any = js.native
+  var withCredentials: Boolean = js.native
+  var timeout: js.Any = js.native
+  var responseType: String = js.native
+}
 
 /**
   * AngularJS HTTP Service Configuration Singleton
@@ -41,13 +44,21 @@ object HttpConfig {
             withCredentials: Boolean = false,
             timeout: js.Any = null,
             responseType: String = null) = {
-    new HttpConfig(
-      method = method, url = url, params = params, data = data, headers = headers,
-      xsrfCookieName = xsrfCookieName, xsrfHeaderName = xsrfHeaderName,
-      transformRequest = transformRequest, transformResponse = transformResponse,
-      cache = cache, withCredentials = withCredentials, timeout = timeout,
-      responseType = responseType
-    )
+    val config = New[HttpConfig]
+    config.method = method
+    config.url = url
+    config.params = params
+    config.data = data
+    config.headers = headers
+    config.xsrfCookieName = xsrfCookieName
+    config.xsrfHeaderName = xsrfHeaderName
+    config.transformRequest = transformRequest
+    config.transformResponse = transformResponse
+    config.cache = cache
+    config.withCredentials = withCredentials
+    config.timeout = timeout
+    config.responseType = responseType
+    config
   }
 
 }

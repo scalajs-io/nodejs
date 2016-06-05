@@ -7,6 +7,16 @@ import scala.reflect.macros.blackbox
  */
 object MacroHelper {
 
+  def showDeclAndParams(c: blackbox.Context)(decl: c.universe.DefDef) {
+    c.info(c.enclosingPosition, s"decl = $decl", force = true)
+    c.info(c.enclosingPosition, s"mods = ${decl.mods}", force = true)
+    c.info(c.enclosingPosition, s"name = ${decl.name}", force = true)
+    c.info(c.enclosingPosition, s"tparams = ${decl.tparams}", force = true)
+    c.info(c.enclosingPosition, s"vparamss = ${decl.vparamss}", force = true)
+    c.info(c.enclosingPosition, s"tpt = ${decl.tpt}", force = true)
+    c.info(c.enclosingPosition, s"rhs = ${decl.rhs}", force = true)
+  }
+
   def showParams(c: blackbox.Context)(decl: c.universe.DefDef) {
     c.info(c.enclosingPosition, s"mods = ${decl.mods}", force = true)
     c.info(c.enclosingPosition, s"name = ${decl.name}", force = true)

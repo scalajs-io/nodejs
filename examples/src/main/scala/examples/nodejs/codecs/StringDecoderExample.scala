@@ -1,4 +1,4 @@
-package examples.nodejs.io
+package examples.nodejs.codecs
 
 import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
 import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, StringDecoder}

@@ -1,17 +1,26 @@
 package com.github.ldaniels528.meansjs.nodejs.fs
 
-import com.github.ldaniels528.meansjs.nodejs.{NodeModule, errors}
 import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
-import com.github.ldaniels528.meansjs.nodejs.fs.Fs.FileDescriptor
+import com.github.ldaniels528.meansjs.nodejs.fs.Fs.{FileDescriptor, FileMode, StringOrBuffer}
 import com.github.ldaniels528.meansjs.nodejs.stream.{Readable, Writable}
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, errors}
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.language.implicitConversions
 import scala.scalajs.js
 
 /**
-  * NodeJS File System module
+  * File I/O is provided by simple wrappers around standard POSIX functions. To use this module do require('fs').
+  * All the methods have asynchronous and synchronous forms.
+  *
+  * The asynchronous form always takes a completion callback as its last argument. The arguments passed to the
+  * completion callback depend on the method, but the first argument is always reserved for an exception. If the
+  * operation was completed successfully, then the first argument will be null or undefined.
+  *
+  * When using the synchronous form any exceptions are immediately thrown. You can use try/catch to handle exceptions
+  * or allow them to bubble up.
+  * @version 6.2.1
   * @author lawrence.daniels@gmail.com
   */
 @js.native
@@ -25,22 +34,22 @@ trait Fs extends NodeModule with EventEmitter {
     * File is visible to the calling process. This is useful for determining if a file exists, but says
     * nothing about rwx permissions. Default if no mode is specified.
     */
-  val F_OK: Int = js.native
+  val F_OK: FileMode = js.native
 
   /**
     * File can be read by the calling process.
     */
-  val R_OK: Int = js.native
+  val R_OK: FileMode = js.native
 
   /**
     * File can be written by the calling process.
     */
-  val W_OK: Int = js.native
+  val W_OK: FileMode = js.native
 
   /**
     * File can be executed by the calling process. This has no effect on Windows (will behave like fs.[[F_OK]]).
     */
-  val X_OK: Int = js.native
+  val X_OK: FileMode = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Classes
@@ -48,9 +57,18 @@ trait Fs extends NodeModule with EventEmitter {
 
   /**
     * TODO find documentation
-    * @return
+    */
+  def FSWatcher: js.Function1[String, FSWatcher] = js.native
+
+  /**
+    * TODO find documentation
     */
   def ReadStream: js.Function1[String, ReadStream] = js.native
+
+  /**
+    * TODO find documentation
+    */
+  def WriteStream: js.Function1[String, WriteStream] = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -73,7 +91,7 @@ trait Fs extends NodeModule with EventEmitter {
     *                 checks fail, the error argument will be populated.
     * @example fs.access(path[, mode], callback)
     */
-  def access(path: String, mode: Integer, callback: js.Function1[errors.Error, Any]): Unit = js.native
+  def access(path: String, mode: FileMode, callback: js.Function1[errors.Error, Any]): Unit = js.native
 
   /**
     * Tests a user's permissions for the file specified by path. mode is an optional integer that specifies
@@ -92,7 +110,7 @@ trait Fs extends NodeModule with EventEmitter {
     *                 checks fail, the error argument will be populated.
     * @example fs.access(path[, mode], callback)
     */
-  def access(path: Buffer, mode: Integer, callback: js.Function1[errors.Error, Any]): Unit = js.native
+  def access(path: Buffer, mode: FileMode, callback: js.Function1[errors.Error, Any]): Unit = js.native
 
   /**
     * Tests a user's permissions for the file specified by path. mode is an optional integer that specifies
@@ -143,7 +161,7 @@ trait Fs extends NodeModule with EventEmitter {
     * @param mode the optional mode
     * @example fs.accessSync(path[, mode])
     */
-  def accessSync(path: String, mode: Integer): js.Any = js.native
+  def accessSync(path: String, mode: FileMode): js.Any = js.native
 
   /**
     * Synchronous version of fs.access(). This throws if any accessibility checks fail, and does nothing otherwise.
@@ -158,13 +176,32 @@ trait Fs extends NodeModule with EventEmitter {
     * @param mode the optional mode
     * @example fs.accessSync(path[, mode])
     */
-  def accessSync(path: Buffer, mode: Integer): js.Any = js.native
+  def accessSync(path: Buffer, mode: FileMode): js.Any = js.native
+
+  /**
+    * Asynchronously append data to a file, creating the file if it does not yet exist. data can be a string or a buffer.
+    * @param file     the filename or file descriptor (String | Buffer | Number)
+    * @param data     the data to append (String | Buffer)
+    * @param options  the optional append options
+    * @param callback the callback function
+    * @example fs.appendFile(file, data[, options], callback)
+    */
+  def appendFile(file: StringOrBuffer, data: StringOrBuffer, options: AppendOptions, callback: js.Function): Unit = js.native
+
+  /**
+    * Asynchronously append data to a file, creating the file if it does not yet exist. data can be a string or a buffer.
+    * @param file     the filename or file descriptor (String | Buffer | Number)
+    * @param data     the data to append (String | Buffer)
+    * @param callback the callback function
+    * @example fs.appendFile(file, data[, options], callback)
+    */
+  def appendFile(file: StringOrBuffer, data: StringOrBuffer, callback: js.Function): Unit = js.native
 
   /**
     * Asynchronous close(2). No arguments other than a possible exception are given to the completion callback.
     * @example fs.close(fd, callback)
     */
-  def close(fd: FileDescriptor, callback: js.Function1[errors.Error, Any]): Unit = js.native
+  def close(fd: FileDescriptor, callback: js.Function): Unit = js.native
 
   /**
     * Synchronous close(2). Returns undefined.
@@ -245,16 +282,45 @@ trait Fs extends NodeModule with EventEmitter {
   def createWriteStream(path: Buffer, options: FileOutputOptions): Writable = js.native
 
   /**
+    * Test whether or not the given path exists by checking with the file system. Then call the callback argument with
+    * either true or false.
+    * @example fs.exists('/etc/passwd', (exists) => { ... })
+    */
+  @deprecated("Use fs.stat() or fs.access() instead.", since = "1.0.0")
+  def exists(path: String, callback: js.Function): Unit = js.native
+
+  /**
+    * fs.exists() should not be used to check if a file exists before calling fs.open(). Doing so introduces a race
+    * condition since other processes may change the file's state between the two calls. Instead, user code should
+    * call fs.open() directly and handle the error raised if the file is non-existent.
+    * @example fs.existsSync(path)
+    */
+  @deprecated("Use fs.statSync() or fs.accessSync() instead.", since = "1.0.0")
+  def existsSync(path: String): Boolean = js.native
+
+  /**
+    * Asynchronous fchmod(2). No arguments other than a possible exception are given to the completion callback.
+    * @example fs.fchmod(fd, mode, callback)
+    */
+  def fchmod(fd: FileDescriptor, mode: FileMode, callback: js.Function): Unit = js.native
+
+  /**
+    * Synchronous fchmod(2). Returns undefined.
+    * @example fs.fchmodSync(fd, mode)
+    */
+  def fchmodSync(fd: FileDescriptor, mode: FileMode): Unit = js.native
+
+  /**
     * Asynchronous fdatasync(2). No arguments other than a possible exception are given to the completion callback.
     * @example fs.fdatasync(fd, callback)
     */
-  def fdatasync(fd: FileDescriptor, callback: js.Function1[errors.Error, Any]): Unit = js.native
+  def fdatasync(fd: FileDescriptor, callback: js.Function): Unit = js.native
 
   /**
     * Synchronous fdatasync(2). Returns undefined.
     * @example fs.fdatasyncSync(fd)
     */
-  def fdatasyncSync(fd: FileDescriptor): js.Any = js.native
+  def fdatasyncSync(fd: FileDescriptor): Unit = js.native
 
   /**
     * Change the file timestamps of a file referenced by the supplied file descriptor.
@@ -266,25 +332,25 @@ trait Fs extends NodeModule with EventEmitter {
     * Synchronous version of fs.futimes(). Returns undefined.
     * @example fs.futimesSync(fd, atime, mtime)
     */
-  def futimesSync(fd: FileDescriptor, atime: Integer, mtime: Integer): js.Any = js.native
+  def futimesSync(fd: FileDescriptor, atime: Integer, mtime: Integer): Unit = js.native
 
   /**
     * Asynchronous lchmod(2). No arguments other than a possible exception are given to the completion callback.
     * @example fs.lchmod(path, mode, callback)
     */
-  def lchmod(path: Buffer, mode: Integer, callback: js.Function1[errors.Error, Any]): Unit = js.native
+  def lchmod(path: Buffer, mode: FileMode, callback: js.Function1[errors.Error, Any]): Unit = js.native
 
   /**
     * Asynchronous lchmod(2). No arguments other than a possible exception are given to the completion callback.
     * @example fs.lchmod(path, mode, callback)
     */
-  def lchmod(path: String, mode: Integer, callback: js.Function1[errors.Error, Any]): Unit = js.native
+  def lchmod(path: String, mode: FileMode, callback: js.Function1[errors.Error, Any]): Unit = js.native
 
   /**
     * Synchronous lchmod(2). Returns undefined.
     * @example fs.lchmodSync(path, mode)
     */
-  def lchmodSync(path: String, mode: Integer): js.Any = js.native
+  def lchmodSync(path: String, mode: FileMode): js.Any = js.native
 
   /**
     * Asynchronous lchown(2). No arguments other than a possible exception are given to the completion callback.
@@ -334,13 +400,13 @@ trait Fs extends NodeModule with EventEmitter {
     * Asynchronous mkdir(2). No arguments other than a possible exception are given to the completion callback. mode defaults to 0o777.
     * @example fs.mkdir(path[, mode], callback)
     */
-  def mkdir(path: Buffer, mode: Integer, callback: js.Function1[errors.Error, Any]): Unit = js.native
+  def mkdir(path: Buffer, mode: FileMode, callback: js.Function1[errors.Error, Any]): Unit = js.native
 
   /**
     * Asynchronous mkdir(2). No arguments other than a possible exception are given to the completion callback. mode defaults to 0o777.
     * @example fs.mkdir(path[, mode], callback)
     */
-  def mkdir(path: String, mode: Integer, callback: js.Function1[errors.Error, Any]): Unit = js.native
+  def mkdir(path: String, mode: FileMode, callback: js.Function1[errors.Error, Any]): Unit = js.native
 
   /**
     * Asynchronously reads the entire contents of a file.
@@ -619,6 +685,10 @@ object Fs {
     */
   type FileDescriptor = Integer
 
+  type FileMode = Integer
+
+  type StringOrBuffer = js.Any
+
   /**
     * File System Extensions
     * @param fs the given [[Fs file system]] instance
@@ -629,13 +699,16 @@ object Fs {
     def accessFuture(path: String) = futureCallbackE0[errors.Error](fs.access(path, _))
 
     @inline
-    def accessFuture(path: String, mode: Integer) = futureCallbackE0[errors.Error](fs.access(path, mode, _))
+    def accessFuture(path: String, mode: FileMode) = futureCallbackE0[errors.Error](fs.access(path, mode, _))
 
     @inline
     def accessFuture(path: Buffer) = futureCallbackE0[errors.Error](fs.access(path, _))
 
     @inline
-    def accessFuture(path: Buffer, mode: Integer) = futureCallbackE0[errors.Error](fs.access(path, mode, _))
+    def accessFuture(path: Buffer, mode: FileMode) = futureCallbackE0[errors.Error](fs.access(path, mode, _))
+
+    @inline
+    def appendFileFuture(file: StringOrBuffer, data: StringOrBuffer, options: AppendOptions) = futureCallbackE0[errors.Error](fs.appendFile(file, data, options, _))
 
     @inline
     def closeFuture(fd: FileDescriptor) = futureCallbackE0[errors.Error](fs.close(fd, _))
@@ -647,7 +720,7 @@ object Fs {
     def futimesFuture(fd: FileDescriptor, atime: Integer, mtime: Integer) = futureCallbackE0[errors.Error](fs.futimes(fd, atime, mtime, _))
 
     @inline
-    def lchmodFuture(path: String, mode: Integer) = futureCallbackE0[errors.Error](fs.lchmod(path, mode, _))
+    def lchmodFuture(path: String, mode: FileMode) = futureCallbackE0[errors.Error](fs.lchmod(path, mode, _))
 
     @inline
     def lchownFuture(path: String, uid: Integer, gid: Integer) = futureCallbackE0[errors.Error](fs.lchown(path, uid, gid, _))
@@ -665,10 +738,10 @@ object Fs {
     def linkFuture(srcpath: String, dstpath: String) = futureCallbackE0[errors.Error](fs.link(srcpath, dstpath, _))
 
     @inline
-    def mkdirFuture(path: Buffer, mode: Integer) = futureCallbackE0[errors.Error](fs.mkdir(path, mode, _))
+    def mkdirFuture(path: Buffer, mode: FileMode) = futureCallbackE0[errors.Error](fs.mkdir(path, mode, _))
 
     @inline
-    def mkdirFuture(path: String, mode: Integer) = futureCallbackE0[errors.Error](fs.mkdir(path, mode, _))
+    def mkdirFuture(path: String, mode: FileMode) = futureCallbackE0[errors.Error](fs.mkdir(path, mode, _))
 
     @inline
     def readFileFuture(file: String, options: FileInputOptions = null) = futureCallbackE1[errors.Error, js.Any](fs.readFile(file, options, _))
@@ -689,9 +762,7 @@ object Fs {
     def statFuture(path: String) = futureCallbackE1[errors.Error, Stats](fs.stat(path, _))
 
     @inline
-    def watchFuture(filename: String, options: FSWatcherOptions = null) = {
-      futureCallbackA2[String, String](fs.watch(filename, options, _))
-    }
+    def watchFuture(filename: String, options: FSWatcherOptions = null) = futureCallbackA2[String, String](fs.watch(filename, options, _))
 
     @inline
     def writeFileFuture(file: String, data: Buffer, options: FileOutputOptions = null) = {

@@ -1,15 +1,16 @@
 package com.github.ldaniels528.meansjs.nodejs.fs
 
-import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
+import com.github.ldaniels528.meansjs.nodejs.fs.Fs.FileDescriptor
+import com.github.ldaniels528.meansjs.nodejs.stream.Readable
 
 import scala.scalajs.js
 
 /**
-  * ReadStream is a Readable Stream.
-  * @author lawrence.daniels@gmail.com
+  * fs.ReadStream - ReadStream is a Readable Stream.
+  * @version 6.2.1
   */
 @js.native
-trait ReadStream extends EventEmitter {
+trait ReadStream extends Readable {
 
   /**
     * The path to the file the stream is reading from as specified in the first argument to fs.createReadStream().
@@ -30,20 +31,24 @@ object ReadStream {
     * Read Stream Extensions
     * @author lawrence.daniels@gmail.com
     */
-  implicit class ReadStreamExtensions(val rs: ReadStream) extends AnyVal {
+  implicit class ReadStreamExtensions(val stream: ReadStream) extends AnyVal {
 
-    @inline
-    def onData(listener: js.Function) = rs.on("data", listener)
-
-    @inline
-    def onEnd(listener: js.Function) = rs.on("end", listener)
+    /**
+      * Emitted when the ReadStream's underlying file descriptor has been closed using the fs.close() method.
+      * @param listener the event handler
+      * @since 0.1.93
+      */
+    @inline def onClose(listener: () => Any) = stream.on("close", listener)
 
     /**
       * Emitted when the ReadStream's file is opened.
-      * callback: fd <Integer> - file descriptor used by the ReadStream.
+      * @param listener the event handler
+      *                 <ul>
+      *                 <li>fd: Integer - file descriptor used by the ReadStream.</li>
+      *                 </ul>
+      * @since 0.1.93
       */
-    @inline
-    def onOpen(listener: js.Function1[Integer, Unit]) = rs.on("open", listener)
+    @inline def onOpen(listener: FileDescriptor => Any) = stream.on("open", listener)
 
   }
 

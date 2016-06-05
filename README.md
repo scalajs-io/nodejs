@@ -74,6 +74,7 @@ The following applications were developed using MEANS.js:
 | Application                                             | Frontend              | Backend            | Description                                                  |
 |---------------------------------------------------------|-----------------------|--------------------|--------------------------------------------------------------|
 | [Socialized](https://github.com/ldaniels528/socialized) | MEANS.js/AngularJS    | MEANS.js/NodeJS    | A Social networking portal written in Scala.js and MEANS.js. |
+| [Todo MVC](https://github.com/ldaniels528/meansjs-angular-todomvc) | MEANS.js/AngularJS    | MEANS.js/NodeJS    | A simple Todo example application. |
 | [Trifecta](https://github.com/ldaniels528/trifecta)     | MEANS.js/AngularJS    | Play 2.4.x + Scala | Trifecta is a web-based and CLI tool that simplifies inspecting Kafka messages and Zookeeper data. |
  
  
@@ -98,12 +99,13 @@ The following NodeJS modules have been implemented thus far:
 | adal-node             | 0.1.19  | means-node-adal-node  | Windows Azure Active Directory Client Library for node. | Tesing required |
 | amqplib               | 0.4.1   | means-node-amqplib    | An AMQP 0-9-1 (e.g., RabbitMQ) library and client. | Tesing required |
 | async                 | 1.5.2   | means-node-async      | Higher-order functions and common patterns for asynchronous code. | Tesing required |
-| assert                | 6.1.0   | means-node-assert     | Provides a simple set of assertion tests that can be used to test invariants. | Stable |
+| assert                | 6.2.1   | means-node-assert     | Provides a simple set of assertion tests that can be used to test invariants. | Stable |
 | azure                 | 0.10.6  | means-node-azure      | Microsoft Azure Client Library for node. | WIP - Unusable |
 | bcrypt                | 0.0.3   | means-node-bcrypt     | A native JS bcrypt library for NodeJS. | Stable |
 | body-parser           | 1.15.1  | means-node-body-parser| Body parsing middleware. | Stable |
-| buffer                | 6.1.0   | means-node-core       | The Buffer class was introduced as part of the Node.js API to make it possible to interact with octet streams in the context of things like TCP streams and file system operations. | Stable |
+| buffer                | 6.2.1   | means-node-core       | The Buffer class was introduced as part of the Node.js API to make it possible to interact with octet streams in the context of things like TCP streams and file system operations. | Stable |
 | cassandra-driver      | 3.0.2   | means-node-datastax-cassandra| DataStax Node.js Driver for Apache Cassandra | Tesing required |
+| cluster               | 6.2.1   | means-node-cluster    | The cluster module allows you to easily create child processes that all share server ports. | Stable |
 | colors                | 1.1.2   | means-node-colors     | Get colors in your node.js console.| Stable |
 | crypto                | 6.1.0   | means-node-core       | The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions.| Tesing required |
 | drama                 | 0.1.3   | means-node-drama      | drama is an Actor model implementation for JavaScript and Node.js | Tesing required |
@@ -113,7 +115,7 @@ The following NodeJS modules have been implemented thus far:
 | express-fileupload    | 0.0.5   | means-node-express-fileupload | Simple express file upload middleware that wraps around connect-busboy | Stable |
 | express-ws            |2.0.0-rc1| means-node-express-ws | WebSocket endpoints for Express applications | Stable |
 | filed                 | 0.1.0   | means-node-filed      | Simplified file library. | Stable |
-| fs                    | 6.1.0   | means-node-fs         | File I/O is provided by simple wrappers around standard POSIX functions. | Stable |
+| fs                    | 6.2.1   | means-node-fs         | File I/O is provided by simple wrappers around standard POSIX functions. | Stable |
 | http                  | 6.1.0   | means-node-http       | Node.js HTTP Interface | Stable |
 | https                 | 6.1.0   | means-node-https      | Node.js HTTPS Interface | Tesing required |
 | jwt-simple            | 0.5.0   | means-node-jwt-simple | JWT(JSON Web Token) encode and decode module | Stable |
@@ -121,7 +123,7 @@ The following NodeJS modules have been implemented thus far:
 | mongodb               | 2.1.18  | means-node-mongodb    | Node.js MongoDB Driver | Stable |
 | multer                | 1.1.0   | means-node-multer     | Multer is a node.js middleware for handling multipart/form-data. | Tesing required |
 | mysql                 | 2.10.2  | means-node-mysql      | A node.js driver for mysql. | Stable |
-| net                   | 6.2.1   | means-node-net        | The net module provides you with an asynchronous network wrapper. | Tesing required |
+| net                   | 6.2.1   | means-node-net        | The net module provides you with an asynchronous network wrapper. | Stable |
 | node-zookeeper-client | 0.2.2   | means-node-zookeeper-client | A higher-level ZooKeeper client based on node-zookeeper with support for locking and master election. | Tesing required |
 | oppressor             | 0.0.1   | means-node-oppressor  | Streaming http compression response negotiator. | Tesing required |
 | os                    | 6.1.0   | means-node-os         | Provides a few basic operating-system related utility functions. | Stable |
@@ -136,7 +138,7 @@ The following NodeJS modules have been implemented thus far:
 | util                  | 6.1.0   | means-node-util       | The util module is primarily designed to support the needs of Node.js's internal APIs.  | Stable |
 | watch                 | 0.18.0  | means-node-watch      | Utilities for watching file trees. | Stable |
 | xml2js                | 0.4.16  | means-node-xml2js     | Simple XML to JavaScript object converter. | Stable |
-| zlib                  | 6.1.0   | means-node-zlib       | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. | Tesing required |
+| zlib                  | 6.1.0   | means-node-zlib       | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. | Stable |
 
 *NOTE*: The full SBT artifact expression is: "com.github.ldaniels528" %%% "means-node-xxxx" % version 
 (e.g. "com.github.ldaniels528" %%% "means-node-express" % "0.1.7")

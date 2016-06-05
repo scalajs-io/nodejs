@@ -129,7 +129,7 @@ trait ServerResponse extends EventEmitter with Writable {
 
   def writeHead(statusCode: Int, statusMessage: String): Unit = js.native
 
-  def writeHead(statusCode: Int, headers: js.Any): Unit = js.native
+  def writeHead(statusCode: Int, headers: js.Any = null): Unit = js.native
 
 }
 

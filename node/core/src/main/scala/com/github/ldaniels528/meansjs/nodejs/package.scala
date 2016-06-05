@@ -31,14 +31,14 @@ package object nodejs {
     */
   @js.native
   @JSName("global")
-  object global extends js.Object
+  object global extends GlobalObject
 
   /**
     * The process object. See the process object section.
     */
   @js.native
   @JSName("process")
-  object process extends ProcessClass
+  object process extends Process
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Timers

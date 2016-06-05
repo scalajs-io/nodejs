@@ -1,15 +1,16 @@
 package com.github.ldaniels528.meansjs.nodejs.fs
 
-import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
+import com.github.ldaniels528.meansjs.nodejs.fs.Fs.FileDescriptor
+import com.github.ldaniels528.meansjs.nodejs.stream.Writable
 
 import scala.scalajs.js
 
 /**
-  * WriteStream is a Readable Stream.
-  * @author lawrence.daniels@gmail.com
+  * fs.WriteStream - WriteStream is a Writable Stream.
+  * @version 6.2.1
   */
 @js.native
-trait WriteStream extends EventEmitter {
+trait WriteStream extends Writable {
 
   /**
     * The number of bytes written so far. Does not include data that is still queued for writing.
@@ -35,14 +36,24 @@ object WriteStream {
     * Write Stream Extensions
     * @author lawrence.daniels@gmail.com
     */
-  implicit class WriteStreamExtensions(val rs: WriteStream) extends AnyVal {
+  implicit class WriteStreamExtensions(val stream: WriteStream) extends AnyVal {
+
+    /**
+      * Emitted when the WriteStream's underlying file descriptor has been closed using the fs.close() method.
+      * @param listener the event handler
+      * @since 0.1.93
+      */
+    @inline def onClose(listener: () => Any) = stream.on("close", listener)
 
     /**
       * Emitted when the WriteStream's file is opened.
-      * callback: fd <Integer> - file descriptor used by the WriteStream.
+      * @param listener the event handler
+      *                 <ul>
+      *                 <li>fd: Integer - file descriptor used by the ReadStream.</li>
+      *                 </ul>
+      * @since 0.1.93
       */
-    @inline
-    def onOpen(listener: js.Function1[Integer, Unit]) = rs.on("open", listener)
+    @inline def onOpen(listener: FileDescriptor => Any) = stream.on("open", listener)
 
   }
 

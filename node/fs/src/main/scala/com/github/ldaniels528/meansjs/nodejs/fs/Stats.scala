@@ -3,27 +3,9 @@ package com.github.ldaniels528.meansjs.nodejs.fs
 import scala.scalajs.js
 
 /**
-  * File Statistics
-  * <pre>
-  * {
-  * "dev": 16777220,
-  * "mode": 33188,
-  * "nlink": 1,
-  * "uid": 501,
-  * "gid": 0,
-  * "rdev": 0,
-  * "blksize": 4096,
-  * "ino": 203412817,
-  * "size": 0,
-  * "blocks": 0,
-  * "atime": "2016-04-12T15:49:34.000Z",
-  * "mtime": "2016-04-12T15:49:34.000Z",
-  * "ctime": "2016-04-12T15:49:34.000Z",
-  * "birthtime": "2016-04-12T15:49:34.000Z"
-  * }
-  * </pre>
-  * @since v0.1.21
-  * @author lawrence.daniels@gmail.com
+  * fs.Stats (Stat Time Values) - Objects returned from fs.stat(), fs.lstat() and fs.fstat() and their synchronous
+  * counterparts are of this type.
+  * @since 0.1.21
   */
 @js.native
 trait Stats extends js.Object {

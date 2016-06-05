@@ -20,66 +20,66 @@ trait Http extends js.Object {
     *         request succeeds or fails respectively. The arguments passed into these functions are destructured
     *         representation of the response object passed into the then method.
     */
-  def apply[T <: js.Any](config: HttpConfig): HttpPromise[T] = js.native
+  def apply[T <: js.Any](config: HttpConfig): HttpResponse[T] = js.native
 
   /**
     * Relative or absolute URL specifying the destination of the request
     * @param url    Relative or absolute URL specifying the destination of the request
     * @param config Optional configuration object
-    * @return a [[HttpPromise promise]] of an response
+    * @return a [[HttpResponse promise]] of an response
     */
-  def get[T <: js.Any](url: String, config: HttpConfig = js.native, headers: js.Dictionary[js.Any] = js.native): HttpPromise[T] = js.native
+  def get[T <: js.Any](url: String, config: HttpConfig = js.native, headers: js.Dictionary[js.Any] = js.native): HttpResponse[T] = js.native
 
   /**
     * Shortcut method to perform a DELETE request.
     * @param url    Relative or absolute URL specifying the destination of the request
     * @param data   Request content
     * @param config Optional configuration object
-    * @return a [[HttpPromise promise]] of an response
+    * @return a [[HttpResponse promise]] of an response
     */
-  def delete[T <: js.Any](url: String, data: js.Any = js.native, config: HttpConfig = js.native, headers: js.Dictionary[js.Any] = js.native): HttpPromise[T] = js.native
+  def delete[T <: js.Any](url: String, data: js.Any = js.native, config: HttpConfig = js.native, headers: js.Dictionary[js.Any] = js.native): HttpResponse[T] = js.native
 
   /**
     * Shortcut method to perform a HEAD request.
     * @param url    Relative or absolute URL specifying the destination of the request
     * @param config Optional configuration object
-    * @return a [[HttpPromise promise]] of an response
+    * @return a [[HttpResponse promise]] of an response
     */
-  def head[T <: js.Any](url: String, config: HttpConfig = js.native): HttpPromise[T] = js.native
+  def head[T <: js.Any](url: String, config: HttpConfig = js.native): HttpResponse[T] = js.native
 
   /**
     * Shortcut method to perform a JSONP request.
     * @param url    Relative or absolute URL specifying the destination of the request
     * @param config Optional configuration object
-    * @return a [[HttpPromise promise]] of an response
+    * @return a [[HttpResponse promise]] of an response
     */
-  def jsonp[T <: js.Any](url: String, config: HttpConfig = js.native): HttpPromise[T] = js.native
+  def jsonp[T <: js.Any](url: String, config: HttpConfig = js.native): HttpResponse[T] = js.native
 
   /**
     * Shortcut method to perform a POST request.
     * @param url    Relative or absolute URL specifying the destination of the request
     * @param data   Request content
     * @param config Optional configuration object
-    * @return a [[HttpPromise promise]] of an response
+    * @return a [[HttpResponse promise]] of an response
     */
-  def post[T <: js.Any](url: String, data: js.Any = js.native, config: HttpConfig = js.native, headers: js.Dictionary[js.Any] = js.native, responseType: String = js.native): HttpPromise[T] = js.native
+  def post[T <: js.Any](url: String, data: js.Any = js.native, config: HttpConfig = js.native, headers: js.Dictionary[js.Any] = js.native, responseType: String = js.native): HttpResponse[T] = js.native
 
   /**
     * Shortcut method to perform a PUT request.
     * @param url    Relative or absolute URL specifying the destination of the request
     * @param config Optional configuration object
     * @param data   Request content
-    * @return a [[HttpPromise promise]] of an response
+    * @return a [[HttpResponse promise]] of an response
     */
-  def put[T <: js.Any](url: String, data: js.Any = js.native, config: HttpConfig = js.native, headers: js.Dictionary[js.Any] = js.native, responseType: String = js.native): HttpPromise[T] = js.native
+  def put[T <: js.Any](url: String, data: js.Any = js.native, config: HttpConfig = js.native, headers: js.Dictionary[js.Any] = js.native, responseType: String = js.native): HttpResponse[T] = js.native
 
   /**
     * Shortcut method to perform a PATCH request.
     * @param url    Relative or absolute URL specifying the destination of the request
     * @param data   Request content
     * @param config Optional configuration object
-    * @return a [[HttpPromise promise]] of an response
+    * @return a [[HttpResponse promise]] of an response
     */
-  def patch[T <: js.Any](url: String, data: js.Any = js.native, config: HttpConfig = js.native, headers: js.Dictionary[js.Any] = js.native, responseType: String = js.native): HttpPromise[T] = js.native
+  def patch[T <: js.Any](url: String, data: js.Any = js.native, config: HttpConfig = js.native, headers: js.Dictionary[js.Any] = js.native, responseType: String = js.native): HttpResponse[T] = js.native
 
 }

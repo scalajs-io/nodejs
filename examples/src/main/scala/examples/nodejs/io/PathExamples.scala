@@ -1,6 +1,6 @@
 package examples.nodejs.io
 
-import com.github.ldaniels528.meansjs.nodejs.ProcessClass._
+import com.github.ldaniels528.meansjs.nodejs.Process._
 import com.github.ldaniels528.meansjs.nodejs.core.Assert
 import com.github.ldaniels528.meansjs.nodejs.path.{Path, PathObject}
 import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console, process}

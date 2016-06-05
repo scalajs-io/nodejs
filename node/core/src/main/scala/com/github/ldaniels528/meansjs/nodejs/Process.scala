@@ -7,11 +7,11 @@ import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 import scala.scalajs.js
 
 /**
-  * Node.js Process Class
+  * The process object is a global object and can be accessed from anywhere. It is an instance of EventEmitter.
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait ProcessClass extends EventEmitter {
+trait Process extends EventEmitter {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -105,7 +105,7 @@ trait ProcessClass extends EventEmitter {
     * and headers-only tarball.
     * @example process.release
     */
-  def release: ProcessClass.ReleaseInfo = js.native
+  def release: Process.ReleaseInfo = js.native
 
   /**
     * process.stderr and process.stdout are unlike other streams in Node.js in that they cannot be
@@ -152,7 +152,7 @@ trait ProcessClass extends EventEmitter {
     * A property exposing version strings of Node.js and its dependencies.
     * @example process.versions
     */
-  def versions: ProcessClass.VersionInfo = js.native
+  def versions: Process.VersionInfo = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -260,7 +260,7 @@ trait ProcessClass extends EventEmitter {
     * Returns an object describing the memory usage of the Node.js process measured in bytes.
     * @example process.memoryUsage()
     */
-  def memoryUsage(): ProcessClass.MemoryUsage = js.native
+  def memoryUsage(): Process.MemoryUsage = js.native
 
   /**
     * Once the current event loop turn runs to completion, call the callback function.
@@ -279,7 +279,7 @@ trait ProcessClass extends EventEmitter {
     * If Node.js was not spawned with an IPC channel, process.send() will be undefined.
     * @example {{{ process.send(message[, sendHandle[, options]][, callback]) }}}
     */
-  def send(message: js.Any, sendHandle: js.Any, options: ProcessClass.TransferOptions, callback: js.Function): Boolean = js.native
+  def send(message: js.Any, sendHandle: js.Any, options: Process.TransferOptions, callback: js.Function): Boolean = js.native
 
   /**
     * When Node.js is spawned with an IPC channel attached, it can send messages to its parent process
@@ -289,7 +289,7 @@ trait ProcessClass extends EventEmitter {
     * If Node.js was not spawned with an IPC channel, process.send() will be undefined.
     * @example {{{ process.send(message[, sendHandle[, options]][, callback]) }}}
     */
-  def send(message: js.Any, sendHandle: js.Any, options: ProcessClass.TransferOptions): Boolean = js.native
+  def send(message: js.Any, sendHandle: js.Any, options: Process.TransferOptions): Boolean = js.native
 
   /**
     * When Node.js is spawned with an IPC channel attached, it can send messages to its parent process
@@ -383,7 +383,7 @@ trait ProcessClass extends EventEmitter {
   * Process Object Companion
   * @author lawrence.daniels@gmail.com
   */
-object ProcessClass {
+object Process {
 
   /**
     * Process Environment Extensions
@@ -397,20 +397,20 @@ object ProcessClass {
 
   /**
     * Process Object Extensions
-    * @param process the given [[ProcessClass process]]
+    * @param process the given [[Process process]]
     */
-  implicit class ProcessExtensions(val process: ProcessClass) extends AnyVal {
+  implicit class ProcessExtensions(val process: Process) extends AnyVal {
 
     /**
-      * @see [[ProcessClass.send()]]
+      * @see [[Process.send()]]
       */
     @inline
-    def sendFuture(message: js.Any, sendHandle: js.Any, options: ProcessClass.TransferOptions) = {
+    def sendFuture(message: js.Any, sendHandle: js.Any, options: Process.TransferOptions) = {
       futureCallbackE1[errors.Error, Boolean](process.send(message, sendHandle, options, _))
     }
 
     /**
-      * @see [[ProcessClass.send()]]
+      * @see [[Process.send()]]
       */
     @inline
     def sendFuture(message: js.Any, sendHandle: js.Any) = {
@@ -418,7 +418,7 @@ object ProcessClass {
     }
 
     /**
-      * @see [[ProcessClass.send()]]
+      * @see [[Process.send()]]
       */
     @inline
     def sendFuture(message: js.Any) = {

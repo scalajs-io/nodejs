@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.buffer
 
-import com.github.ldaniels528.meansjs.nodejs.JsIterator
+import com.github.ldaniels528.meansjs.core.{JsIterator, optional}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
@@ -25,6 +25,12 @@ trait Buffer extends js.Object {
   /**
     * @example {{{ buf.compare(target[, targetStart[, targetEnd[, sourceStart[, sourceEnd]]]]) }}}
     */
+  @optional(fields = Seq("targetStart", "targetEnd", "sourceStart", "sourceEnd"))
+  def compare2(target: Buffer, targetStart: Int, targetEnd: Int, sourceStart: Int, sourceEnd: Int): Int = js.native
+
+  /**
+    * @example {{{ buf.compare(target[, targetStart[, targetEnd[, sourceStart[, sourceEnd]]]]) }}}
+    */
   def compare(target: Buffer, targetStart: Int, targetEnd: Int, sourceStart: Int, sourceEnd: Int): Int = js.native
 
   def compare(target: Buffer, targetStart: Int, targetEnd: Int, sourceStart: Int): Int = js.native
@@ -38,7 +44,7 @@ trait Buffer extends js.Object {
   /**
     * Creates and returns an iterator of [index, byte] pairs from the Buffer contents.
     */
-  def entries(): JsIterator = js.native
+  def entries(): JsIterator[js.Array[Int]] = js.native
 
   def toString(encoding: String): String = js.native
 

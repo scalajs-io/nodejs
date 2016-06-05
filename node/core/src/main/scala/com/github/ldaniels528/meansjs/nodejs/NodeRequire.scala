@@ -7,7 +7,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Require extends js.Any {
+trait NodeRequire extends js.Any {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties

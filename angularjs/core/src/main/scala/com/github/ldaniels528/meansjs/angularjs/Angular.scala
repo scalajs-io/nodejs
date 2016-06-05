@@ -106,7 +106,7 @@ trait Angular extends js.Object {
     * as the target: var object = angular.extend({}, object1, object2).
     * @see [[https://docs.angularjs.org/api/ng/function/angular.extend]]
     */
-  def extend(dst: js.Object, src: js.Object): js.Object = js.native
+  def extend[T](dst: js.Any, src: js.Any): T = js.native
 
   /**
     * Invokes the iterator function once for each item in obj collection, which can be either an object or an array.

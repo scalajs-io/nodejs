@@ -1,7 +1,7 @@
 package examples.nodejs.io
 
+import com.github.ldaniels528.meansjs.core.JsIterator.Entry
 import com.github.ldaniels528.meansjs.nodejs.Bootstrap
-import com.github.ldaniels528.meansjs.nodejs.JsIterator.IteratorResult
 import com.github.ldaniels528.meansjs.nodejs.buffer._
 import org.scalajs.dom.console
 
@@ -13,29 +13,55 @@ import scala.scalajs.js
   */
 class BuffersExample(bootstrap: Bootstrap) {
 
-  val buf1 = Buffer.from("ABC")
-  val buf2 = Buffer.from("BCD")
-  val buf3 = Buffer.from("ABCD")
+  example1()
+  example2()
+  example3()
 
-  // Prints: 0
-  console.log(buf1.compare(buf1))
-  // Prints: -1
-  console.log(buf1.compare(buf2))
-  // Prints: 1
-  console.log(buf1.compare(buf3))
-  // Prints: 1
-  console.log(buf2.compare(buf1))
-  // Prints: 1
-  console.log(buf2.compare(buf3))
+  def example1() {
+    // "Hello " + "World" => "Hello World"
+    val bufA = Buffer.from("Hello ")
+    console.log("bufA =>", bufA.toString())
+    val bufB = Buffer.from("World")
+    console.log("bufB =>", bufB.toString())
+    val bufC = bufA + bufB
+    console.log("bufC =>", bufC.toString(), ", length = ", bufC.byteLength())
+  }
 
-  // produces sort order [buf1, buf3, buf2]
-  console.log(js.Array(buf1, buf2, buf3).sort((buf1: Buffer, buf2: Buffer) => Buffer.compare(buf1, buf2)))
+  def example2() {
+    val buf1 = Buffer.from("ABC")
+    val buf2 = Buffer.from("BCD")
+    val buf3 = Buffer.from("ABCD")
 
-  // iterate the 3rd buffer
-  val it = buf3.entries()
-  var result: IteratorResult = _
-  do {
-    result = it.next()
-    console.log(result)
-  } while (!result.done)
+    // Prints: 0
+    console.log(buf1.compare(buf1))
+    // Prints: -1
+    console.log(buf1.compare(buf2))
+    // Prints: 1
+    console.log(buf1.compare(buf3))
+    // Prints: 1
+    console.log(buf2.compare(buf1))
+    // Prints: 1
+    console.log(buf2.compare(buf3))
+
+    // produces sort order [buf1, buf3, buf2]
+    console.log(js.Array(buf1, buf2, buf3).sort((buf1: Buffer, buf2: Buffer) => Buffer.compare(buf1, buf2)))
+  }
+
+  def example3() = {
+    val buf = Buffer.from("Hello!")
+
+    // iterate the buffer
+    console.log("iterate the buffer")
+    val it = buf.entries()
+    var result: Entry[js.Any] = null
+    do {
+      result = it.next()
+      if (!result.done) console.log("value:", result.value)
+    } while (!result.done)
+
+    // iterate the buffer -- the Scala way
+    console.log("iterate the buffer -- the Scala way")
+    for (value <- buf.entries()) console.log("value:", value)
+  }
+
 }

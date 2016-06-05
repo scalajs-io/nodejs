@@ -38,6 +38,6 @@ trait Bootstrap extends js.Object {
   /**
     * To require modules. See the Modules section. require isn't actually a global but rather local to each module.
     */
-  val require: Require = js.native
+  val require: NodeRequire = js.native
 
 }

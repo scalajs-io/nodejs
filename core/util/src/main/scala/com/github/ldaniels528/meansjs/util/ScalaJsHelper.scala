@@ -183,6 +183,11 @@ object ScalaJsHelper {
     */
   implicit class JsArrayExtensions[A](val array: js.Array[A]) extends AnyVal {
 
+    @inline def indexWhereOpt(f: A => Boolean): Option[Int] = array.indexWhere(f) match {
+      case -1 => None
+      case index => Some(index)
+    }
+
     @inline def removeAll(): Unit = array.remove(0, array.length)
 
     @inline def replaceWith(items: A*) = {
@@ -213,6 +218,10 @@ object ScalaJsHelper {
 
     @inline def ?==(valueB: Option[T]): Boolean = valueA.exists(valueB.contains)
 
+    @inline def ?!=(valueB: js.UndefOr[T]): Boolean = !valueA.exists(valueB.contains)
+
+    @inline def ?!=(valueB: Option[T]): Boolean = !valueA.exists(valueB.contains)
+
     @inline def ??(optB: => Option[T]): Option[T] = if (valueA.isDefined) valueA else optB
 
     @inline def orDie(message: String): Option[T] = if (valueA.isDefined) valueA else throw new IllegalArgumentException(message)
@@ -228,6 +237,10 @@ object ScalaJsHelper {
     @inline def ?==(valueB: js.UndefOr[T]): Boolean = valueA.exists(valueB.contains)
 
     @inline def ?==(valueB: Option[T]): Boolean = valueA.exists(valueB.contains)
+
+    @inline def ?!=(valueB: js.UndefOr[T]): Boolean = !valueA.exists(valueB.contains)
+
+    @inline def ?!=(valueB: Option[T]): Boolean = !valueA.exists(valueB.contains)
 
     @inline def ??(optB: => js.UndefOr[T]): js.UndefOr[T] = if (valueA.isDefined) valueA else optB
 

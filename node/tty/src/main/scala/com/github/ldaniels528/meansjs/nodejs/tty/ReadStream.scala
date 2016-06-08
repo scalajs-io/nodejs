@@ -25,6 +25,11 @@ trait ReadStream extends net.Socket {
   var isRaw: Boolean = js.native
 
   /**
+    * Indicates whether the stream is a TTY
+    */
+  def isTTY: Boolean = js.native
+
+  /**
     * Turns on/off raw mode
     * @param mode mode If true, configures the tty.ReadStream to operate as a raw device. If false, configures the
     *             tty.ReadStream to operate in its default mode. The readStream.isRaw property will be set to the

@@ -65,7 +65,7 @@ trait Util extends NodeModule with EventEmitter {
     * Return a string representation of object, which is useful for debugging.
     * @example util.inspect(object[, options])
     */
-  def inspect(`object`: js.Any, options: InspectOptions): Stats = js.native
+  def inspect(`object`: js.Any, options: InspectOptions = null): Stats = js.native
 
   /**
     * Returns true if the given "object" is an Array. Otherwise, returns false.

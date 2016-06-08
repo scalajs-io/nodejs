@@ -1,11 +1,10 @@
 package examples.nodejs.io
 
-import com.github.ldaniels528.meansjs.nodejs.Process._
 import com.github.ldaniels528.meansjs.nodejs.core.Assert
+import com.github.ldaniels528.meansjs.nodejs.global.Process._
+import com.github.ldaniels528.meansjs.nodejs.global._
 import com.github.ldaniels528.meansjs.nodejs.path.{Path, PathObject}
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console, process}
-
-import scala.scalajs.js.JSConverters._
+import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
 
 /**
   * Path Examples
@@ -23,7 +22,7 @@ class PathExamples(bootstrap: Bootstrap) {
   console.log("""path.basename("/foo/bar/baz/asdf/quux.html", ".html") should be "quux"""")
   assert.equal(path.basename("/foo/bar/baz/asdf/quux.html", ".html"), "quux")
 
-  console.log("process.env.PATH => %s", process.env.PATH.map(_.split(path.delimiter).mkString(", ")).orUndefined)
+  console.log("process.env.PATH => %s", process.env.PATH.map(_.split(path.delimiter).mkString(", ")))
 
   console.log("""path.win32.basename("C:\temp\data.txt") => """, path.win32.basename("C:\\temp\\data.txt"))
   console.log("""path.posix.basename("C:\temp\data.txt") => """, path.posix.basename("C:\\temp\\data.txt"))
@@ -35,8 +34,8 @@ class PathExamples(bootstrap: Bootstrap) {
 
   console.log("""path.isAbsolute("/foo/bar") => """, path.isAbsolute("/foo/bar")) // true
   console.log("""path.isAbsolute("/baz/..") => """, path.isAbsolute("/baz/..")) // true
-  console.log("""path.isAbsolute("qux/") => """, path.isAbsolute("qux/"))  // false
-  console.log("""path.isAbsolute(".") => """, path.isAbsolute(".") )  // false
+  console.log("""path.isAbsolute("qux/") => """, path.isAbsolute("qux/")) // false
+  console.log("""path.isAbsolute(".") => """, path.isAbsolute(".")) // false
 
   console.log("""path.join("/foo", "bar", "baz/asdf", "quux", "..") => """, path.join("/foo", "bar", "baz/asdf", "quux", ".."))
   assert.equal(path.join("/foo", "bar", "baz/asdf", "quux", ".."), "/foo/bar/baz/asdf")

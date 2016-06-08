@@ -3,7 +3,8 @@ package examples.nodejs.azure
 import com.github.ldaniels528.meansjs.nodejs.adal.{AdalNode, AuthenticationResponse}
 import com.github.ldaniels528.meansjs.nodejs.azure.arm.keyvault.AzureArmKeyVault
 import com.github.ldaniels528.meansjs.nodejs.azure.common.{AzureCommon, KeyVaultParameters, TokenCloudCredentialOptions}
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console, errors, process}
+import com.github.ldaniels528.meansjs.nodejs.global.process
+import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console, errors}
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js

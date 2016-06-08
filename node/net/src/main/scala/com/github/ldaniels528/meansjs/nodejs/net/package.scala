@@ -10,8 +10,6 @@ import scala.scalajs.js
   */
 package object net {
 
-  type FileDescriptor = Integer
-
   /**
     * net.Server Events
     * @param server the given [[Server server]]

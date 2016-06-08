@@ -1,7 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs.cluster
 
-import com.github.ldaniels528.meansjs.nodejs.Process
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
+import com.github.ldaniels528.meansjs.nodejs.global.Process
 
 import scala.scalajs.js
 

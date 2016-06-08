@@ -3,6 +3,7 @@ package examples.nodejs.codecs
 import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, _}
 import com.github.ldaniels528.meansjs.nodejs.crypto.Crypto
 import com.github.ldaniels528.meansjs.nodejs.fs.Fs
+import com.github.ldaniels528.meansjs.nodejs.global.process
 
 /**
   * Streaming Hash Example

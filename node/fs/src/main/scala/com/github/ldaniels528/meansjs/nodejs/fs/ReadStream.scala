@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.fs
 
-import com.github.ldaniels528.meansjs.nodejs.fs.Fs.FileDescriptor
+import com.github.ldaniels528.meansjs.nodejs.FileDescriptor
 import com.github.ldaniels528.meansjs.nodejs.stream.Readable
 
 import scala.scalajs.js

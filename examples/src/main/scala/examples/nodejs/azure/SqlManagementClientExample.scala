@@ -4,7 +4,8 @@ import com.github.ldaniels528.meansjs.nodejs.azure.asm.CertificateCloudCredentia
 import com.github.ldaniels528.meansjs.nodejs.azure.asm.sql._
 import com.github.ldaniels528.meansjs.nodejs.azure.common.AzureCommon
 import com.github.ldaniels528.meansjs.nodejs.fs.Fs
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console, process}
+import com.github.ldaniels528.meansjs.nodejs.global.process
+import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 
@@ -34,7 +35,7 @@ class SqlManagementClientExample(bootstrap: Bootstrap) {
   val sqlDatabaseName = "database01"
 
   for {
-    // Create a SQL database server.
+  // Create a SQL database server.
     server <- sqlManagementClient.servers.createFuture(ServerOptions(
       administratorUserName = administratorUserName,
       administratorPassword = administratorPassword,

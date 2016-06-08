@@ -149,10 +149,10 @@ trait Readable extends EventEmitter {
 object Readable {
 
   /**
-    * Readable Extensions
+    * Readable Events
     * @author lawrence.daniels@gmail.com
     */
-  implicit class ReadableExtensions(val readable: Readable) extends AnyVal {
+  implicit class ReadableEvents(val readable: Readable) extends AnyVal {
 
     /////////////////////////////////////////////////////////////////////////////////
     //      Events

@@ -34,6 +34,11 @@ trait WriteStream extends net.Socket {
     */
   def rows: Int = js.native
 
+  /**
+    * Indicates whether the stream is a TTY
+    */
+  def isTTY: Boolean = js.native
+
 }
 
 /**

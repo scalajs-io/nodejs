@@ -136,7 +136,8 @@ The following NodeJS modules have been implemented thus far:
 | string-decoder        | 6.1.0   | means-node-string-decoder | The string_decoder module provides an API for decoding Buffer objects into strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16 characters. | Stable |
 | tty                   | 6.2.1   | means-node-tty        | The tty module provides the tty.ReadStream and tty.WriteStream classes. | Stable |
 | url                   | 6.1.0   | means-node-url        | The url module provides utilities for URL resolution and parsing. | Stable |
-| util                  | 6.1.0   | means-node-util       | The util module is primarily designed to support the needs of Node.js's internal APIs.  | Stable |
+| util                  | 6.1.0   | means-node-util       | The util module is primarily designed to support the needs of Node.js's internal APIs.| Stable |
+| vm                    | 6.2.1   | means-node-vm         | The vm module provides APIs for compiling and running code within V8 Virtual Machine contexts.| Stable |
 | watch                 | 0.18.0  | means-node-watch      | Utilities for watching file trees. | Stable |
 | xml2js                | 0.4.16  | means-node-xml2js     | Simple XML to JavaScript object converter. | Stable |
 | zlib                  | 6.1.0   | means-node-zlib       | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. | Stable |

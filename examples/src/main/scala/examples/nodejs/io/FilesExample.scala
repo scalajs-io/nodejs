@@ -1,8 +1,9 @@
 package examples.nodejs.io
 
+import com.github.ldaniels528.meansjs.nodejs.Bootstrap
 import com.github.ldaniels528.meansjs.nodejs.fs.Fs
+import com.github.ldaniels528.meansjs.nodejs.global.process
 import com.github.ldaniels528.meansjs.nodejs.readline.{Readline, ReadlineOptions}
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, process}
 import org.scalajs.dom.console
 
 /**

@@ -1,6 +1,7 @@
 package examples.nodejs.io
 
 import com.github.ldaniels528.meansjs.nodejs._
+import com.github.ldaniels528.meansjs.nodejs.global.process
 import com.github.ldaniels528.meansjs.nodejs.stream.Stream
 
 import scala.concurrent.duration._

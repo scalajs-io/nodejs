@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.tty
 
-import com.github.ldaniels528.meansjs.nodejs.net.FileDescriptor
+import com.github.ldaniels528.meansjs.nodejs.FileDescriptor
 
 import scala.scalajs.js
 

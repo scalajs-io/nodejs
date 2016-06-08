@@ -1,5 +1,6 @@
-package com.github.ldaniels528.meansjs.nodejs
+package com.github.ldaniels528.meansjs.nodejs.global
 
+import com.github.ldaniels528.meansjs.nodejs.Console
 import com.github.ldaniels528.meansjs.nodejs.buffer.BufferClass
 import com.github.ldaniels528.meansjs.nodejs.timer.{SetInterval, SetTimeout, UnRef, _}
 
@@ -11,7 +12,7 @@ import scala.scalajs.js
   * var something inside an Node.js module will be local to that module.
   */
 @js.native
-trait GlobalObject extends js.Object {
+trait Global extends js.Object {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Global Classes
@@ -35,24 +36,24 @@ trait GlobalObject extends js.Object {
   //      Global Objects
   /////////////////////////////////////////////////////////////////////////////////
 
-  val clearImmediate: ClearImmediate = js.native
+  def clearImmediate: ClearImmediate = js.native
 
-  val clearInterval: ClearInterval = js.native
+  def clearInterval: ClearInterval = js.native
 
-  val clearTimeout: ClearTimeout = js.native
+  def clearTimeout: ClearTimeout = js.native
 
-  val console: Console = js.native
+  def console: Console = js.native
 
-  val process: Process = js.native
+  def process: Process = js.native
 
-  val ref: Ref = js.native
+  def ref: Ref = js.native
 
-  val setImmediate: SetImmediate = js.native
+  def setImmediate: SetImmediate = js.native
 
-  val setInterval: SetInterval = js.native
+  def setInterval: SetInterval = js.native
 
-  val setTimeout: SetTimeout = js.native
+  def setTimeout: SetTimeout = js.native
 
-  val unref: UnRef = js.native
+  def unref: UnRef = js.native
 
 }

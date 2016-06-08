@@ -2,9 +2,9 @@ package com.github.ldaniels528.meansjs.nodejs.fs
 
 import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
-import com.github.ldaniels528.meansjs.nodejs.fs.Fs.{FileDescriptor, FileMode, StringOrBuffer}
+import com.github.ldaniels528.meansjs.nodejs.fs.Fs.{FileMode, StringOrBuffer}
 import com.github.ldaniels528.meansjs.nodejs.stream.{Readable, Writable}
-import com.github.ldaniels528.meansjs.nodejs.{NodeModule, errors}
+import com.github.ldaniels528.meansjs.nodejs.{FileDescriptor, NodeModule, errors}
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.language.implicitConversions
@@ -679,11 +679,6 @@ trait Fs extends NodeModule with EventEmitter {
   * @author lawrence.daniels@gmail.com
   */
 object Fs {
-
-  /**
-    * Represents a file descriptor
-    */
-  type FileDescriptor = Integer
 
   type FileMode = Integer
 

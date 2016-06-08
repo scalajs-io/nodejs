@@ -1,6 +1,7 @@
 package examples.nodejs.datastores
 
 import com.github.ldaniels528.meansjs.nodejs._
+import com.github.ldaniels528.meansjs.nodejs.global.process
 import com.github.ldaniels528.meansjs.nodejs.zookeeper.NodeZookeeperClient
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 import org.scalajs.dom.console

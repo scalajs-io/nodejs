@@ -1,6 +1,7 @@
 package examples.nodejs.terminal
 
 import com.github.ldaniels528.meansjs.nodejs._
+import com.github.ldaniels528.meansjs.nodejs.global.process
 import com.github.ldaniels528.meansjs.nodejs.readline.{Readline, ReadlineOptions}
 import org.scalajs.dom.console
 

@@ -1,6 +1,7 @@
 package examples
 
 import com.github.ldaniels528.meansjs.nodejs._
+import com.github.ldaniels528.meansjs.nodejs.global.process
 import examples.nodejs.actors.ActorsExample
 import examples.nodejs.codecs._
 import examples.nodejs.concurrency._
@@ -10,6 +11,7 @@ import examples.nodejs.general._
 import examples.nodejs.io._
 import examples.nodejs.net._
 import examples.nodejs.terminal._
+import examples.nodejs.vm.VMExample
 import org.scalajs.dom.console
 
 import scala.scalajs.js
@@ -59,6 +61,7 @@ object Examples extends js.JSApp {
     "TinyCLI" -> ((bootstrap: Bootstrap) => new TinyCLIExample(bootstrap)),
     "TTYExample" -> ((bootstrap: Bootstrap) => new TTYExample(bootstrap)),
     "URLsExample" -> ((bootstrap: Bootstrap) => new URLsExample(bootstrap)),
+    "VMExample" -> ((bootstrap: Bootstrap) => new VMExample(bootstrap)),
     "WatchExample" -> ((bootstrap: Bootstrap) => new WatchExample(bootstrap)),
     "XMLParsingExample" -> ((bootstrap: Bootstrap) => new XMLParsingExample(bootstrap)),
     "ZkShowChildren" -> ((bootstrap: Bootstrap) => new ZkShowChildren(bootstrap)),

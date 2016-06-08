@@ -134,7 +134,8 @@ The following NodeJS modules have been implemented thus far:
 | splitargs             | 0.0.7   | means-node-elgs-splitargs | Splits strings into tokens by given separator except treating quoted part as a single token. | Stable |
 | stream                | 6.1.0   | means-node-core       | A stream is an abstract interface implemented by various objects in Node.js. | Stable |
 | string-decoder        | 6.1.0   | means-node-string-decoder | The string_decoder module provides an API for decoding Buffer objects into strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16 characters. | Stable |
-| url                   | 6.1.0   | means-node-core       | The url module provides utilities for URL resolution and parsing. | Stable |
+| tty                   | 6.2.1   | means-node-tty        | The tty module provides the tty.ReadStream and tty.WriteStream classes. | Stable |
+| url                   | 6.1.0   | means-node-url        | The url module provides utilities for URL resolution and parsing. | Stable |
 | util                  | 6.1.0   | means-node-util       | The util module is primarily designed to support the needs of Node.js's internal APIs.  | Stable |
 | watch                 | 0.18.0  | means-node-watch      | Utilities for watching file trees. | Stable |
 | xml2js                | 0.4.16  | means-node-xml2js     | Simple XML to JavaScript object converter. | Stable |

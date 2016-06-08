@@ -45,7 +45,7 @@ lazy val means_js = (project in file(".")).
     node_cassandra, node_cluster, node_colors, node_crypto, node_drama, node_escape_html, node_elgs_splitargs,
     node_express, node_express_fileupload, node_express_ws, node_filed, node_fs, node_http, node_https, node_jwt_simple,
     node_kafka, node_mongodb, node_multer, node_mysql, node_net, node_oppressor, node_os, node_path, node_readline,
-    node_repl, node_request, node_string_decoder, node_url, node_util, node_watch, node_xml2js, node_zlib,
+    node_repl, node_request, node_string_decoder, node_tty, node_url, node_util, node_watch, node_xml2js, node_zlib,
     node_zookeeper
   )
 
@@ -505,6 +505,15 @@ lazy val node_string_decoder = (project in file("node/string_decoder")).
     description := "NodeJS/string-decoder binding for Scala.js"
   )
 
+lazy val node_tty = (project in file("node/tty")).
+  dependsOn(node_net).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-tty",
+    description := "NodeJS/TTY binding for Scala.js"
+  )
+
 lazy val node_url = (project in file("node/url")).
   dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
@@ -564,13 +573,13 @@ lazy val examples = (project in file("examples")).
     node_core, node_adal, node_amqplib, node_assert, node_async, node_azure, node_bcrypt, node_body_parser, node_cassandra,
     node_cluster, node_colors, node_crypto, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_ws,
     node_filed, node_fs, node_http, node_https, node_jwt_simple, node_kafka, node_mongodb, node_multer, node_mysql, node_net,
-    node_oppressor, node_os, node_path, node_readline, node_repl, node_request, node_string_decoder, node_url, node_util,
+    node_oppressor, node_os, node_path, node_readline, node_repl, node_request, node_string_decoder, node_tty, node_url, node_util,
     node_watch, node_xml2js, node_zlib, node_zookeeper).
   dependsOn(
     node_core, node_adal, node_amqplib, node_assert, node_async, node_azure, node_bcrypt, node_body_parser, node_cassandra,
     node_cluster, node_colors, node_crypto, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_ws,
     node_filed, node_fs, node_http, node_https, node_jwt_simple, node_kafka, node_mongodb, node_multer, node_mysql, node_net,
-    node_oppressor, node_os, node_path, node_readline, node_repl, node_request, node_string_decoder, node_url, node_util,
+    node_oppressor, node_os, node_path, node_readline, node_repl, node_request, node_string_decoder, node_tty, node_url, node_util,
     node_watch, node_xml2js, node_zlib, node_zookeeper).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).

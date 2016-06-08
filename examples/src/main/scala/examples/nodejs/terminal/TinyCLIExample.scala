@@ -1,14 +1,14 @@
-package examples.nodejs.general
+package examples.nodejs.terminal
 
 import com.github.ldaniels528.meansjs.nodejs._
 import com.github.ldaniels528.meansjs.nodejs.readline.{Readline, ReadlineOptions}
 import org.scalajs.dom.console
 
 /**
-  * Tiny CLI
+  * Tiny CLI Example
   * @author lawrence.daniels@gmail.com
   */
-class TinyCLI(bootstrap: Bootstrap) {
+class TinyCLIExample(bootstrap: Bootstrap) {
   import bootstrap._
 
   val readline = require[Readline]("readline")

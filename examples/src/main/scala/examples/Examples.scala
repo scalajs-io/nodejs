@@ -9,6 +9,7 @@ import examples.nodejs.express._
 import examples.nodejs.general._
 import examples.nodejs.io._
 import examples.nodejs.net._
+import examples.nodejs.terminal._
 import org.scalajs.dom.console
 
 import scala.scalajs.js
@@ -55,7 +56,8 @@ object Examples extends js.JSApp {
     "ServerWithCompression" -> ((bootstrap: Bootstrap) => new ServerWithCompression(bootstrap)),
     "StringDecoderExample" -> ((bootstrap: Bootstrap) => new StringDecoderExample(bootstrap)),
     "TimersExample" -> ((bootstrap: Bootstrap) => new TimersExample(bootstrap)),
-    "TinyCLI" -> ((bootstrap: Bootstrap) => new TinyCLI(bootstrap)),
+    "TinyCLI" -> ((bootstrap: Bootstrap) => new TinyCLIExample(bootstrap)),
+    "TTYExample" -> ((bootstrap: Bootstrap) => new TTYExample(bootstrap)),
     "URLsExample" -> ((bootstrap: Bootstrap) => new URLsExample(bootstrap)),
     "WatchExample" -> ((bootstrap: Bootstrap) => new WatchExample(bootstrap)),
     "XMLParsingExample" -> ((bootstrap: Bootstrap) => new XMLParsingExample(bootstrap)),

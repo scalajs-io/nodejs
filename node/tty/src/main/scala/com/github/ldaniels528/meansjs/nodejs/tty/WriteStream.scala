@@ -1,9 +1,9 @@
 package com.github.ldaniels528.meansjs.nodejs.tty
 
 import com.github.ldaniels528.meansjs.nodejs.net
-import com.github.ldaniels528.meansjs.nodejs.net.FileDescriptor
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSName
 
 /**
   * The tty.WriteStream class is a subclass of net.Socket that represents the writable side of a TTY.
@@ -21,7 +21,7 @@ trait WriteStream extends net.Socket {
   /**
     * A number specifying the number of columns the TTY currently has. This property is updated whenever
     * the 'resize' event is emitted.
-    * @see [[com.github.ldaniels528.meansjs.nodejs.tty.WriteStream.WriteStreamEvents.onResize]]
+    * @see [[WriteStreamEvents.onResize]]
     * @since 0.7.7
     */
   def columns: Int = js.native
@@ -29,7 +29,7 @@ trait WriteStream extends net.Socket {
   /**
     * A number specifying the number of rows the TTY currently has. This property is updated whenever the
     * 'resize' event is emitted.
-    * @see [[com.github.ldaniels528.meansjs.nodejs.tty.WriteStream.WriteStreamEvents.onResize]]
+    * @see [[WriteStreamEvents.onResize]]
     * @since 0.7.7
     */
   def rows: Int = js.native
@@ -37,25 +37,9 @@ trait WriteStream extends net.Socket {
 }
 
 /**
-  * Write Stream Companion
+  * Write Stream class representation
   * @author lawrence.daniels@gmail.com
   */
-object WriteStream {
-
-  /**
-    * Write Stream Events
-    * @param stream the given [[WriteStream stream]]
-    */
-  implicit class WriteStreamEvents(val stream: WriteStream) extends AnyVal {
-
-    /**
-      * The 'resize' event is emitted whenever either of the writeStream.columns or writeStream.rows properties have
-      * changed. No arguments are passed to the listener callback when called.
-      * @param listener the given event handler
-      * @since 0.7.7
-      */
-    def onResize(listener: () => Any) = stream.on("resize", listener)
-
-  }
-
-}
+@js.native
+@JSName("WriteStream")
+object WriteStream extends WriteStreamClass

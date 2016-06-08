@@ -1,4 +1,4 @@
-package examples.nodejs.general
+package examples.nodejs.terminal
 
 import com.github.ldaniels528.meansjs.nodejs._
 import com.github.ldaniels528.meansjs.nodejs.colors._

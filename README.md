@@ -71,11 +71,11 @@ Currently, there are at least four development use cases for MEANS.js:
    
 The following applications were developed using MEANS.js:
 
-| Application                                             | Frontend              | Backend            | Description                                                  |
-|---------------------------------------------------------|-----------------------|--------------------|--------------------------------------------------------------|
-| [Socialized](https://github.com/ldaniels528/socialized) | MEANS.js/AngularJS    | MEANS.js/NodeJS    | A Social networking portal written in Scala.js and MEANS.js. |
-| [Todo MVC](https://github.com/ldaniels528/meansjs-angular-todomvc) | MEANS.js/AngularJS    | MEANS.js/NodeJS    | A simple Todo example application. |
-| [Trifecta](https://github.com/ldaniels528/trifecta)     | MEANS.js/AngularJS    | Play 2.4.x + Scala | Trifecta is a web-based and CLI tool that simplifies inspecting Kafka messages and Zookeeper data. |
+| Application                                                      | Frontend              | Backend            | Description                                                  |
+|------------------------------------------------------------------|-----------------------|--------------------|--------------------------------------------------------------|
+| [Socialized](https://github.com/ldaniels528/means-js-socialized) | MEANS.js/AngularJS    | MEANS.js/NodeJS    | A Facebook-inspired Social networking web application. |
+| [Todo MVC](https://github.com/ldaniels528/means-js-todomvc)      | MEANS.js/AngularJS    | MEANS.js/NodeJS    | A simple Todo example application. |
+| [Trifecta](https://github.com/ldaniels528/trifecta)              | MEANS.js/AngularJS    | Play 2.4.x + Scala | Trifecta is a web-based and CLI tool that simplifies inspecting Kafka messages and Zookeeper data. |
  
  
 <a name="discussions"></a>

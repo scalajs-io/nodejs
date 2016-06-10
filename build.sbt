@@ -35,7 +35,8 @@ val commonSettings = Seq(
 )
 
 lazy val bundle_complete = (project in file("bundles/complete")).
-  dependsOn(core, core_browser, bundle_social, bundle_angular, bundle_mean_stack, bundle_node, bundle_node_oss).
+  aggregate(core, core_browser, bundle_social, bundle_angular, bundle_mean_minimal, bundle_node, bundle_node_oss).
+  dependsOn(core, core_browser, bundle_social, bundle_angular, bundle_mean_minimal, bundle_node, bundle_node_oss).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -43,13 +44,14 @@ lazy val bundle_complete = (project in file("bundles/complete")).
     description := "MEANS.js complete platform bundle"
   )
 
-lazy val bundle_mean_stack = (project in file("bundles/mean_stack")).
-  dependsOn(bundle_node, node_body_parser, node_express, node_express_ws, node_mongodb).
+lazy val bundle_mean_minimal = (project in file("bundles/mean_minimal")).
+  aggregate(bundle_node, node_body_parser, node_express, node_express_fileupload, node_express_ws, node_mongodb).
+  dependsOn(bundle_node, node_body_parser, node_express, node_express_fileupload, node_express_ws, node_mongodb).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
-    name := "means-bundle-mean-stack",
-    description := "MEANS.js MEAN stack bundle"
+    name := "means-bundle-mean-minimal",
+    description := "MEANS.js MEAN stack bundle (minimal)"
   )
 
 lazy val examples = (project in file("examples")).
@@ -78,6 +80,7 @@ lazy val core = (project in file("core/util")).
   )
 
 lazy val core_browser = (project in file("core/browser")).
+  aggregate(core).
   dependsOn(core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
@@ -91,6 +94,9 @@ lazy val core_browser = (project in file("core/browser")).
   /////////////////////////////////////////////////////////////////////////////////
 
 lazy val bundle_angular = (project in file("bundles/angularjs")).
+  aggregate(
+    angular_core, angular_anchorScroll, angular_animate, angular_cookies, angular_facebook, angular_nervgh_fileupload,
+    angular_sanitize, angular_toaster, angular_ui_bootstrap, angular_ui_router).
   dependsOn(
     angular_core, angular_anchorScroll, angular_animate, angular_cookies, angular_facebook, angular_nervgh_fileupload,
     angular_sanitize, angular_toaster, angular_ui_bootstrap, angular_ui_router).
@@ -196,6 +202,7 @@ lazy val angular_ui_router = (project in file("angularjs/ui-router")).
   /////////////////////////////////////////////////////////////////////////////////
 
 lazy val bundle_social = (project in file("bundles/social")).
+  aggregate(facebook, linkedin).
   dependsOn(facebook, linkedin).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
@@ -205,7 +212,7 @@ lazy val bundle_social = (project in file("bundles/social")).
   )
 
 lazy val facebook = (project in file("social/facebook")).
-  dependsOn(core, angular_core).
+  dependsOn(core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -227,8 +234,12 @@ lazy val linkedin = (project in file("social/linkedin")).
   /////////////////////////////////////////////////////////////////////////////////
 
 lazy val bundle_node = (project in file("bundles/node")).
+  aggregate(
+    core, node_core, node_assert, node_cluster, node_crypto, node_fs, node_global, node_http, node_https,
+    node_net, node_os, node_path, node_readline, node_repl, node_stream, node_string_decoder,
+    node_tty, node_url, node_util, node_vm, node_zlib).
   dependsOn(
-    node_core, node_assert, node_cluster, node_crypto, node_fs, node_global, node_http, node_https,
+    core, node_core, node_assert, node_cluster, node_crypto, node_fs, node_global, node_http, node_https,
     node_net, node_os, node_path, node_readline, node_repl, node_stream, node_string_decoder,
     node_tty, node_url, node_util, node_vm, node_zlib).
   enablePlugins(ScalaJSPlugin).
@@ -423,10 +434,15 @@ lazy val node_zlib = (project in file("node/zlib")).
 /////////////////////////////////////////////////////////////////////////////////
 
 lazy val bundle_node_oss = (project in file("bundles/node_oss")).
+  aggregate(
+    node_adal, node_amqplib, node_async, node_azure, node_bcrypt, node_body_parser, node_cassandra,
+    node_colors, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_fileupload,
+    node_express_ws, node_filed, node_jwt_simple, node_kafka, node_mongodb, node_multer, node_mysql,
+    node_oppressor, node_request, node_watch, node_xml2js, node_zookeeper).
   dependsOn(
     node_adal, node_amqplib, node_async, node_azure, node_bcrypt, node_body_parser, node_cassandra,
-    node_colors, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_ws,
-    node_filed, node_jwt_simple, node_kafka, node_mongodb, node_multer, node_mysql,
+    node_colors, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_fileupload,
+    node_express_ws, node_filed, node_jwt_simple, node_kafka, node_mongodb, node_multer, node_mysql,
     node_oppressor, node_request, node_watch, node_xml2js, node_zookeeper).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).

@@ -57,6 +57,6 @@ trait Module extends js.Object {
     * module.exports, and the module is typically only available within a specific module's code, it must be
     * explicitly exported in order to be used.
     */
-  def require(id: String): js.Any = js.native
+  def require[T](id: String): T = js.native
 
 }

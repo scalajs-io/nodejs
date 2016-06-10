@@ -95,7 +95,7 @@ object HttpResponse {
     response
       .success(promise.success _)
       .error((data: js.Any, status: StatusCode, config: HttpConfig, headers: js.Any, statusText: UndefOr[String]) => {
-        promise failure HttpError(status, statusText.flat getOrElse s"Failed to process HTTP request: '${angular.toJson(data)}'")
+        promise failure new HttpError(status, statusText.flat getOrElse s"Failed to process HTTP request: '${angular.toJson(data)}'")
       })
     promise.future
   }

@@ -92,55 +92,62 @@ modules implemented for most web applications.
 <a name="node_modules">
 #### Modules
 
-The following NodeJS modules have been implemented thus far:
+The following Core NodeJS modules have been implemented thus far:
 
 | Node Module           | Version | Artifact ID           | Description                                             | Status          |
 |-----------------------|---------|-----------------------|---------------------------------------------------------|-----------------|
-| adal-node             | 0.1.19  | means-node-adal-node  | Windows Azure Active Directory Client Library for node. | Tesing required |
-| amqplib               | 0.4.1   | means-node-amqplib    | An AMQP 0-9-1 (e.g., RabbitMQ) library and client. | Tesing required |
-| async                 | 1.5.2   | means-node-async      | Higher-order functions and common patterns for asynchronous code. | Tesing required |
 | assert                | 6.2.1   | means-node-assert     | Provides a simple set of assertion tests that can be used to test invariants. | Stable |
-| azure                 | 0.10.6  | means-node-azure      | Microsoft Azure Client Library for node. | WIP - Unusable |
-| bcrypt                | 0.0.3   | means-node-bcrypt     | A native JS bcrypt library for NodeJS. | Stable |
-| body-parser           | 1.15.1  | means-node-body-parser| Body parsing middleware. | Stable |
 | buffer                | 6.2.1   | means-node-core       | The Buffer class was introduced as part of the Node.js API to make it possible to interact with octet streams in the context of things like TCP streams and file system operations. | Stable |
-| cassandra-driver      | 3.0.2   | means-node-datastax-cassandra| DataStax Node.js Driver for Apache Cassandra | Tesing required |
 | cluster               | 6.2.1   | means-node-cluster    | The cluster module allows you to easily create child processes that all share server ports. | Stable |
-| colors                | 1.1.2   | means-node-colors     | Get colors in your node.js console.| Stable |
 | crypto                | 6.1.0   | means-node-core       | The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions.| Tesing required |
-| drama                 | 0.1.3   | means-node-drama      | drama is an Actor model implementation for JavaScript and Node.js | Tesing required |
-| escape-html           | 1.0.3   | means-node-escape-html| Escape string for use in HTML | Stable |
 | events                | 6.1.0   | means-node-core       | Node.js Events Interface | Stable |
-| express               | 4.13.4  | means-node-express    | Fast, unopinionated, minimalist web framework for Node.js | Stable |
-| express-fileupload    | 0.0.5   | means-node-express-fileupload | Simple express file upload middleware that wraps around connect-busboy | Stable |
-| express-ws            |2.0.0-rc1| means-node-express-ws | WebSocket endpoints for Express applications | Stable |
-| filed                 | 0.1.0   | means-node-filed      | Simplified file library. | Stable |
 | fs                    | 6.2.1   | means-node-fs         | File I/O is provided by simple wrappers around standard POSIX functions. | Stable |
 | http                  | 6.1.0   | means-node-http       | Node.js HTTP Interface | Stable |
 | https                 | 6.1.0   | means-node-https      | Node.js HTTPS Interface | Tesing required |
-| jwt-simple            | 0.5.0   | means-node-jwt-simple | JWT(JSON Web Token) encode and decode module | Stable |
-| kafka-node            | 0.0.11  | means-node-kafkanode  | A node binding for librdkafka | Tesing required |
-| mongodb               | 2.1.18  | means-node-mongodb    | Node.js MongoDB Driver | Stable |
-| multer                | 1.1.0   | means-node-multer     | Multer is a node.js middleware for handling multipart/form-data. | Tesing required |
-| mysql                 | 2.10.2  | means-node-mysql      | A node.js driver for mysql. | Stable |
 | net                   | 6.2.1   | means-node-net        | The net module provides you with an asynchronous network wrapper. | Stable |
-| node-zookeeper-client | 0.2.2   | means-node-zookeeper-client | A higher-level ZooKeeper client based on node-zookeeper with support for locking and master election. | Tesing required |
-| oppressor             | 0.0.1   | means-node-oppressor  | Streaming http compression response negotiator. | Tesing required |
 | os                    | 6.1.0   | means-node-os         | Provides a few basic operating-system related utility functions. | Stable |
 | path                  | 6.1.0   | means-node-path       | This module contains utilities for handling and transforming file paths. | Stable |
 | readline              | 6.1.0   | means-node-readline   | Readline allows reading of a stream on a line-by-line basis. | Stable |
 | repl                  | 6.1.0   | means-node-repl       | The REPL provides a way to interactively run JavaScript and see the results. | Stable |
-| request               | 2.72.1  | means-node-request    | Simplified HTTP request client. | Stable |
-| splitargs             | 0.0.7   | means-node-elgs-splitargs | Splits strings into tokens by given separator except treating quoted part as a single token. | Stable |
 | stream                | 6.1.0   | means-node-core       | A stream is an abstract interface implemented by various objects in Node.js. | Stable |
 | string-decoder        | 6.1.0   | means-node-string-decoder | The string_decoder module provides an API for decoding Buffer objects into strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16 characters. | Stable |
 | tty                   | 6.2.1   | means-node-tty        | The tty module provides the tty.ReadStream and tty.WriteStream classes. | Stable |
 | url                   | 6.1.0   | means-node-url        | The url module provides utilities for URL resolution and parsing. | Stable |
 | util                  | 6.1.0   | means-node-util       | The util module is primarily designed to support the needs of Node.js's internal APIs.| Stable |
 | vm                    | 6.2.1   | means-node-vm         | The vm module provides APIs for compiling and running code within V8 Virtual Machine contexts.| Stable |
+| zlib                  | 6.1.0   | means-node-zlib       | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. | Stable |
+
+
+The following Third Party/OSS NodeJS modules have been implemented thus far:
+
+| Node Module           | Version | Artifact ID           | Description                                             | Status          |
+|-----------------------|---------|-----------------------|---------------------------------------------------------|-----------------|
+| adal-node             | 0.1.19  | means-node-adal-node  | Windows Azure Active Directory Client Library for node. | Tesing required |
+| amqplib               | 0.4.1   | means-node-amqplib    | An AMQP 0-9-1 (e.g., RabbitMQ) library and client. | Tesing required |
+| async                 | 1.5.2   | means-node-async      | Higher-order functions and common patterns for asynchronous code. | Tesing required |
+| azure                 | 0.10.6  | means-node-azure      | Microsoft Azure Client Library for node. | WIP - Unusable |
+| bcrypt                | 0.0.3   | means-node-bcrypt     | A native JS bcrypt library for NodeJS. | Stable |
+| body-parser           | 1.15.1  | means-node-body-parser| Body parsing middleware. | Stable |
+| cassandra-driver      | 3.0.2   | means-node-datastax-cassandra| DataStax Node.js Driver for Apache Cassandra | Tesing required |
+| colors                | 1.1.2   | means-node-colors     | Get colors in your node.js console.| Stable |
+| drama                 | 0.1.3   | means-node-drama      | drama is an Actor model implementation for JavaScript and Node.js | Tesing required |
+| escape-html           | 1.0.3   | means-node-escape-html| Escape string for use in HTML | Stable |
+| express               | 4.13.4  | means-node-express    | Fast, unopinionated, minimalist web framework for Node.js | Stable |
+| express-fileupload    | 0.0.5   | means-node-express-fileupload | Simple express file upload middleware that wraps around connect-busboy | Stable |
+| express-ws            |2.0.0-rc1| means-node-express-ws | WebSocket endpoints for Express applications | Stable |
+| filed                 | 0.1.0   | means-node-filed      | Simplified file library. | Stable |
+| jwt-simple            | 0.5.0   | means-node-jwt-simple | JWT(JSON Web Token) encode and decode module | Stable |
+| kafka-node            | 0.0.11  | means-node-kafkanode  | A node binding for librdkafka | Tesing required |
+| mongodb               | 2.1.18  | means-node-mongodb    | Node.js MongoDB Driver | Stable |
+| multer                | 1.1.0   | means-node-multer     | Multer is a node.js middleware for handling multipart/form-data. | Tesing required |
+| mysql                 | 2.10.2  | means-node-mysql      | A node.js driver for mysql. | Stable |
+| node-zookeeper-client | 0.2.2   | means-node-zookeeper-client | A higher-level ZooKeeper client based on node-zookeeper with support for locking and master election. | Tesing required |
+| oppressor             | 0.0.1   | means-node-oppressor  | Streaming http compression response negotiator. | Tesing required |
+| request               | 2.72.1  | means-node-request    | Simplified HTTP request client. | Stable |
+| splitargs             | 0.0.7   | means-node-elgs-splitargs | Splits strings into tokens by given separator except treating quoted part as a single token. | Stable |
 | watch                 | 0.18.0  | means-node-watch      | Utilities for watching file trees. | Stable |
 | xml2js                | 0.4.16  | means-node-xml2js     | Simple XML to JavaScript object converter. | Stable |
-| zlib                  | 6.1.0   | means-node-zlib       | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. | Stable |
+
 
 *NOTE*: The full SBT artifact expression is: "com.github.ldaniels528" %%% "means-node-xxxx" % version 
 (e.g. "com.github.ldaniels528" %%% "means-node-express" % "0.1.7")
@@ -322,6 +329,7 @@ The following AngularJS services have been implemented thus far:
 | $cookies          | means-angular-core         | Provides read/write access to browser's cookies. |
 | $cookieStore      | means-angular-core         | Provides a key-value (string-object) storage, that is backed by session cookies. |
 | $exceptionHandler | means-angular-core         | Any uncaught exception in angular expressions is delegated to this service. |
+| $filter           | means-angular-core         | Selects a subset of items from array and returns it as a new array. |
 | $http             | means-angular-core         | The $http service is a core Angular service that facilitates communication with the remote HTTP servers via the browser's XMLHttpRequest object or via JSONP. |
 | $injector         | means-angular-core         | $injector is used to retrieve object instances as defined by provider, instantiate types, invoke methods, and load modules. |
 | $interval         | means-angular-core         | Angular's wrapper for window.setInterval. The fn function is executed every delay milliseconds. |

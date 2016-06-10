@@ -4,7 +4,7 @@ import scala.language.implicitConversions
 import scala.scalajs.js
 
 /**
-  * The $http service is a core Angular service that facilitates communication
+  * The \$http service is a core Angular service that facilitates communication
   * with the remote HTTP servers via the browser's XMLHttpRequest object or via JSONP.
   * @see https://docs.angularjs.org/api/ng/service/\$http
   */

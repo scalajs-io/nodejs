@@ -44,7 +44,7 @@ trait ContextOptions extends js.Object {
   * Script Context Options Companion
   * @author lawrence.daniels@gmail.com
   */
-object ContextOptions extends js.Object {
+object ContextOptions {
 
   def apply(filename: js.UndefOr[String] = js.undefined,
             lineOffset: js.UndefOr[Int] = js.undefined,

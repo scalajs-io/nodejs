@@ -59,7 +59,7 @@ trait ScriptOptions extends js.Object {
   * Script Options Companion
   * @author lawrence.daniels@gmail.com
   */
-object ScriptOptions extends js.Object {
+object ScriptOptions {
 
   def apply(filename: js.UndefOr[String] = js.undefined,
             lineOffset: js.UndefOr[Int] = js.undefined,

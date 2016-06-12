@@ -8,24 +8,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class ServerOptions extends js.Object {
-  var allowHalfOpen: js.UndefOr[Boolean] = _
-  var pauseOnConnect: js.UndefOr[Boolean] = _
-
-}
-
-/**
-  * Server Options Companion
-  * @author lawrence.daniels@gmail.com
-  */
-object ServerOptions {
-
-  def apply(allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
-            pauseOnConnect: js.UndefOr[Boolean] = js.undefined) = {
-    val options = new ServerOptions()
-    options.allowHalfOpen = allowHalfOpen
-    options.pauseOnConnect = pauseOnConnect
-    options
-  }
-
-}
+class ServerOptions(var allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
+                    var pauseOnConnect: js.UndefOr[Boolean] = js.undefined) extends js.Object

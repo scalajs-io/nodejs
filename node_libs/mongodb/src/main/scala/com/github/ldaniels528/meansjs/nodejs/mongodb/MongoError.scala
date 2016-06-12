@@ -12,7 +12,7 @@ import scala.scalajs.js.annotation.JSName
   * @see {{{ http://mongodb.github.io/node-mongodb-native/2.1/api/MongoError.html }}}
   */
 @js.native
-class MongoError(message: String = "") extends errors.Error(message)
+trait MongoError extends errors.Error
 
 /**
   * Mongo Error Singleton

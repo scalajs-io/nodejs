@@ -22,7 +22,7 @@ package object mongodb {
     * @return a Scala-style future
     */
   @inline
-  def callbackMongoFuture[R](f: js.Function2[MongoError, R, Any] => Any): Future[R] = {
+  def callbackMongoFuture[R](f: js.Function2[MongoError, R, Any] => Unit): Future[R] = {
     val promise = Promise[R]()
     f((err: MongoError, result: R) => if (!isDefined(err)) promise.success(result) else promise.failure(wrapJavaScriptException(err)))
     promise.future
@@ -328,29 +328,9 @@ package object mongodb {
     * @author lawrence.daniels@gmail.com
     */
   @ScalaJSDefined
-  class TextSearchOptions extends js.Object {
-    var $search: js.UndefOr[String] = _
-    var $language: js.UndefOr[String] = _
-    var $caseSensitive: js.UndefOr[Boolean] = _
-    var $diacriticSensitive: js.UndefOr[Boolean] = _
-  }
-
-  /**
-    * Text Search Options Companion
-    * @author lawrence.daniels@gmail.com
-    */
-  object TextSearchOptions {
-    def apply($search: js.UndefOr[String] = js.undefined,
-              $language: js.UndefOr[String] = js.undefined,
-              $caseSensitive: js.UndefOr[Boolean] = js.undefined,
-              $diacriticSensitive: js.UndefOr[Boolean] = js.undefined) = {
-      val options = new TextSearchOptions()
-      options.$search = $search
-      options.$language = $language
-      options.$caseSensitive = $caseSensitive
-      options.$diacriticSensitive = $diacriticSensitive
-      options
-    }
-  }
+  class TextSearchOptions(var $search: js.UndefOr[String] = js.undefined,
+                          var $language: js.UndefOr[String] = js.undefined,
+                          var $caseSensitive: js.UndefOr[Boolean] = js.undefined,
+                          var $diacriticSensitive: js.UndefOr[Boolean] = js.undefined) extends js.Object
 
 }

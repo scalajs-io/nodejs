@@ -7,46 +7,16 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * Grid Options
+  * @param _id          unique id for this file.
+  * @param root         root collection to use. Defaults to [[GridStoreClass.DEFAULT_ROOT_COLLECTION DEFAULT_ROOT_COLLECTION]].
+  * @param content_type mime type of the file. Defaults to [[GridStoreClass.DEFAULT_CONTENT_TYPE DEFAULT_CONTENT_TYPE]].
+  * @param chunk_size   size for the chunk. Defaults to [[Chunk.DEFAULT_CHUNK_SIZE]].
+  * @param metadata     arbitrary data the user wants to store.
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class GridOptions extends js.Object {
-  /** unique id for this file */
-  var _id: js.Any = _
-
-  /** root collection to use. Defaults to [[GridStoreClass.DEFAULT_ROOT_COLLECTION DEFAULT_ROOT_COLLECTION]]. */
-  var root: js.UndefOr[String] = _
-
-  /** mime type of the file. Defaults to [[GridStoreClass.DEFAULT_CONTENT_TYPE DEFAULT_CONTENT_TYPE]]. */
-  var content_type: js.UndefOr[String] = _
-
-  /** size for the chunk. Defaults to [[Chunk.DEFAULT_CHUNK_SIZE]]. */
-  var chunk_size: js.UndefOr[Int] = _
-
-  /** arbitrary data the user wants to store. */
-  var metadata: js.UndefOr[js.Object] = _
-
-}
-
-/**
-  * Grid Options Companion
-  * @author lawrence.daniels@gmail.com
-  */
-object GridOptions {
-
-  def apply(_id: js.Any = js.undefined,
-            root: js.UndefOr[String] = js.undefined,
-            content_type: js.UndefOr[String] = js.undefined,
-            chunk_size: js.UndefOr[Int] = js.undefined,
-            metadata: js.UndefOr[js.Object] = js.undefined) = {
-    val options = new GridOptions()
-    options._id = _id
-    options.root = root
-    options.content_type = content_type
-    options.chunk_size = chunk_size
-    options.metadata = metadata
-    options
-
-  }
-
-}
+class GridOptions(var _id: js.Any = js.undefined,
+                  var root: js.UndefOr[String] = js.undefined,
+                  var content_type: js.UndefOr[String] = js.undefined,
+                  var chunk_size: js.UndefOr[Int] = js.undefined,
+                  var metadata: js.UndefOr[js.Object] = js.undefined) extends js.Object

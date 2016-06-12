@@ -4,7 +4,7 @@ import sbt.Keys._
 import sbt.Project.projectToRef
 import sbt._
 
-val apiVersion = "0.1.14"
+val apiVersion = "0.1.15"
 val paradisePluginVersion = "3.0.0-M1"
 val _scalaVersion = "2.11.8"
 val scalaJsDomVersion = "0.9.0"
@@ -55,6 +55,7 @@ lazy val bundle_mean_minimal = (project in file("bundles/mean_minimal")).
   )
 
 lazy val examples = (project in file("examples")).
+  aggregate(bundle_node, bundle_node_oss).
   dependsOn(bundle_node, bundle_node_oss).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
@@ -235,11 +236,11 @@ lazy val linkedin = (project in file("social/linkedin")).
 
 lazy val bundle_node = (project in file("bundles/node")).
   aggregate(
-    core, node_core, node_assert, node_cluster, node_crypto, node_fs, node_global, node_http, node_https,
+    core, node_core, node_assert, node_cluster, node_crypto, node_dns, node_fs, node_global, node_http, node_https,
     node_net, node_os, node_path, node_readline, node_repl, node_stream, node_string_decoder,
     node_tty, node_url, node_util, node_vm, node_zlib).
   dependsOn(
-    core, node_core, node_assert, node_cluster, node_crypto, node_fs, node_global, node_http, node_https,
+    core, node_core, node_assert, node_cluster, node_crypto, node_dns, node_fs, node_global, node_http, node_https,
     node_net, node_os, node_path, node_readline, node_repl, node_stream, node_string_decoder,
     node_tty, node_url, node_util, node_vm, node_zlib).
   enablePlugins(ScalaJSPlugin).
@@ -283,6 +284,15 @@ lazy val node_crypto = (project in file("node/crypto")).
   settings(
     name := "means-node-crypto",
     description := "NodeJS/crypto binding for Scala.js"
+  )
+
+lazy val node_dns = (project in file("node/dns")).
+  dependsOn(node_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "means-node-dns",
+    description := "NodeJS/DNS binding for Scala.js"
   )
 
 lazy val node_fs = (project in file("node/fs")).

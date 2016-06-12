@@ -99,11 +99,12 @@ The following Core NodeJS modules have been implemented thus far:
 | assert                | 6.2.1   | means-node-assert     | Provides a simple set of assertion tests that can be used to test invariants. | Stable |
 | buffer                | 6.2.1   | means-node-core       | The Buffer class was introduced as part of the Node.js API to make it possible to interact with octet streams in the context of things like TCP streams and file system operations. | Stable |
 | cluster               | 6.2.1   | means-node-cluster    | The cluster module allows you to easily create child processes that all share server ports. | Stable |
-| crypto                | 6.1.0   | means-node-core       | The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions.| Tesing required |
+| crypto                | 6.1.0   | means-node-core       | The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions.| Stable |
+| dns                   | 6.2.1   | means-node-dns        | Support for DNS queries.| Stable |
 | events                | 6.1.0   | means-node-core       | Node.js Events Interface | Stable |
 | fs                    | 6.2.1   | means-node-fs         | File I/O is provided by simple wrappers around standard POSIX functions. | Stable |
 | http                  | 6.1.0   | means-node-http       | Node.js HTTP Interface | Stable |
-| https                 | 6.1.0   | means-node-https      | Node.js HTTPS Interface | Tesing required |
+| https                 | 6.1.0   | means-node-https      | Node.js HTTPS Interface | Stable |
 | net                   | 6.2.1   | means-node-net        | The net module provides you with an asynchronous network wrapper. | Stable |
 | os                    | 6.1.0   | means-node-os         | Provides a few basic operating-system related utility functions. | Stable |
 | path                  | 6.1.0   | means-node-path       | This module contains utilities for handling and transforming file paths. | Stable |

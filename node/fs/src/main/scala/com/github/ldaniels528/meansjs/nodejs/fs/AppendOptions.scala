@@ -1,7 +1,5 @@
 package com.github.ldaniels528.meansjs.nodejs.fs
 
-import com.github.ldaniels528.meansjs.nodejs.fs.Fs.FileMode
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.ScalaJSDefined
 

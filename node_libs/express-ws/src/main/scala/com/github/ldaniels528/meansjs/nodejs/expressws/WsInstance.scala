@@ -58,13 +58,13 @@ object WsInstance {
     */
   @js.native
   trait WssInfo extends js.Object {
-    var domain: String
-    var _events: js.Object
-    var _eventsCount: Int
-    var _server: js.Object
-    var options: WssOptions
-    var path: String
-    var clients: js.Array[js.Any]
+    var domain: String = js.native
+    var _events: js.Object = js.native
+    var _eventsCount: Int = js.native
+    var _server: js.Object = js.native
+    var options: WssOptions = js.native
+    var path: String = js.native
+    var clients: js.Array[js.Any] = js.native
   }
 
   /**
@@ -73,16 +73,16 @@ object WsInstance {
     */
   @js.native
   trait WssOptions extends js.Object {
-    var host: String
-    var port: Integer
-    var server: WssServer
-    var verifyClient: js.Object
-    var handleProtocols: String
-    var path: String
-    var noServer: Boolean
-    var disableHixie: Boolean
-    var clientTracking: Boolean
-    var perMessageDeflate: Boolean
+    var host: String = js.native
+    var port: Integer = js.native
+    var server: WssServer = js.native
+    var verifyClient: js.Object = js.native
+    var handleProtocols: String = js.native
+    var path: String = js.native
+    var noServer: Boolean = js.native
+    var disableHixie: Boolean = js.native
+    var clientTracking: Boolean = js.native
+    var perMessageDeflate: Boolean = js.native
   }
 
   /**
@@ -91,19 +91,19 @@ object WsInstance {
     */
   @js.native
   trait WssServer extends js.Object {
-    var domain: String
-    var _events: String
-    var _eventsCount: Integer
-    var _connections: Integer
-    var _handle: js.Any
-    var _usingSlaves: Boolean
-    var _slaves: js.Array[js.Any]
-    var _unref: Boolean
-    var allowHalfOpen: Boolean
-    var pauseOnConnect: Boolean
-    var httpAllowHalfOpen: Boolean
-    var timeout: Integer
-    var _pendingResponseData: Integer
+    var domain: String = js.native
+    var _events: String = js.native
+    var _eventsCount: Integer = js.native
+    var _connections: Integer = js.native
+    var _handle: js.Any = js.native
+    var _usingSlaves: Boolean = js.native
+    var _slaves: js.Array[js.Any] = js.native
+    var _unref: Boolean = js.native
+    var allowHalfOpen: Boolean = js.native
+    var pauseOnConnect: Boolean = js.native
+    var httpAllowHalfOpen: Boolean = js.native
+    var timeout: Integer = js.native
+    var _pendingResponseData: Integer = js.native
   }
 
 }

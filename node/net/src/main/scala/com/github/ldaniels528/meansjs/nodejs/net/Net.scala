@@ -2,7 +2,6 @@ package com.github.ldaniels528.meansjs.nodejs.net
 
 import com.github.ldaniels528.meansjs.nodejs.NodeModule
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
 

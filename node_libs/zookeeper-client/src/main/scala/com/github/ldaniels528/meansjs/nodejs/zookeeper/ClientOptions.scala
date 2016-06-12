@@ -5,42 +5,12 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * Zookeeper Client Options
+  * @param sessionTimeout Session timeout in milliseconds, defaults to 30 seconds.
+  * @param spinDelay      The delay (in milliseconds) between each connection attempts.
+  * @param retries        The number of retry attempts for connection loss exception.
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class ClientOptions extends js.Object {
-
-  /**
-    * Session timeout in milliseconds, defaults to 30 seconds.
-    */
-  var sessionTimeout: js.UndefOr[Int] = _
-
-  /**
-    * The delay (in milliseconds) between each connection attempts.
-    */
-  var spinDelay: js.UndefOr[Int] = _
-
-  /**
-    * The number of retry attempts for connection loss exception.
-    */
-  var retries: js.UndefOr[Int] = _
-
-}
-
-/**
-  * Client Options
-  * @author lawrence.daniels@gmail.com
-  */
-object ClientOptions {
-
-  def apply(sessionTimeout: js.UndefOr[Int] = js.undefined,
-            spinDelay: js.UndefOr[Int] = js.undefined,
-            retries: js.UndefOr[Int] = js.undefined) = {
-    val options = new ClientOptions()
-    options.sessionTimeout = sessionTimeout
-    options.spinDelay = spinDelay
-    options.retries = retries
-    options
-  }
-
-}
+class ClientOptions(var sessionTimeout: js.UndefOr[Int] = js.undefined,
+                    var spinDelay: js.UndefOr[Int] = js.undefined,
+                    var retries: js.UndefOr[Int] = js.undefined) extends js.Object

@@ -1,4 +1,4 @@
-package examples.nodejs.net
+package examples.nodejs.http
 
 import com.github.ldaniels528.meansjs.nodejs._
 import com.github.ldaniels528.meansjs.nodejs.http._

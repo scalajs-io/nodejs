@@ -6,6 +6,7 @@ import com.github.ldaniels528.meansjs.nodejs.azure.common.AzureCommon
 import com.github.ldaniels528.meansjs.nodejs.fs.Fs
 import com.github.ldaniels528.meansjs.nodejs.global.process
 import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
+import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 

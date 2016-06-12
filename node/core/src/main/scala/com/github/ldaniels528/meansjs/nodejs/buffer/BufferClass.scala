@@ -3,6 +3,7 @@ package com.github.ldaniels528.meansjs.nodejs.buffer
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
+import scala.scalajs.js.typedarray.ArrayBuffer
 
 /**
   * Prior to the introduction of TypedArray in ECMAScript 2015 (ES6), the JavaScript language had no mechanism

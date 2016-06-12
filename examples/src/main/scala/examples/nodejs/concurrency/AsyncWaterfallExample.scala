@@ -1,7 +1,8 @@
 package examples.nodejs.concurrency
 
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, errors}
 import com.github.ldaniels528.meansjs.nodejs.async.Async
+import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, errors}
+import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 import org.scalajs.dom.console
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue

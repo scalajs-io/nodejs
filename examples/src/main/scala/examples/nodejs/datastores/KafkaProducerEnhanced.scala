@@ -2,6 +2,7 @@ package examples.nodejs.datastores
 
 import com.github.ldaniels528.meansjs.nodejs.kafkanode.{KafkaNode, Payload}
 import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, errors}
+import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 import org.scalajs.dom._
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue

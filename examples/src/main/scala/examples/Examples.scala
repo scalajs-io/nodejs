@@ -8,14 +8,16 @@ import examples.nodejs.concurrency._
 import examples.nodejs.datastores._
 import examples.nodejs.express._
 import examples.nodejs.general._
+import examples.nodejs.http._
 import examples.nodejs.io._
 import examples.nodejs.net._
 import examples.nodejs.terminal._
-import examples.nodejs.vm.VMExample
+import examples.nodejs.vm._
 import org.scalajs.dom.console
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSExportAll
+import scala.util.{Failure, Success, Try}
 
 /**
   * MEANS.js Examples
@@ -34,12 +36,14 @@ object Examples extends js.JSApp {
     "ClusterExample" -> ((bootstrap: Bootstrap) => new ClusterExample(bootstrap)),
     "ColorsExample" -> ((bootstrap: Bootstrap) => new ColorsExample(bootstrap)),
     "CompressionExample" -> ((bootstrap: Bootstrap) => new CompressionExample(bootstrap)),
+    "DNSExample" -> ((bootstrap: Bootstrap) => new DNSExample(bootstrap)),
     "EscapeHtmlExample" -> ((bootstrap: Bootstrap) => new EscapeHtmlExample(bootstrap)),
     "EventEmitterExample" -> ((bootstrap: Bootstrap) => new EventEmitterExample(bootstrap)),
     "ExpressRoutingExample" -> ((bootstrap: Bootstrap) => new ExpressRoutingExample(bootstrap)),
     "ExpressServerExample" -> ((bootstrap: Bootstrap) => new ExpressServerExample(bootstrap)),
     "FilesExample" -> ((bootstrap: Bootstrap) => new FilesExample(bootstrap)),
     "HttpServerExample" -> ((bootstrap: Bootstrap) => new HttpServerExample(bootstrap)),
+    "HttpServerWithCompression" -> ((bootstrap: Bootstrap) => new HttpServerWithCompression(bootstrap)),
     "JwtSimpleExample" -> ((bootstrap: Bootstrap) => new JwtSimpleExample(bootstrap)),
     "KafkaProducerExample" -> ((bootstrap: Bootstrap) => new KafkaProducerExample(bootstrap)),
     "KafkaProducerEnhanced" -> ((bootstrap: Bootstrap) => new KafkaProducerEnhanced(bootstrap)),
@@ -55,7 +59,6 @@ object Examples extends js.JSApp {
     "PathExamples" -> ((bootstrap: Bootstrap) => new PathExamples(bootstrap)),
     "ProcessExample" -> ((bootstrap: Bootstrap) => new ProcessExample(bootstrap)),
     "REPLExample" -> ((bootstrap: Bootstrap) => new REPLExample(bootstrap)),
-    "ServerWithCompression" -> ((bootstrap: Bootstrap) => new ServerWithCompression(bootstrap)),
     "StringDecoderExample" -> ((bootstrap: Bootstrap) => new StringDecoderExample(bootstrap)),
     "TimersExample" -> ((bootstrap: Bootstrap) => new TimersExample(bootstrap)),
     "TinyCLI" -> ((bootstrap: Bootstrap) => new TinyCLIExample(bootstrap)),
@@ -70,30 +73,73 @@ object Examples extends js.JSApp {
     "ZlibExample" -> ((bootstrap: Bootstrap) => new ZlibExample(bootstrap))
   )
 
-  override def main(): Unit = ()
+  override def main(): Unit = {
+    console.warn("Please use start(Bootstrap)")
+  }
 
+  /**
+    * Runs an example by name
+    * @param bootstrap the given [[Bootstrap bootstrap]]
+    */
   def start(bootstrap: Bootstrap) {
     val args = process.argv.drop(2)
-    if (args.isEmpty) usageError()
-    else {
-      val outcome = for {
-        arg <- args.headOption
-        _ = console.log(s"Searching for example '$arg'")
-        example <- examples.get(arg)
-      } yield (arg, example)
-
-      outcome match {
-        case Some((arg, example)) =>
-          console.log(s"Executing example '$arg'")
-          example(bootstrap)
-        case _ => usageError()
-      }
+    args.headOption match {
+      case Some("--all") => runAll(bootstrap)
+      case Some(name) => runOne(bootstrap, name, args.tail)
+      case None => usageError()
     }
   }
 
+  /**
+    * Runs a single (specific) example
+    * @param bootstrap the given [[Bootstrap bootstrap]]
+    * @param args      the example arguments. The first argument is the example name.
+    */
+  private def runOne(bootstrap: Bootstrap, name: String, args: js.Array[String]): Unit = {
+    console.log(s"Searching for example '$name'")
+    examples.get(name) match {
+      case Some(example) =>
+        console.log(s"Executing example '$name'")
+        example(bootstrap)
+      case None => usageError()
+    }
+  }
+
+  /**
+    * Runs all examples
+    * @param bootstrap the given [[Bootstrap bootstrap]]
+    */
+  private def runAll(bootstrap: Bootstrap): Unit = {
+    val columns = process.env.get("COLUMNS").map(_.toInt) getOrElse 80
+    var passed = 0
+    var failed: List[String] = Nil
+
+    examples foreach { case (name, example) =>
+      console.log(s"Starting $name...")
+      Try(example(bootstrap)) match {
+        case Success(_) => passed += 1
+        case Failure(e) => failed = name :: failed
+      }
+      console.log("\n" + "*" * columns)
+    }
+
+    // display the results
+    console.log("example(s) executed: %d", examples.size)
+    console.log("example(s) passed:   %d", passed)
+    console.log("example(s) failed:   %d", failed.size)
+
+    if(failed.nonEmpty) {
+      console.log("\nFailed examples: %s", failed.mkString(", "))
+    }
+  }
+
+  /**
+    * Displays the usages error
+    */
   def usageError(): Unit = {
-    console.warn("Usage: examples.js <example1>[, <example2>[, <exampleN>]]\n")
-    console.log("Choose any of the following:")
+    console.warn("Usage1: examples.js --all")
+    console.warn("Usage2: examples.js <example-name>")
+    console.log("\nChoose any of the following:")
     console.log(examples.keys.sliding(4, 4) map (_.mkString(", ")) mkString "\n")
   }
 

@@ -91,10 +91,10 @@ trait Interface extends EventEmitter {
 object Interface {
 
   /**
-    * Readline Interface Extensions
+    * Readline Interface Events
     * @param readline the given [[Interface Readline Interface]]
     */
-  implicit class ReadlineExtensions(val readline: Interface) extends AnyVal {
+  implicit class ReadlineEvents(val readline: Interface) extends AnyVal {
 
     /**
       * Emitted when close() is called. Also emitted when the input stream receives its 'end' event.
@@ -102,14 +102,14 @@ object Interface {
       * the input stream receives {{{ ^D }}}, respectively known as EOT.
       */
     @inline
-    def onClose(callback: js.Function) = readline.on("close", callback)
+    def onClose(callback: () => Any) = readline.on("close", callback)
 
     /**
       * Emitted whenever the input stream receives an end of line (\n, \r, or \r\n), usually received when
       * the user hits enter, or return. This is a good hook to listen for user input.
       */
     @inline
-    def onLine(callback: js.Function) = readline.on("line", callback)
+    def onLine(callback: String => Any) = readline.on("line", callback)
 
     /**
       * Emitted whenever the input stream is paused. Also emitted whenever the input stream is not paused

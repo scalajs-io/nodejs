@@ -1,5 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs
 
+import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+
 import scala.scalajs.js
 
 /**
@@ -10,14 +12,14 @@ package object cluster {
   type Message = js.Any
 
   /////////////////////////////////////////////////////////////////////////////////
-  //      Cluster Events
+  //      Cluster Events and Extensions
   /////////////////////////////////////////////////////////////////////////////////
 
   /**
     * Cluster Events
     * @param cluster the given [[Cluster cluster]]
     */
-  implicit class ClusterExtensions(val cluster: Cluster) extends AnyVal {
+  implicit class ClusterEvents(val cluster: Cluster) extends AnyVal {
 
     /**
       * Emitted after the worker IPC channel has disconnected. This can occur when a worker exits gracefully, is killed,
@@ -89,14 +91,30 @@ package object cluster {
   }
 
   /////////////////////////////////////////////////////////////////////////////////
-  //      Worker Events
+  //      Worker Events and Extensions
   /////////////////////////////////////////////////////////////////////////////////
 
   /**
-    * Worker Events
+    * Worker Events and Extensions
     * @param worker the given [[Worker worker]]
     */
-  implicit class WorkerExtensions(val worker: Worker) extends AnyVal {
+  implicit class WorkerEvents(val worker: Worker) extends AnyVal {
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //      Worker Extensions
+    /////////////////////////////////////////////////////////////////////////////////
+
+    /**
+      * Send a message to a worker or master, optionally with a handle.
+      * In the master this sends a message to a specific worker. It is identical to ChildProcess.send().
+      * In a worker this sends a message to the master. It is identical to process.send().
+      * @example worker.send(message[, sendHandle][, callback])
+      */
+    def sendFuture[T](message: Message) = futureCallbackA1[T](worker.send(message, _))
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //      Worker Events
+    /////////////////////////////////////////////////////////////////////////////////
 
     /**
       * Similar to the cluster.on('disconnect') event, but specific to this worker.

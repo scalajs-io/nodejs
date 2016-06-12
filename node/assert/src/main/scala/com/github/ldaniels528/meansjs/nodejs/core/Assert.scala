@@ -19,15 +19,10 @@ trait Assert extends NodeModule with EventEmitter {
 
   /**
     * An alias of assert.ok() .
+    * @param expression the expression to evaluate
     * @example assert(value[, message])
     */
-  def assert(value: js.Any, message: String): Unit = js.native
-
-  /**
-    * An alias of assert.ok() .
-    * @example assert(value[, message])
-    */
-  def assert(value: js.Any): Unit = js.native
+  def apply(expression: js.Any, message: String = null): Unit = js.native
 
   /**
     * Tests for deep equality between the actual and expected parameters. Primitive values are compared with the equal

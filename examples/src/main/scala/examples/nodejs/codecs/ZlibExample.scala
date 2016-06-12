@@ -3,6 +3,7 @@ package examples.nodejs.codecs
 import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
 import com.github.ldaniels528.meansjs.nodejs.zlib.{CompressionOptions, Zlib}
 import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
+import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 

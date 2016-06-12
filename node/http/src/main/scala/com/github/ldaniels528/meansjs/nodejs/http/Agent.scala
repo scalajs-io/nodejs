@@ -20,6 +20,11 @@ trait Agent extends js.Object {
   /////////////////////////////////////////////////////////////////////////////////
 
   /**
+    * The agent's domain name
+    */
+  def domain: String = js.native
+
+  /**
     * An object which contains arrays of sockets currently awaiting use by the Agent when HTTP KeepAlive is used. Do not modify.
     * @example agent.freeSockets
     */
@@ -102,7 +107,5 @@ object Agent {
     def createConnectionAsync(options: ConnectionOptions) = futureCallbackE1[js.Error, js.Any](agent.createConnection(options, _))
 
   }
-
-
 
 }

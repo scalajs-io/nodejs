@@ -132,7 +132,7 @@ package object net {
       *                 </ul>
       * @example socket.on("lookup", function(err, address, family, host) { ... })
       */
-    @inline def onLookup(callback: (js.Error, String, String, String) => Any) = socket.on("lookup", callback)
+    @inline def onLookup(callback: (errors.Error, String, String, String) => Any) = socket.on("lookup", callback)
 
     /**
       * Emitted if the socket times out from inactivity. This is only to notify that the socket has been idle. The user

@@ -8,22 +8,6 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class NoAckBatchOptions extends js.Object {
-  var noAckBatchSize: js.UndefOr[Int] = _
-  var noAckBatchAge: js.UndefOr[Int] = _
-}
+class NoAckBatchOptions(var noAckBatchSize: js.UndefOr[Int] = js.undefined,
+                        var noAckBatchAge: js.UndefOr[Int] = js.undefined) extends js.Object
 
-/**
-  * No Ack Batch Options Companion
-  * @author lawrence.daniels@gmail.com
-  */
-object NoAckBatchOptions {
-
-  def apply(noAckBatchSize: js.UndefOr[Int] = js.undefined,
-            noAckBatchAge: js.UndefOr[Int] = js.undefined) = {
-    val options = new NoAckBatchOptions()
-    options.noAckBatchSize = noAckBatchSize
-    options.noAckBatchAge = noAckBatchAge
-    options
-  }
-}

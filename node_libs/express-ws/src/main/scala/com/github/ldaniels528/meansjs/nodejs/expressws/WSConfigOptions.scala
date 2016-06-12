@@ -8,19 +8,4 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class WSConfigOptions extends js.Object {
-  var leaveRouterUntouched: Boolean = _
-}
-
-/**
-  * Configuration Options Companion
-  * @author lawrence.daniels@gmail.com
-  */
-object WSConfigOptions {
-
-  def apply(leaveRouterUntouched: Boolean) = {
-    val options = new WSConfigOptions()
-    options.leaveRouterUntouched = leaveRouterUntouched
-    options
-  }
-}
+class WSConfigOptions(leaveRouterUntouched: Boolean = false) extends js.Object

@@ -39,7 +39,6 @@ trait Cluster extends EventEmitter {
     *
     * cluster.schedulingPolicy can also be set through the NODE_CLUSTER_SCHED_POLICY environment variable. Valid values
     * are "rr" and "none".
-    * @return
     */
   def schedulingPolicy: String = js.native
 
@@ -62,7 +61,6 @@ trait Cluster extends EventEmitter {
     * A worker is removed from cluster.workers after the worker has disconnected and exited. The order between these
     * two events cannot be determined in advance. However, it is guaranteed that the removal from the cluster.workers
     * list happens before last 'disconnect' or 'exit' event is emitted.
-    * @return
     */
   def workers: js.Dictionary[Worker] = js.native
 

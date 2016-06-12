@@ -4,6 +4,7 @@ import com.github.ldaniels528.meansjs.nodejs.azure.asm.CertificateCloudCredentia
 import com.github.ldaniels528.meansjs.nodejs.azure.asm.compute.{ConfigurationSet, _}
 import com.github.ldaniels528.meansjs.nodejs.fs.Fs
 import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
+import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
@@ -69,7 +70,7 @@ class ComputeManagementClientExample(bootstrap: Bootstrap) {
   )
 
   for {
-    // List all the virtual machine images you can use.
+  // List all the virtual machine images you can use.
     vmImages <- computeManagementClient.virtualMachineVMImages.listFuture
 
     // Create a cloud service.

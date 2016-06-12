@@ -415,6 +415,8 @@ object Process {
 
     def HOME = env.get("HOME").orUndefined
 
+    def NODE_DEBUG = env.get("NODE_DEBUG").orUndefined
+
     def NODE_ENV = env.get("NODE_ENV").orUndefined
 
     def PATH = env.get("PATH").orUndefined

@@ -6,7 +6,9 @@ import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 import scala.scalajs.js
 
 /**
-  * Readline Node Module
+  * Readline allows reading of a stream (such as process.stdin) on a line-by-line basis.
+  * To use this module, do require('readline').
+  * Note that once you've invoked this module, your Node.js program will not terminate until you've closed the interface.
   * @author lawrence.daniels@gmail.com
   */
 @js.native

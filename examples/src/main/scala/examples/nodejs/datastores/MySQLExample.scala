@@ -2,6 +2,7 @@ package examples.nodejs.datastores
 
 import com.github.ldaniels528.meansjs.nodejs._
 import com.github.ldaniels528.meansjs.nodejs.mysql._
+import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 import examples.nodejs.datastores.MySQLExample.Activity
 
 import scala.concurrent.duration._

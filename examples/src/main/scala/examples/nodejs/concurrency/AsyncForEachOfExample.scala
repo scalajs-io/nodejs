@@ -67,7 +67,7 @@ class AsyncForEachOfExample(bootstrap: Bootstrap) {
             configs(key) = JSON.parse(data)
           } match {
             case Success(_) => callback(null)
-            case Failure(e) => callback(errors.Error(e))
+            case Failure(e) => callback(errors.Error(e.getMessage))
           }
         }
         console.log("Done B")
@@ -91,7 +91,7 @@ class AsyncForEachOfExample(bootstrap: Bootstrap) {
             configs(envs(index)) = JSON.parse(data)
           } match {
             case Success(_) => callback(null)
-            case Failure(e) => callback(errors.Error(e))
+            case Failure(e) => callback(errors.Error(e.getMessage))
           }
         }
         console.log("Done C")

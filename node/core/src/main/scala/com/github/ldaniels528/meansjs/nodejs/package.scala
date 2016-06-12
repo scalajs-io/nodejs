@@ -1,6 +1,5 @@
 package com.github.ldaniels528.meansjs
 
-import com.github.ldaniels528.meansjs.nodejs.buffer.BufferClass
 import com.github.ldaniels528.meansjs.nodejs.timer._
 
 import scala.concurrent.duration.FiniteDuration

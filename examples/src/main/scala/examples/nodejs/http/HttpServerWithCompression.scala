@@ -1,4 +1,4 @@
-package examples.nodejs.net
+package examples.nodejs.http
 
 import com.github.ldaniels528.meansjs.nodejs._
 import com.github.ldaniels528.meansjs.nodejs.fs.Fs
@@ -6,9 +6,10 @@ import com.github.ldaniels528.meansjs.nodejs.http._
 import com.github.ldaniels528.meansjs.nodejs.oppressor.Oppressor
 
 /**
-  * Server With Compression
+  * HTTP Server With Compression
+  * @author lawrence.daniels@gmail.com
   */
-class ServerWithCompression(bootstrap: Bootstrap) {
+class HttpServerWithCompression(bootstrap: Bootstrap) {
   import bootstrap._
 
   val oppressor = require[Oppressor]("oppressor")

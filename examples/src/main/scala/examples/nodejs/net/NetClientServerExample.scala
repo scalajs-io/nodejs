@@ -2,6 +2,7 @@ package examples.nodejs.net
 
 import com.github.ldaniels528.meansjs.nodejs.net._
 import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
+import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 
@@ -10,7 +11,6 @@ import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
   * @author lawrence.daniels@gmail.com
   */
 class NetClientServerExample(bootstrap: Bootstrap) {
-
   import bootstrap._
 
   val net = require[Net]("net")

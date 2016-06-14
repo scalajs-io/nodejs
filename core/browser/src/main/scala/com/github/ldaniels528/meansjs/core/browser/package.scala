@@ -47,4 +47,8 @@ package object browser {
   @JSName("unescape")
   object unescape extends GenericStringFunction
 
+  @js.native
+  @JSName("window")
+  object window extends org.scalajs.dom.raw.Window
+
 }

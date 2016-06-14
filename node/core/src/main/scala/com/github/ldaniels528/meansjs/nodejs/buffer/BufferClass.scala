@@ -133,7 +133,6 @@ trait BufferClass extends js.Object {
     * @param encoding the given encoding
     * @return a new Buffer
     */
-  @deprecated("Use Buffer.from(str[, encoding]) instead.", since = "6.0.0")
   def from(str: String, encoding: String): Buffer = js.native
 
   def from(str: String): Buffer = js.native
@@ -166,42 +165,49 @@ object BufferClass {
       * new Buffer(str, [encoding])
       */
     @inline
+    @deprecated("Use Buffer.from(str[, encoding]) instead.", since = "6.0.0")
     def apply(str: String, encoding: String) = `class`.New[Buffer](str)
 
     /**
       * new Buffer(str, [encoding])
       */
     @inline
+    @deprecated("Use Buffer.from(str[, encoding]) instead.", since = "6.0.0")
     def apply(str: String) = `class`.New[Buffer](str)
 
     /**
       * @example new Buffer(array)
       */
     @inline
+    @deprecated("Use Buffer.from(array) instead.", since = "6.0.0")
     def apply(array: js.Array[Int]) = `class`.New[Buffer](array)
 
     /**
       * @example new Buffer(buffer)
       */
     @inline
+    @deprecated("Use Buffer.from(buffer) instead.", since = "6.0.0")
     def apply(buffer: Buffer) = `class`.New[Buffer](buffer)
 
     /**
       * @example {{{ new Buffer(arrayBuffer[, byteOffset[, length]]) }}}
       */
     @inline
+    @deprecated("Use Buffer.from(arrayBuffer[, byteOffset [, length]]) instead.", since = "6.0.0")
     def apply(arrayBuffer: ArrayBuffer, byteOffset: Int, length: Int) = `class`.New[Buffer](arrayBuffer, byteOffset, length)
 
     /**
       * @example {{{ new Buffer(arrayBuffer[, byteOffset[, length]]) }}}
       */
     @inline
+    @deprecated("Use Buffer.from(arrayBuffer[, byteOffset [, length]]) instead.", since = "6.0.0")
     def apply(arrayBuffer: ArrayBuffer, byteOffset: Int) = `class`.New[Buffer](arrayBuffer, byteOffset)
 
     /**
       * @example {{{ new Buffer(arrayBuffer[, byteOffset[, length]]) }}}
       */
     @inline
+    @deprecated("Use Buffer.from(arrayBuffer[, byteOffset [, length]]) instead.", since = "6.0.0")
     def apply(arrayBuffer: ArrayBuffer) = `class`.New[Buffer](arrayBuffer)
 
   }

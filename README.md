@@ -1,6 +1,6 @@
-MEANS.js
-=============
-MEANS.js is a Scala.js binding for the MEAN Stack (MongoDB ExpressJS AngularJS NodeJS).
+ Scalajs-Nodejs (formerly MEANS.js)
+====================================
+This is a Scala.js binding for the Node.js and MEAN Stack (MongoDB ExpressJS AngularJS NodeJS) applications.
  
 ## Table of Contents
 
@@ -9,7 +9,7 @@ MEANS.js is a Scala.js binding for the MEAN Stack (MongoDB ExpressJS AngularJS N
     * <a href="#build_requirements">Build Requirements</a>
     * <a href="#building_sdk">Building the SDK</a>
     * <a href="#running_examples">Building and run examples</a>
-    * <a href="#apps_using_means">Developed using MEANS.js</a>
+    * <a href="#apps_using_means">Developed using Scalajs-Nodejs</a>
     * <a href="#discussions">Discussions</a>
 * <a href="#NodeJS">Node.js bindings</a>
     * <a href="#node_modules">Modules</a>
@@ -23,17 +23,17 @@ MEANS.js is a Scala.js binding for the MEAN Stack (MongoDB ExpressJS AngularJS N
 <a name="introduction"></a>
 ## Introduction
 
-The goal of MEANS.js is to be a complete Scala.js binding for the entire MEAN Stack. Why? Because I love NodeJS,
+The goal of this project is to be a complete Scala.js binding for the entire MEAN Stack. Why? Because I love NodeJS,
  but I have a love/hate relationship with JavaScript. And many others feel the same way about JavaScript, which is why
  there are so many languages that are designed to improve the experience (CoffeeScript, TypeScript, Scala.js and others). 
- Simply put, MEANS.js let's me have my cake and eat it too! And as such, I've gone to great lengths to bring all the 
+ Simply put, Scalajs-Nodejs let's me have my cake and eat it too! And as such, I've gone to great lengths to bring all the 
  things you love about developing applications on the MEAN Stack to Scala.
  
-MEANS.js is componentized; allowing developers to use include only the features they want. If all your application 
+Scalajs-Nodejs is componentized; allowing developers to use include only the features they want. If all your application 
 requires is a binding for AngularJS, you can use just that. Alternatively, you could use only the Node bindings, or the 
 entire MEAN stack.
 
-Currently, there are at least four development use cases for MEANS.js:
+Currently, there are at least four development use cases for Scalajs-Nodejs:
  
 * Building full MEAN stack applications using AngularJS and Node bindings.
 * Building rich thin-client web frontends using AngularJS bindings only (with any backend).
@@ -67,9 +67,9 @@ Currently, there are at least four development use cases for MEANS.js:
 ```
 
 <a name="apps_using_means"></a>
-### Developed using MEANS.js
+### Developed using  Scalajs-Nodejs
    
-The following applications were developed using MEANS.js:
+The following applications were developed using Scalajs-Nodejs:
 
 | Application                                                      | Frontend              | Backend            | Description                                                  |
 |------------------------------------------------------------------|-----------------------|--------------------|--------------------------------------------------------------|
@@ -167,7 +167,7 @@ http.createServer(function(request, response) {
 }).listen(8888);
 ```
 
-Here's the same example using MEANS.js:
+Here's the same example using Scalajs-Nodejs:
 
 ```scala
 val http = require[Http]("http")
@@ -294,7 +294,7 @@ mongoClient.connectFuture(url) onComplete {
 }
 ```
 
-MEANS.js exposes Future-based alternatives to most of the asynchronous functions found in MongoDB, Express, Angular and Node. 
+Scalajs-Nodejs exposes Future-based alternatives to most of the asynchronous functions found in MongoDB, Express, Angular and Node. 
 This means that you can use Scala's amazing *for* comprehensions to replace the dreaded pyramid of doom callbacks normally
 associated with JavaScript asynchronous code.
 
@@ -609,7 +609,7 @@ object ChangeArrowDirectiveScope {
 
 #### Durations
 
-MEANS.js provides implicit conversions so that you may use `scala.concurrent.duration.FiniteDuration`s with `$timeout`,
+Scalajs-Nodejs provides implicit conversions so that you may use `scala.concurrent.duration.FiniteDuration`s with `$timeout`,
 `$interval`, and any other services that use time in milliseconds.
 
 ```scala
@@ -618,7 +618,7 @@ $timeout(() => doSomething(), 5.minutes)
 
 #### JSON data as Scala objects
 
-MEANS.js allows you to utilize dynamic JavaScript objects or type-safe Scala objects using traits. 
+Scalajs-Nodejs allows you to utilize dynamic JavaScript objects or type-safe Scala objects using traits. 
 Consider the following example:
 
 ```scala
@@ -635,7 +635,7 @@ one may want to retrieve the data as a `js.Dynamic` because of the flexibility i
 {"stateChanged":false,"active":false,"sysTime":1392092448795,"delay":-49848795,"start":1392042600000,"end":1392066000000}
 ```
 
-However, sometimes we instead want to retrieve the data as a type-safe Scala object. MEANS.js makes this as simple as:
+However, sometimes we instead want to retrieve the data as a type-safe Scala object. Scalajs-Nodejs makes this as simple as:
 
 ```scala
 $http.get[MarketStatus]("/api/tradingClock/status") onComplete {
@@ -658,7 +658,7 @@ Above, we retrieve a JSON object via the given API and return a Market Status ob
 
 #### For Comprehensions
 
-MEANS.js provides implicit conversions that convert a `HttpResponse[T]` into a `Future[T]`, we can also use `for`
+Scalajs-Nodejs provides implicit conversions that convert a `HttpResponse[T]` into a `Future[T]`, we can also use `for`
 comprehensions when we need to combine data from multiple API calls.
 
 ```scala

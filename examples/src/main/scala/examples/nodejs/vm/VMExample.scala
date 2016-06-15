@@ -13,10 +13,10 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 class VMExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val util = require[Util]("util")
-  val vm = require[VM]("vm")
+  val util = Util()
+  val vm = VM()
 
   val sandbox = Sandbox(animal = "cat", count = 2)
 

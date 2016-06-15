@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.escapehtml
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 
 import scala.scalajs.js
 
@@ -12,3 +12,18 @@ import scala.scalajs.js
   */
 @js.native
 trait EscapeHtml extends js.Function1[String, String] with NodeModule
+
+/**
+  * EscapeHtml Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object EscapeHtml {
+
+  /**
+    * Convenience method for retrieving the 'escape-html' module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the EscapeHtml instance
+    */
+  def apply()(implicit require: NodeRequire) = require[EscapeHtml]("escape-html")
+
+}

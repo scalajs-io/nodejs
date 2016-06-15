@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.core
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 
 import scala.scalajs.js
@@ -13,6 +13,7 @@ import scala.scalajs.js
   * The API for the assert module is Locked. This means that there will be no additions or changes to any of the
   * methods implemented and exposed by the module.
   * @version 6.2.1
+  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Assert extends NodeModule with EventEmitter {
@@ -181,5 +182,20 @@ trait Assert extends NodeModule with EventEmitter {
     * @example assert.throws(block[, error][, message])
     */
   def throws(block: js.Function, error: js.Any, message: String): Unit = js.native
+
+}
+
+/**
+  * Assert Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object Assert {
+
+  /**
+    * Convenience method for retrieving the Assert module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the Assert instance
+    */
+  def apply()(implicit require: NodeRequire) = require[Assert]("assert")
 
 }

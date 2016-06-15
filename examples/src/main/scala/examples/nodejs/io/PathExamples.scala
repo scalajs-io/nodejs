@@ -11,10 +11,10 @@ import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
   * @author lawrence.daniels@gmail.com
   */
 class PathExamples(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val path = require[Path]("path")
-  val assert = require[Assert]("assert")
+  val path = Path()
+  val assert = Assert()
 
   console.log("""path.basename("/foo/bar/baz/asdf/quux.html") should be "quux.html"""")
   assert.equal(path.basename("/foo/bar/baz/asdf/quux.html"), "quux.html")

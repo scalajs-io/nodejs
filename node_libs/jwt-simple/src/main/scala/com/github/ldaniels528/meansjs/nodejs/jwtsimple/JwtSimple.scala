@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.jwtsimple
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 import com.github.ldaniels528.meansjs.nodejs.jwtsimple.JwtSimple.{Algorithm, JwtToken}
 
 import scala.scalajs.js
@@ -78,6 +78,13 @@ object JwtSimple {
   val HS384: Algorithm = "HS384"
   val HS512: Algorithm = "HS512"
   val RS256: Algorithm = "RS256"
+
+  /**
+    * Convenience method for retrieving the 'jwt-simple' module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the JwtSimple instance
+    */
+  def apply()(implicit require: NodeRequire) = require[JwtSimple]("jwt-simple")
 
   /**
     * JwtSimple Extensions

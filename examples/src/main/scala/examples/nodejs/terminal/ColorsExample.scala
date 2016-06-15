@@ -10,7 +10,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 class ColorsExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
   implicit val colors = require[Colors]("colors")
 

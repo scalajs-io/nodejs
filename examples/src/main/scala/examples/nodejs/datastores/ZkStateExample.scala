@@ -14,9 +14,9 @@ import scala.util.{Failure, Success}
   * @author lawrence.daniels@gmail.com
   */
 class ZkStateExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val zookeeper = require[NodeZookeeperClient]("node-zookeeper-client")
+  val zookeeper = NodeZookeeperClient()
 
   // get the Zookeeper host
   val zkHost = process.argv.toList match {

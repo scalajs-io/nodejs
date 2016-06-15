@@ -10,10 +10,10 @@ import com.github.ldaniels528.meansjs.nodejs.global.process
   * @author lawrence.daniels@gmail.com
   */
 class StreamingHashExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val crypto = require[Crypto]("crypto")
-  val fs = require[Fs]("fs")
+  val crypto = Crypto()
+  val fs = Fs()
   val hash = crypto.createHash("sha256")
 
   val input = fs.createReadStream("test.js")

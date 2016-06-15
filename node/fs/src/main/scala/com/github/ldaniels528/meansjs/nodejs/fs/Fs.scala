@@ -3,7 +3,7 @@ package com.github.ldaniels528.meansjs.nodejs.fs
 import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 import com.github.ldaniels528.meansjs.nodejs.stream.{Readable, Writable}
-import com.github.ldaniels528.meansjs.nodejs.{FileDescriptor, NodeModule}
+import com.github.ldaniels528.meansjs.nodejs.{FileDescriptor, NodeModule, NodeRequire}
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.language.implicitConversions
@@ -678,6 +678,13 @@ trait Fs extends NodeModule with EventEmitter {
   * @author lawrence.daniels@gmail.com
   */
 object Fs {
+
+  /**
+    * Convenience method for retrieving the file system module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the file system instance
+    */
+  def apply()(implicit require: NodeRequire) = require[Fs]("fs")
 
   /**
     * File System Extensions

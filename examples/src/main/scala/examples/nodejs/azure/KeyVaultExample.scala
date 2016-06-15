@@ -14,12 +14,11 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 class KeyVaultExample(bootstrap: Bootstrap) {
+  implicit val require = bootstrap.require
 
-  import bootstrap._
-
-  val AzureCommon = require[AzureCommon]("azure-common")
-  val AzureMgmtKeyVault = require[AzureArmKeyVault]("azure-arm-keyvault")
-  val AdalNode = require[AdalNode]("adal-node") // Used for authentication
+  val azureCommon = AzureCommon()
+  val azureMgmtKeyVault = AzureArmKeyVault()
+  val adalNode = AdalNode() // Used for authentication
 
   val userName = "someone@myorg.com"
   val password = "123"
@@ -28,13 +27,13 @@ class KeyVaultExample(bootstrap: Bootstrap) {
 
   val resourceId = process.argv.drop(3).headOption getOrElse ""
 
-  val context = AdalNode.AuthenticationContext("https://login.windows.net/myorg.com")
+  val context = adalNode.AuthenticationContext("https://login.windows.net/myorg.com")
   context.acquireTokenWithUsernamePassword(resourceId, userName, password, clientId, (err: errors.Error, response: AuthenticationResponse) => {
     if (isDefined(err)) {
       throw new RuntimeException("Unable to authenticate: " + err.stack)
     }
 
-    val credentials = AzureCommon.TokenCloudCredentials(TokenCloudCredentialOptions(
+    val credentials = azureCommon.TokenCloudCredentials(TokenCloudCredentialOptions(
       subscriptionId = "<subscription GUID>",
       authorizationScheme = response.tokenType,
       token = response.accessToken
@@ -43,7 +42,7 @@ class KeyVaultExample(bootstrap: Bootstrap) {
     // Creates an Azure Key Vault Management client.
     // The Azure Resource Manager URI must also be passed to this constructor for the
     // China, Germany, and US Government Azure environments
-    val client = AzureMgmtKeyVault.KeyVaultManagementClient(credentials)
+    val client = azureMgmtKeyVault.KeyVaultManagementClient(credentials)
 
     val resourceGroup = "myResourceGroup"
     val vaultName = "myNewVault"

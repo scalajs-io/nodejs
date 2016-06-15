@@ -1,7 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs.mongodb
 
 import com.github.ldaniels528.meansjs.nodejs.mongodb.gridfs.{Grid, GridFSBucketClass, GridStoreClass}
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 
 import scala.scalajs.js
@@ -42,5 +42,20 @@ trait MongoDB extends NodeModule with EventEmitter {
   def ReplSetServers: js.Function1[js.Array[Server], ReplSetServers] = js.native
 
   def Server: ServerClass = js.native
+
+}
+
+/**
+  * MongoDB Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object MongoDB {
+
+  /**
+    * Convenience method for retrieving the 'mongodb' module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the MongoDB instance
+    */
+  def apply()(implicit require: NodeRequire) = require[MongoDB]("mongodb")
 
 }

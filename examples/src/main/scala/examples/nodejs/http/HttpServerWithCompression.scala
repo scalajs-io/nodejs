@@ -10,17 +10,17 @@ import com.github.ldaniels528.meansjs.nodejs.oppressor.Oppressor
   * @author lawrence.daniels@gmail.com
   */
 class HttpServerWithCompression(bootstrap: Bootstrap) {
+  implicit val require = bootstrap.require
   import bootstrap._
 
-  val oppressor = require[Oppressor]("oppressor")
-  val fs = require[Fs]("fs")
-  val http = require[Http]("http")
+  val oppressor = Oppressor()
+  val fs = Fs()
+  val http = Http()
 
   val server = http.createServer((req: ClientRequest, res: ServerResponse) => {
     fs.createReadStream(__dirname + "/data.txt")
       .pipe(oppressor(req))
       .pipe(res)
-
   })
   server.listen(8000)
 

@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.multer
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 
 import scala.scalajs.js
 
@@ -26,6 +26,13 @@ trait Multer extends NodeModule {
   * @author lawrence.daniels@gmail.com
   */
 object Multer {
+
+  /**
+    * Convenience method for retrieving the 'multer' module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the Multer instance
+    */
+  def apply()(implicit require: NodeRequire) = require[Multer]("multer")
 
   /**
     * Multer Extensions

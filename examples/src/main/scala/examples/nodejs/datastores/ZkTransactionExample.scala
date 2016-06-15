@@ -14,7 +14,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 class ZkTransactionExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
   // get the Zookeeper host
   val zkHost = process.argv.toList match {
@@ -22,7 +22,7 @@ class ZkTransactionExample(bootstrap: Bootstrap) {
     case _ => "localhost:2181"
   }
 
-  val zookeeper = require[NodeZookeeperClient]("node-zookeeper-client")
+  val zookeeper = NodeZookeeperClient()
   val client = zookeeper.createClient(zkHost)
 
   client.onceConnected(() => {

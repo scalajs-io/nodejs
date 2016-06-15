@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.async
 
-import com.github.ldaniels528.meansjs.nodejs.{NodeModule, errors}
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire, errors}
 import com.github.ldaniels528.meansjs.nodejs.async.Async.{AsyncErrorCallback, AsyncResultCallback}
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
@@ -198,8 +198,13 @@ object Async {
   type AsyncErrorCallback = js.Function1[errors.Error, Any]
 
   type AsyncResultCallback = js.Function
-
-  /*2[errors.Error, Any, Any]*/
+  
+  /**
+    * Convenience method for retrieving the async module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the Async instance
+    */
+  def apply()(implicit require: NodeRequire) = require[Async]("async")
 
   /**
     * Async Extensions

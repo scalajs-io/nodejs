@@ -8,7 +8,7 @@ import com.github.ldaniels528.meansjs.nodejs.tty.TTY
   * @author lawrence.daniels@gmail.com
   */
 class TTYExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
   val tty = require[TTY]("tty")
 

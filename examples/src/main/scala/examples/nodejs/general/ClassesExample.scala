@@ -13,9 +13,9 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   */
 class ClassesExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val util = require[Util]("util")
+  val util = Util()
 
   val larry = new Person1()
   larry.name = "Larry"

@@ -15,3 +15,18 @@ trait StringDecoder extends NodeModule with EventEmitter {
   def StringDecoder: StringDecoderClass = js.native
 
 }
+
+/**
+  * StringDecoder Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object StringDecoder {
+
+  /**
+    * Convenience method for retrieving the string_decoder module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the StringDecoder instance
+    */
+  def apply()(implicit require: NodeRequire) = require[StringDecoder]("string_decoder")
+
+}

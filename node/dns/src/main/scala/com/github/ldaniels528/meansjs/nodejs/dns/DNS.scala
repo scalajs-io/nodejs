@@ -1,5 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.dns
 
+import com.github.ldaniels528.meansjs.nodejs.NodeRequire
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.scalajs.js
@@ -332,6 +333,13 @@ trait DNS extends js.Object {
   * @author lawrence.daniels@gmail.com
   */
 object DNS {
+
+  /**
+    * Convenience method for retrieving the DNS module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the DNS instance
+    */
+  def apply()(implicit require: NodeRequire) = require[DNS]("dns")
 
   /**
     * DNS Extensions

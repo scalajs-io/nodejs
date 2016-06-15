@@ -1,5 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.cluster
 
+import com.github.ldaniels528.meansjs.nodejs.NodeRequire
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 
 import scala.scalajs.js
@@ -99,5 +100,20 @@ trait Cluster extends EventEmitter {
     * @example cluster.setupMaster([settings])
     */
   def setupMaster(settings: ClusterSettings): Unit = js.native
+
+}
+
+/**
+  * Cluster Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object Cluster {
+
+  /**
+    * Convenience method for retrieving the 'cluster' module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the Cluster instance
+    */
+  def apply()(implicit require: NodeRequire) = require[Cluster]("cluster")
 
 }

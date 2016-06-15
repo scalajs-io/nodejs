@@ -10,9 +10,9 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 class XMLParsingExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val xml2js = require[XML2JS]("xml2js")
+  val xml2js = XML2JS()
   console.log("defaults = %j", xml2js.defaults)
 
   val xml = "<root>Hello xml2js!</root>"

@@ -9,9 +9,9 @@ import org.scalajs.dom._
   * @author lawrence.daniels@gmail.com
   */
 class CompressionExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val zlib = require[Zlib]("zlib")
+  val zlib = Zlib()
 
   console.log("zlib = %j", zlib.Z_VERSION_ERROR)
 

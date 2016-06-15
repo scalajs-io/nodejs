@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.readline
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 
 import scala.scalajs.js
@@ -48,5 +48,20 @@ trait Readline extends NodeModule with EventEmitter {
     * @example readline.moveCursor(stream, dx, dy)
     */
   def moveCursor(stream: js.Any, dx: Int, dy: Int): Unit = js.native
+
+}
+
+/**
+  * Readline Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object Readline {
+
+  /**
+    * Convenience method for retrieving the readline module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the Readline instance
+    */
+  def apply()(implicit require: NodeRequire) = require[Readline]("readline")
 
 }

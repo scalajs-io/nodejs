@@ -11,7 +11,7 @@ import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
   * @author lawrence.daniels@gmail.com
   */
 class NetClientServerExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
   val net = require[Net]("net")
 

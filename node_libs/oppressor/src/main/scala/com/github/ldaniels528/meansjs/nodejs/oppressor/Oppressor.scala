@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.oppressor
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 import com.github.ldaniels528.meansjs.nodejs.stream.{Duplex, Readable}
 
 import scala.scalajs.js
@@ -22,5 +22,20 @@ trait Oppressor extends NodeModule {
     * expect to be piped directly to the response object will work.
     */
   def apply(readable: Readable): Duplex = js.native
+
+}
+
+/**
+  * Oppressor Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object Oppressor {
+
+  /**
+    * Convenience method for retrieving the 'oppressor' module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the Oppressor instance
+    */
+  def apply()(implicit require: NodeRequire) = require[Oppressor]("oppressor")
 
 }

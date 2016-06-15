@@ -11,10 +11,10 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 class MongoCollectionExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val assert = require[Assert]("assert")
-  val mongodb = require[MongoDB]("mongodb")
+  val assert = Assert()
+  val mongodb = MongoDB()
 
   val uri = "mongodb://localhost:27017/test"
 

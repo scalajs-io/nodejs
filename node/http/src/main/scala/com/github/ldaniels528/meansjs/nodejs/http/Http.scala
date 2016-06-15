@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.http
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
@@ -127,6 +127,13 @@ trait Http extends NodeModule with EventEmitter {
   * @author lawrence.daniels@gmail.com
   */
 object Http {
+
+  /**
+    * Convenience method for retrieving the http module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the Http instance
+    */
+  def apply()(implicit require: NodeRequire) = require[Http]("http")
 
   /**
     * Http Extensions

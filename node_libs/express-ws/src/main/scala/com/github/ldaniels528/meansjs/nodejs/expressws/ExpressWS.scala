@@ -1,5 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.expressws
 
+import com.github.ldaniels528.meansjs.nodejs.NodeRequire
 import com.github.ldaniels528.meansjs.nodejs.express.Application
 import com.github.ldaniels528.meansjs.nodejs.http.Server
 
@@ -37,5 +38,20 @@ trait ExpressWS extends js.Object {
     * @example expressWs(app[,server][, options])
     */
   def apply(app: Application): WsInstance = js.native
+
+}
+
+/**
+  * ExpressWS Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object ExpressWS {
+
+  /**
+    * Convenience method for retrieving the 'express-ws' module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the ExpressWS instance
+    */
+  def apply()(implicit require: NodeRequire) = require[ExpressWS]("express-ws")
 
 }

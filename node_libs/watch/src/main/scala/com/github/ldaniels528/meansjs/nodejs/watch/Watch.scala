@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.watch
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 import com.github.ldaniels528.meansjs.nodejs.fs.Stats
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
@@ -8,9 +8,9 @@ import scala.scalajs.js
 
 /**
   * watch - Utilities for watching file trees.
-  * @author lawrence.daniels@gmail.com
   * @version 0.18.0
   * @see https://www.npmjs.com/package/watch
+  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Watch extends NodeModule {
@@ -83,6 +83,13 @@ trait Watch extends NodeModule {
   */
 object Watch {
 
+  /**
+    * Convenience method for retrieving the 'watch' module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the Watch instance
+    */
+  def apply()(implicit require: NodeRequire) = require[Watch]("watch")
+  
   /**
     * Watch Extensions
     * @author lawrence.daniels@gmail.com

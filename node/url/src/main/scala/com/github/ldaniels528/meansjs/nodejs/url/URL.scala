@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.url
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 
 import scala.scalajs.js
@@ -79,5 +79,20 @@ trait URL extends NodeModule with EventEmitter {
     * @example url.resolve(from, to)
     */
   def resolve(from: String, to: String): String = js.native
+
+}
+
+/**
+  * URL Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object URL {
+
+  /**
+    * Convenience method for retrieving the url module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the URL instance
+    */
+  def apply()(implicit require: NodeRequire) = require[URL]("url")
 
 }

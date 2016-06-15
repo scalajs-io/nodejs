@@ -11,9 +11,9 @@ import scala.concurrent.duration._
   * @author lawrence.daniels@gmail.com
   */
 class ReadableExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  var Readable = require[Stream]("stream").Readable
+  var Readable = Stream().Readable
   var rs = Readable()
   var c = 97 - 1
 

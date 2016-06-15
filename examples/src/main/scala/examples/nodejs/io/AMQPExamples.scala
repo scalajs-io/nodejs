@@ -13,9 +13,9 @@ import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
   * @author lawrence.daniels@gmail.com
   */
 class AMQPExamples(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val amqp = require[AmqpLib]("amqplib")
+  val amqp = AmqpLib()
 
   // get the queue
   val queueName = process.argv.drop(3).headOption getOrElse "tasks"

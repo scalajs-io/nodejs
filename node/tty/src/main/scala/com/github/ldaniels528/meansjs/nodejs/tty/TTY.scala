@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.tty
 
-import com.github.ldaniels528.meansjs.nodejs.FileDescriptor
+import com.github.ldaniels528.meansjs.nodejs.{FileDescriptor, NodeRequire}
 
 import scala.scalajs.js
 
@@ -29,5 +29,20 @@ trait TTY extends js.Object {
     * @since 0.5.8
     */
   def isatty(fd: FileDescriptor): Boolean = js.native
+
+}
+
+/**
+  * TTY Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object TTY {
+
+  /**
+    * Convenience method for retrieving the tty module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the TTY instance
+    */
+  def apply()(implicit require: NodeRequire) = require[TTY]("tty")
 
 }

@@ -1,5 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.bodyparser
 
+import com.github.ldaniels528.meansjs.nodejs.NodeRequire
 import com.github.ldaniels528.meansjs.nodejs.express.Router
 
 import scala.scalajs.js
@@ -46,5 +47,20 @@ trait BodyParser extends js.Object {
     *         (when extended is false), or any type (when extended is true).
     */
   def urlencoded(options: UrlEncodedBodyOptions = null): Router = js.native
+
+}
+
+/**
+  * BodyParser Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object BodyParser {
+
+  /**
+    * Convenience method for retrieving the body-parser module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the BodyParser instance
+    */
+  def apply()(implicit require: NodeRequire) = require[BodyParser]("body-parser")
 
 }

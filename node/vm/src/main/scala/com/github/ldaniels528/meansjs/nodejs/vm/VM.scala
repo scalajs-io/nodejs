@@ -1,5 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs.vm
 
+import com.github.ldaniels528.meansjs.nodejs.NodeRequire
+
 import scala.scalajs.js
 
 /**
@@ -81,5 +83,20 @@ trait VM extends js.Object {
     * @return true if the given sandbox object has been contextified using vm.createContext().
     */
   def isContext(sandbox: js.Any): Boolean = js.native
+
+}
+
+/**
+  * VM Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object VM {
+
+  /**
+    * Convenience method for retrieving the vm module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the VM instance
+    */
+  def apply()(implicit require: NodeRequire) = require[VM]("vm")
 
 }

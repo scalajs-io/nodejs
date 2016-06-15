@@ -1,15 +1,15 @@
 package com.github.ldaniels528.meansjs.nodejs.kafkanode
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 
 import scala.scalajs.js
 
 /**
-  * Kafka-Node Node.js module
-  * @author lawrence.daniels@gmail.com
+  * node-kafka - a node binding for librdkafka
   * @see https://www.npmjs.com/package/node-kafka
   * @version 0.0.11
+  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait KafkaNode extends NodeModule with EventEmitter {
@@ -27,5 +27,20 @@ trait KafkaNode extends NodeModule with EventEmitter {
   def Offset: OffsetClass = js.native
 
   def Producer: ProducerClass = js.native
+
+}
+
+/**
+  * KafkaNode Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object KafkaNode {
+
+  /**
+    * Convenience method for retrieving the 'kafka-node' module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the KafkaNode instance
+    */
+  def apply()(implicit require: NodeRequire) = require[KafkaNode]("kafka-node")
 
 }

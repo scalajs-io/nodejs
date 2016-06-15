@@ -11,10 +11,10 @@ import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, _}
   * @author lawrence.daniels@gmail.com
   */
 class MD5Example(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val crypto = require[Crypto]("crypto")
-  val fs = require[Fs]("fs")
+  val crypto = Crypto()
+  val fs = Fs()
 
   process.argv.drop(3).headOption match {
     case Some(filename) =>

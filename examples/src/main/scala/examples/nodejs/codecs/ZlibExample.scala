@@ -12,16 +12,16 @@ import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
   * @author lawrence.daniels@gmail.com
   */
 class ZlibExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val zlib = require[Zlib]("zlib")
+  val zlib = Zlib()
 
   val original = Buffer.from("This is a compression example")
   console.log("original =>", original.toString())
 
   for {
     compressed <- zlib.deflateFuture(original)
-    uncompressed <- zlib.unzipFuture(compressed, CompressionOptions(finishFlush = zlib.Z_SYNC_FLUSH))
+    uncompressed <- zlib.unzipFuture(compressed, new CompressionOptions(finishFlush = zlib.Z_SYNC_FLUSH))
   } {
     console.log("compressed =>", compressed.toString())
     console.log("uncompressed =>", uncompressed.toString())

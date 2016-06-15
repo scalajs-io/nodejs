@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.stream
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 
 import scala.scalajs.js
 
@@ -16,5 +16,20 @@ trait Stream extends NodeModule {
   def Readable: js.Function0[Readable] = js.native
 
   def Writable: js.Function0[Writable] = js.native
+
+}
+
+/**
+  * Stream Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object Stream {
+
+  /**
+    * Convenience method for retrieving the stream module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the Stream instance
+    */
+  def apply()(implicit require: NodeRequire) = require[Stream]("stream")
 
 }

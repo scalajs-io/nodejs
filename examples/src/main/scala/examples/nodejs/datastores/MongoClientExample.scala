@@ -13,10 +13,10 @@ import scala.util.{Failure, Success}
   * @author lawrence.daniels@gmail.com 
   */
 class MongoClientExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
   // lets require/import the mongodb native drivers.
-  val mongo = require[MongoDB]("mongodb")
+  val mongo = MongoDB()
 
   // We need to work with "MongoClient" interface in order to connect to a mongodb server.
   val mongoClient = mongo.MongoClient

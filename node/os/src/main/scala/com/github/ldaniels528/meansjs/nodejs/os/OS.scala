@@ -1,5 +1,7 @@
 package com.github.ldaniels528.meansjs.nodejs.os
 
+import com.github.ldaniels528.meansjs.nodejs.NodeRequire
+
 import scala.scalajs.js
 
 /**
@@ -109,5 +111,20 @@ trait OS extends js.Object {
     * @example os.uptime()
     */
   def uptime(): Double
+
+}
+
+/**
+  * OS Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object OS {
+
+  /**
+    * Convenience method for retrieving the OS module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the OS instance
+    */
+  def apply()(implicit require: NodeRequire) = require[OS]("os")
 
 }

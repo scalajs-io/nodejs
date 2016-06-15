@@ -1,5 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.crypto
 
+import com.github.ldaniels528.meansjs.nodejs.NodeRequire
 import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
 
 import scala.scalajs.js
@@ -142,5 +143,20 @@ trait Crypto extends js.Object {
     * @return the names of the supported cipher algorithms. // ['aes-128-cbc', 'aes-128-ccm', ...]
     */
   def getCiphers(): js.Array[String] = js.native
+
+}
+
+/**
+  * Crypto Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object Crypto {
+
+  /**
+    * Convenience method for retrieving the Crypto module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the Crypto instance
+    */
+  def apply()(implicit require: NodeRequire) = require[Crypto]("crypto")
 
 }

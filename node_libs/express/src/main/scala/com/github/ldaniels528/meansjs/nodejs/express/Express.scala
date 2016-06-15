@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.express
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 
 import scala.scalajs.js
@@ -60,5 +60,20 @@ trait Express extends NodeModule with EventEmitter {
     * @example express.static(root, [options])
     */
   def static(root: String): Router = js.native
+
+}
+
+/**
+  * Express Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object Express {
+
+  /**
+    * Convenience method for retrieving the 'express' module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the Express instance
+    */
+  def apply()(implicit require: NodeRequire) = require[Express]("express")
 
 }

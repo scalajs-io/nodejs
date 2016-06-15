@@ -8,9 +8,9 @@ import com.github.ldaniels528.meansjs.nodejs.escapehtml.EscapeHtml
   * @author lawrence.daniels@gmail.com
   */
 class EscapeHtmlExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  var escapeHtml = require[EscapeHtml]("escape-html")
+  var escapeHtml = EscapeHtml()
   var html = escapeHtml("foo & bar")
 
   console.log("html =>", html)

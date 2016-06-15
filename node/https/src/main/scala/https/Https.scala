@@ -1,6 +1,6 @@
 package https
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 import com.github.ldaniels528.meansjs.nodejs.http.{RequestOptions, ServerResponse}
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
@@ -76,6 +76,13 @@ trait Https extends NodeModule with EventEmitter {
   * @author lawrence.daniels@gmail.com
   */
 object Https {
+
+  /**
+    * Convenience method for retrieving the https module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the Https instance
+    */
+  def apply()(implicit require: NodeRequire) = require[Https]("https")
 
   /**
     * Https Extensions

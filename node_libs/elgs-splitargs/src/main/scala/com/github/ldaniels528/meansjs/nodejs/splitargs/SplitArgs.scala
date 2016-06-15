@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.splitargs
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 
 import scala.scalajs.js
 
@@ -14,5 +14,20 @@ import scala.scalajs.js
 trait SplitArgs extends NodeModule {
 
   def apply(string: String): js.Array[String] = js.native
+
+}
+
+/**
+  * SplitArgs Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object SplitArgs {
+
+  /**
+    * Convenience method for retrieving the 'splitargs' module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the SplitArgs instance
+    */
+  def apply()(implicit require: NodeRequire) = require[SplitArgs]("splitargs")
 
 }

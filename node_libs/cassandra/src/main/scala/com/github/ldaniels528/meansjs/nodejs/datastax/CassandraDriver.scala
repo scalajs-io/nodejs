@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.datastax
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 import com.github.ldaniels528.meansjs.nodejs.datastax.CassandraDriver._
 import com.github.ldaniels528.meansjs.nodejs.datastax.datatypes._
 
@@ -28,6 +28,13 @@ trait CassandraDriver extends NodeModule {
   * @author lawrence.daniels@gmail.com
   */
 object CassandraDriver {
+
+  /**
+    * Convenience method for retrieving the cassandra-driver module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the CassandraDriver instance
+    */
+  def apply()(implicit require: NodeRequire) = require[CassandraDriver]("cassandra-driver")
 
   /**
     * Consistencies object

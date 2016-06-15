@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.path
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 
 import scala.scalajs.js
 
@@ -135,5 +135,20 @@ trait Path extends NodeModule {
     * @example {{{ path.resolve([from ...], to) }}}
     */
   def resolve(args: String*): String = js.native
+
+}
+
+/**
+  * Path Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object Path {
+
+  /**
+    * Convenience method for retrieving the path module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the Path instance
+    */
+  def apply()(implicit require: NodeRequire) = require[Path]("path")
 
 }

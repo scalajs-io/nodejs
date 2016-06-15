@@ -9,10 +9,10 @@ import com.github.ldaniels528.meansjs.nodejs.fs.Fs
   * @author lawrence.daniels@gmail.com
   */
 class BlobServiceExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
   
-  val azure = require[AzureStorage]("azure-storage")
-  val fs = require[Fs]("fs")
+  val azure = AzureStorage()
+  val fs = Fs()
   
   def blob() = {
     val blobService = azure.createBlobService()

@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.colors
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 
 import scala.scalajs.js
 
@@ -117,5 +117,20 @@ trait Colors extends NodeModule {
   def zalgo: this.type = js.native
 
   def zebra: this.type = js.native
+
+}
+
+/**
+  * Colors Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object Colors {
+
+  /**
+    * Convenience method for retrieving the colors module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the Colors instance
+    */
+  def apply()(implicit require: NodeRequire) = require[Colors]("colors")
 
 }

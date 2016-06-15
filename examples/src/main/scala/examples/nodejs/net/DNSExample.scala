@@ -13,10 +13,10 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 class DNSExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
   val dns = require[DNS]("dns")
-  val assert = require[Assert]("assert")
+  val assert = Assert()
 
   doCallbacks("google.com")
   doFutures("bing.com")

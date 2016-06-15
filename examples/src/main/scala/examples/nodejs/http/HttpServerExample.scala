@@ -10,9 +10,9 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 class HttpServerExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val http = require[Http]("http")
+  val http = Http()
   http.createServer((request: ClientRequest, response: ServerResponse) => {
     response.writeHead(statusCode = 200, headers = js.Dictionary("Content-Type" -> "text/plain"))
     response.write("Hello World")

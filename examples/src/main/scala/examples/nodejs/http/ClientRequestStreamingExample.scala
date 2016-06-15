@@ -9,9 +9,9 @@ import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
   * @author lawrence.daniels@gmail.com
   */
 class ClientRequestStreamingExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val request = require[Request]("request")
+  val request = Request()
   request
     .get("http://google.com/img.png")
     .on("response", (response: ServerResponse) => {

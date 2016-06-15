@@ -9,7 +9,7 @@ import org.scalajs.dom.console
   * @author lawrence.daniels@gmail.com
   */
 class URLsExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
   val url = require[URL]("url")
 

@@ -12,10 +12,10 @@ import scala.scalajs.js.JSON
   * @author lawrence.daniels@gmail.com
   */
 class MongoStreamExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val MongoClient = require[MongoDB]("mongodb").MongoClient
-  val assert = require[Assert]("assert")
+  val MongoClient = MongoDB().MongoClient
+  val assert = Assert()
 
   // Connection URL
   val url = "mongodb://localhost:27017/test"

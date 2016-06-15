@@ -13,7 +13,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 class AsyncWaterfallExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
   val async = require[Async]("async")
 

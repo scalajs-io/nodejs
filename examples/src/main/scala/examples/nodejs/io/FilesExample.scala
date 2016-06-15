@@ -10,10 +10,11 @@ import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
   * @author lawrence.daniels@gmail.com
   */
 class FilesExample(bootstrap: Bootstrap) {
+  implicit val require = bootstrap.require
   import bootstrap._
 
-  val fs = require[Fs]("fs")
-  val readline = require[Readline]("readline")
+  val fs = Fs()
+  val readline = Readline()
 
   var lineNo = 0
   val file = __dirname + "/examples.js"

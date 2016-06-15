@@ -14,10 +14,10 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 class ComputeManagementClientExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val fs = require[Fs]("fs")
-  val computeManagement = require[AzureAsmCompute]("azure-asm-compute")
+  val fs = Fs()
+  val computeManagement = AzureAsmCompute()
 
   // create the compute management client
   val computeManagementClient = computeManagement.createComputeManagementClient(

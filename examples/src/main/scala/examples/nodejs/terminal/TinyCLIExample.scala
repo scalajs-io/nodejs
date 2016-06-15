@@ -10,7 +10,7 @@ import org.scalajs.dom.console
   * @author lawrence.daniels@gmail.com
   */
 class TinyCLIExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
   val readline = require[Readline]("readline")
   val rl = readline.createInterface(new ReadlineOptions(input = process.stdin, output = process.stdout))

@@ -12,7 +12,7 @@ import scala.scalajs.js
   */
 class ServerToServerViaClientCredentials(bootstrap: Bootstrap) {
 
-  import bootstrap._
+  implicit val require = bootstrap.require
 
   val adal = require[AdalNode]("adal-node")
   val AuthenticationContext = adal.AuthenticationContext

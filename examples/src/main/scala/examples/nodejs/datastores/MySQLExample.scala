@@ -14,10 +14,10 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 class MySQLExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
   // lets require/import the mysql native driver.
-  val mysql = require[MySQL]("mysql")
+  val mysql = MySQL()
 
   // establish a connection
   val conn = mysql.createConnection(new ConnectionOptions(

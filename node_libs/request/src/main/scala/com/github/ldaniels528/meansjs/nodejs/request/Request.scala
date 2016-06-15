@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.request
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 import com.github.ldaniels528.meansjs.nodejs.http.IncomingMessage
 import com.github.ldaniels528.meansjs.nodejs.stream.{Readable, Writable}
@@ -54,6 +54,13 @@ trait Request extends NodeModule with EventEmitter {
   * @author lawrence.daniels@gmail.com
   */
 object Request {
+
+  /**
+    * Convenience method for retrieving the 'request' module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the Request instance
+    */
+  def apply()(implicit require: NodeRequire) = require[Request]("request")
 
   /**
     * Request Extensions

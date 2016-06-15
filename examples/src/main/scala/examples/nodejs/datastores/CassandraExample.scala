@@ -14,10 +14,10 @@ import scala.scalajs.js.JSConverters._
   * @author lawrence.daniels@gmail.com
   */
 class CassandraExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val cassandra = require[CassandraDriver]("cassandra-driver")
-  val assert = require[Assert]("assert")
+  val cassandra = CassandraDriver()
+  val assert = Assert()
 
   dataTypes()
 
@@ -34,7 +34,7 @@ class CassandraExample(bootstrap: Bootstrap) {
     val value2 = cassandra.types.Long.fromNumber(0xDEADBEEFCAFEBABEL)
     console.log("value2 =", value2, ", buffer =", cassandra.types.Long.toBuffer(value2), "\n")
 
-    val value3 = cassandra.types.Long(0xDEADBEEF, 0xCAFEBABE, true)
+    val value3 = cassandra.types.Long(0xDEADBEEF, 0xCAFEBABE, unsigned = true)
     console.log("value3 =", value3, ", buffer =", cassandra.types.Long.toBuffer(value3), "\n")
 
     // Inet Address

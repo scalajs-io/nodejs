@@ -8,7 +8,7 @@ import com.github.ldaniels528.meansjs.nodejs.events.Events
   * @author lawrence.daniels@gmail.com
   */
 class EventEmitterExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
   val ee = require[Events]("events")()
 

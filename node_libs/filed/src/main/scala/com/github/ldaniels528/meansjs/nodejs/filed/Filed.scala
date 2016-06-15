@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.filed
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 import com.github.ldaniels528.meansjs.nodejs.stream.Writable
 
 import scala.scalajs.js
@@ -19,5 +19,20 @@ trait Filed extends NodeModule {
     * there it will just be created.
     */
   def apply(file: String): Writable = js.native
+
+}
+
+/**
+  * Filed Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object Filed {
+
+  /**
+    * Convenience method for retrieving the 'filed' module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the Filed instance
+    */
+  def apply()(implicit require: NodeRequire) = require[Filed]("filed")
 
 }

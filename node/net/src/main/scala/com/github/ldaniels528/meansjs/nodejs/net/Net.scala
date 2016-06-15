@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.net
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 
 import scala.scalajs.js
@@ -164,5 +164,20 @@ trait Net extends NodeModule with EventEmitter {
     * @example net.isIPv6(input)
     */
   def isIPv6(input: String): Boolean = js.native
+
+}
+
+/**
+  * Net Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object Net {
+
+  /**
+    * Convenience method for retrieving the net module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the Net instance
+    */
+  def apply()(implicit require: NodeRequire) = require[Net]("net")
 
 }

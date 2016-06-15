@@ -10,9 +10,9 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 class JwtSimpleExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val jwt = require[JwtSimple]("jwt-simple")
+  val jwt = JwtSimple()
   val payload = js.Dictionary("foo" -> "bar")
   val secret = "scalajs"
 

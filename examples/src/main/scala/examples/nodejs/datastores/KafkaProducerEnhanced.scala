@@ -13,9 +13,9 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 class KafkaProducerEnhanced(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val kafka = require[KafkaNode]("kafka-node")
+  val kafka = KafkaNode()
   val client = kafka.Client("dev528:2181")
   val producer = kafka.Producer(client)
 

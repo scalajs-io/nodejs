@@ -14,11 +14,11 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 class MongoGridFSBucketExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val assert = require[Assert]("assert")
-  val fs = require[Fs]("fs")
-  val mongodb = require[MongoDB]("mongodb")
+  val assert = Assert()
+  val fs = Fs()
+  val mongodb = MongoDB()
 
   val uri = "mongodb://localhost:27017/test"
 

@@ -15,11 +15,11 @@ import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
   * @author lawrence.daniels@gmail.com
   */
 class SqlManagementClientExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val fs = require[Fs]("fs")
-  val common = require[AzureCommon]("azure-common")
-  val sqlManagement = require[AzureAsmSQL]("azure-asm-sql")
+  val fs = Fs()
+  val common = AzureCommon()
+  val sqlManagement = AzureAsmSQL()
 
   val (subscription, pemFile, administratorUserName, administratorPassword) = process.argv.drop(3).toList match {
     case aSubscription :: aPemFile :: userName :: password :: Nil => (aSubscription, aPemFile, userName, password)

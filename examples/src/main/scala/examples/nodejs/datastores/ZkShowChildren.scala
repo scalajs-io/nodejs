@@ -16,7 +16,7 @@ import scala.scalajs.js.JSON
   * @author lawrence.daniels@gmail.com
   */
 class ZkShowChildren(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
   // get the Zookeeper host
   val zkHost = process.argv.toList match {
@@ -24,7 +24,7 @@ class ZkShowChildren(bootstrap: Bootstrap) {
     case _ => "localhost:2181"
   }
 
-  val zookeeper = require[NodeZookeeperClient]("node-zookeeper-client")
+  val zookeeper = NodeZookeeperClient()
   val client = zookeeper.createClient(zkHost)
 
   client.onceConnected(() => {

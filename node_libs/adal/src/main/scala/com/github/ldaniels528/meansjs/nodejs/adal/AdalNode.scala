@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.adal
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 
 import scala.scalajs.js
 
@@ -15,5 +15,20 @@ import scala.scalajs.js
 trait AdalNode extends NodeModule {
 
   def AuthenticationContext: js.Function1[String, AuthenticationContext] = js.native
+
+}
+
+/**
+  * AdalNode Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object AdalNode {
+
+  /**
+    * Convenience method for retrieving the adal-node module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the AdalNode instance
+    */
+  def apply()(implicit require: NodeRequire) = require[AdalNode]("adal-node")
 
 }

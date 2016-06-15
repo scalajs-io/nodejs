@@ -11,9 +11,9 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 class ExpressServerExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val express = require[Express]("express")
+  val express = Express()
   val app = express()
 
   app.get("/", (req: Request, res: Response) => {

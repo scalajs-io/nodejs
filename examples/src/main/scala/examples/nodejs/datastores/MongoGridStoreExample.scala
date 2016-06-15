@@ -1,11 +1,10 @@
 package examples.nodejs.datastores
 
-import com.github.ldaniels528.meansjs.nodejs.mongodb.Db
+import com.github.ldaniels528.meansjs.nodejs.Bootstrap
 import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
 import com.github.ldaniels528.meansjs.nodejs.core.Assert
-import com.github.ldaniels528.meansjs.nodejs.mongodb.{Db, MongoDB}
 import com.github.ldaniels528.meansjs.nodejs.mongodb.gridfs.GridStore
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, NodeRequire}
+import com.github.ldaniels528.meansjs.nodejs.mongodb.{Db, MongoDB}
 import examples.nodejs.datastores.MongoGridStoreExample.FileData
 
 import scala.scalajs.js
@@ -15,19 +14,19 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 class MongoGridStoreExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val Db = require[MongoDB]("mongodb").Db
-  val MongoClient = require[MongoDB]("mongodb").MongoClient
-  val Server = require[MongoDB]("mongodb").Server
-  val ReplSetServers = require[MongoDB]("mongodb").ReplSetServers
-  val ObjectID = require[MongoDB]("mongodb").ObjectID
-  val Binary = require[MongoDB]("mongodb").Binary
-  val GridStore = require[MongoDB]("mongodb").GridStore
-  val Grid = require[MongoDB]("mongodb").Grid
-  val Code = require[MongoDB]("mongodb").Code
-  val BSON = require[MongoDB]("mongodb").pure().BSON
-  val assert = require[Assert]("assert")
+  val Db = MongoDB().Db
+  val MongoClient = MongoDB().MongoClient
+  val Server = MongoDB().Server
+  val ReplSetServers = MongoDB().ReplSetServers
+  val ObjectID = MongoDB().ObjectID
+  val Binary = MongoDB().Binary
+  val GridStore = MongoDB().GridStore
+  val Grid = MongoDB().Grid
+  val Code = MongoDB().Code
+  val BSON = MongoDB().pure().BSON
+  val assert = Assert()
 
   // Establish connection to db
   var db = Db("test", Server("localhost", 27017))

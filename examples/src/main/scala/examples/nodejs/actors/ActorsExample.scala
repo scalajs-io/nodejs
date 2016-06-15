@@ -14,9 +14,9 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   */
 class ActorsExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val drama = require[Drama]("drama")
+  val drama = Drama()
   val actorSystem = drama("sys")
 
   exampleA()

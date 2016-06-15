@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.util
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 import com.github.ldaniels528.meansjs.nodejs.fs.Stats
 
@@ -184,5 +184,20 @@ trait Util extends NodeModule with EventEmitter {
     */
   @deprecated("Use console.log() instead", "4.x")
   def puts(args: js.Array[js.Any]): Unit = js.native
+
+}
+
+/**
+  * Util Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object Util {
+
+  /**
+    * Convenience method for retrieving the util module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the Util instance
+    */
+  def apply()(implicit require: NodeRequire) = require[Util]("util")
 
 }

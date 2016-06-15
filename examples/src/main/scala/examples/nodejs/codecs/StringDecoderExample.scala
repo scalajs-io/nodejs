@@ -11,10 +11,10 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 class StringDecoderExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val StringDecoder = require[StringDecoder]("string_decoder").StringDecoder
-  val decoder = StringDecoder("utf8")
+  val StringDecoderClass = StringDecoder().StringDecoder
+  val decoder = StringDecoderClass("utf8")
 
   val cent = Buffer(js.Array(0xC2, 0xA2))
   console.log(decoder.write(cent))

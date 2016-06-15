@@ -15,10 +15,10 @@ import scala.util.{Failure, Success, Try}
   * @author lawrence.daniels@gmail.com
   */
 class AsyncForEachOfExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val async = require[Async]("async")
-  val fs = require[Fs]("fs")
+  val async = Async()
+  val fs = Fs()
   val localPath = fs.realpathSync("./src/test/resources")
 
   forEachOf_A()

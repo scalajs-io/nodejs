@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.zlib
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
 import com.github.ldaniels528.meansjs.nodejs.errors.Error
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
@@ -361,6 +361,13 @@ object Zlib {
   type CompressionStrategy = Int
   type DataType = Int
   type DeflateCompressMethod = Int
+
+  /**
+    * Convenience method for retrieving the tty module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the Zlib instance
+    */
+  def apply()(implicit require: NodeRequire) = require[Zlib]("zlib")
 
   /**
     * Zlib Extensions

@@ -1,14 +1,14 @@
 package com.github.ldaniels528.meansjs.nodejs.zookeeper
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
 
 import scala.scalajs.js
 
 /**
   * Node Zookeeper Client
-  * @author lawrence.daniels@gmail.com
   * @version 0.2.2
+  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait NodeZookeeperClient extends NodeModule with EventEmitter {
@@ -35,5 +35,20 @@ trait NodeZookeeperClient extends NodeModule with EventEmitter {
     * @example client.createClient(connectionString, [options])
     */
   def createClient(connectionString: String, options: ClientOptions = null): Client = js.native
+
+}
+
+/**
+  * NodeZookeeperClient Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object NodeZookeeperClient {
+
+  /**
+    * Convenience method for retrieving the 'node-zookeeper-client' module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the NodeZookeeperClient instance
+    */
+  def apply()(implicit require: NodeRequire) = require[NodeZookeeperClient]("node-zookeeper-client")
 
 }

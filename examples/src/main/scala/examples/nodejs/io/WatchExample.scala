@@ -12,9 +12,9 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 class WatchExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val watch = require[Watch]("watch")
+  val watch = Watch()
   val root = "/Users/ldaniels/Downloads"
 
   example1()

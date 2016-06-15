@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.bcrypt
 
-import com.github.ldaniels528.meansjs.nodejs.{NodeModule, errors}
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire, errors}
 import com.github.ldaniels528.meansjs.nodejs.bcrypt.BCrypt._
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
@@ -100,6 +100,13 @@ object BCrypt {
   type Hash = js.Any
 
   type Salt = js.Any
+
+  /**
+    * Convenience method for retrieving the bcrypt-nodejs module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the BCrypt instance
+    */
+  def apply()(implicit require: NodeRequire) = require[BCrypt]("bcrypt-nodejs")
 
   /**
     * BCrypt Extensions

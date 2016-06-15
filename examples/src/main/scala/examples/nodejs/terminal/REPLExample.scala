@@ -13,7 +13,7 @@ import scala.scalajs.js
   * @see https://docs.nodejitsu.com/articles/REPL/how-to-create-a-custom-repl
   */
 class REPLExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
   val net = require[Net]("net")
   val repl = require[REPL]("repl")

@@ -1,6 +1,6 @@
 package com.github.ldaniels528.meansjs.nodejs.azure.storage
 
-import com.github.ldaniels528.meansjs.nodejs.NodeModule
+import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
 
 import scala.scalajs.js
 
@@ -27,5 +27,20 @@ trait AzureStorage extends NodeModule {
   def createQueueService: js.Function0[QueueService] = js.native
 
   def createTableService: js.Function0[TableService] = js.native
+
+}
+
+/**
+  * AzureStorage Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object AzureStorage {
+
+  /**
+    * Convenience method for retrieving the 'azure-storage' module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the AzureStorage instance
+    */
+  def apply()(implicit require: NodeRequire) = require[AzureStorage]("azure-storage")
 
 }

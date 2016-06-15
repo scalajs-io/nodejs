@@ -29,7 +29,7 @@ class DSLSpec() extends FeatureSpec with GivenWhenThen with MockitoSugar {
   feature("Ability to generate queries containing the $text operator") {
     scenario("Generate a query containing the $text operator") {
       Given("A query containing an $text operator")
-      val query = doc($text(TextSearchOptions(
+      val query = doc($text(new TextSearchOptions(
         $search = "hello",
         $caseSensitive = true,
         $diacriticSensitive = false

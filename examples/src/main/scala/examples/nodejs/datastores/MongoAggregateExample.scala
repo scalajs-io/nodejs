@@ -14,12 +14,12 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 class MongoAggregateExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
   // Correctly call the aggregation framework using a pipeline in an Array.
 
-  var MongoClient = require[MongoDB]("mongodb").MongoClient
-  val test = require[Assert]("assert")
+  var MongoClient = MongoDB().MongoClient
+  val test = Assert()
 
   MongoClient.connect("mongodb://localhost:27017/test", (err: MongoError, db: Db) => {
     // Some docs for insertion

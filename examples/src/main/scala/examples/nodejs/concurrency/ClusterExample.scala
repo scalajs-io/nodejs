@@ -12,11 +12,11 @@ import scala.concurrent.duration._
   * @author lawrence.daniels@gmail.com
   */
 class ClusterExample(bootstrap: Bootstrap) {
-  import bootstrap._
+  implicit val require = bootstrap.require
 
-  val cluster = require[Cluster]("cluster")
-  val http = require[Http]("http")
-  val numCPUs = require[OS]("os").cpus().length
+  val cluster = Cluster()
+  val http = Http()
+  val numCPUs = OS().cpus().length
 
   if (cluster.isMaster) {
     // Fork workers.

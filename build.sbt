@@ -77,7 +77,7 @@ lazy val core = (project in file("core/util")).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-common",
-    description := "Scalajs-Nodejs common/utilities"
+    description := "Scala.js common/utilities"
   )
 
 lazy val core_browser = (project in file("core/browser")).
@@ -87,7 +87,7 @@ lazy val core_browser = (project in file("core/browser")).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-common-browser",
-    description := "MEANS.js core/browser"
+    description := "Scala.js browser objects"
   )
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -209,7 +209,7 @@ lazy val bundle_social = (project in file("bundles/social")).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-bundle-social",
-    description := "Bundles all Social Networking APIs for MEANS.js"
+    description := "Bundles all Social Networking APIs"
   )
 
 lazy val facebook = (project in file("social/facebook")).
@@ -247,7 +247,7 @@ lazy val bundle_node = (project in file("bundles/node")).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-bundle",
-    description := "Bundles all Node modules for MEANS.js"
+    description := "Bundles all Node modules"
   )
 
 lazy val node_core = (project in file("node/core")).
@@ -457,8 +457,8 @@ lazy val bundle_node_oss = (project in file("bundles/node_oss")).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
-    name := "means-bundle-node-oss",
-    description := "Bundles all Node modules for MEANS.js"
+    name := "scalajs-nodejs-oss-bundle",
+    description := "Bundles all OSS Node modules"
   )
 
 lazy val node_adal = (project in file("node_libs/adal")).

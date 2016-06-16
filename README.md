@@ -86,8 +86,9 @@ There's currently an on-going discussion about [MEANS.js on Reddit](https://www.
 <a name="NodeJS"></a>
 ## Node.js
 
-The Node.js integration is by no means complete; however, there should be a sufficient number of
-modules implemented for most web applications. 
+The Node.js integration is nearly complete (feature for feature), and should be more than sufficient for most web-based 
+and CLI applications. Additionally, there are a growing number of third-party (mostly OSS) modules that have been 
+implemented as well, include bcrypt, datastax/cassandra-driver, kafka-node, mysql, xml2js and many others. 
 
 <a name="node_modules">
 #### Modules

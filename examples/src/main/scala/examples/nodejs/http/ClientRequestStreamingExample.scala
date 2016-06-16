@@ -1,8 +1,9 @@
 package examples.nodejs.http
 
-import com.github.ldaniels528.meansjs.nodejs.http.ServerResponse
-import com.github.ldaniels528.meansjs.nodejs.request.Request
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
+import org.scalajs.nodejs.console
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.http.ServerResponse
+import org.scalajs.nodejs.request.Request
 
 /**
   * Client Request Streaming Example

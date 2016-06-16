@@ -1,8 +1,10 @@
 package examples.nodejs.datastores
 
-import com.github.ldaniels528.meansjs.nodejs.core.Assert
-import com.github.ldaniels528.meansjs.nodejs.mongodb._
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
+import org.scalajs.nodejs.mongodb._
+import org.scalajs.nodejs.console
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.core.Assert
+import org.scalajs.nodejs.mongodb.{Db, InsertWriteOpResult, MongoDB, MongoError, StreamTransform}
 
 import scala.scalajs.js
 import scala.scalajs.js.JSON

@@ -1,11 +1,14 @@
 package examples.nodejs.datastores
 
-import com.github.ldaniels528.meansjs.nodejs._
-import com.github.ldaniels528.meansjs.nodejs.buffer._
-import com.github.ldaniels528.meansjs.nodejs.core.Assert
-import com.github.ldaniels528.meansjs.nodejs.mongodb.gridfs.GridOptions
-import com.github.ldaniels528.meansjs.nodejs.mongodb.{Db, MongoDB}
+import org.scalajs.nodejs._
+import org.scalajs.nodejs.buffer._
+import org.scalajs.nodejs.mongodb.Db
 import examples.nodejs.datastores.MongoGridExample.MyResult
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.buffer.Buffer
+import org.scalajs.nodejs.core.Assert
+import org.scalajs.nodejs.mongodb.{Db, MongoDB}
+import org.scalajs.nodejs.mongodb.gridfs.GridOptions
 
 import scala.scalajs.js
 

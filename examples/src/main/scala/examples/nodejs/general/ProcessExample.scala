@@ -1,9 +1,9 @@
 package examples.nodejs.general
 
-import com.github.ldaniels528.meansjs.nodejs.global.Process.ProcessEnvExtensions
-import com.github.ldaniels528.meansjs.nodejs.Bootstrap
-import com.github.ldaniels528.meansjs.nodejs.global.process
 import org.scalajs.dom.console
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.global.Process.ProcessEnvExtensions
+import org.scalajs.nodejs.global.process
 
 /**
   * Process Example

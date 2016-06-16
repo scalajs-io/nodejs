@@ -1,9 +1,11 @@
 package examples.nodejs.terminal
 
-import com.github.ldaniels528.meansjs.nodejs._
-import com.github.ldaniels528.meansjs.nodejs.global.process
-import com.github.ldaniels528.meansjs.nodejs.readline.{Readline, ReadlineOptions}
+import org.scalajs.nodejs._
+import org.scalajs.nodejs.global.process
+import org.scalajs.nodejs.readline.ReadlineOptions
 import org.scalajs.dom.console
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.readline.{Readline, ReadlineOptions}
 
 /**
   * Tiny CLI Example

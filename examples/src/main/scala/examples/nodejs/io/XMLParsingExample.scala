@@ -1,7 +1,8 @@
 package examples.nodejs.io
 
-import com.github.ldaniels528.meansjs.nodejs.xml2js.XML2JS
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
+import org.scalajs.nodejs.console
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.xml2js.XML2JS
 
 import scala.scalajs.js
 

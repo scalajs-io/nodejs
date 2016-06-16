@@ -1,8 +1,8 @@
 package examples.nodejs.io
 
-import com.github.ldaniels528.meansjs.nodejs.Bootstrap
-import com.github.ldaniels528.meansjs.nodejs.zlib.Zlib
 import org.scalajs.dom._
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.zlib.Zlib
 
 /**
   * Compression Examples

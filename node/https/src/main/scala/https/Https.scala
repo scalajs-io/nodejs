@@ -1,9 +1,10 @@
 package https
 
-import com.github.ldaniels528.meansjs.nodejs.{NodeModule, NodeRequire}
-import com.github.ldaniels528.meansjs.nodejs.events.EventEmitter
-import com.github.ldaniels528.meansjs.nodejs.http.{RequestOptions, ServerResponse}
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.nodejs.{NodeModule, NodeRequire}
+import org.scalajs.nodejs.events.EventEmitter
+import org.scalajs.nodejs.http.{RequestOptions, ServerResponse}
+import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.nodejs.util.ScalaJsHelper
 
 import scala.scalajs.js
 
@@ -44,14 +45,14 @@ trait Https extends NodeModule with EventEmitter {
   /**
     * Like http.get() but for HTTPS.
     * @example https.get('https://encrypted.google.com/', (res) => { ... })
-    * @see [[com.github.ldaniels528.meansjs.nodejs.http.Http.get()]]
+    * @see [[org.scalajs.nodejs.http.Http.get()]]
     */
   def get(url: String, callback: js.Function): Unit = js.native
 
   /**
     * Like http.get() but for HTTPS.
     * @example https.get(options, (res) => { ... })
-    * @see [[com.github.ldaniels528.meansjs.nodejs.http.Http.get()]]
+    * @see [[org.scalajs.nodejs.http.Http.get()]]
     */
   def get(options: RequestOptions, callback: js.Function): Unit = js.native
 

@@ -1,10 +1,13 @@
 package examples.nodejs.azure
 
-import com.github.ldaniels528.meansjs.nodejs.azure.asm.CertificateCloudCredentialsOptions
-import com.github.ldaniels528.meansjs.nodejs.azure.asm.compute.{ConfigurationSet, _}
-import com.github.ldaniels528.meansjs.nodejs.fs.Fs
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.nodejs.azure.asm.compute._
+import org.scalajs.nodejs.console
+import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.azure.asm.CertificateCloudCredentialsOptions
+import org.scalajs.nodejs.azure.asm.compute._
+import org.scalajs.nodejs.fs.Fs
+import org.scalajs.nodejs.util.ScalaJsHelper
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js

@@ -1,9 +1,11 @@
 package examples.nodejs.http
 
-import com.github.ldaniels528.meansjs.nodejs._
-import com.github.ldaniels528.meansjs.nodejs.fs.Fs
-import com.github.ldaniels528.meansjs.nodejs.http._
-import com.github.ldaniels528.meansjs.nodejs.oppressor.Oppressor
+import org.scalajs.nodejs._
+import org.scalajs.nodejs.http._
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.fs.Fs
+import org.scalajs.nodejs.http.{ClientRequest, Http, ServerResponse}
+import org.scalajs.nodejs.oppressor.Oppressor
 
 /**
   * HTTP Server With Compression

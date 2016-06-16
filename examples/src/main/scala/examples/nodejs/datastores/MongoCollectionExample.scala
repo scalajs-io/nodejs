@@ -1,8 +1,8 @@
 package examples.nodejs.datastores
 
-import com.github.ldaniels528.meansjs.nodejs.mongodb.{Db, MongoDB, ReadPreference, _}
-import com.github.ldaniels528.meansjs.nodejs.Bootstrap
-import com.github.ldaniels528.meansjs.nodejs.core.Assert
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.core.Assert
+import org.scalajs.nodejs.mongodb._
 
 import scala.scalajs.js
 

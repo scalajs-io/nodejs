@@ -1,7 +1,8 @@
 package examples.nodejs.io
 
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
-import com.github.ldaniels528.meansjs.nodejs.escapehtml.EscapeHtml
+import org.scalajs.nodejs.console
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.escapehtml.EscapeHtml
 
 /**
   * Escape-Html Example

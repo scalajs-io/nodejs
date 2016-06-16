@@ -1,7 +1,8 @@
 package examples.nodejs.terminal
 
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
-import com.github.ldaniels528.meansjs.nodejs.tty.TTY
+import org.scalajs.nodejs.console
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.tty.TTY
 
 /**
   * TTY Example

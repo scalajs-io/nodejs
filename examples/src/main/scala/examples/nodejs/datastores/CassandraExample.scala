@@ -1,10 +1,11 @@
 package examples.nodejs.datastores
 
-import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
-import com.github.ldaniels528.meansjs.nodejs.core.Assert
-import com.github.ldaniels528.meansjs.nodejs.datastax._
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console, errors}
 import examples.nodejs.datastores.CassandraExample.Customer
+import org.scalajs.nodejs
+import org.scalajs.nodejs.{Bootstrap, console}
+import org.scalajs.nodejs.buffer.Buffer
+import org.scalajs.nodejs.core.Assert
+import org.scalajs.nodejs.datastax._
 
 import scala.scalajs.js
 import scala.scalajs.js.JSConverters._
@@ -40,7 +41,7 @@ class CassandraExample(bootstrap: Bootstrap) {
     // Inet Address
     val ipAddressBuf = Buffer.from(js.Array(192, 168, 1, 5))
     val value4 = cassandra.types.InetAddress(ipAddressBuf)
-    console.log("value4 =", value4,", buffer =", ipAddressBuf, "\n")
+    console.log("value4 =", value4, ", buffer =", ipAddressBuf, "\n")
 
     // Local Date
     val value5 = cassandra.types.LocalDate.fromDate(new js.Date())
@@ -64,7 +65,7 @@ class CassandraExample(bootstrap: Bootstrap) {
     val query = "SELECT email, last_name FROM user_profiles WHERE key=?"
     val params = js.Array[js.Any]("guy")
 
-    client.execute(query, params, (err: errors.Error, result: CassandraResultSet) => {
+    client.execute(query, params, (err: nodejs.errors.Error, result: CassandraResultSet) => {
       assert.ifError(err)
       console.log("got user profile with email " + result.headOption[Customer].map(_.email).orUndefined)
     })

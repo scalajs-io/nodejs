@@ -1,8 +1,11 @@
 package examples.nodejs.net
 
-import com.github.ldaniels528.meansjs.nodejs.net._
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.nodejs.net._
+import org.scalajs.nodejs.console
+import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.net.{Net, Socket}
+import org.scalajs.nodejs.util.ScalaJsHelper
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 

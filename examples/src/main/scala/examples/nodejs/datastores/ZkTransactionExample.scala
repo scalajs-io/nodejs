@@ -1,11 +1,14 @@
 package examples.nodejs.datastores
 
-import com.github.ldaniels528.meansjs.nodejs._
-import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
-import com.github.ldaniels528.meansjs.nodejs.global.process
-import com.github.ldaniels528.meansjs.nodejs.zookeeper.{Exception, NodeZookeeperClient}
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.nodejs._
+import org.scalajs.nodejs.global.process
+import org.scalajs.nodejs.zookeeper.Exception
+import org.scalajs.nodejs.util.ScalaJsHelper._
 import org.scalajs.dom.console
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.buffer.Buffer
+import org.scalajs.nodejs.util.ScalaJsHelper
+import org.scalajs.nodejs.zookeeper.{Exception, NodeZookeeperClient}
 
 import scala.scalajs.js
 

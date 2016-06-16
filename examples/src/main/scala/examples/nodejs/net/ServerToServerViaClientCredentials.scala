@@ -1,8 +1,11 @@
 package examples.nodejs.net
 
-import com.github.ldaniels528.meansjs.nodejs.adal.AdalNode
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console, errors}
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.nodejs.{console, errors}
+import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.adal.AdalNode
+import org.scalajs.nodejs.errors.Error
+import org.scalajs.nodejs.util.ScalaJsHelper
 
 import scala.scalajs.js
 
@@ -26,7 +29,7 @@ class ServerToServerViaClientCredentials(bootstrap: Bootstrap) {
 
   val context = AuthenticationContext(authorityUrl)
 
-  context.acquireTokenWithClientCredentials(resource, clientId, clientSecret, (err: errors.Error, tokenResponse: js.Any) => {
+  context.acquireTokenWithClientCredentials(resource, clientId, clientSecret, (err: Error, tokenResponse: js.Any) => {
     if (isDefined(err)) {
       console.log("well that didn't work: " + err.stack)
     } else {

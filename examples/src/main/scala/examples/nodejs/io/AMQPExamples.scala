@@ -1,10 +1,12 @@
 package examples.nodejs.io
 
-import com.github.ldaniels528.meansjs.nodejs.amqplib.AmqpLib
-import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
-import com.github.ldaniels528.meansjs.nodejs.global.process
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.nodejs.global.process
+import org.scalajs.nodejs.console
+import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.amqplib.AmqpLib
+import org.scalajs.nodejs.buffer.Buffer
+import org.scalajs.nodejs.util.ScalaJsHelper
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 

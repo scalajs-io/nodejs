@@ -1,9 +1,11 @@
 package examples.nodejs.terminal
 
-import com.github.ldaniels528.meansjs.nodejs._
-import com.github.ldaniels528.meansjs.nodejs.net._
-import com.github.ldaniels528.meansjs.nodejs.repl.REPL
+import org.scalajs.nodejs._
+import org.scalajs.nodejs.net._
 import org.scalajs.dom.console
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.net.{Net, Socket}
+import org.scalajs.nodejs.repl.REPL
 
 import scala.scalajs.js
 

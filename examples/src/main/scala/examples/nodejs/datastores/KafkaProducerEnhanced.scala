@@ -1,9 +1,13 @@
 package examples.nodejs.datastores
 
-import com.github.ldaniels528.meansjs.nodejs.kafkanode.{KafkaNode, Payload}
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, errors}
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.nodejs.kafkanode.Payload
+import org.scalajs.nodejs.errors
+import org.scalajs.nodejs.util.ScalaJsHelper._
 import org.scalajs.dom._
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.errors.Error
+import org.scalajs.nodejs.kafkanode.{KafkaNode, Payload}
+import org.scalajs.nodejs.util.ScalaJsHelper
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
@@ -33,7 +37,7 @@ class KafkaProducerEnhanced(bootstrap: Bootstrap) {
     }
   })
 
-  producer.onError((err: errors.Error) => {
+  producer.onError((err: Error) => {
     console.log("Received error:")
     console.log(err)
   })

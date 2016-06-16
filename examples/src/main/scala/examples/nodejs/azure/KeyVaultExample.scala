@@ -1,11 +1,12 @@
 package examples.nodejs.azure
 
-import com.github.ldaniels528.meansjs.nodejs.adal.{AdalNode, AuthenticationResponse}
-import com.github.ldaniels528.meansjs.nodejs.azure.arm.keyvault.AzureArmKeyVault
-import com.github.ldaniels528.meansjs.nodejs.azure.common.{AzureCommon, KeyVaultParameters, TokenCloudCredentialOptions}
-import com.github.ldaniels528.meansjs.nodejs.global.process
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console, errors}
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.nodejs.{Bootstrap, console}
+import org.scalajs.nodejs.adal.{AdalNode, AuthenticationResponse}
+import org.scalajs.nodejs.azure.arm.keyvault.AzureArmKeyVault
+import org.scalajs.nodejs.azure.common.{AzureCommon, KeyVaultParameters, TokenCloudCredentialOptions}
+import org.scalajs.nodejs.errors.Error
+import org.scalajs.nodejs.global.process
+import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.scalajs.js
 
@@ -28,7 +29,7 @@ class KeyVaultExample(bootstrap: Bootstrap) {
   val resourceId = process.argv.drop(3).headOption getOrElse ""
 
   val context = adalNode.AuthenticationContext("https://login.windows.net/myorg.com")
-  context.acquireTokenWithUsernamePassword(resourceId, userName, password, clientId, (err: errors.Error, response: AuthenticationResponse) => {
+  context.acquireTokenWithUsernamePassword(resourceId, userName, password, clientId, (err: Error, response: AuthenticationResponse) => {
     if (isDefined(err)) {
       throw new RuntimeException("Unable to authenticate: " + err.stack)
     }
@@ -58,7 +59,7 @@ class KeyVaultExample(bootstrap: Bootstrap) {
     )
 
     console.info("Creating vault...")
-    client.vaults.createOrUpdate(resourceGroup, vaultName, parameters, (err: errors.Error, result: js.Any) => {
+    client.vaults.createOrUpdate(resourceGroup, vaultName, parameters, (err: Error, result: js.Any) => {
       if (isDefined(err)) throw new IllegalStateException(err.message)
       console.info("Vault created: %j", result)
     })

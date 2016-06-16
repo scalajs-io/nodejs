@@ -1,8 +1,9 @@
 package examples.nodejs.io
 
-import com.github.ldaniels528.meansjs.nodejs._
-import com.github.ldaniels528.meansjs.nodejs.global.process
-import com.github.ldaniels528.meansjs.nodejs.stream.Stream
+import org.scalajs.nodejs._
+import org.scalajs.nodejs.global.process
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.stream.Stream
 
 import scala.concurrent.duration._
 

@@ -1,9 +1,12 @@
 package examples.nodejs.actors
 
-import com.github.ldaniels528.meansjs.nodejs.drama.{Drama, StateDrivenActor}
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.nodejs.drama.Drama
+import org.scalajs.nodejs.console
+import org.scalajs.nodejs.util.ScalaJsHelper._
 import examples.nodejs.actors.ActorsExample.{GreetingActor, StatefulActor}
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.drama.{Drama, StateDrivenActor}
+import org.scalajs.nodejs.util.ScalaJsHelper
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js

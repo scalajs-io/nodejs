@@ -1,11 +1,13 @@
 package examples.nodejs.datastores
 
-import com.github.ldaniels528.meansjs.nodejs._
-import com.github.ldaniels528.meansjs.nodejs.core.Assert
-import com.github.ldaniels528.meansjs.nodejs.fs.Fs
-import com.github.ldaniels528.meansjs.nodejs.global.process
-import com.github.ldaniels528.meansjs.nodejs.mongodb.{Db, MongoDB}
+import org.scalajs.nodejs._
+import org.scalajs.nodejs.global.process
+import org.scalajs.nodejs.mongodb.Db
 import org.scalajs.dom.console
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.core.Assert
+import org.scalajs.nodejs.fs.Fs
+import org.scalajs.nodejs.mongodb.{Db, MongoDB}
 
 import scala.scalajs.js
 

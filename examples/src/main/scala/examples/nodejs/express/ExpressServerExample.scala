@@ -1,8 +1,10 @@
 package examples.nodejs.express
 
-import com.github.ldaniels528.meansjs.nodejs._
-import com.github.ldaniels528.meansjs.nodejs.express._
+import org.scalajs.nodejs._
+import org.scalajs.nodejs.express._
 import org.scalajs.dom.console
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.express.{Express, Request, Response}
 
 import scala.scalajs.js
 

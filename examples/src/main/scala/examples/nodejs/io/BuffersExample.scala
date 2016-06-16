@@ -1,9 +1,9 @@
 package examples.nodejs.io
 
-import com.github.ldaniels528.meansjs.core.JsIterator.Entry
-import com.github.ldaniels528.meansjs.nodejs.Bootstrap
-import com.github.ldaniels528.meansjs.nodejs.buffer._
 import org.scalajs.dom.console
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.buffer.{Buffer, _}
+import org.scalajs.sjs.Iterator.Entry
 
 import scala.scalajs.js
 

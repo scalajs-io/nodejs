@@ -1,10 +1,10 @@
 package examples.nodejs.io
 
-import com.github.ldaniels528.meansjs.nodejs.core.Assert
-import com.github.ldaniels528.meansjs.nodejs.global.Process._
-import com.github.ldaniels528.meansjs.nodejs.global._
-import com.github.ldaniels528.meansjs.nodejs.path.{Path, PathObject}
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
+import org.scalajs.nodejs.{Bootstrap, console}
+import org.scalajs.nodejs.core.Assert
+import org.scalajs.nodejs.global.Process._
+import org.scalajs.nodejs.global._
+import org.scalajs.nodejs.path.{Path, PathObject}
 
 /**
   * Path Examples

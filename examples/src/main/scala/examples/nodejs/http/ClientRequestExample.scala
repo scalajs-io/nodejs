@@ -1,9 +1,11 @@
 package examples.nodejs.http
 
-import com.github.ldaniels528.meansjs.nodejs.http.ServerResponse
-import com.github.ldaniels528.meansjs.nodejs.request.Request
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.nodejs.console
+import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.http.ServerResponse
+import org.scalajs.nodejs.request.Request
+import org.scalajs.nodejs.util.ScalaJsHelper
 
 /**
   * Client Request Example

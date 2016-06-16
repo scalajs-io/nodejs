@@ -1,9 +1,13 @@
 package examples.nodejs.concurrency
 
-import com.github.ldaniels528.meansjs.nodejs._
-import com.github.ldaniels528.meansjs.nodejs.cluster._
-import com.github.ldaniels528.meansjs.nodejs.http._
-import com.github.ldaniels528.meansjs.nodejs.os._
+import org.scalajs.nodejs._
+import org.scalajs.nodejs.cluster._
+import org.scalajs.nodejs.http._
+import org.scalajs.nodejs.os._
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.cluster.Cluster
+import org.scalajs.nodejs.http.{ClientRequest, Http, ServerResponse}
+import org.scalajs.nodejs.os.OS
 
 import scala.concurrent.duration._
 

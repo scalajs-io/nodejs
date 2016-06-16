@@ -1,7 +1,9 @@
 package examples.nodejs.io
 
-import com.github.ldaniels528.meansjs.nodejs.{errors, _}
-import com.github.ldaniels528.meansjs.nodejs.events.Events
+import org.scalajs.nodejs.{errors, _}
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.errors.Error
+import org.scalajs.nodejs.events.Events
 
 /**
   * Event Emitting Example
@@ -15,7 +17,7 @@ class EventEmitterExample(bootstrap: Bootstrap) {
   setImmediate(() => {
     // This will crash the process because no "error" event
     // handler has been added.
-    ee.emit("error", errors.Error("This will crash"))
+    ee.emit("error", Error("This will crash"))
   })
 
 }

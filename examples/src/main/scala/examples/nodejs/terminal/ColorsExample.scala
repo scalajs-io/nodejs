@@ -1,7 +1,9 @@
 package examples.nodejs.terminal
 
-import com.github.ldaniels528.meansjs.nodejs._
-import com.github.ldaniels528.meansjs.nodejs.colors._
+import org.scalajs.nodejs._
+import org.scalajs.nodejs.colors._
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.colors.Colors
 
 import scala.scalajs.js
 

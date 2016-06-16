@@ -1,6 +1,7 @@
 package examples.nodejs.general
 
-import com.github.ldaniels528.meansjs.nodejs._
+import org.scalajs.nodejs._
+import org.scalajs.nodejs.Bootstrap
 
 import scala.concurrent.duration._
 

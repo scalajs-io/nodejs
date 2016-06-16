@@ -1,8 +1,9 @@
 package examples.nodejs.codecs
 
-import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, StringDecoder}
+import org.scalajs.nodejs.StringDecoder
 import org.scalajs.dom.console
+import org.scalajs.nodejs.{Bootstrap, StringDecoder}
+import org.scalajs.nodejs.buffer.Buffer
 
 import scala.scalajs.js
 

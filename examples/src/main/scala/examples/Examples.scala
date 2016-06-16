@@ -1,7 +1,5 @@
 package examples
 
-import com.github.ldaniels528.meansjs.nodejs._
-import com.github.ldaniels528.meansjs.nodejs.global.process
 import examples.nodejs.actors.ActorsExample
 import examples.nodejs.codecs._
 import examples.nodejs.concurrency._
@@ -14,6 +12,8 @@ import examples.nodejs.net._
 import examples.nodejs.terminal._
 import examples.nodejs.vm._
 import org.scalajs.dom.console
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.global.process
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSExportAll
@@ -50,6 +50,7 @@ object Examples extends js.JSApp {
     "MD5Example" -> ((bootstrap: Bootstrap) => new MD5Example(bootstrap)),
     "MongoAggregateExample" -> ((bootstrap: Bootstrap) => new MongoAggregateExample(bootstrap)),
     "MongoClientExample" -> ((bootstrap: Bootstrap) => new MongoClientExample(bootstrap)),
+    "MongoCollectionExample" -> ((bootstrap: Bootstrap) => new MongoCollectionExample(bootstrap)),
     "MongoGridExample" -> ((bootstrap: Bootstrap) => new MongoGridExample(bootstrap)),
     "MongoGridFSBucketExample" -> ((bootstrap: Bootstrap) => new MongoGridFSBucketExample(bootstrap)),
     "MongoGridStoreExample" -> ((bootstrap: Bootstrap) => new MongoGridStoreExample(bootstrap)),
@@ -128,7 +129,7 @@ object Examples extends js.JSApp {
     console.log("example(s) passed:   %d", passed)
     console.log("example(s) failed:   %d", failed.size)
 
-    if(failed.nonEmpty) {
+    if (failed.nonEmpty) {
       console.log("\nFailed examples: %s", failed.mkString(", "))
     }
   }

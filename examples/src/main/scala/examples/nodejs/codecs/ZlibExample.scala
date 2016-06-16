@@ -1,9 +1,12 @@
 package examples.nodejs.codecs
 
-import com.github.ldaniels528.meansjs.nodejs.buffer.Buffer
-import com.github.ldaniels528.meansjs.nodejs.zlib.{CompressionOptions, Zlib}
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.nodejs.zlib.Zlib
+import org.scalajs.nodejs.console
+import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.buffer.Buffer
+import org.scalajs.nodejs.util.ScalaJsHelper
+import org.scalajs.nodejs.zlib.{CompressionOptions, Zlib}
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 

@@ -1,8 +1,8 @@
 package examples.nodejs.net
 
-import com.github.ldaniels528.meansjs.nodejs.Bootstrap
-import com.github.ldaniels528.meansjs.nodejs.url.URL
 import org.scalajs.dom.console
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.url.URL
 
 /**
   * URLs

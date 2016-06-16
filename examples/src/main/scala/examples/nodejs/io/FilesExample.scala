@@ -1,9 +1,11 @@
 package examples.nodejs.io
 
-import com.github.ldaniels528.meansjs.nodejs.fs.Fs
-import com.github.ldaniels528.meansjs.nodejs.global.process
-import com.github.ldaniels528.meansjs.nodejs.readline.{Readline, ReadlineOptions}
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
+import org.scalajs.nodejs.global.process
+import org.scalajs.nodejs.readline.ReadlineOptions
+import org.scalajs.nodejs.console
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.fs.Fs
+import org.scalajs.nodejs.readline.{Readline, ReadlineOptions}
 
 /**
   * Files Example

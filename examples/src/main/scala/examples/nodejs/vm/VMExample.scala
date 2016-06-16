@@ -1,10 +1,11 @@
 package examples.nodejs.vm
 
-import com.github.ldaniels528.meansjs.nodejs.util.Util
-import com.github.ldaniels528.meansjs.nodejs.vm.VM
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, console}
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.nodejs.console
+import org.scalajs.nodejs.util.ScalaJsHelper._
 import examples.nodejs.vm.VMExample.Sandbox
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.util.{ScalaJsHelper, Util}
+import org.scalajs.nodejs.vm.VM
 
 import scala.scalajs.js
 

@@ -1,6 +1,6 @@
 package https
 
-import com.github.ldaniels528.meansjs.nodejs
+import org.scalajs.nodejs
 
 import scala.scalajs.js
 

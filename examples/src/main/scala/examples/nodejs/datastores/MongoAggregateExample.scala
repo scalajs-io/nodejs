@@ -1,10 +1,10 @@
 package examples.nodejs.datastores
 
-import com.github.ldaniels528.meansjs.nodejs.mongodb.{Db, MongoDB, MongoError, WriteOptions, _}
-import com.github.ldaniels528.meansjs.nodejs.Bootstrap
-import com.github.ldaniels528.meansjs.nodejs.core.Assert
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 import examples.nodejs.datastores.MongoAggregateExample.Data
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.core.Assert
+import org.scalajs.nodejs.mongodb._
+import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
@@ -34,7 +34,7 @@ class MongoAggregateExample(bootstrap: Bootstrap) {
         )))
 
     for {
-      // Create a collection
+    // Create a collection
       collection <- db.collectionFuture("aggregationExample1")
 
       // Insert the docs

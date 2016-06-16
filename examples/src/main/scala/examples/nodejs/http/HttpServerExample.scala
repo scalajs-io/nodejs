@@ -1,7 +1,9 @@
 package examples.nodejs.http
 
-import com.github.ldaniels528.meansjs.nodejs._
-import com.github.ldaniels528.meansjs.nodejs.http._
+import org.scalajs.nodejs._
+import org.scalajs.nodejs.http._
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.http.{ClientRequest, Http, ServerResponse}
 
 import scala.scalajs.js
 

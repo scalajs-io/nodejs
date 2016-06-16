@@ -1,9 +1,12 @@
 package examples.nodejs.datastores
 
-import com.github.ldaniels528.meansjs.nodejs._
-import com.github.ldaniels528.meansjs.nodejs.mysql._
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.nodejs._
+import org.scalajs.nodejs.mysql._
+import org.scalajs.nodejs.util.ScalaJsHelper._
 import examples.nodejs.datastores.MySQLExample.Activity
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.mysql.{ConnectionOptions, FieldPacket, MySQL}
+import org.scalajs.nodejs.util.ScalaJsHelper
 
 import scala.concurrent.duration._
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue

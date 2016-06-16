@@ -1,8 +1,9 @@
 package examples.nodejs.datastores
 
-import com.github.ldaniels528.meansjs.nodejs._
-import com.github.ldaniels528.meansjs.nodejs.mongodb.MongoDB
+import org.scalajs.nodejs._
 import org.scalajs.dom.console
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.mongodb.MongoDB
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js

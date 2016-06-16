@@ -1,8 +1,10 @@
 package examples.nodejs.io
 
-import com.github.ldaniels528.meansjs.nodejs._
-import com.github.ldaniels528.meansjs.nodejs.fs.Stats
-import com.github.ldaniels528.meansjs.nodejs.watch._
+import org.scalajs.nodejs._
+import org.scalajs.nodejs.watch._
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.fs.Stats
+import org.scalajs.nodejs.watch.{Monitor, Watch, WatchOptions}
 
 import scala.concurrent.duration._
 import scala.scalajs.js

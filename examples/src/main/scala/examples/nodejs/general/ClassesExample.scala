@@ -1,9 +1,9 @@
 package examples.nodejs.general
 
-import com.github.ldaniels528.meansjs.nodejs.Bootstrap
-import com.github.ldaniels528.meansjs.nodejs.util.Util
 import examples.nodejs.general.ClassesExample._
 import org.scalajs.dom.console
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.util.Util
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.ScalaJSDefined

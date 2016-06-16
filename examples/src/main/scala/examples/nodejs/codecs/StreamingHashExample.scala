@@ -1,9 +1,10 @@
 package examples.nodejs.codecs
 
-import com.github.ldaniels528.meansjs.nodejs.{Bootstrap, _}
-import com.github.ldaniels528.meansjs.nodejs.crypto.Crypto
-import com.github.ldaniels528.meansjs.nodejs.fs.Fs
-import com.github.ldaniels528.meansjs.nodejs.global.process
+import org.scalajs.nodejs._
+import org.scalajs.nodejs.global.process
+import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.crypto.Crypto
+import org.scalajs.nodejs.fs.Fs
 
 /**
   * Streaming Hash Example

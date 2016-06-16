@@ -39,6 +39,7 @@ lazy val bundle_complete = (project in file("bundles/complete")).
   dependsOn(core, core_browser, bundle_social, bundle_angular, bundle_mean_minimal, bundle_node, bundle_node_oss).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
+  settings(publishingSettings: _*).
   settings(
     name := "scalajs-nodejs-complete-bundle",
     description := "Complete platform bundle"
@@ -685,6 +686,37 @@ lazy val node_zookeeper = (project in file("node_libs/zookeeper-client")).
     name := "scalajs-nodejs-zookeeper-client",
     description := "NodeJS/node-zookeeper-client binding for Scala.js"
   )
+
+lazy val publishingSettings = Seq(
+  sonatypeProfileName := "org.xerial",
+  publishMavenStyle := true,
+  publishTo := {
+    val nexus = "https://oss.sonatype.org/"
+    if (isSnapshot.value)
+      Some("snapshots" at nexus + "content/repositories/snapshots")
+    else
+      Some("releases" at nexus + "service/local/staging/deploy/maven2")
+  },
+  pomExtra :=
+    <url>https://github.com/ldaniels528/scalajs-nodejs</url>
+    <licenses>
+      <license>
+        <name>MIT License</name>
+        <url>http://www.opensource.org/licenses/mit-license.php</url>
+      </license>
+    </licenses>
+    <scm>
+      <url>git@github.com:ldaniels528/scalajs-nodejs.git</url>
+      <connection>scm:git:git@github.com:ldaniels528/scalajs-nodejs.git</connection>
+    </scm>
+    <developers>
+      <developer>
+        <id>ldaniels528</id>
+        <name>Lawrence Daniels</name>
+        <email>lawrence.daniels@gmail.com</email>
+      </developer>
+    </developers>
+)
 
 // loads the MEANS.js root project at sbt startup
 onLoad in Global := (Command.process("project bundle_complete", _: State)) compose (onLoad in Global).value

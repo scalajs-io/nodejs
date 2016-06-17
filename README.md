@@ -280,7 +280,7 @@ implicit val require = bootstrap.require
 
 val todos: js.Array[Todo] = emptyArray
 
-val express = Express()
+val express = Express() // require[Express]("express")
 val app = express()
 val bodyParser = BodyParser()
 
@@ -350,15 +350,15 @@ val url = "mongodb://localhost:27017/test"
 
 // Use connect method to connect to the Server
 mongoClient.connect(url, (err: MongoError, db: MongoDatabase) => {
-    if (isDefined(err) {
+    if (isDefined(err)) {
         console.log("Unable to connect to the mongoDB server. Error:", err)
     } else {
-        //HURRAY!! We are connected. :)
+        // HURRAY!! We are connected. :)
         console.log("Connection established to: %s", url)
         
-        // do some work here with the database.
+        // TODO do some work here with the database.
         
-        //Close connection
+        // close connection
         db.close()
     }
 })
@@ -372,12 +372,26 @@ mongoClient.connectFuture(url) onComplete {
         // HURRAY!! We are connected. :)
         console.log("Connection established to: %s", url)
 
-        // do some work here with the database.
+        // TODO do some work here with the database.
 
         // close connection
         db.close()
     case Failure(e) =>
         console.log("Unable to connect to the mongoDB server. Error:", e.getMessage)  
+}
+```
+
+Alternatively, you could choose to use "foreach" to directly manage only the success case:
+
+```scala
+mongoClient.connectFuture(url) foreach { db => 
+    // HURRAY!! We are connected. :)
+    console.log("Connection established to: %s", url)
+
+    // TODO do some work here with the database.
+
+    // close connection
+    db.close()
 }
 ```
 

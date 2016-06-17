@@ -68,7 +68,7 @@ Currently, there are at least four development use cases for Scalajs-Nodejs:
 ```
 
 <a name="resolvers"></a>
-### Resolvers
+#### Resolvers
 
 To add the Scalajs-Nodejs bindings/library to your project, add the following to your build.sbt:  
 
@@ -284,7 +284,7 @@ val todos: js.Array[Todo] = emptyArray
 
 val express = Express() // require[Express]("express")
 val app = express()
-val bodyParser = BodyParser()
+val bodyParser = BodyParser() // require[BodyParser]("body-parser")
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded(new UrlEncodedBodyOptions(extended = true)))   

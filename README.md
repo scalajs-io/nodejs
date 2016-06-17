@@ -96,7 +96,7 @@ resolvers += "releases" at "https://oss.sonatype.org/service/local/staging/deplo
 
 The Node.js integration is nearly complete (feature for feature), and should be more than sufficient for most web-based 
 and CLI applications. Additionally, there are a growing number of third-party (mostly OSS) modules that have been 
-implemented as well, include bcrypt, datastax/cassandra-driver, kafka-node, mysql, xml2js and many others. 
+implemented as well, including bcrypt, datastax/cassandra-driver, kafka-node, mysql, xml2js and many others. 
 
 <a name="node_modules">
 #### Modules
@@ -160,12 +160,12 @@ The following Third Party/OSS NodeJS modules have been implemented thus far:
 
 
 *NOTE*: The full SBT artifact expression is: "com.github.ldaniels528" %%% "scalajs-nodejs-xxxx" % version 
-(e.g. "com.github.ldaniels528" %%% "scalajs-nodejs-express" % "0.1.7")
+(e.g. "com.github.ldaniels528" %%% "scalajs-nodejs-express" % "0.2.0")
 
 I've provided an example to demonstrate how similar the Scala.js code is to the JavaScript
 that it replaces.
 
-The following is a simple Hello World app in Node using JavaScript.
+The following is a simple Hello World app in Node using JavaScript:
 
 ```javascript
 var http = require("http");
@@ -176,10 +176,26 @@ http.createServer(function(request, response) {
 }).listen(8888);
 ```
 
-Here's the same example using Scalajs-Nodejs:
+Here's the same example using Scala.js:
 
 ```scala
+import bootstrap._
+
 val http = require[Http]("http")
+http.createServer((request: ClientRequest, response: ServerResponse) => {
+    response.writeHead(200, js.Dictionary("Content-Type" -> "text/plain"))
+    response.write("Hello World")
+    response.end()
+}).listen(8888)
+```
+
+**NOTE:** Alternatively, you could use any module's apply() method to create an instance via an implicit reference to `require`.
+Consider this slightly revised version of the same example:
+
+```scala
+implicit val require = bootstrap.require
+
+val http = Http()
 http.createServer((request: ClientRequest, response: ServerResponse) => {
     response.writeHead(200, js.Dictionary("Content-Type" -> "text/plain"))
     response.write("Hello World")
@@ -194,7 +210,7 @@ Currently, the "require" function (along with a few others) must be passed to th
 with getting a reference to them. This can be accomplished inside a bootstrap JavaScript file as follows:
 
 ```javascript
-require("./target/scala-2.11/means-examples-fastopt.js");
+require("./target/scala-2.11/scalajs-nodejs-examples-fastopt.js");
 var facade = examples.Examples();
 facade.start({
      "__dirname": __dirname,
@@ -221,7 +237,7 @@ def start(bootstrap: Bootstrap) = {
 <a name="Express"></a>
 ## Express.js
 
-The following is a simple Hello World app in Node and Express using JavaScript.
+The following is a simple Hello World app in Node and Express using JavaScript:
 
 ```javascript
 var express = require('express');
@@ -241,6 +257,8 @@ var server = app.listen(8081, function () {
 Here's the same example using Scala.js:
 
 ```scala
+import bootstrap._
+
 val express = require[Express]("express")
 val app = express()
 
@@ -255,7 +273,7 @@ private def connect: js.Function = () => {
 }
 ```
 
-**NOTE:** Alternatively, you could use any module's apply() method to create an instance via an implicit reference to `require`:
+The following is a more elaborate example:
 
 ```scala
 implicit val require = bootstrap.require
@@ -296,9 +314,9 @@ def getTodos(request: Request, response: Response) = response.send(todos)
 
 @js.native
 trait Todo extends js.Object {
-  var id: String = js.native
-  var title: String = js.native
-  var completed: Boolean = js.native
+    var id: String = js.native
+    var title: String = js.native
+    var completed: Boolean = js.native
 }
 
 implicit class TodoExtensions(val todo: Todo) extends AnyVal {
@@ -322,7 +340,7 @@ The following example demonstrates establishing a connection to MongoDB using Sc
 
 ```scala
 // lets require/import the mongodb native drivers.
-val mongodb = require[MongoDB]("mongodb")
+val mongodb = MongoDB() // require[MongoDB]("mongodb")
 
 // We need to work with "MongoClient" interface in order to connect to a mongodb server.
 val mongoClient = mongodb.MongoClient

@@ -12,7 +12,7 @@
         "require": require
     };
 
-    require("./target/scala-2.11/means-examples-fastopt.js");
+    require("./target/scala-2.11/scalajs-nodejs-examples-fastopt.js");
     const facade = examples.Examples();
     facade.start(bootstrap);
 })();

@@ -82,6 +82,12 @@ The following applications were developed using Scalajs-Nodejs:
 ### Discussions
  
 There's currently an on-going discussion about [MEANS.js on Reddit](https://www.reddit.com/r/scala/comments/4loosi/meansjs_scalajs_facades_for_the_nodejs_api/).    
+
+### Resolvers
+
+To add the Scalajs-Nodejs library in your project, add the following to your build.sbt.   
+   
+resolvers += "releases" at "https://oss.sonatype.org/service/local/staging/deploy/maven2",   
    
 <a name="NodeJS"></a>
 ## Node.js

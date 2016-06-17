@@ -85,7 +85,7 @@ There's currently an on-going discussion about [MEANS.js on Reddit](https://www.
 
 ### Resolvers
 
-To add the Scalajs-Nodejs library in your project, add the following to your build.sbt.   
+To add the Scalajs-Nodejs bindings/library to your project, add the following to your build.sbt.   
    
 resolvers += "releases" at "https://oss.sonatype.org/service/local/staging/deploy/maven2",   
    

@@ -9,6 +9,7 @@ This is a Scala.js binding for the Node.js and MEAN Stack (MongoDB ExpressJS Ang
     * <a href="#build_requirements">Build Requirements</a>
     * <a href="#building_sdk">Building the SDK</a>
     * <a href="#running_examples">Building and run examples</a>
+    * <a href="#resolvers">Resolvers</a>
     * <a href="#apps_using_means">Developed using Scalajs-Nodejs</a>
     * <a href="#discussions">Discussions</a>
 * <a href="#NodeJS">Node.js bindings</a>
@@ -66,6 +67,15 @@ Currently, there are at least four development use cases for Scalajs-Nodejs:
  $ node ./examples.js ColorsExample
 ```
 
+<a name="resolvers"></a>
+### Resolvers
+
+To add the Scalajs-Nodejs bindings/library to your project, add the following to your build.sbt:  
+
+```   
+resolvers += "releases" at "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+```
+
 <a name="apps_using_means"></a>
 ### Developed using  Scalajs-Nodejs
    
@@ -81,15 +91,7 @@ The following applications were developed using Scalajs-Nodejs:
 <a name="discussions"></a>
 ### Discussions
  
-There's currently an on-going discussion about [MEANS.js on Reddit](https://www.reddit.com/r/scala/comments/4loosi/meansjs_scalajs_facades_for_the_nodejs_api/).    
-
-### Resolvers
-
-To add the Scalajs-Nodejs bindings/library to your project, add the following to your build.sbt:  
-
-```   
-resolvers += "releases" at "https://oss.sonatype.org/service/local/staging/deploy/maven2"
-```
+There's an on-going discussion about [Scalajs-Nodejs on Reddit](https://www.reddit.com/r/scala/comments/4loosi/meansjs_scalajs_facades_for_the_nodejs_api/).    
 
 <a name="NodeJS"></a>
 ## Node.js
@@ -424,12 +426,12 @@ The following AngularJS services have been implemented thus far:
 
 | Service           | Artifact ID                    | Description                      |
 |-------------------|--------------------------------|----------------------------------|
-| $anchorScroll     | scalajs-angularjs-core         | Anchor Scroll Service. |
+| $anchorScroll     | scalajs-angularjs-anchor-scroll| Anchor Scroll Service. |
 | $animate          | scalajs-angularjs-animate      | The $animate service exposes a series of DOM utility methods that provide support for animation hooks. |
 | $cacheFactory     | scalajs-angularjs-core         | Factory that constructs cache objects and gives access to them. |
 | $compile          | scalajs-angularjs-core         | Compiles an HTML string or DOM into a template and produces a template function, which can then be used to link scope and the template together. |
-| $cookies          | scalajs-angularjs-core         | Provides read/write access to browser's cookies. |
-| $cookieStore      | scalajs-angularjs-core         | Provides a key-value (string-object) storage, that is backed by session cookies. |
+| $cookies          | scalajs-angularjs-cookies      | Provides read/write access to browser's cookies. |
+| $cookieStore      | scalajs-angularjs-cookies      | Provides a key-value (string-object) storage, that is backed by session cookies. |
 | $exceptionHandler | scalajs-angularjs-core         | Any uncaught exception in angular expressions is delegated to this service. |
 | $filter           | scalajs-angularjs-core         | Selects a subset of items from array and returns it as a new array. |
 | $http             | scalajs-angularjs-core         | The $http service is a core Angular service that facilitates communication with the remote HTTP servers via the browser's XMLHttpRequest object or via JSONP. |
@@ -442,7 +444,7 @@ The following AngularJS services have been implemented thus far:
 | $q                | scalajs-angularjs-core         | A service that helps you run functions asynchronously, and use their return values (or exceptions) when they are done processing. |
 | $resource         | scalajs-angularjs-core         | A factory which creates a resource object that lets you interact with RESTful server-side data sources. |
 | $route            | scalajs-angularjs-ui-router    | $route is used for deep-linking URLs to controllers and views (HTML partials). It watches $location.url() and tries to map the path to an existing route definition. |
-| $sce              | scalajs-angularjs-core         | $sce is a service that provides Strict Contextual Escaping services to AngularJS. |
+| $sce              | scalajs-angularjs-sanitize     | $sce is a service that provides Strict Contextual Escaping services to AngularJS. |
 | $timeout          | scalajs-angularjs-core         | Angular's wrapper for window.setTimeout. The fn function is wrapped into a try/catch block and delegates any exceptions to $exceptionHandler service. |
 | FacebookService   | scalajs-angularjs-facebook     | AngularJS - Facebook service |
 | FileUploader      | scalajs-angularjs-nergvh-fileupload | AngularJS File Uploader |

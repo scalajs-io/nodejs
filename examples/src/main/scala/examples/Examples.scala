@@ -1,6 +1,6 @@
 package examples
 
-import examples.nodejs.actors.ActorsExample
+import examples.nodejs.actors._
 import examples.nodejs.codecs._
 import examples.nodejs.concurrency._
 import examples.nodejs.datastores._

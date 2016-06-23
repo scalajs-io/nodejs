@@ -173,7 +173,7 @@ implemented as well, including bcrypt, datastax/cassandra-driver, kafka-node, my
 <a name="node_modules">
 #### Modules
 
-The following Core NodeJS modules have been implemented thus far:
+The following core NodeJS modules have been implemented thus far:
 
 | Node Module           | Version | Artifact ID               | Description                                             | Status          |
 |-----------------------|---------|---------------------------|---------------------------------------------------------|-----------------|
@@ -181,11 +181,11 @@ The following Core NodeJS modules have been implemented thus far:
 | buffer                | 6.2.1   | scalajs-nodejs-core       | The Buffer class was introduced as part of the Node.js API to make it possible to interact with octet streams in the context of things like TCP streams and file system operations. | Stable |
 | cluster               | 6.2.1   | scalajs-nodejs-cluster    | The cluster module allows you to easily create child processes that all share server ports. | Stable |
 | crypto                | 6.1.0   | scalajs-nodejs-core       | The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions.| Stable |
-| dns                   | 6.2.1   | scalajs-nodejs-dns        | Support for DNS queries.| Stable |
-| events                | 6.1.0   | scalajs-nodejs-core       | Node.js Events Interface | Stable |
+| dns                   | 6.2.1   | scalajs-nodejs-dns        | Support for DNS queries.                                | Stable |
+| events                | 6.1.0   | scalajs-nodejs-core       | Node.js Events Interface                                | Stable |
 | fs                    | 6.2.1   | scalajs-nodejs-fs         | File I/O is provided by simple wrappers around standard POSIX functions. | Stable |
-| http                  | 6.1.0   | scalajs-nodejs-http       | Node.js HTTP Interface | Stable |
-| https                 | 6.1.0   | scalajs-nodejs-https      | Node.js HTTPS Interface | Stable |
+| http                  | 6.1.0   | scalajs-nodejs-http       | Node.js HTTP Interface                                  | Stable |
+| https                 | 6.1.0   | scalajs-nodejs-https      | Node.js HTTPS Interface                                 | Stable |
 | net                   | 6.2.1   | scalajs-nodejs-net        | The net module provides you with an asynchronous network wrapper. | Stable |
 | os                    | 6.1.0   | scalajs-nodejs-os         | Provides a few basic operating-system related utility functions. | Stable |
 | path                  | 6.1.0   | scalajs-nodejs-path       | This module contains utilities for handling and transforming file paths. | Stable |
@@ -202,34 +202,44 @@ The following Core NodeJS modules have been implemented thus far:
 
 The following Third Party/OSS NodeJS modules have been implemented thus far:
 
+#### Browser-based Extensions
+
+| Node Module           | Version | Artifact ID               | Description                                             | Status          |
+|-----------------------|---------|---------------------------|---------------------------------------------------------|-----------------|
+| browser               | 0.2.1   | scalajs-browser-common    | Common browser functions (console, encodeURI, etc.)     | Stable          |
+| phaser                | 2.5.0   | scalajs-browser-phaser    | A fast, free and fun HTML5 Game Framework for Desktop and Mobile web browsers. | Stable |
+| pixi.js               | 3.0     | scalajs-browser-pixijs    | A 2D JavaScript Renderer.                               | Stable          |
+
+#### Node Extensions
+
 | Node Module           | Version | Artifact ID               | Description                                             | Status          |
 |-----------------------|---------|---------------------------|---------------------------------------------------------|-----------------|
 | adal-node             | 0.1.19  | scalajs-nodejs-adal-node  | Windows Azure Active Directory Client Library for node. | Tesing required |
 | amqplib               | 0.4.1   | scalajs-nodejs-amqplib    | An AMQP 0-9-1 (e.g., RabbitMQ) library and client. | Tesing required |
 | async                 | 1.5.2   | scalajs-nodejs-async      | Higher-order functions and common patterns for asynchronous code. | Tesing required |
 | azure                 | 0.10.6  | scalajs-nodejs-azure      | Microsoft Azure Client Library for node. | WIP - Unusable |
-| bcrypt                | 0.0.3   | scalajs-nodejs-bcrypt     | A native JS bcrypt library for NodeJS. | Stable |
-| body-parser           | 1.15.1  | scalajs-nodejs-body-parser| Body parsing middleware. | Stable |
-| cassandra-driver      | 3.0.2   | scalajs-nodejs-datastax-cassandra| DataStax Node.js Driver for Apache Cassandra | Tesing required |
-| colors                | 1.1.2   | scalajs-nodejs-colors     | Get colors in your node.js console.| Stable |
+| bcrypt                | 0.0.3   | scalajs-nodejs-bcrypt     | A native JS bcrypt library for NodeJS.                  | Stable |
+| body-parser           | 1.15.1  | scalajs-nodejs-body-parser| Body parsing middleware.                                | Stable |
+| cassandra-driver      | 3.0.2   | scalajs-nodejs-datastax-cassandra| DataStax Node.js Driver for Apache Cassandra     | Tesing required |
+| colors                | 1.1.2   | scalajs-nodejs-colors     | Get colors in your node.js console.                     | Stable |
 | drama                 | 0.1.3   | scalajs-nodejs-drama      | drama is an Actor model implementation for JavaScript and Node.js | Tesing required |
-| escape-html           | 1.0.3   | scalajs-nodejs-escape-html| Escape string for use in HTML | Stable |
+| escape-html           | 1.0.3   | scalajs-nodejs-escape-html| Escape string for use in HTML.                          | Stable |
 | express               | 4.13.4  | scalajs-nodejs-express    | Fast, unopinionated, minimalist web framework for Node.js | Stable |
 | express-fileupload    | 0.0.5   | scalajs-nodejs-express-fileupload | Simple express file upload middleware that wraps around connect-busboy | Stable |
-| express-ws            |2.0.0-rc1| scalajs-nodejs-express-ws | WebSocket endpoints for Express applications | Stable |
-| filed                 | 0.1.0   | scalajs-nodejs-filed      | Simplified file library. | Stable |
-| jwt-simple            | 0.5.0   | scalajs-nodejs-jwt-simple | JWT(JSON Web Token) encode and decode module | Stable |
-| kafka-node            | 0.0.11  | scalajs-nodejs-kafkanode  | A node binding for librdkafka | Tesing required |
+| express-ws            |2.0.0-rc1| scalajs-nodejs-express-ws | WebSocket endpoints for Express applications            | Stable |
+| filed                 | 0.1.0   | scalajs-nodejs-filed      | Simplified file library.                                | Stable |
+| jwt-simple            | 0.5.0   | scalajs-nodejs-jwt-simple | JWT(JSON Web Token) encode and decode module            | Stable |
+| kafka-node            | 0.0.11  | scalajs-nodejs-kafkanode  | A node binding for librdkafka                           | Tesing required |
 | memory-fs             | 0.3.0   | scalajs-nodejs-memory-fs  | A simple in-memory filesystem. Holds data in a javascript object. | Stable |
-| mongodb               | 2.1.18  | scalajs-nodejs-mongodb    | Node.js MongoDB Driver | Stable |
+| mongodb               | 2.1.18  | scalajs-nodejs-mongodb    | Node.js MongoDB Driver                                  | Stable |
 | multer                | 1.1.0   | scalajs-nodejs-multer     | Multer is a node.js middleware for handling multipart/form-data. | Tesing required |
-| mysql                 | 2.10.2  | scalajs-nodejs-mysql      | A node.js driver for mysql. | Stable |
+| mysql                 | 2.10.2  | scalajs-nodejs-mysql      | A node.js driver for mysql.                             | Stable |
 | node-zookeeper-client | 0.2.2   | scalajs-nodejs-zookeeper-client | A higher-level ZooKeeper client based on node-zookeeper with support for locking and master election. | Tesing required |
-| oppressor             | 0.0.1   | scalajs-nodejs-oppressor  | Streaming http compression response negotiator. | Tesing required |
-| request               | 2.72.1  | scalajs-nodejs-request    | Simplified HTTP request client. | Stable |
+| oppressor             | 0.0.1   | scalajs-nodejs-oppressor  | Streaming http compression response negotiator.         | Tesing required |
+| request               | 2.72.1  | scalajs-nodejs-request    | Simplified HTTP request client.                         | Stable |
 | splitargs             | 0.0.7   | scalajs-nodejs-elgs-splitargs | Splits strings into tokens by given separator except treating quoted part as a single token. | Stable |
-| watch                 | 0.18.0  | scalajs-nodejs-watch      | Utilities for watching file trees. | Stable |
-| xml2js                | 0.4.16  | scalajs-nodejs-xml2js     | Simple XML to JavaScript object converter. | Stable |
+| watch                 | 0.18.0  | scalajs-nodejs-watch      | Utilities for watching file trees.                      | Stable |
+| xml2js                | 0.4.16  | scalajs-nodejs-xml2js     | Simple XML to JavaScript object converter.              | Stable |
 
 
 *NOTE*: The full SBT artifact expression is: "com.github.ldaniels528" %%% "scalajs-nodejs-xxxx" % version 

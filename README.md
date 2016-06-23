@@ -150,6 +150,7 @@ The following Third Party/OSS NodeJS modules have been implemented thus far:
 | filed                 | 0.1.0   | scalajs-nodejs-filed      | Simplified file library. | Stable |
 | jwt-simple            | 0.5.0   | scalajs-nodejs-jwt-simple | JWT(JSON Web Token) encode and decode module | Stable |
 | kafka-node            | 0.0.11  | scalajs-nodejs-kafkanode  | A node binding for librdkafka | Tesing required |
+| memory-fs             | 0.3.0   | scalajs-nodejs-memory-fs  | A simple in-memory filesystem. Holds data in a javascript object. | Stable |
 | mongodb               | 2.1.18  | scalajs-nodejs-mongodb    | Node.js MongoDB Driver | Stable |
 | multer                | 1.1.0   | scalajs-nodejs-multer     | Multer is a node.js middleware for handling multipart/form-data. | Tesing required |
 | mysql                 | 2.10.2  | scalajs-nodejs-mysql      | A node.js driver for mysql. | Stable |

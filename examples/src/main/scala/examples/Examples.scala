@@ -48,6 +48,7 @@ object Examples extends js.JSApp {
     "KafkaProducerExample" -> ((bootstrap: Bootstrap) => new KafkaProducerExample(bootstrap)),
     "KafkaProducerEnhanced" -> ((bootstrap: Bootstrap) => new KafkaProducerEnhanced(bootstrap)),
     "MD5Example" -> ((bootstrap: Bootstrap) => new MD5Example(bootstrap)),
+    "MemoryFsExample" -> ((bootstrap: Bootstrap) => new MemoryFsExample(bootstrap)),
     "MongoAggregateExample" -> ((bootstrap: Bootstrap) => new MongoAggregateExample(bootstrap)),
     "MongoClientExample" -> ((bootstrap: Bootstrap) => new MongoClientExample(bootstrap)),
     "MongoCollectionExample" -> ((bootstrap: Bootstrap) => new MongoCollectionExample(bootstrap)),

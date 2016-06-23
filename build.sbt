@@ -4,7 +4,7 @@ import sbt.Keys._
 import sbt.Project.projectToRef
 import sbt._
 
-val apiVersion = "0.2.0"
+val apiVersion = "0.2.1"
 val paradisePluginVersion = "3.0.0-M1"
 val _scalaVersion = "2.11.8"
 val scalaJsDomVersion = "0.9.0"
@@ -446,12 +446,12 @@ lazy val bundle_node_oss = (project in file("bundles/node_oss")).
   aggregate(
     node_adal, node_amqplib, node_async, node_azure, node_bcrypt, node_body_parser, node_cassandra,
     node_colors, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_fileupload,
-    node_express_ws, node_filed, node_jwt_simple, node_kafka, node_mongodb, node_multer, node_mysql,
+    node_express_ws, node_filed, node_jwt_simple, node_kafka, node_memory_fs, node_mongodb, node_multer, node_mysql,
     node_oppressor, node_request, node_watch, node_xml2js, node_zookeeper).
   dependsOn(
     node_adal, node_amqplib, node_async, node_azure, node_bcrypt, node_body_parser, node_cassandra,
     node_colors, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_fileupload,
-    node_express_ws, node_filed, node_jwt_simple, node_kafka, node_mongodb, node_multer, node_mysql,
+    node_express_ws, node_filed, node_jwt_simple, node_kafka, node_memory_fs, node_mongodb, node_multer, node_mysql,
     node_oppressor, node_request, node_watch, node_xml2js, node_zookeeper).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
@@ -611,6 +611,15 @@ lazy val node_kafka = (project in file("node_libs/kafka_node")).
   settings(
     name := "scalajs-nodejs-kafkanode",
     description := "NodeJS/kafka-node binding for Scala.js"
+  )
+
+lazy val node_memory_fs = (project in file("node_libs/memory-fs")).
+  dependsOn(node_fs).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "scalajs-nodejs-memory-fs",
+    description := "NodeJS/memory-fs binding for Scala.js"
   )
 
 lazy val node_mongodb = (project in file("node_libs/mongodb")).

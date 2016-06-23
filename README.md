@@ -144,7 +144,7 @@ fs.mkdirp("/a/test/dir", function (err1) {
 });
 ```
 
-Now consider the same logic in Scala.js using Scala's much more elegant `for` comprehension:
+Now consider the equivalent logic in Scala.js using its much more elegant `for` comprehension:
 
 ```scala
 for {

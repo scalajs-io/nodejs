@@ -97,6 +97,13 @@ There's an on-going discussion about [Scalajs-Nodejs on Reddit](https://www.redd
 <a name="advantages">
 ### Advantages over JavaScript
 
+Scala.js offers many advantages over native JavaScript:
+
+* Scala.js is strongly-typed
+* Excellent IDE support
+* No JavaScript Warts
+* More concise
+
 Consider the following example in JavaScript. Here we have a nested collection of callbacks in order to gather the
 information that we display at the end.
 
@@ -144,7 +151,7 @@ fs.mkdirp("/a/test/dir", function (err1) {
 });
 ```
 
-Now consider the same logic in Scala.js using Scala's much more elegant `for` comprehension:
+Now consider the equivalent logic in Scala.js using its much more elegant `for` comprehension:
 
 ```scala
 for {

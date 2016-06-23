@@ -12,6 +12,7 @@ This is a Scala.js binding for the Node.js and MEAN Stack (MongoDB ExpressJS Ang
     * <a href="#resolvers">Resolvers</a>
     * <a href="#apps_using_means">Developed using Scalajs-Nodejs</a>
     * <a href="#discussions">Discussions</a>
+    * <a href="#advantages">Advantages over JavaScript</a>
 * <a href="#NodeJS">Node.js bindings</a>
     * <a href="#node_modules">Modules</a>
     * <a href="#node_integration">Integration Guidance</a>    
@@ -92,6 +93,82 @@ The following applications were developed using Scalajs-Nodejs:
 ### Discussions
  
 There's an on-going discussion about [Scalajs-Nodejs on Reddit](https://www.reddit.com/r/scala/comments/4loosi/meansjs_scalajs_facades_for_the_nodejs_api/).    
+
+<a name="advantages">
+### Advantages over JavaScript
+
+Scala.js offers many advantages over native JavaScript:
+
+* Scala.js is strongly-typed
+* Excellent IDE support
+* No JavaScript Warts
+* More concise
+
+Consider the following example in JavaScript. Here we have a nested collection of callbacks in order to gather the
+information that we display at the end.
+
+```javascript
+var output1 = null;
+var output2 = null;
+var output3 = null;
+
+fs.mkdirp("/a/test/dir", function (err1) {
+    assert.ifError(err1);
+
+    fs.writeFile("/a/test/dir/file.txt", "Hello World", function (err2) {
+        assert.ifError(err2);
+
+        fs.readFile("/a/test/dir/file.txt", function (err3, data) {
+            assert.ifError(err3);
+            output1 = data; // ~> Buffer("Hello World")
+
+            fs.unlink("/a/test/dir/file.txt", function (err4) {
+                assert.ifError(err4);
+
+                fs.readdir("/a/test", function (err5, dir) {
+                    assert.ifError(err5);
+                    output2 = dir; // ~> ["dir"]
+
+                    fs.stat("/a/test/dir", function (err6, stats) {
+                        assert.ifError(err6);
+                        output3 = stats.isDirectory(); // ~> true
+
+                        fs.rmdir("/a/test/dir", function (err7) {
+                            assert.ifError(err7);
+                            fs.mkdirp("C:\\use\\windows\\style\\paths", function (err8) {
+                                assert.ifError(err8)
+                                
+                                console.log("output1 =", output1.toString(), output1);
+                                console.log("output2 =", output2);
+                                console.log("output3 =", output3);
+                            })
+                        })
+                    })
+                })
+            })
+        })
+    })
+});
+```
+
+Now consider the equivalent logic in Scala.js using its much more elegant `for` comprehension:
+
+```scala
+for {
+  _ <- fs.mkdirpFuture("/a/test/dir")
+  _ <- fs.writeFileFuture("/a/test/dir/file.txt", "Hello World")
+  output1 <- fs.readFileFuture("/a/test/dir/file.txt") // ~> Buffer("Hello World")
+  _ <- fs.unlinkFuture("/a/test/dir/file.txt")
+  output2 <- fs.readdirFuture("/a/test") // ~> ["dir"]
+  output3 <- fs.statFuture("/a/test/dir").map(_.isDirectory()) // ~> true
+  _ <- fs.rmdirFuture("/a/test/dir")
+  _ <- fs.mkdirpFuture("C:\\use\\windows\\style\\paths")
+} {
+  console.log("output1 =", output1.toString(), output1)
+  console.log("output2 =", output2)
+  console.log("output3 =", output3)
+}
+```
 
 <a name="NodeJS"></a>
 ## Node.js

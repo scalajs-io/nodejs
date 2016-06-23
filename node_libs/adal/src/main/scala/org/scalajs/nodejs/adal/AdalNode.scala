@@ -1,7 +1,5 @@
-package org.scalajs.nodejs.adal
-
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
+package org.scalajs.nodejs
+package adal
 
 import scala.scalajs.js
 

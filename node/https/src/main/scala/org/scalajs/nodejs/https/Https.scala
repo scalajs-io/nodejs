@@ -1,12 +1,12 @@
+package org.scalajs.nodejs
 package https
 
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
 import org.scalajs.nodejs.events.EventEmitter
 import org.scalajs.nodejs.http.{RequestOptions, ServerResponse}
 import org.scalajs.nodejs.util.ScalaJsHelper._
-import org.scalajs.nodejs.util.ScalaJsHelper
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a separate module.
@@ -33,14 +33,14 @@ trait Https extends NodeModule with EventEmitter {
     * The requestListener is a function which is automatically added to the 'request' event.
     * @example https.createServer(options[, requestListener])
     */
-  def createServer(options: ServerOptions, requestListener: js.Function): Server = js.native
+  def createServer(options: ServerOptions | NodeOptions, requestListener: js.Function): Server = js.native
 
   /**
     * Returns a new HTTPS web server object. The options is similar to tls.createServer().
     * The requestListener is a function which is automatically added to the 'request' event.
     * @example https.createServer(options[, requestListener])
     */
-  def createServer(options: ServerOptions): Server = js.native
+  def createServer(options: ServerOptions | NodeOptions): Server = js.native
 
   /**
     * Like http.get() but for HTTPS.
@@ -54,14 +54,14 @@ trait Https extends NodeModule with EventEmitter {
     * @example https.get(options, (res) => { ... })
     * @see [[org.scalajs.nodejs.http.Http.get()]]
     */
-  def get(options: RequestOptions, callback: js.Function): Unit = js.native
+  def get(options: RequestOptions | NodeOptions, callback: js.Function): Unit = js.native
 
   /**
     * Makes a request to a secure web server.
     * @param options can be an object or a string. If options is a string, it is automatically parsed with url.parse().
     * @example http.request(options, callback)
     */
-  def request(options: RequestOptions, callback: js.Function): Unit = js.native
+  def request(options: RequestOptions | NodeOptions, callback: js.Function): Unit = js.native
 
   /**
     * Makes a request to a secure web server.
@@ -89,13 +89,13 @@ object Https {
     * Https Extensions
     * @author lawrence.daniels@gmail.com
     */
-  implicit class HttpExtensions(val https: Https) extends AnyVal {
+  final implicit class HttpExtensions(val https: Https) extends AnyVal {
 
     /**
       * Like http.get() but for HTTPS.
       */
     @inline
-    def getFuture(options: RequestOptions) = futureCallbackA1[ServerResponse](https.get(options, _))
+    def getFuture(options: RequestOptions | NodeOptions) = futureCallbackA1[ServerResponse](https.get(options, _))
 
     /**
       * Like http.get() but for HTTPS.
@@ -107,7 +107,7 @@ object Https {
       * Makes a request to a secure web server.
       */
     @inline
-    def requestFuture(options: RequestOptions) = futureCallbackE1[js.Error, ServerResponse](https.request(options, _))
+    def requestFuture(options: RequestOptions | NodeOptions) = futureCallbackE1[js.Error, ServerResponse](https.request(options, _))
 
     /**
       * Makes a request to a secure web server.

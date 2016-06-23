@@ -1,16 +1,13 @@
-package org.scalajs.nodejs.jwtsimple
-
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
-import org.scalajs.nodejs.jwtsimple.JwtSimple.{Algorithm, JwtToken}
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
+package org.scalajs.nodejs
+package jwtsimple
 
 import scala.scalajs.js
 
 /**
   * jwt-simple - JWT(JSON Web Token) encode and decode module
-  * @author lawrence.daniels@gmail.com
   * @see [[https://www.npmjs.com/package/jwt-simple]]
   * @version 0.5.0
+  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait JwtSimple extends NodeModule {
@@ -67,19 +64,6 @@ trait JwtSimple extends NodeModule {
   */
 object JwtSimple {
 
-  type JwtToken = String
-
-  /**
-    * By default the algorithm to encode is HS256.
-    * The supported algorithms for encoding and decoding are HS256, HS384, HS512 and RS256.
-    */
-  type Algorithm = String
-
-  val HS256: Algorithm = "HS256"
-  val HS384: Algorithm = "HS384"
-  val HS512: Algorithm = "HS512"
-  val RS256: Algorithm = "RS256"
-
   /**
     * Convenience method for retrieving the 'jwt-simple' module
     * @param require the implicit [[NodeRequire require function]]
@@ -91,7 +75,7 @@ object JwtSimple {
     * JwtSimple Extensions
     * @author lawrence.daniels@gmail.com
     */
-  implicit class JwtSimmpleExtensions(val jwt: JwtSimple) extends AnyVal {
+  final implicit class JwtSimmpleExtensions(val jwt: JwtSimple) extends AnyVal {
 
     def decodeAs[T <: js.Any](token: JwtToken, secret: String, skipVerification: Boolean = false, algorithm: Algorithm = HS256): T = {
       jwt.decode(token, secret, skipVerification, algorithm).asInstanceOf[T]

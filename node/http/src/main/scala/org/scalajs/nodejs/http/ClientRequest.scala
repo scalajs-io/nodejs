@@ -1,9 +1,9 @@
-package org.scalajs.nodejs.http
+package org.scalajs.nodejs
+package http
 
 import org.scalajs.nodejs
 import org.scalajs.nodejs.net.Socket
 import org.scalajs.nodejs.util.ScalaJsHelper._
-import org.scalajs.nodejs.util.ScalaJsHelper
 
 import scala.scalajs.js
 

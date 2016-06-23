@@ -1,13 +1,11 @@
-package org.scalajs.nodejs.repl
+package org.scalajs.nodejs
+package repl
 
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
-import org.scalajs.nodejs.events.EventEmitter
-import org.scalajs.nodejs.net.Socket
-import org.scalajs.nodejs.NodeModule
 import org.scalajs.nodejs.events.EventEmitter
 import org.scalajs.nodejs.net.Socket
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * NodeJS REPL module
@@ -22,7 +20,7 @@ trait REPL extends NodeModule with EventEmitter {
   /**
     * @example repl.start([options])
     */
-  def start(options: REPLOptions): REPLServer = js.native
+  def start(options: REPLOptions | NodeOptions): REPLServer = js.native
 
   /**
     * @example repl.start([options])

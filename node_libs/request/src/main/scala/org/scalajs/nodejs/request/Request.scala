@@ -1,12 +1,10 @@
-package org.scalajs.nodejs.request
+package org.scalajs.nodejs
+package request
 
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
 import org.scalajs.nodejs.events.EventEmitter
 import org.scalajs.nodejs.http.IncomingMessage
 import org.scalajs.nodejs.stream.{Readable, Writable}
 import org.scalajs.nodejs.util.ScalaJsHelper._
-import org.scalajs.nodejs.events.EventEmitter
-import org.scalajs.nodejs.util.ScalaJsHelper
 
 import scala.concurrent.Promise
 import scala.scalajs.js

@@ -2,8 +2,6 @@ package org.scalajs.nodejs.watch
 
 import org.scalajs.nodejs.events.EventEmitter
 import org.scalajs.nodejs.fs.Stats
-import org.scalajs.nodejs.events.EventEmitter
-import org.scalajs.nodejs.fs.Stats
 
 import scala.scalajs.js
 

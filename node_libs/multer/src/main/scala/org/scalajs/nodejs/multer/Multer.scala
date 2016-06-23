@@ -1,6 +1,5 @@
-package org.scalajs.nodejs.multer
-
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
+package org.scalajs.nodejs
+package multer
 
 import scala.scalajs.js
 
@@ -38,7 +37,7 @@ object Multer {
     * Multer Extensions
     * @author lawrence.daniels@gmail.com
     */
-  implicit class MulterExtensions(val multer: Multer) extends AnyVal {
+  final implicit class MulterExtensions(val multer: Multer) extends AnyVal {
 
     /**
       * @example multer.withOptions(dest = "/tmp")

@@ -1,8 +1,6 @@
-package org.scalajs.nodejs.url
+package org.scalajs.nodejs
+package url
 
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
-import org.scalajs.nodejs.events.EventEmitter
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
 import org.scalajs.nodejs.events.EventEmitter
 
 import scala.scalajs.js

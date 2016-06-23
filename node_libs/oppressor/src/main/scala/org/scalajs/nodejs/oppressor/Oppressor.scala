@@ -1,6 +1,6 @@
-package org.scalajs.nodejs.oppressor
+package org.scalajs.nodejs
+package oppressor
 
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
 import org.scalajs.nodejs.stream.{Duplex, Readable}
 
 import scala.scalajs.js

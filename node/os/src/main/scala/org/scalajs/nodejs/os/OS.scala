@@ -1,6 +1,5 @@
-package org.scalajs.nodejs.os
-
-import org.scalajs.nodejs.NodeRequire
+package org.scalajs.nodejs
+package os
 
 import scala.scalajs.js
 
@@ -9,7 +8,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait OS extends js.Object {
+trait OS extends NodeModule {
 
   /**
     * A constant defining the appropriate End-of-line marker for the operating system.

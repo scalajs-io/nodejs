@@ -1,9 +1,8 @@
-package org.scalajs.nodejs.bcrypt
+package org.scalajs.nodejs
+package bcrypt
 
-import org.scalajs.nodejs.{NodeModule, NodeRequire, errors}
 import org.scalajs.nodejs.bcrypt.BCrypt._
 import org.scalajs.nodejs.util.ScalaJsHelper._
-import org.scalajs.nodejs.util.ScalaJsHelper
 
 import scala.scalajs.js
 
@@ -16,9 +15,9 @@ import scala.scalajs.js
   * and other requirements of which some fail to install ! Microsoft :(
   *
   * This code is based on javascript-bcrypt and uses [crypto] (http://nodejs.org/api/crypto.html) to create random byte arrays.
-  * @author lawrence.daniels@gmail.com
-  * @see [[https://www.npmjs.com/package/bcrypt-nodejs]]
   * @version 0.0.3
+  * @see [[https://www.npmjs.com/package/bcrypt-nodejs]]
+  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait BCrypt extends NodeModule {

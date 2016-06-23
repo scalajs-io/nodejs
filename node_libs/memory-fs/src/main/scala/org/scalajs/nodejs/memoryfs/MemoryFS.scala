@@ -1,6 +1,5 @@
-package org.scalajs.nodejs.memoryfs
-
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
+package org.scalajs.nodejs
+package memoryfs
 
 import scala.scalajs.js
 
@@ -19,6 +18,11 @@ trait MemoryFS extends NodeModule with MemoryFileSystemClass
   */
 object MemoryFS {
 
+  /**
+    * Convenience method for retrieving the file system module
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the file system instance
+    */
   def apply()(implicit require: NodeRequire) = require[MemoryFS]("memory-fs")
 
 }

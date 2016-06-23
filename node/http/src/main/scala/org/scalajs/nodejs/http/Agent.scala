@@ -1,9 +1,10 @@
-package org.scalajs.nodejs.http
+package org.scalajs.nodejs
+package http
 
 import org.scalajs.nodejs.util.ScalaJsHelper._
-import org.scalajs.nodejs.util.ScalaJsHelper
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * The HTTP Agent is used for pooling sockets used in HTTP client requests.
@@ -73,7 +74,7 @@ trait Agent extends js.Object {
     * callback has a signature of (err, stream).
     * @example agent.createConnection(options[, callback])
     */
-  def createConnection(options: ConnectionOptions, callback: js.Function): Unit = js.native
+  def createConnection(options: ConnectionOptions | NodeOptions, callback: js.Function): Unit = js.native
 
   /**
     * Destroy any sockets that are currently in use by the agent.

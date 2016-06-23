@@ -1,17 +1,14 @@
-package org.scalajs.nodejs.fs
+package org.scalajs.nodejs
+package fs
 
 import org.scalajs.nodejs.buffer.Buffer
 import org.scalajs.nodejs.events.EventEmitter
-import org.scalajs.nodejs.stream.{Readable, Writable}
-import org.scalajs.nodejs.{FileDescriptor, NodeModule, NodeRequire}
-import org.scalajs.nodejs.util.ScalaJsHelper._
-import org.scalajs.nodejs.{NodeModule, NodeRequire, stream}
-import org.scalajs.nodejs.events.EventEmitter
 import org.scalajs.nodejs.stream.Writable
-import org.scalajs.nodejs.util.ScalaJsHelper
+import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.language.implicitConversions
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * File I/O is provided by simple wrappers around standard POSIX functions. To use this module do require('fs').
@@ -94,26 +91,7 @@ trait Fs extends NodeModule with EventEmitter {
     *                 checks fail, the error argument will be populated.
     * @example fs.access(path[, mode], callback)
     */
-  def access(path: String, mode: FileMode, callback: js.Function): Unit = js.native
-
-  /**
-    * Tests a user's permissions for the file specified by path. mode is an optional integer that specifies
-    * the accessibility checks to be performed. The following constants define the possible values of mode.
-    * It is possible to create a mask consisting of the bitwise OR of two or more values.
-    * <ul>
-    * <li>fs.F_OK - File is visible to the calling process. This is useful for determining if a file exists,
-    * but says nothing about rwx permissions. Default if no mode is specified.</li>
-    * <li>fs.[[R_OK]] - File can be read by the calling process.</li>
-    * <li>fs.[[W_OK]] - File can be written by the calling process.</li>
-    * <li>fs.[[X_OK]] - File can be executed by the calling process. This has no effect on Windows (will behave like fs.[[F_OK]]).</li>
-    * </ul>
-    * @param path     the path (String | Buffer)
-    * @param mode     the optional mode
-    * @param callback is a callback function that is invoked with a possible error argument. If any of the accessibility
-    *                 checks fail, the error argument will be populated.
-    * @example fs.access(path[, mode], callback)
-    */
-  def access(path: Buffer, mode: FileMode, callback: js.Function): Unit = js.native
+  def access(path: String | Buffer, mode: FileMode, callback: js.Function): Unit = js.native
 
   /**
     * Tests a user's permissions for the file specified by path. mode is an optional integer that specifies
@@ -131,32 +109,7 @@ trait Fs extends NodeModule with EventEmitter {
     *                 checks fail, the error argument will be populated.
     * @example fs.access(path[, mode], callback)
     */
-  def access(path: String, callback: js.Function): Unit = js.native
-
-  /**
-    * Tests a user's permissions for the file specified by path. mode is an optional integer that specifies
-    * the accessibility checks to be performed. The following constants define the possible values of mode.
-    * It is possible to create a mask consisting of the bitwise OR of two or more values.
-    * <ul>
-    * <li>fs.F_OK - File is visible to the calling process. This is useful for determining if a file exists,
-    * but says nothing about rwx permissions. Default if no mode is specified.</li>
-    * <li>fs.[[R_OK]] - File can be read by the calling process.</li>
-    * <li>fs.[[W_OK]] - File can be written by the calling process.</li>
-    * <li>fs.[[X_OK]] - File can be executed by the calling process. This has no effect on Windows (will behave like fs.[[F_OK]]).</li>
-    * </ul>
-    * @param path     the path (String | Buffer)
-    * @param callback is a callback function that is invoked with a possible error argument. If any of the accessibility
-    *                 checks fail, the error argument will be populated.
-    * @example fs.access(path[, mode], callback)
-    */
-  def access(path: Buffer, callback: js.Function): Unit = js.native
-
-  /**
-    * Synchronous version of fs.access(). This throws if any accessibility checks fail, and does nothing otherwise.
-    * @param path the path (String | Buffer)
-    * @example fs.accessSync(path[, mode])
-    */
-  def accessSync(path: String): js.Any = js.native
+  def access(path: String | Buffer, callback: js.Function): Unit = js.native
 
   /**
     * Synchronous version of fs.access(). This throws if any accessibility checks fail, and does nothing otherwise.
@@ -164,22 +117,7 @@ trait Fs extends NodeModule with EventEmitter {
     * @param mode the optional mode
     * @example fs.accessSync(path[, mode])
     */
-  def accessSync(path: String, mode: FileMode): js.Any = js.native
-
-  /**
-    * Synchronous version of fs.access(). This throws if any accessibility checks fail, and does nothing otherwise.
-    * @param path the path (String | Buffer)
-    * @example fs.accessSync(path[, mode])
-    */
-  def accessSync(path: Buffer): js.Any = js.native
-
-  /**
-    * Synchronous version of fs.access(). This throws if any accessibility checks fail, and does nothing otherwise.
-    * @param path the path (String | Buffer)
-    * @param mode the optional mode
-    * @example fs.accessSync(path[, mode])
-    */
-  def accessSync(path: Buffer, mode: FileMode): js.Any = js.native
+  def accessSync(path: String | Buffer, mode: FileMode = null): js.Any = js.native
 
   /**
     * Asynchronously append data to a file, creating the file if it does not yet exist. data can be a string or a buffer.
@@ -189,7 +127,7 @@ trait Fs extends NodeModule with EventEmitter {
     * @param callback the callback function
     * @example fs.appendFile(file, data[, options], callback)
     */
-  def appendFile(file: StringOrBuffer, data: StringOrBuffer, options: AppendOptions, callback: js.Function): Unit = js.native
+  def appendFile(file: String | Buffer | Int, data: String | Buffer, options: AppendOptions | NodeOptions, callback: js.Function): Unit = js.native
 
   /**
     * Asynchronously append data to a file, creating the file if it does not yet exist. data can be a string or a buffer.
@@ -198,7 +136,7 @@ trait Fs extends NodeModule with EventEmitter {
     * @param callback the callback function
     * @example fs.appendFile(file, data[, options], callback)
     */
-  def appendFile(file: StringOrBuffer, data: StringOrBuffer, callback: js.Function): Unit = js.native
+  def appendFile(file: String | Buffer | Int, data: String | Buffer, callback: js.Function): Unit = js.native
 
   /**
     * Asynchronous close(2). No arguments other than a possible exception are given to the completion callback.
@@ -216,47 +154,11 @@ trait Fs extends NodeModule with EventEmitter {
     * Returns a new ReadStream object. (See Readable Stream).vBe aware that, unlike the default value
     * set for highWaterMark on a readable stream (16 kb), the stream returned by this method has a
     * default value of 64 kb for the same parameter.
-    * @param path the path (String | Buffer)
-    * @example fs.createReadStream(path[, options])
-    */
-  def createReadStream(path: String): stream.Readable = js.native
-
-  /**
-    * Returns a new ReadStream object. (See Readable Stream).vBe aware that, unlike the default value
-    * set for highWaterMark on a readable stream (16 kb), the stream returned by this method has a
-    * default value of 64 kb for the same parameter.
     * @param path    the path (String | Buffer)
     * @param options the optional stream options
     * @example fs.createReadStream(path[, options])
     */
-  def createReadStream(path: String, options: FileInputOptions): stream.Readable = js.native
-
-  /**
-    * Returns a new ReadStream object. (See Readable Stream).vBe aware that, unlike the default value
-    * set for highWaterMark on a readable stream (16 kb), the stream returned by this method has a
-    * default value of 64 kb for the same parameter.
-    * @param path the path (String | Buffer)
-    * @example fs.createReadStream(path[, options])
-    */
-  def createReadStream(path: Buffer): stream.Readable = js.native
-
-  /**
-    * Returns a new ReadStream object. (See Readable Stream).vBe aware that, unlike the default value
-    * set for highWaterMark on a readable stream (16 kb), the stream returned by this method has a
-    * default value of 64 kb for the same parameter.
-    * @param path    the path (String | Buffer)
-    * @param options the optional stream options
-    * @example fs.createReadStream(path[, options])
-    */
-  def createReadStream(path: Buffer, options: FileInputOptions): stream.Readable = js.native
-
-  /**
-    * Returns a new WriteStream object.
-    * @param path the path (String | Buffer)
-    * @example fs.createWriteStream(path[, options])
-    * @see [[Writable]]
-    */
-  def createWriteStream(path: String): Writable = js.native
+  def createReadStream(path: String | Buffer, options: FileInputOptions | NodeOptions = null): stream.Readable = js.native
 
   /**
     * Returns a new WriteStream object.
@@ -265,24 +167,7 @@ trait Fs extends NodeModule with EventEmitter {
     * @example fs.createWriteStream(path[, options])
     * @see [[Writable]]
     */
-  def createWriteStream(path: String, options: FileOutputOptions): Writable = js.native
-
-  /**
-    * Returns a new WriteStream object.
-    * @param path the path (String | Buffer)
-    * @example fs.createWriteStream(path[, options])
-    * @see [[Writable]]
-    */
-  def createWriteStream(path: Buffer): Writable = js.native
-
-  /**
-    * Returns a new WriteStream object.
-    * @param path    the path (String | Buffer)
-    * @param options the optional stream options
-    * @example fs.createWriteStream(path[, options])
-    * @see [[Writable]]
-    */
-  def createWriteStream(path: Buffer, options: FileOutputOptions): Writable = js.native
+  def createWriteStream(path: String | Buffer, options: FileOutputOptions | NodeOptions = null): Writable = js.native
 
   /**
     * Test whether or not the given path exists by checking with the file system. Then call the callback argument with
@@ -341,19 +226,15 @@ trait Fs extends NodeModule with EventEmitter {
     * Asynchronous lchmod(2). No arguments other than a possible exception are given to the completion callback.
     * @example fs.lchmod(path, mode, callback)
     */
-  def lchmod(path: Buffer, mode: FileMode, callback: js.Function): Unit = js.native
-
-  /**
-    * Asynchronous lchmod(2). No arguments other than a possible exception are given to the completion callback.
-    * @example fs.lchmod(path, mode, callback)
-    */
-  def lchmod(path: String, mode: FileMode, callback: js.Function): Unit = js.native
+  def lchmod(path: String | Buffer, mode: FileMode, callback: js.Function): Unit = js.native
 
   /**
     * Synchronous lchmod(2). Returns undefined.
+    * @param path the path (String | Buffer)
+    * @param mode the mode (Integer)
     * @example fs.lchmodSync(path, mode)
     */
-  def lchmodSync(path: String, mode: FileMode): js.Any = js.native
+  def lchmodSync(path: String | Buffer, mode: FileMode): Unit = js.native
 
   /**
     * Asynchronous lchown(2). No arguments other than a possible exception are given to the completion callback.
@@ -363,65 +244,39 @@ trait Fs extends NodeModule with EventEmitter {
     * @param callback the completion callback.
     * @example fs.lchown(path, uid, gid, callback)
     */
-  def lchown(path: String, uid: Integer, gid: Integer, callback: js.Function): Unit = js.native
+  def lchown(path: String | Buffer, uid: Integer, gid: Integer, callback: js.Function): Unit = js.native
 
   /**
-    * Asynchronous lchown(2). No arguments other than a possible exception are given to the completion callback.
-    * @param path     the path (String | Buffer)
-    * @param uid      the user ID
-    * @param gid      the group ID
-    * @param callback the completion callback.
-    * @example fs.lchown(path, uid, gid, callback)
+    * Synchronous chown(2). Returns undefined.
+    * @param path the path (String | Buffer)
+    * @param uid  the user ID
+    * @param gid  the group ID
     */
-  def lchown(path: Buffer, uid: Integer, gid: Integer, callback: js.Function): Unit = js.native
-
-  /**
-    * Asynchronous link(2). No arguments other than a possible exception are given to the completion callback.
-    * @example fs.link(srcpath, dstpath, callback)
-    */
-  def link(srcpath: Buffer, dstpath: Buffer, callback: js.Function): Unit = js.native
+  def lchownSync(path: String | Buffer, uid: Integer, gid: Integer): Unit = js.native
 
   /**
     * Asynchronous link(2). No arguments other than a possible exception are given to the completion callback.
     * @example fs.link(srcpath, dstpath, callback)
     */
-  def link(srcpath: Buffer, dstpath: String, callback: js.Function): Unit = js.native
-
-  /**
-    * Asynchronous link(2). No arguments other than a possible exception are given to the completion callback.
-    * @example fs.link(srcpath, dstpath, callback)
-    */
-  def link(srcpath: String, dstpath: Buffer, callback: js.Function): Unit = js.native
-
-  /**
-    * Asynchronous link(2). No arguments other than a possible exception are given to the completion callback.
-    * @example fs.link(srcpath, dstpath, callback)
-    */
-  def link(srcpath: String, dstpath: String, callback: js.Function): Unit = js.native
+  def link(srcpath: String | Buffer, dstpath: String | Buffer, callback: js.Function): Unit = js.native
 
   /**
     * Asynchronous mkdir(2). No arguments other than a possible exception are given to the completion callback. mode defaults to 0o777.
     * @example fs.mkdir(path[, mode], callback)
     */
-  def mkdir(path: Buffer, mode: FileMode, callback: js.Function): Unit = js.native
+  def mkdir(path: String | Buffer, mode: FileMode | js.Any, callback: js.Function): Unit = js.native
 
   /**
     * Asynchronous mkdir(2). No arguments other than a possible exception are given to the completion callback. mode defaults to 0o777.
     * @example fs.mkdir(path[, mode], callback)
     */
-  def mkdir(path: String, mode: FileMode, callback: js.Function): Unit = js.native
+  def mkdir(path: String | Buffer, callback: js.Function): Unit = js.native
 
   /**
     * Asynchronously reads the entire contents of a file.
     * @example fs.readFile(file[, options], callback)
     */
-  def readFile(file: String, options: FileInputOptions, callback: js.Function): Unit = js.native
-
-  /**
-    * Asynchronously reads the entire contents of a file.
-    * @example fs.readFile(file[, options], callback)
-    */
-  def readFile(file: String, options: String, callback: js.Function): Unit = js.native
+  def readFile(file: String, options: FileInputOptions | NodeOptions | String, callback: js.Function): Unit = js.native
 
   /**
     * Asynchronously reads the entire contents of a file.
@@ -434,7 +289,7 @@ trait Fs extends NodeModule with EventEmitter {
     * If the encoding option is specified then this function returns a string. Otherwise it returns a buffer.
     * @example fs.readFileSync(file[, options])
     */
-  def readFileSync(file: String, encoding: String, options: FileInputOptions): String = js.native
+  def readFileSync(file: String, encoding: String, options: FileInputOptions | NodeOptions): String = js.native
 
   /**
     * Synchronous version of fs.readFile. Returns the contents of the file.
@@ -448,7 +303,7 @@ trait Fs extends NodeModule with EventEmitter {
     * If the encoding option is specified then this function returns a string. Otherwise it returns a buffer.
     * @example fs.readFileSync(file[, options])
     */
-  def readFileSync(file: String, options: FileInputOptions = null): Buffer = js.native
+  def readFileSync(file: String, options: FileInputOptions | NodeOptions = null): Buffer = js.native
 
   /**
     * Asynchronous realpath(2). The callback gets two arguments (err, resolvedPath).
@@ -459,7 +314,7 @@ trait Fs extends NodeModule with EventEmitter {
     * the path returned will be passed as a Buffer object.
     * @example fs.realpath(path[, options], callback)
     */
-  def realpath(path: String, options: FileEncodingOptions, callback: js.Function): Unit = js.native
+  def realpath(path: String, options: FileEncodingOptions | NodeOptions, callback: js.Function): Unit = js.native
 
   /**
     * Asynchronous realpath(2). The callback gets two arguments (err, resolvedPath).
@@ -475,7 +330,7 @@ trait Fs extends NodeModule with EventEmitter {
   /**
     * @example fs.realpathSync(path[, options])
     */
-  def realpathSync(path: String, options: FileEncodingOptions = null): js.Any = js.native
+  def realpathSync(path: String, options: FileEncodingOptions | NodeOptions = null): js.Any = js.native
 
   /**
     * Asynchronous rename(2). No arguments other than a possible exception are given to the completion callback.
@@ -493,51 +348,26 @@ trait Fs extends NodeModule with EventEmitter {
     * Asynchronous rmdir(2). No arguments other than a possible exception are given to the completion callback.
     * @example fs.rmdir(path, callback)
     */
-  def rmdir(path: Buffer, callback: js.Function): Unit = js.native
-
-  /**
-    * Asynchronous rmdir(2). No arguments other than a possible exception are given to the completion callback.
-    * @example fs.rmdir(path, callback)
-    */
-  def rmdir(path: String, callback: js.Function): Unit = js.native
+  def rmdir(path: String | Buffer, callback: js.Function): Unit = js.native
 
   /**
     * Synchronous rmdir(2). Returns undefined.
     * @example fs.rmdirSync(path)
     */
-  def rmdirSync(path: Buffer): js.Any = js.native
-
-  /**
-    * Synchronous rmdir(2). Returns undefined.
-    * @example fs.rmdirSync(path)
-    */
-  def rmdirSync(path: String): js.Any = js.native
+  def rmdirSync(path: String | Buffer): Unit = js.native
 
   /**
     * Asynchronous stat(2). The callback gets two arguments (err, stats) where stats is a fs.[[Stats]] object.
     * See the fs.Stats section for more information.
     * @example fs.stat(path, callback)
     */
-  def stat(path: Buffer, callback: js.Function): Stats = js.native
-
-  /**
-    * Asynchronous stat(2). The callback gets two arguments (err, stats) where stats is a fs.[[Stats]] object.
-    * See the fs.Stats section for more information.
-    * @example fs.stat(path, callback)
-    */
-  def stat(path: String, callback: js.Function): Stats = js.native
+  def stat(path: String | Buffer, callback: js.Function): Stats = js.native
 
   /**
     * Synchronous stat(2). Returns an instance of fs.[[Stats]].
     * @example fs.statSync(path)
     */
-  def statSync(path: Buffer): Stats = js.native
-
-  /**
-    * Synchronous stat(2). Returns an instance of fs.[[Stats]].
-    * @example fs.statSync(path)
-    */
-  def statSync(path: String): Stats = js.native
+  def statSync(path: String | Buffer): Stats = js.native
 
   /**
     * Asynchronous symlink(2). No arguments other than a possible exception are given to the completion callback.
@@ -546,7 +376,7 @@ trait Fs extends NodeModule with EventEmitter {
     * When using 'junction', the target argument will automatically be normalized to absolute path.
     * @example fs.symlink(target, path[, type], callback)
     */
-  def symlink(target: Buffer, path: Buffer, `type`: String, callback: js.Function): js.Any = js.native
+  def symlink(target: String | Buffer, path: String | Buffer, `type`: String, callback: js.Function1[FileIOError, Any]): js.Any = js.native
 
   /**
     * Asynchronous symlink(2). No arguments other than a possible exception are given to the completion callback.
@@ -555,49 +385,13 @@ trait Fs extends NodeModule with EventEmitter {
     * When using 'junction', the target argument will automatically be normalized to absolute path.
     * @example fs.symlink(target, path[, type], callback)
     */
-  def symlink(target: Buffer, path: String, `type`: String, callback: js.Function): js.Any = js.native
-
-  /**
-    * Asynchronous symlink(2). No arguments other than a possible exception are given to the completion callback.
-    * The type argument can be set to 'dir', 'file', or 'junction' (default is 'file') and is only available on Windows
-    * (ignored on other platforms). Note that Windows junction points require the destination path to be absolute.
-    * When using 'junction', the target argument will automatically be normalized to absolute path.
-    * @example fs.symlink(target, path[, type], callback)
-    */
-  def symlink(target: String, path: Buffer, `type`: String, callback: js.Function): js.Any = js.native
-
-  /**
-    * Asynchronous symlink(2). No arguments other than a possible exception are given to the completion callback.
-    * The type argument can be set to 'dir', 'file', or 'junction' (default is 'file') and is only available on Windows
-    * (ignored on other platforms). Note that Windows junction points require the destination path to be absolute.
-    * When using 'junction', the target argument will automatically be normalized to absolute path.
-    * @example fs.symlink(target, path[, type], callback)
-    */
-  def symlink(target: String, path: String, `type`: String, callback: js.Function): js.Any = js.native
+  def symlink(target: String | Buffer, path: String | Buffer, callback: js.Function1[FileIOError, Any]): js.Any = js.native
 
   /**
     * Synchronous symlink(2). Returns undefined.
     * @example fs.symlinkSync(target, path[, type])
     */
-  def symlinkSync(target: Buffer, path: Buffer, `type`: String): js.Any = js.native
-
-  /**
-    * Synchronous symlink(2). Returns undefined.
-    * @example fs.symlinkSync(target, path[, type])
-    */
-  def symlinkSync(target: Buffer, path: String, `type`: String): js.Any = js.native
-
-  /**
-    * Synchronous symlink(2). Returns undefined.
-    * @example fs.symlinkSync(target, path[, type])
-    */
-  def symlinkSync(target: String, path: Buffer, `type`: String): js.Any = js.native
-
-  /**
-    * Synchronous symlink(2). Returns undefined.
-    * @example fs.symlinkSync(target, path[, type])
-    */
-  def symlinkSync(target: String, path: String, `type`: String): js.Any = js.native
+  def symlinkSync(target: String | Buffer, path: String | Buffer, `type`: String = null): Unit = js.native
 
   /**
     * Watch for changes on filename, where filename is either a file or a directory. The returned object is a fs.[[FSWatcher]].
@@ -609,7 +403,7 @@ trait Fs extends NodeModule with EventEmitter {
     * is the name of the file which triggered the event.
     * @example fs.watch(filename[, options][, listener])
     */
-  def watch(filename: String, options: FSWatcherOptions, listener: js.Function): Unit = js.native
+  def watch(filename: String, options: FSWatcherOptions | NodeOptions, listener: js.Function): Unit = js.native
 
   /**
     * Watch for changes on filename, where filename is either a file or a directory. The returned object is a fs.[[FSWatcher]].
@@ -633,47 +427,27 @@ trait Fs extends NodeModule with EventEmitter {
     * is the name of the file which triggered the event.
     * @example fs.watch(filename[, options][, listener])
     */
-  def watch(filename: String, options: FSWatcherOptions = null): Unit = js.native
+  def watch(filename: String, options: FSWatcherOptions | NodeOptions = null): Unit = js.native
 
   /**
     * Asynchronously writes data to a file, replacing the file if it already exists. data can be a string or a buffer.
     * The encoding option is ignored if data is a buffer. It defaults to 'utf8'
     * @example fs.writeFile(file, data[, options], callback)
     */
-  def writeFile(file: String, data: Buffer, options: FileOutputOptions, callback: js.Function): Unit = js.native
+  def writeFile(file: String, data: String | Buffer, options: FileOutputOptions | NodeOptions, callback: js.Function): Unit = js.native
 
   /**
     * Asynchronously writes data to a file, replacing the file if it already exists. data can be a string or a buffer.
     * The encoding option is ignored if data is a buffer. It defaults to 'utf8'
     * @example fs.writeFile(file, data[, options], callback)
     */
-  def writeFile(file: String, data: String, options: FileOutputOptions, callback: js.Function): Unit = js.native
-
-  /**
-    * Asynchronously writes data to a file, replacing the file if it already exists. data can be a string or a buffer.
-    * The encoding option is ignored if data is a buffer. It defaults to 'utf8'
-    * @example fs.writeFile(file, data[, options], callback)
-    */
-  def writeFile(file: String, data: Buffer, callback: js.Function): Unit = js.native
-
-  /**
-    * Asynchronously writes data to a file, replacing the file if it already exists. data can be a string or a buffer.
-    * The encoding option is ignored if data is a buffer. It defaults to 'utf8'
-    * @example fs.writeFile(file, data[, options], callback)
-    */
-  def writeFile(file: String, data: String, callback: js.Function): Unit = js.native
+  def writeFile(file: String, data: String | Buffer, callback: js.Function): Unit = js.native
 
   /**
     * The synchronous version of fs.writeFile(). Returns undefined.
     * @example fs.writeFileSync(file, data[, options])
     */
-  def writeFileSync(file: String, data: Buffer, options: FileOutputOptions): js.Any = js.native
-
-  /**
-    * The synchronous version of fs.writeFile(). Returns undefined.
-    * @example fs.writeFileSync(file, data[, options])
-    */
-  def writeFileSync(file: String, data: String, options: FileOutputOptions): js.Any = js.native
+  def writeFileSync(file: String, data: String | Buffer, options: FileOutputOptions | NodeOptions = null): js.Any = js.native
 
 }
 
@@ -697,19 +471,10 @@ object Fs {
   implicit class FsExtensions(val fs: Fs) extends AnyVal {
 
     @inline
-    def accessFuture(path: String) = futureCallbackE0[FileIOError](fs.access(path, _))
+    def accessFuture(path: String | Buffer, mode: FileMode = null) = futureCallbackE0[FileIOError](fs.access(path, mode, _))
 
     @inline
-    def accessFuture(path: String, mode: FileMode) = futureCallbackE0[FileIOError](fs.access(path, mode, _))
-
-    @inline
-    def accessFuture(path: Buffer) = futureCallbackE0[FileIOError](fs.access(path, _))
-
-    @inline
-    def accessFuture(path: Buffer, mode: FileMode) = futureCallbackE0[FileIOError](fs.access(path, mode, _))
-
-    @inline
-    def appendFileFuture(file: StringOrBuffer, data: StringOrBuffer, options: AppendOptions) = futureCallbackE0[FileIOError](fs.appendFile(file, data, options, _))
+    def appendFileFuture(file: String | Buffer, data: String | Buffer, options: AppendOptions) = futureCallbackE0[FileIOError](fs.appendFile(file, data, options, _))
 
     @inline
     def closeFuture(fd: FileDescriptor) = futureCallbackE0[FileIOError](fs.close(fd, _))
@@ -721,28 +486,16 @@ object Fs {
     def futimesFuture(fd: FileDescriptor, atime: Integer, mtime: Integer) = futureCallbackE0[FileIOError](fs.futimes(fd, atime, mtime, _))
 
     @inline
-    def lchmodFuture(path: String, mode: FileMode) = futureCallbackE0[FileIOError](fs.lchmod(path, mode, _))
+    def lchmodFuture(path: String | Buffer, mode: FileMode) = futureCallbackE0[FileIOError](fs.lchmod(path, mode, _))
 
     @inline
-    def lchownFuture(path: String, uid: Integer, gid: Integer) = futureCallbackE0[FileIOError](fs.lchown(path, uid, gid, _))
+    def lchownFuture(path: String | Buffer, uid: Integer, gid: Integer) = futureCallbackE0[FileIOError](fs.lchown(path, uid, gid, _))
 
     @inline
-    def linkFuture(srcpath: Buffer, dstpath: Buffer) = futureCallbackE0[FileIOError](fs.link(srcpath, dstpath, _))
+    def linkFuture(srcpath: String | Buffer, dstpath: String | Buffer) = futureCallbackE0[FileIOError](fs.link(srcpath, dstpath, _))
 
     @inline
-    def linkFuture(srcpath: Buffer, dstpath: String) = futureCallbackE0[FileIOError](fs.link(srcpath, dstpath, _))
-
-    @inline
-    def linkFuture(srcpath: String, dstpath: Buffer) = futureCallbackE0[FileIOError](fs.link(srcpath, dstpath, _))
-
-    @inline
-    def linkFuture(srcpath: String, dstpath: String) = futureCallbackE0[FileIOError](fs.link(srcpath, dstpath, _))
-
-    @inline
-    def mkdirFuture(path: Buffer, mode: FileMode) = futureCallbackE0[FileIOError](fs.mkdir(path, mode, _))
-
-    @inline
-    def mkdirFuture(path: String, mode: FileMode) = futureCallbackE0[FileIOError](fs.mkdir(path, mode, _))
+    def mkdirFuture(path: String | Buffer, mode: FileMode | js.Any = null) = futureCallbackE0[FileIOError](fs.mkdir(path, mode, _))
 
     @inline
     def readFileFuture(file: String, options: FileInputOptions = null) = futureCallbackE1[FileIOError, js.Any](fs.readFile(file, options, _))
@@ -761,6 +514,17 @@ object Fs {
 
     @inline
     def statFuture(path: String) = futureCallbackE1[FileIOError, Stats](fs.stat(path, _))
+
+    /**
+      * Asynchronous symlink(2). No arguments other than a possible exception are given to the completion callback.
+      * The type argument can be set to 'dir', 'file', or 'junction' (default is 'file') and is only available on Windows
+      * (ignored on other platforms). Note that Windows junction points require the destination path to be absolute.
+      * When using 'junction', the target argument will automatically be normalized to absolute path.
+      */
+    @inline
+    def symlinkFuture(target: String | Buffer, path: String | Buffer, `type`: String = null) = {
+      futureCallbackE0[FileIOError](fs.symlink(target, path, `type`, _))
+    }
 
     @inline
     def watchFuture(filename: String, options: FSWatcherOptions = null) = futureCallbackA2[String, String](fs.watch(filename, options, _))

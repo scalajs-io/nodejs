@@ -1,10 +1,10 @@
-package org.scalajs.nodejs.dns
+package org.scalajs.nodejs
+package dns
 
 import org.scalajs.nodejs.util.ScalaJsHelper._
-import org.scalajs.nodejs.NodeRequire
-import org.scalajs.nodejs.util.ScalaJsHelper
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * The dns module contains functions belonging to two different categories:
@@ -44,27 +44,7 @@ trait DNS extends js.Object {
     * All properties are optional.
     * @example dns.lookup(hostname[, options], callback)
     */
-  def lookup(hostname: String, options: DnsOptions, callback: js.Function): Unit = js.native
-
-  /**
-    * Resolves a hostname (e.g. 'nodejs.org') into the first found A (IPv4) or AAAA (IPv6) record. options can be an
-    * object or integer. If options is not provided, then IPv4 and IPv6 addresses are both valid. If options is an
-    * integer, then it must be 4 or 6.
-    *
-    * Alternatively, options can be an object containing these properties:
-    * <ul>
-    * <li>family <Number> - The record family. If present, must be the integer 4 or 6. If not provided, both IP v4
-    * and v6 addresses are accepted.</li>
-    * <li>hints: <Number> - If present, it should be one or more of the supported getaddrinfo flags. If hints is not
-    * provided, then no flags are passed to getaddrinfo. Multiple flags can be passed through hints by logically
-    * ORing their values. See supported getaddrinfo flags for more information on supported flags.</li>
-    * <li>all: <Boolean> - When true, the callback returns all resolved addresses in an array, otherwise returns a
-    * single address. Defaults to false.</li>
-    * </ul>
-    * All properties are optional.
-    * @example dns.lookup(hostname[, options], callback)
-    */
-  def lookup(hostname: String, IPv4Or6: Int, callback: js.Function): Unit = js.native
+  def lookup(hostname: String, options: DnsOptions | Int, callback: js.Function): Unit = js.native
 
   /**
     * Resolves a hostname (e.g. 'nodejs.org') into the first found A (IPv4) or AAAA (IPv6) record. options can be an
@@ -353,17 +333,8 @@ object DNS {
       * object or integer. If options is not provided, then IPv4 and IPv6 addresses are both valid. If options is an
       * integer, then it must be 4 or 6.
       */
-    def lookupFuture(hostname: String, options: DnsOptions = null) = {
+    def lookupFuture(hostname: String, options: DnsOptions | Int = null) = {
       futureCallbackE1[DnsError, String](dns.lookup(hostname, options, _))
-    }
-
-    /**
-      * Resolves a hostname (e.g. 'nodejs.org') into the first found A (IPv4) or AAAA (IPv6) record. options can be an
-      * object or integer. If options is not provided, then IPv4 and IPv6 addresses are both valid. If options is an
-      * integer, then it must be 4 or 6.
-      */
-    def lookupFuture(hostname: String, IPv4Or6: Int) = {
-      futureCallbackE1[DnsError, String](dns.lookup(hostname, IPv4Or6, _))
     }
 
     /**

@@ -1,10 +1,10 @@
-package org.scalajs.nodejs.zookeeper
+package org.scalajs.nodejs
+package zookeeper
 
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
-import org.scalajs.nodejs.events.EventEmitter
 import org.scalajs.nodejs.events.EventEmitter
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * Node Zookeeper Client
@@ -35,7 +35,7 @@ trait NodeZookeeperClient extends NodeModule with EventEmitter {
     * @return a new client
     * @example client.createClient(connectionString, [options])
     */
-  def createClient(connectionString: String, options: ClientOptions = null): Client = js.native
+  def createClient(connectionString: String, options: ClientOptions | NodeOptions = null): Client = js.native
 
 }
 

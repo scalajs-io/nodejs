@@ -1,12 +1,9 @@
 package examples.nodejs.net
 
-import org.scalajs.nodejs.dns._
-import org.scalajs.nodejs.console
-import org.scalajs.nodejs.util.ScalaJsHelper._
-import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.{Bootstrap, console}
 import org.scalajs.nodejs.core.Assert
-import org.scalajs.nodejs.dns.{DNS, DnsError, MX, SOA}
-import org.scalajs.nodejs.util.ScalaJsHelper
+import org.scalajs.nodejs.dns.{DNS, DnsError, MX, SOA, _}
+import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js

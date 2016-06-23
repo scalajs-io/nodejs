@@ -1,17 +1,18 @@
-package org.scalajs.nodejs.expressws
+package org.scalajs.nodejs
+package expressws
 
-import org.scalajs.nodejs.NodeRequire
 import org.scalajs.nodejs.express.Application
 import org.scalajs.nodejs.http.Server
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * WebSocket endpoints for Express applications. Lets you define WebSocket endpoints like
   * any other type of route, and applies regular Express midddleware like for anything else.
-  * @author lawrence.daniels@gmail.com
-  * @see [[https://www.npmjs.com/package/express-ws]]
   * @version 2.0.0-rc.1
+  * @see [[https://www.npmjs.com/package/express-ws]]
+  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait ExpressWS extends js.Object {
@@ -25,13 +26,7 @@ trait ExpressWS extends js.Object {
     * Express as well - see the [[WSConfigOptions.leaveRouterUntouched]] option for more information on disabling this.
     * @example expressWs(app[,server][, options])
     */
-  def apply(app: Application, server: Server, options: WSConfigOptions): WsInstance = js.native
-
-  /**
-    * Sets up express-ws on the specified app.
-    * @example expressWs(app[,server][, options])
-    */
-  def apply(app: Application, server: Server): WsInstance = js.native
+  def apply(app: Application, server: Server, options: WSConfigOptions | NodeOptions = null): WsInstance = js.native
 
   /**
     * Sets up express-ws on the specified app.

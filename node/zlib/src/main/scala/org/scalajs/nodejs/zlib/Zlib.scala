@@ -1,14 +1,14 @@
-package org.scalajs.nodejs.zlib
+package org.scalajs.nodejs
+package zlib
 
 import org.scalajs.nodejs.buffer.Buffer
 import org.scalajs.nodejs.errors.Error
 import org.scalajs.nodejs.events.EventEmitter
 import org.scalajs.nodejs.util.ScalaJsHelper._
-import org.scalajs.nodejs.zlib.Zlib._
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
 
 import scala.language.implicitConversions
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes.
@@ -76,43 +76,43 @@ trait Zlib extends NodeModule with EventEmitter {
     * Returns a new Deflate object with an options.
     * @example zlib.createDeflate(options)
     */
-  def createDeflate(options: CompressionOptions): Deflate = js.native
+  def createDeflate(options: CompressionOptions | NodeOptions): Deflate = js.native
 
   /**
     * Returns a new DeflateRaw object with an options.
     * @example zlib.createDeflateRaw(options)
     */
-  def createDeflateRaw(options: CompressionOptions): DeflateRaw = js.native
+  def createDeflateRaw(options: CompressionOptions | NodeOptions): DeflateRaw = js.native
 
   /**
     * Returns a new Gunzip object with an options.
     * @example zlib.createGunzip(options)
     */
-  def createGunzip(options: CompressionOptions): Gunzip = js.native
+  def createGunzip(options: CompressionOptions | NodeOptions): Gunzip = js.native
 
   /**
     * Returns a new Gzip object with an options.
     * @example zlib.createGzip(options)
     */
-  def createGzip(options: CompressionOptions): Gzip = js.native
+  def createGzip(options: CompressionOptions | NodeOptions): Gzip = js.native
 
   /**
     * Returns a new Inflate object with an options.
     * @example zlib.createInflate(options)
     */
-  def createInflate(options: CompressionOptions): Inflate = js.native
+  def createInflate(options: CompressionOptions | NodeOptions): Inflate = js.native
 
   /**
     * Returns a new InflateRaw object with an options.
     * @example zlib.createInflateRaw(options)
     */
-  def createInflateRaw(options: CompressionOptions): InflateRaw = js.native
+  def createInflateRaw(options: CompressionOptions | NodeOptions): InflateRaw = js.native
 
   /**
     * Returns a new Unzip object with an options.
     * @example zlib.createUnzip(options)
     */
-  def createUnzip(options: CompressionOptions): Unzip = js.native
+  def createUnzip(options: CompressionOptions | NodeOptions): Unzip = js.native
 
   /**
     * Flush pending data. Don't call this frivolously, premature flushes negatively impact the effectiveness of the compression algorithm.
@@ -146,205 +146,121 @@ trait Zlib extends NodeModule with EventEmitter {
     * Compress a Buffer or string with Deflate.
     * @example zlib.deflate(buf[, options], callback)
     */
-  def deflate(buf: Buffer, options: CompressionOptions, callback: js.Function): Unit = js.native
+  def deflate(buf: String | Buffer, options: CompressionOptions | NodeOptions, callback: js.Function): Unit = js.native
 
   /**
     * Compress a Buffer or string with Deflate.
     * @example zlib.deflate(buf[, options], callback)
     */
-  def deflate(buf: String, options: CompressionOptions, callback: js.Function): Unit = js.native
-
-  /**
-    * Compress a Buffer or string with Deflate.
-    * @example zlib.deflate(buf[, options], callback)
-    */
-  def deflate(buf: Buffer, callback: js.Function): Unit = js.native
-
-  /**
-    * Compress a Buffer or string with Deflate.
-    * @example zlib.deflate(buf[, options], callback)
-    */
-  def deflate(buf: String, callback: js.Function): Unit = js.native
+  def deflate(buf: String | Buffer, callback: js.Function): Unit = js.native
 
   /**
     * Compress a Buffer or string with Deflate.
     * @example zlib.deflateSync(buf[, options])
     */
-  def deflateSync(buf: Buffer, options: CompressionOptions): Unit = js.native
-
-  /**
-    * Compress a Buffer or string with Deflate.
-    * @example zlib.deflateSync(buf[, options])
-    */
-  def deflateSync(buf: String, options: CompressionOptions): Unit = js.native
-
-  /**
-    * Compress a Buffer or string with Deflate.
-    * @example zlib.deflateSync(buf[, options])
-    */
-  def deflateSync(buf: Buffer): Unit = js.native
-
-  /**
-    * Compress a Buffer or string with Deflate.
-    * @example zlib.deflateSync(buf[, options])
-    */
-  def deflateSync(buf: String): Unit = js.native
+  def deflateSync(buf: String | Buffer, options: CompressionOptions | NodeOptions = null): Unit = js.native
 
   /**
     * Compress a Buffer or string with DeflateRaw.
     * @example zlib.deflateRaw(buf[, options], callback)
     */
-  def deflateRaw(buf: Buffer, options: CompressionOptions, callback: js.Function): Unit = js.native
+  def deflateRaw(buf: String | Buffer, options: CompressionOptions | NodeOptions, callback: js.Function): Unit = js.native
 
   /**
     * Compress a Buffer or string with DeflateRaw.
     * @example zlib.deflateRaw(buf[, options], callback)
     */
-  def deflateRaw(buf: String, options: CompressionOptions, callback: js.Function): Unit = js.native
-
-  /**
-    * Compress a Buffer or string with DeflateRaw.
-    * @example zlib.deflateRaw(buf[, options], callback)
-    */
-  def deflateRaw(buf: Buffer, callback: js.Function): Unit = js.native
-
-  /**
-    * Compress a Buffer or string with DeflateRaw.
-    * @example zlib.deflateRaw(buf[, options], callback)
-    */
-  def deflateRaw(buf: String, callback: js.Function): Unit = js.native
+  def deflateRaw(buf: String | Buffer, callback: js.Function): Unit = js.native
 
   /**
     * Decompress a Buffer or string with Gunzip.
     * @example zlib.gunzip(buf[, options], callback)
     */
-  def gunzip(buf: Buffer, options: CompressionOptions, callback: js.Function): Unit = js.native
+  def gunzip(buf: String | Buffer, options: CompressionOptions | NodeOptions, callback: js.Function): Unit = js.native
 
   /**
     * Decompress a Buffer or string with Gunzip.
     * @example zlib.gunzip(buf[, options], callback)
     */
-  def gunzip(buf: String, options: CompressionOptions, callback: js.Function): Unit = js.native
-
-  /**
-    * Decompress a Buffer or string with Gunzip.
-    * @example zlib.gunzip(buf[, options], callback)
-    */
-  def gunzip(buf: Buffer, callback: js.Function): Unit = js.native
-
-  /**
-    * Decompress a Buffer or string with Gunzip.
-    * @example zlib.gunzip(buf[, options], callback)
-    */
-  def gunzip(buf: String, callback: js.Function): Unit = js.native
+  def gunzip(buf: String | Buffer, callback: js.Function): Unit = js.native
 
   /**
     * Decompress a Buffer or string with Gunzip.
     * @example zlib.gunzipSync(buf[, options])
     */
-  def gunzipSync(buf: Buffer, options: CompressionOptions): Unit = js.native
-
-  /**
-    * Decompress a Buffer or string with Gunzip.
-    * @example zlib.gunzipSync(buf[, options])
-    */
-  def gunzipSync(buf: String, options: CompressionOptions): Unit = js.native
+  def gunzipSync(buf: String | Buffer, options: CompressionOptions | NodeOptions = null): Unit = js.native
 
   /**
     * Compress a Buffer or string with Gzip.
     * @example zlib.gzip(buf[, options], callback)
     */
-  def gzip(buf: Buffer, options: CompressionOptions, callback: js.Function): Unit = js.native
+  def gzip(buf: String | Buffer, options: CompressionOptions | NodeOptions, callback: js.Function): Unit = js.native
 
   /**
     * Compress a Buffer or string with Gzip.
     * @example zlib.gzip(buf[, options], callback)
     */
-  def gzip(buf: String, options: CompressionOptions, callback: js.Function): Unit = js.native
+  def gzip(buf: String | Buffer, callback: js.Function): Unit = js.native
 
   /**
     * Compress a Buffer or string with Gzip.
     * @example zlib.gzipSync(buf[, options])
     */
-  def gzipSync(buf: Buffer, options: CompressionOptions): Unit = js.native
-
-  /**
-    * Compress a Buffer or string with Gzip.
-    * @example zlib.gzipSync(buf[, options])
-    */
-  def gzipSync(buf: String, options: CompressionOptions): Unit = js.native
+  def gzipSync(buf: String | Buffer, options: CompressionOptions | NodeOptions = null): Unit = js.native
 
   /**
     * Decompress a Buffer or string with Inflate.
     * @example zlib.inflate(buf[, options], callback)
     */
-  def inflate(buf: Buffer, options: CompressionOptions, callback: js.Function): Unit = js.native
+  def inflate(buf: String | Buffer, options: CompressionOptions | NodeOptions, callback: js.Function): Unit = js.native
 
   /**
     * Decompress a Buffer or string with Inflate.
     * @example zlib.inflate(buf[, options], callback)
     */
-  def inflate(buf: String, options: CompressionOptions, callback: js.Function): Unit = js.native
+  def inflate(buf: String | Buffer, callback: js.Function): Unit = js.native
 
   /**
     * Decompress a Buffer or string with Inflate.
     * @example zlib.inflateSync(buf[, options])
     */
-  def inflateSync(buf: Buffer, options: CompressionOptions): Unit = js.native
-
-  /**
-    * Decompress a Buffer or string with Inflate.
-    * @example zlib.inflateSync(buf[, options])
-    */
-  def inflateSync(buf: String, options: CompressionOptions): Unit = js.native
+  def inflateSync(buf: String | Buffer, options: CompressionOptions | NodeOptions = null): Unit = js.native
 
   /**
     * Decompress a Buffer or string with InflateRaw.
     * @example zlib.inflateRaw(buf[, options], callback)
     */
-  def inflateRaw(buf: Buffer, options: CompressionOptions, callback: js.Function): Unit = js.native
+  def inflateRaw(buf: String | Buffer, options: CompressionOptions | NodeOptions, callback: js.Function): Unit = js.native
 
   /**
     * Decompress a Buffer or string with InflateRaw.
     * @example zlib.inflateRaw(buf[, options], callback)
     */
-  def inflateRaw(buf: String, options: CompressionOptions, callback: js.Function): Unit = js.native
+  def inflateRaw(buf: String | Buffer, callback: js.Function): Unit = js.native
 
   /**
     * Decompress a Buffer or string with InflateRaw.
     * @example zlib.inflateRawSync(buf[, options])
     */
-  def inflateRawSync(buf: Buffer, options: CompressionOptions): Unit = js.native
-
-  /**
-    * Decompress a Buffer or string with InflateRaw.
-    * @example zlib.inflateRawSync(buf[, options])
-    */
-  def inflateRawSync(buf: String, options: CompressionOptions): Unit = js.native
+  def inflateRawSync(buf: String | Buffer, options: CompressionOptions | NodeOptions = null): Unit = js.native
 
   /**
     * Decompress a Buffer or string with Unzip.
     * @example zlib.unzip(buf[, options], callback)
     */
-  def unzip(buf: Buffer, options: CompressionOptions, callback: js.Function): Unit = js.native
+  def unzip(buf: String | Buffer, options: CompressionOptions | NodeOptions, callback: js.Function): Unit = js.native
 
   /**
     * Decompress a Buffer or string with Unzip.
     * @example zlib.unzip(buf[, options], callback)
     */
-  def unzip(buf: String, options: CompressionOptions, callback: js.Function): Unit = js.native
+  def unzip(buf: String | Buffer, callback: js.Function): Unit = js.native
 
   /**
     * Decompress a Buffer or string with Unzip.
     * @example zlib.unzipSync(buf[, options])
     */
-  def unzipSync(buf: Buffer, options: CompressionOptions): Unit = js.native
-
-  /**
-    * Decompress a Buffer or string with Unzip.
-    * @example zlib.unzipSync(buf[, options])
-    */
-  def unzipSync(buf: String, options: CompressionOptions): Unit = js.native
+  def unzipSync(buf: String | Buffer, options: CompressionOptions | NodeOptions = null): Unit = js.native
 
 }
 
@@ -353,14 +269,6 @@ trait Zlib extends NodeModule with EventEmitter {
   * @author lawrence.daniels@gmail.com
   */
 object Zlib {
-
-  type AllocationType = Int
-  type CompressionFlush = Int
-  type CompressionFunction = Int
-  type CompressionLevel = Int
-  type CompressionStrategy = Int
-  type DataType = Int
-  type DeflateCompressMethod = Int
 
   /**
     * Convenience method for retrieving the tty module
@@ -373,115 +281,77 @@ object Zlib {
     * Zlib Extensions
     * @author lawrence.daniels@gmail.com
     */
-  implicit class ZlibExtensions(val zlib: Zlib) extends AnyVal {
+  final implicit class ZlibExtensions(val zlib: Zlib) extends AnyVal {
 
     /**
       * Asynchronously compresses a Buffer or string with Deflate.
       */
     @inline
-    def deflateFuture(buf: Buffer) = futureCallbackE1[Error, Buffer](zlib.deflate(buf, _))
-
-    /**
-      * Asynchronously compresses a Buffer or string with Deflate.
-      */
-    @inline
-    def deflateFuture(buf: String) = futureCallbackE1[Error, Buffer](zlib.deflate(buf, _))
-
-    /**
-      * Asynchronously compresses a Buffer or string with Deflate.
-      */
-    @inline
-    def deflateFuture(buf: Buffer, options: CompressionOptions) = futureCallbackE1[Error, Buffer](zlib.deflate(buf, options, _))
-
-    /**
-      * Asynchronously compresses a Buffer or string with Deflate.
-      */
-    @inline
-    def deflateFuture(buf: String, options: CompressionOptions) = futureCallbackE1[Error, Buffer](zlib.deflate(buf, options, _))
+    def deflateFuture(buf: String | Buffer, options: CompressionOptions | NodeOptions = null) = {
+      futureCallbackE1[Error, Buffer](zlib.deflate(buf, options, _))
+    }
 
     /**
       * Asynchronously compresses a Buffer or string with DeflateRaw.
       */
     @inline
-    def deflateRawFuture(buf: Buffer) = futureCallbackE1[Error, Buffer](zlib.deflateRaw(buf, _))
-
-    /**
-      * Asynchronously compresses a Buffer or string with DeflateRaw.
-      */
-    @inline
-    def deflateRawFuture(buf: String) = futureCallbackE1[Error, Buffer](zlib.deflateRaw(buf, _))
-
-    /**
-      * Asynchronously compresses a Buffer or string with DeflateRaw.
-      */
-    @inline
-    def deflateRawFuture(buf: Buffer, options: CompressionOptions) = futureCallbackE1[Error, Buffer](zlib.deflateRaw(buf, options, _))
-
-    /**
-      * Asynchronously compresses a Buffer or string with DeflateRaw.
-      */
-    @inline
-    def deflateRawFuture(buf: String, options: CompressionOptions) = futureCallbackE1[Error, Buffer](zlib.deflateRaw(buf, options, _))
+    def deflateRawFuture(buf: String | Buffer, options: CompressionOptions | NodeOptions = null) = {
+      futureCallbackE1[Error, Buffer](zlib.deflateRaw(buf, options, _))
+    }
 
     /**
       * Flush pending data. Don't call this frivolously, premature flushes negatively impact the effectiveness of the compression algorithm.
       */
     @inline
-    def flushFuture = futureCallbackE1[Error, Buffer](zlib.flush)
+    def flushFuture(kind: CompressionFlush = null) = futureCallbackE1[Error, Buffer](zlib.flush(kind, _))
 
     /**
-      * Flush pending data. Don't call this frivolously, premature flushes negatively impact the effectiveness of the compression algorithm.
+      * Compress a Buffer or string with Gzip.
       */
     @inline
-    def flushFuture(kind: CompressionFlush) = futureCallbackE1[Error, Buffer](zlib.flush(kind, _))
-
-    /**
-      * Decompress a Buffer or string with Gunzip.
-      */
-    @inline
-    def gunzipFuture(buf: Buffer) = futureCallbackE1[Error, Buffer](zlib.gunzip(buf, _))
+    def gzipFuture(buf: String | Buffer, options: CompressionOptions | NodeOptions = null) = {
+      futureCallbackE1[Error, Buffer](zlib.gzip(buf, options, _))
+    }
 
     /**
       * Decompress a Buffer or string with Gunzip.
       */
     @inline
-    def gunzipFuture(buf: String) = futureCallbackE1[Error, Buffer](zlib.gunzip(buf, _))
-
-    /**
-      * Decompress a Buffer or string with Gunzip.
-      */
-    @inline
-    def gunzipFuture(buf: Buffer, options: CompressionOptions) = futureCallbackE1[Error, Buffer](zlib.gunzip(buf, options, _))
-
-    /**
-      * Decompress a Buffer or string with Gunzip.
-      */
-    @inline
-    def gunzipFuture(buf: String, options: CompressionOptions) = futureCallbackE1[Error, Buffer](zlib.gunzip(buf, options, _))
+    def gunzipFuture(buf: String | Buffer, options: CompressionOptions | NodeOptions = null) = {
+      futureCallbackE1[Error, Buffer](zlib.gunzip(buf, options, _))
+    }
 
     /**
       * Decompress a Buffer or string with Inflate.
       */
     @inline
-    def inflateFuture(buf: Buffer, options: CompressionOptions) = futureCallbackE1[Error, Buffer](zlib.inflate(buf, options, _))
+    def inflateFuture(buf: String | Buffer, options: CompressionOptions | NodeOptions = null) = {
+      futureCallbackE1[Error, Buffer](zlib.inflate(buf, options, _))
+    }
 
     /**
-      * Decompress a Buffer or string with Inflate.
+      * Decompress a Buffer or string with InflateRaw.
+      */
+    def inflateRawFuture(buf: String | Buffer, options: CompressionOptions | NodeOptions = null) = {
+      futureCallbackE1[Error, Buffer](zlib.inflateRaw(buf, options, _))
+    }
+
+    /**
+      * Dynamically update the compression level and compression strategy. Only applicable to deflate algorithm.
+      * @example zlib.params(level, strategy, callback)
       */
     @inline
-    def inflateFuture(buf: String, options: CompressionOptions) = futureCallbackE1[Error, Buffer](zlib.inflate(buf, options, _))
+    def paramsFuture(level: CompressionLevel, strategy: CompressionStrategy) = {
+      futureCallbackE1[Error, Buffer](zlib.params(level, strategy, _))
+    }
 
     /**
       * Decompress a Buffer or string with Unzip.
       */
     @inline
-    def unzipFuture(buf: Buffer, options: CompressionOptions) = futureCallbackE1[Error, Buffer](zlib.unzip(buf, options, _))
-
-    /**
-      * Decompress a Buffer or string with Unzip.
-      */
-    @inline
-    def unzipFuture(buf: String, options: CompressionOptions) = futureCallbackE1[Error, Buffer](zlib.unzip(buf, options, _))
+    def unzipFuture(buf: String | Buffer, options: CompressionOptions | NodeOptions = null) = {
+      futureCallbackE1[Error, Buffer](zlib.unzip(buf, options, _))
+    }
 
   }
 

@@ -1,18 +1,15 @@
-package org.scalajs.nodejs.async
+package org.scalajs.nodejs
+package async
 
-import org.scalajs.nodejs.{NodeModule, NodeRequire, errors}
-import org.scalajs.nodejs.async.Async.{AsyncErrorCallback, AsyncResultCallback}
 import org.scalajs.nodejs.util.ScalaJsHelper._
-import org.scalajs.nodejs.util.ScalaJsHelper
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
 
 import scala.scalajs.js
 
 /**
   * Async module
-  * @author lawrence.daniels@gmail.com
-  * @see [[https://github.com/caolan/async/blob/v1.5.2/README.md]]
   * @version 1.5.2
+  * @see [[https://github.com/caolan/async/blob/v1.5.2/README.md]]
+  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Async extends NodeModule {
@@ -197,10 +194,6 @@ trait Async extends NodeModule {
   */
 object Async {
 
-  type AsyncErrorCallback = js.Function1[errors.Error, Any]
-
-  type AsyncResultCallback = js.Function
-  
   /**
     * Convenience method for retrieving the async module
     * @param require the implicit [[NodeRequire require function]]

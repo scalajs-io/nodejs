@@ -1,7 +1,7 @@
-package org.scalajs.nodejs.azure
+package org.scalajs.nodejs
+package azure
 
 import org.scalajs.nodejs.azure.common.AzureCommon
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
 
 import scala.scalajs.js
 

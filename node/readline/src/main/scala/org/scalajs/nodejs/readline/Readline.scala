@@ -1,10 +1,10 @@
-package org.scalajs.nodejs.readline
+package org.scalajs.nodejs
+package readline
 
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
-import org.scalajs.nodejs.events.EventEmitter
 import org.scalajs.nodejs.events.EventEmitter
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * Readline allows reading of a stream (such as process.stdin) on a line-by-line basis.
@@ -36,7 +36,7 @@ trait Readline extends NodeModule with EventEmitter {
     * Creates a readline Interface instance.
     * @example readline.createInterface(options)
     */
-  def createInterface(options: ReadlineOptions): Interface = js.native
+  def createInterface(options: ReadlineOptions | NodeOptions): Interface = js.native
 
   /**
     * Move cursor to the specified position in a given TTY stream.

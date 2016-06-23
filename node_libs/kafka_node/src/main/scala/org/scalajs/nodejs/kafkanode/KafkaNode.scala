@@ -1,8 +1,6 @@
-package org.scalajs.nodejs.kafkanode
+package org.scalajs.nodejs
+package kafkanode
 
-import org.scalajs.nodejs.events.EventEmitter
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
-import org.scalajs.nodejs.NodeModule
 import org.scalajs.nodejs.events.EventEmitter
 
 import scala.scalajs.js

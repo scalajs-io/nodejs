@@ -1,14 +1,13 @@
-package org.scalajs.nodejs.amqplib
-
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
+package org.scalajs.nodejs
+package amqplib
 
 import scala.scalajs.js
 
 /**
   * AMQP Library for Node
-  * @author lawrence.daniels@gmail.com
-  * @see https://www.npmjs.com/package/amqplib
   * @version 0.4.1
+  * @see https://www.npmjs.com/package/amqplib
+  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait AmqpLib extends NodeModule {

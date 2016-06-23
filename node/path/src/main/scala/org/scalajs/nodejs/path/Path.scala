@@ -1,6 +1,5 @@
-package org.scalajs.nodejs.path
-
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
+package org.scalajs.nodejs
+package path
 
 import scala.scalajs.js
 

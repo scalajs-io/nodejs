@@ -1,4 +1,5 @@
-package org.scalajs.browser.pixijs
+package org.scalajs.browser
+package pixijs
 
 import org.scalajs.dom.browser.DOMHighResTimeStamp
 import org.scalajs.dom.CanvasRenderingContext2D
@@ -18,8 +19,8 @@ import scala.scalajs.js.typedarray.Float32Array
   *
   * If you want to keep up to date with the latest pixi.js news then feel free to follow us on twitter  (@doormat23, and @rolnaaba)
   * and we will keep you posted! You can also check back on our site as any breakthroughs will be posted up there too!
-  * @see [[http://pixijs.github.io/docs]]
   * @version 3.0
+  * @see [[http://pixijs.github.io/docs]]
   * @author lawrence.daniels@gmail.com
   */
 @js.native
@@ -935,6 +936,8 @@ object PIXI extends js.Object {
       */
     def set(x: Double = 0, y: Double = 0): Unit = js.native
 
+    def setTo(x: Double = 0, y: Double = 0): Unit = js.native
+
   }
 
   /**
@@ -1062,7 +1065,7 @@ object PIXI extends js.Object {
     */
   @js.native
   @JSName("Text")
-  class Text(var text: String, var style: TextStyle | js.Any) extends js.Object {
+  class Text(var text: String, var style: TextStyle | RawOptions) extends js.Object {
 
     /**
       * The opacity of the object.

@@ -11,7 +11,7 @@ import scala.scalajs.js.|
   */
 package object pixijs {
 
-  type Alpha = Int
+  type Alpha = Double
 
   type BlendMode = Int
 
@@ -24,6 +24,8 @@ package object pixijs {
   type Padding = Int
 
   type Resolution = Int
+
+  type RawOptions = js.Dictionary[_]
 
   /**
     * BaseTexture Events

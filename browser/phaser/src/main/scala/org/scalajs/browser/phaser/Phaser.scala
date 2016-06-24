@@ -1,12 +1,13 @@
-package org.scalajs.browser.phaser
+package org.scalajs.browser
+package phaser
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
 
 /**
   * phaser - A fast, free and fun HTML5 Game Framework for Desktop and Mobile web browsers.
-  * @see [[https://www.npmjs.com/package/phaser]]
   * @version 2.5.0
+  * @see [[https://www.npmjs.com/package/phaser]]
   * @author lawrence.daniels@gmail.com
   */
 @js.native

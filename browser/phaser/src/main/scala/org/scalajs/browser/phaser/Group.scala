@@ -1,4 +1,5 @@
-package org.scalajs.browser.phaser
+package org.scalajs.browser
+package phaser
 
 import org.scalajs.browser.phaser.Phaser.Game
 import org.scalajs.browser.pixijs.PIXI.{DisplayObject, DisplayObjectContainer}

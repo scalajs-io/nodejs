@@ -1,7 +1,5 @@
-package org.scalajs.nodejs.escapehtml
-
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
+package org.scalajs.nodejs
+package escapehtml
 
 import scala.scalajs.js
 

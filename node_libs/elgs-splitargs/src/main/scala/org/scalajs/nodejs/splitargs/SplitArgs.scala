@@ -1,7 +1,5 @@
-package org.scalajs.nodejs.splitargs
-
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
+package org.scalajs.nodejs
+package splitargs
 
 import scala.scalajs.js
 

@@ -1,4 +1,4 @@
-package https
+package org.scalajs.nodejs.https
 
 import org.scalajs.nodejs
 

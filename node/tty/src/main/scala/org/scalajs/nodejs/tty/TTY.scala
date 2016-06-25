@@ -1,6 +1,5 @@
-package org.scalajs.nodejs.tty
-
-import org.scalajs.nodejs.{FileDescriptor, NodeRequire}
+package org.scalajs.nodejs
+package tty
 
 import scala.scalajs.js
 

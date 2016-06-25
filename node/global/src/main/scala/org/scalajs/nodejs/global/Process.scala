@@ -1,11 +1,9 @@
 package org.scalajs.nodejs.global
 
 import org.scalajs.nodejs.events.EventEmitter
-import org.scalajs.nodejs.{errors, tty}
-import org.scalajs.nodejs.util.ScalaJsHelper._
-import org.scalajs.nodejs.events.EventEmitter
 import org.scalajs.nodejs.tty.WriteStream
-import org.scalajs.nodejs.util.ScalaJsHelper
+import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.nodejs.{errors, tty}
 
 import scala.scalajs.js
 import scala.scalajs.js.JSConverters._

@@ -1,11 +1,8 @@
-package org.scalajs.nodejs.mongodb
+package org.scalajs.nodejs
+package mongodb
 
+import org.scalajs.nodejs.events.EventEmitter
 import org.scalajs.nodejs.mongodb.gridfs.{Grid, GridFSBucketClass, GridStoreClass}
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
-import org.scalajs.nodejs.events.EventEmitter
-import org.scalajs.nodejs.NodeModule
-import org.scalajs.nodejs.events.EventEmitter
-import org.scalajs.nodejs.mongodb.gridfs.{GridFSBucketClass, GridStoreClass}
 
 import scala.scalajs.js
 

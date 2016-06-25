@@ -1,10 +1,8 @@
-package org.scalajs.nodejs.datastax
+package org.scalajs.nodejs
+package datastax
 
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
 import org.scalajs.nodejs.datastax.CassandraDriver._
 import org.scalajs.nodejs.datastax.datatypes._
-import org.scalajs.nodejs.datastax.datatypes._
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
 
 import scala.scalajs.js
 

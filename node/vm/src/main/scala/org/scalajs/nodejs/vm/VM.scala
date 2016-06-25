@@ -1,9 +1,8 @@
-package org.scalajs.nodejs.vm
-
-import org.scalajs.nodejs.NodeRequire
-import org.scalajs.nodejs.NodeRequire
+package org.scalajs.nodejs
+package vm
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * The vm module provides APIs for compiling and running code within V8 Virtual Machine contexts.
@@ -40,7 +39,7 @@ trait VM extends js.Object {
     * @param options the optional options
     * @example vm.createScript(code[, options])
     */
-  def createScript(code: String, options: ScriptOptions = null): ContextifyScript = js.native
+  def createScript(code: String, options: ScriptOptions | NodeOptions = null): ContextifyScript = js.native
 
   /**
     * The vm.runInDebugContext() method compiles and executes code inside the V8 debug context.
@@ -57,7 +56,7 @@ trait VM extends js.Object {
     * @param options             the optional options
     * @example script.runInContext(contextifiedSandbox[, options])
     */
-  def runInContext(code: String, contextifiedSandbox: ScriptContext, options: ContextOptions = null): js.Any = js.native
+  def runInContext(code: String, contextifiedSandbox: ScriptContext, options: ContextOptions | NodeOptions = null): js.Any = js.native
 
   /**
     * First contextifies the given sandbox, runs the compiled code contained by the vm.Script object within the created
@@ -67,7 +66,7 @@ trait VM extends js.Object {
     * @param options the optional options
     * @example vm.runInNewContext(code[, sandbox][, options])
     */
-  def runInNewContext(code: String, sandbox: js.Any, options: ContextOptions = null): js.Any = js.native
+  def runInNewContext(code: String, sandbox: js.Any, options: ContextOptions | NodeOptions = null): js.Any = js.native
 
   /**
     * Runs the compiled code contained by the vm.Script within the context of the current global object. Running code
@@ -76,7 +75,7 @@ trait VM extends js.Object {
     * @param options the optional options
     * @example script.runInThisContext([options])
     */
-  def runInThisContext(code: String, options: ContextOptions = null): ContextifyScript = js.native
+  def runInThisContext(code: String, options: ContextOptions | NodeOptions = null): ContextifyScript = js.native
 
   /**
     * Returns true if the given sandbox object has been contextified using vm.createContext().

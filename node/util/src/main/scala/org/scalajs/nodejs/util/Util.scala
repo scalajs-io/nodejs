@@ -1,10 +1,11 @@
-package org.scalajs.nodejs.util
+package org.scalajs.nodejs
+package util
 
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
 import org.scalajs.nodejs.events.EventEmitter
 import org.scalajs.nodejs.fs.Stats
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * These functions are in the module 'util'. Use require('util') to access them.
@@ -65,7 +66,7 @@ trait Util extends NodeModule with EventEmitter {
     * Return a string representation of object, which is useful for debugging.
     * @example util.inspect(object[, options])
     */
-  def inspect(`object`: js.Any, options: InspectOptions = null): Stats = js.native
+  def inspect(`object`: js.Any, options: InspectOptions | NodeOptions = null): Stats = js.native
 
   /**
     * Returns true if the given "object" is an Array. Otherwise, returns false.

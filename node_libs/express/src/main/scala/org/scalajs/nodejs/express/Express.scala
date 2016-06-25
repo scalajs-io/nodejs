@@ -1,10 +1,10 @@
-package org.scalajs.nodejs.express
+package org.scalajs.nodejs
+package express
 
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
-import org.scalajs.nodejs.events.EventEmitter
 import org.scalajs.nodejs.events.EventEmitter
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * NodeJS Express module
@@ -25,20 +25,14 @@ trait Express extends NodeModule with EventEmitter {
     * `bodyParser()` middleware has been deprecated; use BodyParser.json() and BodyParser.urlencoded() as needed
     * @see [[https://github.com/expressjs/body-parser/commit/b7420f8dc5c8b17a277c9e50d72bbaf3086a3900]]
     */
-  @deprecated("Use BodyParser.json() and BodyParser.urlencoded() as needed", "4.x")
+  @deprecated("Use BodyParser.json() and BodyParser.urlencoded() as needed", "4.0")
   def bodyParser(): Router = js.native
 
   /**
     * Creates a new router object.
     * @example express.Router([options])
     */
-  def Router(options: RouterOptions): Router = js.native
-
-  /**
-    * Creates a new router object.
-    * @example var router = express.Router([options])
-    */
-  def Router(): Router = js.native
+  def Router(options: RouterOptions | NodeOptions = null): Router = js.native
 
   /**
     * This is the only built-in middleware function in Express. It serves static files and is based on serve-static.
@@ -49,18 +43,7 @@ trait Express extends NodeModule with EventEmitter {
     * <p/>The following table describes the properties of the options object.
     * @example express.static(root, [options])
     */
-  def static(root: String, options: StaticOptions): Router = js.native
-
-  /**
-    * This is the only built-in middleware function in Express. It serves static files and is based on serve-static.
-    * The root argument refers to the root directory from which the static assets are to be served. The file to serve
-    * will be determined by combining req.url with the provided root directory. When a file is not found, instead of
-    * sending a 404 response, this module will instead call next() to move on to the next middleware, allowing for
-    * stacking and fall-backs.
-    * <p/>The following table describes the properties of the options object.
-    * @example express.static(root, [options])
-    */
-  def static(root: String): Router = js.native
+  def static(root: String, options: StaticOptions | NodeOptions = null): Router = js.native
 
 }
 

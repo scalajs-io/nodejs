@@ -1,6 +1,5 @@
-package org.scalajs.nodejs.stream
-
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
+package org.scalajs.nodejs
+package stream
 
 import scala.scalajs.js
 

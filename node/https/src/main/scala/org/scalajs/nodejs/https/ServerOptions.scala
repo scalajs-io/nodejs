@@ -1,4 +1,4 @@
-package https
+package org.scalajs.nodejs.https
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.ScalaJSDefined

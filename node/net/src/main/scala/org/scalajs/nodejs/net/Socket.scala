@@ -1,10 +1,12 @@
-package org.scalajs.nodejs.net
+package org.scalajs.nodejs
+package net
 
 import org.scalajs.nodejs.events.EventEmitter
 import org.scalajs.nodejs.stream.Duplex
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
+import scala.scalajs.js.|
 
 /**
   * net.Socket - This object is an abstraction of a TCP or local socket. net.Socket instances implement a duplex Stream
@@ -117,7 +119,7 @@ trait Socket extends EventEmitter with Duplex {
     * @param connectListener the optional connect listener
     * @example socket.connect(options[, connectListener])
     */
-  def connect(options: ConnectOptions, connectListener: js.Function = null): Unit = js.native
+  def connect(options: ConnectOptions | NodeOptions, connectListener: js.Function = null): Unit = js.native
 
   /**
     * Opens the connection for a given socket.

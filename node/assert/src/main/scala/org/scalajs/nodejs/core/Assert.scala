@@ -1,7 +1,7 @@
-package org.scalajs.nodejs.core
+package org.scalajs.nodejs
+package core
 
 import org.scalajs.nodejs.events.EventEmitter
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
 
 import scala.scalajs.js
 
@@ -32,16 +32,7 @@ trait Assert extends NodeModule with EventEmitter {
     * surprising results.
     * @example assert.deepEqual(actual, expected[, message])
     */
-  def deepEqual(actual: js.Any, expected: js.Any, message: String): Unit = js.native
-
-  /**
-    * Tests for deep equality between the actual and expected parameters. Primitive values are compared with the equal
-    * comparison operator ( == ). Only enumerable "own" properties are considered. The deepEqual() implementation does
-    * not test object prototypes, attached symbols, or non-enumerable properties. This can lead to some potentially
-    * surprising results.
-    * @example assert.deepEqual(actual, expected[, message])
-    */
-  def deepEqual(actual: js.Any, expected: js.Any): Unit = js.native
+  def deepEqual(actual: js.Any, expected: js.Any, message: String = null): Unit = js.native
 
   /**
     * Generally identical to assert.deepEqual() with two exceptions. First, primitive values are compared using the
@@ -75,19 +66,13 @@ trait Assert extends NodeModule with EventEmitter {
     * error is of a different type, or if the error parameter is undefined, the error is propagated back to the caller.
     * @example assert.doesNotThrow(block[, error][, message])
     */
-  def doesNotThrow(block: js.Function, error: js.Any): Unit = js.native
+  def doesNotThrow(block: js.Function, error: js.Any = null): Unit = js.native
 
   /**
     * Tests shallow, coercive equality between the actual and expected parameters using the equal comparison operator ( == ).
     * @example assert.equal(actual, expected[, message])
     */
-  def equal(actual: js.Any, expected: js.Any, message: String): Unit = js.native
-
-  /**
-    * Tests shallow, coercive equality between the actual and expected parameters using the equal comparison operator ( == ).
-    * @example assert.equal(actual, expected[, message])
-    */
-  def equal(actual: js.Any, expected: js.Any): Unit = js.native
+  def equal(actual: js.Any, expected: js.Any, message: String = null): Unit = js.native
 
   /**
     * Throws an AssertionError. If message is falsy, the error message is set as the values of actual and expected
@@ -106,82 +91,45 @@ trait Assert extends NodeModule with EventEmitter {
     * Tests for any deep inequality. Opposite of assert.deepEqual().
     * @example assert.notDeepEqual(actual, expected[, message])
     */
-  def notDeepEqual(actual: js.Any, expected: js.Any, message: String): Unit = js.native
-
-  /**
-    * Tests for any deep inequality. Opposite of assert.deepEqual().
-    * @example assert.notDeepEqual(actual, expected[, message])
-    */
-  def notDeepEqual(actual: js.Any, expected: js.Any): Unit = js.native
+  def notDeepEqual(actual: js.Any, expected: js.Any, message: String = null): Unit = js.native
 
   /**
     * Tests for deep strict inequality. Opposite of assert.deepStrictEqual().
     * @example assert.notDeepStrictEqual(actual, expected[, message])
     */
-  def notDeepStrictEqual(actual: js.Any, expected: js.Any, message: String): Unit = js.native
-
-  /**
-    * Tests for deep strict inequality. Opposite of assert.deepStrictEqual().
-    * @example assert.notDeepStrictEqual(actual, expected[, message])
-    */
-  def notDeepStrictEqual(actual: js.Any, expected: js.Any): Unit = js.native
+  def notDeepStrictEqual(actual: js.Any, expected: js.Any, message: String = null): Unit = js.native
 
   /**
     * Tests shallow, coercive inequality with the not equal comparison operator ( != ).
     * @example assert.notEqual(actual, expected[, message])
     */
-  def notEqual(actual: js.Any, expected: js.Any, message: String): Unit = js.native
-
-  /**
-    * Tests shallow, coercive inequality with the not equal comparison operator ( != ).
-    * @example assert.notEqual(actual, expected[, message])
-    */
-  def notEqual(actual: js.Any, expected: js.Any): Unit = js.native
+  def notEqual(actual: js.Any, expected: js.Any, message: String = null): Unit = js.native
 
   /**
     * Tests strict inequality as determined by the strict not equal operator ( !== ).
     * @example assert.notStrictEqual(actual, expected[, message])
     */
-  def notStrictEqual(actual: js.Any, expected: js.Any, message: String): Unit = js.native
-
-  /**
-    * Tests strict inequality as determined by the strict not equal operator ( !== ).
-    * @example assert.notStrictEqual(actual, expected[, message])
-    */
-  def notStrictEqual(actual: js.Any, expected: js.Any): Unit = js.native
+  def notStrictEqual(actual: js.Any, expected: js.Any, message: String = null): Unit = js.native
 
   /**
     * Tests if value is truthy. It is equivalent to assert.equal(!!value, true, message). If value is not truthy,
     * an AssertionError is thrown with a message property set equal to the value of the message parameter. If the
     * message parameter is undefined, a default error message is assigned.
     */
-  def ok(value: js.Any): Unit = js.native
-
-  /**
-    * Tests if value is truthy. It is equivalent to assert.equal(!!value, true, message). If value is not truthy,
-    * an AssertionError is thrown with a message property set equal to the value of the message parameter. If the
-    * message parameter is undefined, a default error message is assigned.
-    */
-  def ok(value: js.Any, message: String): Unit = js.native
+  def ok(value: js.Any, message: String = null): Unit = js.native
 
   /**
     * Tests strict equality as determined by the strict equality operator ( === ).
     * @example assert.strictEqual(actual, expected[, message])
     */
-  def strictEqual(actual: js.Any, expected: js.Any, message: String): Unit = js.native
-
-  /**
-    * Tests strict equality as determined by the strict equality operator ( === ).
-    * @example assert.strictEqual(actual, expected[, message])
-    */
-  def strictEqual(actual: js.Any, expected: js.Any): Unit = js.native
+  def strictEqual(actual: js.Any, expected: js.Any, message: String = null): Unit = js.native
 
   /**
     * If the values are not strictly equal, an AssertionError is thrown with a message property set equal to the value
     * of the message parameter. If the message parameter is undefined, a default error message is assigned.
     * @example assert.throws(block[, error][, message])
     */
-  def throws(block: js.Function, error: js.Any, message: String): Unit = js.native
+  def throws(block: js.Function, error: js.Any, message: String = null): Unit = js.native
 
 }
 

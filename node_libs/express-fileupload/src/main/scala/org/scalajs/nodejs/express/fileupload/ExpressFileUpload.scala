@@ -1,8 +1,6 @@
-package org.scalajs.nodejs.express.fileupload
-
-import org.scalajs.nodejs.NodeRequire
-import org.scalajs.nodejs.express.Router
-import org.scalajs.nodejs.express.Router
+package org.scalajs.nodejs
+package express
+package fileupload
 
 import scala.scalajs.js
 

@@ -1,9 +1,7 @@
-package org.scalajs.nodejs.mysql
+package org.scalajs.nodejs
+package mysql
 
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
 import org.scalajs.nodejs.events.EventEmitter
-import org.scalajs.nodejs.events.EventEmitter
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
 
 import scala.scalajs.js
 

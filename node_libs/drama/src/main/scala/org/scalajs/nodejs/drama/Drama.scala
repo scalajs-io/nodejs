@@ -1,6 +1,5 @@
-package org.scalajs.nodejs.drama
-
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
+package org.scalajs.nodejs
+package drama
 
 import scala.scalajs.js
 

@@ -1,15 +1,15 @@
-package org.scalajs.nodejs.filed
+package org.scalajs.nodejs
+package filed
 
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
 import org.scalajs.nodejs.stream.Writable
 
 import scala.scalajs.js
 
 /**
   * filed - Simplified file library.
-  * @author lawrence.daniels@gmail.com
-  * @see [[https://www.npmjs.com/package/filed]]
   * @version 0.1.0
+  * @see [[https://www.npmjs.com/package/filed]]
+  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Filed extends NodeModule {

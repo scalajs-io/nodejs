@@ -394,7 +394,7 @@ object PIXI extends js.Object {
     */
   @js.native
   @JSName("Container")
-  trait Container extends js.Object {
+  trait Container extends DisplayObject {
 
     /////////////////////////////////////////////////////////////////////////////////
     //      Properties
@@ -404,13 +404,6 @@ object PIXI extends js.Object {
       * The opacity of the object.
       */
     var alphanumber: Double = js.native
-
-    /**
-      * Set this to true if you want this display object to be cached as a bitmap. This basically takes a snap shot of
-      * the display object as it is at that moment. It can provide a performance benefit for complex static displayObjects.
-      * To remove simply set this property to 'null'.
-      */
-    var cacheAsBitmap: Boolean = js.native
 
     /**
       * The array of children of this container.
@@ -473,11 +466,6 @@ object PIXI extends js.Object {
     var scale: Point = js.native
 
     /**
-      * The visibility of the object. If false the object will not be drawn, and the updateTransform function will not be called.
-      */
-    var visible: Boolean = js.native
-
-    /**
       * The width of the Container, setting this will actually modify the scale to achieve the value set.
       */
     var width: Double = js.native
@@ -486,26 +474,6 @@ object PIXI extends js.Object {
       * The multiplied alpha of the displayObject.
       */
     def worldAlpha: Alpha = js.native
-
-    /**
-      * Current transform of the object based on world (parent) factors.
-      */
-    def worldTransform: Matrix = js.native
-
-    /**
-      * Indicates if the sprite is globally visible.
-      */
-    def worldVisible: Boolean = js.native
-
-    /**
-      * The position of the displayObject on the x axis relative to the local coordinates of the parent.
-      */
-    var x: Double = js.native
-
-    /**
-      * The position of the displayObject on the y axis relative to the local coordinates of the parent.
-      */
-    var y: Double = js.native
 
     /////////////////////////////////////////////////////////////////////////////////
     //      Methods
@@ -683,11 +651,6 @@ object PIXI extends js.Object {
   @js.native
   @JSName("Graphics")
   trait Graphics extends Container {
-
-    /**
-      * The opacity of the object.
-      */
-    def alpha: Alpha = js.native
 
     /**
       * The blend mode to be applied to the graphic shape. Apply a value of PIXI.BLEND_MODES.NORMAL to reset the blend mode.
@@ -1055,7 +1018,7 @@ object PIXI extends js.Object {
 
   @js.native
   @JSName("Sprite")
-  trait Sprite extends js.Object
+  trait Sprite extends Container
 
   /**
     * A Text Object will create a line or multiple lines of text. To split a line you can use '\n' in your text string,

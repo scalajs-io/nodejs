@@ -1,6 +1,5 @@
 package org.scalajs.nodejs.crypto
 
-import org.scalajs.nodejs.stream
 import org.scalajs.nodejs.buffer.Buffer
 import org.scalajs.nodejs.stream.Duplex
 
@@ -46,20 +45,10 @@ trait Hash extends Duplex {
     * If data is a Buffer then input_encoding is ignored.
     *
     * This can be called many times with new data as it is streamed.
-    * @param data the given [[String data]]
-    */
-  def update(data: String): Unit = js.native
-
-  /**
-    * Updates the hash content with the given data, the encoding of which is given in input_encoding and can be 'utf8',
-    * 'ascii' or 'binary'. If encoding is not provided, and the data is a string, an encoding of 'utf8' is enforced.
-    * If data is a Buffer then input_encoding is ignored.
-    *
-    * This can be called many times with new data as it is streamed.
     * @param data           the given [[String data]]
     * @param input_encoding the given encoding (e.g. 'utf8', 'ascii' or 'binary')
     */
-  def update(data: String, input_encoding: String): Unit = js.native
+  def update(data: String, input_encoding: String = null): Unit = js.native
 
   /**
     * Updates the hash content with the given data, the encoding of which is given in input_encoding and can be 'utf8',

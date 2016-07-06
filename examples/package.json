@@ -11,6 +11,7 @@
     "drama": "^0.1.3",
     "engine.io": "^1.6.8",
     "express": "4.13.4",
+    "express-csv": "^0.6.0",
     "express-ws": "^2.0.0-beta",
     "fs": "0.0.2",
     "gridfs-stream": "^1.1.1",

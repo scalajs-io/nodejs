@@ -1,6 +1,7 @@
 package org.scalajs.nodejs.mongodb
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * Mongo Database
@@ -50,7 +51,7 @@ trait Db extends js.Object {
 
   def collection(name: String, callback: js.Function): Unit = js.native
 
-  def collection(name: String, options: CollectionOptions, callback: js.Function): Unit = js.native
+  def collection(name: String, options: CollectionOptions | js.Any, callback: js.Function): Unit = js.native
 
   def collectionsInfo(): Cursor = js.native
 
@@ -58,7 +59,7 @@ trait Db extends js.Object {
 
   def createCollection(name: String, callback: js.Function): Unit = js.native
 
-  def createCollection(name: String, options: CollectionOptions, callback: js.Function): Unit = js.native
+  def createCollection(name: String, options: CollectionOptions | js.Any, callback: js.Function): Unit = js.native
 
   def createIndex(name: String, flag: Char, callback: js.Function): Unit = js.native
 
@@ -85,19 +86,17 @@ object Db {
   implicit class MongoDatabaseExtensions(val db: Db) extends AnyVal {
 
     @inline
-    def collectionFuture(name: String) = callbackMongoFuture[Collection](db.collection(name, _))
-
-    @inline
-    def collectionFuture(name: String, options: CollectionOptions) = callbackMongoFuture[Collection](db.collection(name, options, _))
+    def collectionFuture(name: String, options: CollectionOptions | js.Any = null) = {
+      callbackMongoFuture[Collection](db.collection(name, options, _))
+    }
 
     @inline
     def collectionNamesFuture = callbackMongoFuture[js.Array[String]](db.collectionNames)
 
     @inline
-    def createCollectionFuture(name: String) = callbackMongoFuture[Collection](db.createCollection(name, _))
-
-    @inline
-    def createCollectionFuture(name: String, options: CollectionOptions) = callbackMongoFuture[Collection](db.createCollection(name, options, _))
+    def createCollectionFuture(name: String, options: CollectionOptions = null) = {
+      callbackMongoFuture[Collection](db.createCollection(name, options, _))
+    }
 
     @inline
     def dropCollectionFuture(name: String) = callbackMongoFuture[OperationResult](db.dropCollection(name, _))

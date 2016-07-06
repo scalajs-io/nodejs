@@ -5,7 +5,7 @@ import org.scalajs.nodejs.util.ScalaJsHelper._
 import scala.concurrent.{Future, Promise}
 import scala.language.implicitConversions
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSName, ScalaJSDefined}
+import scala.scalajs.js.annotation.ScalaJSDefined
 import scala.scalajs.runtime
 
 /**
@@ -193,7 +193,7 @@ package object mongodb {
       * @example db.inventory.find( { qty: { $in: [ 5, 15 ] } } )
       */
     @inline
-    def $in(array: js.Array[_ <: Any]) = attribute -> doc("$in" -> array)
+    def $in(array: => js.Array[_ <: Any]) = attribute -> doc("$in" -> array)
 
     @inline
     def $inc(delta: => Double) = "$inc" -> doc(attribute -> delta)
@@ -252,14 +252,7 @@ package object mongodb {
       * @example db.inventory.find( { qty: { $nin: [ 5, 15 ] } } )
       */
     @inline
-    def $nin(values: js.Any*) = attribute -> doc("$nin" -> js.Array(values: _*))
-
-    /**
-      * Matches none of the values specified in an array.
-      * @example db.inventory.find( { qty: { $nin: [ 5, 15 ] } } )
-      */
-    @inline
-    def $nin(array: => js.Array[js.Any]) = attribute -> doc("$nin" -> array)
+    def $nin(array: => js.Array[_ <: js.Any]) = attribute -> doc("$nin" -> array)
 
     /**
       * Removes the first or last item of an array.

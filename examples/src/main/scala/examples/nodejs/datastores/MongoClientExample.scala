@@ -1,6 +1,5 @@
 package examples.nodejs.datastores
 
-import org.scalajs.nodejs._
 import org.scalajs.dom.console
 import org.scalajs.nodejs.Bootstrap
 import org.scalajs.nodejs.mongodb.MongoDB

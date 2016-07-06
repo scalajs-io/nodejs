@@ -244,6 +244,10 @@ object ScalaJsHelper {
 
     @inline def flat = valueA.flatMap(Option(_).orUndefined)
 
+    @inline def isAssigned = valueA.flat.nonEmpty
+
+    @inline def nonAssigned = valueA.flat.isEmpty
+
     @inline def orDie(message: String): T = valueA getOrElse die(message)
 
   }

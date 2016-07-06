@@ -39,6 +39,8 @@ trait MongoDB extends NodeModule with EventEmitter {
 
   def ObjectID: ObjectIDClass = js.native
 
+  def ReadPreference: ReadPreferenceClass = js.native
+
   def ReplSetServers: js.Function1[js.Array[Server], ReplSetServers] = js.native
 
   def Server: ServerClass = js.native

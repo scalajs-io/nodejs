@@ -49,4 +49,12 @@ object ExpressWS {
     */
   def apply()(implicit require: NodeRequire) = require[ExpressWS]("express-ws")
 
+  /**
+    * Convenience method for retrieving the 'express-ws' module
+    * @param app the given [[Application Express application]]
+    * @param require the implicit [[NodeRequire require function]]
+    * @return the ExpressWS instance
+    */
+  def apply(app: Application)(implicit require: NodeRequire) = require[ExpressWS]("express-ws")(app)
+
 }

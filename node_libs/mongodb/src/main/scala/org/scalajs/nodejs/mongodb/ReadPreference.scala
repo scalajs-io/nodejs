@@ -9,12 +9,9 @@ import scala.scalajs.js.annotation.JSName
   */
 @js.native
 trait ReadPreference extends js.Object {
-  val PRIMARY: String = js.native
-  val PRIMARY_PREFERRED: String = js.native
-  val SECONDARY: String = js.native
-  val SECONDARY_PREFERRED: String = js.native
-  val NEAREST: String = js.native
-
+  val _type: String = js.native
+  val mode: String = js.native
+  val tags: js.Any = js.native
 }
 
 /**
@@ -23,4 +20,4 @@ trait ReadPreference extends js.Object {
   */
 @js.native
 @JSName("ReadPreference")
-object ReadPreference extends ReadPreference
+object ReadPreference extends ReadPreferenceClass

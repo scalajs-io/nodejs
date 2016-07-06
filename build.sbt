@@ -97,10 +97,10 @@ lazy val core_browser = (project in file("core/browser")).
 
 lazy val bundle_angular = (project in file("bundles/angularjs")).
   aggregate(
-    angular_core, angular_anchorScroll, angular_animate, angular_cookies, angular_facebook, angular_nervgh_fileupload,
+    angular_core, angular_anchorScroll, angular_animate, angular_cookies, angular_facebook, angular_md5, angular_nervgh_fileupload,
     angular_sanitize, angular_toaster, angular_ui_bootstrap, angular_ui_router).
   dependsOn(
-    angular_core, angular_anchorScroll, angular_animate, angular_cookies, angular_facebook, angular_nervgh_fileupload,
+    angular_core, angular_anchorScroll, angular_animate, angular_cookies, angular_facebook, angular_md5, angular_nervgh_fileupload,
     angular_sanitize, angular_toaster, angular_ui_bootstrap, angular_ui_router).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
@@ -152,6 +152,15 @@ lazy val angular_facebook = (project in file("angularjs/facebook")).
   settings(
     name := "scalajs-angularjs-facebook",
     description := "AngularJS/facebook binding for Scala.js"
+  )
+
+lazy val angular_md5 = (project in file("angularjs/md5")).
+  dependsOn(core, angular_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "scalajs-angularjs-md5",
+    description := "AngularJS/md5 binding for Scala.js"
   )
 
 lazy val angular_nervgh_fileupload = (project in file("angularjs/nervgh-fileupload")).
@@ -447,14 +456,14 @@ lazy val node_zlib = (project in file("node/zlib")).
 lazy val bundle_node_oss = (project in file("bundles/node_oss")).
   aggregate(
     node_adal, node_amqplib, node_async, node_azure, node_bcrypt, node_body_parser, node_cassandra,
-    node_colors, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_fileupload,
+    node_colors, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_csv, node_express_fileupload,
     node_express_ws, node_filed, node_jwt_simple, node_kafka, node_memory_fs, node_mongodb, node_multer, node_mysql,
-    node_oppressor, node_request, node_watch, node_xml2js, node_zookeeper).
+    node_oppressor, node_pvorb_md5, node_request, node_watch, node_xml2js, node_zookeeper).
   dependsOn(
     node_adal, node_amqplib, node_async, node_azure, node_bcrypt, node_body_parser, node_cassandra,
-    node_colors, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_fileupload,
+    node_colors, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_csv, node_express_fileupload,
     node_express_ws, node_filed, node_jwt_simple, node_kafka, node_memory_fs, node_mongodb, node_multer, node_mysql,
-    node_oppressor, node_request, node_watch, node_xml2js, node_zookeeper).
+    node_oppressor, node_pvorb_md5, node_request, node_watch, node_xml2js, node_zookeeper).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -570,6 +579,15 @@ lazy val node_express = (project in file("node_libs/express")).
     description := "NodeJS/express binding for Scala.js"
   )
 
+lazy val node_express_csv = (project in file("node_libs/express-csv")).
+  dependsOn(node_express).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "scalajs-nodejs-express-csv",
+    description := "NodeJS/express-csv binding for Scala.js"
+  )
+
 lazy val node_express_fileupload = (project in file("node_libs/express-fileupload")).
   dependsOn(node_express).
   enablePlugins(ScalaJSPlugin).
@@ -658,6 +676,15 @@ lazy val node_oppressor = (project in file("node_libs/oppressor")).
   settings(
     name := "scalajs-nodejs-oppressor",
     description := "NodeJS/oppressor binding for Scala.js"
+  )
+
+lazy val node_pvorb_md5 = (project in file("node_libs/pvorb-md5")).
+  dependsOn(node_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "scalajs-nodejs-pvorb-md5",
+    description := "NodeJS/pvorb-md5 binding for Scala.js"
   )
 
 lazy val node_request = (project in file("node_libs/request")).

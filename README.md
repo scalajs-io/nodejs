@@ -227,11 +227,13 @@ The following Third Party/OSS NodeJS modules have been implemented thus far:
 | drama                 | 0.1.3   | scalajs-nodejs-drama      | drama is an Actor model implementation for JavaScript and Node.js | Tesing required |
 | escape-html           | 1.0.3   | scalajs-nodejs-escape-html| Escape string for use in HTML | Stable |
 | express               | 4.13.4  | scalajs-nodejs-express    | Fast, unopinionated, minimalist web framework for Node.js | Stable |
+| express-csv           | 0.6.0   | scalajs-nodejs-express-csv| express-csv provides response csv easily to express. | Stable |
 | express-fileupload    | 0.0.5   | scalajs-nodejs-express-fileupload | Simple express file upload middleware that wraps around connect-busboy | Stable |
 | express-ws            |2.0.0-rc1| scalajs-nodejs-express-ws | WebSocket endpoints for Express applications | Stable |
 | filed                 | 0.1.0   | scalajs-nodejs-filed      | Simplified file library. | Stable |
 | jwt-simple            | 0.5.0   | scalajs-nodejs-jwt-simple | JWT(JSON Web Token) encode and decode module | Stable |
 | kafka-node            | 0.0.11  | scalajs-nodejs-kafkanode  | A node binding for librdkafka | Tesing required |
+| md5                   | 2.1.0   | scalajs-nodejs-pvorb-md5  | A JavaScript function for hashing messages with MD5. | Stable |
 | memory-fs             | 0.3.0   | scalajs-nodejs-memory-fs  | A simple in-memory filesystem. Holds data in a javascript object. | Stable |
 | mongodb               | 2.1.18  | scalajs-nodejs-mongodb    | Node.js MongoDB Driver | Stable |
 | multer                | 1.1.0   | scalajs-nodejs-multer     | Multer is a node.js middleware for handling multipart/form-data. | Tesing required |
@@ -531,6 +533,7 @@ The following AngularJS services have been implemented thus far:
 | $timeout          | scalajs-angularjs-core         | Angular's wrapper for window.setTimeout. The fn function is wrapped into a try/catch block and delegates any exceptions to $exceptionHandler service. |
 | FacebookService   | scalajs-angularjs-facebook     | AngularJS - Facebook service |
 | FileUploader      | scalajs-angularjs-nergvh-fileupload | AngularJS File Uploader |
+| md5               | scalajs-angularjs-md5          | A md5 crypto component for Angular.js. |
 | toaster           | scalajs-angularjs-toaster      | AngularJS Toaster is a customized version of "toastr" non-blocking notification javascript library. |
 
 *NOTE*: The full SBT artifact expression is: "com.github.ldaniels528" %%% "scalajs-angularjs-xxxx" % version 

@@ -102,11 +102,11 @@ object BCrypt {
   type Salt = js.Any
 
   /**
-    * Convenience method for retrieving the bcrypt-nodejs module
+    * Convenience method for retrieving the bcrypt module
     * @param require the implicit [[NodeRequire require function]]
     * @return the BCrypt instance
     */
-  def apply()(implicit require: NodeRequire) = require[BCrypt]("bcrypt-nodejs")
+  def apply()(implicit require: NodeRequire) = require[BCrypt]("bcrypt")
 
   /**
     * BCrypt Extensions

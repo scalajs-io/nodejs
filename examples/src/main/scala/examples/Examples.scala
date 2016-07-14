@@ -3,6 +3,7 @@ package examples
 import examples.nodejs.actors.ActorsExample
 import examples.nodejs.codecs._
 import examples.nodejs.concurrency._
+import examples.nodejs.csv.CsvParseExample
 import examples.nodejs.datastores._
 import examples.nodejs.express._
 import examples.nodejs.general._
@@ -36,6 +37,7 @@ object Examples extends js.JSApp {
     "ClusterExample" -> ((bootstrap: Bootstrap) => new ClusterExample(bootstrap)),
     "ColorsExample" -> ((bootstrap: Bootstrap) => new ColorsExample(bootstrap)),
     "CompressionExample" -> ((bootstrap: Bootstrap) => new CompressionExample(bootstrap)),
+    "CsvParseExample" -> ((bootstrap: Bootstrap) => new CsvParseExample(bootstrap)),
     "DNSExample" -> ((bootstrap: Bootstrap) => new DNSExample(bootstrap)),
     "EscapeHtmlExample" -> ((bootstrap: Bootstrap) => new EscapeHtmlExample(bootstrap)),
     "EventEmitterExample" -> ((bootstrap: Bootstrap) => new EventEmitterExample(bootstrap)),

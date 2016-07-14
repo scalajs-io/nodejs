@@ -4,7 +4,7 @@ import sbt.Keys._
 import sbt.Project.projectToRef
 import sbt._
 
-val apiVersion = "0.2.1"
+val apiVersion = "0.2.1.1"
 val paradisePluginVersion = "3.0.0-M1"
 val _scalaVersion = "2.11.8"
 val scalaJsDomVersion = "0.9.0"
@@ -456,12 +456,12 @@ lazy val node_zlib = (project in file("node/zlib")).
 lazy val bundle_node_oss = (project in file("bundles/node_oss")).
   aggregate(
     node_adal, node_amqplib, node_async, node_azure, node_bcrypt, node_body_parser, node_cassandra,
-    node_colors, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_csv, node_express_fileupload,
+    node_colors, node_cvs_parse, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_csv, node_express_fileupload,
     node_express_ws, node_filed, node_jwt_simple, node_kafka, node_memory_fs, node_mongodb, node_multer, node_mysql,
     node_oppressor, node_pvorb_md5, node_request, node_watch, node_xml2js, node_zookeeper).
   dependsOn(
     node_adal, node_amqplib, node_async, node_azure, node_bcrypt, node_body_parser, node_cassandra,
-    node_colors, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_csv, node_express_fileupload,
+    node_colors, node_cvs_parse, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_csv, node_express_fileupload,
     node_express_ws, node_filed, node_jwt_simple, node_kafka, node_memory_fs, node_mongodb, node_multer, node_mysql,
     node_oppressor, node_pvorb_md5, node_request, node_watch, node_xml2js, node_zookeeper).
   enablePlugins(ScalaJSPlugin).
@@ -541,6 +541,15 @@ lazy val node_colors = (project in file("node_libs/colors")).
   settings(
     name := "scalajs-nodejs-colors",
     description := "NodeJS/colors binding for Scala.js"
+  )
+
+lazy val node_cvs_parse = (project in file("node_libs/csv-parse")).
+  dependsOn(node_stream).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "scalajs-nodejs-csv-parse",
+    description := "NodeJS/csv-parse binding for Scala.js"
   )
 
 lazy val node_drama = (project in file("node_libs/drama")).

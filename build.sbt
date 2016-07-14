@@ -4,7 +4,7 @@ import sbt.Keys._
 import sbt.Project.projectToRef
 import sbt._
 
-val apiVersion = "0.2.1"
+val apiVersion = "0.2.2"
 val paradisePluginVersion = "3.0.0-M1"
 val _scalaVersion = "2.11.8"
 val scalaJsDomVersion = "0.9.0"
@@ -35,8 +35,8 @@ val commonSettings = Seq(
 )
 
 lazy val bundle_complete = (project in file("bundles/complete")).
-  aggregate(core, core_browser, bundle_social, bundle_angular, bundle_mean_minimal, bundle_node, bundle_node_oss).
-  dependsOn(core, core_browser, bundle_social, bundle_angular, bundle_mean_minimal, bundle_node, bundle_node_oss).
+  aggregate(core, bundle_browser, bundle_social, bundle_angular, bundle_mean_minimal, bundle_node, bundle_node_oss).
+  dependsOn(core, bundle_browser, bundle_social, bundle_angular, bundle_mean_minimal, bundle_node, bundle_node_oss).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(publishingSettings: _*).
@@ -81,14 +81,49 @@ lazy val core = (project in file("core/util")).
     description := "Scala.js common/utilities"
   )
 
-lazy val core_browser = (project in file("core/browser")).
+/////////////////////////////////////////////////////////////////////////////////
+//      Browser sub-projects
+/////////////////////////////////////////////////////////////////////////////////
+
+lazy val bundle_browser = (project in file("bundles/browser")).
+  aggregate(core, browser_common, browser_phaser, browser_pixijs).
+  dependsOn(core, browser_common, browser_phaser, browser_pixijs).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(publishingSettings: _*).
+  settings(
+    name := "scalajs-browser-bundle",
+    description := "Complete browser platform bundle"
+  )
+
+lazy val browser_common = (project in file("browser/common")).
   aggregate(core).
   dependsOn(core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
-    name := "scalajs-common-browser",
-    description := "Scala.js browser objects"
+    name := "scalajs-browser-common",
+    description := "Scala.js browser objects and functions"
+  )
+
+lazy val browser_phaser = (project in file("browser/phaser")).
+  aggregate(browser_pixijs).
+  dependsOn(browser_pixijs).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "scalajs-browser-phaser",
+    description := "NodeJS/Phaser binding for Scala.js"
+  )
+
+lazy val browser_pixijs = (project in file("browser/pixijs")).
+  aggregate(browser_common).
+  dependsOn(browser_common).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "scalajs-browser-pixijs",
+    description := "NodeJS/Pixi.js binding for Scala.js"
   )
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -110,7 +145,7 @@ lazy val bundle_angular = (project in file("bundles/angularjs")).
   )
 
 lazy val angular_core = (project in file("angularjs/core")).
-  dependsOn(core_browser).
+  dependsOn(browser_common).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(

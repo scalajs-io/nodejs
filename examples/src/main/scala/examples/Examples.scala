@@ -14,7 +14,7 @@ import examples.nodejs.terminal._
 import examples.nodejs.vm._
 import org.scalajs.dom.console
 import org.scalajs.nodejs.Bootstrap
-import org.scalajs.nodejs.global.process
+import org.scalajs.nodejs.globals.process
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSExportAll

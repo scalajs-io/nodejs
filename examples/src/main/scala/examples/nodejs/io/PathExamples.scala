@@ -2,8 +2,8 @@ package examples.nodejs.io
 
 import org.scalajs.nodejs.{Bootstrap, console}
 import org.scalajs.nodejs.core.Assert
-import org.scalajs.nodejs.global.Process._
-import org.scalajs.nodejs.global._
+import org.scalajs.nodejs.globals.Process._
+import org.scalajs.nodejs.globals._
 import org.scalajs.nodejs.path.{Path, PathObject}
 
 /**

@@ -3,7 +3,7 @@ package examples.nodejs.codecs
 import org.scalajs.nodejs.Bootstrap
 import org.scalajs.nodejs.crypto.Crypto
 import org.scalajs.nodejs.fs.Fs
-import org.scalajs.nodejs.global.process
+import org.scalajs.nodejs.globals.process
 
 /**
   * Streaming Hash Example

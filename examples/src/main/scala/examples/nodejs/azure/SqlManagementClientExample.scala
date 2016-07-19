@@ -1,7 +1,7 @@
 package examples.nodejs.azure
 
 import org.scalajs.nodejs.azure.asm.sql._
-import org.scalajs.nodejs.global.process
+import org.scalajs.nodejs.globals.process
 import org.scalajs.nodejs.console
 import org.scalajs.nodejs.util.ScalaJsHelper._
 import org.scalajs.nodejs.Bootstrap

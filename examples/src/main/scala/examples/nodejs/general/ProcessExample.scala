@@ -2,8 +2,8 @@ package examples.nodejs.general
 
 import org.scalajs.dom.console
 import org.scalajs.nodejs.Bootstrap
-import org.scalajs.nodejs.global.Process.ProcessEnvExtensions
-import org.scalajs.nodejs.global.process
+import org.scalajs.nodejs.globals.Process.ProcessEnvExtensions
+import org.scalajs.nodejs.globals.process
 
 /**
   * Process Example

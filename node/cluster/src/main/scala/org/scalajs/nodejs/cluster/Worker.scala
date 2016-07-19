@@ -1,7 +1,7 @@
 package org.scalajs.nodejs.cluster
 
 import org.scalajs.nodejs.events.EventEmitter
-import org.scalajs.nodejs.global.Process
+import org.scalajs.nodejs.globals.Process
 
 import scala.scalajs.js
 

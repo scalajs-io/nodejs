@@ -5,7 +5,7 @@ import org.scalajs.nodejs.adal.{AdalNode, AuthenticationResponse}
 import org.scalajs.nodejs.azure.arm.keyvault.AzureArmKeyVault
 import org.scalajs.nodejs.azure.common.{AzureCommon, KeyVaultParameters, TokenCloudCredentialOptions}
 import org.scalajs.nodejs.errors.Error
-import org.scalajs.nodejs.global.process
+import org.scalajs.nodejs.globals.process
 import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.scalajs.js

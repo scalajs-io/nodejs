@@ -1,9 +1,9 @@
 package org.scalajs.nodejs.express
 
 import org.scalajs.nodejs.http.ClientRequest
-import org.scalajs.nodejs.http.ClientRequest
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * Express Http Request

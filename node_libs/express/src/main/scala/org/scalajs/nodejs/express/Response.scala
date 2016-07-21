@@ -1,7 +1,6 @@
 package org.scalajs.nodejs.express
 
 import org.scalajs.nodejs.http.ServerResponse
-import org.scalajs.nodejs.http.ServerResponse
 
 import scala.scalajs.js
 
@@ -297,7 +296,10 @@ object Response {
     def internalServerError(message: String) = response.status(500).send(message)
 
     @inline
-    def internalServerError(cause: Throwable) = response.status(500).send(cause.getMessage)
+    def internalServerError(cause: Throwable) = {
+      cause.printStackTrace()
+      response.status(500).send(cause.getMessage)
+    }
 
     @inline
     def notFound() = response.sendStatus(404)

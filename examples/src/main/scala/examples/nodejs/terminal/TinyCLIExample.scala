@@ -1,7 +1,7 @@
 package examples.nodejs.terminal
 
 import org.scalajs.nodejs._
-import org.scalajs.nodejs.global.process
+import org.scalajs.nodejs.globals.process
 import org.scalajs.nodejs.readline.ReadlineOptions
 import org.scalajs.dom.console
 import org.scalajs.nodejs.Bootstrap

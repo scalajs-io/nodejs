@@ -1,5 +1,5 @@
 package org.scalajs.nodejs
-package global
+package globals
 
 import org.scalajs.nodejs.buffer.BufferClass
 import org.scalajs.nodejs.timer.{SetInterval, SetTimeout, UnRef, _}

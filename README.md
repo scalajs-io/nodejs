@@ -228,14 +228,15 @@ The following Third Party/OSS NodeJS modules have been implemented thus far:
 |-----------------------|---------|---------------------------|---------------------------------------------------------|-----------------|
 | adal-node             | 0.1.19  | scalajs-nodejs-adal-node  | Windows Azure Active Directory Client Library for node. | Tesing required |
 | amqplib               | 0.4.1   | scalajs-nodejs-amqplib    | An AMQP 0-9-1 (e.g., RabbitMQ) library and client. | Tesing required |
-| async                 | 1.5.2   | scalajs-nodejs-async      | Higher-order functions and common patterns for asynchronous code. | Tesing required |
+| async                 | 1.5.2   | scalajs-nodejs-async      | Higher-order functions and common patterns for asynchronous code. | Stable |
 | azure                 | 0.10.6  | scalajs-nodejs-azure      | Microsoft Azure Client Library for node. | WIP - Unusable |
-| bcrypt                | 0.0.3   | scalajs-nodejs-bcrypt     | A native JS bcrypt library for NodeJS.                  | Stable |
-| body-parser           | 1.15.1  | scalajs-nodejs-body-parser| Body parsing middleware.                                | Stable |
-| cassandra-driver      | 3.0.2   | scalajs-nodejs-datastax-cassandra| DataStax Node.js Driver for Apache Cassandra     | Tesing required |
-| colors                | 1.1.2   | scalajs-nodejs-colors     | Get colors in your node.js console.                     | Stable |
-| drama                 | 0.1.3   | scalajs-nodejs-drama      | drama is an Actor model implementation for JavaScript and Node.js | Tesing required |
-| escape-html           | 1.0.3   | scalajs-nodejs-escape-html| Escape string for use in HTML.                          | Stable |
+| bcrypt                | 0.0.3   | scalajs-nodejs-bcrypt     | A native JS bcrypt library for NodeJS. | Stable |
+| body-parser           | 1.15.1  | scalajs-nodejs-body-parser| Body parsing middleware. | Stable |
+| cassandra-driver      | 3.0.2   | scalajs-nodejs-datastax-cassandra| DataStax Node.js Driver for Apache Cassandra | Tesing required |
+| colors                | 1.1.2   | scalajs-nodejs-colors     | Get colors in your node.js console.| Stable |
+| csv-parse             | 1.1.2   | scalajs-nodejs-csv-parse  | CSV parsing implementing the Node.js 'stream.Transform' API.| Stable |
+| drama                 | 0.1.3   | scalajs-nodejs-drama      | drama is an Actor model implementation for JavaScript and Node.js | Stable |
+| escape-html           | 1.0.3   | scalajs-nodejs-escape-html| Escape string for use in HTML | Stable |
 | express               | 4.13.4  | scalajs-nodejs-express    | Fast, unopinionated, minimalist web framework for Node.js | Stable |
 | express-csv           | 0.6.0   | scalajs-nodejs-express-csv| express-csv provides response csv easily to express. | Stable |
 | express-fileupload    | 0.0.5   | scalajs-nodejs-express-fileupload | Simple express file upload middleware that wraps around connect-busboy | Stable |

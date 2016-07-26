@@ -1,6 +1,6 @@
 package examples.nodejs.io
 
-import org.scalajs.nodejs.global.process
+import org.scalajs.nodejs.globals.process
 import org.scalajs.nodejs.readline.ReadlineOptions
 import org.scalajs.nodejs.console
 import org.scalajs.nodejs.Bootstrap

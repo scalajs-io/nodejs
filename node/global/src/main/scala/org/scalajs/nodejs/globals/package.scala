@@ -7,7 +7,7 @@ import scala.scalajs.js.annotation.JSName
   * global package object
   * @author lawrence.daniels@gmail.com
   */
-package object global {
+package object globals {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties

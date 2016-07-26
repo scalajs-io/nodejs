@@ -70,7 +70,7 @@ object Request {
 
     def getFuture(url: String) = {
       val promise = Promise[(IncomingMessage, String)]()
-      request.get(url, (error: String, response: IncomingMessage, body: String) => {
+      request.get(url, (error: errors.Error, response: IncomingMessage, body: String) => {
         if (!isDefined(error)) promise.success((response, body)) else promise.failure(wrapJavaScriptException(error))
       })
       promise.future

@@ -1,7 +1,6 @@
 package org.scalajs.nodejs.mongodb
 
 import org.scalajs.nodejs.util.ScalaJsHelper._
-import org.scalajs.nodejs.util.ScalaJsHelper
 
 import scala.scalajs.js
 
@@ -34,7 +33,7 @@ object ServerClass {
   implicit class ServerClassExtensions(val `class`: ServerClass) extends AnyVal {
 
     @inline
-    def apply(host: String, port: Int) = `class`.New[Server](host, port)
+    def apply(host: String, port: Int, options: ServerOptions = null) = `class`.New[Server](host, port, options)
 
   }
 

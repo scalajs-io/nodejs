@@ -3,6 +3,7 @@ package examples
 import examples.nodejs.actors._
 import examples.nodejs.codecs._
 import examples.nodejs.concurrency._
+import examples.nodejs.csv.CsvParseExample
 import examples.nodejs.datastores._
 import examples.nodejs.express._
 import examples.nodejs.general._
@@ -13,7 +14,7 @@ import examples.nodejs.terminal._
 import examples.nodejs.vm._
 import org.scalajs.dom.console
 import org.scalajs.nodejs.Bootstrap
-import org.scalajs.nodejs.global.process
+import org.scalajs.nodejs.globals.process
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSExportAll
@@ -36,6 +37,7 @@ object Examples extends js.JSApp {
     "ClusterExample" -> ((bootstrap: Bootstrap) => new ClusterExample(bootstrap)),
     "ColorsExample" -> ((bootstrap: Bootstrap) => new ColorsExample(bootstrap)),
     "CompressionExample" -> ((bootstrap: Bootstrap) => new CompressionExample(bootstrap)),
+    "CsvParseExample" -> ((bootstrap: Bootstrap) => new CsvParseExample(bootstrap)),
     "DNSExample" -> ((bootstrap: Bootstrap) => new DNSExample(bootstrap)),
     "EscapeHtmlExample" -> ((bootstrap: Bootstrap) => new EscapeHtmlExample(bootstrap)),
     "EventEmitterExample" -> ((bootstrap: Bootstrap) => new EventEmitterExample(bootstrap)),

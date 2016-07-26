@@ -1,4 +1,4 @@
-package org.scalajs.nodejs.global
+package org.scalajs.nodejs.globals
 
 import org.scalajs.nodejs.events.EventEmitter
 import org.scalajs.nodejs.tty.WriteStream

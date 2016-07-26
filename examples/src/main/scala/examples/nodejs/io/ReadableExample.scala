@@ -1,7 +1,7 @@
 package examples.nodejs.io
 
 import org.scalajs.nodejs._
-import org.scalajs.nodejs.global.process
+import org.scalajs.nodejs.globals.process
 import org.scalajs.nodejs.Bootstrap
 import org.scalajs.nodejs.stream.Stream
 

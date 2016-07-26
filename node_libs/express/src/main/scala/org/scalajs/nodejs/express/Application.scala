@@ -4,11 +4,9 @@ import org.scalajs.nodejs.errors
 import org.scalajs.nodejs.events.EventEmitter
 import org.scalajs.nodejs.http.Server
 import org.scalajs.nodejs.util.ScalaJsHelper._
-import org.scalajs.nodejs.events.EventEmitter
-import org.scalajs.nodejs.http.Server
-import org.scalajs.nodejs.util.ScalaJsHelper
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * The app object conventionally denotes the Express application. Create it by calling the
@@ -92,31 +90,31 @@ trait Application extends Router with EventEmitter {
     * This method is identical to Node’s http.Server.listen().
     * @example app.listen(port, [hostname], [backlog], [callback])
     */
-  def listen(port: Int, hostname: String, backlog: Int, callback: js.Function): Unit = js.native
+  def listen(port: Int | String, hostname: String, backlog: Int, callback: js.Function): Unit = js.native
 
   /**
     * Binds and listens for connections on the specified host and port.
     * This method is identical to Node’s http.Server.listen().
     */
-  def listen(port: Int, hostname: String, backlog: Int): Unit = js.native
+  def listen(port: Int | String, hostname: String, backlog: Int): Unit = js.native
 
   /**
     * Binds and listens for connections on the specified host and port.
     * This method is identical to Node’s http.Server.listen().
     */
-  def listen(port: Int, hostname: String, callback: js.Function): Unit = js.native
+  def listen(port: Int | String, hostname: String, callback: js.Function): Unit = js.native
 
   /**
     * Binds and listens for connections on the specified host and port.
     * This method is identical to Node’s http.Server.listen().
     */
-  def listen(port: Int, hostname: String): Unit = js.native
+  def listen(port: Int | String, hostname: String): Unit = js.native
 
   /**
     * Binds and listens for connections on the specified host and port.
     * This method is identical to Node’s http.Server.listen().
     */
-  def listen(port: Int, callback: js.Function): Server = js.native
+  def listen(port: Int | String, callback: js.Function): Server = js.native
 
   /**
     * Binds and listens for connections on the specified host and port.
@@ -201,17 +199,17 @@ object Application {
     /**
       * Binds and listens for connections on the specified host and port.
       */
-    def listenFuture(port: Int) = futureCallbackE1[errors.Error, Server](app.listen(port, _))
+    def listenFuture(port: Int | String) = futureCallbackE1[errors.Error, Server](app.listen(port, _))
 
     /**
       * Binds and listens for connections on the specified host and port.
       */
-    def listenFuture(port: Int, hostname: String) = futureCallbackE1[errors.Error, Server](app.listen(port, hostname, _))
+    def listenFuture(port: Int | String, hostname: String) = futureCallbackE1[errors.Error, Server](app.listen(port, hostname, _))
 
     /**
       * Binds and listens for connections on the specified host and port.
       */
-    def listenFuture(port: Int, hostname: String, backlog: Int) = futureCallbackE1[errors.Error, Server](app.listen(port, hostname, backlog, _))
+    def listenFuture(port: Int | String, hostname: String, backlog: Int) = futureCallbackE1[errors.Error, Server](app.listen(port, hostname, backlog, _))
 
   }
 

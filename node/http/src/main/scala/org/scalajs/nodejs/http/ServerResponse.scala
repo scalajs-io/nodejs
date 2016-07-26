@@ -2,7 +2,6 @@ package org.scalajs.nodejs.http
 
 import org.scalajs.nodejs.events.EventEmitter
 import org.scalajs.nodejs.stream.Writable
-import org.scalajs.nodejs.events.EventEmitter
 
 import scala.scalajs.js
 
@@ -145,6 +144,17 @@ object ServerResponse {
     * @author lawrence.daniels@gmail.com
     */
   implicit class ServerResponseExtensions(val response: ServerResponse) extends AnyVal {
+
+    /**
+      * Sets the content-type for the response
+      * @param contentType the given MIME type
+      */
+    @inline
+    def setContentType(contentType: String) = response.setHeader("Content-Type", contentType)
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //      Response Shortcuts
+    /////////////////////////////////////////////////////////////////////////////////
 
     @inline
     def badRequest() = response.sendStatus(400)

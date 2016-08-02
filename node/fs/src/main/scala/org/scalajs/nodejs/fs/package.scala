@@ -8,4 +8,6 @@ package object fs {
 
   type FileMode = Integer
 
+  type FileType = Int
+
 }

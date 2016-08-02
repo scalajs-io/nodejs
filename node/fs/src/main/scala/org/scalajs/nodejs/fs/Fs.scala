@@ -27,7 +27,9 @@ import scala.scalajs.js.|
 trait Fs extends NodeModule with EventEmitter {
 
   /////////////////////////////////////////////////////////////////////////////////
-  //      Properties
+  //      File Access Constants
+  //
+  //      The following constants are meant for use with fs.access().
   /////////////////////////////////////////////////////////////////////////////////
 
   /**
@@ -50,6 +52,138 @@ trait Fs extends NodeModule with EventEmitter {
     * File can be executed by the calling process. This has no effect on Windows (will behave like fs.[[F_OK]]).
     */
   val X_OK: FileMode = js.native
+
+  /////////////////////////////////////////////////////////////////////////////////
+  //      File Open Constants
+  //
+  //      The following constants are meant for use with fs.open().
+  /////////////////////////////////////////////////////////////////////////////////
+
+  /**
+    * Flag indicating to open a file for read-only access.
+    */
+  val O_RDONLY: Int = js.native
+
+  /**
+    * Flag indicating to open a file for write-only access.
+    */
+  val O_WRONLY: Int = js.native
+
+  /**
+    * Flag indicating to open a file for read-write access.
+    */
+  val O_RDWR: Int = js.native
+
+  /**
+    * Flag indicating to create the file if it does not already exist.
+    */
+  val O_CREAT: Int = js.native
+
+  /**
+    * Flag indicating that opening a file should fail if the O_CREAT flag is set and the file already exists.
+    */
+  val O_EXCL: Int = js.native
+
+  /**
+    * Flag indicating that if path identifies a terminal device, opening the path shall not cause that terminal to
+    * become the controlling terminal for the process (if the process does not already have one).
+    */
+  val O_NOCTTY: Int = js.native
+
+  /**
+    * Flag indicating that if the file exists and is a regular file, and the file is opened successfully for write
+    * access, its length shall be truncated to zero.
+    */
+  val O_TRUNC: Int = js.native
+
+  /**
+    * Flag indicating that data will be appended to the end of the file.
+    */
+  val O_APPEND: Int = js.native
+
+  /**
+    * Flag indicating that the open should fail if the path is not a directory.
+    */
+  val O_DIRECTORY: Int = js.native
+
+  /**
+    * Flag indicating reading accesses to the file system will no longer result in an update to the atime information
+    * associated with the file. This flag is available on Linux operating systems only.
+    */
+  val O_NOATIME: Int = js.native
+
+  /**
+    * Flag indicating that the open should fail if the path is a symbolic link.
+    */
+  val O_NOFOLLOW: Int = js.native
+
+  /**
+    * Flag indicating that the file is opened for synchronous I/O.
+    */
+  val O_SYNC: Int = js.native
+
+  /**
+    * Flag indicating to open the symbolic link itself rather than the resource it is pointing to.
+    */
+  val O_SYMLINK: Int = js.native
+
+  /**
+    * When set, an attempt will be made to minimize caching effects of file I/O.
+    */
+  val O_DIRECT: Int = js.native
+
+  /**
+    * Flag indicating to open the file in nonblocking mode when possible.
+    */
+  val O_NONBLOCK: Int = js.native
+
+  /////////////////////////////////////////////////////////////////////////////////
+  //      File Type Constants
+  //
+  //      The following constants are meant for use with the fs.Stats object's mode
+  //      property for determining a file's type.
+  /////////////////////////////////////////////////////////////////////////////////
+
+  /**
+    * Bit mask used to extract the file type code.
+    */
+  val S_IFMT: FileType = js.native
+
+  /**
+    * File type constant for a regular file.
+    */
+  val S_IFREG: FileType = js.native
+
+  /**
+    * File type constant for a directory.
+    */
+  val S_IFDIR: FileType = js.native
+
+  /**
+    * File type constant for a character-oriented device file.
+    */
+  val S_IFCHR: FileType = js.native
+
+  /**
+    * File type constant for a block-oriented device file.
+    */
+  val S_IFBLK: FileType = js.native
+
+  /**
+    * File type constant for a FIFO/pipe.
+    */
+  val S_IFIFO: FileType = js.native
+
+  /**
+    * File type constant for a symbolic link.
+    */
+  val S_IFLNK: FileType = js.native
+
+  /**
+    * File type constant for a socket.
+    */
+  val S_IFSOCK: FileType = js.native
+
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Classes
@@ -117,7 +251,7 @@ trait Fs extends NodeModule with EventEmitter {
     * @param mode the optional mode
     * @example fs.accessSync(path[, mode])
     */
-  def accessSync(path: String | Buffer, mode: FileMode = null): js.Any = js.native
+  def accessSync(path: String | Buffer, mode: FileMode = null): Unit = js.native
 
   /**
     * Asynchronously append data to a file, creating the file if it does not yet exist. data can be a string or a buffer.
@@ -148,7 +282,7 @@ trait Fs extends NodeModule with EventEmitter {
     * Synchronous close(2). Returns undefined.
     * @example fs.closeSync(fd)
     */
-  def closeSync(fd: FileDescriptor): js.Any = js.native
+  def closeSync(fd: FileDescriptor): Unit = js.native
 
   /**
     * Returns a new ReadStream object. (See Readable Stream).vBe aware that, unlike the default value
@@ -330,7 +464,7 @@ trait Fs extends NodeModule with EventEmitter {
   /**
     * @example fs.realpathSync(path[, options])
     */
-  def realpathSync(path: String, options: FileEncodingOptions | NodeOptions = null): js.Any = js.native
+  def realpathSync(path: String, options: FileEncodingOptions | NodeOptions = null): Unit = js.native
 
   /**
     * Asynchronous rename(2). No arguments other than a possible exception are given to the completion callback.
@@ -342,7 +476,7 @@ trait Fs extends NodeModule with EventEmitter {
     * Synchronous rename(2). Returns undefined.
     * @example fs.renameSync(oldPath, newPath)
     */
-  def renameSync(oldPath: String, newPath: String): js.Any = js.native
+  def renameSync(oldPath: String, newPath: String): Unit = js.native
 
   /**
     * Asynchronous rmdir(2). No arguments other than a possible exception are given to the completion callback.
@@ -376,7 +510,7 @@ trait Fs extends NodeModule with EventEmitter {
     * When using 'junction', the target argument will automatically be normalized to absolute path.
     * @example fs.symlink(target, path[, type], callback)
     */
-  def symlink(target: String | Buffer, path: String | Buffer, `type`: String, callback: js.Function1[FileIOError, Any]): js.Any = js.native
+  def symlink(target: String | Buffer, path: String | Buffer, `type`: String, callback: js.Function1[FileIOError, Any]): Unit = js.native
 
   /**
     * Asynchronous symlink(2). No arguments other than a possible exception are given to the completion callback.
@@ -385,13 +519,54 @@ trait Fs extends NodeModule with EventEmitter {
     * When using 'junction', the target argument will automatically be normalized to absolute path.
     * @example fs.symlink(target, path[, type], callback)
     */
-  def symlink(target: String | Buffer, path: String | Buffer, callback: js.Function1[FileIOError, Any]): js.Any = js.native
+  def symlink(target: String | Buffer, path: String | Buffer, callback: js.Function1[FileIOError, Any]): Unit = js.native
 
   /**
     * Synchronous symlink(2). Returns undefined.
     * @example fs.symlinkSync(target, path[, type])
     */
   def symlinkSync(target: String | Buffer, path: String | Buffer, `type`: String = null): Unit = js.native
+
+  /**
+    * Asynchronous unlink(2). No arguments other than a possible exception are given to the completion callback.
+    * @example fs.unlink(path, callback)
+    */
+  def unlink(path: String | Buffer, callback: js.Function): Unit = js.native
+
+  /**
+    * Synchronous unlink(2). Returns undefined.
+    * @example fs.unlinkSync(path)
+    */
+  def unlinkSync(path: String | Buffer): Unit = js.native
+
+  /**
+    * Stop watching for changes on filename. If listener is specified, only that particular listener is removed.
+    * Otherwise, all listeners are removed and you have effectively stopped watching filename.
+    *
+    * Calling fs.unwatchFile() with a filename that is not being watched is a no-op, not an error.
+    *
+    * Note: fs.watch() is more efficient than fs.watchFile() and fs.unwatchFile(). fs.watch() should be used instead of
+    * fs.watchFile() and fs.unwatchFile() when possible.
+    * @example fs.unwatchFile(filename[, listener])
+    */
+  def unwatchFile(filename: String | Buffer, listener: js.Function = null): Unit = js.native
+
+  /**
+    * Change file timestamps of the file referenced by the supplied path.
+    *
+    * Note: the arguments atime and mtime of the following related functions does follow the below rules:
+    *
+    * If the value is a numberable string like '123456789', the value would get converted to corresponding number.
+    * If the value is NaN or Infinity, the value would get converted to Date.now().
+    * @example fs.utimes(path, atime, mtime, callback)
+    */
+  def utimes(path: String | Buffer, atime: Int, mtime: Int, callback: js.Function): Unit = js.native
+
+  /**
+    * Synchronous version of fs.utimes(). Returns undefined.
+    * @example fs.utimesSync(path, atime, mtime)
+    */
+  def utimesSync(path: String | Buffer, atime: Int, mtime: Int): Unit = js.native
 
   /**
     * Watch for changes on filename, where filename is either a file or a directory. The returned object is a fs.[[FSWatcher]].
@@ -447,7 +622,7 @@ trait Fs extends NodeModule with EventEmitter {
     * The synchronous version of fs.writeFile(). Returns undefined.
     * @example fs.writeFileSync(file, data[, options])
     */
-  def writeFileSync(file: String, data: String | Buffer, options: FileOutputOptions | NodeOptions = null): js.Any = js.native
+  def writeFileSync(file: String, data: String | Buffer, options: FileOutputOptions | NodeOptions = null): Unit = js.native
 
 }
 
@@ -507,32 +682,28 @@ object Fs {
     def realpathFuture(path: String, options: FileEncodingOptions = null) = futureCallbackE0[FileIOError](fs.realpath(path, options, _))
 
     @inline
-    def rmdirFuture(path: Buffer) = futureCallbackE0[FileIOError](fs.rmdir(path, _))
-
-    @inline
-    def rmdirFuture(path: String) = futureCallbackE0[FileIOError](fs.rmdir(path, _))
+    def rmdirFuture(path: Buffer | String) = futureCallbackE0[FileIOError](fs.rmdir(path, _))
 
     @inline
     def statFuture(path: String) = futureCallbackE1[FileIOError, Stats](fs.stat(path, _))
 
-    /**
-      * Asynchronous symlink(2). No arguments other than a possible exception are given to the completion callback.
-      * The type argument can be set to 'dir', 'file', or 'junction' (default is 'file') and is only available on Windows
-      * (ignored on other platforms). Note that Windows junction points require the destination path to be absolute.
-      * When using 'junction', the target argument will automatically be normalized to absolute path.
-      */
     @inline
-    def symlinkFuture(target: String | Buffer, path: String | Buffer, `type`: String = null) = {
-      futureCallbackE0[FileIOError](fs.symlink(target, path, `type`, _))
-    }
+    def symlinkFuture(target: String | Buffer, path: String | Buffer, `type`: String = null) = futureCallbackE0[FileIOError](fs.symlink(target, path, `type`, _))
+
+    @inline
+    def unlinkFuture(path: String | Buffer) = futureCallbackE0[FileIOError](fs.unlink(path, _))
+
+    @inline
+    def unwatchFile(filename: String | Buffer) = futureCallbackE0[FileIOError](fs.unwatchFile(filename, _))
+
+    @inline
+    def utimes(path: String | Buffer, atime: Int, mtime: Int) = futureCallbackE0[FileIOError](fs.utimes(path, atime, mtime, _))
 
     @inline
     def watchFuture(filename: String, options: FSWatcherOptions = null) = futureCallbackA2[String, String](fs.watch(filename, options, _))
 
     @inline
-    def writeFileFuture(file: String, data: Buffer, options: FileOutputOptions = null) = {
-      futureCallbackE0[FileIOError](fs.writeFile(file, data, options, _))
-    }
+    def writeFileFuture(file: String, data: String | Buffer, options: FileOutputOptions = null) = futureCallbackE0[FileIOError](fs.writeFile(file, data, options, _))
 
   }
 

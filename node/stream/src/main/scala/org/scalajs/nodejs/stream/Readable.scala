@@ -1,6 +1,6 @@
 package org.scalajs.nodejs.stream
 
-import org.scalajs.nodejs.events.EventEmitter
+import org.scalajs.nodejs.errors
 import org.scalajs.nodejs.events.EventEmitter
 
 import scala.scalajs.js
@@ -76,7 +76,7 @@ trait Readable extends EventEmitter {
     * until the internal buffer is drained.
     * @example readable.read([size])
     */
-  def read(): js.Any = js.native
+  def read(): js.Array[String] = js.native
 
   /**
     * This method will cause the readable stream to resume emitting 'data' events.
@@ -155,6 +155,9 @@ object Readable {
     */
   implicit class ReadableEvents(val readable: Readable) extends AnyVal {
 
+    @inline
+    def readOption() = Option(readable.read())
+
     /////////////////////////////////////////////////////////////////////////////////
     //      Events
     /////////////////////////////////////////////////////////////////////////////////
@@ -164,14 +167,14 @@ object Readable {
       * The event indicates that no more events will be emitted, and no further computation will occur.
       */
     @inline
-    def onClose(callback: js.Function) = readable.on("close", callback)
+    def onClose(listener: js.Function) = readable.on("close", listener)
 
     /**
       * Attaching a 'data' event listener to a stream that has not been explicitly paused will switch the stream into
       * flowing mode. Data will then be passed as soon as it is available.
       */
     @inline
-    def onData(callback: js.Function) = readable.on("data", callback)
+    def onData(listener: js.Function) = readable.on("data", listener)
 
     /**
       * This event fires when there will be no more data to read. Note that the 'end' event will not fire unless the
@@ -179,13 +182,13 @@ object Readable {
       * repeatedly until you get to the end.
       */
     @inline
-    def onEnd(callback: () => Any) = readable.on("end", callback)
+    def onEnd(listener: () => Any) = readable.on("end", listener)
 
     /**
       * Emitted if there was an error when writing or piping data.
       */
     @inline
-    def onError(callback: js.Function) = readable.on("error", callback)
+    def onError(listener: errors.Error => Any) = readable.on("error", listener)
 
     /**
       * When a chunk of data can be read from the stream, it will emit a 'readable' event. In some cases, listening
@@ -193,7 +196,7 @@ object Readable {
       * if it hadn't already.
       */
     @inline
-    def onReadable(callback: js.Function) = readable.on("readable", callback)
+    def onReadable(listener: js.Function) = readable.on("readable", listener)
 
   }
 

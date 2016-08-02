@@ -1,12 +1,10 @@
 package org.scalajs.nodejs.http
 
-import org.scalajs.nodejs.{NodeModule, NodeRequire}
 import org.scalajs.nodejs.events.EventEmitter
 import org.scalajs.nodejs.util.ScalaJsHelper._
 import org.scalajs.nodejs.{NodeModule, NodeRequire}
-import org.scalajs.nodejs.events.EventEmitter
-import org.scalajs.nodejs.util.ScalaJsHelper
 
+import scala.concurrent.Promise
 import scala.scalajs.js
 
 /**
@@ -145,31 +143,38 @@ object Http {
   implicit class HttpExtensions(val http: Http) extends AnyVal {
 
     /**
-      * Since most requests are GET requests without bodies, Node.js provides this convenience method. The only difference
-      * between this method and http.request() is that it sets the method to GET and calls req.end() automatically.
-      * @example http.get(options, (res) => { ... })
+      * @see [[Http.createServer()]]
+      */
+    @inline
+    def createServerFuture = {
+      val task = Promise[(Server, ClientRequest, ServerResponse)]()
+      var server: Server = null
+      server = http.createServer((request: ClientRequest, response: ServerResponse) => {
+        task.success((server, request, response))
+      })
+      task
+    }
+
+    /**
+      * @see [[Http.get()]]
       */
     @inline
     def getFuture(options: RequestOptions) = futureCallbackA1[ServerResponse](http.get(options, _))
 
     /**
-      * Since most requests are GET requests without bodies, Node.js provides this convenience method. The only difference
-      * between this method and http.request() is that it sets the method to GET and calls req.end() automatically.
-      * @example http.get(options, (res) => { ... })
+      * @see [[Http.get()]]
       */
     @inline
     def getFuture(url: String) = futureCallbackA1[ServerResponse](http.get(url, _))
 
     /**
-      * Node.js maintains several connections per server to make HTTP requests.
-      * This function allows one to transparently issue requests.
+      * @see [[Http.request()]]
       */
     @inline
     def requestFuture(options: RequestOptions) = futureCallbackE1[js.Error, ServerResponse](http.request(options, _))
 
     /**
-      * Node.js maintains several connections per server to make HTTP requests.
-      * This function allows one to transparently issue requests.
+      * @see [[Http.request()]]
       */
     @inline
     def requestFuture(url: String) = futureCallbackE1[js.Error, ServerResponse](http.request(url, _))

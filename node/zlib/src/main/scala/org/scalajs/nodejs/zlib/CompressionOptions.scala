@@ -1,7 +1,5 @@
 package org.scalajs.nodejs.zlib
 
-import org.scalajs.nodejs.zlib.Zlib._
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.ScalaJSDefined
 
@@ -14,7 +12,7 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @param level       (compression only)
   * @param memLevel    (compression only)
   * @param strategy    (compression only)
-  * @param windowBits
+  * @param windowBits  ???
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined

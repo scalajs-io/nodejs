@@ -1,6 +1,6 @@
 package examples
 
-import examples.nodejs.actors._
+import examples.nodejs.actors.ActorsExample
 import examples.nodejs.codecs._
 import examples.nodejs.concurrency._
 import examples.nodejs.csv.CsvParseExample
@@ -10,6 +10,7 @@ import examples.nodejs.general._
 import examples.nodejs.http._
 import examples.nodejs.io._
 import examples.nodejs.net._
+import examples.nodejs.rxjs.ObservableExamples
 import examples.nodejs.terminal._
 import examples.nodejs.vm._
 import org.scalajs.dom.console
@@ -62,6 +63,7 @@ object Examples extends js.JSApp {
     "MongoStreamExample" -> ((bootstrap: Bootstrap) => new MongoStreamExample(bootstrap)),
     "MySQLExample" -> ((bootstrap: Bootstrap) => new MySQLExample(bootstrap)),
     "NetClientServerExample" -> ((bootstrap: Bootstrap) => new NetClientServerExample(bootstrap)),
+    "ObservableExamples" -> ((bootstrap: Bootstrap) => new ObservableExamples(bootstrap)),
     "PathExamples" -> ((bootstrap: Bootstrap) => new PathExamples(bootstrap)),
     "ProcessExample" -> ((bootstrap: Bootstrap) => new ProcessExample(bootstrap)),
     "REPLExample" -> ((bootstrap: Bootstrap) => new REPLExample(bootstrap)),

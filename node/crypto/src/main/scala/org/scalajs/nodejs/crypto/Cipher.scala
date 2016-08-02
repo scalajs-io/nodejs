@@ -1,6 +1,5 @@
 package org.scalajs.nodejs.crypto
 
-import org.scalajs.nodejs.stream
 import org.scalajs.nodejs.buffer.Buffer
 import org.scalajs.nodejs.stream.Duplex
 

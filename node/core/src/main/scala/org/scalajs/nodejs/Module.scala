@@ -1,6 +1,7 @@
 package org.scalajs.nodejs
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSName
 
 /**
   * In each module, the module free variable is a reference to the object representing the current module.
@@ -58,5 +59,17 @@ trait Module extends js.Object {
     * explicitly exported in order to be used.
     */
   def require[T](id: String): T = js.native
+
+}
+
+/**
+  * Module Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object Module {
+
+  @js.native
+  @JSName("module")
+  implicit object module extends Module
 
 }

@@ -1,6 +1,7 @@
 package org.scalajs.nodejs
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSName
 
 /**
   * Node.js require function
@@ -21,5 +22,17 @@ trait NodeRequire extends js.Any {
   /////////////////////////////////////////////////////////////////////////////////
 
   def apply[T](name: String): T = js.native
+
+}
+
+/**
+  * NodeRequire Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object NodeRequire {
+
+  @js.native
+  @JSName("require")
+  implicit object require extends NodeRequire
 
 }

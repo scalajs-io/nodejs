@@ -9,6 +9,9 @@ val paradisePluginVersion = "3.0.0-M1"
 val _scalaVersion = "2.11.8"
 val scalaJsDomVersion = "0.9.0"
 val scalaJsJQueryVersion = "0.9.0"
+val scalaJsSelenium = "0.1.3"
+
+scalaJSUseRhino in Global := false
 
 val commonSettings = Seq(
   organization := "com.github.ldaniels528",
@@ -24,19 +27,20 @@ val commonSettings = Seq(
   libraryDependencies ++= Seq(
     "be.doeraene" %%% "scalajs-jquery" % scalaJsJQueryVersion,
     "org.scala-js" %%% "scalajs-dom" % scalaJsDomVersion,
+    "org.scala-js" %% "scalajs-env-selenium" % scalaJsSelenium,
     "org.scala-lang" % "scala-reflect" % _scalaVersion,
     //
     // Testing dependencies
     //
-    "com.lihaoyi" %%% "utest" % "0.3.0" % "test",
+    "com.lihaoyi" %%% "utest" % "0.4.3" % "test",
     "org.mockito" % "mockito-all" % "1.9.5" % "test",
     "org.scalatest" %% "scalatest" % "2.2.2" % "test"
   )
 )
 
 lazy val bundle_complete = (project in file("bundles/complete")).
-  aggregate(core, bundle_browser, bundle_social, bundle_angular, bundle_mean_minimal, bundle_node, bundle_node_oss).
-  dependsOn(core, bundle_browser, bundle_social, bundle_angular, bundle_mean_minimal, bundle_node, bundle_node_oss).
+  aggregate(core, core_browser, bundle_social, bundle_angular, bundle_mean_minimal, bundle_node, bundle_node_oss).
+  dependsOn(core, core_browser, bundle_social, bundle_angular, bundle_mean_minimal, bundle_node, bundle_node_oss).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(publishingSettings: _*).
@@ -81,49 +85,14 @@ lazy val core = (project in file("core/util")).
     description := "Scala.js common/utilities"
   )
 
-/////////////////////////////////////////////////////////////////////////////////
-//      Browser sub-projects
-/////////////////////////////////////////////////////////////////////////////////
-
-lazy val bundle_browser = (project in file("bundles/browser")).
-  aggregate(core, browser_common, browser_phaser, browser_pixijs).
-  dependsOn(core, browser_common, browser_phaser, browser_pixijs).
-  enablePlugins(ScalaJSPlugin).
-  settings(commonSettings: _*).
-  settings(publishingSettings: _*).
-  settings(
-    name := "scalajs-browser-bundle",
-    description := "Complete browser platform bundle"
-  )
-
-lazy val browser_common = (project in file("browser/common")).
+lazy val core_browser = (project in file("core/browser")).
   aggregate(core).
   dependsOn(core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
-    name := "scalajs-browser-common",
-    description := "Scala.js browser objects and functions"
-  )
-
-lazy val browser_phaser = (project in file("browser/phaser")).
-  aggregate(browser_pixijs).
-  dependsOn(browser_pixijs).
-  enablePlugins(ScalaJSPlugin).
-  settings(commonSettings: _*).
-  settings(
-    name := "scalajs-browser-phaser",
-    description := "NodeJS/Phaser binding for Scala.js"
-  )
-
-lazy val browser_pixijs = (project in file("browser/pixijs")).
-  aggregate(browser_common).
-  dependsOn(browser_common).
-  enablePlugins(ScalaJSPlugin).
-  settings(commonSettings: _*).
-  settings(
-    name := "scalajs-browser-pixijs",
-    description := "NodeJS/Pixi.js binding for Scala.js"
+    name := "scalajs-common-browser",
+    description := "Scala.js browser objects"
   )
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -145,7 +114,7 @@ lazy val bundle_angular = (project in file("bundles/angularjs")).
   )
 
 lazy val angular_core = (project in file("angularjs/core")).
-  dependsOn(browser_common).
+  dependsOn(core_browser).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -485,7 +454,7 @@ lazy val node_zlib = (project in file("node/zlib")).
   )
 
 /////////////////////////////////////////////////////////////////////////////////
-//      NodeJS supplements (OSS packages)
+//      NodeJS supplemental packages (OSS)
 /////////////////////////////////////////////////////////////////////////////////
 
 lazy val bundle_node_oss = (project in file("bundles/node_oss")).
@@ -493,12 +462,12 @@ lazy val bundle_node_oss = (project in file("bundles/node_oss")).
     node_adal, node_amqplib, node_async, node_azure, node_bcrypt, node_body_parser, node_cassandra,
     node_colors, node_cvs_parse, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_csv, node_express_fileupload,
     node_express_ws, node_filed, node_jwt_simple, node_kafka, node_memory_fs, node_mongodb, node_multer, node_mysql,
-    node_oppressor, node_pvorb_md5, node_request, node_watch, node_xml2js, node_zookeeper).
+    node_oppressor, node_pvorb_md5, node_request, node_rxjs, node_transducers, node_watch, node_xml2js, node_zookeeper).
   dependsOn(
     node_adal, node_amqplib, node_async, node_azure, node_bcrypt, node_body_parser, node_cassandra,
     node_colors, node_cvs_parse, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_csv, node_express_fileupload,
     node_express_ws, node_filed, node_jwt_simple, node_kafka, node_memory_fs, node_mongodb, node_multer, node_mysql,
-    node_oppressor, node_pvorb_md5, node_request, node_watch, node_xml2js, node_zookeeper).
+    node_oppressor, node_pvorb_md5, node_request, node_rxjs, node_transducers, node_watch, node_xml2js, node_zookeeper).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -738,6 +707,25 @@ lazy val node_request = (project in file("node_libs/request")).
   settings(
     name := "scalajs-nodejs-request",
     description := "NodeJS/request binding for Scala.js"
+  )
+
+lazy val node_rxjs = (project in file("node_libs/rxjs")).
+  aggregate(node_transducers).
+  dependsOn(core, node_core, node_transducers).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "scalajs-nodejs-rxjs",
+    description := "NodeJS/rxjs binding for Scala.js"
+  )
+
+lazy val node_transducers = (project in file("node_libs/transducers")).
+  dependsOn(core, node_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "scalajs-nodejs-transducers",
+    description := "NodeJS/transducers-js binding for Scala.js"
   )
 
 lazy val node_watch = (project in file("node_libs/watch")).

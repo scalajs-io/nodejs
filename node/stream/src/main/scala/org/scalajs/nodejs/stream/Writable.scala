@@ -134,41 +134,41 @@ object Writable {
       * The event indicates that no more events will be emitted, and no further computation will occur.
       */
     @inline
-    def onClose(callback: js.Function) = writable.on("close", callback)
+    def onClose(listener: js.Function) = writable.on("close", listener)
 
     /**
       * If a stream.write(chunk) call returns false, then the 'drain' event will indicate when it is appropriate
       * to begin writing more data to the stream.
       */
     @inline
-    def onDrain(callback: js.Function) = writable.on("drain", callback)
+    def onDrain(listener: js.Function) = writable.on("drain", listener)
 
     /**
       * Emitted if there was an error when writing or piping data.
       */
     @inline
-    def onError(callback: js.Function) = writable.on("error", callback)
+    def onError(listener: errors.Error => Any) = writable.on("error", listener)
 
     /**
       * When the stream.end() method has been called, and all data has been flushed to the underlying system,
       * this event is emitted.
       */
     @inline
-    def onFinish(callback: js.Function) = writable.on("finish", callback)
+    def onFinish(listener: () => Any) = writable.on("finish", listener)
 
     /**
       * This is emitted whenever the stream.pipe() method is called on a readable stream, adding this writable to
       * its set of destinations.
       */
     @inline
-    def onPipe(callback: js.Function) = writable.on("pipe", callback)
+    def onPipe(listener: js.Function) = writable.on("pipe", listener)
 
     /**
       * This is emitted whenever the stream.unpipe() method is called on a readable stream, removing this writable
       * from its set of destinations.
       */
     @inline
-    def onUnpipe(callback: js.Function) = writable.on("unpipe", callback)
+    def onUnpipe(listener: js.Function) = writable.on("unpipe", listener)
 
   }
 

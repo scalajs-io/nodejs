@@ -48,8 +48,6 @@ Currently, there are at least four development use cases for Scalajs-Nodejs:
 <a name="build_requirements"></a>
 #### Build Requirements
 
-* [Scala 2.11.8+] (http://scala-lang.org/download/)
-* [Scala.js 0.6.9] (http://www.scala-js.org/)
 * [SBT 0.13.11+] (http://www.scala-sbt.org/download.html)
 
 <a name="building_sdk"></a>
@@ -185,19 +183,19 @@ implemented as well, including bcrypt, datastax/cassandra-driver, kafka-node, my
 <a name="node_modules">
 #### Modules
 
-The following core NodeJS modules have been implemented thus far:
+The following Core NodeJS modules have been implemented thus far:
 
 | Node Module           | Version | Artifact ID               | Description                                             | Status          |
 |-----------------------|---------|---------------------------|---------------------------------------------------------|-----------------|
 | assert                | 6.2.1   | scalajs-nodejs-assert     | Provides a simple set of assertion tests that can be used to test invariants. | Stable |
 | buffer                | 6.2.1   | scalajs-nodejs-core       | The Buffer class was introduced as part of the Node.js API to make it possible to interact with octet streams in the context of things like TCP streams and file system operations. | Stable |
 | cluster               | 6.2.1   | scalajs-nodejs-cluster    | The cluster module allows you to easily create child processes that all share server ports. | Stable |
-| crypto                | 6.1.0   | scalajs-nodejs-core       | The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions.| Stable |
-| dns                   | 6.2.1   | scalajs-nodejs-dns        | Support for DNS queries.                                | Stable |
-| events                | 6.1.0   | scalajs-nodejs-core       | Node.js Events Interface                                | Stable |
+| crypto                | 6.1.0   | scalajs-nodejs-crypto     | The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions.| Stable |
+| dns                   | 6.2.1   | scalajs-nodejs-dns        | Support for DNS queries.| Stable |
+| events                | 6.1.0   | scalajs-nodejs-core       | Node.js Events Interface | Stable |
 | fs                    | 6.2.1   | scalajs-nodejs-fs         | File I/O is provided by simple wrappers around standard POSIX functions. | Stable |
-| http                  | 6.1.0   | scalajs-nodejs-http       | Node.js HTTP Interface                                  | Stable |
-| https                 | 6.1.0   | scalajs-nodejs-https      | Node.js HTTPS Interface                                 | Stable |
+| http                  | 6.1.0   | scalajs-nodejs-http       | Node.js HTTP Interface | Stable |
+| https                 | 6.1.0   | scalajs-nodejs-https      | Node.js HTTPS Interface | Stable |
 | net                   | 6.2.1   | scalajs-nodejs-net        | The net module provides you with an asynchronous network wrapper. | Stable |
 | os                    | 6.1.0   | scalajs-nodejs-os         | Provides a few basic operating-system related utility functions. | Stable |
 | path                  | 6.1.0   | scalajs-nodejs-path       | This module contains utilities for handling and transforming file paths. | Stable |
@@ -213,16 +211,6 @@ The following core NodeJS modules have been implemented thus far:
 
 
 The following Third Party/OSS NodeJS modules have been implemented thus far:
-
-#### Browser-based Extensions
-
-| Node Module           | Version | Artifact ID               | Description                                             | Status          |
-|-----------------------|---------|---------------------------|---------------------------------------------------------|-----------------|
-| browser               | 0.2.1   | scalajs-browser-common    | Common browser functions (console, encodeURI, etc.)     | Stable          |
-| phaser                | 2.5.0   | scalajs-browser-phaser    | A fast, free and fun HTML5 Game Framework for Desktop and Mobile web browsers. | Stable |
-| pixi.js               | 3.0     | scalajs-browser-pixijs    | A 2D JavaScript Renderer.                               | Stable          |
-
-#### Node Extensions
 
 | Node Module           | Version | Artifact ID               | Description                                             | Status          |
 |-----------------------|---------|---------------------------|---------------------------------------------------------|-----------------|
@@ -245,20 +233,18 @@ The following Third Party/OSS NodeJS modules have been implemented thus far:
 | jwt-simple            | 0.5.0   | scalajs-nodejs-jwt-simple | JWT(JSON Web Token) encode and decode module | Stable |
 | kafka-node            | 0.0.11  | scalajs-nodejs-kafkanode  | A node binding for librdkafka | Tesing required |
 | md5                   | 2.1.0   | scalajs-nodejs-pvorb-md5  | A JavaScript function for hashing messages with MD5. | Stable |
-| express-ws            |2.0.0-rc1| scalajs-nodejs-express-ws | WebSocket endpoints for Express applications            | Stable |
-| filed                 | 0.1.0   | scalajs-nodejs-filed      | Simplified file library.                                | Stable |
-| jwt-simple            | 0.5.0   | scalajs-nodejs-jwt-simple | JWT(JSON Web Token) encode and decode module            | Stable |
-| kafka-node            | 0.0.11  | scalajs-nodejs-kafkanode  | A node binding for librdkafka                           | Tesing required |
 | memory-fs             | 0.3.0   | scalajs-nodejs-memory-fs  | A simple in-memory filesystem. Holds data in a javascript object. | Stable |
-| mongodb               | 2.1.18  | scalajs-nodejs-mongodb    | Node.js MongoDB Driver                                  | Stable |
+| mongodb               | 2.1.18  | scalajs-nodejs-mongodb    | Node.js MongoDB Driver | Stable |
 | multer                | 1.1.0   | scalajs-nodejs-multer     | Multer is a node.js middleware for handling multipart/form-data. | Tesing required |
-| mysql                 | 2.10.2  | scalajs-nodejs-mysql      | A node.js driver for mysql.                             | Stable |
+| mysql                 | 2.10.2  | scalajs-nodejs-mysql      | A node.js driver for mysql. | Stable |
 | node-zookeeper-client | 0.2.2   | scalajs-nodejs-zookeeper-client | A higher-level ZooKeeper client based on node-zookeeper with support for locking and master election. | Tesing required |
-| oppressor             | 0.0.1   | scalajs-nodejs-oppressor  | Streaming http compression response negotiator.         | Tesing required |
-| request               | 2.72.1  | scalajs-nodejs-request    | Simplified HTTP request client.                         | Stable |
+| oppressor             | 0.0.1   | scalajs-nodejs-oppressor  | Streaming http compression response negotiator. | Tesing required |
+| request               | 2.72.1  | scalajs-nodejs-request    | Simplified HTTP request client. | Stable |
+| rxjs                  | 4.1.0   | scalajs-nodejs-rxjs       | The Reactive Extensions for JavaScript. | Stable |
 | splitargs             | 0.0.7   | scalajs-nodejs-elgs-splitargs | Splits strings into tokens by given separator except treating quoted part as a single token. | Stable |
-| watch                 | 0.18.0  | scalajs-nodejs-watch      | Utilities for watching file trees.                      | Stable |
-| xml2js                | 0.4.16  | scalajs-nodejs-xml2js     | Simple XML to JavaScript object converter.              | Stable |
+| transducers-js        | 0.4.174 | scalajs-nodejs-transducers| A high performance Transducers implementation for JavaScript. | Stable |
+| watch                 | 0.18.0  | scalajs-nodejs-watch      | Utilities for watching file trees. | Stable |
+| xml2js                | 0.4.16  | scalajs-nodejs-xml2js     | Simple XML to JavaScript object converter. | Stable |
 
 
 *NOTE*: The full SBT artifact expression is: "com.github.ldaniels528" %%% "scalajs-nodejs-xxxx" % version 

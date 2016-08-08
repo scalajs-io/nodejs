@@ -6,9 +6,9 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
 
 /**
- * MEANS.js Package Object
- * @author lawrence.daniels@gmail.com
- */
+  * Angularjs Package Object
+  * @author lawrence.daniels@gmail.com
+  */
 package object angularjs {
 
   //////////////////////////////////////////////////////////////
@@ -16,8 +16,8 @@ package object angularjs {
   //////////////////////////////////////////////////////////////
 
   /**
-   * Singleton "angular" instance
-   */
+    * Singleton "angular" instance
+    */
   @js.native
   @JSName("angular")
   object angular extends Angular

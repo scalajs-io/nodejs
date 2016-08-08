@@ -178,9 +178,9 @@ trait JQLite extends Element {
     * Get the descendants of each element in the current set of matched elements,
     * filtered by a selector, jQuery object, or element.
     * @param selector A string containing a selector expression to match elements against.
-    * @return the [[JQLite instance]]
+    * @return the typed selector
     */
-  def find(selector: String): this.type = js.native
+  def find[T](selector: String): T = js.native
 
   /**
     * Get the descendants of each element in the current set of matched elements,
@@ -188,7 +188,7 @@ trait JQLite extends Element {
     * @param element An element or a jQuery object to match elements against.
     * @return the [[JQLite instance]]
     */
-  def find(element: Element): this.type = js.native
+  def find(element: Element): Element = js.native
 
   /**
     * Get the descendants of each element in the current set of matched elements,
@@ -196,7 +196,7 @@ trait JQLite extends Element {
     * @param element An element or a jQuery object to match elements against.
     * @return the [[JQLite instance]]
     */
-  def find(element: JQLite): this.type = js.native
+  def find(element: JQLite): Element = js.native
 
   /**
     * Determine whether any of the matched elements are assigned the given class.
@@ -590,4 +590,3 @@ trait JQLite extends Element {
   def inheritedData(): js.Any = js.native
 
 }
-

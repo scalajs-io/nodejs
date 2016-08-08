@@ -100,7 +100,7 @@ trait Scope extends js.Object {
     * @param locals     Local variables object, useful for overriding values in scope.
     * @return The result of evaluating the expression.
     */
-  def $eval(expression: js.Object = js.native, locals: js.Object = js.native): js.Any = js.native
+  def $eval[T](expression: js.Any = js.native, locals: js.Object = js.native): T = js.native
 
   /**
     * Executes the expression on the current scope at a later point in time.
@@ -221,7 +221,13 @@ object Scope {
     */
   implicit class EnrichedScope(val scope: Scope) extends AnyVal {
 
-    @inline def dynamic: js.Dynamic = scope.asInstanceOf[js.Dynamic]
+    @inline
+    def dynamic: js.Dynamic = scope.asInstanceOf[js.Dynamic]
+
+    @inline
+    def $watchScala[A <: js.Any, B <: js.Any](watchExpression: Scope => js.Any, listener: (A, B) => Any = null, objectEquality: Boolean = false) = {
+      scope.$watch(watchExpression, listener, objectEquality)
+    }
 
   }
 

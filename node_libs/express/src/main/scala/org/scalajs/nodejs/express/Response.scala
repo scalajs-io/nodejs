@@ -1,7 +1,6 @@
 package org.scalajs.nodejs.express
 
 import org.scalajs.nodejs.http.ServerResponse
-import org.scalajs.nodejs.http.ServerResponse
 
 import scala.scalajs.js
 

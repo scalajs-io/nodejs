@@ -50,33 +50,47 @@ object Module {
     */
   implicit class EnrichedModule(val self: Module) extends AnyVal {
 
-    @inline def animation(name: String, dependencySet: DependencySet): Module = self.animation(name, dependencySet.dependencies)
+    @inline
+    def animation(name: String, dependencySet: DependencySet): Module = self.animation(name, dependencySet.dependencies)
 
-    @inline def config(dependencySet: DependencySet): Module = self.config(dependencySet.dependencies)
+    @inline
+    def config(dependencySet: DependencySet): Module = self.config(dependencySet.dependencies)
 
-    @inline def controller(name: String, constructor: DependencySet): Module = self.controller(name, constructor.dependencies)
+    @inline
+    def controller(name: String, constructor: DependencySet): Module = self.controller(name, constructor.dependencies)
 
-    @inline def controllerOf[T <: Controller]: Module = macro ModuleMacro.controllerOf[T]
+    @inline
+    def controllerOf[T <: Controller]: Module = macro ModuleMacro.controllerOf[T]
 
-    @inline def controllerOf[T <: Controller](name: String): Module = macro ModuleMacro.namedControllerOf[T]
+    @inline
+    def controllerOf[T <: Controller](name: String): Module = macro ModuleMacro.namedControllerOf[T]
 
-    @inline def directiveOf[T <: Directive[_]](name: String): Module = macro ModuleMacro.namedDirectiveOf[T]
+    @inline
+    def directiveOf[T <: Directive](name: String): Module = macro ModuleMacro.namedDirectiveOf[T]
 
-    @inline def factory(name: String, constructor: DependencySet): Module = self.factory(name, constructor.dependencies)
+    @inline
+    def factory(name: String, constructor: DependencySet): Module = self.factory(name, constructor.dependencies)
 
-    @inline def factoryOf[T <: Factory]: Module = macro ModuleMacro.factoryOf[T]
+    @inline
+    def factoryOf[T <: Factory]: Module = macro ModuleMacro.factoryOf[T]
 
-    @inline def factoryOf[T <: Factory](name: String): Module = macro ModuleMacro.namedFactoryOf[T]
+    @inline
+    def factoryOf[T <: Factory](name: String): Module = macro ModuleMacro.namedFactoryOf[T]
 
-    @inline def provider(name: String, constructor: DependencySet): Module = self.provider(name, constructor.dependencies)
+    @inline
+    def provider(name: String, constructor: DependencySet): Module = self.provider(name, constructor.dependencies)
 
-    @inline def run(initializationFn: DependencySet): Module = self.run(initializationFn.dependencies)
+    @inline
+    def run(initializationFn: DependencySet): Module = self.run(initializationFn.dependencies)
 
-    @inline def service(name: String, constructor: DependencySet): Module = self.service(name, constructor.dependencies)
+    @inline
+    def service(name: String, constructor: DependencySet): Module = self.service(name, constructor.dependencies)
 
-    @inline def serviceOf[T <: Service]: Module = macro ModuleMacro.serviceOf[T]
+    @inline
+    def serviceOf[T <: Service]: Module = macro ModuleMacro.serviceOf[T]
 
-    @inline def serviceOf[T <: Service](name: String): Module = macro ModuleMacro.namedServiceOf[T]
+    @inline
+    def serviceOf[T <: Service](name: String): Module = macro ModuleMacro.namedServiceOf[T]
 
   }
 

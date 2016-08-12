@@ -1,6 +1,6 @@
  Scalajs-Nodejs (formerly MEANS.js)
 ====================================
-This is a Scala.js binding for the Node.js and MEAN Stack (MongoDB ExpressJS AngularJS NodeJS) applications.
+This is a Scala.js binding for the Node.js and MEAN Stack (MongoDB, Express, Angular, Node and others) applications.
  
 ## Table of Contents
 
@@ -37,9 +37,9 @@ entire MEAN stack.
 
 Currently, there are at least four development use cases for Scalajs-Nodejs:
  
-* Building full MEAN stack applications using AngularJS and Node bindings.
+* Building full MEAN stack applications using the bundled MongoDB, Express, Angular and Node bindings.
 * Building rich thin-client web frontends using AngularJS bindings only (with any backend).
-* Building REST services using Node bindings only.
+* Building REST services using Node (and optionally Express) bindings only.
 * Building CLI applications using Node bindings only.
 
 <a name="development"></a>

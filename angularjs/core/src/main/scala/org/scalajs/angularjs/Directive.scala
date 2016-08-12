@@ -8,10 +8,25 @@ import scala.scalajs.js
   */
 trait Directive {
 
+  /**
+    * Specifies what the template should replace. Defaults to false.
+    * <ul>
+    * <li>true - the template will replace the directive's element.</li>
+    * <li>false - the template will replace the contents of the directive's element.</li>
+    * </ul>
+    */
+  @deprecated("replace will be removed in next major release (i.e. v2.0)", "1.4.x")
   def replace: Boolean = false
 
-  def scope: js.Any = new js.Object()
+  /**
+    * The scope property can be true, an object or a falsy value.
+    */
+  def scope: js.Any = js.undefined //new js.Object()
 
+  /**
+    * Extract the contents of the element where the directive appears and make it available to the directive.
+    * The contents are compiled and provided to the directive as a transclusion function.
+    */
   def transclude: Boolean = false
 
 }

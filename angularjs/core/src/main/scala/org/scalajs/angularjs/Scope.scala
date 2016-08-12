@@ -126,11 +126,7 @@ trait Scope extends js.Object {
     *            </ul>
     * @return The result of evaluating the expression.
     */
-  def $apply(exp: String): js.Any = js.native
-
-  def $apply(exp: js.Function): js.Any = js.native
-
-  def $apply(): js.Any = js.native
+  def $apply(exp: js.Any = js.native): js.Any = js.native
 
   /**
     * Schedule the invocation of $apply to occur at a later time. The actual time difference varies across browsers,
@@ -144,11 +140,7 @@ trait Scope extends js.Object {
     *            <ul>
     * @return
     */
-  def $applyAsync(exp: String): js.Any = js.native
-
-  def $applyAsync(exp: js.Function): js.Any = js.native
-
-  def $applyAsync(): js.Any = js.native
+  def $applyAsync(exp: js.Any = js.native): js.Any = js.native
 
   /**
     * Listens on events of a given type. See $emit for discussion of event life cycle.

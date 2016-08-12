@@ -15,6 +15,10 @@ package object browser {
   @JSName("console")
   object console extends org.scalajs.dom.raw.Console
 
+  @js.native
+  @JSName("performance")
+  object performance extends Performance
+
   /////////////////////////////////////////////////////////////////////////////////
   //      Global Functions
   /////////////////////////////////////////////////////////////////////////////////
@@ -39,10 +43,12 @@ package object browser {
   @JSName("encodeURIComponent")
   object encodeURIComponent extends GenericStringFunction
 
+  @deprecated("Use encodeURI() or encodeURIComponent() instead", since = "1.5")
   @js.native
   @JSName("escape")
   object escape extends GenericStringFunction
 
+  @deprecated("Use decodeURI() or decodeURIComponent() instead", since = "1.5")
   @js.native
   @JSName("unescape")
   object unescape extends GenericStringFunction

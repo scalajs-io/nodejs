@@ -5,6 +5,7 @@ import sbt.Project.projectToRef
 import sbt._
 
 val apiVersion = "0.2.2.1"
+
 val paradisePluginVersion = "3.0.0-M1"
 val _scalaVersion = "2.11.8"
 val scalaJsDomVersion = "0.9.0"
@@ -39,8 +40,8 @@ val commonSettings = Seq(
 )
 
 lazy val bundle_complete = (project in file("bundles/complete")).
-  aggregate(core, core_browser, bundle_social, bundle_angular, bundle_mean_minimal, bundle_node, bundle_node_oss).
-  dependsOn(core, core_browser, bundle_social, bundle_angular, bundle_mean_minimal, bundle_node, bundle_node_oss).
+  aggregate(core, browser_core, bundle_canvas, bundle_social, bundle_angular, bundle_mean_minimal, bundle_node, bundle_node_oss).
+  dependsOn(core, browser_core, bundle_canvas, bundle_social, bundle_angular, bundle_mean_minimal, bundle_node, bundle_node_oss).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(publishingSettings: _*).
@@ -85,14 +86,46 @@ lazy val core = (project in file("core/util")).
     description := "Scala.js common/utilities"
   )
 
-lazy val core_browser = (project in file("core/browser")).
+lazy val browser_core = (project in file("browser/common")).
   aggregate(core).
   dependsOn(core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
-    name := "scalajs-common-browser",
-    description := "Scala.js browser objects"
+    name := "scalajs-browser-core",
+    description := "Scala.js browser/DOM bindings"
+  )
+
+/////////////////////////////////////////////////////////////////////////////////
+//      Canvas sub-projects
+/////////////////////////////////////////////////////////////////////////////////
+
+lazy val bundle_canvas = (project in file("bundles/canvas")).
+  aggregate(browser_core, pixijs, phaser).
+  dependsOn(browser_core, pixijs, phaser).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "scalajs-bundle-canvas",
+    description := "Scala.js 2D bindings bundle"
+  )
+
+lazy val phaser = (project in file("browser/phaser")).
+  dependsOn(browser_core, pixijs).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "scalajs-canvas-phaser",
+    description := "Scala.js Phaser 3.x bindings"
+  )
+
+lazy val pixijs = (project in file("browser/pixijs")).
+  dependsOn(browser_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "scalajs-canvas-pixijs",
+    description := "Scala.js PIXI.js bindings"
   )
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -101,11 +134,11 @@ lazy val core_browser = (project in file("core/browser")).
 
 lazy val bundle_angular = (project in file("bundles/angularjs")).
   aggregate(
-    angular_core, angular_anchorScroll, angular_animate, angular_cookies, angular_facebook, angular_md5, angular_nervgh_fileupload,
-    angular_sanitize, angular_toaster, angular_ui_bootstrap, angular_ui_router).
+    angular_core, angular_anchorScroll, angular_animate, angular_cookies, angular_facebook, angular_md5,
+    angular_nervgh_fileupload, angular_sanitize, angular_toaster, angular_ui_bootstrap, angular_ui_router).
   dependsOn(
-    angular_core, angular_anchorScroll, angular_animate, angular_cookies, angular_facebook, angular_md5, angular_nervgh_fileupload,
-    angular_sanitize, angular_toaster, angular_ui_bootstrap, angular_ui_router).
+    angular_core, angular_anchorScroll, angular_animate, angular_cookies, angular_facebook, angular_md5,
+    angular_nervgh_fileupload, angular_sanitize, angular_toaster, angular_ui_bootstrap, angular_ui_router).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -114,7 +147,7 @@ lazy val bundle_angular = (project in file("bundles/angularjs")).
   )
 
 lazy val angular_core = (project in file("angularjs/core")).
-  dependsOn(core_browser).
+  dependsOn(browser_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(

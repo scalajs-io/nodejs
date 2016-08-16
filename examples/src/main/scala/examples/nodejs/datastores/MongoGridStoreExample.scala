@@ -1,12 +1,11 @@
 package examples.nodejs.datastores
 
-import org.scalajs.nodejs.mongodb.Db
 import examples.nodejs.datastores.MongoGridStoreExample.FileData
 import org.scalajs.nodejs.Bootstrap
 import org.scalajs.nodejs.buffer.Buffer
 import org.scalajs.nodejs.core.Assert
-import org.scalajs.nodejs.mongodb.{Db, MongoDB}
 import org.scalajs.nodejs.mongodb.gridfs.GridStore
+import org.scalajs.nodejs.mongodb.{Db, MongoDB}
 
 import scala.scalajs.js
 
@@ -37,7 +36,7 @@ class MongoGridStoreExample(bootstrap: Bootstrap) {
     val gridStore = GridStore(db, ObjectID(), "test_gs_getc_file", "w")
     gridStore.open((err: String, _: GridStore) => {
       // Write some content to the file
-      gridStore.write(Buffer("hello, world!", "utf8"), (err: String, _: GridStore) => {
+      gridStore.write(Buffer.from("hello, world!", "utf8"), (err: String, _: GridStore) => {
         // Flush the file to GridFS
         gridStore.close((err: String, fileData: js.Any) => {
           assert.equal(null, err)
@@ -46,7 +45,7 @@ class MongoGridStoreExample(bootstrap: Bootstrap) {
           val gridStore = GridStore(db, ObjectID(), "test_gs_getc_file", "w")
           gridStore.open((err: String, _: GridStore) => {
             // Write some content to the file
-            gridStore.write(Buffer("hello, world!", "utf8"), (err: String, _: GridStore) => {
+            gridStore.write(Buffer.from("hello, world!", "utf8"), (err: String, _: GridStore) => {
               // Flush the file to GridFS
               gridStore.close((err: String, fileData: FileData) => {
                 assert.equal(null, err)

@@ -1,14 +1,11 @@
 package examples.nodejs.datastores
 
-import org.scalajs.nodejs._
-import org.scalajs.nodejs.buffer._
-import org.scalajs.nodejs.mongodb.Db
 import examples.nodejs.datastores.MongoGridExample.MyResult
 import org.scalajs.nodejs.Bootstrap
 import org.scalajs.nodejs.buffer.Buffer
 import org.scalajs.nodejs.core.Assert
-import org.scalajs.nodejs.mongodb.{Db, MongoDB}
 import org.scalajs.nodejs.mongodb.gridfs.GridOptions
+import org.scalajs.nodejs.mongodb.{Db, MongoDB}
 
 import scala.scalajs.js
 
@@ -30,7 +27,7 @@ class MongoGridExample(bootstrap: Bootstrap) {
     // Create a new grid instance
     val grid = Grid(db, "fs")
     // Some data to write
-    val originalData = Buffer("Hello world")
+    val originalData = Buffer.from("Hello world")
     // Write data to grid
     grid.put(originalData, new GridOptions(), (err: js.Any, result: MyResult) => {
       // Fetch the content

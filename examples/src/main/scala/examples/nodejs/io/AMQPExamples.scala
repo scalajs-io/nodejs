@@ -1,12 +1,10 @@
 package examples.nodejs.io
 
-import org.scalajs.nodejs.globals.process
-import org.scalajs.nodejs.console
-import org.scalajs.nodejs.util.ScalaJsHelper._
-import org.scalajs.nodejs.Bootstrap
 import org.scalajs.nodejs.amqplib.AmqpLib
 import org.scalajs.nodejs.buffer.Buffer
-import org.scalajs.nodejs.util.ScalaJsHelper
+import org.scalajs.nodejs.{Bootstrap, console}
+import org.scalajs.nodejs.globals.process
+import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 
@@ -30,7 +28,7 @@ class AMQPExamples(bootstrap: Bootstrap) {
       conn <- amqp.connect("amqp://localhost")
       channel <- conn.createChannel()
       assertion <- channel.assertQueue(queueName)
-      ok <- channel.sendToQueue(queueName, Buffer("something to do"))
+      ok <- channel.sendToQueue(queueName, Buffer.from("something to do"))
       closedStatus <- conn.close()
     } yield (ok, closedStatus)
 

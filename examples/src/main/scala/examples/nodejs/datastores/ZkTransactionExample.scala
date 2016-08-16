@@ -32,8 +32,8 @@ class ZkTransactionExample(bootstrap: Bootstrap) {
     console.log("Connected...")
     client.transaction().
       create("/txn").
-      create("/txn/1", Buffer("transaction")).
-      setData("/txn/1", Buffer("test"), -1).
+      create("/txn/1", Buffer.from("transaction")).
+      setData("/txn/1", Buffer.from("test"), -1).
       check("/txn/1").
       remove("/txn/1", -1).
       remove("/txn").

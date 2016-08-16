@@ -229,6 +229,7 @@ The following Third Party/OSS NodeJS modules have been implemented thus far:
 | express-csv           | 0.6.0   | scalajs-nodejs-express-csv| express-csv provides response csv easily to express. | Stable |
 | express-fileupload    | 0.0.5   | scalajs-nodejs-express-fileupload | Simple express file upload middleware that wraps around connect-busboy | Stable |
 | express-ws            |2.0.0-rc1| scalajs-nodejs-express-ws | WebSocket endpoints for Express applications | Stable |
+| feedparser-promised   | 1.1.1   | scalajs-nodejs-feedparser-promised| Wrapper around feedparser with promises. | Stable |
 | filed                 | 0.1.0   | scalajs-nodejs-filed      | Simplified file library. | Stable |
 | jwt-simple            | 0.5.0   | scalajs-nodejs-jwt-simple | JWT(JSON Web Token) encode and decode module | Stable |
 | kafka-node            | 0.0.11  | scalajs-nodejs-kafkanode  | A node binding for librdkafka | Tesing required |

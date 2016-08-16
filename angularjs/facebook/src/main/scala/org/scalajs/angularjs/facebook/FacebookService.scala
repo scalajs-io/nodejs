@@ -1,8 +1,8 @@
 package org.scalajs.angularjs.facebook
 
-import com.github.ldaniels528.meansjs.social.facebook._
 import org.scalajs.angularjs.{Q, QDefer, Service, angular}
 import org.scalajs.dom.console
+import org.scalajs.nodejs.social.facebook._
 import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.scalajs.js

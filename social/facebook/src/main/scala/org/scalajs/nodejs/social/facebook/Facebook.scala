@@ -1,4 +1,4 @@
-package com.github.ldaniels528.meansjs.social.facebook
+package org.scalajs.nodejs.social.facebook
 
 import scala.scalajs.js
 

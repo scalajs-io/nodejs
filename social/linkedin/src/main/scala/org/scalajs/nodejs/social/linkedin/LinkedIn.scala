@@ -1,4 +1,4 @@
-package com.github.ldaniels528.meansjs.social.linkedin
+package org.scalajs.nodejs.social.linkedin
 
 import scala.scalajs.js
 

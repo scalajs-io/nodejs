@@ -1,4 +1,4 @@
-package com.github.ldaniels528.meansjs.social
+package org.scalajs.nodejs.social
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName

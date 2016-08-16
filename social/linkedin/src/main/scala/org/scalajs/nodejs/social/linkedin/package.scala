@@ -1,6 +1,6 @@
 package org.scalajs.nodejs.social
 
-import com.github.ldaniels528.meansjs.social.linkedin.LinkedIn
+import org.scalajs.nodejs.social.linkedin.LinkedIn
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName

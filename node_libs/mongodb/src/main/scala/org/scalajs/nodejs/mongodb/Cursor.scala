@@ -1,9 +1,10 @@
 package org.scalajs.nodejs.mongodb
 
-import org.scalajs.nodejs.mongodb.Cursor.CursorFlag
 import org.scalajs.nodejs
+import org.scalajs.nodejs.mongodb.Cursor.CursorFlag
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * Cursor
@@ -30,20 +31,13 @@ trait Cursor extends nodejs.stream.Readable {
   /**
     * Sets the batch size parameter of this cursor to the given value.
     * @param batchSize the new batch size.
-    * @example batchSize(batchSize[, callback])
-    */
-  def batchSize(batchSize: Int): this.type = js.native
-
-  /**
-    * Sets the batch size parameter of this cursor to the given value.
-    * @param batchSize the new batch size.
     * @param callback  this optional callback will be called after executing this method. The first parameter will
     *                  contain an error object when the batchSize given is not a valid number or when the cursor is
     *                  already closed while the second parameter will contain a reference to this object upon successful
     *                  execution.
     * @example batchSize(batchSize[, callback])
     */
-  def batchSize(batchSize: Int, callback: js.Function): this.type = js.native
+  def batchSize(batchSize: Int, callback: js.Function = js.native): this.type = js.native
 
   /**
     * Clone the cursor
@@ -110,12 +104,7 @@ trait Cursor extends nodejs.stream.Readable {
     * Set the cursor hint
     * @param hint If specified, then the query system will only consider plans using the hinted index.
     */
-  def hint(hint: String): this.type = js.native
-
-  /**
-    * Set the cursor hint
-    */
-  def hint(): this.type = js.native
+  def hint(hint: String = js.native): this.type = js.native
 
   /**
     * Check if the cursor is closed or open.
@@ -125,20 +114,13 @@ trait Cursor extends nodejs.stream.Readable {
 
   /**
     * Sets the limit parameter of this cursor to the given value.
-    * @param limit the new limit.
-    * @example limit(limit[, callback])
-    */
-  def limit(limit: Int): this.type = js.native
-
-  /**
-    * Sets the limit parameter of this cursor to the given value.
     * @param limit    the new limit.
     * @param callback this optional callback will be called after executing this method. The first parameter will
     *                 contain an error object when the limit given is not a valid number or when the cursor is already
     *                 closed while the second parameter will contain a reference to this object upon successful execution.
     * @example limit(limit[, callback])
     */
-  def limit(limit: Int, callback: js.Function): this.type = js.native
+  def limit(limit: Int, callback: js.Function = js.native): this.type = js.native
 
   /**
     * Map all documents using the provided function
@@ -176,15 +158,7 @@ trait Cursor extends nodejs.stream.Readable {
     *                  successful execution.
     * @example maxTimeMS(maxTimeMS[, callback])
     */
-  def maxTimeMS(maxTimeMS: Int, callback: js.Function): this.type = js.native
-
-  /**
-    * Specifies a time limit for a query operation. After the specified time is exceeded, the operation will be
-    * aborted and an error will be returned to the client. If maxTimeMS is null, no limit is applied.
-    * @param maxTimeMS the maxTimeMS for the query.
-    * @example maxTimeMS(maxTimeMS[, callback])
-    */
-  def maxTimeMS(maxTimeMS: Int): this.type = js.native
+  def maxTimeMS(maxTimeMS: Int, callback: js.Function = js.native): this.type = js.native
 
   /**
     * Set the cursor min
@@ -243,14 +217,6 @@ trait Cursor extends nodejs.stream.Readable {
 
   /**
     * Sets the read preference for the cursor
-    * @param pref read preference for the cursor, one of [[ServerClass.READ_PRIMARY Server.READ_PRIMARY]],
-    *             [[ServerClass.READ_SECONDARY Server.READ_SECONDARY]], [[ServerClass.READ_SECONDARY Server.READ_SECONDARY_ONLY]]
-    * @example setReadPreference(pref[, callback])
-    */
-  def setReadPreference(pref: String): this.type = js.native
-
-  /**
-    * Sets the read preference for the cursor
     * @param pref     read preference for the cursor, one of [[ServerClass.READ_PRIMARY Server.READ_PRIMARY]],
     *                 [[ServerClass.READ_SECONDARY Server.READ_SECONDARY]], [[ServerClass.READ_SECONDARY Server.READ_SECONDARY_ONLY]]
     * @param callback this optional callback will be called after executing this method. The first parameter will
@@ -259,7 +225,7 @@ trait Cursor extends nodejs.stream.Readable {
     *                 successful execution.
     * @example setReadPreference(pref[, callback])
     */
-  def setReadPreference(pref: String, callback: js.Function): this.type = js.native
+  def setReadPreference(pref: String, callback: js.Function = js.native): this.type = js.native
 
   /**
     * Set the cursor showRecordId
@@ -276,14 +242,7 @@ trait Cursor extends nodejs.stream.Readable {
     *                 while the second parameter will contain a reference to this object upon successful execution.
     * @example skip(skip[, callback])
     */
-  def skip(skip: Int, callback: js.Function): this.type = js.native
-
-  /**
-    * Sets the skip parameter of this cursor to the given value.
-    * @param skip the new skip value.
-    * @example skip(skip[, callback])
-    */
-  def skip(skip: Int): this.type = js.native
+  def skip(skip: Int, callback: js.Function = js.native): this.type = js.native
 
   /**
     * Sets the sort parameter of this cursor to the given value.
@@ -298,30 +257,25 @@ trait Cursor extends nodejs.stream.Readable {
     *                  to this object upon successful execution.
     * @example sort(keyOrList, direction, callback)
     */
-  def sort(keyOrList: js.Array[js.Any], direction: Int, callback: js.Function): this.type = js.native
+  def sort(keyOrList: js.Any, direction: Int | String, callback: js.Function): this.type = js.native
 
   /**
     * Sets the sort parameter of this cursor to the given value.
     * @param keyOrList this can be a string or an array. If passed as a string, the string will be the field to sort.
     *                  If passed an array, each element will represent a field to be sorted and should be an array that
     *                  contains the format [string, direction].
-    * @param direction this determines how the results are sorted. "asc", "ascending" or 1 for
-    *                  ascending order while "desc", "desceding or -1 for descending order.
-    *                  <b>Note</b> that the strings are case insensitive.
     * @param callback  this will be called after executing this method. The first parameter will contain an error
     *                  object when the cursor is already closed while the second parameter will contain a reference
     *                  to this object upon successful execution.
-    * @example sort(keyOrList, direction, callback)
+    * @example sort(keyOrList, callback)
     */
-  def sort(keyOrList: js.Array[js.Any], direction: String, callback: js.Function): this.type = js.native
+  def sort(keyOrList: js.Any, callback: js.Function = js.native): this.type = js.native
 
   /**
-    * Sets the sort parameter of this cursor to the given value.
-    * @param keyOrList this can be a string or an array. If passed as a string, the string will be the field to sort.
-    * @example sort(keyOrList, direction, callback)
+    * TODO document me
+    * @param enable
+    * @return
     */
-  def sort(keyOrList: js.Array[js.Any]): this.type = js.native
-
   def snapshot(enable: Boolean): this.type = js.native
 
   /**

@@ -315,6 +315,16 @@ package object mongodb {
   }
 
   /**
+    * Mongo Projection Enrichment
+    * @param fields the given array of fields
+    */
+  implicit class ProjectionEnrichment(val fields: js.Array[String]) extends AnyVal {
+
+    def toProjection = js.Dictionary(fields.map(_ -> 1): _*)
+
+  }
+
+  /**
     * Text Search Options
     * @author lawrence.daniels@gmail.com
     */

@@ -72,3 +72,27 @@ trait AggregationCursor extends nodejs.stream.Readable {
   def toArray(callback: js.Function): Unit = js.native
 
 }
+
+/**
+  * Aggregation Cursor Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object AggregationCursor {
+
+  /**
+    * Aggregation Cursor Extensions
+    * @author lawrence.daniels@gmail.com
+    */
+  implicit class AggregationCursorExtensions(val cursor: AggregationCursor) extends AnyVal {
+
+    /**
+      * Returns an array of documents. The caller is responsible for making sure that there is enough memory to store
+      * the results. Note that the array only contain partial results when this cursor had been previouly accessed.
+      * In that case, cursor.rewind() can be used to reset the cursor.
+      */
+    @inline
+    def toArrayFuture[T <: js.Any] = callbackMongoFuture[js.Array[T]](cursor.toArray)
+
+  }
+
+}

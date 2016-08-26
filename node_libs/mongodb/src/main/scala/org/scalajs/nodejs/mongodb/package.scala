@@ -4,9 +4,8 @@ import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.concurrent.{Future, Promise}
 import scala.language.implicitConversions
-import scala.scalajs.js
 import scala.scalajs.js.annotation.ScalaJSDefined
-import scala.scalajs.runtime
+import scala.scalajs.{js, runtime}
 
 /**
   * MongoDB package object
@@ -52,13 +51,27 @@ package object mongodb {
     * Modifies the $push and $addToSet operators to append multiple items for array updates.
     * @example $each: [ 90, 92, 85 ]
     */
+  @inline
   def $each(values: js.Any*) = "$each" -> js.Array(values: _*)
 
   /**
     * Modifies the $push and $addToSet operators to append multiple items for array updates.
     * @example $each: [ 90, 92, 85 ]
     */
+  @inline
   def $each(values: js.Array[js.Any]) = "$each" -> js.Array(values: _*)
+
+  @inline
+  def $group(document: => js.Any) = doc("$group" -> document)
+
+  @inline
+  def $group(values: (String, js.Any)*) = doc("$group" -> doc(values: _*))
+
+  @inline
+  def $match(document: => js.Any) = doc("$match" -> document)
+
+  @inline
+  def $match(values: (String, js.Any)*) = doc("$match" -> doc(values: _*))
 
   /**
     * Joins query clauses with a logical NOR returns all documents that fail to match both clauses.
@@ -152,6 +165,18 @@ package object mongodb {
     @inline
     def $all(array: => js.Array[js.Any]) = attribute -> doc("$all" -> array)
 
+    @inline
+    def between(minValue: js.UndefOr[Double], maxValue: js.UndefOr[Double]): (String, js.Dictionary[js.Any]) = {
+      (minValue.flat.toOption, maxValue.flat.toOption) match {
+        case (Some(min), Some(max)) => attribute -> doc("$gte" -> min, "$lte" -> max)
+        case (Some(min), None) => attribute $gte min
+        case (None, Some(max)) => attribute $lte max
+      }
+    }
+
+    @inline
+    def between(values: => (js.UndefOr[Double], js.UndefOr[Double])):(String, js.Dictionary[js.Any]) = between(values._1, values._2)
+
     /**
       * Projects the first element in an array that matches the specified $elemMatch condition.
       * @example { students: { $elemMatch: { school: 102 } } }
@@ -195,6 +220,9 @@ package object mongodb {
     @inline
     def $in(array: => js.Array[_ <: Any]) = attribute -> doc("$in" -> array)
 
+    /**
+      * @example { $inc: { <field1>: <amount1>, <field2>: <amount2>, ... } }
+      */
     @inline
     def $inc(delta: => Double) = "$inc" -> doc(attribute -> delta)
 
@@ -295,7 +323,7 @@ package object mongodb {
       * @example db.collection.find( { field: { $size: 1 } } )
       */
     @inline
-    def $size(count: => Int) = attribute -> doc("$size" -> count)
+    def $size(count: => Double) = attribute -> doc("$size" -> count)
 
     /**
       * The $slice operator controls the number of items of an array that a query returns. For information on limiting
@@ -304,6 +332,12 @@ package object mongodb {
       */
     @inline
     def $slice(count: => Int) = attribute -> doc("$slice" -> count)
+
+    /**
+      * @example count: { $sum: 1 }
+      */
+    @inline
+    def $sum(value: => Double) = attribute -> doc("$sum" -> value)
 
     /**
       * Selects documents if a field is of the specified type.

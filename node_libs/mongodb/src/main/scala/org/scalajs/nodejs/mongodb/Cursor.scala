@@ -250,14 +250,14 @@ trait Cursor extends nodejs.stream.Readable {
     *                  If passed an array, each element will represent a field to be sorted and should be an array that
     *                  contains the format [string, direction].
     * @param direction this determines how the results are sorted. "asc", "ascending" or 1 for
-    *                  ascending order while "desc", "desceding or -1 for descending order.
+    *                  ascending order while "desc", "descending or -1 for descending order.
     *                  <b>Note</b> that the strings are case insensitive.
     * @param callback  this will be called after executing this method. The first parameter will contain an error
     *                  object when the cursor is already closed while the second parameter will contain a reference
     *                  to this object upon successful execution.
     * @example sort(keyOrList, direction, callback)
     */
-  def sort(keyOrList: js.Any, direction: Int | String, callback: js.Function): this.type = js.native
+  def sort(keyOrList: String, direction: Int | String, callback: js.Function): this.type = js.native
 
   /**
     * Sets the sort parameter of this cursor to the given value.
@@ -267,9 +267,21 @@ trait Cursor extends nodejs.stream.Readable {
     * @param callback  this will be called after executing this method. The first parameter will contain an error
     *                  object when the cursor is already closed while the second parameter will contain a reference
     *                  to this object upon successful execution.
-    * @example sort(keyOrList, callback)
+    * @example sort(keyOrList, direction, callback)
     */
-  def sort(keyOrList: js.Any, callback: js.Function = js.native): this.type = js.native
+  def sort(keyOrList: js.Array[js.Any], callback: js.Function = js.native): this.type = js.native
+
+  /**
+    * Sets the sort parameter of this cursor to the given value.
+    * @param keyOrList this can be a string or an array. If passed as a string, the string will be the field to sort.
+    *                  If passed an array, each element will represent a field to be sorted and should be an array that
+    *                  contains the format [string, direction].
+    * @param direction this determines how the results are sorted. "asc", "ascending" or 1 for
+    *                  ascending order while "desc", "descending or -1 for descending order.
+    *                  <b>Note</b> that the strings are case insensitive.
+    * @example sort(keyOrList, direction, callback)
+    */
+  def sort(keyOrList: String | js.Array[js.Any], direction: Int | String): this.type = js.native
 
   /**
     * TODO document me
@@ -403,31 +415,24 @@ object Cursor {
 
     /**
       * Sets the sort parameter of this cursor to the given value.
-      * @param keyOrList this can be a string or an array. If passed as a string, the string will be the field to sort.
-      *                  If passed an array, each element will represent a field to be sorted and should be an array that
-      *                  contains the format [string, direction].
-      * @param direction this determines how the results are sorted. "asc", "ascending" or 1 for
-      *                  ascending order while "desc", "desceding or -1 for descending order.
-      *                  <b>Note</b> that the strings are case insensitive.
+      * @param list this can be a string or an array. If passed as a string, the string will be the field to sort.
+      *             If passed an array, each element will represent a field to be sorted and should be an array that
+      *             contains the format [string, direction].
       */
     @inline
-    def sortFuture(keyOrList: js.Array[js.Any], direction: Int) = {
-      callbackMongoFuture[Cursor](cursor.sort(keyOrList, direction, _))
-    }
+    def sortFuture(list: js.Array[js.Any]) = callbackMongoFuture[Cursor](cursor.sort(list, _))
 
     /**
       * Sets the sort parameter of this cursor to the given value.
-      * @param keyOrList this can be a string or an array. If passed as a string, the string will be the field to sort.
+      * @param key       this can be a string or an array. If passed as a string, the string will be the field to sort.
       *                  If passed an array, each element will represent a field to be sorted and should be an array that
       *                  contains the format [string, direction].
       * @param direction this determines how the results are sorted. "asc", "ascending" or 1 for
-      *                  ascending order while "desc", "desceding or -1 for descending order.
+      *                  ascending order while "desc", "descending or -1 for descending order.
       *                  <b>Note</b> that the strings are case insensitive.
       */
     @inline
-    def sortFuture(keyOrList: js.Array[js.Any], direction: String) = {
-      callbackMongoFuture[Cursor](cursor.sort(keyOrList, direction, _))
-    }
+    def sortFuture(key: String, direction: Int | String) = callbackMongoFuture[Cursor](cursor.sort(key, direction, _))
 
     /**
       * Returns an array of documents. The caller is responsible for making sure that there is enough memory to store

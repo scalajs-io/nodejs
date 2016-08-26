@@ -226,7 +226,7 @@ object ScalaJsHelper {
 
   /**
     * UndefOr Extensions
-    * @param valueA the given [[js.UndefOr optional value]]
+    * @param valueA the given [[js.UndefOr value]]
     */
   implicit class UndefOrExtensions[T](val valueA: js.UndefOr[T]) extends AnyVal {
 
@@ -249,6 +249,16 @@ object ScalaJsHelper {
     @inline def nonAssigned = valueA.flat.isEmpty
 
     @inline def orDie(message: String): T = valueA getOrElse die(message)
+
+  }
+
+  /**
+    * UndefOr Boolean Extensions
+    * @param value the given [[js.UndefOr value]]
+    */
+  implicit class UndefOrBoolExtensions(val value: js.UndefOr[Boolean]) extends AnyVal {
+
+    @inline def isTrue = value.flat.contains(true)
 
   }
 

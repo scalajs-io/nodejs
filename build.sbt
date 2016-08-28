@@ -494,12 +494,12 @@ lazy val bundle_node_oss = (project in file("bundles/node_oss")).
   aggregate(
     node_adal, node_amqplib, node_async, node_azure, node_bcrypt, node_body_parser, node_cassandra,
     node_colors, node_cvs_parse, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_csv, node_express_fileupload,
-    node_express_ws, node_feedparser, node_filed, node_jwt_simple, node_kafka, node_memory_fs, node_mongodb, node_multer, node_mysql,
+    node_express_ws, node_feedparser, node_filed, node_jwt_simple, node_kafka, node_memory_fs, node_moment, node_mongodb, node_multer, node_mysql,
     node_oppressor, node_pvorb_md5, node_request, node_rxjs, node_transducers, node_watch, node_xml2js, node_zookeeper).
   dependsOn(
     node_adal, node_amqplib, node_async, node_azure, node_bcrypt, node_body_parser, node_cassandra,
     node_colors, node_cvs_parse, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_csv, node_express_fileupload,
-    node_express_ws, node_filed, node_jwt_simple, node_kafka, node_memory_fs, node_mongodb, node_multer, node_mysql,
+    node_express_ws, node_filed, node_jwt_simple, node_kafka, node_memory_fs, node_moment, node_mongodb, node_multer, node_mysql,
     node_oppressor, node_pvorb_md5, node_request, node_rxjs, node_transducers, node_watch, node_xml2js, node_zookeeper).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
@@ -695,6 +695,15 @@ lazy val node_memory_fs = (project in file("node_libs/memory-fs")).
   settings(
     name := "scalajs-nodejs-memory-fs",
     description := "NodeJS/memory-fs binding for Scala.js"
+  )
+
+lazy val node_moment = (project in file("node_libs/moment")).
+  dependsOn(node_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "scalajs-nodejs-moment",
+    description := "NodeJS/moment binding for Scala.js"
   )
 
 lazy val node_mongodb = (project in file("node_libs/mongodb")).

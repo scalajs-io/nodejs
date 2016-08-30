@@ -9,7 +9,7 @@ import scala.scalajs.js
 @js.native
 trait UpdateWriteOpResultObject extends js.Object {
   // The raw result returned from MongoDB, field will vary depending on server version.
-  var result: UpdateWriteOpResultObject.Result = js.native
+  var result: UpdateWriteResult = js.native
 
   // The total count of documents modified.
   var nModified: Int = js.native
@@ -28,30 +28,5 @@ trait UpdateWriteOpResultObject extends js.Object {
 
   // The upserted id.
   var upsertedId: String = js.native
-
-}
-
-/**
-  * Update Write Operation Result Object
-  * @author lawrence.daniels@gmail.com
-  */
-object UpdateWriteOpResultObject {
-
-  /**
-    * Update Write Operation Result
-    * @author lawrence.daniels@gmail.com
-    */
-  @js.native
-  trait Result extends js.Object {
-    // Is 1 if the command executed correctly.
-    var ok: Int = js.native
-
-    // The total count of documents scanned.
-    var n: Int = js.native
-
-    // The total count of documents modified.
-    var nModified: Int = js.native
-
-  }
 
 }

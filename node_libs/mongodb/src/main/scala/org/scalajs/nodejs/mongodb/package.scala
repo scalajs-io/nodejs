@@ -13,6 +13,10 @@ import scala.scalajs.{js, runtime}
   */
 package object mongodb {
 
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Promises and Futures
+  /////////////////////////////////////////////////////////////////////////////////
+
   /**
     * Converts a JavaScript-style callback to a Scala-style future
     * @param f the given callback function
@@ -25,6 +29,38 @@ package object mongodb {
     promise.future
   }
 
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Bulk Insert/Update
+  /////////////////////////////////////////////////////////////////////////////////
+
+  @inline
+  def deleteMany(filter: js.Any) = doc("deleteMany" -> filter)
+
+  @inline
+  def deleteOne(filter: js.Any) = doc("deleteOne" -> filter)
+
+  @inline
+  def insertOne(document: js.Any) = doc("insertOne" -> document)
+
+  @inline
+  def replaceOne(filter: js.Any, replacement: js.Any, upsert: Boolean = false) = {
+    doc("replaceOne" -> doc("filter" -> filter, "replacement" -> replacement, "upsert" -> upsert))
+  }
+
+  @inline
+  def updateMany(filter: js.Any, update: js.Any, upsert: Boolean = false) = {
+    doc("updateMany" -> doc("filter" -> filter, "update" -> update, "upsert" -> upsert))
+  }
+
+  @inline
+  def updateOne(filter: js.Any, update: js.Any, upsert: Boolean = false) = {
+    doc("updateOne" -> doc("filter" -> filter, "update" -> update, "upsert" -> upsert))
+  }
+
+  /////////////////////////////////////////////////////////////////////////////////
+  //      MongoDB DSL
+  /////////////////////////////////////////////////////////////////////////////////
+
   /**
     * Creates a new JSON document
     * @param kvps the given key-value pairs
@@ -32,6 +68,12 @@ package object mongodb {
     */
   @inline
   def doc(kvps: (String, js.Any)*) = js.Dictionary(kvps: _*)
+
+  @inline
+  def $addToSet(value: => js.Any) = "$addToSet" -> value
+
+  @inline
+  def $addToSet(values: (String, js.Any)*) = "$addToSet" -> doc(values: _*)
 
   /**
     * Joins query clauses with a logical AND returns all documents that match the conditions of both clauses.
@@ -66,6 +108,12 @@ package object mongodb {
 
   @inline
   def $group(values: (String, js.Any)*) = doc("$group" -> doc(values: _*))
+
+  /**
+    * @example { $inc: { <field1>: <amount1>, <field2>: <amount2>, ... } }
+    */
+  @inline
+  def $inc(deltas: (String, Double)*) = "$inc" -> js.Dictionary(deltas: _*)
 
   @inline
   def $match(document: => js.Any) = doc("$match" -> document)
@@ -108,12 +156,25 @@ package object mongodb {
   @inline
   def $position(pos: => Int) = "$position" -> pos
 
+  @inline
+  def $pull(value: => js.Any) = "$pull" -> value
+
+  @inline
+  def $pull(value: (String, js.Any)*) = "$pull" -> doc(value: _*)
+
   /**
     * The $set operator replaces the value of a field with the specified value.
     * @example { $set: { field1: value1, ... } }
     */
   @inline
   def $set(value: => js.Any) = "$set" -> value
+
+  /**
+    * The $set operator replaces the value of a field with the specified value.
+    * @example { $set: { field1: value1, ... } }
+    */
+  @inline
+  def $set(value: (String, js.Any)*) = "$set" -> doc(value: _*)
 
   /**
     * Performs text search.
@@ -175,7 +236,7 @@ package object mongodb {
     }
 
     @inline
-    def between(values: => (js.UndefOr[Double], js.UndefOr[Double])):(String, js.Dictionary[js.Any]) = between(values._1, values._2)
+    def between(values: => (js.UndefOr[Double], js.UndefOr[Double])): (String, js.Dictionary[js.Any]) = between(values._1, values._2)
 
     /**
       * Projects the first element in an array that matches the specified $elemMatch condition.
@@ -183,6 +244,13 @@ package object mongodb {
       */
     @inline
     def $elemMatch(value: => js.Any) = attribute -> doc("$elemMatch" -> value)
+
+    /**
+      * Projects the first element in an array that matches the specified $elemMatch condition.
+      * @example { students: { $elemMatch: { school: 102 } } }
+      */
+    @inline
+    def $elemMatch(value: (String, js.Any)*) = attribute -> doc("$elemMatch" -> doc(value: _*))
 
     /**
       * Specifies equality condition. The $eq operator matches documents where the value of a field equals the specified value.
@@ -238,7 +306,7 @@ package object mongodb {
       * @example db.inventory.find( { qty: { $lte: 20 } } )
       */
     @inline
-    def $lte(value: => js.Any) = attribute -> doc("$gte" -> value)
+    def $lte(value: => js.Any) = attribute -> doc("$lte" -> value)
 
     /**
       * The $meta projection operator returns for each matching document the metadata (e.g. "textScore") associated with the query.
@@ -297,6 +365,13 @@ package object mongodb {
 
     /**
       * The $pull operator removes from an existing array all instances of a value or values that match a specified condition.
+      * @example { $pull: { results: { $elemMatch: { score: 8 , item: "B" } } } }
+      */
+    @inline
+    def $pull(value: (String, js.Any)*) = "$pull" -> doc(attribute -> doc(value: _*))
+
+    /**
+      * The $pull operator removes from an existing array all instances of a value or values that match a specified condition.
       * @example db.survey.update( { _id: 1 }, { $pullAll: { scores: [ 0, 5 ] } } )
       */
     @inline
@@ -317,6 +392,12 @@ package object mongodb {
     def $regex(pattern: => String, ignoreCase: Boolean = false) = {
       attribute -> (if (ignoreCase) doc("$regex" -> pattern, "$options" -> "i") else doc("$regex" -> pattern))
     }
+
+    /**
+      * @example { $set: { <field1>: <value1>, <field2>: <value2>, ... } }
+      */
+    @inline
+    def $set(value: => js.Any) = "$set" -> doc(attribute -> value)
 
     /**
       * Selects documents if the array field is a specified size.

@@ -493,14 +493,16 @@ lazy val node_zlib = (project in file("node/zlib")).
 lazy val bundle_node_oss = (project in file("bundles/node_oss")).
   aggregate(
     node_adal, node_amqplib, node_async, node_azure, node_bcrypt, node_body_parser, node_cassandra,
-    node_colors, node_cvs_parse, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_csv, node_express_fileupload,
-    node_express_ws, node_feedparser, node_filed, node_jwt_simple, node_kafka, node_memory_fs, node_moment, node_mongodb, node_multer, node_mysql,
-    node_oppressor, node_pvorb_md5, node_request, node_rxjs, node_transducers, node_watch, node_xml2js, node_zookeeper).
+    node_colors, node_cvs_parse, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_csv,
+    node_express_fileupload, node_express_ws, node_feedparser, node_filed, node_htmlparser2, node_jwt_simple, node_kafka,
+    node_memory_fs, node_moment, node_mongodb, node_multer, node_mysql, node_oppressor, node_pvorb_md5, node_request,
+    node_rxjs, node_transducers, node_watch, node_xml2js, node_zookeeper).
   dependsOn(
     node_adal, node_amqplib, node_async, node_azure, node_bcrypt, node_body_parser, node_cassandra,
-    node_colors, node_cvs_parse, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_csv, node_express_fileupload,
-    node_express_ws, node_filed, node_jwt_simple, node_kafka, node_memory_fs, node_moment, node_mongodb, node_multer, node_mysql,
-    node_oppressor, node_pvorb_md5, node_request, node_rxjs, node_transducers, node_watch, node_xml2js, node_zookeeper).
+    node_colors, node_cvs_parse, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_csv,
+    node_express_fileupload, node_express_ws, node_feedparser, node_filed, node_htmlparser2, node_jwt_simple, node_kafka,
+    node_memory_fs, node_moment, node_mongodb, node_multer, node_mysql, node_oppressor, node_pvorb_md5, node_request,
+    node_rxjs, node_transducers, node_watch, node_xml2js, node_zookeeper).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(

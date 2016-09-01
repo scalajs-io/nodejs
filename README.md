@@ -231,6 +231,7 @@ The following Third Party/OSS NodeJS modules have been implemented thus far:
 | express-ws            |2.0.0-rc1| scalajs-nodejs-express-ws | WebSocket endpoints for Express applications | Stable |
 | feedparser-promised   | 1.1.1   | scalajs-nodejs-feedparser-promised| Wrapper around feedparser with promises. | Stable |
 | filed                 | 0.1.0   | scalajs-nodejs-filed      | Simplified file library. | Stable |
+| htmlparser2           | 3.9.1   | scalajs-nodejs-htmlparser2| A forgiving HTML/XML/RSS parser. The parser can handle streams and provides a callback interface. | Stable |
 | jwt-simple            | 0.5.0   | scalajs-nodejs-jwt-simple | JWT(JSON Web Token) encode and decode module | Stable |
 | kafka-node            | 0.0.11  | scalajs-nodejs-kafkanode  | A node binding for librdkafka | Tesing required |
 | md5                   | 2.1.0   | scalajs-nodejs-pvorb-md5  | A JavaScript function for hashing messages with MD5. | Stable |

@@ -670,6 +670,15 @@ lazy val node_filed = (project in file("node_libs/filed")).
     description := "NodeJS/filed binding for Scala.js"
   )
 
+lazy val node_htmlparser2 = (project in file("node_libs/htmlparser2")).
+  dependsOn(node_stream).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "scalajs-nodejs-htmlparser2",
+    description := "NodeJS/htmlparser2 binding for Scala.js"
+  )
+
 lazy val node_jwt_simple = (project in file("node_libs/jwt-simple")).
   dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).

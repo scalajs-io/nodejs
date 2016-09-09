@@ -1,6 +1,6 @@
-package org.scalajs.angularjs.facebook
+package org.scalajs.angularjs
+package facebook
 
-import org.scalajs.angularjs.{Q, QDefer, Service, angular}
 import org.scalajs.dom.console
 import org.scalajs.nodejs.social.facebook._
 import org.scalajs.nodejs.util.ScalaJsHelper._
@@ -35,7 +35,7 @@ class FacebookService($q: Q) extends Service {
       specialHandling(deferred, response) {
         case resp if resp.status == "connected" =>
           auth = resp.authResponse
-          console.log(s"facebookID = $facebookID, auth = ${angular.toJson(auth)}")
+          //console.log(s"facebookID = $facebookID, auth = ${angular.toJson(auth)}")
           Success(resp)
         case resp =>
           Failure(new RuntimeException(s"Facebook is not connected (status: ${resp.status})"))
@@ -54,7 +54,7 @@ class FacebookService($q: Q) extends Service {
     FB.login((response: js.UndefOr[FacebookLoginStatusResponse]) =>
       specialHandling(deferred, response) { resp =>
         auth = resp.authResponse
-        console.log(s"facebookID = $facebookID, auth = ${angular.toJson(auth)}")
+        //console.log(s"facebookID = $facebookID, auth = ${angular.toJson(auth)}")
         Success(resp)
       })
     deferred.promise
@@ -96,7 +96,7 @@ class FacebookService($q: Q) extends Service {
     val deferred = $q.defer[js.Array[TaggableFriend]]()
     val friends = emptyArray[TaggableFriend]
     FB.api(fbURL("/friends"), (response: FacebookPagination[TaggableFriend]) => {
-      console.log(s"response = ${angular.toJson(response)}")
+      //console.log(s"response = ${angular.toJson(response)}")
       val results = response.data
       if (results.nonEmpty) {
         friends.push(results: _*)
@@ -127,7 +127,7 @@ class FacebookService($q: Q) extends Service {
     val deferred = $q.defer[js.Array[TaggableFriend]]()
     val friends = emptyArray[TaggableFriend]
     val callback: PaginationCallback[TaggableFriend] = (response: FacebookPagination[TaggableFriend]) => {
-      console.log(s"response = ${angular.toJson(response)}")
+      //console.log(s"response = ${angular.toJson(response)}")
       val results = response.data
       if (results.nonEmpty) {
         friends.push(results: _*)

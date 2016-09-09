@@ -495,13 +495,13 @@ lazy val bundle_node_oss = (project in file("bundles/node_oss")).
     node_adal, node_amqplib, node_async, node_azure, node_bcrypt, node_body_parser, node_cassandra,
     node_colors, node_cvs_parse, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_csv,
     node_express_fileupload, node_express_ws, node_feedparser, node_filed, node_htmlparser2, node_jwt_simple, node_kafka,
-    node_memory_fs, node_moment, node_mongodb, node_multer, node_mysql, node_oppressor, node_pvorb_md5, node_request,
+    node_memory_fs, node_moment, node_moment_tz, node_mongodb, node_multer, node_mysql, node_oppressor, node_pvorb_md5, node_request,
     node_rxjs, node_transducers, node_watch, node_xml2js, node_zookeeper).
   dependsOn(
     node_adal, node_amqplib, node_async, node_azure, node_bcrypt, node_body_parser, node_cassandra,
     node_colors, node_cvs_parse, node_drama, node_elgs_splitargs, node_escape_html, node_express, node_express_csv,
     node_express_fileupload, node_express_ws, node_feedparser, node_filed, node_htmlparser2, node_jwt_simple, node_kafka,
-    node_memory_fs, node_moment, node_mongodb, node_multer, node_mysql, node_oppressor, node_pvorb_md5, node_request,
+    node_memory_fs, node_moment, node_moment_tz, node_mongodb, node_multer, node_mysql, node_oppressor, node_pvorb_md5, node_request,
     node_rxjs, node_transducers, node_watch, node_xml2js, node_zookeeper).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
@@ -510,311 +510,320 @@ lazy val bundle_node_oss = (project in file("bundles/node_oss")).
     description := "Bundles all OSS Node modules"
   )
 
-lazy val node_adal = (project in file("node_libs/adal")).
+lazy val node_adal = (project in file("npm/adal")).
   dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-adal-node",
-    description := "NodeJS/adal-node binding for Scala.js"
+    description := "npm/adal-node binding for Scala.js"
   )
 
-lazy val node_amqplib = (project in file("node_libs/amqplib")).
+lazy val node_amqplib = (project in file("npm/amqplib")).
   dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-amqplib",
-    description := "NodeJS/amqplib binding for Scala.js"
+    description := "npm/amqplib binding for Scala.js"
   )
 
-lazy val node_async = (project in file("node_libs/async")).
+lazy val node_async = (project in file("npm/async")).
   dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-async",
-    description := "NodeJS/async binding for Scala.js"
+    description := "npm/async binding for Scala.js"
   )
 
-lazy val node_azure = (project in file("node_libs/azure")).
+lazy val node_azure = (project in file("npm/azure")).
   dependsOn(node_stream).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-azure",
-    description := "NodeJS/azure binding for Scala.js"
+    description := "npm/azure binding for Scala.js"
   )
 
-lazy val node_bcrypt = (project in file("node_libs/bcrypt")).
+lazy val node_bcrypt = (project in file("npm/bcrypt")).
   dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-bcrypt",
-    description := "NodeJS/bcrypt binding for Scala.js"
+    description := "npm/bcrypt binding for Scala.js"
   )
 
-lazy val node_body_parser = (project in file("node_libs/body-parser")).
+lazy val node_body_parser = (project in file("npm/body-parser")).
   dependsOn(node_express).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-body-parser",
-    description := "NodeJS/body-parser binding for Scala.js"
+    description := "npm/body-parser binding for Scala.js"
   )
 
-lazy val node_cassandra = (project in file("node_libs/cassandra")).
+lazy val node_cassandra = (project in file("npm/cassandra")).
   dependsOn(node_stream).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-datastax-cassandra",
-    description := "NodeJS/cassandra binding for Scala.js"
+    description := "npm/cassandra binding for Scala.js"
   )
 
-lazy val node_colors = (project in file("node_libs/colors")).
+lazy val node_colors = (project in file("npm/colors")).
   dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-colors",
-    description := "NodeJS/colors binding for Scala.js"
+    description := "npm/colors binding for Scala.js"
   )
 
-lazy val node_cvs_parse = (project in file("node_libs/csv-parse")).
+lazy val node_cvs_parse = (project in file("npm/csv-parse")).
   dependsOn(node_stream).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-csv-parse",
-    description := "NodeJS/csv-parse binding for Scala.js"
+    description := "npm/csv-parse binding for Scala.js"
   )
 
-lazy val node_drama = (project in file("node_libs/drama")).
+lazy val node_drama = (project in file("npm/drama")).
   dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-drama",
-    description := "NodeJS/drama binding for Scala.js"
+    description := "npm/drama binding for Scala.js"
   )
 
-lazy val node_elgs_splitargs = (project in file("node_libs/elgs-splitargs")).
+lazy val node_elgs_splitargs = (project in file("npm/elgs-splitargs")).
   dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-elgs-splitargs",
-    description := "NodeJS/elgs-splitargs binding for Scala.js"
+    description := "npm/elgs-splitargs binding for Scala.js"
   )
 
-lazy val node_escape_html = (project in file("node_libs/escape-html")).
+lazy val node_escape_html = (project in file("npm/escape-html")).
   dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-escape-html",
-    description := "NodeJS/escape-html binding for Scala.js"
+    description := "npm/escape-html binding for Scala.js"
   )
 
-lazy val node_express = (project in file("node_libs/express")).
+lazy val node_express = (project in file("npm/express")).
   dependsOn(node_http).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-express",
-    description := "NodeJS/express binding for Scala.js"
+    description := "npm/express binding for Scala.js"
   )
 
-lazy val node_express_csv = (project in file("node_libs/express-csv")).
+lazy val node_express_csv = (project in file("npm/express-csv")).
   dependsOn(node_express).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-express-csv",
-    description := "NodeJS/express-csv binding for Scala.js"
+    description := "npm/express-csv binding for Scala.js"
   )
 
-lazy val node_express_fileupload = (project in file("node_libs/express-fileupload")).
+lazy val node_express_fileupload = (project in file("npm/express-fileupload")).
   dependsOn(node_express).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-express-fileupload",
-    description := "NodeJS/express-fileupload binding for Scala.js"
+    description := "npm/express-fileupload binding for Scala.js"
   )
 
-lazy val node_express_ws = (project in file("node_libs/express-ws")).
+lazy val node_express_ws = (project in file("npm/express-ws")).
   dependsOn(node_express).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-express-ws",
-    description := "NodeJS/express-ws binding for Scala.js"
+    description := "npm/express-ws binding for Scala.js"
   )
 
-lazy val node_feedparser = (project in file("node_libs/feedparser-promised")).
+lazy val node_feedparser = (project in file("npm/feedparser-promised")).
   dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-feedparser-promised",
-    description := "NodeJS/feedparser-promised binding for Scala.js"
+    description := "npm/feedparser-promised binding for Scala.js"
   )
 
-lazy val node_filed = (project in file("node_libs/filed")).
+lazy val node_filed = (project in file("npm/filed")).
   dependsOn(node_stream).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-filed",
-    description := "NodeJS/filed binding for Scala.js"
+    description := "npm/filed binding for Scala.js"
   )
 
-lazy val node_htmlparser2 = (project in file("node_libs/htmlparser2")).
+lazy val node_htmlparser2 = (project in file("npm/htmlparser2")).
   dependsOn(node_stream).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-htmlparser2",
-    description := "NodeJS/htmlparser2 binding for Scala.js"
+    description := "npm/htmlparser2 binding for Scala.js"
   )
 
-lazy val node_jwt_simple = (project in file("node_libs/jwt-simple")).
+lazy val node_jwt_simple = (project in file("npm/jwt-simple")).
   dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-jwt-simple",
-    description := "NodeJS/jwt-simple binding for Scala.js"
+    description := "npm/jwt-simple binding for Scala.js"
   )
 
-lazy val node_kafka = (project in file("node_libs/kafka_node")).
+lazy val node_kafka = (project in file("npm/kafka_node")).
   dependsOn(node_core, node_zookeeper).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-kafkanode",
-    description := "NodeJS/kafka-node binding for Scala.js"
+    description := "npm/kafka-node binding for Scala.js"
   )
 
-lazy val node_memory_fs = (project in file("node_libs/memory-fs")).
+lazy val node_memory_fs = (project in file("npm/memory-fs")).
   dependsOn(node_fs).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-memory-fs",
-    description := "NodeJS/memory-fs binding for Scala.js"
+    description := "npm/memory-fs binding for Scala.js"
   )
 
-lazy val node_moment = (project in file("node_libs/moment")).
+lazy val node_moment = (project in file("npm/moment")).
   dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-moment",
-    description := "NodeJS/moment binding for Scala.js"
+    description := "npm/moment binding for Scala.js"
   )
 
-lazy val node_mongodb = (project in file("node_libs/mongodb")).
+lazy val node_moment_tz = (project in file("npm/moment_timezone")).
+  dependsOn(node_moment).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "scalajs-nodejs-moment-timezone",
+    description := "npm/moment-timezone binding for Scala.js"
+  )
+
+lazy val node_mongodb = (project in file("npm/mongodb")).
   dependsOn(node_stream).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-mongodb",
-    description := "NodeJS/mongodb binding for Scala.js"
+    description := "npm/mongodb binding for Scala.js"
   )
 
-lazy val node_multer = (project in file("node_libs/multer")).
+lazy val node_multer = (project in file("npm/multer")).
   dependsOn(node_express).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-multer",
-    description := "NodeJS/multer binding for Scala.js"
+    description := "npm/multer binding for Scala.js"
   )
 
-lazy val node_mysql = (project in file("node_libs/mysql")).
+lazy val node_mysql = (project in file("npm/mysql")).
   dependsOn(node_stream).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-mysql",
-    description := "NodeJS/mysql binding for Scala.js"
+    description := "npm/mysql binding for Scala.js"
   )
 
-lazy val node_oppressor = (project in file("node_libs/oppressor")).
+lazy val node_oppressor = (project in file("npm/oppressor")).
   dependsOn(node_stream).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-oppressor",
-    description := "NodeJS/oppressor binding for Scala.js"
+    description := "npm/oppressor binding for Scala.js"
   )
 
-lazy val node_pvorb_md5 = (project in file("node_libs/pvorb-md5")).
+lazy val node_pvorb_md5 = (project in file("npm/pvorb-md5")).
   dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-pvorb-md5",
-    description := "NodeJS/pvorb-md5 binding for Scala.js"
+    description := "npm/pvorb-md5 binding for Scala.js"
   )
 
-lazy val node_request = (project in file("node_libs/request")).
+lazy val node_request = (project in file("npm/request")).
   dependsOn(node_http).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-request",
-    description := "NodeJS/request binding for Scala.js"
+    description := "npm/request binding for Scala.js"
   )
 
-lazy val node_rxjs = (project in file("node_libs/rxjs")).
+lazy val node_rxjs = (project in file("npm/rxjs")).
   aggregate(node_transducers).
   dependsOn(core, node_core, node_transducers).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-rxjs",
-    description := "NodeJS/rxjs binding for Scala.js"
+    description := "npm/rxjs binding for Scala.js"
   )
 
-lazy val node_transducers = (project in file("node_libs/transducers")).
+lazy val node_transducers = (project in file("npm/transducers")).
   dependsOn(core, node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-transducers",
-    description := "NodeJS/transducers-js binding for Scala.js"
+    description := "npm/transducers-js binding for Scala.js"
   )
 
-lazy val node_watch = (project in file("node_libs/watch")).
+lazy val node_watch = (project in file("npm/watch")).
   dependsOn(node_fs).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-watch",
-    description := "NodeJS/watch binding for Scala.js"
+    description := "npm/watch binding for Scala.js"
   )
 
-lazy val node_xml2js = (project in file("node_libs/xml2js")).
+lazy val node_xml2js = (project in file("npm/xml2js")).
   dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-xml2js",
-    description := "NodeJS/xml2js binding for Scala.js"
+    description := "npm/xml2js binding for Scala.js"
   )
 
-lazy val node_zookeeper = (project in file("node_libs/zookeeper-client")).
+lazy val node_zookeeper = (project in file("npm/zookeeper-client")).
   dependsOn(node_core).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
     name := "scalajs-nodejs-zookeeper-client",
-    description := "NodeJS/node-zookeeper-client binding for Scala.js"
+    description := "npm/node-zookeeper-client binding for Scala.js"
   )
 
 lazy val publishingSettings = Seq(

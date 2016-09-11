@@ -237,6 +237,7 @@ The following Third Party/OSS NodeJS modules have been implemented thus far:
 | md5                   | 2.1.0   | scalajs-nodejs-pvorb-md5  | A JavaScript function for hashing messages with MD5. | Stable |
 | memory-fs             | 0.3.0   | scalajs-nodejs-memory-fs  | A simple in-memory filesystem. Holds data in a javascript object. | Stable |
 | moment                | 2.14.1  | scalajs-nodejs-moment     | Parse, validate, manipulate, and display dates in JavaScript. | Stable |
+| moment-timezone       |0.5.5-2016f| scalajs-nodejs-moment-timezone| Parse and display dates in any timezone. | Stable |
 | mongodb               | 2.1.18  | scalajs-nodejs-mongodb    | Node.js MongoDB Driver | Stable |
 | multer                | 1.1.0   | scalajs-nodejs-multer     | Multer is a node.js middleware for handling multipart/form-data. | Tesing required |
 | mysql                 | 2.10.2  | scalajs-nodejs-mysql      | A node.js driver for mysql. | Stable |

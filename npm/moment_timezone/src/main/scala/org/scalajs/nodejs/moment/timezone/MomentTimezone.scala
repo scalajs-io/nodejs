@@ -21,11 +21,11 @@ trait MomentTimezone extends NodeModule
 object MomentTimezone {
 
   /**
-    * Convenience method for retrieving the 'moment' module
+    * Convenience method for retrieving the 'moment-timezone' module
     * @param require the implicit [[NodeRequire require function]]
     * @return the Moment instance
     */
-  def apply()(implicit require: NodeRequire) = require[Moment]("moment-timezone")
+  def apply()(implicit require: NodeRequire) = require[MomentTimezone]("moment-timezone")
 
 
 }

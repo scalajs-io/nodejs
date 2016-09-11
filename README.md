@@ -25,20 +25,20 @@ This is a Scala.js binding for the Node.js and MEAN Stack (MongoDB, Express, Ang
 <a name="introduction"></a>
 ## Introduction
 
-The goal of this project is to be a complete Scala.js binding for the entire MEAN Stack. Why? Because I love NodeJS,
+The goal of this project is to provide a complete Scala.js binding for the entire MEAN Stack. Why? Because I love NodeJS,
  but I have a love/hate relationship with JavaScript. And many others feel the same way about JavaScript, which is why
  there are so many languages that are designed to improve the experience (CoffeeScript, TypeScript, Scala.js and others). 
  Simply put, Scalajs-Nodejs let's me have my cake and eat it too! And as such, I've gone to great lengths to bring all the 
  things you love about developing applications on the MEAN Stack to Scala.
  
-Scalajs-Nodejs is componentized; allowing developers to use include only the features they want. If all your application 
+Scalajs-Nodejs is componentized; allowing developers to use only the features they want. If all your application 
 requires is a binding for AngularJS, you can use just that. Alternatively, you could use only the Node bindings, or the 
-entire MEAN stack.
+entire MEAN stack (or any of the bundled npm library bindings).
 
 Currently, there are at least four development use cases for Scalajs-Nodejs:
  
 * Building full MEAN stack applications using the bundled MongoDB, Express, Angular and Node bindings.
-* Building rich thin-client web frontends using AngularJS bindings only (with any backend).
+* Building rich thin-client web front-ends using AngularJS bindings only (with any backend).
 * Building REST services using Node (and optionally Express) bindings only.
 * Building CLI applications using Node bindings only.
 
@@ -210,7 +210,7 @@ The following Core NodeJS modules have been implemented thus far:
 | zlib                  | 6.1.0   | scalajs-nodejs-zlib       | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. | Stable |
 
 
-The following Third Party/OSS NodeJS modules have been implemented thus far:
+The following Third Party/OSS NodeJS (npm) modules have been implemented thus far:
 
 | Node Module           | Version | Artifact ID               | Description                                             | Status          |
 |-----------------------|---------|---------------------------|---------------------------------------------------------|-----------------|
@@ -745,6 +745,7 @@ class MarketStatusService($http: Http) extends Service {
   
 }
 
+@js.native
 trait MarketStatus extends js.Object {
   var stateChanged: Boolean = js.native
   var active: Boolean = js.native
@@ -784,6 +785,7 @@ class ChangeArrowDirective extends Directive[ChangeArrowDirectiveScope] {
   }
 }
 
+@js.native
 trait ChangeArrowDirectiveScope extends Scope {
   var value: js.UndefOr[Any] = js.native
   var icon: String = js.native

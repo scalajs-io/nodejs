@@ -530,6 +530,7 @@ The following AngularJS services have been implemented thus far:
 | $location         | scalajs-angularjs-core         | The $location service parses the URL in the browser address bar (based on the window.location) and makes the URL available to your application. |
 | $log              | scalajs-angularjs-core         | Simple service for logging. Default implementation safely writes the message into the browser's console (if present). |
 | $modal            | scalajs-angularjs-ui-bootstrap | Modal Dialogs - Angular UI Bootstrap |
+| $nvd3             | scalajs-angularjs-nvd3         | An AngularJS directive for NVD3 re-usable charting library (based on D3).|
 | $parse            | scalajs-angularjs-core         | Converts Angular expression into a function. |
 | $q                | scalajs-angularjs-core         | A service that helps you run functions asynchronously, and use their return values (or exceptions) when they are done processing. |
 | $resource         | scalajs-angularjs-core         | A factory which creates a resource object that lets you interact with RESTful server-side data sources. |

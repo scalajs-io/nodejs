@@ -16,6 +16,10 @@ package object browser {
   object console extends org.scalajs.dom.raw.Console
 
   @js.native
+  @JSName("location")
+  object location extends Location
+
+  @js.native
   @JSName("performance")
   object performance extends Performance
 

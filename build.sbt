@@ -4,7 +4,7 @@ import sbt.Keys._
 import sbt.Project.projectToRef
 import sbt._
 
-val apiVersion = "0.2.2.6"
+val apiVersion = "0.2.2.7"
 
 val paradisePluginVersion = "3.0.0-M1"
 val _scalaVersion = "2.11.8"
@@ -135,10 +135,10 @@ lazy val pixijs = (project in file("browser/pixijs")).
 lazy val bundle_angular = (project in file("bundles/angularjs")).
   aggregate(
     angular_core, angular_anchorScroll, angular_animate, angular_cookies, angular_facebook, angular_md5,
-    angular_nervgh_fileupload, angular_sanitize, angular_toaster, angular_ui_bootstrap, angular_ui_router).
+    angular_nervgh_fileupload, angular_nvd3, angular_sanitize, angular_toaster, angular_ui_bootstrap, angular_ui_router).
   dependsOn(
     angular_core, angular_anchorScroll, angular_animate, angular_cookies, angular_facebook, angular_md5,
-    angular_nervgh_fileupload, angular_sanitize, angular_toaster, angular_ui_bootstrap, angular_ui_router).
+    angular_nervgh_fileupload, angular_nvd3, angular_sanitize, angular_toaster, angular_ui_bootstrap, angular_ui_router).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
@@ -207,6 +207,15 @@ lazy val angular_nervgh_fileupload = (project in file("angularjs/nervgh-fileuplo
   settings(
     name := "scalajs-angularjs-nervgh-fileupload",
     description := "AngularJS/nervgh-fileupload binding for Scala.js"
+  )
+
+lazy val angular_nvd3 = (project in file("angularjs/nvd3")).
+  dependsOn(core, angular_core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "scalajs-angularjs-nvd3",
+    description := "AngularJS/nvd3 binding for Scala.js"
   )
 
 lazy val angular_sanitize = (project in file("angularjs/sanitize")).

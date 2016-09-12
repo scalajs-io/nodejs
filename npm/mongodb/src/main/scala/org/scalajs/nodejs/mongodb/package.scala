@@ -94,14 +94,7 @@ package object mongodb {
     * @example $each: [ 90, 92, 85 ]
     */
   @inline
-  def $each(values: js.Any*) = "$each" -> js.Array(values: _*)
-
-  /**
-    * Modifies the $push and $addToSet operators to append multiple items for array updates.
-    * @example $each: [ 90, 92, 85 ]
-    */
-  @inline
-  def $each(values: js.Array[js.Any]) = "$each" -> js.Array(values: _*)
+  def $each(values: js.Array[_ <: Any]) = "$each" -> values
 
   @inline
   def $group(document: => js.Any) = doc("$group" -> document)
@@ -224,7 +217,7 @@ package object mongodb {
       * @example { tags: { $all: [ "ssl" , "security" ] } }
       */
     @inline
-    def $all(array: => js.Array[js.Any]) = attribute -> doc("$all" -> array)
+    def $all(array: => js.Array[_ <: Any]) = attribute -> doc("$all" -> array)
 
     @inline
     def between[A, B](minValue: js.UndefOr[A], maxValue: js.UndefOr[B]): (String, js.Dictionary[js.Any]) = {
@@ -327,7 +320,7 @@ package object mongodb {
       * @example db.inventory.find( { qty: { $mod: [ 4, 0 ] } } )
       */
     @inline
-    def $mod(array: => js.Array[js.Any]) = attribute -> doc("$mod" -> array)
+    def $mod(array: => js.Array[_ <: Any]) = attribute -> doc("$mod" -> array)
 
     /**
       * Matches all values that are not equal to a specified value.
@@ -341,7 +334,7 @@ package object mongodb {
       * @example db.inventory.find( { qty: { $nin: [ 5, 15 ] } } )
       */
     @inline
-    def $nin(array: => js.Array[_ <: js.Any]) = attribute -> doc("$nin" -> array)
+    def $nin(array: => js.Array[_ <: Any]) = attribute -> doc("$nin" -> array)
 
     /**
       * Inverts the effect of a query expression and returns documents that do not match the query expression.
@@ -389,7 +382,7 @@ package object mongodb {
       * @example db.survey.update( { _id: 1 }, { $pullAll: { scores: [ 0, 5 ] } } )
       */
     @inline
-    def $pullAll(array: => js.Array[js.Any]) = "$pullAll" -> doc(attribute -> array)
+    def $pullAll(array: => js.Array[_ <: Any]) = "$pullAll" -> doc(attribute -> array)
 
     /**
       * Selects documents where values match a specified regular expression.

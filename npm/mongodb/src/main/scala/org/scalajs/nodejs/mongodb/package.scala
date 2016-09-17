@@ -1,6 +1,8 @@
 package org.scalajs.nodejs
 
+import scala.language.existentials
 import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.sjs.JsUnderOrHelper._
 
 import scala.concurrent.{Future, Promise}
 import scala.language.implicitConversions
@@ -225,6 +227,7 @@ package object mongodb {
         case (Some(min), Some(max)) => attribute -> doc("$gte" -> min.asInstanceOf[js.Any], "$lte" -> max.asInstanceOf[js.Any])
         case (Some(min), None) => attribute $gte min.asInstanceOf[js.Any]
         case (None, Some(max)) => attribute $lte max.asInstanceOf[js.Any]
+        //case (None, None) =>
       }
     }
 
@@ -433,7 +436,7 @@ package object mongodb {
     * Mongo Projection Enrichment
     * @param fields the given array of fields
     */
-  implicit class ProjectionEnrichment(val fields: js.Array[String]) extends AnyVal {
+  implicit class ProjectionEnrichment(val fields: Seq[String]) extends AnyVal {
 
     def toProjection = js.Dictionary(fields.map(_ -> 1): _*)
 

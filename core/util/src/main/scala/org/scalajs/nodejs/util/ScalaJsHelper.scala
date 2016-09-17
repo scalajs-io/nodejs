@@ -1,9 +1,10 @@
 package org.scalajs.nodejs.util
 
+import org.scalajs.sjs.JsUnderOrHelper._
+
 import scala.concurrent.{Future, Promise}
 import scala.language.implicitConversions
 import scala.scalajs.js
-import scala.scalajs.js.JSConverters._
 import scala.scalajs.runtime.wrapJavaScriptException
 
 /**
@@ -202,64 +203,6 @@ object ScalaJsHelper {
       dict.clear()
       items foreach { case (key, value) => dict(key) = value }
     }
-  }
-
-  /**
-    * Option Extensions
-    * @param valueA the given [[Option optional value]]
-    */
-  implicit class OptionExtensions[T](val valueA: Option[T]) extends AnyVal {
-
-    @inline def ?==(valueB: js.UndefOr[T]): Boolean = valueA.exists(v => valueB.exists(_ == v))
-
-    @inline def ?==(valueB: Option[T]): Boolean = valueA.exists(valueB.contains)
-
-    @inline def ?!=(valueB: js.UndefOr[T]): Boolean = !valueA.exists(valueB.contains)
-
-    @inline def ?!=(valueB: Option[T]): Boolean = !valueA.exists(valueB.contains)
-
-    @inline def ??(optB: => Option[T]): Option[T] = if (valueA.isDefined) valueA else optB
-
-    @inline def orDie(message: String): T = valueA getOrElse die(message)
-
-  }
-
-  /**
-    * UndefOr Extensions
-    * @param valueA the given [[js.UndefOr value]]
-    */
-  implicit class UndefOrExtensions[T](val valueA: js.UndefOr[T]) extends AnyVal {
-
-    @inline def ?==(valueB: js.UndefOr[T]): Boolean = valueA.exists(valueB.contains)
-
-    @inline def ?==(valueB: Option[T]): Boolean = valueA.exists(valueB.contains)
-
-    @inline def ?!=(valueB: js.UndefOr[T]): Boolean = !valueA.exists(valueB.contains)
-
-    @inline def ?!=(valueB: Option[T]): Boolean = !valueA.exists(valueB.contains)
-
-    @inline def ??(optB: => js.UndefOr[T]): js.UndefOr[T] = if (valueA.isDefined) valueA else optB
-
-    @inline def contains(value: T): Boolean = valueA.exists(_ == value)
-
-    @inline def flat = valueA.flatMap(Option(_).orUndefined)
-
-    @inline def isAssigned = valueA.flat.nonEmpty
-
-    @inline def nonAssigned = valueA.flat.isEmpty
-
-    @inline def orDie(message: String): T = valueA getOrElse die(message)
-
-  }
-
-  /**
-    * UndefOr Boolean Extensions
-    * @param value the given [[js.UndefOr value]]
-    */
-  implicit class UndefOrBoolExtensions(val value: js.UndefOr[Boolean]) extends AnyVal {
-
-    @inline def isTrue = value.flat.contains(true)
-
   }
 
 }

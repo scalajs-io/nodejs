@@ -1,4 +1,4 @@
-package org.scalajs.nodejs.util
+package org.scalajs.sjs
 
 import scala.reflect.macros.blackbox
 

@@ -1,7 +1,7 @@
 package org.scalajs.angularjs.http
 
 import org.scalajs.angularjs.angular
-import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.sjs.JsUnderOrHelper._
 
 import scala.concurrent.{Future, Promise}
 import scala.language.implicitConversions

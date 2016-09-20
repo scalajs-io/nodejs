@@ -15,6 +15,7 @@ This is a Scala.js binding for the Node.js and MEAN Stack (MongoDB, Express, Ang
     * <a href="#advantages">Advantages over JavaScript</a>
 * <a href="#NodeJS">Node.js bindings</a>
     * <a href="#node_modules">Modules</a>
+    * <a href="#npm_modules">Third-party Modules</a>
     * <a href="#node_integration">Integration Guidance</a>    
 * <a href="#Express">Express.js bindings</a>
 * <a href="#MongoDB">MongoDB bindings</a>
@@ -183,7 +184,7 @@ implemented as well, including bcrypt, datastax/cassandra-driver, kafka-node, my
 <a name="node_modules">
 #### Modules
 
-The following Core NodeJS modules have been implemented thus far:
+The following core Node.js modules have been implemented:
 
 | Node Module           | Version | Artifact ID               | Description                                             | Status          |
 |-----------------------|---------|---------------------------|---------------------------------------------------------|-----------------|
@@ -209,50 +210,55 @@ The following Core NodeJS modules have been implemented thus far:
 | vm                    | 6.2.1   | scalajs-nodejs-vm         | The vm module provides APIs for compiling and running code within V8 Virtual Machine contexts.| Stable |
 | zlib                  | 6.1.0   | scalajs-nodejs-zlib       | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. | Stable |
 
+*NOTE*: The full SBT artifact expression is: "com.github.ldaniels528" %%% "scalajs-nodejs-xxxx" % version 
+(e.g. "com.github.ldaniels528" %%% "scalajs-nodejs-readline" % "0.2.0")
 
-The following Third Party/OSS NodeJS (npm) modules have been implemented thus far:
+<a name="npm_modules">
+#### Third-party Modules
+
+The following Third Party/OSS Node.js (npm) modules have been implemented:
 
 | Node Module           | Version | Artifact ID               | Description                                             | Status          |
 |-----------------------|---------|---------------------------|---------------------------------------------------------|-----------------|
-| adal-node             | 0.1.19  | scalajs-nodejs-adal-node  | Windows Azure Active Directory Client Library for node. | Tesing required |
-| amqplib               | 0.4.1   | scalajs-nodejs-amqplib    | An AMQP 0-9-1 (e.g., RabbitMQ) library and client. | Tesing required |
-| async                 | 1.5.2   | scalajs-nodejs-async      | Higher-order functions and common patterns for asynchronous code. | Stable |
-| azure                 | 0.10.6  | scalajs-nodejs-azure      | Microsoft Azure Client Library for node. | WIP - Unusable |
-| bcrypt                | 0.0.3   | scalajs-nodejs-bcrypt     | A native JS bcrypt library for NodeJS. | Stable |
-| body-parser           | 1.15.1  | scalajs-nodejs-body-parser| Body parsing middleware. | Stable |
-| cassandra-driver      | 3.0.2   | scalajs-nodejs-datastax-cassandra| DataStax Node.js Driver for Apache Cassandra | Tesing required |
-| colors                | 1.1.2   | scalajs-nodejs-colors     | Get colors in your node.js console.| Stable |
-| csv-parse             | 1.1.2   | scalajs-nodejs-csv-parse  | CSV parsing implementing the Node.js 'stream.Transform' API.| Stable |
-| drama                 | 0.1.3   | scalajs-nodejs-drama      | drama is an Actor model implementation for JavaScript and Node.js | Stable |
-| escape-html           | 1.0.3   | scalajs-nodejs-escape-html| Escape string for use in HTML | Stable |
-| express               | 4.13.4  | scalajs-nodejs-express    | Fast, unopinionated, minimalist web framework for Node.js | Stable |
-| express-csv           | 0.6.0   | scalajs-nodejs-express-csv| express-csv provides response csv easily to express. | Stable |
-| express-fileupload    | 0.0.5   | scalajs-nodejs-express-fileupload | Simple express file upload middleware that wraps around connect-busboy | Stable |
-| express-ws            |2.0.0-rc1| scalajs-nodejs-express-ws | WebSocket endpoints for Express applications | Stable |
-| feedparser-promised   | 1.1.1   | scalajs-nodejs-feedparser-promised| Wrapper around feedparser with promises. | Stable |
-| filed                 | 0.1.0   | scalajs-nodejs-filed      | Simplified file library. | Stable |
-| htmlparser2           | 3.9.1   | scalajs-nodejs-htmlparser2| A forgiving HTML/XML/RSS parser. The parser can handle streams and provides a callback interface. | Stable |
-| jwt-simple            | 0.5.0   | scalajs-nodejs-jwt-simple | JWT(JSON Web Token) encode and decode module | Stable |
-| kafka-node            | 0.0.11  | scalajs-nodejs-kafkanode  | A node binding for librdkafka | Tesing required |
-| md5                   | 2.1.0   | scalajs-nodejs-pvorb-md5  | A JavaScript function for hashing messages with MD5. | Stable |
-| memory-fs             | 0.3.0   | scalajs-nodejs-memory-fs  | A simple in-memory filesystem. Holds data in a javascript object. | Stable |
-| moment                | 2.14.1  | scalajs-nodejs-moment     | Parse, validate, manipulate, and display dates in JavaScript. | Stable |
-| moment-timezone       |0.5.5-2016f| scalajs-nodejs-moment-timezone| Parse and display dates in any timezone. | Stable |
-| mongodb               | 2.1.18  | scalajs-nodejs-mongodb    | Node.js MongoDB Driver | Stable |
-| multer                | 1.1.0   | scalajs-nodejs-multer     | Multer is a node.js middleware for handling multipart/form-data. | Tesing required |
-| mysql                 | 2.10.2  | scalajs-nodejs-mysql      | A node.js driver for mysql. | Stable |
-| node-zookeeper-client | 0.2.2   | scalajs-nodejs-zookeeper-client | A higher-level ZooKeeper client based on node-zookeeper with support for locking and master election. | Tesing required |
-| oppressor             | 0.0.1   | scalajs-nodejs-oppressor  | Streaming http compression response negotiator. | Tesing required |
-| request               | 2.72.1  | scalajs-nodejs-request    | Simplified HTTP request client. | Stable |
-| rxjs                  | 4.1.0   | scalajs-nodejs-rxjs       | The Reactive Extensions for JavaScript. | Stable |
-| splitargs             | 0.0.7   | scalajs-nodejs-elgs-splitargs | Splits strings into tokens by given separator except treating quoted part as a single token. | Stable |
-| transducers-js        | 0.4.174 | scalajs-nodejs-transducers| A high performance Transducers implementation for JavaScript. | Stable |
-| watch                 | 0.18.0  | scalajs-nodejs-watch      | Utilities for watching file trees. | Stable |
-| xml2js                | 0.4.16  | scalajs-nodejs-xml2js     | Simple XML to JavaScript object converter. | Stable |
+| adal-node             | 0.1.19  | scalajs-npm-adal-node     | Windows Azure Active Directory Client Library for node. | Tesing required |
+| amqplib               | 0.4.1   | scalajs-npm-amqplib       | An AMQP 0-9-1 (e.g., RabbitMQ) library and client. | Tesing required |
+| async                 | 1.5.2   | scalajs-npm-async         | Higher-order functions and common patterns for asynchronous code. | Stable |
+| azure                 | 0.10.6  | scalajs-npm-azure         | Microsoft Azure Client Library for node. | WIP - Unusable |
+| bcrypt                | 0.0.3   | scalajs-npm-bcrypt        | A native JS bcrypt library for NodeJS. | Stable |
+| body-parser           | 1.15.1  | scalajs-npm-body-parser   | Body parsing middleware. | Stable |
+| cassandra-driver      | 3.0.2   | scalajs-npm-datastax-cassandra| DataStax Node.js Driver for Apache Cassandra | Tesing required |
+| colors                | 1.1.2   | scalajs-npm-colors        | Get colors in your node.js console.| Stable |
+| csv-parse             | 1.1.2   | scalajs-npm-csv-parse     | CSV parsing implementing the Node.js 'stream.Transform' API.| Stable |
+| drama                 | 0.1.3   | scalajs-npm-drama         | drama is an Actor model implementation for JavaScript and Node.js | Stable |
+| escape-html           | 1.0.3   | scalajs-npm-escape-html   | Escape string for use in HTML | Stable |
+| express               | 4.13.4  | scalajs-npm-express       | Fast, unopinionated, minimalist web framework for Node.js | Stable |
+| express-csv           | 0.6.0   | scalajs-npm-express-csv   | express-csv provides response csv easily to express. | Stable |
+| express-fileupload    | 0.0.5   | scalajs-npm-express-fileupload | Simple express file upload middleware that wraps around connect-busboy | Stable |
+| express-ws            |2.0.0-rc1| scalajs-npm-express-ws    | WebSocket endpoints for Express applications | Stable |
+| feedparser-promised   | 1.1.1   | scalajs-npm-feedparser-promised| Wrapper around feedparser with promises. | Stable |
+| filed                 | 0.1.0   | scalajs-npm-filed         | Simplified file library. | Stable |
+| htmlparser2           | 3.9.1   | scalajs-npm-htmlparser2   | A forgiving HTML/XML/RSS parser. The parser can handle streams and provides a callback interface. | Stable |
+| jwt-simple            | 0.5.0   | scalajs-npm-jwt-simple    | JWT(JSON Web Token) encode and decode module | Stable |
+| kafka-node            | 0.0.11  | scalajs-npm-kafkanode     | A node binding for librdkafka | Tesing required |
+| md5                   | 2.1.0   | scalajs-npm-md5           | A JavaScript function for hashing messages with MD5. | Stable |
+| memory-fs             | 0.3.0   | scalajs-npm-memory-fs     | A simple in-memory filesystem. Holds data in a javascript object. | Stable |
+| moment                | 2.14.1  | scalajs-npm-moment        | Parse, validate, manipulate, and display dates in JavaScript. | Stable |
+| moment-timezone       |0.5.5-2016f| scalajs-npm-moment-timezone| Parse and display dates in any timezone. | Stable |
+| mongodb               | 2.1.18  | scalajs-npm-mongodb       | Node.js MongoDB Driver | Stable |
+| multer                | 1.1.0   | scalajs-npm-multer        | Multer is a node.js middleware for handling multipart/form-data. | Tesing required |
+| mysql                 | 2.10.2  | scalajs-npm-mysql         | A node.js driver for mysql. | Stable |
+| node-zookeeper-client | 0.2.2   | scalajs-npm-zookeeper-client | A higher-level ZooKeeper client based on node-zookeeper with support for locking and master election. | Tesing required |
+| numeral               | 1.5.3   | scalajs-npm-numeral       | A javascript library for formatting and manipulating numbers. | Stable |
+| oppressor             | 0.0.1   | scalajs-npm-oppressor     | Streaming http compression response negotiator. | Tesing required |
+| request               | 2.72.1  | scalajs-npm-request       | Simplified HTTP request client. | Stable |
+| rxjs                  | 4.1.0   | scalajs-npm-rxjs          | The Reactive Extensions for JavaScript. | Stable |
+| splitargs             | 0.0.7   | scalajs-npm-splitargs     | Splits strings into tokens by given separator except treating quoted part as a single token. | Stable |
+| transducers-js        | 0.4.174 | scalajs-npm-transducers   | A high performance Transducers implementation for JavaScript. | Stable |
+| watch                 | 0.18.0  | scalajs-npm-watch         | Utilities for watching file trees. | Stable |
+| xml2js                | 0.4.16  | scalajs-npm-xml2js        | Simple XML to JavaScript object converter. | Stable |
 
-
-*NOTE*: The full SBT artifact expression is: "com.github.ldaniels528" %%% "scalajs-nodejs-xxxx" % version 
-(e.g. "com.github.ldaniels528" %%% "scalajs-nodejs-express" % "0.2.0")
+*NOTE*: The full SBT artifact expression is: "com.github.ldaniels528" %%% "scalajs-npm-xxxx" % version 
+(e.g. "com.github.ldaniels528" %%% "scalajs-npm-express" % "0.2.0")
 
 I've provided an example to demonstrate how similar the Scala.js code is to the JavaScript
 that it replaces.

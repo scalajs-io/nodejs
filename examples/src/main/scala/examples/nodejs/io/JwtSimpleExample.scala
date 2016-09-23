@@ -2,7 +2,7 @@ package examples.nodejs.io
 
 import org.scalajs.nodejs.console
 import org.scalajs.nodejs.Bootstrap
-import org.scalajs.nodejs.jwtsimple.JwtSimple
+import org.scalajs.npm.jwtsimple.JwtSimple
 
 import scala.scalajs.js
 

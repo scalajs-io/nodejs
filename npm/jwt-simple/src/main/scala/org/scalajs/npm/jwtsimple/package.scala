@@ -1,4 +1,4 @@
-package org.scalajs.nodejs
+package org.scalajs.npm
 
 /**
   * jwtsimple package object

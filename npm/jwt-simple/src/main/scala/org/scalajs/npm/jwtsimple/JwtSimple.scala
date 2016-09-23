@@ -1,5 +1,7 @@
-package org.scalajs.nodejs
+package org.scalajs.npm
 package jwtsimple
+
+import org.scalajs.nodejs.{NodeModule, NodeRequire}
 
 import scala.scalajs.js
 

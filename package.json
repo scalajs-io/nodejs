@@ -3,6 +3,7 @@
   "version": "0.0.4",
   "private": true,
   "dependencies": {
+    "async": "^2.0.1",
     "azure": "^0.10.6",
     "azure-storage": "^0.10.0",
     "body-parser": "^1.15.0",

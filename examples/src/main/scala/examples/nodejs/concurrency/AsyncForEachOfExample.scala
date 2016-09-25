@@ -4,10 +4,10 @@ import org.scalajs.nodejs._
 import org.scalajs.nodejs.util.ScalaJsHelper._
 import org.scalajs.nodejs
 import org.scalajs.nodejs.Bootstrap
-import org.scalajs.nodejs.async.Async
 import org.scalajs.nodejs.errors.Error
 import org.scalajs.nodejs.fs.Fs
 import org.scalajs.nodejs.util.ScalaJsHelper
+import org.scalajs.npm.async.Async
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js

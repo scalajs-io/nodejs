@@ -1,14 +1,15 @@
-package org.scalajs.nodejs
-package async
+package org.scalajs.npm.async
 
+import org.scalajs.nodejs.{NodeModule, NodeRequire}
+import org.scalajs.nodejs.errors.Error
 import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.scalajs.js
 
 /**
   * Async module
-  * @version 1.5.2
-  * @see [[https://github.com/caolan/async/blob/v1.5.2/README.md]]
+  * @version 2.0.1
+  * @see [[http://caolan.github.io/async/]]
   * @author lawrence.daniels@gmail.com
   */
 @js.native
@@ -141,6 +142,20 @@ trait Async extends NodeModule {
   def parallel(tasks: js.Array[js.Function], callback: AsyncResultCallback = null): Unit = js.native
 
   /**
+    * Creates a queue object with the specified concurrency. Tasks added to the queue are processed in parallel
+    * (up to the concurrency limit). If all workers are in progress, the task is queued until one becomes available.
+    * Once a worker completes a task, that task's callback is called.
+    * @param worker      An asynchronous function for processing a queued task, which must call its callback(err) argument
+    *                    when finished, with an optional error as an argument. If you want to handle errors from an individual
+    *                    task, pass a callback to q.push(). Invoked with (task, callback).
+    * @param concurrency An integer for determining how many worker functions should be run in parallel. If omitted,
+    *                    the concurrency defaults to 1. If the concurrency is 0, an error is thrown.
+    * @return A queue object to manage the tasks. Callbacks can attached as certain properties to listen for specific
+    *         events during the lifecycle of the queue.
+    */
+  def queue[T](worker: js.Function, concurrency: Int = 1): QueueObject[T] = js.native
+
+  /**
     * The opposite of filter. Removes values that pass an async truth test.
     * @param coll     A collection to iterate over.
     * @param iteratee iteratee(item, callback) - A truth test to apply to each item in coll. The iteratee is passed a
@@ -222,7 +237,7 @@ object Async {
       */
     @inline
     def eachFuture[A <: js.Any](coll: js.Array[A])(iteratee: (A, AsyncErrorCallback) => Any) = {
-      futureCallbackE1[errors.Error, A](async.each(coll, _))
+      futureCallbackE1[Error, A](async.each(coll, _))
     }
 
     /**
@@ -241,7 +256,7 @@ object Async {
       */
     @inline
     def eachLimitFuture[A <: js.Any](coll: js.Array[A], limit: Int)(iteratee: (A, AsyncErrorCallback) => Any) = {
-      futureCallbackE1[errors.Error, A](async.eachLimit(coll, limit, _))
+      futureCallbackE1[Error, A](async.eachLimit(coll, limit, _))
     }
 
     /**
@@ -259,7 +274,7 @@ object Async {
       */
     @inline
     def eachSeriesFuture[A <: js.Any](coll: js.Array[A])(iteratee: (A, AsyncErrorCallback) => Any) = {
-      futureCallbackE1[errors.Error, A](async.eachSeries(coll, _))
+      futureCallbackE1[Error, A](async.eachSeries(coll, _))
     }
 
     /**
@@ -272,7 +287,7 @@ object Async {
       */
     @inline
     def filterFuture[A <: js.Any](coll: js.Array[A])(iteratee: (A, AsyncErrorCallback) => Boolean) = {
-      futureCallbackE1[errors.Error, js.Array[A]](async.filter(coll, _))
+      futureCallbackE1[Error, js.Array[A]](async.filter(coll, _))
     }
 
     /**
@@ -285,7 +300,7 @@ object Async {
       */
     @inline
     def forEachOfFuture[A](coll: js.Array[A])(iteratee: (A, Int, AsyncErrorCallback) => Any) = {
-      futureCallbackE0[errors.Error](async.forEachOf(coll, iteratee, _))
+      futureCallbackE0[Error](async.forEachOf(coll, iteratee, _))
     }
 
     /**
@@ -297,7 +312,7 @@ object Async {
       */
     @inline
     def forEachOfFuture[A](coll: js.Dictionary[A])(iteratee: (A, String, AsyncErrorCallback) => Any) = {
-      futureCallbackE0[errors.Error](async.forEachOf(coll, iteratee, _))
+      futureCallbackE0[Error](async.forEachOf(coll, iteratee, _))
     }
 
     /**
@@ -309,7 +324,7 @@ object Async {
       */
     @inline
     def parallelFuture[A <: js.Any](tasks: js.Array[js.Function]) = {
-      futureCallbackE1[errors.Error, A](async.parallel(tasks, _))
+      futureCallbackE1[Error, A](async.parallel(tasks, _))
     }
 
     /**
@@ -321,7 +336,7 @@ object Async {
       */
     @inline
     def rejectFuture[A <: js.Any](coll: js.Array[A])(iteratee: (A, Int) => Any) = {
-      futureCallbackE1[errors.Error, A](async.reject(coll, iteratee, _))
+      futureCallbackE1[Error, A](async.reject(coll, iteratee, _))
     }
 
     /**
@@ -333,7 +348,7 @@ object Async {
       */
     @inline
     def rejectFuture[A <: js.Any](coll: js.Dictionary[A])(iteratee: (A, String) => Any) = {
-      futureCallbackE1[errors.Error, A](async.reject(coll, iteratee, _))
+      futureCallbackE1[Error, A](async.reject(coll, iteratee, _))
     }
 
     /**
@@ -346,7 +361,7 @@ object Async {
       */
     @inline
     def waterfallFuture[A](tasks: js.Array[_ <: js.Function]) = {
-      futureCallbackE1[errors.Error, A](async.waterfall(tasks, _))
+      futureCallbackE1[Error, A](async.waterfall(tasks, _))
     }
 
   }

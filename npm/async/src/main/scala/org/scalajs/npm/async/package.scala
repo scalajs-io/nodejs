@@ -1,4 +1,6 @@
-package org.scalajs.nodejs
+package org.scalajs.npm
+
+import org.scalajs.nodejs.errors.Error
 
 import scala.scalajs.js
 
@@ -8,7 +10,7 @@ import scala.scalajs.js
   */
 package object async {
 
-  type AsyncErrorCallback = js.Function1[errors.Error, Any]
+  type AsyncErrorCallback = js.Function1[Error, Any]
 
   type AsyncResultCallback = js.Function
 

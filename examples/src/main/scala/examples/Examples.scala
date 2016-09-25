@@ -30,6 +30,7 @@ object Examples extends js.JSApp {
   private val examples = Map(
     "ActorsExample" -> ((bootstrap: Bootstrap) => new ActorsExample(bootstrap)),
     "AsyncForEachOfExample" -> ((bootstrap: Bootstrap) => new AsyncForEachOfExample(bootstrap)),
+    "AsyncQueueExample" -> ((bootstrap: Bootstrap) => new AsyncQueueExample(bootstrap)),
     "AsyncWaterfallExample" -> ((bootstrap: Bootstrap) => new AsyncWaterfallExample(bootstrap)),
     "BuffersExample" -> ((bootstrap: Bootstrap) => new BuffersExample(bootstrap)),
     "CassandraExample" -> ((bootstrap: Bootstrap) => new CassandraExample(bootstrap)),

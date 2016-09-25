@@ -63,7 +63,6 @@ Currently, there are at least four development use cases for Scalajs-Nodejs:
 
 ```bash
  $ sbt "project examples" clean fastOptJS
- $ cd examples
  $ node ./examples.js ColorsExample
 ```
 
@@ -222,7 +221,7 @@ The following Third Party/OSS Node.js (npm) modules have been implemented:
 |-----------------------|---------|---------------------------|---------------------------------------------------------|-----------------|
 | adal-node             | 0.1.19  | scalajs-npm-adal-node     | Windows Azure Active Directory Client Library for node. | Tesing required |
 | amqplib               | 0.4.1   | scalajs-npm-amqplib       | An AMQP 0-9-1 (e.g., RabbitMQ) library and client. | Tesing required |
-| async                 | 1.5.2   | scalajs-npm-async         | Higher-order functions and common patterns for asynchronous code. | Stable |
+| async                 | 2.0.0   | scalajs-npm-async         | Higher-order functions and common patterns for asynchronous code. | Stable |
 | azure                 | 0.10.6  | scalajs-npm-azure         | Microsoft Azure Client Library for node. | WIP - Unusable |
 | bcrypt                | 0.0.3   | scalajs-npm-bcrypt        | A native JS bcrypt library for NodeJS. | Stable |
 | body-parser           | 1.15.1  | scalajs-npm-body-parser   | Body parsing middleware. | Stable |

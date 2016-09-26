@@ -1,5 +1,7 @@
 package org.scalajs.nodejs.mongodb
 
+import org.scalajs.nodejs.mongodb.BulkWriteOpResultObject.MongnoIdRef
+
 import scala.scalajs.js
 
 /**
@@ -9,27 +11,44 @@ import scala.scalajs.js
 @js.native
 trait BulkWriteOpResultObject extends js.Object {
   // Number of documents inserted.
-  var insertedCount: Int = js.native
+  val nInserted: Int = js.native
 
   // Number of documents matched for update.
-  var matchedCount: Int = js.native
+  val nMatched: Int = js.native
 
   // Number of documents modified.
-  var modifiedCount: Int = js.native
+  val nModified: Int = js.native
 
   //  Number of documents deleted.
-  var deletedCount: Int = js.native
+  val nRemoved: Int = js.native
 
   // Number of documents upserted.
-  var upsertedCount: Int = js.native
+  val nUpserted: Int = js.native
 
   // Inserted document generated Id's, hash key is the index of the originating operation
-  var insertedIds: js.Array[String] = js.native
+  val insertedIds: js.Array[MongnoIdRef] = js.native
 
   // Upserted document generated Id's, hash key is the index of the originating operation
-  var upsertedIds: js.Array[String] = js.native
+  val upsertedIds: js.Array[MongnoIdRef] = js.native
 
-  // The command result object.
-  var result: js.Any = js.native
+  val upserted: js.Array[MongnoIdRef] = js.native
+
+  val writeConcernErrors: js.Array[js.Any] = js.native
+
+  val writeErrors: js.Array[js.Any] = js.native
+
+}
+
+/**
+  * Bulk Write Operation Result Object Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object BulkWriteOpResultObject {
+
+  @js.native
+  trait MongnoIdRef extends js.Object {
+    val index: Int = js.native
+    val _id: ObjectID = js.native
+  }
 
 }

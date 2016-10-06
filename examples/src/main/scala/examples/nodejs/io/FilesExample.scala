@@ -1,10 +1,8 @@
 package examples.nodejs.io
 
-import org.scalajs.nodejs.globals.process
-import org.scalajs.nodejs.readline.ReadlineOptions
-import org.scalajs.nodejs.console
-import org.scalajs.nodejs.Bootstrap
+import org.scalajs.nodejs.{Bootstrap, console}
 import org.scalajs.nodejs.fs.Fs
+import org.scalajs.nodejs.globals.process
 import org.scalajs.nodejs.readline.{Readline, ReadlineOptions}
 
 /**
@@ -13,6 +11,7 @@ import org.scalajs.nodejs.readline.{Readline, ReadlineOptions}
   */
 class FilesExample(bootstrap: Bootstrap) {
   implicit val require = bootstrap.require
+
   import bootstrap._
 
   val fs = Fs()

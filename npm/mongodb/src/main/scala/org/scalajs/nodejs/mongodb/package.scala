@@ -72,9 +72,6 @@ package object mongodb {
   def doc(kvps: (String, js.Any)*) = js.Dictionary(kvps: _*)
 
   @inline
-  def $addToSet(value: => js.Any) = "$addToSet" -> value
-
-  @inline
   def $addToSet(values: (String, js.Any)*) = "$addToSet" -> doc(values: _*)
 
   /**
@@ -227,7 +224,7 @@ package object mongodb {
         case (Some(min), Some(max)) => attribute -> doc("$gte" -> min.asInstanceOf[js.Any], "$lte" -> max.asInstanceOf[js.Any])
         case (Some(min), None) => attribute $gte min.asInstanceOf[js.Any]
         case (None, Some(max)) => attribute $lte max.asInstanceOf[js.Any]
-        //case (None, None) =>
+        case (None, None) => die("Maximum and minimum values are null and/or undefined")
       }
     }
 
@@ -441,15 +438,5 @@ package object mongodb {
     def toProjection = js.Dictionary(fields.map(_ -> 1): _*)
 
   }
-
-  /**
-    * Text Search Options
-    * @author lawrence.daniels@gmail.com
-    */
-  @ScalaJSDefined
-  class TextSearchOptions(var $search: js.UndefOr[String] = js.undefined,
-                          var $language: js.UndefOr[String] = js.undefined,
-                          var $caseSensitive: js.UndefOr[Boolean] = js.undefined,
-                          var $diacriticSensitive: js.UndefOr[Boolean] = js.undefined) extends js.Object
 
 }

@@ -1,7 +1,6 @@
 package org.scalajs.nodejs.kafkanode
 
 import org.scalajs.nodejs.util.ScalaJsHelper._
-import org.scalajs.nodejs.util.ScalaJsHelper
 
 import scala.scalajs.js
 
@@ -27,8 +26,8 @@ object ConsumerClass {
     /**
       * @example Consumer(client, payloads, options)
       */
-    def apply(client: Client, payloads: js.Any, options: ConsumerOptions) = {
-      `class`.New[Client](client, payloads, options)
+    def apply(client: Client, payloads: js.Array[FetchRequest], options: ConsumerOptions = null) = {
+      `class`.New[Consumer](client, payloads, options)
     }
 
   }

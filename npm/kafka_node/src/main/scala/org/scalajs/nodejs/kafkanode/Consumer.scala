@@ -1,7 +1,6 @@
 package org.scalajs.nodejs.kafkanode
 
 import org.scalajs.nodejs.util.ScalaJsHelper._
-import org.scalajs.nodejs.util.ScalaJsHelper
 
 import scala.scalajs.js
 

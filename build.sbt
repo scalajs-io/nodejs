@@ -505,13 +505,13 @@ lazy val node_zlib = (project in file("node/zlib")).
 lazy val bundle_npm = (project in file("bundles/npm")).
   aggregate(
     npm_adal, npm_amqplib, npm_async, npm_azure, npm_bcrypt, npm_body_parser, npm_cassandra,
-    npm_colors, npm_cvs_parse, npm_drama, npm_splitargs, npm_escape_html, npm_express, npm_express_csv,
+    npm_colors, npm_csv_parse, npm_drama, npm_splitargs, npm_escape_html, npm_express, npm_express_csv,
     npm_express_fileupload, npm_express_ws, npm_feedparser, npm_filed, npm_htmlparser2, npm_htmltojson, npm_jwt_simple, npm_kafka,
     npm_memory_fs, npm_moment, npm_moment_tz, npm_mongodb, npm_multer, npm_mysql, npm_numeral, npm_oppressor,
     npm_md5, npm_request, npm_rxjs, npm_transducers, npm_watch, npm_xml2js, npm_zookeeper).
   dependsOn(
     npm_adal, npm_amqplib, npm_async, npm_azure, npm_bcrypt, npm_body_parser, npm_cassandra,
-    npm_colors, npm_cvs_parse, npm_drama, npm_splitargs, npm_escape_html, npm_express, npm_express_csv,
+    npm_colors, npm_csv_parse, npm_drama, npm_splitargs, npm_escape_html, npm_express, npm_express_csv,
     npm_express_fileupload, npm_express_ws, npm_feedparser, npm_filed, npm_htmlparser2, npm_htmltojson, npm_jwt_simple, npm_kafka,
     npm_memory_fs, npm_moment, npm_moment_tz, npm_mongodb, npm_multer, npm_mysql, npm_numeral, npm_oppressor,
     npm_md5, npm_request, npm_rxjs, npm_transducers, npm_watch, npm_xml2js, npm_zookeeper).
@@ -594,7 +594,7 @@ lazy val npm_colors = (project in file("npm/colors")).
     description := "npm/colors binding for Scala.js"
   )
 
-lazy val npm_cvs_parse = (project in file("npm/csv-parse")).
+lazy val npm_csv_parse = (project in file("npm/csv-parse")).
   dependsOn(node_stream).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).

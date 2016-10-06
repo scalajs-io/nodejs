@@ -1,6 +1,7 @@
 package org.scalajs.nodejs
 package csvparse
 
+import org.scalajs.nodejs.util.ScalaJsHelper._
 import org.scalajs.nodejs.csvparse.CsvParse.CsvParser
 
 import scala.scalajs.js
@@ -50,10 +51,18 @@ object CsvParse {
     */
   implicit class CsvParseEvents(val parser: CsvParse) extends AnyVal {
 
+    @inline
+    def parseFuture[T](csv: String, options: CsvParseOptions | js.Any = null) = {
+      futureCallbackE1[errors.Error, T](parser(csv, options, _))
+    }
+
+    @inline
     def onError(listener: errors.Error => Any) = parser.on("error", listener)
 
+    @inline
     def onFinish(listener: () => Any) = parser.on("finish", listener)
 
+    @inline
     def onReadable(listener: () => Any) = parser.on("readable", listener)
 
   }

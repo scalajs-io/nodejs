@@ -26,6 +26,12 @@ object OptionHelper {
 
     @inline def ??(optB: => Option[T]): Option[T] = if (valueA.isDefined) valueA else optB
 
+    @inline def flat = valueA.flatMap(Option(_))
+
+    @inline def isAssigned = valueA.flat.nonEmpty
+
+    @inline def nonAssigned = valueA.flat.isEmpty
+
     @inline def orDie(message: String): T = valueA getOrElse (throw new IllegalStateException(message))
 
   }

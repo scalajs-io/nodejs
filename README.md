@@ -72,7 +72,7 @@ Currently, there are at least four development use cases for Scalajs-Nodejs:
 To add the Scalajs-Nodejs bindings/library to your project, add the following to your build.sbt:  
 
 ```   
-resolvers += "releases" at "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+resolvers += Resolver.sonatypeRepo("releases") 
 ```
 
 <a name="apps_using_means"></a>

@@ -32,36 +32,36 @@ trait Facebook extends js.Object {
  */
 @js.native
 trait FacebookApp extends FacebookResponse {
-  var id: String
-  var android_key_hash: js.Array[String]
-  var android_sdk_error_categories: js.Array[FacebookMobileSdkErrorCategory]
-  var app_ad_debug_info: FacebookApplicationAppAdDebugInfo
-  var app_domains: js.Array[String]
-  var app_events_feature_bitmask: Long
-  var app_install_tracked: Boolean
-  var app_name: String
-  var app_type: Long
-  var auth_dialog_data_help_url: String
-  var auth_dialog_headline: String
-  var auth_dialog_perms_explanation: String
-  var auth_referral_default_activity_privacy: String
-  var auth_referral_enabled: Long
-  var auth_referral_extended_perms: js.Array[String]
-  var auth_referral_friend_perms: js.Array[String]
-  var auth_referral_response_type: String
-  var auth_referral_user_perms: js.Array[String]
-  var canvas_fluid_height: Boolean
-  var canvas_fluid_width: Long
-  var canvas_url: String
-  var category: String
-  var client_config: js.Dictionary[js.Any]
-  var company: String
-  var configured_ios_sso: Boolean
-  var contact_email: String
-  var context: js.Object
+  var id: String = js.native
+  var android_key_hash: js.Array[String] = js.native
+  var android_sdk_error_categories: js.Array[FacebookMobileSdkErrorCategory] = js.native
+  var app_ad_debug_info: FacebookApplicationAppAdDebugInfo = js.native
+  var app_domains: js.Array[String] = js.native
+  var app_events_feature_bitmask: Long = js.native
+  var app_install_tracked: Boolean = js.native
+  var app_name: String = js.native
+  var app_type: Long = js.native
+  var auth_dialog_data_help_url: String = js.native
+  var auth_dialog_headline: String = js.native
+  var auth_dialog_perms_explanation: String = js.native
+  var auth_referral_default_activity_privacy: String = js.native
+  var auth_referral_enabled: Long = js.native
+  var auth_referral_extended_perms: js.Array[String] = js.native
+  var auth_referral_friend_perms: js.Array[String] = js.native
+  var auth_referral_response_type: String = js.native
+  var auth_referral_user_perms: js.Array[String] = js.native
+  var canvas_fluid_height: Boolean = js.native
+  var canvas_fluid_width: Long = js.native
+  var canvas_url: String = js.native
+  var category: String = js.native
+  var client_config: js.Dictionary[js.Any] = js.native
+  var company: String = js.native
+  var configured_ios_sso: Boolean = js.native
+  var contact_email: String = js.native
+  var context: js.Object = js.native
   // ApplicationContext
-  var created_time: js.Date
-  var creator_uid: js.Object // id
+  var created_time: js.Date = js.native
+  var creator_uid: js.Object = js.native // id
   // ...
 }
 
@@ -80,14 +80,14 @@ trait FacebookApplicationAppAdDebugInfo extends FacebookResponse
  */
 @js.native
 trait FacebookAchievementResponse extends FacebookResponse {
-  var id: js.UndefOr[String]
-  var from: js.UndefOr[js.Object]
+  var id: js.UndefOr[String] = js.native
+  var from: js.UndefOr[js.Object] = js.native
   // User
-  var publish_time: js.UndefOr[js.Date]
-  var application: js.UndefOr[FacebookApp]
-  var data: js.Object
-  var `type`: String
-  var no_feed_story: Boolean
+  var publish_time: js.UndefOr[js.Date] = js.native
+  var application: js.UndefOr[FacebookApp] = js.native
+  var data: js.Object = js.native
+  var `type`: String = js.native
+  var no_feed_story: Boolean = js.native
 }
 
 /*
@@ -96,10 +96,10 @@ trait FacebookAchievementResponse extends FacebookResponse {
  */
 @js.native
 trait FacebookAuthResponse extends FacebookResponse {
-  var accessToken: String
-  var signedRequest: String
-  var userID: String
-  var expiresIn: Int
+  var accessToken: String = js.native
+  var signedRequest: String = js.native
+  var userID: String = js.native
+  var expiresIn: Int = js.native
 }
 
 /*
@@ -108,8 +108,8 @@ trait FacebookAuthResponse extends FacebookResponse {
  */
 @js.native
 trait FacebookLoginStatusResponse extends FacebookResponse {
-  var authResponse: FacebookAuthResponse
-  var status: String
+  var authResponse: FacebookAuthResponse = js.native
+  var status: String = js.native
 }
 
 /*
@@ -125,7 +125,7 @@ trait FacebookMobileSdkErrorCategory extends js.Object
   */
 @js.native
 trait FacebookPhoto extends js.Object {
-  var data: js.Array[FacebookPictureData]
+  var data: js.Array[FacebookPictureData] = js.native
 }
 
 /**
@@ -134,8 +134,8 @@ trait FacebookPhoto extends js.Object {
   */
 @js.native
 trait FacebookPhotosResponse extends FacebookResponse {
-  var data: js.Array[FacebookPhoto]
-  var paging: js.UndefOr[FacebookPaging]
+  var data: js.Array[FacebookPhoto] = js.native
+  var paging: js.UndefOr[FacebookPaging] = js.native
 }
 
 /**
@@ -144,16 +144,16 @@ trait FacebookPhotosResponse extends FacebookResponse {
   */
 @js.native
 trait FacebookProfileResponse extends FacebookResponse {
-  var id: String
-  var first_name: String
-  var last_name: String
-  var name: String
-  var gender: String
-  var link: String
-  var locale: String
-  var updated_time: js.Date
-  var timezone: Int
-  var verified: Boolean
+  var id: String = js.native
+  var first_name: String = js.native
+  var last_name: String = js.native
+  var name: String = js.native
+  var gender: String = js.native
+  var link: String = js.native
+  var locale: String = js.native
+  var updated_time: js.Date = js.native
+  var timezone: Int = js.native
+  var verified: Boolean = js.native
 }
 
 /**
@@ -162,7 +162,7 @@ trait FacebookProfileResponse extends FacebookResponse {
   */
 @js.native
 trait FacebookPicture extends js.Object {
-  var data: FacebookPictureData
+  var data: FacebookPictureData = js.native
 }
 
 /**
@@ -171,8 +171,8 @@ trait FacebookPicture extends js.Object {
   */
 @js.native
 trait FacebookPictureData extends js.Object {
-  var is_silhouette: Boolean
-  var url: String
+  var is_silhouette: Boolean = js.native
+  var url: String = js.native
 }
 
 /**
@@ -181,8 +181,8 @@ trait FacebookPictureData extends js.Object {
   */
 @js.native
 trait FacebookCursor extends js.Object {
-  var before: js.UndefOr[String]
-  var after: js.UndefOr[String]
+  var before: js.UndefOr[String] = js.native
+  var after: js.UndefOr[String] = js.native
 }
 
 /**
@@ -191,8 +191,8 @@ trait FacebookCursor extends js.Object {
   */
 @js.native
 trait FacebookPagination[T] extends js.Object {
-  var data: js.Array[T]
-  var paging: js.UndefOr[FacebookPaging]
+  var data: js.Array[T] = js.native
+  var paging: js.UndefOr[FacebookPaging] = js.native
 }
 
 /**
@@ -201,9 +201,9 @@ trait FacebookPagination[T] extends js.Object {
   */
 @js.native
 trait FacebookPaging extends js.Object {
-  var cursors: FacebookCursor
-  var previous: js.UndefOr[String]
-  var next: js.UndefOr[String]
+  var cursors: FacebookCursor = js.native
+  var previous: js.UndefOr[String] = js.native
+  var next: js.UndefOr[String] = js.native
 }
 
 /**
@@ -212,7 +212,7 @@ trait FacebookPaging extends js.Object {
   */
 @js.native
 trait FacebookResponse extends js.Object {
-  var error: js.UndefOr[String]
+  var error: js.UndefOr[String] = js.native
 }
 
 /**
@@ -221,9 +221,9 @@ trait FacebookResponse extends js.Object {
   */
 @js.native
 trait TaggableFriend extends js.Object {
-  var id: String
-  var name: String
-  var picture: FacebookPicture
+  var id: String = js.native
+  var name: String = js.native
+  var picture: FacebookPicture = js.native
 }
 
 /**

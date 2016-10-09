@@ -130,7 +130,7 @@ trait Angular extends js.Object {
     * Deserializes a JSON string.
     * @see [[https://docs.angularjs.org/api/ng/function/angular.fromJson]]
     */
-  def fromJson(s: String): js.Dynamic = js.native
+  def fromJson[T](s: String): T = js.native
 
   /**
     * A function that returns its first argument. This function is useful when writing code in the functional style.

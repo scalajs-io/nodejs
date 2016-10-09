@@ -1,12 +1,10 @@
 package org.scalajs.nodejs
 
-import scala.language.existentials
 import org.scalajs.nodejs.util.ScalaJsHelper._
 import org.scalajs.sjs.JsUnderOrHelper._
 
 import scala.concurrent.{Future, Promise}
-import scala.language.implicitConversions
-import scala.scalajs.js.annotation.ScalaJSDefined
+import scala.language.{existentials, implicitConversions}
 import scala.scalajs.{js, runtime}
 
 /**
@@ -94,6 +92,13 @@ package object mongodb {
     */
   @inline
   def $each(values: js.Array[_ <: Any]) = "$each" -> values
+
+  /**
+    * Projects the first element in an array that matches the specified $elemMatch condition.
+    * @example { students: { $elemMatch: { school: 102 } } }
+    */
+  @inline
+  def $elemMatch(value: => js.Any) = "$elemMatch" -> value
 
   @inline
   def $group(document: => js.Any) = doc("$group" -> document)

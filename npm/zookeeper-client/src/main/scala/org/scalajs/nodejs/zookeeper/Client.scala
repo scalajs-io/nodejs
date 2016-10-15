@@ -2,7 +2,6 @@ package org.scalajs.nodejs.zookeeper
 
 import org.scalajs.nodejs.buffer.Buffer
 import org.scalajs.nodejs.util.ScalaJsHelper._
-import org.scalajs.nodejs.util.ScalaJsHelper
 
 import scala.scalajs.js
 

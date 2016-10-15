@@ -20,6 +20,7 @@
     "html": "0.0.10",
     "jwt-simple": "^0.5.0",
     "kafka-node": "^0.3.2",
+    "kafka-rest": "0.0.4",
     "memory-fs": "^0.3.0",
     "mongodb": "^2.1.18",
     "mysql": "^2.10.2",

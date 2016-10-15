@@ -239,6 +239,7 @@ The following Third Party/OSS Node.js (npm) modules have been implemented:
 | htmlparser2           | 3.9.1   | scalajs-npm-htmlparser2   | A forgiving HTML/XML/RSS parser. The parser can handle streams and provides a callback interface. | Stable |
 | jwt-simple            | 0.5.0   | scalajs-npm-jwt-simple    | JWT(JSON Web Token) encode and decode module | Stable |
 | kafka-node            | 0.0.11  | scalajs-npm-kafkanode     | A node binding for librdkafka | Tesing required |
+| kafka-rest            | 0.0.4   | scalajs-npm-kafka-rest    | REST Proxy wrapper library for Kafka | Tesing required |
 | md5                   | 2.1.0   | scalajs-npm-md5           | A JavaScript function for hashing messages with MD5. | Stable |
 | memory-fs             | 0.3.0   | scalajs-npm-memory-fs     | A simple in-memory filesystem. Holds data in a javascript object. | Stable |
 | moment                | 2.14.1  | scalajs-npm-moment        | Parse, validate, manipulate, and display dates in JavaScript. | Stable |

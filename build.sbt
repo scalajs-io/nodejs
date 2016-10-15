@@ -552,13 +552,15 @@ lazy val bundle_npm = (project in file("bundles/npm")).
   aggregate(
     npm_adal, npm_amqplib, npm_async, npm_azure, npm_bcrypt, npm_body_parser, npm_cassandra,
     npm_colors, npm_csv_parse, npm_drama, npm_splitargs, npm_escape_html, npm_express, npm_express_csv,
-    npm_express_fileupload, npm_express_ws, npm_feedparser, npm_filed, npm_htmlparser2, npm_htmltojson, npm_jwt_simple, npm_kafka,
+    npm_express_fileupload, npm_express_ws, npm_feedparser, npm_filed, npm_htmlparser2, npm_htmltojson, npm_jwt_simple,
+    npm_kafka_node, npm_kafka_rest,
     npm_memory_fs, npm_moment, npm_moment_tz, npm_mongodb, npm_multer, npm_mysql, npm_numeral, npm_oppressor,
     npm_md5, npm_request, npm_rxjs, npm_transducers, npm_watch, npm_xml2js, npm_zookeeper).
   dependsOn(
     npm_adal, npm_amqplib, npm_async, npm_azure, npm_bcrypt, npm_body_parser, npm_cassandra,
     npm_colors, npm_csv_parse, npm_drama, npm_splitargs, npm_escape_html, npm_express, npm_express_csv,
-    npm_express_fileupload, npm_express_ws, npm_feedparser, npm_filed, npm_htmlparser2, npm_htmltojson, npm_jwt_simple, npm_kafka,
+    npm_express_fileupload, npm_express_ws, npm_feedparser, npm_filed, npm_htmlparser2, npm_htmltojson, npm_jwt_simple,
+    npm_kafka_node, npm_kafka_rest,
     npm_memory_fs, npm_moment, npm_moment_tz, npm_mongodb, npm_multer, npm_mysql, npm_numeral, npm_oppressor,
     npm_md5, npm_request, npm_rxjs, npm_transducers, npm_watch, npm_xml2js, npm_zookeeper).
   enablePlugins(ScalaJSPlugin).
@@ -769,7 +771,7 @@ lazy val npm_jwt_simple = (project in file("npm/jwt-simple")).
     description := "npm/jwt-simple binding for Scala.js"
   )
 
-lazy val npm_kafka = (project in file("npm/kafka_node")).
+lazy val npm_kafka_node = (project in file("npm/kafka_node")).
   dependsOn(node_core, npm_zookeeper).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
@@ -777,6 +779,16 @@ lazy val npm_kafka = (project in file("npm/kafka_node")).
     name := "scalajs-npm-kafkanode",
     organization := "com.github.ldaniels528",
     description := "npm/kafka-node binding for Scala.js"
+  )
+
+lazy val npm_kafka_rest = (project in file("npm/kafka-rest")).
+  dependsOn(node_core, node_stream, npm_zookeeper).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "scalajs-npm-kafka-rest",
+    organization := "com.github.ldaniels528",
+    description := "npm/kafka-rest binding for Scala.js"
   )
 
 lazy val npm_md5 = (project in file("npm/md5")).

@@ -5,6 +5,8 @@ import examples.nodejs.codecs._
 import examples.nodejs.concurrency._
 import examples.nodejs.csv.CsvParseExample
 import examples.nodejs.datastores._
+import examples.nodejs.datastores.kafka._
+import examples.nodejs.datastores.mongodb._
 import examples.nodejs.express._
 import examples.nodejs.general._
 import examples.nodejs.http._
@@ -50,8 +52,10 @@ object Examples extends js.JSApp {
     "HttpServerExample" -> ((bootstrap: Bootstrap) => new HttpServerExample(bootstrap)),
     "HttpServerWithCompression" -> ((bootstrap: Bootstrap) => new HttpServerWithCompression(bootstrap)),
     "JwtSimpleExample" -> ((bootstrap: Bootstrap) => new JwtSimpleExample(bootstrap)),
+    "KafkaConsumerExample" -> ((bootstrap: Bootstrap) => new KafkaConsumerExample(bootstrap)),
     "KafkaProducerExample" -> ((bootstrap: Bootstrap) => new KafkaProducerExample(bootstrap)),
     "KafkaProducerEnhanced" -> ((bootstrap: Bootstrap) => new KafkaProducerEnhanced(bootstrap)),
+    "KafkaRestExample" -> ((bootstrap: Bootstrap) => new KafkaRestExample(bootstrap)),
     "MD5Example" -> ((bootstrap: Bootstrap) => new MD5Example(bootstrap)),
     "MemoryFsExample" -> ((bootstrap: Bootstrap) => new MemoryFsExample(bootstrap)),
     "MongoAggregateExample" -> ((bootstrap: Bootstrap) => new MongoAggregateExample(bootstrap)),

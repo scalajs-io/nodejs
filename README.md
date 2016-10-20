@@ -1,4 +1,4 @@
- Scalajs-Nodejs (formerly MEANS.js)
+Transcendent (formerly MEANS.js)
 ====================================
 This is a Scala.js binding for the Node.js and MEAN Stack (MongoDB, Express, Angular, Node and others) applications.
  
@@ -10,7 +10,7 @@ This is a Scala.js binding for the Node.js and MEAN Stack (MongoDB, Express, Ang
     * <a href="#building_sdk">Building the SDK</a>
     * <a href="#running_examples">Building and run examples</a>
     * <a href="#resolvers">Resolvers</a>
-    * <a href="#apps_using_means">Developed using Scalajs-Nodejs</a>
+    * <a href="#apps_using_means">Developed using Transcendent</a>
     * <a href="#discussions">Discussions</a>
     * <a href="#advantages">Advantages over JavaScript</a>
 * <a href="#NodeJS">Node.js bindings</a>
@@ -29,14 +29,14 @@ This is a Scala.js binding for the Node.js and MEAN Stack (MongoDB, Express, Ang
 The goal of this project is to provide a complete Scala.js binding for the entire MEAN Stack. Why? Because I love NodeJS,
  but I have a love/hate relationship with JavaScript. And many others feel the same way about JavaScript, which is why
  there are so many languages that are designed to improve the experience (CoffeeScript, TypeScript, Scala.js and others). 
- Simply put, Scalajs-Nodejs let's me have my cake and eat it too! And as such, I've gone to great lengths to bring all the 
+ Simply put, Transcendent let's me have my cake and eat it too! And as such, I've gone to great lengths to bring all the 
  things you love about developing applications on the MEAN Stack to Scala.
  
-Scalajs-Nodejs is componentized; allowing developers to use only the features they want. If all your application 
+Transcendent is a componentized platform; allowing developers to use only the features they want. If all your application 
 requires is a binding for AngularJS, you can use just that. Alternatively, you could use only the Node bindings, or the 
 entire MEAN stack (or any of the bundled npm library bindings).
 
-Currently, there are at least four development use cases for Scalajs-Nodejs:
+Currently, there are at least four development use cases for Transcendent:
  
 * Building full MEAN stack applications using the bundled MongoDB, Express, Angular and Node bindings.
 * Building rich thin-client web front-ends using AngularJS bindings only (with any backend).
@@ -69,16 +69,16 @@ Currently, there are at least four development use cases for Scalajs-Nodejs:
 <a name="resolvers"></a>
 #### Resolvers
 
-To add the Scalajs-Nodejs bindings/library to your project, add the following to your build.sbt:  
+To add the Transcendent bindings/library to your project, add the following to your build.sbt:  
 
 ```   
 resolvers += Resolver.sonatypeRepo("releases") 
 ```
 
 <a name="apps_using_means"></a>
-### Developed using  Scalajs-Nodejs
+### Developed using  Transcendent
    
-The following applications were developed using Scalajs-Nodejs:
+The following applications were developed using Transcendent:
 
 | Application                                                            | Frontend              | Backend            | Description                                                  |
 |------------------------------------------------------------------------|-----------------------|--------------------|--------------------------------------------------------------|
@@ -90,7 +90,7 @@ The following applications were developed using Scalajs-Nodejs:
 <a name="discussions"></a>
 ### Discussions
  
-There's an on-going discussion about [Scalajs-Nodejs on Reddit](https://www.reddit.com/r/scala/comments/4loosi/meansjs_scalajs_facades_for_the_nodejs_api/).    
+There's an on-going discussion about [Transcendent on Reddit](https://www.reddit.com/r/scala/comments/4loosi/meansjs_scalajs_facades_for_the_nodejs_api/).    
 
 <a name="advantages">
 ### Advantages over JavaScript
@@ -493,7 +493,7 @@ mongoClient.connectFuture(url) foreach { db =>
 }
 ```
 
-Scalajs-Nodejs exposes Future-based alternatives to most of the asynchronous functions found in MongoDB, Express, Angular and Node. 
+Transcendent exposes Future-based alternatives to most of the asynchronous functions found in MongoDB, Express, Angular and Node. 
 This means that you can use Scala's amazing *for* comprehensions to replace the dreaded pyramid of doom callbacks normally
 associated with JavaScript asynchronous code.
 
@@ -812,7 +812,7 @@ object ChangeArrowDirectiveScope {
 
 #### Durations
 
-Scalajs-Nodejs provides implicit conversions so that you may use `scala.concurrent.duration.FiniteDuration`s with `$timeout`,
+Transcendent provides implicit conversions so that you may use `scala.concurrent.duration.FiniteDuration`s with `$timeout`,
 `$interval`, and any other services that use time in milliseconds.
 
 ```scala
@@ -821,7 +821,7 @@ $timeout(() => doSomething(), 5.minutes)
 
 #### JSON data as Scala objects
 
-Scalajs-Nodejs allows you to utilize dynamic JavaScript objects or type-safe Scala objects using traits. 
+Transcendent allows you to utilize dynamic JavaScript objects or type-safe Scala objects using traits. 
 Consider the following example:
 
 ```scala
@@ -838,7 +838,7 @@ one may want to retrieve the data as a `js.Dynamic` because of the flexibility i
 {"stateChanged":false,"active":false,"sysTime":1392092448795,"delay":-49848795,"start":1392042600000,"end":1392066000000}
 ```
 
-However, sometimes we instead want to retrieve the data as a type-safe Scala object. Scalajs-Nodejs makes this as simple as:
+However, sometimes we instead want to retrieve the data as a type-safe Scala object. Transcendent makes this as simple as:
 
 ```scala
 $http.get[MarketStatus]("/api/tradingClock/status") onComplete {
@@ -861,7 +861,7 @@ Above, we retrieve a JSON object via the given API and return a Market Status ob
 
 #### For Comprehensions
 
-Scalajs-Nodejs provides implicit conversions that convert a `HttpResponse[T]` into a `Future[T]`, we can also use `for`
+Transcendent provides implicit conversions that convert a `HttpResponse[T]` into a `Future[T]`, we can also use `for`
 comprehensions when we need to combine data from multiple API calls.
 
 ```scala

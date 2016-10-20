@@ -1,4 +1,4 @@
-Transcendent (formerly MEANS.js)
+Transcendent.js (formerly MEANS.js)
 ====================================
 This is a Scala.js binding for the Node.js and MEAN Stack (MongoDB, Express, Angular, Node and others) applications.
  

@@ -16,7 +16,7 @@ scalaJSUseRhino in Global := false
 
 organization := "com.github.ldaniels528"
 
-homepage := Some(url("https://github.com/ldaniels528/transcendent"))
+homepage := Some(url("https://github.com/ldaniels528/transcendent,js"))
 
 val commonSettings = Seq(
   version := apiVersion,

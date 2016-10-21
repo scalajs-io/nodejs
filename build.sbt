@@ -4,11 +4,11 @@ import sbt.Keys._
 import sbt.Project.projectToRef
 import sbt._
 
-val apiVersion = "0.2.3.2"
+val apiVersion = "0.2.3.3"
 
-val paradisePluginVersion = "3.0.0-M1"
+val paradisePluginVersion = "3.0.0-M3"
 val _scalaVersion = "2.11.8"
-val scalaJsDomVersion = "0.9.0"
+val scalaJsDomVersion = "0.9.1"
 val scalaJsJQueryVersion = "0.9.0"
 val scalaJsSelenium = "0.1.3"
 
@@ -16,7 +16,7 @@ scalaJSUseRhino in Global := false
 
 organization := "com.github.ldaniels528"
 
-homepage := Some(url("https://github.com/ldaniels528/transcendent,js"))
+homepage := Some(url("https://github.com/ldaniels528/transcendent.js"))
 
 val commonSettings = Seq(
   version := apiVersion,

@@ -11,7 +11,6 @@ import scala.scalajs.js.annotation.JSName
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-@JSName("Rx")
 trait Rx extends NodeModule {
 
   @js.native

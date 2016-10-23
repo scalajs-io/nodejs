@@ -150,37 +150,37 @@ trait Application extends Router with EventEmitter {
     * Retrieve the value of a setting with app.get().
     * @example app.set(name, value)
     */
-  def set(name: String, value: js.Any): Unit = js.native
+  def set(name: String, value: js.Any): this.type = js.native
 
-  def set(headers: js.Any): Unit = js.native // TODO ????
-
-  /**
-    * Mounts the specified middleware function or functions at the specified path.
-    * If path is not specified, it defaults to “/”.
-    * @example app.use([path,] function [, function...])
-    */
-  def use(path: String, router: Router): Unit = js.native
+  def set(headers: js.Any): this.type = js.native // TODO ????
 
   /**
     * Mounts the specified middleware function or functions at the specified path.
     * If path is not specified, it defaults to “/”.
     * @example app.use([path,] function [, function...])
     */
-  def use(path: String, callback: js.Function, next: js.Function*): Unit = js.native
+  def use(path: String, router: Router | js.Any): this.type = js.native
 
   /**
     * Mounts the specified middleware function or functions at the specified path.
     * If path is not specified, it defaults to “/”.
     * @example app.use([path,] function [, function...])
     */
-  def use(callback: js.Function, next: js.Function*): Unit = js.native
+  def use(path: String, callback: js.Function, next: js.Function*): this.type = js.native
 
   /**
     * Mounts the specified middleware function or functions at the specified path.
     * If path is not specified, it defaults to “/”.
     * @example app.use([path,] function [, function...])
     */
-  def use(router: Router): Unit = js.native
+  def use(callback: js.Function, next: js.Function*): this.type = js.native
+
+  /**
+    * Mounts the specified middleware function or functions at the specified path.
+    * If path is not specified, it defaults to “/”.
+    * @example app.use([path,] function [, function...])
+    */
+  def use(router: Router | js.Any): this.type = js.native
 
 }
 

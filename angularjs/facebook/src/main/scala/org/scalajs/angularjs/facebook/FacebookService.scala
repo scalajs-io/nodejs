@@ -5,6 +5,7 @@ import org.scalajs.dom.console
 import org.scalajs.nodejs.social.facebook._
 import org.scalajs.nodejs.util.ScalaJsHelper._
 
+import scala.concurrent.Promise
 import scala.scalajs.js
 import scala.scalajs.js.Dynamic.literal
 import scala.util.{Failure, Success, Try}
@@ -14,7 +15,7 @@ import scala.util.{Failure, Success, Try}
   * @author lawrence.daniels@gmail.com
   * @see [[https://developers.facebook.com/docs/graph-api/using-graph-api/v2.5]]
   */
-class FacebookService($q: Q) extends Service {
+class FacebookService() extends Service {
   type CallbackObject = js.Function1[js.Dynamic, Unit]
   type PaginationCallback[T] = js.Function1[FacebookPagination[T], Unit]
 
@@ -30,9 +31,9 @@ class FacebookService($q: Q) extends Service {
   def facebookID: js.UndefOr[String] = auth.map(_.userID)
 
   def getLoginStatus = {
-    val deferred = $q.defer[FacebookLoginStatusResponse]()
+    val promise = Promise[FacebookLoginStatusResponse]()
     FB.getLoginStatus((response: js.UndefOr[FacebookLoginStatusResponse]) =>
-      specialHandling(deferred, response) {
+      specialHandling(promise, response) {
         case resp if resp.status == "connected" =>
           auth = resp.authResponse
           //console.log(s"facebookID = $facebookID, auth = ${angular.toJson(auth)}")
@@ -40,30 +41,30 @@ class FacebookService($q: Q) extends Service {
         case resp =>
           Failure(new RuntimeException(s"Facebook is not connected (status: ${resp.status})"))
       })
-    deferred.promise
+    promise
   }
 
   def getUserProfile = {
-    val deferred = $q.defer[FacebookProfileResponse]()
-    FB.api(fbURL(), (response: js.UndefOr[FacebookProfileResponse]) => handleResponse(deferred, response))
-    deferred.promise
+    val promise = Promise[FacebookProfileResponse]()
+    FB.api(fbURL(), (response: js.UndefOr[FacebookProfileResponse]) => handleResponse(promise, response))
+    promise
   }
 
   def login() = {
-    val deferred = $q.defer[FacebookLoginStatusResponse]()
+    val promise = Promise[FacebookLoginStatusResponse]()
     FB.login((response: js.UndefOr[FacebookLoginStatusResponse]) =>
-      specialHandling(deferred, response) { resp =>
+      specialHandling(promise, response) { resp =>
         auth = resp.authResponse
         //console.log(s"facebookID = $facebookID, auth = ${angular.toJson(auth)}")
         Success(resp)
       })
-    deferred.promise
+    promise
   }
 
   def logout() = {
-    val deferred = $q.defer[FacebookLoginStatusResponse]()
-    FB.logout((response: js.UndefOr[FacebookLoginStatusResponse]) => handleResponse(deferred, response))
-    deferred.promise
+    val promise = Promise[FacebookLoginStatusResponse]()
+    FB.logout((response: js.UndefOr[FacebookLoginStatusResponse]) => handleResponse(promise, response))
+    promise
   }
 
   ///////////////////////////////////////////////////////////////////////////
@@ -77,9 +78,9 @@ class FacebookService($q: Q) extends Service {
     * @see [[https://developers.facebook.com/docs/games/achievements]]
     */
   def getAchievement(achievementID: String) = {
-    val deferred = $q.defer[FacebookAchievementResponse]()
-    FB.api(fbURL(s"/achievements"), (response: js.UndefOr[FacebookAchievementResponse]) => handleResponse(deferred, response))
-    deferred.promise
+    val promise = Promise[FacebookAchievementResponse]()
+    FB.api(fbURL(s"/achievements"), (response: js.UndefOr[FacebookAchievementResponse]) => handleResponse(promise, response))
+    promise
   }
 
   ///////////////////////////////////////////////////////////////////////////
@@ -87,13 +88,13 @@ class FacebookService($q: Q) extends Service {
   ///////////////////////////////////////////////////////////////////////////
 
   def createFriendList(friendListId: String) = {
-    val deferred = $q.defer[FacebookResponse]()
-    FB.api(fbURL(s"/$friendListId/member"), (response: js.UndefOr[FacebookResponse]) => handleResponse(deferred, response))
-    deferred.promise
+    val promise = Promise[FacebookResponse]()
+    FB.api(fbURL(s"/$friendListId/member"), (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
+    promise
   }
 
   def getFriends = {
-    val deferred = $q.defer[js.Array[TaggableFriend]]()
+    val promise = Promise[js.Array[TaggableFriend]]()
     val friends = emptyArray[TaggableFriend]
     FB.api(fbURL("/friends"), (response: FacebookPagination[TaggableFriend]) => {
       //console.log(s"response = ${angular.toJson(response)}")
@@ -104,19 +105,19 @@ class FacebookService($q: Q) extends Service {
       }
       ()
     })
-    deferred.promise
+    promise
   }
 
   def getFriendList(listType: js.UndefOr[String] = "close_friends") = {
-    val deferred = $q.defer[FacebookResponse]()
-    FB.api(fbURL("/friendlists", s"list_type=$listType"), (response: js.UndefOr[FacebookResponse]) => handleResponse(deferred, response))
-    deferred.promise
+    val promise = Promise[FacebookResponse]()
+    FB.api(fbURL("/friendlists", s"list_type=$listType"), (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
+    promise
   }
 
   def getFriendListMembers(friendListId: String) = {
-    val deferred = $q.defer[FacebookResponse]()
-    FB.api(fbURL(s"/$friendListId/members"), (response: js.UndefOr[FacebookResponse]) => handleResponse(deferred, response))
-    deferred.promise
+    val promise = Promise[FacebookResponse]()
+    FB.api(fbURL(s"/$friendListId/members"), (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
+    promise
   }
 
   /**
@@ -124,7 +125,7 @@ class FacebookService($q: Q) extends Service {
     * @return the array of [[TaggableFriend taggable friends]]
     */
   def getTaggableFriends = {
-    val deferred = $q.defer[js.Array[TaggableFriend]]()
+    val promise = Promise[js.Array[TaggableFriend]]()
     val friends = emptyArray[TaggableFriend]
     val callback: PaginationCallback[TaggableFriend] = (response: FacebookPagination[TaggableFriend]) => {
       //console.log(s"response = ${angular.toJson(response)}")
@@ -137,9 +138,9 @@ class FacebookService($q: Q) extends Service {
     }
     FB.api(fbURL("/taggable_friends"), { (response: TaggableFriendsResponse) =>
       handlePaginatedResults(response, callback)
-      deferred.resolve(friends)
+      promise.success(friends)
     })
-    deferred.promise
+    promise
   }
 
   ///////////////////////////////////////////////////////////////////////////
@@ -153,9 +154,9 @@ class FacebookService($q: Q) extends Service {
     * @see [[https://developers.facebook.com/docs/graph-api/reference/user/photos/]]
     */
   def getPhotos(`type`: js.UndefOr[String] = js.undefined) = {
-    val deferred = $q.defer[FacebookPhotosResponse]()
-    FB.api(fbURL("/photos", `type` map (myType => s"type=$myType")), (response: FacebookPhotosResponse) => handleResponse(deferred, response))
-    deferred.promise
+    val promise = Promise[FacebookPhotosResponse]()
+    FB.api(fbURL("/photos", `type` map (myType => s"type=$myType")), (response: FacebookPhotosResponse) => handleResponse(promise, response))
+    promise
   }
 
   ///////////////////////////////////////////////////////////////////////////
@@ -171,21 +172,21 @@ class FacebookService($q: Q) extends Service {
   ///////////////////////////////////////////////////////////////////////////
 
   def feed(appID: String, caption: String, link: String) = {
-    val deferred = $q.defer[FacebookResponse]()
-    FB.ui(FacebookCommand(app_id = appID, method = "feed", link = link, caption = caption), (response: js.UndefOr[FacebookResponse]) => handleResponse(deferred, response))
-    deferred.promise
+    val promise = Promise[FacebookResponse]()
+    FB.ui(FacebookCommand(app_id = appID, method = "feed", link = link, caption = caption), (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
+    promise
   }
 
   def send(appID: String, message: String, link: String) = {
-    val deferred = $q.defer[FacebookResponse]()
-    FB.ui(FacebookCommand(app_id = appID, method = "send", link = link), (response: js.UndefOr[FacebookResponse]) => handleResponse(deferred, response))
-    deferred.promise
+    val promise = Promise[FacebookResponse]()
+    FB.ui(FacebookCommand(app_id = appID, method = "send", link = link), (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
+    promise
   }
 
   def share(appID: String, link: String) = {
-    val deferred = $q.defer[FacebookResponse]()
-    FB.ui(FacebookCommand(app_id = appID, method = "share", href = link), (response: js.UndefOr[FacebookResponse]) => handleResponse(deferred, response))
-    deferred.promise
+    val promise = Promise[FacebookResponse]()
+    FB.ui(FacebookCommand(app_id = appID, method = "share", href = link), (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
+    promise
   }
 
   ///////////////////////////////////////////////////////////////////////////
@@ -203,11 +204,11 @@ class FacebookService($q: Q) extends Service {
     s"/$fbUserID$path?access_token=$accessToken" + (args map (myArgs => s"&$myArgs") getOrElse "")
   }
 
-  private def handleResponse[A <: FacebookResponse](deferred: QDefer[A], response: js.UndefOr[A]) = {
+  private def handleResponse[A <: FacebookResponse](promise: Promise[A], response: js.UndefOr[A]) = {
     response.toOption match {
-      case Some(resp) if resp.error.isEmpty => deferred.resolve(resp)
-      case Some(resp) => deferred.reject(resp.error)
-      case None => deferred.reject("No response from Facebook")
+      case Some(resp) if resp.error.isEmpty => promise.success(resp)
+      case Some(resp) => promise.failure(new Exception(resp.error getOrElse "Cause unknown"))
+      case None => promise.failure(new Exception("No response from Facebook"))
     }
   }
 
@@ -229,15 +230,15 @@ class FacebookService($q: Q) extends Service {
     })
   }
 
-  private def specialHandling[A <: FacebookResponse](deferred: QDefer[A], response: js.UndefOr[A])(handler: A => Try[A]) = {
+  private def specialHandling[A <: FacebookResponse](promise: Promise[A], response: js.UndefOr[A])(handler: A => Try[A]) = {
     response.toOption match {
       case Some(resp) if resp.error.isEmpty =>
         handler(resp) match {
-          case Success(value) => deferred.resolve(value)
-          case Failure(e) => deferred.reject(e.getMessage)
+          case Success(value) => promise.success(value)
+          case Failure(e) => promise.failure(e)
         }
-      case Some(resp) => deferred.reject(resp.error)
-      case None => deferred.reject("No response from Facebook")
+      case Some(resp) => promise.failure(new Exception(resp.error getOrElse "Cause unknown"))
+      case None => promise.failure(new Exception("No response from Facebook"))
     }
   }
 

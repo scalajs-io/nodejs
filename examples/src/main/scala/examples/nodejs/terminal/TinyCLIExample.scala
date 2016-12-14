@@ -14,7 +14,7 @@ import org.scalajs.nodejs.readline.{Readline, ReadlineOptions}
 class TinyCLIExample(bootstrap: Bootstrap) {
   implicit val require = bootstrap.require
 
-  val readline = require[Readline]("readline")
+  val readline = Readline()
   val rl = readline.createInterface(new ReadlineOptions(input = process.stdin, output = process.stdout))
 
   rl.setPrompt("OHAI> ")

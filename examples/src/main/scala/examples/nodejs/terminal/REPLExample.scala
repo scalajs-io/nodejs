@@ -17,8 +17,8 @@ import scala.scalajs.js
 class REPLExample(bootstrap: Bootstrap) {
   implicit val require = bootstrap.require
 
-  val net = require[Net]("net")
-  val repl = require[REPL]("repl")
+  val net = Net()
+  val repl = REPL()
 
   val mood = () => {
     val m = js.Array("^__^", "-___-", ">.<", "<_>")

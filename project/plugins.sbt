@@ -1,8 +1,6 @@
-addSbtPlugin("com.typesafe.sbt" % "sbt-gzip" % "1.0.0")
-
 // Scala.js
 
-addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.13" )
+addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.14" )
 
 // Publishing
 

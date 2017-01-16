@@ -1,4 +1,4 @@
-Transcendent.js (formerly MEANS.js)
+ScalaJs.io (formerly MEANS.js)
 ====================================
 This is a Scala.js binding for the Node.js and MEAN Stack (MongoDB, Express, Angular, Node and others) applications.
  
@@ -10,7 +10,7 @@ This is a Scala.js binding for the Node.js and MEAN Stack (MongoDB, Express, Ang
     * <a href="#building_sdk">Building the SDK</a>
     * <a href="#running_examples">Building and run examples</a>
     * <a href="#resolvers">Resolvers</a>
-    * <a href="#apps_using_means">Developed using Transcendent</a>
+    * <a href="#apps_using_means">Developed using ScalaJs.io</a>
     * <a href="#discussions">Discussions</a>
     * <a href="#advantages">Advantages over JavaScript</a>
 * <a href="#NodeJS">Node.js bindings</a>
@@ -29,14 +29,14 @@ This is a Scala.js binding for the Node.js and MEAN Stack (MongoDB, Express, Ang
 The goal of this project is to provide a complete Scala.js binding for the entire MEAN Stack. Why? Because I love NodeJS,
  but I have a love/hate relationship with JavaScript. And many others feel the same way about JavaScript, which is why
  there are so many languages that are designed to improve the experience (CoffeeScript, TypeScript, Scala.js and others). 
- Simply put, Transcendent let's me have my cake and eat it too! And as such, I've gone to great lengths to bring all the 
+ Simply put, ScalaJs.io let's me have my cake and eat it too! And as such, I've gone to great lengths to bring all the 
  things you love about developing applications on the MEAN Stack to Scala.
  
-Transcendent is a componentized platform; allowing developers to use only the features they want. If all your application 
+ScalaJs.io is a componentized platform; allowing developers to use only the features they want. If all your application 
 requires is a binding for AngularJS, you can use just that. Alternatively, you could use only the Node bindings, or the 
 entire MEAN stack (or any of the bundled npm library bindings).
 
-Currently, there are at least four development use cases for Transcendent:
+Currently, there are at least four development use cases for ScalaJs.io:
  
 * Building full MEAN stack applications using the bundled MongoDB, Express, Angular and Node bindings.
 * Building rich thin-client web front-ends using AngularJS bindings only (with any backend).
@@ -49,7 +49,7 @@ Currently, there are at least four development use cases for Transcendent:
 <a name="build_requirements"></a>
 #### Build Requirements
 
-* [SBT 0.13.11+] (http://www.scala-sbt.org/download.html)
+* [SBT 0.13.13] (http://www.scala-sbt.org/download.html)
 
 <a name="building_sdk"></a>
 #### Build/publish the SDK
@@ -69,28 +69,28 @@ Currently, there are at least four development use cases for Transcendent:
 <a name="resolvers"></a>
 #### Resolvers
 
-To add the Transcendent bindings/library to your project, add the following to your build.sbt:  
+To add the ScalaJs.io bindings/library to your project, add the following to your build.sbt:  
 
 ```   
 resolvers += Resolver.sonatypeRepo("releases") 
 ```
 
 <a name="apps_using_means"></a>
-### Developed using  Transcendent
+### Developed using  ScalaJs.io
    
-The following applications were developed using Transcendent:
+The following applications were developed using ScalaJs.io:
 
 | Application                                                            | Frontend              | Backend            | Description                                                  |
 |------------------------------------------------------------------------|-----------------------|--------------------|--------------------------------------------------------------|
-| [Socialized](https://github.com/ldaniels528/scalajs-nodejs-socialized) | Scala.js/AngularJS    | Scala.js/NodeJS    | A Facebook-inspired Social networking web application. |
-| [Todo MVC](https://github.com/ldaniels528/scalajs-nodejs-todomvc)      | Scala.js/AngularJS    | Scala.js/NodeJS    | A simple Todo example application. |
-| [Trifecta](https://github.com/ldaniels528/trifecta)                    | Scala.js/AngularJS    | Scala/Play 2.4.x   | Trifecta is a web-based and CLI tool that simplifies inspecting Kafka messages and Zookeeper data. |
+| [Socialize](https://github.com/ldaniels528/scalajs-nodejs-socialized)  | Scala.js + AngularJS  | Scala.js + NodeJS  | A Facebook-inspired Social networking web application. |
+| [Todo MVC](https://github.com/ldaniels528/scalajs-nodejs-todomvc)      | Scala.js + AngularJS  | Scala.js + NodeJS  | A simple Todo example application. |
+| [Trifecta](https://github.com/ldaniels528/trifecta)                    | Scala.js + AngularJS  | Scala + Play 2.4.x | Trifecta is a web-based and CLI tool that simplifies inspecting Kafka messages and Zookeeper data. |
  
  
 <a name="discussions"></a>
 ### Discussions
  
-There's an on-going discussion about [Transcendent on Reddit](https://www.reddit.com/r/scala/comments/4loosi/meansjs_scalajs_facades_for_the_nodejs_api/).    
+There's an on-going discussion about [ScalaJs.io on Reddit](https://www.reddit.com/r/scala/comments/4loosi/meansjs_scalajs_facades_for_the_nodejs_api/).    
 
 <a name="advantages">
 ### Advantages over JavaScript
@@ -185,80 +185,83 @@ implemented as well, including bcrypt, datastax/cassandra-driver, kafka-node, my
 
 The following core Node.js modules have been implemented:
 
-| Node Module           | Version | Artifact ID               | Description                                             | Status          |
-|-----------------------|---------|---------------------------|---------------------------------------------------------|-----------------|
-| assert                | 6.2.1   | scalajs-nodejs-assert     | Provides a simple set of assertion tests that can be used to test invariants. | Stable |
-| buffer                | 6.2.1   | scalajs-nodejs-core       | The Buffer class was introduced as part of the Node.js API to make it possible to interact with octet streams in the context of things like TCP streams and file system operations. | Stable |
-| cluster               | 6.2.1   | scalajs-nodejs-cluster    | The cluster module allows you to easily create child processes that all share server ports. | Stable |
-| crypto                | 6.1.0   | scalajs-nodejs-crypto     | The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions.| Stable |
-| dns                   | 6.2.1   | scalajs-nodejs-dns        | Support for DNS queries.| Stable |
-| events                | 6.1.0   | scalajs-nodejs-core       | Node.js Events Interface | Stable |
-| fs                    | 6.2.1   | scalajs-nodejs-fs         | File I/O is provided by simple wrappers around standard POSIX functions. | Stable |
-| http                  | 6.1.0   | scalajs-nodejs-http       | Node.js HTTP Interface | Stable |
-| https                 | 6.1.0   | scalajs-nodejs-https      | Node.js HTTPS Interface | Stable |
-| net                   | 6.2.1   | scalajs-nodejs-net        | The net module provides you with an asynchronous network wrapper. | Stable |
-| os                    | 6.1.0   | scalajs-nodejs-os         | Provides a few basic operating-system related utility functions. | Stable |
-| path                  | 6.1.0   | scalajs-nodejs-path       | This module contains utilities for handling and transforming file paths. | Stable |
-| readline              | 6.1.0   | scalajs-nodejs-readline   | Readline allows reading of a stream on a line-by-line basis. | Stable |
-| repl                  | 6.1.0   | scalajs-nodejs-repl       | The REPL provides a way to interactively run JavaScript and see the results. | Stable |
-| stream                | 6.1.0   | scalajs-nodejs-core       | A stream is an abstract interface implemented by various objects in Node.js. | Stable |
-| string-decoder        | 6.1.0   | scalajs-nodejs-string-decoder | The string_decoder module provides an API for decoding Buffer objects into strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16 characters. | Stable |
-| tty                   | 6.2.1   | scalajs-nodejs-tty        | The tty module provides the tty.ReadStream and tty.WriteStream classes. | Stable |
-| url                   | 6.1.0   | scalajs-nodejs-url        | The url module provides utilities for URL resolution and parsing. | Stable |
-| util                  | 6.1.0   | scalajs-nodejs-util       | The util module is primarily designed to support the needs of Node.js's internal APIs.| Stable |
-| vm                    | 6.2.1   | scalajs-nodejs-vm         | The vm module provides APIs for compiling and running code within V8 Virtual Machine contexts.| Stable |
-| zlib                  | 6.1.0   | scalajs-nodejs-zlib       | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. | Stable |
+| Node Module           | Version | Artifact ID       | Description                                             | Status          |
+|-----------------------|---------|-------------------|---------------------------------------------------------|-----------------|
+| assert                | 7.4.0   | nodejs-core       | Provides a simple set of assertion tests that can be used to test invariants. | Stable |
+| buffer                | 7.4.0   | nodejs-core       | The Buffer class was introduced as part of the Node.js API to make it possible to interact with octet streams in the context of things like TCP streams and file system operations. | Stable |
+| cluster               | 7.4.0   | nodejs-core       | The cluster module allows you to easily create child processes that all share server ports. | Stable |
+| crypto                | 7.4.0   | nodejs-core       | The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions.| Stable |
+| dns                   | 7.4.0   | nodejs-core       | Support for DNS queries.| Stable |
+| events                | 7.4.0   | nodejs-core       | Node.js Events Interface | Stable |
+| fs                    | 7.4.0   | nodejs-core       | File I/O is provided by simple wrappers around standard POSIX functions. | Stable |
+| http                  | 7.4.0   | nodejs-core       | Node.js HTTP Interface | Stable |
+| https                 | 7.4.0   | nodejs-core       | Node.js HTTPS Interface | Stable |
+| net                   | 7.4.0   | nodejs-core       | The net module provides you with an asynchronous network wrapper. | Stable |
+| os                    | 7.4.0   | nodejs-core       | Provides a few basic operating-system related utility functions. | Stable |
+| path                  | 7.4.0   | nodejs-core       | This module contains utilities for handling and transforming file paths. | Stable |
+| readline              | 7.4.0   | nodejs-core       | Readline allows reading of a stream on a line-by-line basis. | Stable |
+| repl                  | 7.4.0   | nodejs-core       | The REPL provides a way to interactively run JavaScript and see the results. | Stable |
+| stream                | 7.4.0   | nodejs-core       | A stream is an abstract interface implemented by various objects in Node.js. | Stable |
+| string-decoder        | 7.4.0   | nodejs-core       | The string_decoder module provides an API for decoding Buffer objects into strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16 characters. | Stable |
+| tty                   | 7.4.0   | nodejs-core       | The tty module provides the tty.ReadStream and tty.WriteStream classes. | Stable |
+| url                   | 7.4.0   | nodejs-core       | The url module provides utilities for URL resolution and parsing. | Stable |
+| util                  | 7.4.0   | nodejs-core       | The util module is primarily designed to support the needs of Node.js's internal APIs.| Stable |
+| vm                    | 7.4.0   | nodejs-core       | The vm module provides APIs for compiling and running code within V8 Virtual Machine contexts.| Stable |
+| zlib                  | 7.4.0   | nodejs-core       | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. | Stable |
 
-*NOTE*: The full SBT artifact expression is: "com.github.ldaniels528" %%% "scalajs-nodejs-xxxx" % version 
-(e.g. "com.github.ldaniels528" %%% "scalajs-nodejs-readline" % "0.2.0")
+*NOTE*: The full SBT artifact expression is: "io.scalajs" %%% "scalajs-nodejs-xxxx" % version 
+(e.g. "io.scalajs" %%% "scalajs-nodejs-readline" % "0.2.0")
 
 <a name="npm_modules">
 #### Third-party Modules
 
 The following Third Party/OSS Node.js (npm) modules have been implemented:
 
-| Node Module           | Version | Artifact ID               | Description                                             | Status          |
-|-----------------------|---------|---------------------------|---------------------------------------------------------|-----------------|
-| adal-node             | 0.1.19  | scalajs-npm-adal-node     | Windows Azure Active Directory Client Library for node. | Tesing required |
-| amqplib               | 0.4.1   | scalajs-npm-amqplib       | An AMQP 0-9-1 (e.g., RabbitMQ) library and client. | Tesing required |
-| async                 | 2.0.0   | scalajs-npm-async         | Higher-order functions and common patterns for asynchronous code. | Stable |
-| azure                 | 0.10.6  | scalajs-npm-azure         | Microsoft Azure Client Library for node. | WIP - Unusable |
-| bcrypt                | 0.0.3   | scalajs-npm-bcrypt        | A native JS bcrypt library for NodeJS. | Stable |
-| body-parser           | 1.15.1  | scalajs-npm-body-parser   | Body parsing middleware. | Stable |
-| cassandra-driver      | 3.0.2   | scalajs-npm-datastax-cassandra| DataStax Node.js Driver for Apache Cassandra | Tesing required |
-| colors                | 1.1.2   | scalajs-npm-colors        | Get colors in your node.js console.| Stable |
-| csv-parse             | 1.1.2   | scalajs-npm-csv-parse     | CSV parsing implementing the Node.js 'stream.Transform' API.| Stable |
-| drama                 | 0.1.3   | scalajs-npm-drama         | drama is an Actor model implementation for JavaScript and Node.js | Stable |
-| escape-html           | 1.0.3   | scalajs-npm-escape-html   | Escape string for use in HTML | Stable |
-| express               | 4.13.4  | scalajs-npm-express       | Fast, unopinionated, minimalist web framework for Node.js | Stable |
-| express-csv           | 0.6.0   | scalajs-npm-express-csv   | express-csv provides response csv easily to express. | Stable |
-| express-fileupload    | 0.0.5   | scalajs-npm-express-fileupload | Simple express file upload middleware that wraps around connect-busboy | Stable |
-| express-ws            |2.0.0-rc1| scalajs-npm-express-ws    | WebSocket endpoints for Express applications | Stable |
-| feedparser-promised   | 1.1.1   | scalajs-npm-feedparser-promised| Wrapper around feedparser with promises. | Stable |
-| filed                 | 0.1.0   | scalajs-npm-filed         | Simplified file library. | Stable |
-| htmlparser2           | 3.9.1   | scalajs-npm-htmlparser2   | A forgiving HTML/XML/RSS parser. The parser can handle streams and provides a callback interface. | Stable |
-| jwt-simple            | 0.5.0   | scalajs-npm-jwt-simple    | JWT(JSON Web Token) encode and decode module | Stable |
-| kafka-node            | 0.0.11  | scalajs-npm-kafkanode     | A node binding for librdkafka | Tesing required |
-| kafka-rest            | 0.0.4   | scalajs-npm-kafka-rest    | REST Proxy wrapper library for Kafka | Tesing required |
-| md5                   | 2.1.0   | scalajs-npm-md5           | A JavaScript function for hashing messages with MD5. | Stable |
-| memory-fs             | 0.3.0   | scalajs-npm-memory-fs     | A simple in-memory filesystem. Holds data in a javascript object. | Stable |
-| moment                | 2.14.1  | scalajs-npm-moment        | Parse, validate, manipulate, and display dates in JavaScript. | Stable |
-| moment-timezone       |0.5.5-2016f| scalajs-npm-moment-timezone| Parse and display dates in any timezone. | Stable |
-| mongodb               | 2.1.18  | scalajs-npm-mongodb       | Node.js MongoDB Driver | Stable |
-| multer                | 1.1.0   | scalajs-npm-multer        | Multer is a node.js middleware for handling multipart/form-data. | Tesing required |
-| mysql                 | 2.10.2  | scalajs-npm-mysql         | A node.js driver for mysql. | Stable |
-| node-zookeeper-client | 0.2.2   | scalajs-npm-zookeeper-client | A higher-level ZooKeeper client based on node-zookeeper with support for locking and master election. | Tesing required |
-| numeral               | 1.5.3   | scalajs-npm-numeral       | A javascript library for formatting and manipulating numbers. | Stable |
-| oppressor             | 0.0.1   | scalajs-npm-oppressor     | Streaming http compression response negotiator. | Tesing required |
-| request               | 2.72.1  | scalajs-npm-request       | Simplified HTTP request client. | Stable |
-| rxjs                  | 4.1.0   | scalajs-npm-rxjs          | The Reactive Extensions for JavaScript. | Stable |
-| splitargs             | 0.0.7   | scalajs-npm-splitargs     | Splits strings into tokens by given separator except treating quoted part as a single token. | Stable |
-| transducers-js        | 0.4.174 | scalajs-npm-transducers   | A high performance Transducers implementation for JavaScript. | Stable |
-| watch                 | 0.18.0  | scalajs-npm-watch         | Utilities for watching file trees. | Stable |
-| xml2js                | 0.4.16  | scalajs-npm-xml2js        | Simple XML to JavaScript object converter. | Stable |
+| Node Module           | Version | Artifact ID            | Description                                             | Status          |
+|-----------------------|---------|------------------------|---------------------------------------------------------|-----------------|
+| async                 | 2.0.0   | npm-async              | Higher-order functions and common patterns for asynchronous code. | Stable |
+| bcrypt                | 0.0.3   | npm-bcrypt             | A native JS bcrypt library for NodeJS. | Stable |
+| bignum                | 0.12.5  | npm-bignum             | Arbitrary-precision integer arithmetic using OpenSSL. | Stable |
+| body-parser           | 1.15.1  | npm-body-parser        | Body parsing middleware. | Stable |
+| buffermaker           | 1.2.0   | npm-buffermaker        | buffermaker is a convenient way of creating binary strings. | Stable |
+| cassandra-driver      | 3.0.2   | npm-cassandra-driver   | DataStax Node.js Driver for Apache Cassandra | Stable |
+| cheerio               | 0.22.0  | npm-cheerio            | Tiny, fast, and elegant implementation of core jQuery designed specifically for the server | Stable |
+| colors                | 1.1.2   | npm-colors             | Get colors in your node.js console.| Stable |
+| csv-parse             | 1.1.2   | npm-csv-parse          | CSV parsing implementing the Node.js 'stream.Transform' API.| Stable |
+| drama                 | 0.1.3   | npm-drama              | drama is an Actor model implementation for JavaScript and Node.js | Stable |
+| escape-html           | 1.0.3   | npm-escape-html        | Escape string for use in HTML | Stable |
+| express               | 4.13.4  | npm-express            | Fast, unopinionated, minimalist web framework for Node.js | Stable |
+| express-csv           | 0.6.0   | npm-express-csv        | express-csv provides response csv easily to express. | Stable |
+| express-fileupload    | 0.0.5   | npm-express-fileupload | Simple express file upload middleware that wraps around connect-busboy | Stable |
+| express-multer        | 1.1.0   | npm-express-multer     | Multer is a node.js middleware for handling multipart/form-data. | Tesing required |
+| express-ws            |2.0.0-rc1| npm-express-ws         | WebSocket endpoints for Express applications | Stable |
+| feedparser-promised   | 1.1.1   | npm-feedparser-promised| Wrapper around feedparser with promises. | Stable |
+| filed                 | 0.1.0   | npm-filed              | Simplified file library. | Stable |
+| html-to-json          | 0.6.0   | npm-html-to-json       | Parses HTML strings into objects using flexible, composable filters. | Stable |
+| htmlparser2           | 3.9.1   | npm-htmlparser2        | A forgiving HTML/XML/RSS parser. The parser can handle streams and provides a callback interface. | Stable |
+| jsdom                 | 9.9.1   | npm-jsdom              | A JavaScript implementation of the WHATWG DOM and HTML standards, for use with Node.js. | Stable |
+| jwt-simple            | 0.5.0   | npm-jwt-simple         | JWT(JSON Web Token) encode and decode module | Stable |
+| jsdom                 | 9.9.1   | npm-jsdom              | A JavaScript implementation of the WHATWG DOM and HTML standards, for use with Node.js | Stable |
+| kafka-node            | 0.0.11  | npm-kafkanode          | A node binding for librdkafka | Tesing required |
+| kafka-rest            | 0.0.4   | npm-kafka-rest         | REST Proxy wrapper library for Kafka | Tesing required |
+| md5                   | 2.1.0   | npm-md5                | A JavaScript function for hashing messages with MD5. | Stable |
+| memory-fs             | 0.3.0   | npm-memory-fs          | A simple in-memory filesystem. Holds data in a javascript object. | Stable |
+| moment                | 2.14.1  | npm-moment             | Parse, validate, manipulate, and display dates in JavaScript. | Stable |
+| moment-timezone       |0.5.5-2016f| npm-moment-timezone  | Parse and display dates in any timezone. | Stable |
+| mongodb               | 2.1.18  | npm-mongodb            | Node.js MongoDB Driver | Stable |
+| mysql                 | 2.10.2  | npm-mysql              | A node.js driver for mysql. | Stable |
+| node-zookeeper-client | 0.2.2   | npm-zookeeper-client   | A higher-level ZooKeeper client based on node-zookeeper with support for locking and master election. | Tesing required |
+| numeral               | 2.0.4   | npm-numeral            | A javascript library for formatting and manipulating numbers. | Stable |
+| oppressor             | 0.0.1   | npm-oppressor          | Streaming http compression response negotiator. | Tesing required |
+| request               | 2.72.1  | npm-request            | Simplified HTTP request client. | Stable |
+| rxjs                  | 4.1.0   | npm-rxjs               | The Reactive Extensions for JavaScript. | Stable |
+| splitargs             | 0.0.7   | npm-splitargs          | Splits strings into tokens by given separator except treating quoted part as a single token. | Stable |
+| transducers-js        | 0.4.174 | npm-transducers        | A high performance Transducers implementation for JavaScript. | Stable |
+| watch                 | 0.18.0  | npm-watch              | Utilities for watching file trees. | Stable |
+| xml2js                | 0.4.16  | npm-xml2js             | Simple XML to JavaScript object converter. | Stable |
 
-*NOTE*: The full SBT artifact expression is: "com.github.ldaniels528" %%% "scalajs-npm-xxxx" % version 
-(e.g. "com.github.ldaniels528" %%% "scalajs-npm-express" % "0.2.0")
+*NOTE*: The full SBT artifact expression is: "io.scalajs" %%% "npm-xxxx" % version 
+(e.g. "io.scalajs" %%% "npm-express" % "0.2.0")
 
 I've provided an example to demonstrate how similar the Scala.js code is to the JavaScript
 that it replaces.
@@ -277,24 +280,9 @@ http.createServer(function(request, response) {
 Here's the same example using Scala.js:
 
 ```scala
-import bootstrap._
+import io.scalajs.nodejs.http._
 
-val http = require[Http]("http")
-http.createServer((request: ClientRequest, response: ServerResponse) => {
-    response.writeHead(200, js.Dictionary("Content-Type" -> "text/plain"))
-    response.write("Hello World")
-    response.end()
-}).listen(8888)
-```
-
-**NOTE:** Alternatively, you could use any module's apply() method to create an instance via an implicit reference to `require`.
-Consider this slightly revised version of the same example:
-
-```scala
-implicit val require = bootstrap.require
-
-val http = Http()
-http.createServer((request: ClientRequest, response: ServerResponse) => {
+Http.createServer((request: ClientRequest, response: ServerResponse) => {
     response.writeHead(200, js.Dictionary("Content-Type" -> "text/plain"))
     response.write("Hello World")
     response.end()
@@ -325,7 +313,7 @@ Then within your Scala.js application:
 def start(bootstrap: Bootstrap) = {
     import bootstrap._
     
-    val express = require[Express]("express")
+    val express = Express()
         .
         .
         .
@@ -357,8 +345,7 @@ Here's the same example using Scala.js:
 ```scala
 import bootstrap._
 
-val express = require[Express]("express")
-val app = express()
+val app = Express()
 
 app.get("/", (req: Request, res: Response) => res.send("Hello World"))
 
@@ -378,12 +365,10 @@ implicit val require = bootstrap.require
 
 val todos: js.Array[Todo] = emptyArray
 
-val express = Express() // require[Express]("express")
-val app = express()
-val bodyParser = BodyParser() // require[BodyParser]("body-parser")
+val app = Express()
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded(new UrlEncodedBodyOptions(extended = true)))   
+app.use(BodyParser.json())
+app.use(BodyParser.urlencoded(new UrlEncodedBodyOptions(extended = true)))   
  
 app.get("/api/todo/:id", (request: Request, response: Response) => getTodo(request, response))
 app.get("/api/todos", (request: Request, response: Response) => getTodos(request, response))
@@ -437,17 +422,11 @@ implicit class TodoExtensions(val todo: Todo) extends AnyVal {
 The following example demonstrates establishing a connection to MongoDB using Scala.js:
 
 ```scala
-// lets require/import the mongodb native drivers.
-val mongodb = MongoDB() // require[MongoDB]("mongodb")
-
-// We need to work with "MongoClient" interface in order to connect to a mongodb server.
-val mongoClient = mongodb.MongoClient
-
 // Connection URL. This is where your mongodb server is running.
 val url = "mongodb://localhost:27017/test"
 
 // Use connect method to connect to the Server
-mongoClient.connect(url, (err: MongoError, db: MongoDatabase) => {
+MongoClient.connect(url, (err, db) => {
     if (isDefined(err)) {
         console.log("Unable to connect to the mongoDB server. Error:", err)
     } else {
@@ -465,7 +444,7 @@ mongoClient.connect(url, (err: MongoError, db: MongoDatabase) => {
 Or, if you'd like to be more Scala idiomatic, the connection fragment could be written as follows:
 
 ```scala
-mongoClient.connectFuture(url) onComplete {
+MongoClient.connectFuture(url) onComplete {
     case Success(db) =>
         // HURRAY!! We are connected. :)
         console.log("Connection established to: %s", url)
@@ -482,7 +461,7 @@ mongoClient.connectFuture(url) onComplete {
 Alternatively, you could choose to use "foreach" to directly manage only the success case:
 
 ```scala
-mongoClient.connectFuture(url) foreach { db => 
+MongoClient.connectFuture(url) foreach { db => 
     // HURRAY!! We are connected. :)
     console.log("Connection established to: %s", url)
 
@@ -493,7 +472,7 @@ mongoClient.connectFuture(url) foreach { db =>
 }
 ```
 
-Transcendent exposes Future-based alternatives to most of the asynchronous functions found in MongoDB, Express, Angular and Node. 
+ScalaJs.io exposes Future-based alternatives to most of the asynchronous functions found in MongoDB, Express, Angular and Node. 
 This means that you can use Scala's amazing *for* comprehensions to replace the dreaded pyramid of doom callbacks normally
 associated with JavaScript asynchronous code.
 
@@ -522,34 +501,34 @@ The following AngularJS services have been implemented thus far:
 
 | Service           | Artifact ID                    | Description                      |
 |-------------------|--------------------------------|----------------------------------|
-| $anchorScroll     | scalajs-angularjs-anchor-scroll| Anchor Scroll Service. |
-| $animate          | scalajs-angularjs-animate      | The $animate service exposes a series of DOM utility methods that provide support for animation hooks. |
-| $cacheFactory     | scalajs-angularjs-core         | Factory that constructs cache objects and gives access to them. |
-| $compile          | scalajs-angularjs-core         | Compiles an HTML string or DOM into a template and produces a template function, which can then be used to link scope and the template together. |
-| $cookies          | scalajs-angularjs-cookies      | Provides read/write access to browser's cookies. |
-| $cookieStore      | scalajs-angularjs-cookies      | Provides a key-value (string-object) storage, that is backed by session cookies. |
-| $exceptionHandler | scalajs-angularjs-core         | Any uncaught exception in angular expressions is delegated to this service. |
-| $filter           | scalajs-angularjs-core         | Selects a subset of items from array and returns it as a new array. |
-| $http             | scalajs-angularjs-core         | The $http service is a core Angular service that facilitates communication with the remote HTTP servers via the browser's XMLHttpRequest object or via JSONP. |
-| $injector         | scalajs-angularjs-core         | $injector is used to retrieve object instances as defined by provider, instantiate types, invoke methods, and load modules. |
-| $interval         | scalajs-angularjs-core         | Angular's wrapper for window.setInterval. The fn function is executed every delay milliseconds. |
-| $location         | scalajs-angularjs-core         | The $location service parses the URL in the browser address bar (based on the window.location) and makes the URL available to your application. |
-| $log              | scalajs-angularjs-core         | Simple service for logging. Default implementation safely writes the message into the browser's console (if present). |
-| $modal            | scalajs-angularjs-ui-bootstrap | Modal Dialogs - Angular UI Bootstrap |
-| $nvd3             | scalajs-angularjs-nvd3         | An AngularJS directive for NVD3 re-usable charting library (based on D3).|
-| $parse            | scalajs-angularjs-core         | Converts Angular expression into a function. |
-| $q                | scalajs-angularjs-core         | A service that helps you run functions asynchronously, and use their return values (or exceptions) when they are done processing. |
-| $resource         | scalajs-angularjs-core         | A factory which creates a resource object that lets you interact with RESTful server-side data sources. |
-| $route            | scalajs-angularjs-ui-router    | $route is used for deep-linking URLs to controllers and views (HTML partials). It watches $location.url() and tries to map the path to an existing route definition. |
-| $sce              | scalajs-angularjs-sanitize     | $sce is a service that provides Strict Contextual Escaping services to AngularJS. |
-| $timeout          | scalajs-angularjs-core         | Angular's wrapper for window.setTimeout. The fn function is wrapped into a try/catch block and delegates any exceptions to $exceptionHandler service. |
-| FacebookService   | scalajs-angularjs-facebook     | AngularJS - Facebook service |
-| FileUploader      | scalajs-angularjs-nergvh-fileupload | AngularJS File Uploader |
-| md5               | scalajs-angularjs-md5          | A md5 crypto component for Angular.js. |
-| toaster           | scalajs-angularjs-toaster      | AngularJS Toaster is a customized version of "toastr" non-blocking notification javascript library. |
+| $anchorScroll     | angularjs-anchor-scroll| Anchor Scroll Service. |
+| $animate          | angularjs-animate      | The $animate service exposes a series of DOM utility methods that provide support for animation hooks. |
+| $cacheFactory     | angularjs-core         | Factory that constructs cache objects and gives access to them. |
+| $compile          | angularjs-core         | Compiles an HTML string or DOM into a template and produces a template function, which can then be used to link scope and the template together. |
+| $cookies          | angularjs-cookies      | Provides read/write access to browser's cookies. |
+| $cookieStore      | angularjs-cookies      | Provides a key-value (string-object) storage, that is backed by session cookies. |
+| $exceptionHandler | angularjs-core         | Any uncaught exception in angular expressions is delegated to this service. |
+| $filter           | angularjs-core         | Selects a subset of items from array and returns it as a new array. |
+| $http             | angularjs-core         | The $http service is a core Angular service that facilitates communication with the remote HTTP servers via the browser's XMLHttpRequest object or via JSONP. |
+| $injector         | angularjs-core         | $injector is used to retrieve object instances as defined by provider, instantiate types, invoke methods, and load modules. |
+| $interval         | angularjs-core         | Angular's wrapper for window.setInterval. The fn function is executed every delay milliseconds. |
+| $location         | angularjs-core         | The $location service parses the URL in the browser address bar (based on the window.location) and makes the URL available to your application. |
+| $log              | angularjs-core         | Simple service for logging. Default implementation safely writes the message into the browser's console (if present). |
+| $modal            | angularjs-ui-bootstrap | Modal Dialogs - Angular UI Bootstrap |
+| $nvd3             | angularjs-nvd3         | An AngularJS directive for NVD3 re-usable charting library (based on D3).|
+| $parse            | angularjs-core         | Converts Angular expression into a function. |
+| $q                | angularjs-core         | A service that helps you run functions asynchronously, and use their return values (or exceptions) when they are done processing. |
+| $resource         | angularjs-core         | A factory which creates a resource object that lets you interact with RESTful server-side data sources. |
+| $route            | angularjs-ui-router    | $route is used for deep-linking URLs to controllers and views (HTML partials). It watches $location.url() and tries to map the path to an existing route definition. |
+| $sce              | angularjs-sanitize     | $sce is a service that provides Strict Contextual Escaping services to AngularJS. |
+| $timeout          | angularjs-core         | Angular's wrapper for window.setTimeout. The fn function is wrapped into a try/catch block and delegates any exceptions to $exceptionHandler service. |
+| FacebookService   | angularjs-facebook     | AngularJS - Facebook service |
+| FileUploader      | angularjs-nergvh-fileupload | AngularJS File Uploader |
+| md5               | angularjs-md5          | A md5 crypto component for Angular.js. |
+| toaster           | angularjs-toaster      | AngularJS Toaster is a customized version of "toastr" non-blocking notification javascript library. |
 
-*NOTE*: The full SBT artifact expression is: "com.github.ldaniels528" %%% "scalajs-angularjs-xxxx" % version 
-(e.g. "com.github.ldaniels528" %%% "scalajs-angularjs-toaster" % "0.1.7")
+*NOTE*: The full SBT artifact expression is: "io.scalajs" %%% "angularjs-xxxx" % version 
+(e.g. "io.scalajs" %%% "angularjs-toaster" % "0.3.0.0")
 
 
 #### Defining a Module
@@ -742,7 +721,11 @@ trait InvitePlayerScope extends Scope {
 #### Service Example
 
 ```scala
+import io.scalajs.npm.angularjs._
+import io.scalajs.npm.angularjs.http._
+
 module.serviceOf[MarketStatusService]("MarketStatusSvc")
+
 
 class MarketStatusService($http: Http) extends Service {
 
@@ -752,15 +735,13 @@ class MarketStatusService($http: Http) extends Service {
   
 }
 
-@js.native
-trait MarketStatus extends js.Object {
-  var stateChanged: Boolean = js.native
-  var active: Boolean = js.native
-  var sysTime: Double = js.native
-  var delay: Double = js.native
-  var start: Double = js.native
-  var end: Double = js.native
-}
+@ScalaJSDefined
+class MarketStatus(var stateChanged: Boolean,
+                   var active: Boolean,
+                   var sysTime: Double,
+                   var delay: Double,
+                   var start: Double,
+                   var end: Double) extends js.Object 
 ```
 
 #### Directive Example
@@ -812,7 +793,7 @@ object ChangeArrowDirectiveScope {
 
 #### Durations
 
-Transcendent provides implicit conversions so that you may use `scala.concurrent.duration.FiniteDuration`s with `$timeout`,
+ScalaJs.io provides implicit conversions so that you may use `scala.concurrent.duration.FiniteDuration`s with `$timeout`,
 `$interval`, and any other services that use time in milliseconds.
 
 ```scala
@@ -821,7 +802,7 @@ $timeout(() => doSomething(), 5.minutes)
 
 #### JSON data as Scala objects
 
-Transcendent allows you to utilize dynamic JavaScript objects or type-safe Scala objects using traits. 
+ScalaJs.io allows you to utilize dynamic JavaScript objects or type-safe Scala objects using traits. 
 Consider the following example:
 
 ```scala
@@ -838,7 +819,7 @@ one may want to retrieve the data as a `js.Dynamic` because of the flexibility i
 {"stateChanged":false,"active":false,"sysTime":1392092448795,"delay":-49848795,"start":1392042600000,"end":1392066000000}
 ```
 
-However, sometimes we instead want to retrieve the data as a type-safe Scala object. Transcendent makes this as simple as:
+However, sometimes we instead want to retrieve the data as a type-safe Scala object. ScalaJs.io makes this as simple as:
 
 ```scala
 $http.get[MarketStatus]("/api/tradingClock/status") onComplete {
@@ -861,7 +842,7 @@ Above, we retrieve a JSON object via the given API and return a Market Status ob
 
 #### For Comprehensions
 
-Transcendent provides implicit conversions that convert a `HttpResponse[T]` into a `Future[T]`, we can also use `for`
+ScalaJs.io provides implicit conversions that convert a `HttpResponse[T]` into a `Future[T]`, we can also use `for`
 comprehensions when we need to combine data from multiple API calls.
 
 ```scala
@@ -925,7 +906,7 @@ module.serviceOf[FacebookService]("Facebook")
 Finally, within your AngularJS controller or service you invoke the Facebook login:   
   
 ```scala    
-import org.scalajs.nodejs.util.ScalaJsHelper._
+import io.scalajs.util.ScalaJsHelper._
 
 class SocialController($scope: SocialControllerScope, @injected("Facebook") facebook: FacebookService) extends Controller {
     private var facebookID: js.UndefOr[String] = js.undefined
@@ -949,7 +930,7 @@ trait SocialControllerScope extends Scope {
 Afterwards, you may call any Facebook API that you have the permissions to execute:
 
 ```scala
-import org.scalajs.nodejs.util.ScalaJsHelper._
+import io.scalajs.util.ScalaJsHelper._
 
 val outcome = for {
     fbProfile <- facebook.getUserProfile

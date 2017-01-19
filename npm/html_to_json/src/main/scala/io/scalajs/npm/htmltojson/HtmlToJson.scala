@@ -1,7 +1,8 @@
 package io.scalajs.npm
 package htmltojson
 
-import io.scalajs.nodejs.{Error, NodeOptions}
+import io.scalajs.RawOptions
+import io.scalajs.nodejs.Error
 
 import scala.language.existentials
 import scala.scalajs.js
@@ -55,13 +56,13 @@ trait HtmlToJson extends js.Object {
     * This supports both callbacks and promises.
     * @example {{{ htmlToJson.parse(html, filter, [callback]) -> promise }}}
     */
-  def parse[T <: js.Any](html: String, filter: FilterOptions | NodeOptions, callback: js.Function2[Error, T, Any] = js.native): js.Promise[T] = js.native
+  def parse[T <: js.Any](html: String, filter: FilterOptions | RawOptions, callback: js.Function2[Error, T, Any] = js.native): js.Promise[T] = js.native
 
   /**
     * The request() method takes options for a call to the request library and a filter, then returns the filtered response body.
     * @example {{{ htmlToJson.request(requestOptions, filter, [callback]) -> promise }}}
     */
-  def request[T <: js.Any](request: String | RequestOptions, filter: FilterOptions | NodeOptions, callback: js.Function2[Error, T, Any] = js.native): js.Promise[T] = js.native
+  def request[T <: js.Any](request: String | RequestOptions, filter: FilterOptions | RawOptions, callback: js.Function2[Error, T, Any] = js.native): js.Promise[T] = js.native
 
 }
 

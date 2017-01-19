@@ -1,5 +1,6 @@
 package io.scalajs.dom.html.pixijs
 
+import io.scalajs.RawOptions
 import io.scalajs.dom.DOMHighResTimeStamp
 import io.scalajs.dom.html.Image
 import io.scalajs.dom.html.canvas.{CanvasRenderingContext2D, HTMLCanvasElement, WebGLRenderingContext}
@@ -88,6 +89,8 @@ object PIXI extends js.Object {
   @js.native
   @JSName("AbstractFilter")
   class AbstractFilter(var vertexSrc: String | js.Array[String], var fragmentSrc: String | js.Array[String], var uniforms: js.Object) extends js.Object {
+
+    def this() = this(vertexSrc = js.native, fragmentSrc = js.native, uniforms = js.native)
 
     /**
       * The extra padding that the filter might need
@@ -275,7 +278,8 @@ object PIXI extends js.Object {
     */
   @js.native
   @JSName("CanvasRenderer")
-  class CanvasRenderer(var width: Double = 800, var height: Double = 600, var options: CanvasRendererOptions | js.Any) extends AbstractRenderer {
+  class CanvasRenderer(var width: Double = js.native, var height: Double = js.native, var options: CanvasRendererOptions | js.Any = js.native)
+    extends AbstractRenderer {
 
     /**
       * Whether the render view should be resized automatically
@@ -636,7 +640,7 @@ object PIXI extends js.Object {
     */
   @js.native
   @JSName("FXAAFilter")
-  trait FXAAFilter extends AbstractFilter
+  class FXAAFilter extends AbstractFilter()
 
   @js.native
   @JSName("FilterManager")
@@ -648,7 +652,7 @@ object PIXI extends js.Object {
     */
   @js.native
   @JSName("Graphics")
-  trait Graphics extends Container {
+  class Graphics extends Container {
 
     /**
       * The blend mode to be applied to the graphic shape. Apply a value of PIXI.BLEND_MODES.NORMAL to reset the blend mode.
@@ -754,7 +758,7 @@ object PIXI extends js.Object {
       * @param newPos The point that the new position is assigned to (allowed to be same as input)
       * @return The new point, transformed through this matrix
       */
-    def apply(pos: Point, newPos: Point = null): Point = js.native
+    def apply(pos: Point, newPos: Point = js.native): Point = js.native
 
     /**
       * Get a new position with the inverse of the current transformation applied. Can be used to go from the world
@@ -763,7 +767,7 @@ object PIXI extends js.Object {
       * @param newPos The point that the new position is assigned to (allowed to be same as input)
       * @return The new point, inverse-transformed through this matrix
       */
-    def applyInverse(pos: Point, newPos: Point = null): Point = js.native
+    def applyInverse(pos: Point, newPos: Point = js.native): Point = js.native
 
     /**
       * Creates a new Matrix object with the same values as this one.
@@ -1008,7 +1012,7 @@ object PIXI extends js.Object {
     * This trait serves as a base class for Canvas and WEBGL renderers
     */
   @js.native
-  trait AbstractRenderer extends js.Object
+  class AbstractRenderer extends js.Object
 
   @js.native
   @JSName("ResourceLoader")
@@ -1026,7 +1030,7 @@ object PIXI extends js.Object {
     */
   @js.native
   @JSName("Text")
-  class Text(var text: String, var style: TextStyle | RawOptions) extends js.Object {
+  class Text(var text: String, var style: TextStyleOptions | RawOptions = js.native) extends js.Object {
 
     /**
       * The opacity of the object.
@@ -1140,9 +1144,8 @@ object PIXI extends js.Object {
     */
   @js.native
   @JSName("WebGLRenderer")
-  class WebGLRenderer(width: Double = 0, height: Double = 0, options: WebGLRendererOptions | js.Any = null) extends AbstractRenderer {
-
-  }
+  class WebGLRenderer(width: Double = js.native, height: Double = js.native, options: WebGLRendererOptions | js.Any = js.native)
+    extends AbstractRenderer
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Constants
@@ -1220,49 +1223,49 @@ object PIXI extends js.Object {
       */
     @js.native
     @JSName("AsciiFilter")
-    trait AsciiFilter extends AbstractFilter
+    class AsciiFilter extends AbstractFilter()
 
     /**
       * The BloomFilter applies a Gaussian blur to an object. The strength of the blur can be set for x- and y-axis separately.
       */
     @js.native
     @JSName("BloomFilter")
-    trait BloomFilter extends AbstractFilter
+    class BloomFilter extends AbstractFilter()
 
     /**
       * The BlurDirFilter applies a Gaussian blur toward a direction to an object.
       */
     @js.native
     @JSName("BlurDirFilter")
-    trait BlurDirFilter extends AbstractFilter
+    class BlurDirFilter extends AbstractFilter()
 
     /**
       * The BlurFilter applies a Gaussian blur to an object. The strength of the blur can be set for x- and y-axis separately.
       */
     @js.native
     @JSName("BlurFilter")
-    trait BlurFilter extends AbstractFilter
+    class BlurFilter extends AbstractFilter()
 
     /**
       * The BlurXFilter applies a horizontal Gaussian blur to an object.
       */
     @js.native
     @JSName("BlurXFilter")
-    trait BlurXFilter extends AbstractFilter
+    class BlurXFilter extends AbstractFilter()
 
     /**
       * The BlurYFilter applies a horizontal Gaussian blur to an object.
       */
     @js.native
     @JSName("BlurYFilter")
-    trait BlurYFilter extends AbstractFilter
+    class BlurYFilter extends AbstractFilter()
 
     /**
       * The BlurYTintFilter applies a vertical Gaussian blur to an object.
       */
     @js.native
     @JSName("BlurYTintFilter")
-    trait BlurYTintFilter extends AbstractFilter
+    class BlurYTintFilter extends AbstractFilter()
 
   }
 
@@ -1280,7 +1283,7 @@ object PIXI extends js.Object {
       */
     @js.native
     @JSName("Loader")
-    class Loader(baseUrl: String = "", concurrency: Int = 10) extends ResourceLoader
+    class Loader(baseUrl: String = js.native, concurrency: Int = js.native) extends ResourceLoader
 
   }
 
@@ -1403,7 +1406,7 @@ object PIXI extends js.Object {
         * @param context The listener context
         * @return this
         */
-      def add(fn: js.Function, context: js.Function = null): this.type = js.native
+      def add(fn: js.Function, context: js.Function = js.native): this.type = js.native
 
       /**
         * Calls module:eventemitter3.EventEmitter#once internally for the internal 'tick' event. It checks if the emitter
@@ -1412,7 +1415,7 @@ object PIXI extends js.Object {
         * @param context The listener context
         * @return this
         */
-      def addOnce(fn: js.Function, context: js.Function = null): this.type = js.native
+      def addOnce(fn: js.Function, context: js.Function = js.native): this.type = js.native
 
       /**
         * Calls module:eventemitter3.EventEmitter#off internally for 'tick' event. It checks if the emitter has listeners
@@ -1421,7 +1424,7 @@ object PIXI extends js.Object {
         * @param context The listener context
         * @return this
         */
-      def remove(fn: js.Function, context: js.Function = null): this.type = js.native
+      def remove(fn: js.Function, context: js.Function = js.native): this.type = js.native
 
       /**
         * Starts the ticker. If the ticker has listeners a new animation frame is requested at this point.

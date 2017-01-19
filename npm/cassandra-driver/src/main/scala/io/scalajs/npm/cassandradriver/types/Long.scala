@@ -1,7 +1,7 @@
 package io.scalajs.npm.cassandradriver.types
 
+import io.scalajs.JsNumber
 import io.scalajs.nodejs.buffer.Buffer
-import io.scalajs.nodejs.Number
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
@@ -34,7 +34,7 @@ object Long extends js.Object {
 
   def fromInt(value: Integer): Long = js.native
 
-  def fromNumber(number: Number): Long = js.native
+  def fromNumber(number: JsNumber): Long = js.native
 
   def fromString(value: String): Long = js.native
 

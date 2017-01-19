@@ -6,7 +6,7 @@ import scala.scalajs.js
 import scala.scalajs.js.|
 
 /**
-  * AngularJS Modal Service ($modal)
+  * AngularJS Modal Service (\$modal)
   * @author lawrence.daniels@gmail.com
   * @see http://angular-ui.github.io/bootstrap/#/modal
   */

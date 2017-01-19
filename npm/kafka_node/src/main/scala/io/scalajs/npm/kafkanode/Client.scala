@@ -1,6 +1,6 @@
 package io.scalajs.npm.kafkanode
 
-import io.scalajs.nodejs.NodeOptions
+import io.scalajs.RawOptions
 import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.npm.zookeeper
 import io.scalajs.npm.zookeeper.ClientOptions
@@ -22,8 +22,8 @@ import scala.scalajs.js.|
 @JSImport("kafka-node", "Client")
 class Client(connectionString: String,
              clientId: String = js.native,
-             zkOptions: ClientOptions | NodeOptions = js.native,
-             noAckBatchOptions: NoAckBatchOptions | NodeOptions = js.native)
+             zkOptions: ClientOptions | RawOptions = js.native,
+             noAckBatchOptions: NoAckBatchOptions | RawOptions = js.native)
   extends IEventEmitter {
 
   def this() = this(null, null, null, null)

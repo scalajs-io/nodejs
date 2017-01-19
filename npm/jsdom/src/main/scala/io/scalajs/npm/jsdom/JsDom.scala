@@ -1,7 +1,8 @@
 package io.scalajs.npm.jsdom
 
+import io.scalajs.RawOptions
 import io.scalajs.dom.Document
-import io.scalajs.nodejs.{Error, NodeOptions}
+import io.scalajs.nodejs.Error
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
@@ -54,7 +55,7 @@ trait JsDom extends js.Object {
 
   def jsdom: JsDom = js.native
 
-  def jsdom(html: String, options: EnvironmentOptions | NodeOptions = js.native): Document = js.native
+  def jsdom(html: String, options: EnvironmentOptions | RawOptions = js.native): Document = js.native
 
   def nodeLocation: js.Function = js.native
 

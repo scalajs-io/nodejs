@@ -41,6 +41,11 @@ sealed trait Maybe[+A] {
   */
 object Maybe {
 
+  /**
+    * Creates a Maybe monad from the given value
+    * @param value the given value
+    * @return a Maybe implementation
+    */
   def apply[A](value: A): Maybe[A] = {
     value match {
       case v if v == null | js.isUndefined(v) => Empty
@@ -48,6 +53,11 @@ object Maybe {
     }
   }
 
+  /**
+    * Creates a Maybe monad from the given UndefOr value
+    * @param aValue the given value
+    * @return a Maybe implementation
+    */
   def apply[A](aValue: js.UndefOr[A]): Maybe[A] = {
     aValue match {
       case v if v == null | js.isUndefined(v) => Empty
@@ -55,6 +65,11 @@ object Maybe {
     }
   }
 
+  /**
+    * Creates a Maybe monad from the given Option value
+    * @param aValue the given value
+    * @return a Maybe implementation
+    */
   def apply[A](aValue: Option[A]): Maybe[A] = {
     aValue match {
       case Some(value) => Full(value)
@@ -69,6 +84,28 @@ object Maybe {
   implicit def optionToMaybe[A](aValue: Option[A]): Maybe[A] = Maybe(aValue)
 
   implicit def undefinedToMaybe[A](aValue: js.UndefOr[A]): Maybe[A] = Maybe(aValue)
+
+  /**
+    * UndefOr[A] to Maybe[A] Explicit Conversion
+    * @param aValue the given UndefOr value
+    */
+  implicit class MaybeFromUndefOr[A](val aValue: js.UndefOr[A]) extends AnyVal {
+
+    @inline
+    def toMaybe: Maybe[A] = Maybe(aValue)
+
+  }
+
+  /**
+    * Option[A] to Maybe[A] Explicit Conversion
+    * @param aValue the given Option value
+    */
+  implicit class MaybeFromOption[A](val aValue: Option[A]) extends AnyVal {
+
+    @inline
+    def toMaybe: Maybe[A] = Maybe(aValue)
+
+  }
 
 }
 

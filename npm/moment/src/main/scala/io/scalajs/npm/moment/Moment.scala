@@ -6,16 +6,8 @@ import scala.scalajs.js.|
 
 /**
   * Moment.js - Parse, validate, manipulate, and display dates in JavaScript.
-  * @version 2.14.1
+  * @version 2.17.1
   * @see http://momentjs.com/
-  * @author lawrence.daniels@gmail.com
-  */
-@js.native
-@JSImport("moment", JSImport.Namespace)
-object Moment extends Moment
-
-/**
-  * Moment Type Definition
   * @author lawrence.daniels@gmail.com
   */
 @js.native
@@ -25,7 +17,7 @@ trait Moment extends js.Object {
   //      Format Dates
   /////////////////////////////////////////////////////////////////////////////////
 
-  def format(formatString: String = null): String = js.native
+  def format(formatString: String = js.native): String = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Conversions
@@ -141,3 +133,11 @@ trait Moment extends js.Object {
   def locale(): String = js.native
 
 }
+
+/**
+  * Moment Singleton
+  * @author lawrence.daniels@gmail.com
+  */
+@js.native
+@JSImport("moment", JSImport.Namespace)
+object Moment extends Moment

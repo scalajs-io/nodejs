@@ -6,7 +6,7 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
 /**
-  * Socket.io
+  * Socket.io - Realtime application framework (Node.JS server)
   * @version 1.7.2
   * @see https://github.com/socketio/socket.io
   * @author lawrence.daniels@gmail.com

@@ -114,30 +114,30 @@ var output2 = null;
 var output3 = null;
 
 fs.mkdirp("/a/test/dir", function (err1) {
-    assert.ifError(err1);
+    Assert.ifError(err1);
 
     fs.writeFile("/a/test/dir/file.txt", "Hello World", function (err2) {
-        assert.ifError(err2);
+        Assert.ifError(err2);
 
         fs.readFile("/a/test/dir/file.txt", function (err3, data) {
-            assert.ifError(err3);
+            Assert.ifError(err3);
             output1 = data; // ~> Buffer("Hello World")
 
             fs.unlink("/a/test/dir/file.txt", function (err4) {
-                assert.ifError(err4);
+                Assert.ifError(err4);
 
                 fs.readdir("/a/test", function (err5, dir) {
-                    assert.ifError(err5);
+                    Assert.ifError(err5);
                     output2 = dir; // ~> ["dir"]
 
                     fs.stat("/a/test/dir", function (err6, stats) {
-                        assert.ifError(err6);
+                        Assert.ifError(err6);
                         output3 = stats.isDirectory(); // ~> true
 
                         fs.rmdir("/a/test/dir", function (err7) {
-                            assert.ifError(err7);
+                            Assert.ifError(err7);
                             fs.mkdirp("C:\\use\\windows\\style\\paths", function (err8) {
-                                assert.ifError(err8);
+                                Assert.ifError(err8);
                                 
                                 console.log("output1 =", output1.toString(), output1);
                                 console.log("output2 =", output2);
@@ -158,14 +158,14 @@ Now consider the equivalent logic in Scala.js using its much more elegant `for` 
 
 ```scala
 for {
-  _ <- fs.mkdirpFuture("/a/test/dir")
-  _ <- fs.writeFileFuture("/a/test/dir/file.txt", "Hello World")
-  output1 <- fs.readFileFuture("/a/test/dir/file.txt") // ~> Buffer("Hello World")
-  _ <- fs.unlinkFuture("/a/test/dir/file.txt")
-  output2 <- fs.readdirFuture("/a/test") // ~> ["dir"]
-  output3 <- fs.statFuture("/a/test/dir").map(_.isDirectory()) // ~> true
-  _ <- fs.rmdirFuture("/a/test/dir")
-  _ <- fs.mkdirpFuture("C:\\use\\windows\\style\\paths")
+  _ <- Fs.mkdirpFuture("/a/test/dir")
+  _ <- Fs.writeFileFuture("/a/test/dir/file.txt", "Hello World")
+  output1 <- Fs.readFileFuture("/a/test/dir/file.txt") // ~> Buffer("Hello World")
+  _ <- Fs.unlinkFuture("/a/test/dir/file.txt")
+  output2 <- Fs.readdirFuture("/a/test") // ~> ["dir"]
+  output3 <- Fs.statFuture("/a/test/dir").map(_.isDirectory()) // ~> true
+  _ <- Fs.rmdirFuture("/a/test/dir")
+  _ <- Fs.mkdirpFuture("C:\\use\\windows\\style\\paths")
 } {
   console.log("output1 =", output1.toString(), output1)
   console.log("output2 =", output2)
@@ -187,27 +187,27 @@ The following core Node.js modules have been implemented:
 
 | Node Module           | Version | Artifact ID       | Description                                             | Status          |
 |-----------------------|---------|-------------------|---------------------------------------------------------|-----------------|
-| assert                | 7.4.0   | nodejs-core       | Provides a simple set of assertion tests that can be used to test invariants. | Stable |
-| buffer                | 7.4.0   | nodejs-core       | The Buffer class was introduced as part of the Node.js API to make it possible to interact with octet streams in the context of things like TCP streams and file system operations. | Stable |
-| cluster               | 7.4.0   | nodejs-core       | The cluster module allows you to easily create child processes that all share server ports. | Stable |
-| crypto                | 7.4.0   | nodejs-core       | The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions.| Stable |
-| dns                   | 7.4.0   | nodejs-core       | Support for DNS queries.| Stable |
-| events                | 7.4.0   | nodejs-core       | Node.js Events Interface | Stable |
-| fs                    | 7.4.0   | nodejs-core       | File I/O is provided by simple wrappers around standard POSIX functions. | Stable |
-| http                  | 7.4.0   | nodejs-core       | Node.js HTTP Interface | Stable |
-| https                 | 7.4.0   | nodejs-core       | Node.js HTTPS Interface | Stable |
-| net                   | 7.4.0   | nodejs-core       | The net module provides you with an asynchronous network wrapper. | Stable |
-| os                    | 7.4.0   | nodejs-core       | Provides a few basic operating-system related utility functions. | Stable |
-| path                  | 7.4.0   | nodejs-core       | This module contains utilities for handling and transforming file paths. | Stable |
-| readline              | 7.4.0   | nodejs-core       | Readline allows reading of a stream on a line-by-line basis. | Stable |
-| repl                  | 7.4.0   | nodejs-core       | The REPL provides a way to interactively run JavaScript and see the results. | Stable |
-| stream                | 7.4.0   | nodejs-core       | A stream is an abstract interface implemented by various objects in Node.js. | Stable |
-| string-decoder        | 7.4.0   | nodejs-core       | The string_decoder module provides an API for decoding Buffer objects into strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16 characters. | Stable |
-| tty                   | 7.4.0   | nodejs-core       | The tty module provides the tty.ReadStream and tty.WriteStream classes. | Stable |
-| url                   | 7.4.0   | nodejs-core       | The url module provides utilities for URL resolution and parsing. | Stable |
-| util                  | 7.4.0   | nodejs-core       | The util module is primarily designed to support the needs of Node.js's internal APIs.| Stable |
-| vm                    | 7.4.0   | nodejs-core       | The vm module provides APIs for compiling and running code within V8 Virtual Machine contexts.| Stable |
-| zlib                  | 7.4.0   | nodejs-core       | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. | Stable |
+| assert                | 7.4.0   | nodejs            | Provides a simple set of assertion tests that can be used to test invariants. | Stable |
+| buffer                | 7.4.0   | nodejs            | The Buffer class was introduced as part of the Node.js API to make it possible to interact with octet streams in the context of things like TCP streams and file system operations. | Stable |
+| cluster               | 7.4.0   | nodejs            | The cluster module allows you to easily create child processes that all share server ports. | Stable |
+| crypto                | 7.4.0   | nodejs            | The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions.| Stable |
+| dns                   | 7.4.0   | nodejs            | Support for DNS queries.| Stable |
+| events                | 7.4.0   | nodejs            | Node.js Events Interface | Stable |
+| fs                    | 7.4.0   | nodejs            | File I/O is provided by simple wrappers around standard POSIX functions. | Stable |
+| http                  | 7.4.0   | nodejs            | Node.js HTTP Interface | Stable |
+| https                 | 7.4.0   | nodejs            | Node.js HTTPS Interface | Stable |
+| net                   | 7.4.0   | nodejs            | The net module provides you with an asynchronous network wrapper. | Stable |
+| os                    | 7.4.0   | nodejs            | Provides a few basic operating-system related utility functions. | Stable |
+| path                  | 7.4.0   | nodejs            | This module contains utilities for handling and transforming file paths. | Stable |
+| readline              | 7.4.0   | nodejs            | Readline allows reading of a stream on a line-by-line basis. | Stable |
+| repl                  | 7.4.0   | nodejs            | The REPL provides a way to interactively run JavaScript and see the results. | Stable |
+| stream                | 7.4.0   | nodejs            | A stream is an abstract interface implemented by various objects in Node.js. | Stable |
+| string-decoder        | 7.4.0   | nodejs            | The string_decoder module provides an API for decoding Buffer objects into strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16 characters. | Stable |
+| tty                   | 7.4.0   | nodejs            | The tty module provides the tty.ReadStream and tty.WriteStream classes. | Stable |
+| url                   | 7.4.0   | nodejs            | The url module provides utilities for URL resolution and parsing. | Stable |
+| util                  | 7.4.0   | nodejs            | The util module is primarily designed to support the needs of Node.js's internal APIs.| Stable |
+| vm                    | 7.4.0   | nodejs            | The vm module provides APIs for compiling and running code within V8 Virtual Machine contexts.| Stable |
+| zlib                  | 7.4.0   | nodejs            | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. | Stable |
 
 *NOTE*: The full SBT artifact expression is: "io.scalajs" %%% "scalajs-nodejs-xxxx" % version 
 (e.g. "io.scalajs" %%% "scalajs-nodejs-readline" % "0.2.0")
@@ -219,49 +219,54 @@ The following Third Party/OSS Node.js (npm) modules have been implemented:
 
 | Node Module           | Version | Artifact ID            | Description                                             | Status          |
 |-----------------------|---------|------------------------|---------------------------------------------------------|-----------------|
-| async                 | 2.0.0   | npm-async              | Higher-order functions and common patterns for asynchronous code. | Stable |
-| bcrypt                | 0.0.3   | npm-bcrypt             | A native JS bcrypt library for NodeJS. | Stable |
-| bignum                | 0.12.5  | npm-bignum             | Arbitrary-precision integer arithmetic using OpenSSL. | Stable |
-| body-parser           | 1.15.1  | npm-body-parser        | Body parsing middleware. | Stable |
-| buffermaker           | 1.2.0   | npm-buffermaker        | buffermaker is a convenient way of creating binary strings. | Stable |
-| cassandra-driver      | 3.0.2   | npm-cassandra-driver   | DataStax Node.js Driver for Apache Cassandra | Stable |
-| cheerio               | 0.22.0  | npm-cheerio            | Tiny, fast, and elegant implementation of core jQuery designed specifically for the server | Stable |
-| colors                | 1.1.2   | npm-colors             | Get colors in your node.js console.| Stable |
-| csv-parse             | 1.1.2   | npm-csv-parse          | CSV parsing implementing the Node.js 'stream.Transform' API.| Stable |
-| drama                 | 0.1.3   | npm-drama              | drama is an Actor model implementation for JavaScript and Node.js | Stable |
-| escape-html           | 1.0.3   | npm-escape-html        | Escape string for use in HTML | Stable |
-| express               | 4.13.4  | npm-express            | Fast, unopinionated, minimalist web framework for Node.js | Stable |
-| express-csv           | 0.6.0   | npm-express-csv        | express-csv provides response csv easily to express. | Stable |
-| express-fileupload    | 0.0.5   | npm-express-fileupload | Simple express file upload middleware that wraps around connect-busboy | Stable |
-| express-multer        | 1.1.0   | npm-express-multer     | Multer is a node.js middleware for handling multipart/form-data. | Tesing required |
-| express-ws            |2.0.0-rc1| npm-express-ws         | WebSocket endpoints for Express applications | Stable |
-| feedparser-promised   | 1.1.1   | npm-feedparser-promised| Wrapper around feedparser with promises. | Stable |
-| filed                 | 0.1.0   | npm-filed              | Simplified file library. | Stable |
-| html-to-json          | 0.6.0   | npm-html-to-json       | Parses HTML strings into objects using flexible, composable filters. | Stable |
-| htmlparser2           | 3.9.1   | npm-htmlparser2        | A forgiving HTML/XML/RSS parser. The parser can handle streams and provides a callback interface. | Stable |
-| jsdom                 | 9.9.1   | npm-jsdom              | A JavaScript implementation of the WHATWG DOM and HTML standards, for use with Node.js. | Stable |
-| jwt-simple            | 0.5.0   | npm-jwt-simple         | JWT(JSON Web Token) encode and decode module | Stable |
-| jsdom                 | 9.9.1   | npm-jsdom              | A JavaScript implementation of the WHATWG DOM and HTML standards, for use with Node.js | Stable |
-| kafka-node            | 0.0.11  | npm-kafkanode          | A node binding for librdkafka | Tesing required |
-| kafka-rest            | 0.0.4   | npm-kafka-rest         | REST Proxy wrapper library for Kafka | Tesing required |
-| md5                   | 2.1.0   | npm-md5                | A JavaScript function for hashing messages with MD5. | Stable |
-| memory-fs             | 0.3.0   | npm-memory-fs          | A simple in-memory filesystem. Holds data in a javascript object. | Stable |
-| moment                | 2.14.1  | npm-moment             | Parse, validate, manipulate, and display dates in JavaScript. | Stable |
-| moment-timezone       |0.5.5-2016f| npm-moment-timezone  | Parse and display dates in any timezone. | Stable |
-| mongodb               | 2.1.18  | npm-mongodb            | Node.js MongoDB Driver | Stable |
-| mysql                 | 2.10.2  | npm-mysql              | A node.js driver for mysql. | Stable |
-| node-zookeeper-client | 0.2.2   | npm-zookeeper-client   | A higher-level ZooKeeper client based on node-zookeeper with support for locking and master election. | Tesing required |
-| numeral               | 2.0.4   | npm-numeral            | A javascript library for formatting and manipulating numbers. | Stable |
-| oppressor             | 0.0.1   | npm-oppressor          | Streaming http compression response negotiator. | Tesing required |
-| request               | 2.72.1  | npm-request            | Simplified HTTP request client. | Stable |
-| rxjs                  | 4.1.0   | npm-rxjs               | The Reactive Extensions for JavaScript. | Stable |
-| splitargs             | 0.0.7   | npm-splitargs          | Splits strings into tokens by given separator except treating quoted part as a single token. | Stable |
-| transducers-js        | 0.4.174 | npm-transducers        | A high performance Transducers implementation for JavaScript. | Stable |
-| watch                 | 0.18.0  | npm-watch              | Utilities for watching file trees. | Stable |
-| xml2js                | 0.4.16  | npm-xml2js             | Simple XML to JavaScript object converter. | Stable |
+| async                 | 2.0.0   | async                  | Higher-order functions and common patterns for asynchronous code. | Stable |
+| bcrypt                | 0.0.3   | bcrypt                 | A native JS bcrypt library for NodeJS. | Stable |
+| bignum                | 0.12.5  | bignum                 | Arbitrary-precision integer arithmetic using OpenSSL. | Stable |
+| body-parser           | 1.15.1  | body-parser            | Body parsing middleware. | Stable |
+| buffermaker           | 1.2.0   | buffermaker            | buffermaker is a convenient way of creating binary strings. | Stable |
+| cassandra-driver      | 3.0.2   | cassandra-driver       | DataStax Node.js Driver for Apache Cassandra | Stable |
+| cheerio               | 0.22.0  | cheerio                | Tiny, fast, and elegant implementation of core jQuery designed specifically for the server | Stable |
+| cookie                | 0.3.1   | cookie                 | HTTP server cookie parsing and serialization | Stable |
+| cookie-parser         | 1.4.3   | cookie-parser          | Cookie parsing with signatures | Stable |
+| colors                | 1.1.2   | colors                 | Get colors in your node.js console.| Stable |
+| csv-parse             | 1.1.2   | csv-parse              | CSV parsing implementing the Node.js 'stream.Transform' API.| Stable |
+| drama                 | 0.1.3   | drama                  | drama is an Actor model implementation for JavaScript and Node.js | Stable |
+| escape-html           | 1.0.3   | escape-html            | Escape string for use in HTML | Stable |
+| express               | 4.13.4  | express                | Fast, unopinionated, minimalist web framework for Node.js | Stable |
+| express-csv           | 0.6.0   | express-csv            | express-csv provides response csv easily to express. | Stable |
+| express-fileupload    | 0.0.5   | express-fileupload     | Simple express file upload middleware that wraps around connect-busboy | Stable |
+| express-multer        | 1.1.0   | express-multer         | Multer is a node.js middleware for handling multipart/form-data. | Tesing required |
+| express-ws            |2.0.0-rc1| express-ws             | WebSocket endpoints for Express applications | Stable |
+| feedparser-promised   | 1.1.1   | feedparser-promised    | Wrapper around feedparser with promises. | Stable |
+| filed                 | 0.1.0   | filed                  | Simplified file library. | Stable |
+| html-to-json          | 0.6.0   | html-to-json           | Parses HTML strings into objects using flexible, composable filters. | Stable |
+| htmlparser2           | 3.9.1   | htmlparser2            | A forgiving HTML/XML/RSS parser. The parser can handle streams and provides a callback interface. | Stable |
+| jsdom                 | 9.9.1   | jsdom                  | A JavaScript implementation of the WHATWG DOM and HTML standards, for use with Node.js. | Stable |
+| jwt-simple            | 0.5.0   | jwt-simple             | JWT(JSON Web Token) encode and decode module | Stable |
+| jsdom                 | 9.9.1   | jsdom                  | A JavaScript implementation of the WHATWG DOM and HTML standards, for use with Node.js | Stable |
+| kafka-node            | 0.0.11  | kafka-node             | A node binding for librdkafka | Tesing required |
+| kafka-rest            | 0.0.4   | kafka-rest             | REST Proxy wrapper library for Kafka | Tesing required |
+| md5                   | 2.1.0   | md5                    | A JavaScript function for hashing messages with MD5. | Stable |
+| memory-fs             | 0.3.0   | memory-fs              | A simple in-memory filesystem. Holds data in a javascript object. | Stable |
+| moment                | 2.17.1  | moment                 | Parse, validate, manipulate, and display dates in JavaScript. | Stable |
+| moment-timezone       | 0.5.11  | moment-timezone        | Parse and display dates in any timezone. | Stable |
+| mongodb               | 2.1.18  | mongodb                | Node.js MongoDB Driver | Stable |
+| mysql                 | 2.10.2  | mysql                  | A node.js driver for mysql. | Stable |
+| node-zookeeper-client | 0.2.2   | zookeeper-client       | A higher-level ZooKeeper client based on node-zookeeper with support for locking and master election. | Tesing required |
+| numeral               | 2.0.4   | numeral                | A javascript library for formatting and manipulating numbers. | Stable |
+| oppressor             | 0.0.1   | oppressor              | Streaming http compression response negotiator. | Tesing required |
+| request               | 2.72.1  | request                | Simplified HTTP request client. | Stable |
+| rx                    | 4.1.0   | rx                     | The Reactive Extensions for JavaScript. | Stable |
+| socket.io             | 1.7.2   | socket.io-server       | Realtime application framework (Node.JS server). | Stable |
+| socket.io-client      | 1.7.2   | socket.io-client       | Socket.io client. | Stable |
+| splitargs             | 0.0.7   | splitargs              | Splits strings into tokens by given separator except treating quoted part as a single token. | Stable |
+| transducers-js        | 0.4.174 | transducers            | A high performance Transducers implementation for JavaScript. | Stable |
+| type-is               | 1.6.14  | type-is                | A high performance Transducers implementation for JavaScript. | Stable |
+| watch                 | 0.18.0  | watch                  | Utilities for watching file trees. | Stable |
+| xml2js                | 0.4.16  | xml2js                 | Simple XML to JavaScript object converter. | Stable |
 
-*NOTE*: The full SBT artifact expression is: "io.scalajs" %%% "npm-xxxx" % version 
-(e.g. "io.scalajs" %%% "npm-express" % "0.2.0")
+*NOTE*: The full SBT artifact expression is: "io.scalajs.npm" %%% "xxxx" % version 
+(e.g. "io.scalajs.npm" %%% "express" % "0.3.0.0")
 
 I've provided an example to demonstrate how similar the Scala.js code is to the JavaScript
 that it replaces.
@@ -405,13 +410,13 @@ trait Todo extends js.Object {
 implicit class TodoExtensions(val todo: Todo) extends AnyVal {
 
     @inline
-    def hasId = Option(todo).flatMap(t => Option(t.id)).exists(_.trim.nonEmpty)
+    def hasId: Boolean = Option(todo).flatMap(t => Option(t.id)).exists(_.trim.nonEmpty)
     
     @inline
-    def hasTitle = Option(todo).flatMap(t => Option(t.title)).exists(_.trim.nonEmpty)
+    def hasTitle: Boolean = Option(todo).flatMap(t => Option(t.title)).exists(_.trim.nonEmpty)
     
     @inline
-    def isComplete = hasId && hasTitle
+    def isComplete: Boolean = hasId && hasTitle
 
 }
 ```
@@ -501,31 +506,31 @@ The following AngularJS services have been implemented thus far:
 
 | Service           | Artifact ID                    | Description                      |
 |-------------------|--------------------------------|----------------------------------|
-| $anchorScroll     | angularjs-anchor-scroll| Anchor Scroll Service. |
-| $animate          | angularjs-animate      | The $animate service exposes a series of DOM utility methods that provide support for animation hooks. |
-| $cacheFactory     | angularjs-core         | Factory that constructs cache objects and gives access to them. |
-| $compile          | angularjs-core         | Compiles an HTML string or DOM into a template and produces a template function, which can then be used to link scope and the template together. |
-| $cookies          | angularjs-cookies      | Provides read/write access to browser's cookies. |
-| $cookieStore      | angularjs-cookies      | Provides a key-value (string-object) storage, that is backed by session cookies. |
-| $exceptionHandler | angularjs-core         | Any uncaught exception in angular expressions is delegated to this service. |
-| $filter           | angularjs-core         | Selects a subset of items from array and returns it as a new array. |
-| $http             | angularjs-core         | The $http service is a core Angular service that facilitates communication with the remote HTTP servers via the browser's XMLHttpRequest object or via JSONP. |
-| $injector         | angularjs-core         | $injector is used to retrieve object instances as defined by provider, instantiate types, invoke methods, and load modules. |
-| $interval         | angularjs-core         | Angular's wrapper for window.setInterval. The fn function is executed every delay milliseconds. |
-| $location         | angularjs-core         | The $location service parses the URL in the browser address bar (based on the window.location) and makes the URL available to your application. |
-| $log              | angularjs-core         | Simple service for logging. Default implementation safely writes the message into the browser's console (if present). |
-| $modal            | angularjs-ui-bootstrap | Modal Dialogs - Angular UI Bootstrap |
-| $nvd3             | angularjs-nvd3         | An AngularJS directive for NVD3 re-usable charting library (based on D3).|
-| $parse            | angularjs-core         | Converts Angular expression into a function. |
-| $q                | angularjs-core         | A service that helps you run functions asynchronously, and use their return values (or exceptions) when they are done processing. |
-| $resource         | angularjs-core         | A factory which creates a resource object that lets you interact with RESTful server-side data sources. |
-| $route            | angularjs-ui-router    | $route is used for deep-linking URLs to controllers and views (HTML partials). It watches $location.url() and tries to map the path to an existing route definition. |
-| $sce              | angularjs-sanitize     | $sce is a service that provides Strict Contextual Escaping services to AngularJS. |
-| $timeout          | angularjs-core         | Angular's wrapper for window.setTimeout. The fn function is wrapped into a try/catch block and delegates any exceptions to $exceptionHandler service. |
-| FacebookService   | angularjs-facebook     | AngularJS - Facebook service |
-| FileUploader      | angularjs-nergvh-fileupload | AngularJS File Uploader |
-| md5               | angularjs-md5          | A md5 crypto component for Angular.js. |
-| toaster           | angularjs-toaster      | AngularJS Toaster is a customized version of "toastr" non-blocking notification javascript library. |
+| $anchorScroll     | angularjs-anchor-scroll        | Anchor Scroll Service. |
+| $animate          | angularjs-animate              | The $animate service exposes a series of DOM utility methods that provide support for animation hooks. |
+| $cacheFactory     | angularjs-core                 | Factory that constructs cache objects and gives access to them. |
+| $compile          | angularjs-core                 | Compiles an HTML string or DOM into a template and produces a template function, which can then be used to link scope and the template together. |
+| $cookies          | angularjs-cookies              | Provides read/write access to browser's cookies. |
+| $cookieStore      | angularjs-cookies              | Provides a key-value (string-object) storage, that is backed by session cookies. |
+| $exceptionHandler | angularjs-core                 | Any uncaught exception in angular expressions is delegated to this service. |
+| $filter           | angularjs-core                 | Selects a subset of items from array and returns it as a new array. |
+| $http             | angularjs-core                 | The $http service is a core Angular service that facilitates communication with the remote HTTP servers via the browser's XMLHttpRequest object or via JSONP. |
+| $injector         | angularjs-core                 | $injector is used to retrieve object instances as defined by provider, instantiate types, invoke methods, and load modules. |
+| $interval         | angularjs-core                 | Angular's wrapper for window.setInterval. The fn function is executed every delay milliseconds. |
+| $location         | angularjs-core                 | The $location service parses the URL in the browser address bar (based on the window.location) and makes the URL available to your application. |
+| $log              | angularjs-core                 | Simple service for logging. Default implementation safely writes the message into the browser's console (if present). |
+| $modal            | angularjs-ui-bootstrap         | Modal Dialogs - Angular UI Bootstrap |
+| $nvd3             | angularjs-nvd3                 | An AngularJS directive for NVD3 re-usable charting library (based on D3).|
+| $parse            | angularjs-core                 | Converts Angular expression into a function. |
+| $q                | angularjs-core                 | A service that helps you run functions asynchronously, and use their return values (or exceptions) when they are done processing. |
+| $resource         | angularjs-core                 | A factory which creates a resource object that lets you interact with RESTful server-side data sources. |
+| $route            | angularjs-ui-router            | $route is used for deep-linking URLs to controllers and views (HTML partials). It watches $location.url() and tries to map the path to an existing route definition. |
+| $sce              | angularjs-sanitize             | $sce is a service that provides Strict Contextual Escaping services to AngularJS. |
+| $timeout          | angularjs-core                 | Angular's wrapper for window.setTimeout. The fn function is wrapped into a try/catch block and delegates any exceptions to $exceptionHandler service. |
+| FacebookService   | angularjs-facebook             | AngularJS - Facebook service |
+| FileUploader      | angularjs-nergvh-fileupload    | AngularJS File Uploader |
+| md5               | angularjs-md5                  | A md5 crypto component for Angular.js. |
+| toaster           | angularjs-toaster              | AngularJS Toaster is a customized version of "toastr" non-blocking notification javascript library. |
 
 *NOTE*: The full SBT artifact expression is: "io.scalajs" %%% "angularjs-xxxx" % version 
 (e.g. "io.scalajs" %%% "angularjs-toaster" % "0.3.0.0")

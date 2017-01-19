@@ -3,7 +3,7 @@ package io.scalajs.npm.angularjs.uibootstrap
 import scala.scalajs.js
 
 /**
-  * AngularJS Modal Instance ($modalInstance)
+  * AngularJS Modal Instance (\$modalInstance)
   * @author lawrence.daniels@gmail.com
   */
 @js.native

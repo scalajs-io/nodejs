@@ -26,11 +26,11 @@ object OptionHelper {
 
     @inline def ??(optB: => Option[T]): Option[T] = if (valueA.isDefined) valueA else optB
 
-    @inline def flat = valueA.flatMap(Option(_))
+    @inline def flat: Option[T] = valueA.flatMap(Option(_))
 
-    @inline def isAssigned = valueA.flat.nonEmpty
+    @inline def isAssigned: Boolean = valueA.flat.nonEmpty
 
-    @inline def nonAssigned = valueA.flat.isEmpty
+    @inline def nonAssigned: Boolean = valueA.flat.isEmpty
 
     @inline def orDie(message: String): T = valueA getOrElse (throw new IllegalStateException(message))
 
@@ -42,7 +42,7 @@ object OptionHelper {
     */
   implicit class OptionBoolExtensions(val value: Option[Boolean]) extends AnyVal {
 
-    @inline def isTrue = value.contains(true)
+    @inline def isTrue: Boolean = value.contains(true)
 
   }
 
@@ -52,7 +52,7 @@ object OptionHelper {
     */
   implicit class OptionDoubleExtensions(val value: Option[Double]) extends AnyVal {
 
-    @inline def orZero = value getOrElse 0.0
+    @inline def orZero: Double = value getOrElse 0.0
 
   }
 
@@ -62,7 +62,7 @@ object OptionHelper {
     */
   implicit class OptionIntExtensions(val value: Option[Int]) extends AnyVal {
 
-    @inline def orZero = value getOrElse 0
+    @inline def orZero: Int = value getOrElse 0
 
   }
 

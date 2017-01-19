@@ -1,6 +1,6 @@
 package io.scalajs.npm.zookeeper
 
-import io.scalajs.nodejs.NodeOptions
+import io.scalajs.RawOptions
 import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
@@ -36,7 +36,7 @@ trait NodeZookeeperClient extends IEventEmitter {
     * @return a new client
     * @example client.createClient(connectionString, [options])
     */
-  def createClient(connectionString: String, options: ClientOptions | NodeOptions = null): Client = js.native
+  def createClient(connectionString: String, options: ClientOptions | RawOptions = js.native): Client = js.native
 
 }
 

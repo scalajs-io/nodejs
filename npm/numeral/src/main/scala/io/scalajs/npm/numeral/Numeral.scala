@@ -1,6 +1,6 @@
 package io.scalajs.npm.numeral
 
-import io.scalajs.nodejs.NodeOptions
+import io.scalajs.RawOptions
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
@@ -17,7 +17,7 @@ trait Numeral extends js.Object {
 
   def apply(number: js.Any = js.native): NumeralInstance = js.native
 
-  def language(code: String, options: LanguageOptions | NodeOptions = js.native): Unit = js.native
+  def language(code: String, options: LanguageOptions | RawOptions = js.native): Unit = js.native
 
 }
 

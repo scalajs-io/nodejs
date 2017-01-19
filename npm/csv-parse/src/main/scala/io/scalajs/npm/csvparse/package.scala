@@ -1,6 +1,7 @@
 package io.scalajs.npm
 
-import io.scalajs.nodejs.{Error, NodeOptions}
+import io.scalajs.RawOptions
+import io.scalajs.nodejs.Error
 import io.scalajs.util.ScalaJsHelper.futureCallbackX1
 
 import scala.concurrent.Promise
@@ -22,7 +23,7 @@ package object csvparse {
   implicit class CsvParseEvents(val parser: CsvParse) extends AnyVal {
 
     @inline
-    def parseFuture(text: String, options: ParserOptions | NodeOptions = null): Promise[js.Array[js.Array[String]]] = {
+    def parseFuture(text: String, options: ParserOptions | RawOptions = null): Promise[js.Array[js.Array[String]]] = {
       futureCallbackX1[String, js.Array[js.Array[String]]](parser.apply(text, options, _))
     }
 

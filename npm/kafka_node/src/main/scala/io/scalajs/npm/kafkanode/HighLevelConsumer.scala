@@ -1,6 +1,6 @@
 package io.scalajs.npm.kafkanode
 
-import io.scalajs.nodejs.NodeOptions
+import io.scalajs.RawOptions
 import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
@@ -13,7 +13,7 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSImport("kafka-node", "HighLevelConsumer")
-class HighLevelConsumer(client: Client, payloads: js.Array[Payload], options: ConsumerOptions | NodeOptions)
+class HighLevelConsumer(client: Client, payloads: js.Array[Payload], options: ConsumerOptions | RawOptions)
   extends IEventEmitter {
 
   /**

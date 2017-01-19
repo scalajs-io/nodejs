@@ -20,70 +20,70 @@ case class DependencySet(dependencies: js.Array[Any]) extends AnyVal
 object DependencySet {
 
   @inline
-  implicit def fn[R](f: => R): DependencySet = macro generate
+  implicit def fn[Z](f: => Z): DependencySet = macro generate
 
   @inline
-  implicit def fn[A, R](f: A => R): DependencySet = macro generate
+  implicit def fn[A, Z](f: A => Z): DependencySet = macro generate
 
   @inline
-  implicit def fn[A, B, R](f: (A, B) => R): DependencySet = macro generate
+  implicit def fn[A, B, Z](f: (A, B) => Z): DependencySet = macro generate
 
   @inline
-  implicit def fn[A, B, C, R](f: (A, B, C) => R): DependencySet = macro generate
+  implicit def fn[A, B, C, Z](f: (A, B, C) => Z): DependencySet = macro generate
 
   @inline
-  implicit def fn[A, B, C, D, R](f: (A, B, C, D) => R): DependencySet = macro generate
+  implicit def fn[A, B, C, D, Z](f: (A, B, C, D) => Z): DependencySet = macro generate
 
   @inline
-  implicit def fn[A, B, C, D, E, R](f: (A, B, C, D, E) => R): DependencySet = macro generate
+  implicit def fn[A, B, C, D, E, Z](f: (A, B, C, D, E) => Z): DependencySet = macro generate
 
   @inline
-  implicit def fn[A, B, C, D, E, F, R](f: (A, B, C, D, E, F) => R): DependencySet = macro generate
+  implicit def fn[A, B, C, D, E, F, Z](f: (A, B, C, D, E, F) => Z): DependencySet = macro generate
 
   @inline
-  implicit def fn[A, B, C, D, E, F, G, R](f: (A, B, C, D, E, F, G) => R): DependencySet = macro generate
+  implicit def fn[A, B, C, D, E, F, G, Z](f: (A, B, C, D, E, F, G) => Z): DependencySet = macro generate
 
   @inline
-  implicit def fn[A, B, C, D, E, F, G, H, R](f: (A, B, C, D, E, F, G, H) => R): DependencySet = macro generate
+  implicit def fn[A, B, C, D, E, F, G, H, Z](f: (A, B, C, D, E, F, G, H) => Z): DependencySet = macro generate
 
   @inline
-  implicit def fn[A, B, C, D, E, F, G, H, I, R](f: (A, B, C, D, E, F, G, H, I) => R): DependencySet = macro generate
+  implicit def fn[A, B, C, D, E, F, G, H, I, Z](f: (A, B, C, D, E, F, G, H, I) => Z): DependencySet = macro generate
 
   @inline
-  implicit def fn[A, B, C, D, E, F, G, H, I, J, R](f: (A, B, C, D, E, F, G, H, I, J) => R): DependencySet = macro generate
+  implicit def fn[A, B, C, D, E, F, G, H, I, J, Z](f: (A, B, C, D, E, F, G, H, I, J) => Z): DependencySet = macro generate
 
   @inline
-  implicit def fn[A, B, C, D, E, F, G, H, I, J, K, R](f: (A, B, C, D, E, F, G, H, I, J, K) => R): DependencySet = macro generate
+  implicit def fn[A, B, C, D, E, F, G, H, I, J, K, Z](f: (A, B, C, D, E, F, G, H, I, J, K) => Z): DependencySet = macro generate
 
   @inline
-  implicit def fn[A, B, C, D, E, F, G, H, I, J, K, L, R](f: (A, B, C, D, E, F, G, H, I, J, K, L) => R): DependencySet = macro generate
+  implicit def fn[A, B, C, D, E, F, G, H, I, J, K, L, Z](f: (A, B, C, D, E, F, G, H, I, J, K, L) => Z): DependencySet = macro generate
 
   @inline
-  implicit def fn[A, B, C, D, E, F, G, H, I, J, K, L, M, R](f: (A, B, C, D, E, F, G, H, I, J, K, L, M) => R): DependencySet = macro generate
+  implicit def fn[A, B, C, D, E, F, G, H, I, J, K, L, M, Z](f: (A, B, C, D, E, F, G, H, I, J, K, L, M) => Z): DependencySet = macro generate
 
   @inline
-  implicit def fn[A, B, C, D, E, F, G, H, I, J, K, L, M, N, R](f: (A, B, C, D, E, F, G, H, I, J, K, L, M, N) => R): DependencySet = macro generate
+  implicit def fn[A, B, C, D, E, F, G, H, I, J, K, L, M, N, Z](f: (A, B, C, D, E, F, G, H, I, J, K, L, M, N) => Z): DependencySet = macro generate
 
   @inline
-  implicit def fn[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, R](f: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O) => R): DependencySet = macro generate
+  implicit def fn[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, Z](f: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O) => Z): DependencySet = macro generate
 
   @inline
-  implicit def fn[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, R](f: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P) => R): DependencySet = macro generate
+  implicit def fn[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Z](f: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P) => Z): DependencySet = macro generate
 
   @inline
-  implicit def fn[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, S, R](f: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, S) => R): DependencySet = macro generate
+  implicit def fn[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, R, Z](f: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, R) => Z): DependencySet = macro generate
 
   @inline
-  implicit def fn[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, S, R](f: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, S) => R): DependencySet = macro generate
+  implicit def fn[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, R, S, Z](f: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, R, S) => Z): DependencySet = macro generate
 
   @inline
-  implicit def fn[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, S, T, R](f: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, S, T) => R): DependencySet = macro generate
+  implicit def fn[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, R, S, T, Z](f: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, R, S, T) => Z): DependencySet = macro generate
 
   @inline
-  implicit def fn[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, S, T, U, R](f: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, S, T, U) => R): DependencySet = macro generate
+  implicit def fn[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, R, S, T, U, Z](f: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, S, T, U) => Z): DependencySet = macro generate
 
   @inline
-  implicit def fn[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, S, T, U, V, R](f: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, S, T, U, V) => R): DependencySet = macro generate
+  implicit def fn[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, R, S, T, U, V, Z](f: (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, S, T, U, V) => Z): DependencySet = macro generate
 
   def generate(c: blackbox.Context)(f: c.Tree): c.universe.Tree = {
     import c.universe._

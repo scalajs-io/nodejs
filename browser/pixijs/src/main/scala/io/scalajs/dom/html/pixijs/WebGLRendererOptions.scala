@@ -20,11 +20,11 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class WebGLRendererOptions(var view: HTMLCanvasElement = null,
-                           var transparent: Boolean = false,
-                           var autoResize: Boolean = false,
-                           var antialias: Boolean = false,
-                           var forceFXAA: Boolean = false,
-                           var resolution: Resolution = 1,
-                           var clearBeforeRender: Boolean = false,
-                           var preserveDrawingBuffer: Boolean = false) extends js.Object
+class WebGLRendererOptions(var view: js.UndefOr[HTMLCanvasElement] = js.undefined,
+                           var transparent: js.UndefOr[Boolean] = js.undefined,
+                           var autoResize: js.UndefOr[Boolean] = js.undefined,
+                           var antialias: js.UndefOr[Boolean] = js.undefined,
+                           var forceFXAA: js.UndefOr[Boolean] = js.undefined,
+                           var resolution: js.UndefOr[Resolution] = js.undefined,
+                           var clearBeforeRender: js.UndefOr[Boolean] = js.undefined,
+                           var preserveDrawingBuffer: js.UndefOr[Boolean] = js.undefined) extends js.Object

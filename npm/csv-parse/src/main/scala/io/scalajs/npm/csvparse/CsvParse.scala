@@ -1,6 +1,6 @@
 package io.scalajs.npm.csvparse
 
-import io.scalajs.nodejs.NodeOptions
+import io.scalajs.RawOptions
 import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
@@ -9,7 +9,7 @@ import scala.scalajs.js.|
 
 /**
   * CSV parsing implementing the Node.js 'stream.Transform' API
-  * @version 1.1.2
+  * @version 1.1.10
   * @see https://github.com/wdavidw/node-csv-parse
   * @author lawrence.daniels@gmail.com
   */
@@ -20,15 +20,13 @@ trait CsvParse extends IEventEmitter {
   //      Streaming
   /////////////////////////////////////////////////////////////////////////////////
 
-  def apply(text: String, options: ParserOptions | NodeOptions): Parser = js.native
-
-  def apply(options: ParserOptions | NodeOptions): Parser = js.native
+  def apply(text: String, options: ParserOptions | RawOptions = js.native): Parser = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Asynchronous
   /////////////////////////////////////////////////////////////////////////////////
 
-  def apply(text: String, options: ParserOptions | NodeOptions, callback: js.Function2[String, CsvResults, Any]): Unit = js.native
+  def apply(text: String, options: ParserOptions | RawOptions, callback: js.Function2[String, CsvResults, Any]): Unit = js.native
 
   def apply(text: String, callback: js.Function2[String, CsvResults, Any]): Unit = js.native
 

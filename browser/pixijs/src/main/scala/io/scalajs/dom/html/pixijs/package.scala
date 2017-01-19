@@ -25,8 +25,6 @@ package object pixijs {
 
   type Resolution = Int
 
-  type RawOptions = js.Dictionary[_]
-
   /**
     * BaseTexture Events
     * @param texture the given [[BaseTexture texture]]

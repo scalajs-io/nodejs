@@ -1,6 +1,6 @@
 package io.scalajs.npm.kafkanode
 
-import io.scalajs.nodejs.NodeOptions
+import io.scalajs.RawOptions
 import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
@@ -14,6 +14,6 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSImport("kafka-node", "ConsumerGroup")
-class ConsumerGroup(options: ConsumerGroupOptions | NodeOptions, topics: String | js.Array[String]) extends IEventEmitter {
+class ConsumerGroup(options: ConsumerGroupOptions | RawOptions, topics: String | js.Array[String]) extends IEventEmitter {
 
 }

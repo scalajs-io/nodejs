@@ -347,7 +347,13 @@ class Window extends js.Object {
   def top: js.Any = js.native
 
   /**
-    * TBD
+   * returns an object that provides static methods used for creating and managing object URLs. 
+   * It can also be called as a constructor to construct URL objects.
+   */
+  def URL: URL = js.native
+  
+  /**
+    * TODO
     */
   var WebSocket: js.UndefOr[WebSocket] = js.native
 
@@ -584,6 +590,16 @@ object Window {
 
   @js.native
   trait SpeechSynthesis extends js.Object
+  
+  /**
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/Window/URL
+   */
+  @js.native
+  trait URL extends js.Object {
+
+    def createObjectURL(value: js.Any): String = js.native
+
+  }
 
   @js.native
   trait XULControllers extends js.Object

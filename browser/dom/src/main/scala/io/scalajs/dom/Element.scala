@@ -14,6 +14,25 @@ import scala.scalajs.js
 @js.native
 trait Element extends ParentNode {
 
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Properties
+  /////////////////////////////////////////////////////////////////////////////////
+
+  /**
+    * The qualified name of an Element node, including any namespace prefix.
+    *
+    * In HTML this is returned in all uppercase regardless of the case used in the document;
+    * in XML the case used in the document is preserved.
+    *
+    * In all cases, the tagName of an element is exactly the same as its nodeName.
+    * This property is readonly.
+    */
+  def tagName: String = js.native
+
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Methods
+  /////////////////////////////////////////////////////////////////////////////////
+
   /**
     * Get the value of an attribute with the specified name.
     *
@@ -212,16 +231,5 @@ trait Element extends ParentNode {
     * @param value     The string value for the attribute.
     */
   def setAttributeNS(namespace: String, name: String, value: js.Any): Unit = js.native
-
-  /**
-    * The qualified name of an Element node, including any namespace prefix.
-    *
-    * In HTML this is returned in all uppercase regardless of the case used in the document;
-    * in XML the case used in the document is preserved.
-    *
-    * In all cases, the tagName of an element is exactly the same as its nodeName.
-    * This property is readonly.
-    */
-  def tagName: String = js.native
 
 }

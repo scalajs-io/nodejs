@@ -6,6 +6,7 @@ import io.scalajs.npm.angularjs.Module.EnrichedModule
 
 import scala.language.implicitConversions
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * AngularJS 1.4.2 Binding
@@ -79,9 +80,7 @@ trait Angular extends js.Object {
 
   def copy(source: js.Any, destination: js.Any): js.Any = js.native
 
-  def element(elem: Element): JQLite = js.native
-
-  def element(jQuery: JQuery): JQLite = js.native
+  def element(elem: Element | String): JQLite = js.native
 
   /**
     * Determines if two objects or two values are equivalent. Supports value types, regular expressions, arrays and objects.

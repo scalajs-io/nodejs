@@ -178,7 +178,7 @@ for {
 
 The Node.js integration is nearly complete (feature for feature), and should be more than sufficient for most web-based 
 and CLI applications. Additionally, there are a growing number of third-party (mostly OSS) modules that have been 
-implemented as well, including bcrypt, datastax/cassandra-driver, kafka-node, mysql, xml2js and many others. 
+implemented as well, including bcrypt, cassandra-driver, kafka-node, mysql, xml2js and many others. 
 
 <a name="node_modules">
 #### Modules
@@ -209,8 +209,8 @@ The following core Node.js modules have been implemented:
 | vm                    | 7.4.0   | nodejs            | The vm module provides APIs for compiling and running code within V8 Virtual Machine contexts.| Stable |
 | zlib                  | 7.4.0   | nodejs            | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. | Stable |
 
-*NOTE*: The full SBT artifact expression is: "io.scalajs" %%% "scalajs-nodejs-xxxx" % version 
-(e.g. "io.scalajs" %%% "scalajs-nodejs-readline" % "0.2.0")
+*NOTE*: The full SBT artifact expression is: "io.scalajs.npm" %%% "xxxx" % version 
+(e.g. "io.scalajs.npm" %%% "readline" % "0.3.0.0")
 
 <a name="npm_modules">
 #### Third-party Modules

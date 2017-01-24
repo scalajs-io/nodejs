@@ -11,7 +11,7 @@ import scala.scalajs.js
   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement
   */
 @js.native
-class HTMLElement extends Element {
+trait HTMLElement extends Element {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods

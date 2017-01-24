@@ -2,13 +2,11 @@ package io.scalajs.dom.html.canvas
 
 import java.lang.{Double => JDouble}
 
-import io.scalajs.dom.Element
-import io.scalajs.dom.html.{Blob, File}
+import io.scalajs.dom.html.{Blob, File, HTMLElement}
 import io.scalajs.util.ScalaJsHelper._
 
 import scala.concurrent.Promise
 import scala.scalajs.js
-import scala.scalajs.js.annotation._
 
 /**
   * The HTMLCanvasElement interface provides properties and methods for manipulating the layout and presentation of
@@ -17,7 +15,7 @@ import scala.scalajs.js.annotation._
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-class HTMLCanvasElement extends Element {
+class HTMLCanvasElement extends HTMLElement {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -44,21 +42,6 @@ class HTMLCanvasElement extends Element {
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
   /////////////////////////////////////////////////////////////////////////////////
-
-  /**
-    *
-    * @param index
-    * @return
-    */
-  @JSBracketAccess
-  def apply(index: Int): this.type = js.native
-
-  /**
-    * ???
-    * @param value
-    * @return
-    */
-  def attr(value: js.Any): Unit = js.native
 
   /**
     * Returns a [[CanvasCaptureMediaStream]] that is a real-time video capture of the surface of the canvas.

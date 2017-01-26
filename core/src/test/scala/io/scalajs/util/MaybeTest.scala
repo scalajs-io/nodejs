@@ -10,7 +10,37 @@ import scala.scalajs.js
   */
 class MaybeTest extends FunSpec {
 
-  describe("Maybe") {
+  describe("Maybe[A]") {
+
+    it("should mimic the behavior of js.UndefOr[A] for defined values") {
+      val u: js.UndefOr[String] = "Hello"
+      val m: Maybe[String] = "Hello"
+
+      info("""val u: js.UndefOr[String] = "Hello"""")
+      info("""val m: Maybe[String] = "Hello"""")
+      info("u.toOption == m.toOption")
+      assert(u.toOption == m.toOption)
+    }
+
+    it("should mimic the behavior of js.UndefOr[A] for undefined values") {
+      val u: js.UndefOr[String] = js.undefined
+      val m: Maybe[String] = js.undefined
+
+      info("val u: js.UndefOr[String] = js.undefined")
+      info("val m: Maybe[String] = js.undefined")
+      info("u.toOption == m.toOption")
+      assert(u.toOption == m.toOption)
+    }
+
+    it("should behavior differently than js.UndefOr[A] for null values") {
+      val u: js.UndefOr[String] = null
+      val m: Maybe[String] = null
+
+      info("val u: js.UndefOr[String] = null")
+      info("val m: Maybe[String] = null")
+      info(s"u.toOption (${u.toOption}) != m.toOption (${m.toOption})")
+      assert(u.toOption != m.toOption)
+    }
 
     it("should allow passing undefined as Maybe[A]") {
       testMe(js.undefined)
@@ -30,10 +60,10 @@ class MaybeTest extends FunSpec {
       info(s"value is $value")
     }
 
-    it("should be Full when a non-null defined value is referenced") {
+    it("should be defined when a non-null value is referenced") {
       val maybe = Maybe(123456)
-      info(s"Maybe(123456) is $maybe")
-      assert(maybe == Full(123456))
+      info(s"Maybe(123456).get is 123456")
+      assert(maybe.get == 123456)
     }
 
     it("should be Empty when a null value is referenced") {
@@ -56,16 +86,38 @@ class MaybeTest extends FunSpec {
       assert(!Empty.nonEmpty)
     }
 
-    it("should enforce Full.isDefined is true") {
-      assert(Full('A').isDefined)
+    it("should support Maybe('A').isDefined is true") {
+      assert(Maybe('A').isDefined)
     }
 
-    it("should enforce Full.isEmpty is false") {
-      assert(!Full("S").isEmpty)
+    it("""should support Maybe("S").isEmpty is false""") {
+      assert(!Maybe("S").isEmpty)
     }
 
-    it("should enforce Full.nonEmpty is true") {
-      assert(Full(1.2).nonEmpty)
+    it("should support Maybe(1.2).nonEmpty is true") {
+      assert(Maybe(1.2).nonEmpty)
+    }
+
+    it("supports filter") {
+      info("""Maybe("Hello").filter(_ == "Goodbye") == Empty""")
+      assert(Maybe("Hello").filter(_ == "Goodbye") == Empty)
+
+      info("""Maybe("Hello").filter(_ == "Goodbye") != Maybe("Hello")""")
+      assert(Maybe("Hello").filter(_ == "Goodbye") != Maybe("Hello"))
+
+      info("""Maybe("Hello").filter(_ == "Hello") == Maybe("Hello")""")
+      assert(Maybe("Hello").filter(_ == "Hello") == Maybe("Hello"))
+    }
+
+    it("supports filterNot") {
+      info("""Maybe("Hello").filterNot(_ == "Goodbye") == Maybe("Hello")""")
+      assert(Maybe("Hello").filterNot(_ == "Goodbye") == Maybe("Hello"))
+
+      info("""Maybe("Hello").filterNot(_ == "Goodbye") != Empty""")
+      assert(Maybe("Hello").filterNot(_ == "Goodbye") != Empty)
+
+      info("""Maybe("Hello").filterNot(_ == "Hello") == Empty""")
+      assert(Maybe("Hello").filterNot(_ == "Hello") == Empty)
     }
 
   }

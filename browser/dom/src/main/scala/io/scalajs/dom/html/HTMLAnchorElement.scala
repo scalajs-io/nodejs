@@ -10,7 +10,7 @@ import scala.scalajs.js
   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement
   */
 @js.native
-class HTMLAnchorElement extends HTMLElement {
+trait HTMLAnchorElement extends HTMLElement {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties

@@ -18,10 +18,10 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class CanvasRendererOptions(var view: HTMLCanvasElement = null,
-                            var transparent: Boolean = false,
-                            var autoResize: Boolean = false,
-                            var antialias: Boolean = false,
-                            var resolution: Resolution = 1,
-                            var clearBeforeRender: Boolean = false,
-                            var roundPixels: Boolean = false) extends js.Object
+class CanvasRendererOptions(var view: js.UndefOr[HTMLCanvasElement] = js.undefined,
+                            var transparent: js.UndefOr[Boolean] = js.undefined,
+                            var autoResize: js.UndefOr[Boolean] = js.undefined,
+                            var antialias: js.UndefOr[Boolean] = js.undefined,
+                            var resolution: js.UndefOr[Resolution] = js.undefined,
+                            var clearBeforeRender: js.UndefOr[Boolean] = js.undefined,
+                            var roundPixels: js.UndefOr[Boolean] = js.undefined) extends js.Object

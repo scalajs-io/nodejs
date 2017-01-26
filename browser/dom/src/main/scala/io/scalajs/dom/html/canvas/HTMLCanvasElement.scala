@@ -2,6 +2,7 @@ package io.scalajs.dom.html.canvas
 
 import java.lang.{Double => JDouble}
 
+import io.scalajs.dom.html.canvas.webgl.{WebGL2RenderingContext, WebGLRenderingContext}
 import io.scalajs.dom.html.{Blob, File, HTMLElement}
 import io.scalajs.util.ScalaJsHelper._
 
@@ -15,7 +16,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-class HTMLCanvasElement extends HTMLElement {
+trait HTMLCanvasElement extends HTMLElement {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties

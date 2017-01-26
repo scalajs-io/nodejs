@@ -11,6 +11,6 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-class HTMLFormElement extends HTMLElement {
+trait HTMLFormElement extends HTMLElement {
 
 }

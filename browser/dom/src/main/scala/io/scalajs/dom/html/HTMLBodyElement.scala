@@ -7,6 +7,6 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-class HTMLBodyElement extends HTMLElement {
-  var style: Style = js.native
+trait HTMLBodyElement extends HTMLElement {
+  //var style: Style = js.native
 }

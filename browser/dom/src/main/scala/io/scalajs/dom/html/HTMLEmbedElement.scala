@@ -9,7 +9,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-class HTMLEmbedElement extends HTMLElement {
+trait HTMLEmbedElement extends HTMLElement {
 
   /**
     * Is a DOMString representing an enumerated property indicating alignment of the element's contents

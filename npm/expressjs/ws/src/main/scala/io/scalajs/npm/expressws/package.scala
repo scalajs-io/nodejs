@@ -1,7 +1,6 @@
 package io.scalajs.npm
 
 import io.scalajs.npm.express.Router
-import io.scalajs.npm.express.Router
 
 /**
   * Express-WS
@@ -16,7 +15,7 @@ package object expressws {
   implicit class WsRouterExtensions[T <: Router](val router: T) extends AnyVal {
 
     @inline
-    def withWsRouting = router.asInstanceOf[T with WsRouting]
+    def withWsRouting: T with WsRouting = router.asInstanceOf[T with WsRouting]
 
   }
 

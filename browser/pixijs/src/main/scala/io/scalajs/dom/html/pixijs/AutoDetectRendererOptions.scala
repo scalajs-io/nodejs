@@ -16,8 +16,8 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class AutoDetectRendererOptions(var view: HTMLCanvasElement = null,
-                                var transparent: Boolean = false,
-                                var antialias: Boolean = false,
-                                var preserveDrawingBuffer: Boolean = false,
-                                var resolution: Resolution = 1) extends js.Object
+class AutoDetectRendererOptions(var view: js.UndefOr[HTMLCanvasElement] = js.undefined,
+                                var transparent: js.UndefOr[Boolean] = js.undefined,
+                                var antialias: js.UndefOr[Boolean] = js.undefined,
+                                var preserveDrawingBuffer: js.UndefOr[Boolean] = js.undefined,
+                                var resolution: js.UndefOr[Resolution] = js.undefined) extends js.Object

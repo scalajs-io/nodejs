@@ -1,6 +1,8 @@
-ScalaJs.io (formerly MEANS.js)
-====================================
-This is a Scala.js binding for the Node.js and MEAN Stack (MongoDB, Express, Angular, Node and others) applications.
+ScalaJs.io
+==========
+This is a complete Scala.js facade for Node.js, io.js and npm; which means you can development full-blown Node.js/io.js 
+applications using popular JavaScript software stacks including the MEAN Stack (MongoDB, Express, Angular, Node)
+and others.
  
 ## Table of Contents
 
@@ -80,11 +82,12 @@ resolvers += Resolver.sonatypeRepo("releases")
    
 The following applications were developed using ScalaJs.io:
 
-| Application                                                            | Frontend              | Backend            | Description                                                  |
-|------------------------------------------------------------------------|-----------------------|--------------------|--------------------------------------------------------------|
-| [Socialize](https://github.com/ldaniels528/scalajs-nodejs-socialized)  | Scala.js + AngularJS  | Scala.js + NodeJS  | A Facebook-inspired Social networking web application. |
-| [Todo MVC](https://github.com/ldaniels528/scalajs-nodejs-todomvc)      | Scala.js + AngularJS  | Scala.js + NodeJS  | A simple Todo example application. |
-| [Trifecta](https://github.com/ldaniels528/trifecta)                    | Scala.js + AngularJS  | Scala + Play 2.4.x | Trifecta is a web-based and CLI tool that simplifies inspecting Kafka messages and Zookeeper data. |
+| Application                                                            | Frontend              | Backend            | Scalajs.io version | Description                              |
+|------------------------------------------------------------------------|-----------------------|--------------------|--------------------|------------------------------------------|
+| [Scalajs-Invaders](https://github.com/ldaniels528/scalajs-invaders)    | Scala.js + DOM        | Scala + NodeJS     | 0.3.0.0            | Port of Phaser Invaders. |
+| [Socialize](https://github.com/ldaniels528/scalajs-nodejs-socialized)  | Scala.js + AngularJS  | Scala.js + NodeJS  | 0.2.3.1            | A Facebook-inspired Social networking web application. |
+| [Todo MVC](https://github.com/ldaniels528/scalajs-nodejs-todomvc)      | Scala.js + AngularJS  | Scala.js + NodeJS  | 0.2.3.1            | A simple Todo example application. |
+| [Trifecta](https://github.com/ldaniels528/trifecta)                    | Scala.js + AngularJS  | Scala + Play 2.4.x | 0.3.0.0            | Trifecta is a web-based and CLI tool that simplifies inspecting Kafka messages and Zookeeper data. |
  
  
 <a name="discussions"></a>
@@ -294,37 +297,6 @@ Http.createServer((request: ClientRequest, response: ServerResponse) => {
 }).listen(8888)
 ```
 
-<a name="node_integration">
-#### Integration Guidance
-
-Currently, the "require" function (along with a few others) must be passed to the Scala.js application because of an issue
-with getting a reference to them. This can be accomplished inside a bootstrap JavaScript file as follows:
-
-```javascript
-require("./target/scala-2.11/scalajs-nodejs-examples-fastopt.js");
-var facade = examples.Examples();
-facade.start({
-     "__dirname": __dirname,
-     "__filename": __filename,
-     "exports": exports,
-     "module": module,
-     "require": require
- });
-```
-
-Then within your Scala.js application:
-
-```scala
-def start(bootstrap: Bootstrap) = {
-    import bootstrap._
-    
-    val express = Express()
-        .
-        .
-        .
-}
-```
-
 <a name="Express"></a>
 ## Express.js
 
@@ -348,7 +320,7 @@ var server = app.listen(8081, function () {
 Here's the same example using Scala.js:
 
 ```scala
-import bootstrap._
+import io.scalajs.npm.express._
 
 val app = Express()
 
@@ -366,7 +338,8 @@ private def connect: js.Function = () => {
 The following is a more elaborate example:
 
 ```scala
-implicit val require = bootstrap.require
+import io.scalajs.npm.express._
+import io.scalajs.util.ScalaJsHelpers._
 
 val todos: js.Array[Todo] = emptyArray
 
@@ -449,6 +422,9 @@ MongoClient.connect(url, (err, db) => {
 Or, if you'd like to be more Scala idiomatic, the connection fragment could be written as follows:
 
 ```scala
+import io.scalajs.npm.mongodb._
+import scala.util.{Success, Failure}
+
 MongoClient.connectFuture(url) onComplete {
     case Success(db) =>
         // HURRAY!! We are connected. :)
@@ -466,6 +442,9 @@ MongoClient.connectFuture(url) onComplete {
 Alternatively, you could choose to use "foreach" to directly manage only the success case:
 
 ```scala
+import io.scalajs.npm.mongodb._
+import io.scalajs.util.PromiseHelper._
+
 MongoClient.connectFuture(url) foreach { db => 
     // HURRAY!! We are connected. :)
     console.log("Connection established to: %s", url)

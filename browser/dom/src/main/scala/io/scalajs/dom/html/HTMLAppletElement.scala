@@ -7,6 +7,6 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-class HTMLAppletElement extends HTMLElement {
+trait HTMLAppletElement extends HTMLElement {
 
 }

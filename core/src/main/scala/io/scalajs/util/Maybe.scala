@@ -1,37 +1,48 @@
 package io.scalajs.util
 
 import scala.scalajs.js
-import scala.scalajs.js.UndefOr
+import scala.scalajs.js.{Any, |}
+import scala.scalajs.js.|.Evidence
 
 /**
   * Represents an optional type, which is either Full - contains a value - or empty (null or undefined).
   * @author lawrence.daniels@gmail.com
   */
-sealed trait Maybe[+A] {
+sealed trait Maybe[+A]
 
-  def filter(p: A => Boolean): Maybe[A]
+/**
+  * Represents the "presence" of a value
+  * @param value the given value of type A
+  * @tparam A the value type
+  */
+case class Full[A](value: A) extends Maybe[A]
 
-  def flatMap[B](p: A => Maybe[B]): Maybe[B]
+/**
+  * Represents the "absence" of a value (undefined or null)
+  */
+case object Empty extends Maybe[Nothing]
 
-  def forall(p: A => Boolean): Boolean
+/**
+  * Low-Priority Implicits
+  * @author lawrence.daniels@gmail.com
+  */
+sealed abstract class MaybeLowerPriorityImplicits {
 
-  def foreach[U](p: A => U): Unit
+  /**
+    * Upcasts `A` to `Maybe[B1 | B2]`.
+    * This needs evidence that `A <: B1 | B2`.
+    */
+  implicit def anyToMaybeUnion[A, B1, B2](a: A)(implicit ev: Evidence[A, B1 | B2]): Maybe[B1 | B2] = {
+    a.asInstanceOf[Maybe[B1 | B2]]
+  }
 
-  def get: A
+  //implicit def maybeToDirectValue[A](aValue: Maybe[A]): A = aValue.get
 
-  def getOrElse[B >: A](default: => B): B
+  //implicit def directValueToMaybe[A](value: A): Maybe[A] = Maybe(value)
 
-  def isDefined: Boolean
+  implicit def optionToMaybe[A](aValue: Option[A]): Maybe[A] = Maybe(aValue)
 
-  def isEmpty: Boolean
-
-  def nonEmpty: Boolean
-
-  def map[B](f: A => B): Maybe[B]
-
-  def toOption: Option[A]
-
-  def toUndefOr: js.UndefOr[A]
+  implicit def undefinedToMaybe[A](aValue: js.UndefOr[A]): Maybe[A] = Maybe(aValue)
 
 }
 
@@ -39,51 +50,43 @@ sealed trait Maybe[+A] {
   * Scalajs.io Optional Companion
   * @author lawrence.daniels@gmail.com
   */
-object Maybe {
+object Maybe extends MaybeLowerPriorityImplicits {
+
+  implicit def any2Maybe[A](value: A): Maybe[A] = Maybe(value)
+
+  //implicit def undefOr2ops[A](value: Maybe[A]): Maybe[A] = new MaybeOps(value)
+
+  implicit def undefOr2jsAny[A](value: Maybe[A])(implicit ev: A => Any): Any =
+    value.map(ev).asInstanceOf[Any]
 
   /**
     * Creates a Maybe monad from the given value
     * @param value the given value
     * @return a Maybe implementation
     */
-  def apply[A](value: A): Maybe[A] = {
-    value match {
-      case v if v == null | js.isUndefined(v) => Empty
-      case v => Full(v)
-    }
-  }
+  def apply[A](value: A): Maybe[A] = if (isNotDefined(value)) Empty else Full(value)
 
   /**
     * Creates a Maybe monad from the given UndefOr value
     * @param aValue the given value
     * @return a Maybe implementation
     */
-  def apply[A](aValue: js.UndefOr[A]): Maybe[A] = {
-    aValue match {
-      case v if v == null | js.isUndefined(v) => Empty
-      case v => Full(v.get)
-    }
-  }
+  def apply[A](aValue: js.UndefOr[A]): Maybe[A] = if (aValue.isEmpty) Empty else Full(aValue.get)
 
   /**
     * Creates a Maybe monad from the given Option value
     * @param aValue the given value
     * @return a Maybe implementation
     */
-  def apply[A](aValue: Option[A]): Maybe[A] = {
-    aValue match {
-      case Some(value) => Full(value)
-      case None => Empty
-    }
-  }
+  def apply[A](aValue: Option[A]): Maybe[A] = if (aValue.isEmpty) Empty else Full(aValue.get)
 
   def apply(value: Null) = Empty
 
-  implicit def directValueToMaybe[A](value: A): Maybe[A] = Maybe(value)
+  def apply(value: Nothing) = Empty
 
-  implicit def optionToMaybe[A](aValue: Option[A]): Maybe[A] = Maybe(aValue)
+  private def isNotDefined[A](value: A): Boolean = value == null || value == js.undefined || value == None
 
-  implicit def undefinedToMaybe[A](aValue: js.UndefOr[A]): Maybe[A] = Maybe(aValue)
+  private val NULL: Maybe[Nothing] = null
 
   /**
     * UndefOr[A] to Maybe[A] Explicit Conversion
@@ -107,67 +110,63 @@ object Maybe {
 
   }
 
-}
+  /**
+    * Maybe Enrichment
+    * @param aValue the given Maybe-wrapped value
+    */
+  implicit class MaybeEnrichment[A](val aValue: Maybe[A]) extends AnyVal {
 
-/**
-  * Represents an defined value; meaning not null or undefined
-  * @param value the given value
-  */
-case class Full[A](value: A) extends Maybe[A] {
+    @inline
+    def filter(p: A => Boolean): Maybe[A] = if (isEmpty) Empty else if (p(get)) aValue else Empty
 
-  override def filter(p: A => Boolean): Maybe[A] = if (p(value)) this else Empty
+    @inline
+    def flatMap[B](p: A => Maybe[B]): Maybe[B] = if (isEmpty) Empty else p(get)
 
-  override def flatMap[B](p: A => Maybe[B]): Maybe[B] = p(value)
+    @inline
+    def forall(p: A => Boolean): Boolean = if (isEmpty) false else p(get)
 
-  override def forall(p: A => Boolean): Boolean = p(value)
+    @inline
+    def foreach[U](p: A => U): Unit = if (isEmpty) () else p(get)
 
-  override def foreach[U](f: A => U): Unit = f(value)
+    @inline
+    def filterNot(p: A => Boolean): Maybe[A] = if (isEmpty) Empty else if (p(get)) Empty else aValue
 
-  override def get: A = value
+    @inline
+    def get: A = aValue match {
+      case Full(value) => value
+      case _ => throw new IllegalArgumentException("value is null or undefined")
+    }
 
-  override def getOrElse[B >: A](default: => B): B = value
+    @inline
+    def getOrElse[B >: A](default: => B): B = if (isEmpty) default else get
 
-  override def isDefined: Boolean = true
+    @inline
+    def isDefined: Boolean = !isEmpty
 
-  override def isEmpty: Boolean = false
+    @inline
+    def isEmpty: Boolean = isNotDefined(aValue)
 
-  override def nonEmpty: Boolean = true
+    @inline
+    def nonEmpty: Boolean = isDefined
 
-  override def map[B](p: A => B): Maybe[B] = Maybe(p(value))
+    @inline
+    def map[B](p: A => B): Maybe[B] = if (isEmpty) Empty else Maybe(p(get))
 
-  override def toOption: Option[A] = Some(value)
+    @inline
+    def orNull[B >: A](implicit ev: Null <:< B): B = getOrElse(ev(null))
 
-  override def toUndefOr: UndefOr[A] = value
+    @inline
+    def toLeft[B](right: => B): Either[A, B] = if (isEmpty) Right(right) else Left(get)
 
-}
+    @inline
+    def toOption: Option[A] = if (isEmpty) None else Option(get)
 
-/**
-  * Represents the absence of a value (undefined or null)
-  */
-case object Empty extends Maybe[Nothing] {
+    @inline
+    def toRight[B](left: => B): Either[B, A] = if (isEmpty) Left(left) else Right(get)
 
-  override def filter(p: Nothing => Boolean) = Empty
+    @inline
+    def toUndefOr: js.UndefOr[A] = if (isEmpty) js.undefined else get
 
-  override def flatMap[B](p: Nothing => Maybe[B]) = Empty
-
-  override def forall(p: Nothing => Boolean): Boolean = false
-
-  override def foreach[U](p: Nothing => U) {}
-
-  override def get: Nothing = throw new NoSuchElementException("undefined.get")
-
-  override def getOrElse[B >: Nothing](default: => B): B = default
-
-  override def isDefined: Boolean = false
-
-  override def isEmpty: Boolean = true
-
-  override def nonEmpty: Boolean = false
-
-  override def map[B](p: Nothing => B) = Empty
-
-  override def toOption = None
-
-  override def toUndefOr: UndefOr[Nothing] = js.undefined
+  }
 
 }

@@ -1,7 +1,5 @@
 package io.scalajs.dom.html
 
-import io.scalajs.dom.html.pixijs.PIXI._
-
 import scala.scalajs.js
 import scala.scalajs.js.|
 

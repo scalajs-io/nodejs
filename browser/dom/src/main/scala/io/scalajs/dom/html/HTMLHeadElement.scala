@@ -8,7 +8,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-class HTMLHeadElement extends HTMLElement {
+trait HTMLHeadElement extends HTMLElement {
 
   /**
     * Is a DOMString representing the URIs of one or more metadata profiles (white space separated).

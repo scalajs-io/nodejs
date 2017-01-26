@@ -1,7 +1,6 @@
 package io.scalajs.dom.html.p2
 
-import io.scalajs.dom.html.phaser.Phaser
-import io.scalajs.dom.html.phaser.Phaser.Game
+import io.scalajs.dom.html.phaser.{Game, Sprite}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
@@ -105,7 +104,7 @@ object P2 extends js.Object {
     * @param mass   The default mass of this Body (0 = static).
     */
   @js.native
-  class Body(val game: Phaser.Game, val sprite: Phaser.Sprite, val x: Int = js.native, val y: Int = js.native, val mass: Int = js.native) extends js.Object
+  class Body(val game: Game, val sprite: Sprite, val x: Int = js.native, val y: Int = js.native, val mass: Int = js.native) extends js.Object
 
   @js.native
   object Body extends js.Object {
@@ -139,7 +138,7 @@ object P2 extends js.Object {
     * @param settings Settings object.
     */
   @js.native
-  class BodyDebug(val game: Phaser.Game, val body: /*Phaser.Physics.*/ P2.Body, val settings: js.Any) extends js.Object
+  class BodyDebug(val game: Game, val body: /*Phaser.Physics.*/ P2.Body, val settings: js.Any) extends js.Object
 
   // Phaser.Group(game, )
 

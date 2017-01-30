@@ -13,6 +13,10 @@ import scala.scalajs.js.annotation.JSName
 @JSName("Phaser.AudioSprite")
 class AudioSprite(val game: Game, val key: String) extends js.Object {
 
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Properties
+  /////////////////////////////////////////////////////////////////////////////////
+
   /**
     * Is a sound set to autoplay or not?
     */
@@ -32,6 +36,10 @@ class AudioSprite(val game: Game, val key: String) extends js.Object {
     * An object containing the Phaser.Sound objects for the Audio Sprite.
     */
   var sounds: js.Any = js.native
+
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Methods
+  /////////////////////////////////////////////////////////////////////////////////
 
   /**
     * Get a sound with the given name.

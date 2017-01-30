@@ -27,31 +27,50 @@ object Phaser extends js.Object {
   val VIDEO: Int = js.native
   val WEBGL: Int = js.native
 
+  val ANGLE_UP: Int = js.native
+
   /////////////////////////////////////////////////////////////////////////////////
   //      Class References
   /////////////////////////////////////////////////////////////////////////////////
 
+  type Animation = phaser.Animation
+  type AnimationManager = phaser.AnimationManager
   type AudioSprite = phaser.AudioSprite
   type BitmapData = phaser.BitmapData
+  type BitmapText = phaser.BitmapText
+  type Bullet = phaser.Bullet
+  type Button = phaser.Button
   type Cache = phaser.Cache
   type Camera = phaser.Camera
   type Circle = phaser.Circle
   type Create = phaser.Create
   type CursorKeys = phaser.CursorKeys
   type Device = phaser.Device
+  type DeviceButton = phaser.DeviceButton
   type Easing = phaser.Easing
   type Ellipse = phaser.Ellipse
+  type Events = phaser.Events
+  type Frame = phaser.Frame
+  type FrameData = phaser.FrameData
   type Game = phaser.Game
   type GameObjectCreator = phaser.GameObjectCreator
   type GameObjectFactory = phaser.GameObjectFactory
+  type Graphics = phaser.Graphics
   type Group[T] = phaser.Group[T]
+  type Image = phaser.Image
+  type InputHandler = phaser.InputHandler
   type Keyboard = phaser.Keyboard
   type Line = phaser.Line
   type Math = phaser.Math
-  type PhysicsBody = phaser.PhysicsBody
+  type Plugin = phaser.Plugin
+  type PluginManager = phaser.PluginManager
   type Point = phaser.Point
+  type Pointer = phaser.Pointer
+  type PointerMode = phaser.PointerMode
   type Polygon = phaser.Polygon
+  type QuadTree = phaser.QuadTree
   type Rectangle = phaser.Rectangle
+  type RenderTexture = phaser.RenderTexture
   type RoundedRectangle = phaser.RoundedRectangle
   type Signal = phaser.Signal
   type SignalBinding = phaser.SignalBinding
@@ -63,14 +82,17 @@ object Phaser extends js.Object {
   type Texture = phaser.Texture
   type TileSprite = phaser.TileSprite
   type Time = phaser.Time
+  type Timer = phaser.Timer
+  type TimerEvent = phaser.TimerEvent
   type Tween = phaser.Tween
+  type Weapon = phaser.Weapon
   type World = phaser.World
 
   /**
     * Phaser.Component class references
     */
   @js.native
-  @JSName("Phaser.Component")
+  @JSName("Component")
   object Component extends js.Object {
 
     type Angle = phaser.component.Angle
@@ -90,9 +112,42 @@ object Phaser extends js.Object {
     type LifeSpan = phaser.component.LifeSpan
     type LoadTexture = phaser.component.LoadTexture
     type Overlap = phaser.component.Overlap
+    type PhysicsBody = phaser.component.PhysicsBody
     type Reset = phaser.component.Reset
     type ScaleMinMax = phaser.component.ScaleMinMax
     type Smoothed = phaser.component.Smoothed
+
+  }
+
+  /**
+    * Phaser.Utils class references
+    */
+  @js.native
+  @JSName("Physics")
+  object Physics extends js.Object {
+
+    type Arcade = phaser.physics.Arcade
+    type Box2D = phaser.physics.Box2D
+    type Chipmunk = phaser.physics.Chipmunk
+    type Matter = phaser.physics.Matter
+    type Ninja = phaser.physics.Ninja
+    type P2 = phaser.physics.P2
+
+    @js.native
+    @JSName("P2")
+    object P2 extends js.Object {
+
+      type Material = phaser.physics.p2.Material
+
+    }
+
+    @js.native
+    @JSName("Arcade")
+    object Arcade extends js.Object {
+
+      type Body = phaser.physics.arcade.Body
+
+    }
 
   }
 

@@ -4,5 +4,5 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
 
 @js.native
-@JSName("Phaser.Component.Destroy")
+//@JSName("Phaser.Component.Destroy")
 trait Destroy extends js.Object

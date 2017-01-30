@@ -63,6 +63,6 @@ class Circle(var x: Double = 0, var y: Double = 0, var diameter: Double = 0) ext
   /**
     * The const type of this object.
     */
-  def `type`: Double = js.native
+  def `type`: Int = js.native
 
 }

@@ -4,5 +4,5 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
 
 @js.native
-@JSName("Phaser.Component.InWorld")
+//@JSName("Phaser.Component.InWorld")
 trait InWorld extends js.Object

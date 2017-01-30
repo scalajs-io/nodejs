@@ -1,9 +1,11 @@
 package io.scalajs.dom.html.phaser
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSName
 
 @js.native
-trait Tween extends js.Object {
+@JSName("Phaser.Tween")
+class Tween extends js.Object {
 
   def to(properties: js.Dictionary[_],
          duration: Int = 1000,

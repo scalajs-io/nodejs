@@ -1,6 +1,7 @@
 package io.scalajs.dom.html.phaser
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSName
 
 /**
   * Creates a new Line object with a start and an end point.
@@ -10,4 +11,5 @@ import scala.scalajs.js
   * @param y2 The y coordinate of the end of the line.
   */
 @js.native
+@JSName("Phaser.Line")
 class Line(var x1: Double, var y1: Double, var x2: Double, var y2: Double) extends js.Object

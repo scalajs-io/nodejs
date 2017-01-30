@@ -3,6 +3,7 @@ package io.scalajs.dom.html.phaser
 import io.scalajs.dom.html.p2
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSName
 
 @js.native
 trait Physics extends js.Object {
@@ -16,3 +17,7 @@ trait Physics extends js.Object {
   val P2: p2.P2 = js.native
 
 }
+
+@js.native
+@JSName("Phaser.Physics")
+object Physics extends Physics

@@ -1,6 +1,8 @@
 package io.scalajs.dom.html.phaser
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSName
 
 @js.native
-trait BitmapData extends js.Object
+@JSName("Phaser.BitmapData")
+class BitmapData extends js.Object

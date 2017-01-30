@@ -2,7 +2,7 @@ package io.scalajs.dom.html.phaser
 
 /**
   * Phaser: Game State
-  * @version 2.5.0
+  * @version 2.6.2
   * @author lawrence.daniels@gmail.com
   */
 trait GameState {

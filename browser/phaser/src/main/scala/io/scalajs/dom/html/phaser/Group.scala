@@ -3,6 +3,7 @@ package io.scalajs.dom.html.phaser
 import io.scalajs.dom.html.pixijs.{DisplayObject, DisplayObjectContainer}
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSName
 import scala.scalajs.js.|
 
 /**
@@ -25,6 +26,7 @@ import scala.scalajs.js.|
   *                        See #physicsBodyType for values.
   */
 @js.native
+@JSName("Phaser.Group")
 class Group[T](var game: Game,
                var parent: DisplayObject,
                var name: String,

@@ -1,6 +1,7 @@
 package io.scalajs.dom.html.phaser
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSName
 
 /**
   * A Camera is your view into the game world. It has a position and size and renders only those objects within its field of view.
@@ -13,6 +14,7 @@ import scala.scalajs.js
   * @param height The height of the view rectangle
   */
 @js.native
+@JSName("Phaser.Camera")
 class Camera(val game: Game, val id: Int = 0, var x: Double, var y: Double, var width: Double, var height: Double) extends js.Object {
 
   /**

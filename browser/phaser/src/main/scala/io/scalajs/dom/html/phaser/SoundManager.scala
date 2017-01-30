@@ -3,6 +3,7 @@ package io.scalajs.dom.html.phaser
 import io.scalajs.dom.html.audio.AudioContext
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSName
 import scala.scalajs.js.|
 
 /**
@@ -24,6 +25,7 @@ import scala.scalajs.js.|
   * @author lawrence.daniels@gmail.com
   */
 @js.native
+@JSName("Phaser.SoundManager")
 class SoundManager(val game: Game) extends js.Object {
 
   /////////////////////////////////////////////////////////////////////////////////

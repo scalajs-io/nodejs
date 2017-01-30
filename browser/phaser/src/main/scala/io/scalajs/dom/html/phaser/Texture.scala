@@ -1,6 +1,8 @@
 package io.scalajs.dom.html.phaser
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSName
 
 @js.native
-trait Texture extends js.Object
+@JSName("Phaser.Texture")
+class Texture extends js.Object

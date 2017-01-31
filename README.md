@@ -10,7 +10,6 @@ and many other popular npm packages.
 * <a href="#development">Development</a>
     * <a href="#build_requirements">Build Requirements</a>
     * <a href="#building_sdk">Building the SDK</a>
-    * <a href="#running_examples">Building and run examples</a>
     * <a href="#resolvers">Resolvers</a>
     * <a href="#apps_using_means">Developed using ScalaJs.io</a>
     * <a href="#discussions">Discussions</a>
@@ -60,14 +59,6 @@ Currently, there are at least four development use cases for ScalaJs.io:
  $ sbt clean publish-local
 ```
 
-<a name="running_examples"></a>
-#### Building and running examples
-
-```bash
- $ sbt "project examples" clean fastOptJS
- $ node ./examples.js ColorsExample
-```
-
 <a name="resolvers"></a>
 #### Resolvers
 
@@ -106,8 +97,8 @@ Scala.js offers many advantages over native JavaScript:
 * More concise
 * [Go beyond JavaScript ES6, today](http://www.scala-js.org/)
 
-Consider the following example in JavaScript. Here we have a nested collection of callbacks in order to gather the
-information that we display at the end.
+Consider the following example in JavaScript. Here we have a nested collection of callbacks (read: pyramid of doom) 
+in order to gather the information that we display at the end.
 
 ##### JavaScript and Node.js
 

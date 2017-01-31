@@ -1,8 +1,8 @@
 ScalaJs.io
 ==========
-This is a complete Scala.js facade for Node.js, io.js and npm; which means you can development full-blown Node.js/io.js 
+This is a complete Scala.js facade for Node.js, io.js and npm; which means you can develop full-blown Node.js/io.js 
 applications using popular JavaScript software stacks including the MEAN Stack (MongoDB, Express, Angular, Node)
-and others.
+and many other popular npm packages.
  
 ## Table of Contents
 

@@ -1,6 +1,6 @@
 package io.scalajs.dom.html.phaser
 
-import io.scalajs.{JsNumber, RawOptions}
+import io.scalajs.RawOptions
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
@@ -37,7 +37,7 @@ class GameObjectCreator(val game: Game) extends js.Object {
     *                when running under WebAudio.
     * @return The newly created text object.
     */
-  def audio(key: String, volume: JsNumber = js.native, loop: Boolean = js.native, connect: Boolean = js.native): Phaser.Sound = js.native
+  def audio(key: String, volume: Double = js.native, loop: Boolean = js.native, connect: Boolean = js.native): Phaser.Sound = js.native
 
   /**
     * Creates a new AudioSprite object.
@@ -47,13 +47,44 @@ class GameObjectCreator(val game: Game) extends js.Object {
   def audioSprite(key: String): Phaser.AudioSprite = js.native
 
   /**
+    * Create a BitmpaData object.
+    * A BitmapData object can be manipulated and drawn to like a traditional Canvas object and used to texture Sprites.
+    * @param width      The width of the BitmapData in pixels.
+    * @param height     The height of the BitmapData in pixels.
+    * @param key        Asset key for the BitmapData when stored in the Cache (see addToCache parameter).
+    * @param addToCache Should this BitmapData be added to the Game.Cache? If so you can retrieve it with Cache.getBitmapData(key)
+    * @return The newly created [[Phaser.BitmapData]] object.
+    */
+  def bitmapData(width: Double = js.native, height: Double = js.native, key: String = js.native, addToCache: Boolean = js.native): Phaser.BitmapData = js.native
+
+  /**
+    * Create a new BitmapText object.
+    * BitmapText objects work by taking a texture file and an XML file that describes the font structure.
+    * It then generates a new Sprite object for each letter of the text, proportionally spaced out and aligned to
+    * match the font structure.
+    *
+    * BitmapText objects are less flexible than Text objects, in that they have less features such as shadows, fills and the ability
+    * to use Web Fonts. However you trade this flexibility for pure rendering speed. You can also create visually compelling BitmapTexts by
+    * processing the font texture in an image editor first, applying fills and any other effects required.
+    * To create multi-line text insert \r, \n or \r\n escape codes into the text string.
+    * @param x     X-coordinate to display the BitmapText object at.
+    * @param y     Y-coordinate to display the BitmapText object at.
+    * @param font  The key of the BitmapText as stored in Phaser.Cache.
+    * @param text  The text that will be rendered. This can also be set later via BitmapText.text.
+    * @param size  The size the font will be rendered at in pixels.
+    * @param align The alignment of multi-line text. Has no effect if there is only one line of text.
+    * @return The newly created bitmapText object.
+    */
+  def bitmapText(x: Double, y: Double, font: String, text: String, size: Double, align: String): Phaser.BitmapData = js.native
+
+  /**
     * Creates a new Text object.
     * @param x     X-position of the new text object.
     * @param y     Y-position of the new text object.
     * @param text  The actual text that will be written.
     * @param style The style object containing style attributes like font, font size , etc.
-    * @return The newly created text object.
+    * @return The newly created [[Phaser.BitmapText text object]].
     */
-  def text(x: JsNumber, y: JsNumber, text: String, style: RawOptions): Phaser.Text = js.native
+  def text(x: Double, y: Double, text: String, style: RawOptions): Phaser.Text = js.native
 
 }

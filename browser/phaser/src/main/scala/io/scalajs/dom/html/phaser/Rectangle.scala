@@ -108,7 +108,7 @@ class Rectangle(var x: Int, var y: Int, var width: Int, var height: Int) extends
   /**
     * The const type of this object.
     */
-  def `type`: Double = js.native
+  def `type`: Int = js.native
 
   /**
     * The volume of the Rectangle derived from width * height.

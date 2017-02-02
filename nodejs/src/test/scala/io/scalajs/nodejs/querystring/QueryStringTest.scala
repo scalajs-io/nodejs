@@ -19,7 +19,8 @@ class QueryStringTest extends FunSpec {
     it("should escape(...)") {
       val result = QueryString.escape("""https://www.google.com/#q=node?key=1234""")
       info(s"result: ${JSON.stringify(result)}")
-      assert(QueryString.escape("""https://www.google.com/#q=node?key=1234""") == "https%3A%2F%2Fwww.google.com%2F%23q%3Dnode%3Fkey%3D1234")
+      assert(QueryString
+        .escape("""https://www.google.com/#q=node?key=1234""") == "https%3A%2F%2Fwww.google.com%2F%23q%3Dnode%3Fkey%3D1234")
     }
 
     it("should parse(...)") {
@@ -37,7 +38,8 @@ class QueryStringTest extends FunSpec {
     it("should unescape(...)") {
       val result = QueryString.unescape("https%3A%2F%2Fwww.google.com%2F%23q%3Dnode%3Fkey%3D1234")
       info(s"result: ${JSON.stringify(result)}")
-      assert(QueryString.unescape("https%3A%2F%2Fwww.google.com%2F%23q%3Dnode%3Fkey%3D1234") == """https://www.google.com/#q=node?key=1234""")
+      assert(QueryString
+        .unescape("https%3A%2F%2Fwww.google.com%2F%23q%3Dnode%3Fkey%3D1234") == """https://www.google.com/#q=node?key=1234""")
     }
 
   }

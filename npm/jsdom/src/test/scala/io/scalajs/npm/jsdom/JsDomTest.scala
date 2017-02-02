@@ -16,7 +16,7 @@ class JsDomTest extends FunSpec {
   describe("JsDom") {
 
     it("should parse an HTML snippet into a DOM instance") {
-      val doc = JsDom.jsdom("""<p id="p1"><a class="the-link" href="https://github.com/tmpvar/jsdom">jsdom!</a></p>""")
+      val doc  = JsDom.jsdom("""<p id="p1"><a class="the-link" href="https://github.com/tmpvar/jsdom">jsdom!</a></p>""")
       val elem = doc.getElementsByClassName("the-link").headOption.orNull
       assert(elem != null)
 
@@ -34,7 +34,8 @@ class JsDomTest extends FunSpec {
 
           import window.$
           assert($("a").nonEmpty)
-        })
+        }
+      )
     }
 
     it("should initialize via raw HTML") {
@@ -47,36 +48,40 @@ class JsDomTest extends FunSpec {
 
           import window.$
           assert($("a.the-link").text() == "jsdom!")
-        })
+        }
+      )
     }
 
     it("should initialize via a configuration object") {
-      JsDom.env(new EnvironmentOptions(
-        url = "http://news.ycombinator.com/",
-        scripts = js.Array("http://code.jquery.com/jquery.js"),
-        done = (err, window) => {
-          if (err != null) console.error(err)
-          assert(err == null)
+      JsDom.env(
+        new EnvironmentOptions(
+          url = "http://news.ycombinator.com/",
+          scripts = js.Array("http://code.jquery.com/jquery.js"),
+          done = (err, window) => {
+            if (err != null) console.error(err)
+            assert(err == null)
 
-          import window.$
-          assert($("td.title:not(:last) a").nonEmpty)
-        }
-      ))
+            import window.$
+            assert($("td.title:not(:last) a").nonEmpty)
+          }
+        ))
     }
 
     it("should initialize via a raw JavaScript source") {
       val jquery = Fs.readFileSync("./node_modules/jquery/dist/jquery.min.js", "utf-8")
 
-      JsDom.env(new EnvironmentOptions(
-        url = "http://news.ycombinator.com/",
-        src = js.Array(jquery),
-        done = (err, window) => {
-          if (err != null) console.error(err)
-          assert(err == null)
+      JsDom.env(
+        new EnvironmentOptions(
+          url = "http://news.ycombinator.com/",
+          src = js.Array(jquery),
+          done = (err, window) => {
+            if (err != null) console.error(err)
+            assert(err == null)
 
-          import window.$
-          assert($("td.title:not(:last) a").nonEmpty)
-        }))
+            import window.$
+            assert($("td.title:not(:last) a").nonEmpty)
+          }
+        ))
     }
 
   }

@@ -12,9 +12,7 @@ import scala.scalajs.js.annotation.JSImport
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait KafkaNode extends IEventEmitter {
-
-}
+trait KafkaNode extends IEventEmitter {}
 
 /**
   * KafkaNode Singleton

@@ -19,4 +19,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 class EventTargetOptions(val capture: js.UndefOr[Boolean] = js.undefined,
                          val once: js.UndefOr[Boolean] = js.undefined,
                          val passive: js.UndefOr[Boolean] = js.undefined,
-                         val mozSystemGroup: js.UndefOr[Boolean] = js.undefined) extends js.Object
+                         val mozSystemGroup: js.UndefOr[Boolean] = js.undefined)
+    extends js.Object

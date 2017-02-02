@@ -8,4 +8,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @example {{{ {"uid":501,"gid":20,"username":"ldaniels","homedir":"/Users/ldaniels","shell":"/bin/bash"} }}}
   */
 @ScalaJSDefined
-class UserInfoObject(val uid: Int, val gid: Int, val username: String, val homedir: String, val shell: String) extends js.Object
+class UserInfoObject(val uid: Int, val gid: Int, val username: String, val homedir: String, val shell: String)
+    extends js.Object

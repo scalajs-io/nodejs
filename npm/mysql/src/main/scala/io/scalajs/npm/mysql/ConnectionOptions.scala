@@ -50,4 +50,5 @@ class ConnectionOptions(var host: js.UndefOr[String] = js.undefined,
                         var trace: js.UndefOr[Boolean] = js.undefined,
                         var multipleStatements: js.UndefOr[Boolean] = js.undefined,
                         var flags: js.UndefOr[String] = js.undefined,
-                        var ssl: js.UndefOr[SSLOptions] = js.undefined) extends js.Object
+                        var ssl: js.UndefOr[SSLOptions] = js.undefined)
+    extends js.Object

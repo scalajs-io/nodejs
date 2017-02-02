@@ -30,7 +30,7 @@ object FileUploadPromise {
     * @author lawrence.daniels@gmail.com
     */
   @ScalaJSDefined
-  class ProgressEvent(var loaded: js.UndefOr[Double] = js.undefined,
-                      var total: js.UndefOr[Double] = js.undefined) extends js.Object
+  class ProgressEvent(var loaded: js.UndefOr[Double] = js.undefined, var total: js.UndefOr[Double] = js.undefined)
+      extends js.Object
 
 }

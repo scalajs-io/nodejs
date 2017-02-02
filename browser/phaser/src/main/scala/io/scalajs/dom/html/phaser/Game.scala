@@ -37,7 +37,7 @@ class Game(val width: JsNumber | String = js.native,
            val transparent: Boolean = js.native,
            val antialias: Boolean = js.native,
            val physicsConfig: RawOptions = js.native)
-  extends js.Object {
+    extends js.Object {
 
   /**
     * Reference to the Phaser.GameObjectFactory.

@@ -14,4 +14,5 @@ class SocketOptions(var reconnection: js.UndefOr[Boolean] = js.undefined,
                     var reconnectionDelayMax: js.UndefOr[Int] = js.undefined,
                     var randomizationFactor: js.UndefOr[Double] = js.undefined,
                     var timeout: js.UndefOr[Int] = js.undefined,
-                    var autoConnect: js.UndefOr[Boolean] = js.undefined) extends js.Object
+                    var autoConnect: js.UndefOr[Boolean] = js.undefined)
+    extends js.Object

@@ -32,11 +32,24 @@ package object multer {
                     onFilesLimit: js.UndefOr[js.Function] = js.undefined,
                     onFieldsLimit: js.UndefOr[js.Function] = js.undefined,
                     onPartsLimit: js.UndefOr[js.Function] = js.undefined): MulterInstance = {
-      multer.apply(new MulterOptions(
-        dest, limits, includeEmptyFields, inMemory, rename,
-        onFileUploadStart, onFileUploadData, onFileUploadComplete, onParseStart, onParseEnd, onError,
-        onFileSizeLimit, onFilesLimit, onFieldsLimit, onPartsLimit
-      ))
+      multer.apply(
+        new MulterOptions(
+          dest,
+          limits,
+          includeEmptyFields,
+          inMemory,
+          rename,
+          onFileUploadStart,
+          onFileUploadData,
+          onFileUploadComplete,
+          onParseStart,
+          onParseEnd,
+          onError,
+          onFileSizeLimit,
+          onFilesLimit,
+          onFieldsLimit,
+          onPartsLimit
+        ))
     }
 
   }

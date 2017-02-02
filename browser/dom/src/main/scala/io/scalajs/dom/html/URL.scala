@@ -108,7 +108,6 @@ class URL(urlString: String, baseURLString: String) extends js.Object {
   //      Methods
   /////////////////////////////////////////////////////////////////////////////////
 
-
 }
 
 @js.native

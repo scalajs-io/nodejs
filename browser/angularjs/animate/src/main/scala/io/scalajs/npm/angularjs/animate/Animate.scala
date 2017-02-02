@@ -76,7 +76,10 @@ trait Animate extends js.Object {
     * @param options an optional collection of options/styles that will be applied to the element
     * @return the animation [[js.Promise callback promise]]
     */
-  def enter(element: Element, parent: Element, after: Element = js.native, options: js.Object = js.native): js.Promise[js.Any] = js.native
+  def enter(element: Element,
+            parent: Element,
+            after: Element = js.native,
+            options: js.Object = js.native): js.Promise[js.Any] = js.native
 
   /**
     * Inserts (moves) the element into its new position in the DOM either after the after element (if provided)
@@ -88,7 +91,8 @@ trait Animate extends js.Object {
     * @param options an optional collection of options/styles that will be applied to the element
     * @return the animation [[js.Promise[js.Any] callback promise]]
     */
-  def move(element: Element, parent: Element, after: Element, options: js.Object = js.native): js.Promise[js.Any] = js.native
+  def move(element: Element, parent: Element, after: Element, options: js.Object = js.native): js.Promise[js.Any] =
+    js.native
 
   /**
     * Triggers an animation and then removes the element from the DOM. When the function is called a
@@ -138,7 +142,8 @@ trait Animate extends js.Object {
     * @param options an optional collection of options/styles that will be applied to the element
     * @return the animation [[js.Promise[js.Any] callback promise]]
     */
-  def setClass(element: Element, add: String, remove: String, options: js.Object = js.native): js.Promise[js.Any] = js.native
+  def setClass(element: Element, add: String, remove: String, options: js.Object = js.native): js.Promise[js.Any] =
+    js.native
 
   /**
     * Performs an inline animation on the element which applies the provided to and from CSS styles to the element.
@@ -156,6 +161,10 @@ trait Animate extends js.Object {
     * @param options   an optional collection of options/styles that will be applied to the element
     * @return the animation [[js.Promise[js.Any] callback promise]]
     */
-  def animate(element: Element, from: js.Object, to: js.Object, className: String, options: js.Object = js.native): js.Promise[js.Any] = js.native
+  def animate(element: Element,
+              from: js.Object,
+              to: js.Object,
+              className: String,
+              options: js.Object = js.native): js.Promise[js.Any] = js.native
 
 }

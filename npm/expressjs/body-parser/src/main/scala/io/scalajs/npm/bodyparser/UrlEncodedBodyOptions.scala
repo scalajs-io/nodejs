@@ -33,4 +33,5 @@ class UrlEncodedBodyOptions(var extended: js.UndefOr[Boolean] = js.undefined,
                             var limit: js.UndefOr[Int] = js.undefined,
                             var parameterLimit: js.UndefOr[Int] = js.undefined,
                             var `type`: js.UndefOr[String] = js.undefined,
-                            var verify: js.UndefOr[String] = js.undefined) extends js.Object
+                            var verify: js.UndefOr[String] = js.undefined)
+    extends js.Object

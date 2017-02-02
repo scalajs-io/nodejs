@@ -14,4 +14,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 @ScalaJSDefined
 class DownloadStreamByNameOptions(var revision: js.UndefOr[Int] = js.undefined,
                                   var start: js.UndefOr[Int] = js.undefined,
-                                  var end: js.UndefOr[Int] = js.undefined) extends js.Object
+                                  var end: js.UndefOr[Int] = js.undefined)
+    extends js.Object

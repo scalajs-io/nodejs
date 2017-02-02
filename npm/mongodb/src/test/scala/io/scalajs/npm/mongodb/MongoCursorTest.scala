@@ -52,7 +52,6 @@ class MongoCursorTest extends FunSpec {
 object MongoCursorTest {
 
   @ScalaJSDefined
-  class Sample(var _id: js.UndefOr[ObjectID] = js.undefined,
-               var a: js.UndefOr[Int] = js.undefined) extends js.Object
+  class Sample(var _id: js.UndefOr[ObjectID] = js.undefined, var a: js.UndefOr[Int] = js.undefined) extends js.Object
 
 }

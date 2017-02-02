@@ -8,6 +8,4 @@ import scala.scalajs.js
   * @see https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet
   */
 @js.native
-class CSSStyleSheet extends js.Object {
-
-}
+class CSSStyleSheet extends js.Object {}

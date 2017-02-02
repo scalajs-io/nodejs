@@ -14,7 +14,7 @@ class CheerioTest extends FunSpec {
 
     it("supports manipulating HTML") {
       val input = """<h2 class="title">Hello world</h2>"""
-      val $ = Cheerio.load(input)
+      val $     = Cheerio.load(input)
 
       $("h2.title").text("Hello there!")
       $("h2").addClass("welcome")
@@ -26,35 +26,35 @@ class CheerioTest extends FunSpec {
     }
 
     it("supports text extraction") {
-      val $ = Cheerio.load("""<ul><li class="orange">Hello world</li></ul>""")
+      val $    = Cheerio.load("""<ul><li class="orange">Hello world</li></ul>""")
       val text = $("li[class=orange]").html()
       info(s"text: $text")
       Assert.equal(text, "Hello world")
     }
 
     it("supports reading component state") {
-      val $ = Cheerio.load("""<input name="agree" type="checkbox">""")
+      val $     = Cheerio.load("""<input name="agree" type="checkbox">""")
       val value = $("input[type='checkbox']").prop("checked")
       info(s"isChecked: $value")
       Assert.equal(value, false)
     }
 
     it("supports updating component state") {
-      val $ = Cheerio.load("""<input name="agree" type="checkbox">""")
+      val $     = Cheerio.load("""<input name="agree" type="checkbox">""")
       val value = $("input[type='checkbox']").prop("checked", true).`val`()
       info(s"setChecked: $value")
       Assert.equal(value, "on")
     }
 
     it("supports serialization") {
-      val $ = Cheerio.load("""<input name="agree" type="checkbox">""")
+      val $     = Cheerio.load("""<input name="agree" type="checkbox">""")
       val value = $("""<form><input name="foo" value="bar" /></form>""").serializeArray()
       info(s"value: ${JSON.stringify(value)}")
       Assert(value, """[{"name":"foo","value":"bar"}]""")
     }
 
     it("supports $.root()") {
-      val $ = Cheerio.load("""<input name="agree" type="checkbox">""")
+      val $     = Cheerio.load("""<input name="agree" type="checkbox">""")
       val value = $.root().append("""<ul id="vegetables"></ul>""").html()
       info(s"value: $value")
     }

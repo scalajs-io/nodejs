@@ -26,7 +26,8 @@ class LineChart(val id: js.UndefOr[String] = js.undefined,
                 val subtitle: js.UndefOr[Title] = js.undefined,
                 val useInteractiveGuideline: js.UndefOr[Boolean] = js.undefined,
                 val xAxis: js.UndefOr[AxisLabel] = js.undefined,
-                val yAxis: js.UndefOr[AxisLabel] = js.undefined) extends Chart {
+                val yAxis: js.UndefOr[AxisLabel] = js.undefined)
+    extends Chart {
 
   override val `type`: String = "lineChart"
 

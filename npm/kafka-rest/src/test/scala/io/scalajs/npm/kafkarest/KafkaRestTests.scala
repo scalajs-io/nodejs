@@ -55,21 +55,26 @@ class KafkaRestTests extends FunSpec {
 
   private def defineAvroSchemas = {
     val userIdSchema = new AvroSchema("int")
-    val userInfoSchema = new AvroSchema(new Schema(
-      name = "UserInfo",
-      `type` = "record",
-      fields = js.Array(
-        new Schema.Field(name = "id", `type` = "int"),
-        new Schema.Field(name = "name", `type` = "string")
-      )))
+    val userInfoSchema = new AvroSchema(
+      new Schema(name = "UserInfo",
+                 `type` = "record",
+                 fields = js.Array(
+                   new Schema.Field(name = "id", `type` = "int"),
+                   new Schema.Field(name = "name", `type` = "string")
+                 )))
     (userIdSchema, userInfoSchema)
   }
 
   private def generateData = {
     Seq(
-      "Halle Barry", "Idris Elba", "Michael Fastbender", "Kevin Hart", "John Travolta"
-    ).zipWithIndex map { case (name, id) =>
-      new UserInfo(id + 1, name)
+      "Halle Barry",
+      "Idris Elba",
+      "Michael Fastbender",
+      "Kevin Hart",
+      "John Travolta"
+    ).zipWithIndex map {
+      case (name, id) =>
+        new UserInfo(id + 1, name)
     } toJSArray
   }
 

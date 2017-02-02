@@ -14,4 +14,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   */
 @ScalaJSDefined
 class QueryDecodeOptions(val decodeURIComponent: js.UndefOr[js.Function] = js.undefined,
-                         val maxKeys: js.UndefOr[Int] = js.undefined) extends js.Object
+                         val maxKeys: js.UndefOr[Int] = js.undefined)
+    extends js.Object

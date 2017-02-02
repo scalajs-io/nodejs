@@ -20,4 +20,5 @@ class ModalOptions(var template: js.UndefOr[String] = js.undefined,
                    var backdrop: js.UndefOr[Boolean] = js.undefined,
                    var backdropClass: js.UndefOr[String] = js.undefined,
                    var keyboard: js.UndefOr[Boolean] = js.undefined,
-                   var resolve: js.Any = js.undefined) extends js.Object
+                   var resolve: js.Any = js.undefined)
+    extends js.Object

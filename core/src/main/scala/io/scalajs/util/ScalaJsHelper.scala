@@ -124,7 +124,8 @@ object ScalaJsHelper {
   @inline
   def futureCallbackE2[E <: js.Any, A, B](f: js.Function3[E, A, B, Any] => Unit): Promise[(A, B)] = {
     val task = Promise[(A, B)]()
-    f((err: E, a: A, b: B) => if (!isDefined(err)) task.success(a -> b) else task.failure(wrapJavaScriptException(err)))
+    f((err: E, a: A, b: B) =>
+      if (!isDefined(err)) task.success(a -> b) else task.failure(wrapJavaScriptException(err)))
     task
   }
 
@@ -136,7 +137,8 @@ object ScalaJsHelper {
   @inline
   def futureCallbackE3[E <: js.Any, A, B, C](f: js.Function4[E, A, B, C, Any] => Unit): Promise[(A, B, C)] = {
     val task = Promise[(A, B, C)]()
-    f((err: E, a: A, b: B, c: C) => if (!isDefined(err)) task.success((a, b, c)) else task.failure(wrapJavaScriptException(err)))
+    f((err: E, a: A, b: B, c: C) =>
+      if (!isDefined(err)) task.success((a, b, c)) else task.failure(wrapJavaScriptException(err)))
     task
   }
 
@@ -148,7 +150,8 @@ object ScalaJsHelper {
   @inline
   def futureCallbackE4[E <: js.Any, A, B, C, D](f: js.Function5[E, A, B, C, D, Any] => Unit): Promise[(A, B, C, D)] = {
     val task = Promise[(A, B, C, D)]()
-    f((err: E, a: A, b: B, c: C, d: D) => if (!isDefined(err)) task.success((a, b, c, d)) else task.failure(wrapJavaScriptException(err)))
+    f((err: E, a: A, b: B, c: C, d: D) =>
+      if (!isDefined(err)) task.success((a, b, c, d)) else task.failure(wrapJavaScriptException(err)))
     task
   }
 
@@ -180,7 +183,8 @@ object ScalaJsHelper {
 
     @inline def dynamic: js.Dynamic = obj.asInstanceOf[js.Dynamic]
 
-    @inline def New[T <: js.Any](args: js.Any*): T = js.Dynamic.newInstance(obj.asInstanceOf[js.Dynamic])(args: _*).asInstanceOf[T]
+    @inline def New[T <: js.Any](args: js.Any*): T =
+      js.Dynamic.newInstance(obj.asInstanceOf[js.Dynamic])(args: _*).asInstanceOf[T]
 
   }
 
@@ -191,7 +195,7 @@ object ScalaJsHelper {
   implicit class JsArrayExtensions[A](val array: js.Array[A]) extends AnyVal {
 
     @inline def indexWhereOpt(f: A => Boolean): Option[Int] = array.indexWhere(f) match {
-      case -1 => None
+      case -1    => None
       case index => Some(index)
     }
 

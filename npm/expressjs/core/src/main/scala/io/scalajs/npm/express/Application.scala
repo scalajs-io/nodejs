@@ -204,12 +204,14 @@ object Application {
     /**
       * Binds and listens for connections on the specified host and port.
       */
-    def listenFuture(port: Int | String, hostname: String) = futureCallbackE1[Error, Server](app.listen(port, hostname, _))
+    def listenFuture(port: Int | String, hostname: String) =
+      futureCallbackE1[Error, Server](app.listen(port, hostname, _))
 
     /**
       * Binds and listens for connections on the specified host and port.
       */
-    def listenFuture(port: Int | String, hostname: String, backlog: Int) = futureCallbackE1[Error, Server](app.listen(port, hostname, backlog, _))
+    def listenFuture(port: Int | String, hostname: String, backlog: Int) =
+      futureCallbackE1[Error, Server](app.listen(port, hostname, backlog, _))
 
   }
 

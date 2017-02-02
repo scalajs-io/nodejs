@@ -30,5 +30,5 @@ class MulterOptions(var dest: js.UndefOr[String] = js.undefined,
                     var onFileSizeLimit: js.UndefOr[js.Function] = js.undefined,
                     var onFilesLimit: js.UndefOr[js.Function] = js.undefined,
                     var onFieldsLimit: js.UndefOr[js.Function] = js.undefined,
-                    var onPartsLimit: js.UndefOr[js.Function] = js.undefined) extends js.Object
-
+                    var onPartsLimit: js.UndefOr[js.Function] = js.undefined)
+    extends js.Object

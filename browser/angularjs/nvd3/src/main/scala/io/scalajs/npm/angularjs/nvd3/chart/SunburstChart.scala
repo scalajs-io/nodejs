@@ -22,7 +22,8 @@ class SunburstChart(val id: js.UndefOr[String] = js.undefined,
                     val labelSunbeamLayout: js.UndefOr[Boolean] = js.undefined,
                     val showLegend: js.UndefOr[Boolean] = js.undefined,
                     val showLabels: js.UndefOr[Boolean] = js.undefined,
-                    val legend: js.UndefOr[Legend] = js.undefined) extends Chart {
+                    val legend: js.UndefOr[Legend] = js.undefined)
+    extends Chart {
 
   override def `type` = "sunburstChart"
 

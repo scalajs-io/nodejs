@@ -23,7 +23,7 @@ class EventEmitterTest extends FunSpec {
 
     it("should handle one-time events") {
       val myEmitter = new EventEmitter()
-      var n = 0
+      var n         = 0
       myEmitter.once("event", () => {
         n += 1
         info(s"n = $n")
@@ -36,7 +36,7 @@ class EventEmitterTest extends FunSpec {
 
     it("should handle repeated events") {
       val myEmitter = new EventEmitter()
-      var n = 0
+      var n         = 0
       myEmitter.on("event", () => {
         n += 1
         info(s"n = $n")

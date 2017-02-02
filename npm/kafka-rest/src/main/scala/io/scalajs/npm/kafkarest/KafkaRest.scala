@@ -25,5 +25,4 @@ class KafkaRest(options: KafkaRestOptions) extends js.Object {
 
   def topics: TopicCollection = js.native
 
-
 }

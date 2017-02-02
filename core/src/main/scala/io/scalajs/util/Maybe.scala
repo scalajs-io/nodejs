@@ -134,7 +134,7 @@ object Maybe extends MaybeLowerPriorityImplicits {
     @inline
     def get: A = aValue match {
       case Full(value) => value
-      case _ => throw new IllegalArgumentException("value is null or undefined")
+      case _           => throw new IllegalArgumentException("value is null or undefined")
     }
 
     @inline

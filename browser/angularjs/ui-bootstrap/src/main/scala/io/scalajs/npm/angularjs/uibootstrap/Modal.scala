@@ -22,5 +22,3 @@ trait Modal extends js.Object {
   def open[T](options: ModalOptions | AngularOptions): ModalInstance[T] = js.native
 
 }
-
-

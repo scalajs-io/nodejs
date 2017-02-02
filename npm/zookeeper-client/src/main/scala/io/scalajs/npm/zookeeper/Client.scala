@@ -207,7 +207,8 @@ object Client {
       * @see [[Client.getChildren()]]
       */
     @inline
-    def getChildrenFuture(path: String, watcher: Watcher) = futureCallbackE1[js.Error, js.Array[String]](client.getChildren(path, watcher, _))
+    def getChildrenFuture(path: String, watcher: Watcher) =
+      futureCallbackE1[js.Error, js.Array[String]](client.getChildren(path, watcher, _))
 
     /**
       * @see [[Client.getChildren()]]
@@ -219,7 +220,8 @@ object Client {
       * @see [[Client.getData()]]
       */
     @inline
-    def getDataFuture[T](path: String, watcher: Watcher) = futureCallbackE1[js.Error, js.Array[T]](client.getChildren(path, watcher, _))
+    def getDataFuture[T](path: String, watcher: Watcher) =
+      futureCallbackE1[js.Error, js.Array[T]](client.getChildren(path, watcher, _))
 
     /**
       * @see [[Client.getData()]]

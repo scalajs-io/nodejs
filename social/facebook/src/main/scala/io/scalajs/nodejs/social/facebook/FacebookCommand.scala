@@ -9,11 +9,11 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   */
 @ScalaJSDefined
 class FacebookCommand extends js.Object {
-  var app_id: js.UndefOr[String] = _
+  var app_id: js.UndefOr[String]  = _
   var caption: js.UndefOr[String] = _
-  var method: js.UndefOr[String] = _
-  var link: js.UndefOr[String] = _
-  var href: js.UndefOr[String] = _
+  var method: js.UndefOr[String]  = _
+  var link: js.UndefOr[String]    = _
+  var href: js.UndefOr[String]    = _
 }
 
 /**

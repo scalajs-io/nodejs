@@ -23,17 +23,19 @@ class TingoDBTest extends FunSpec {
       console.log("db => ", db)
 
       val collection = db.collection("batch_document_insert_collection_safe")
-      collection.insertMany(js.Array(
-        new TestDoc(hello = "world_safe1"),
-        new TestDoc(hello = "world_safe2")), new WriteOptions(w = 1), (err, result) => {
-        assert(err == null, err)
-        console.log("result => ", result)
-
-        collection.findOne(new TestDoc(hello = "world_safe2"), (err: String, item: TestDoc) => {
+      collection.insertMany(
+        js.Array(new TestDoc(hello = "world_safe1"), new TestDoc(hello = "world_safe2")),
+        new WriteOptions(w = 1),
+        (err, result) => {
           assert(err == null, err)
-          assert("world_safe2" == item.hello)
-        })
-      })
+          console.log("result => ", result)
+
+          collection.findOne(new TestDoc(hello = "world_safe2"), (err: String, item: TestDoc) => {
+            assert(err == null, err)
+            assert("world_safe2" == item.hello)
+          })
+        }
+      )
     }
 
   }

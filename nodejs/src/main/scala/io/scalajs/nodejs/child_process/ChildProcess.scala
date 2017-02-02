@@ -34,7 +34,8 @@ trait ChildProcess extends js.Object {
     * @return the [[ChildProcess]]
     * @example {{{ child_process.exec(command[, options][, callback]) }}}
     */
-  def exec(command: String, callback: js.Function3[Error, Buffer | String, Buffer | String, Any]): this.type = js.native
+  def exec(command: String, callback: js.Function3[Error, Buffer | String, Buffer | String, Any]): this.type =
+    js.native
 
   /**
     * Spawns a shell then executes the command within that shell, buffering any generated output.
@@ -44,8 +45,9 @@ trait ChildProcess extends js.Object {
     * @return the [[ChildProcess]]
     * @example {{{ child_process.exec(command[, options][, callback]) }}}
     */
-  def exec(command: String, options: ExecOptions | RawOptions, callback: js.Function3[Error, Buffer | String, Buffer | String, Any]): this.type = js.native
-
+  def exec(command: String,
+           options: ExecOptions | RawOptions,
+           callback: js.Function3[Error, Buffer | String, Buffer | String, Any]): this.type = js.native
 
   /**
     * The child_process.fork() method is a special case of child_process.spawn() used specifically to spawn new
@@ -72,7 +74,9 @@ trait ChildProcess extends js.Object {
     * @return the [[ChildProcess]]
     * @example {{{ child_process.fork(modulePath[, args][, options]) }}}
     */
-  def fork(modulePath: String, args: js.Array[String] = js.native, options: ForkOptions | RawOptions = js.native): this.type = js.native
+  def fork(modulePath: String,
+           args: js.Array[String] = js.native,
+           options: ForkOptions | RawOptions = js.native): this.type = js.native
 
   /**
     * The child_process.spawn() method spawns a new process using the given command, with command line arguments
@@ -83,7 +87,9 @@ trait ChildProcess extends js.Object {
     * @return the [[ChildProcess]]
     * @example {{{ child_process.spawn(command[, args][, options]) }}}
     */
-  def spawn(command: String, args: js.Array[String] = js.native, options: SpawnOptions | RawOptions = js.native): this.type = js.native
+  def spawn(command: String,
+            args: js.Array[String] = js.native,
+            options: SpawnOptions | RawOptions = js.native): this.type = js.native
 
 }
 

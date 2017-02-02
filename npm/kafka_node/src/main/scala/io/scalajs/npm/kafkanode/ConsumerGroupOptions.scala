@@ -35,4 +35,5 @@ class ConsumerGroupOptions(var batch: js.UndefOr[String] = js.undefined,
                            var protocol: js.UndefOr[js.Array[String]] = js.undefined,
                            var sessionTimeout: js.UndefOr[Int] = js.undefined,
                            var ssl: js.UndefOr[Boolean] = js.undefined,
-                           var zk: js.UndefOr[RawOptions] = js.undefined) extends js.Object
+                           var zk: js.UndefOr[RawOptions] = js.undefined)
+    extends js.Object

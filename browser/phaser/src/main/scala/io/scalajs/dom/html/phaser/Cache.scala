@@ -30,16 +30,14 @@ import scala.scalajs.js.annotation.JSName
   */
 @js.native
 @JSName("Phaser.Cache")
-class Cache(val game: Game) extends js.Object {
-
-}
+class Cache(val game: Game) extends js.Object {}
 
 @js.native
 @JSName("Phaser.Cache")
 object Cache extends js.Object {
-  val BINARY: Int = js.native
+  val BINARY: Int     = js.native
   val BITMAPDATA: Int = js.native
   val BITMAPFONT: Int = js.native
-  val CANVAS: Int = js.native
+  val CANVAS: Int     = js.native
 
 }

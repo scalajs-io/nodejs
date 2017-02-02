@@ -10,4 +10,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 @ScalaJSDefined
 class KeyedMessage(var key: js.Any = js.undefined,
                    var value: js.Any = js.undefined,
-                   var partition: js.UndefOr[Int] = js.undefined) extends js.Object
+                   var partition: js.UndefOr[Int] = js.undefined)
+    extends js.Object

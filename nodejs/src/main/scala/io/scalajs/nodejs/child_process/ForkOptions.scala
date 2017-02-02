@@ -30,4 +30,5 @@ class ForkOptions(val cwd: js.UndefOr[String] = js.undefined,
                   val silent: js.UndefOr[Boolean] = js.undefined,
                   val stdio: js.UndefOr[Array[String]] = js.undefined,
                   val uid: js.UndefOr[JsNumber] = js.undefined,
-                  val gid: js.UndefOr[JsNumber] = js.undefined) extends js.Object
+                  val gid: js.UndefOr[JsNumber] = js.undefined)
+    extends js.Object

@@ -18,7 +18,7 @@ class ZlibTest extends FunSpec {
       val original = Buffer.from("This is a compression example")
 
       for {
-        compressed <- Zlib.deflateFuture(original)
+        compressed   <- Zlib.deflateFuture(original)
         uncompressed <- Zlib.unzipFuture(compressed, new CompressionOptions(finishFlush = Zlib.Z_SYNC_FLUSH))
       } {
         info(s"compressed => ${compressed.toString()}")

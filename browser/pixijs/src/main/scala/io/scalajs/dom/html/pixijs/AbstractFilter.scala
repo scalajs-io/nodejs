@@ -13,7 +13,10 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSName("PIXI.AbstractFilter")
-abstract class AbstractFilter(var vertexSrc: String | js.Array[String], var fragmentSrc: String | js.Array[String], var uniforms: js.Object) extends js.Object {
+abstract class AbstractFilter(var vertexSrc: String | js.Array[String],
+                              var fragmentSrc: String | js.Array[String],
+                              var uniforms: js.Object)
+    extends js.Object {
 
   def this() = this(vertexSrc = js.native, fragmentSrc = js.native, uniforms = js.native)
 

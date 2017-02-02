@@ -299,7 +299,8 @@ object Angular {
     def createModule(name: String): EnrichedModule = self.module(name, js.Array())
 
     @inline
-    def createModule(name: String, dependencies: Iterable[String]): EnrichedModule = self.module(name, dependencies.toJSArray)
+    def createModule(name: String, dependencies: Iterable[String]): EnrichedModule =
+      self.module(name, dependencies.toJSArray)
 
     @inline
     def createModule(name: String, dependencies: Iterable[String], configFn: DependencySet): EnrichedModule = {

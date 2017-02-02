@@ -30,11 +30,11 @@ object ReadPreference extends js.Object {
   //      Properties
   /////////////////////////////////////////////////////////////////////////////////
 
-  val PRIMARY: ReadPreferenceMode = js.native
-  val PRIMARY_PREFERRED: ReadPreferenceMode = js.native
-  val SECONDARY: ReadPreferenceMode = js.native
+  val PRIMARY: ReadPreferenceMode             = js.native
+  val PRIMARY_PREFERRED: ReadPreferenceMode   = js.native
+  val SECONDARY: ReadPreferenceMode           = js.native
   val SECONDARY_PREFERRED: ReadPreferenceMode = js.native
-  val NEAREST: ReadPreferenceMode = js.native
+  val NEAREST: ReadPreferenceMode             = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods

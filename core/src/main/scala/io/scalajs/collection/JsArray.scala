@@ -161,7 +161,9 @@ object JsArray extends js.Object {
     * @param thisArg Optional. Value to use as this when executing mapFn.
     * @return A new Array instance.
     */
-  def from[T <: String | Iterator[T]](array: T, mapFn: js.Function = js.native, thisArg: js.Any = js.native): JsArray[T] = js.native
+  def from[T <: String | Iterator[T]](array: T,
+                                      mapFn: js.Function = js.native,
+                                      thisArg: js.Any = js.native): JsArray[T] = js.native
 
   /**
     * The Array.isArray() determines whether the passed value is an Array.

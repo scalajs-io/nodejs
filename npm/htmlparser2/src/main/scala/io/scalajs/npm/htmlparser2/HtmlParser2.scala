@@ -11,6 +11,4 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 @JSImport("htmlparser2", JSImport.Namespace)
-object HtmlParser2 extends js.Object {
-
-}
+object HtmlParser2 extends js.Object {}

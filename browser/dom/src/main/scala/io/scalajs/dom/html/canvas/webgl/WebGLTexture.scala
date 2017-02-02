@@ -11,6 +11,4 @@ import scala.scalajs.js.annotation.JSName
   */
 @js.native
 @JSName("WebGLTexture")
-class WebGLTexture extends js.Object {
-
-}
+class WebGLTexture extends js.Object {}

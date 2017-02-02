@@ -56,7 +56,8 @@ package object async {
       *                 index, use forEachOf.
       */
     @inline
-    def eachLimitFuture[A <: js.Any](coll: js.Array[A], limit: Int)(iteratee: (A, AsyncErrorCallback) => Any): Promise[A] = {
+    def eachLimitFuture[A <: js.Any](coll: js.Array[A], limit: Int)(
+        iteratee: (A, AsyncErrorCallback) => Any): Promise[A] = {
       futureCallbackE1[Error, A](async.eachLimit(coll, limit, _))
     }
 

@@ -17,10 +17,18 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Document extends ParentNode
-  with AnimationEvents with ClipboardEvents with DragEvents with FormEvents
-  with FrameObjectEvents with KeyboardEvents with MiscEvents with PrintEvents
-  with ServerSentEvents with TouchEvents {
+trait Document
+    extends ParentNode
+    with AnimationEvents
+    with ClipboardEvents
+    with DragEvents
+    with FormEvents
+    with FrameObjectEvents
+    with KeyboardEvents
+    with MiscEvents
+    with PrintEvents
+    with ServerSentEvents
+    with TouchEvents {
 
   /**
     * The event occurs when an error occurs while loading an external file

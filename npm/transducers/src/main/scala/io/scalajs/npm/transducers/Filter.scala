@@ -7,6 +7,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Filter extends ITransformer {
-
-}
+trait Filter extends ITransformer {}

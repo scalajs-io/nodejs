@@ -8,6 +8,4 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class ConnectOptions(path: String = null,
-                     host: String = null,
-                     port: Integer = null) extends js.Object
+class ConnectOptions(path: String = null, host: String = null, port: Integer = null) extends js.Object

@@ -75,7 +75,8 @@ object Utils extends js.Object {
     * @return The padded string.
     * @example {{{ pad("bob", 6, "-", 2) }}}
     */
-  def pad(str: js.Any | String, len: Int = js.native, pad: String = js.native, dir: Int = js.native): String = js.native
+  def pad(str: js.Any | String, len: Int = js.native, pad: String = js.native, dir: Int = js.native): String =
+    js.native
 
   /**
     * Get a unit dimension from a string.

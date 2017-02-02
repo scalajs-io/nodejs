@@ -50,7 +50,8 @@ trait JQueryElement extends HTMLElement {
     *                should begin matching
     * @return self reference
     */
-  def add(element: Element | Selector | CSSSelector | js.Any, context: Element | js.Any = js.native): this.type = js.native
+  def add(element: Element | Selector | CSSSelector | js.Any, context: Element | js.Any = js.native): this.type =
+    js.native
 
   /**
     * Add the previous set of elements on the stack to the current set, optionally filtered by a selector.
@@ -77,7 +78,9 @@ trait JQueryElement extends HTMLElement {
     * @param speed    The optional speed parameter can take the following values: "slow", "fast", or milliseconds.
     * @param callback The optional callback parameter is a function to be executed after toggle() completes.
     */
-  def animate(params: AnimateOptions | js.Any, speed: String | JsNumber = js.native, callback: js.Function): this.type = js.native
+  def animate(params: AnimateOptions | js.Any,
+              speed: String | JsNumber = js.native,
+              callback: js.Function): this.type = js.native
 
   /**
     * Insert content, specified by the parameter, to the end of each element in the set of matched elements.
@@ -141,7 +144,8 @@ trait JQueryElement extends HTMLElement {
     *                 containing one or more events to attach to the elements, and
     *                 functions to run when the event occurs
     */
-  def bind(event: String, data: js.Any = js.native, function: js.Function, map: js.Any = js.native): this.type = js.native
+  def bind(event: String, data: js.Any = js.native, function: js.Function, map: js.Any = js.native): this.type =
+    js.native
 
   /**
     * Attach a handler to an event for the elements.
@@ -476,7 +480,8 @@ trait JQueryElement extends HTMLElement {
     * @param selector A selector which should match the one originally passed to [[JQueryElement.on .on()]] when attaching event handlers.
     * @param handler  A handler function previously attached for the event(s), or the special value false.
     */
-  def off(events: String, selector: String = js.native, handler: js.Function1[Event, Unit] = js.native): this.type = js.native
+  def off(events: String, selector: String = js.native, handler: js.Function1[Event, Unit] = js.native): this.type =
+    js.native
 
   /**
     * Get the current coordinates of the first element in the set of matched elements, relative to the document.
@@ -506,7 +511,10 @@ trait JQueryElement extends HTMLElement {
     * @param handler  A function to execute when the event is triggered. The value false is also allowed as a shorthand
     *                 for a function that simply does return false.
     */
-  def on(events: String, selector: String = js.native, data: js.Any = js.native, handler: js.Function = js.native): this.type = js.native
+  def on(events: String,
+         selector: String = js.native,
+         data: js.Any = js.native,
+         handler: js.Function = js.native): this.type = js.native
 
   /**
     * Attach a handler to an event for the elements. The handler is executed at most once per element per event type.
@@ -514,7 +522,8 @@ trait JQueryElement extends HTMLElement {
     * @param data    Data to be passed to the handler in event.data when an event is triggered.
     * @param handler A function to execute at the time the event is triggered.
     */
-  def one(events: String, data: js.Any = js.native, handler: js.Function1[Event, Unit] = js.native): this.type = js.native
+  def one(events: String, data: js.Any = js.native, handler: js.Function1[Event, Unit] = js.native): this.type =
+    js.native
 
   def outerHeight(): Integer = js.native
 

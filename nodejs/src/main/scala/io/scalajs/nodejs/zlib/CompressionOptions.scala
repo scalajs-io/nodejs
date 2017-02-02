@@ -23,4 +23,5 @@ class CompressionOptions(var chunkSize: js.UndefOr[Int] = js.undefined,
                          var level: js.UndefOr[CompressionLevel] = js.undefined,
                          var memLevel: js.UndefOr[CompressionLevel] = js.undefined,
                          var strategy: js.UndefOr[CompressionStrategy] = js.undefined,
-                         var windowBits: js.UndefOr[Int] = js.undefined) extends js.Object
+                         var windowBits: js.UndefOr[Int] = js.undefined)
+    extends js.Object

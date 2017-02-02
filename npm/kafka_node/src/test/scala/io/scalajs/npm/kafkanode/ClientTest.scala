@@ -12,7 +12,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 class ClientTest extends FunSpec {
-  private val topic = "testing"
+  private val topic     = "testing"
   private val zkConnect = "localhost:2181"
 
   describe("Client") {
@@ -25,7 +25,9 @@ class ClientTest extends FunSpec {
         console.log(s"Created topic $topic")
       }
 
-      val consumer = new Consumer(client, js.Array(new FetchRequest(topic = topic, offset = 0)),
+      val consumer = new Consumer(
+        client,
+        js.Array(new FetchRequest(topic = topic, offset = 0)),
         new ConsumerOptions(
           groupId = "kafka-node-group",
           autoCommit = true,
@@ -35,7 +37,8 @@ class ClientTest extends FunSpec {
           fetchMaxBytes = 1024 * 1024,
           fromOffset = 0L,
           encoding = "utf8"
-        ))
+        )
+      )
 
       consumer.onMessage((message: String) => {
         console.log("message: %j", message)

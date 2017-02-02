@@ -20,4 +20,3 @@ class InetAddress(buffer: Buffer) extends js.Object
 @js.native
 @JSImport("cassandra-driver", "types.InetAddress")
 object InetAddress extends js.Object
-

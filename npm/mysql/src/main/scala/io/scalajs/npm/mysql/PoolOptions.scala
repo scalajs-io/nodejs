@@ -20,4 +20,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 class PoolOptions(var acquireTimeout: js.UndefOr[Int] = js.undefined,
                   var waitForConnections: js.UndefOr[Boolean] = js.undefined,
                   var connectionLimit: js.UndefOr[Int] = js.undefined,
-                  var queueLimit: js.UndefOr[Int] = js.undefined) extends js.Object
+                  var queueLimit: js.UndefOr[Int] = js.undefined)
+    extends js.Object

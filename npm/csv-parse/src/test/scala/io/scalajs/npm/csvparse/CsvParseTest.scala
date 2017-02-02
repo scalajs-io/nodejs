@@ -26,10 +26,14 @@ class CsvParseTest extends FunSpec {
       val text =
         """"1","2","3","4"
           |"a","b","c","d"""".stripMargin
-      CsvParse(text, new ParserOptions(comment = "#"), (err, output) => {
-        Assert(err == null, err)
-        Assert.deepEqual(output, js.Array(js.Array("1", "2", "3", "4"), js.Array("a", "b", "c", "d")))
-      })
+      CsvParse(
+        text,
+        new ParserOptions(comment = "#"),
+        (err, output) => {
+          Assert(err == null, err)
+          Assert.deepEqual(output, js.Array(js.Array("1", "2", "3", "4"), js.Array("a", "b", "c", "d")))
+        }
+      )
     }
 
     it("should parse text asynchronously with comments") {
@@ -37,10 +41,14 @@ class CsvParseTest extends FunSpec {
         """"a","b","c","d"
           |"1","2","3","4"
           |#This is a comment!""".stripMargin
-      CsvParse(text, new ParserOptions(comment = "#"), (err, output) => {
-        Assert(err == null, err)
-        Assert.deepEqual(output, js.Array(js.Array("a", "b", "c", "d"), js.Array("1", "2", "3", "4")))
-      })
+      CsvParse(
+        text,
+        new ParserOptions(comment = "#"),
+        (err, output) => {
+          Assert(err == null, err)
+          Assert.deepEqual(output, js.Array(js.Array("a", "b", "c", "d"), js.Array("1", "2", "3", "4")))
+        }
+      )
     }
 
   }

@@ -7,7 +7,7 @@ import scala.scalajs.js.annotation.JSName
 
 @js.native
 trait Physics extends js.Object {
-  val ARCADE: Int = js.native
+  val ARCADE: Int           = js.native
   val arcade: ArcadePhysics = js.native
 
   def enable(player: Sprite, system: Int, debug: Boolean = false): Unit = js.native

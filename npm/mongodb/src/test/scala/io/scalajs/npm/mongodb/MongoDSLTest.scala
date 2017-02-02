@@ -17,12 +17,15 @@ class MongoDSLTest extends FunSpec {
     }
 
     it("can generate a query containing the $text operator") {
-      val query = doc($text(new TextSearchOptions(
-        $search = "hello",
-        $caseSensitive = true,
-        $diacriticSensitive = false
-      )))
-      assert(JSON.stringify(query) == """{"$text":{"$search":"hello","$caseSensitive":true,"$diacriticSensitive":false}}""")
+      val query = doc(
+        $text(
+          new TextSearchOptions(
+            $search = "hello",
+            $caseSensitive = true,
+            $diacriticSensitive = false
+          )))
+      assert(
+        JSON.stringify(query) == """{"$text":{"$search":"hello","$caseSensitive":true,"$diacriticSensitive":false}}""")
     }
 
   }

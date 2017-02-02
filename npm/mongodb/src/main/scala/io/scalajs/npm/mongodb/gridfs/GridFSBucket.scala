@@ -65,7 +65,8 @@ class GridFSBucket() extends js.Object {
     * @param options the [[DownloadStreamByNameOptions download options]]
     * @example bucket.openDownloadStreamByName('meistersinger.mp3')
     */
-  def openDownloadStreamByName(file: String, options: DownloadStreamByNameOptions = null): GridFSBucketReadStream = js.native
+  def openDownloadStreamByName(file: String, options: DownloadStreamByNameOptions = null): GridFSBucketReadStream =
+    js.native
 
   /**
     * Returns a writable stream (GridFSBucketWriteStream) for writing buffers to GridFS. The stream's 'id' property
@@ -77,4 +78,3 @@ class GridFSBucket() extends js.Object {
   def openUploadStream(file: String, options: UploadStreamOptions = null): GridFSBucketWriteStream = js.native
 
 }
-

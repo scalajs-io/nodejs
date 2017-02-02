@@ -16,9 +16,9 @@ trait CursorClass extends js.Object {
   //      Constants
   /////////////////////////////////////////////////////////////////////////////////
 
-  val INIT: Int = js.native
-  val OPEN: Int = js.native
-  val CLOSED: Int = js.native
+  val INIT: Int     = js.native
+  val OPEN: Int     = js.native
+  val CLOSED: Int   = js.native
   val GET_MORE: Int = js.native
 
   /////////////////////////////////////////////////////////////////////////////////

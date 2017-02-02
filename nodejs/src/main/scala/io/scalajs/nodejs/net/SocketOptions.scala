@@ -19,4 +19,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 class SocketOptions(var fd: js.UndefOr[FileDescriptor] = js.undefined,
                     var allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
                     var readable: js.UndefOr[Boolean] = js.undefined,
-                    var writable: js.UndefOr[Boolean] = js.undefined) extends js.Object
+                    var writable: js.UndefOr[Boolean] = js.undefined)
+    extends js.Object

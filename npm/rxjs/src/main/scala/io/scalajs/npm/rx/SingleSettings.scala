@@ -8,6 +8,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class SingleSettings(predicate: js.Function = null,
-                     thisArg: js.Any = null,
-                     defaultValue: js.Any = null) extends js.Object
+class SingleSettings(predicate: js.Function = null, thisArg: js.Any = null, defaultValue: js.Any = null)
+    extends js.Object

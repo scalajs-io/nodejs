@@ -10,4 +10,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 @ScalaJSDefined
 class XmlDeclarationOptions(var encoding: js.UndefOr[String] = js.undefined,
                             var standalone: js.UndefOr[Boolean] = js.undefined,
-                            var version: js.UndefOr[String] = js.undefined) extends js.Object
+                            var version: js.UndefOr[String] = js.undefined)
+    extends js.Object

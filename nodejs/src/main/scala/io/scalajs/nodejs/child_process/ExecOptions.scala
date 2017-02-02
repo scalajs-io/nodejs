@@ -33,4 +33,5 @@ class ExecOptions(val cwd: js.UndefOr[String] = js.undefined,
                   val maxBuffer: js.UndefOr[JsNumber] = js.undefined,
                   val killSignal: js.UndefOr[String] = js.undefined,
                   val uid: js.UndefOr[JsNumber] = js.undefined,
-                  val gid: js.UndefOr[JsNumber] = js.undefined) extends js.Object
+                  val gid: js.UndefOr[JsNumber] = js.undefined)
+    extends js.Object

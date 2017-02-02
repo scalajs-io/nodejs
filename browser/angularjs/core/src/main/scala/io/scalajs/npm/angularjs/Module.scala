@@ -51,7 +51,8 @@ object Module {
   implicit class EnrichedModule(val self: Module) extends AnyVal {
 
     @inline
-    def animation(name: String, dependencySet: DependencySet): Module = self.animation(name, dependencySet.dependencies)
+    def animation(name: String, dependencySet: DependencySet): Module =
+      self.animation(name, dependencySet.dependencies)
 
     @inline
     def config(dependencySet: DependencySet): Module = self.config(dependencySet.dependencies)
@@ -95,4 +96,3 @@ object Module {
   }
 
 }
-

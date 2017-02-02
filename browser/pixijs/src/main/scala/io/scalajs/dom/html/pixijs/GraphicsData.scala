@@ -15,7 +15,14 @@ import scala.scalajs.js.annotation.JSName
   */
 @js.native
 @JSName("GraphicsData")
-class GraphicsData(lineWidth: LineWidth, lineColor: Color, lineAlpha: Alpha, fillColor: Color, fillAlpha: Alpha, fill: Boolean, shape: GraphicalShape) extends js.Object {
+class GraphicsData(lineWidth: LineWidth,
+                   lineColor: Color,
+                   lineAlpha: Alpha,
+                   fillColor: Color,
+                   fillAlpha: Alpha,
+                   fill: Boolean,
+                   shape: GraphicalShape)
+    extends js.Object {
 
   /**
     * Creates a new GraphicsData object with the same values as this one.

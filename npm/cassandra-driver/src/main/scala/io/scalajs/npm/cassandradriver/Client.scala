@@ -25,7 +25,8 @@ class Client(options: ClientOptions = js.native) extends IEventEmitter {
     * @param callback the callback function
     * @example {{{ client.batch(queries, { prepare: true }, function(err) { ... }) }}}
     */
-  def batch(queries: js.Array[BatchUpdate], options: QueryOptions | RawOptions, callback: js.Function): Unit = js.native
+  def batch(queries: js.Array[BatchUpdate], options: QueryOptions | RawOptions, callback: js.Function): Unit =
+    js.native
 
   /**
     * When using #eachRow() and #stream() methods, the driver parses each row as soon as it is received, yielding rows
@@ -36,7 +37,10 @@ class Client(options: ClientOptions = js.native) extends IEventEmitter {
     * @param callback the callback function
     * @example {{{ client.eachRow('SELECT time, val FROM temperature WHERE station_id=', ['abc'], function(n, row) { ... }) }}}
     */
-  def eachRow[T](query: String, params: CassandraParams, options: RawOptions, callback: js.Function2[Int, T, Any]): Unit = js.native
+  def eachRow[T](query: String,
+                 params: CassandraParams,
+                 options: RawOptions,
+                 callback: js.Function2[Int, T, Any]): Unit = js.native
 
   /**
     * When using #eachRow() and #stream() methods, the driver parses each row as soon as it is received, yielding rows
@@ -48,7 +52,11 @@ class Client(options: ClientOptions = js.native) extends IEventEmitter {
     * @param endCallback the callback for the final block of results
     * @example {{{ client.eachRow('SELECT time, val FROM temperature WHERE station_id=', ['abc'], function(n, row) { ... }) }}}
     */
-  def eachRow[T](query: String, params: CassandraParams, options: RawOptions, callback: js.Function2[Int, T, Any], endCallback: js.Function): Unit = js.native
+  def eachRow[T](query: String,
+                 params: CassandraParams,
+                 options: RawOptions,
+                 callback: js.Function2[Int, T, Any],
+                 endCallback: js.Function): Unit = js.native
 
   /**
     * When using #eachRow() and #stream() methods, the driver parses each row as soon as it is received, yielding rows
@@ -75,7 +83,8 @@ class Client(options: ClientOptions = js.native) extends IEventEmitter {
     * @param callback the callback function
     * @example {{{ client.execute(query, ['guy'], function(err, result) { ... }) }}}
     */
-  def execute(query: String, params: CassandraParams, callback: js.Function2[Error, js.Dictionary[_], Any]): Unit = js.native
+  def execute(query: String, params: CassandraParams, callback: js.Function2[Error, js.Dictionary[_], Any]): Unit =
+    js.native
 
   /**
     * Executes the update statement and returns the error to the callback function
@@ -85,7 +94,10 @@ class Client(options: ClientOptions = js.native) extends IEventEmitter {
     * @param callback the callback function
     * @example {{{ client.execute(query, params, { prepare: true }, function(err) { ... }) }}}
     */
-  def execute(update: String, params: CassandraParams, options: QueryOptions | RawOptions, callback: js.Function2[Error, js.Dictionary[_], Any]): Unit = js.native
+  def execute(update: String,
+              params: CassandraParams,
+              options: QueryOptions | RawOptions,
+              callback: js.Function2[Error, js.Dictionary[_], Any]): Unit = js.native
 
   /**
     * Returns the metadata

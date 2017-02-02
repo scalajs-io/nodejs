@@ -9,4 +9,3 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   */
 @ScalaJSDefined
 class RequestOptions() extends js.Object
-

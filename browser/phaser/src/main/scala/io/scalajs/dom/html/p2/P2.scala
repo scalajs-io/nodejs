@@ -104,7 +104,12 @@ object P2 extends js.Object {
     * @param mass   The default mass of this Body (0 = static).
     */
   @js.native
-  class Body(val game: Game, val sprite: Sprite, val x: Int = js.native, val y: Int = js.native, val mass: Int = js.native) extends js.Object
+  class Body(val game: Game,
+             val sprite: Sprite,
+             val x: Int = js.native,
+             val y: Int = js.native,
+             val mass: Int = js.native)
+      extends js.Object
 
   @js.native
   object Body extends js.Object {

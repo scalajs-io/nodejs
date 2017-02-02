@@ -45,7 +45,10 @@ trait Notification extends js.Object {
     * @return (Any): Result produced by the observation.
     * @example Rx.Notification.prototype.accept(observer | onNext, onError, onCompleted)
     */
-  def accept(observer: Observer = null, onNext: js.Function = null, onError: js.Function = null, onCompleted: js.Function = null): Unit = js.native
+  def accept(observer: Observer = null,
+             onNext: js.Function = null,
+             onError: js.Function = null,
+             onCompleted: js.Function = null): Unit = js.native
 
   /**
     * Returns an observable sequence with a single notification.

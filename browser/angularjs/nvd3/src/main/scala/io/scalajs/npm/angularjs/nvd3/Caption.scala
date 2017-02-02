@@ -10,4 +10,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 @ScalaJSDefined
 class Caption(val html: String,
               val enable: Boolean = true,
-              val css: js.UndefOr[js.Dictionary[_ <: Any]] = js.undefined) extends js.Object
+              val css: js.UndefOr[js.Dictionary[_ <: Any]] = js.undefined)
+    extends js.Object

@@ -17,7 +17,6 @@ trait Interval extends Timeout {
 
 }
 
-
 /**
   * Interval Companion
   * @author lawrence.daniels@gmail.com

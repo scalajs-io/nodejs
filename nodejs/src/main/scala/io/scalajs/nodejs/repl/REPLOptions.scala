@@ -43,4 +43,5 @@ class REPLOptions(var prompt: js.UndefOr[String] = js.undefined,
                   var useGlobal: js.UndefOr[Boolean] = js.undefined,
                   var ignoreUndefined: js.UndefOr[Boolean] = js.undefined,
                   var writer: js.UndefOr[js.Function] = js.undefined,
-                  var replMode: js.UndefOr[String] = js.undefined) extends js.Object
+                  var replMode: js.UndefOr[String] = js.undefined)
+    extends js.Object

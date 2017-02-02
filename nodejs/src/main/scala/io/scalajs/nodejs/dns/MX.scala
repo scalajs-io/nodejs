@@ -14,6 +14,6 @@ import scala.scalajs.js
   */
 @js.native
 trait MX extends js.Object {
-  var exchange: String = js.native
+  var exchange: String  = js.native
   var priority: Integer = js.native
 }

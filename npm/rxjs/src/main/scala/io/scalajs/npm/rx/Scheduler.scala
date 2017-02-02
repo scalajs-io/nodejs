@@ -99,5 +99,4 @@ trait Scheduler extends js.Object {
     */
   def schedulePeriodic(state: js.Any, period: Period, action: js.Function): Disposable = js.native
 
-
 }

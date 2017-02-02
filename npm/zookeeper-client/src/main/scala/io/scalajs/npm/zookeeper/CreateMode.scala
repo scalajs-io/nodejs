@@ -7,6 +7,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait CreateMode extends js.Object {
-
-}
+trait CreateMode extends js.Object {}

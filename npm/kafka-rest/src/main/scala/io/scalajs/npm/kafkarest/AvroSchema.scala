@@ -11,4 +11,3 @@ import scala.scalajs.js.|
 @js.native
 @JSImport("kafka-rest", "AvroSchema")
 class AvroSchema(schema: Schema | String) extends js.Object
-

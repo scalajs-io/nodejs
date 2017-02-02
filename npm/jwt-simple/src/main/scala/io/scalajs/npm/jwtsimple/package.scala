@@ -27,7 +27,10 @@ package object jwtsimple {
     */
   final implicit class JwtSimpleExtensions(val jwt: JwtSimple) extends AnyVal {
 
-    def decodeAs[T <: js.Any](token: JwtToken, secret: String, skipVerification: Boolean = false, algorithm: Algorithm = HS256): T = {
+    def decodeAs[T <: js.Any](token: JwtToken,
+                              secret: String,
+                              skipVerification: Boolean = false,
+                              algorithm: Algorithm = HS256): T = {
       jwt.decode(token, secret, skipVerification, algorithm).asInstanceOf[T]
     }
 

@@ -17,4 +17,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 class ConnectionOptions(var keepAlive: js.UndefOr[Boolean] = js.undefined,
                         var keepAliveMsecs: js.UndefOr[Int] = js.undefined,
                         var maxSockets: js.UndefOr[Double] = js.undefined,
-                        var maxFreeSockets: js.UndefOr[Int] = js.undefined) extends js.Object
+                        var maxFreeSockets: js.UndefOr[Int] = js.undefined)
+    extends js.Object

@@ -7,6 +7,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-class Adapter extends js.Object {
-
-}
+class Adapter extends js.Object {}

@@ -10,5 +10,4 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class FileUploaderConfig(var url: String,
-                         var filters: js.Array[FileUploadFilter] = emptyArray) extends js.Object
+class FileUploaderConfig(var url: String, var filters: js.Array[FileUploadFilter] = emptyArray) extends js.Object

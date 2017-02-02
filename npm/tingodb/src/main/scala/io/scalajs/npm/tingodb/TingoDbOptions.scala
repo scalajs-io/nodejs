@@ -12,4 +12,5 @@ class TingoDbOptions(var memStore: js.UndefOr[Boolean] = js.undefined,
                      var nativeObjectID: js.UndefOr[Boolean] = js.undefined,
                      var cacheSize: js.UndefOr[Int] = js.undefined,
                      var cacheMaxObjSize: js.UndefOr[Int] = js.undefined,
-                     var searchInArray: js.UndefOr[Boolean] = js.undefined) extends js.Object
+                     var searchInArray: js.UndefOr[Boolean] = js.undefined)
+    extends js.Object

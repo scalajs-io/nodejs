@@ -38,8 +38,9 @@ class RouteTo(val controller: UndefOr[String] = js.undefined,
               val templateFn: UndefOr[js.Function] = js.undefined,
               val templateUrl: UndefOr[String] = js.undefined,
               val templateUrlFn: UndefOr[js.Function] = js.undefined,
-              val resolve:  UndefOr[js.Dictionary[_ <: js.Any]] = js.undefined,
+              val resolve: UndefOr[js.Dictionary[_ <: js.Any]] = js.undefined,
               val redirectTo: UndefOr[String] = js.undefined,
               val redirectToFn: UndefOr[js.Function] = js.undefined,
               val reloadOnSearch: UndefOr[Boolean] = js.undefined,
-              val caseInsensitiveMatch: UndefOr[Boolean] = js.undefined) extends js.Object
+              val caseInsensitiveMatch: UndefOr[Boolean] = js.undefined)
+    extends js.Object

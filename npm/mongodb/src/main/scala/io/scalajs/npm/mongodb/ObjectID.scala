@@ -54,4 +54,3 @@ class ObjectID() extends js.Object {
   def toHexString(): String = js.native
 
 }
-

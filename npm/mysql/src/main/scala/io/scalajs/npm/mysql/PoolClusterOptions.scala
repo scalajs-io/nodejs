@@ -19,7 +19,8 @@ import scala.scalajs.js.annotation.{JSName, ScalaJSDefined}
 class PoolClusterOptions(var canRetry: js.UndefOr[Boolean] = js.undefined,
                          var removeNodeErrorCount: js.UndefOr[Int] = js.undefined,
                          var restoreNodeTimeout: js.UndefOr[Int] = js.undefined,
-                         var defaultSelector: js.UndefOr[Selector] = js.undefined) extends js.Object
+                         var defaultSelector: js.UndefOr[Selector] = js.undefined)
+    extends js.Object
 
 /**
   * Pool Cluster Options
@@ -48,6 +49,5 @@ object PoolClusterOptions {
   @js.native
   @JSName("ORDER")
   object ORDER extends Selector
-
 
 }

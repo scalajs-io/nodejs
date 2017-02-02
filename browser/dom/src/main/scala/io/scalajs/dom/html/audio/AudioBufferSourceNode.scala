@@ -6,7 +6,4 @@ import scala.scalajs.js
   * Created by ldaniels on 12/16/16.
   */
 @js.native
-class AudioBufferSourceNode extends js.Object {
-
-}
-
+class AudioBufferSourceNode extends js.Object {}

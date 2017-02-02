@@ -13,8 +13,7 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSImport("kafka-node", "Producer")
-class Producer(client: Client, options: ProducerOptions | RawOptions  = js.native)
-  extends IEventEmitter {
+class Producer(client: Client, options: ProducerOptions | RawOptions = js.native) extends IEventEmitter {
 
   /**
     * @example createTopics(topics, [async,] callback)

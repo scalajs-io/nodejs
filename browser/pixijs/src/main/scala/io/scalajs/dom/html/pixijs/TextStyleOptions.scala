@@ -44,4 +44,5 @@ class TextStyleOptions(var font: js.UndefOr[String] = js.undefined,
                        padding: js.UndefOr[Padding] = js.undefined,
                        textBaseline: js.UndefOr[String] = js.undefined,
                        lineJoin: js.UndefOr[String] = js.undefined,
-                       miterLimit: js.UndefOr[Int] = js.undefined) extends js.Object
+                       miterLimit: js.UndefOr[Int] = js.undefined)
+    extends js.Object

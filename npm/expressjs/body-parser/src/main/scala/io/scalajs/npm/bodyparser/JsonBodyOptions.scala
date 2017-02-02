@@ -27,4 +27,5 @@ class JsonBodyOptions(var inflate: js.UndefOr[Boolean] = js.undefined,
                       var reviver: js.UndefOr[Boolean] = js.undefined,
                       var strict: js.UndefOr[Boolean] = js.undefined,
                       var `type`: js.UndefOr[String] = js.undefined,
-                      var verify: js.UndefOr[String] = js.undefined) extends js.Object
+                      var verify: js.UndefOr[String] = js.undefined)
+    extends js.Object

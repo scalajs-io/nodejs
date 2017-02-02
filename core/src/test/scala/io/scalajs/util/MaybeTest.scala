@@ -14,7 +14,7 @@ class MaybeTest extends FunSpec {
 
     it("should mimic the behavior of js.UndefOr[A] for defined values") {
       val u: js.UndefOr[String] = "Hello"
-      val m: Maybe[String] = "Hello"
+      val m: Maybe[String]      = "Hello"
 
       info("""val u: js.UndefOr[String] = "Hello"""")
       info("""val m: Maybe[String] = "Hello"""")
@@ -24,7 +24,7 @@ class MaybeTest extends FunSpec {
 
     it("should mimic the behavior of js.UndefOr[A] for undefined values") {
       val u: js.UndefOr[String] = js.undefined
-      val m: Maybe[String] = js.undefined
+      val m: Maybe[String]      = js.undefined
 
       info("val u: js.UndefOr[String] = js.undefined")
       info("val m: Maybe[String] = js.undefined")
@@ -34,7 +34,7 @@ class MaybeTest extends FunSpec {
 
     it("should behavior differently than js.UndefOr[A] for null values") {
       val u: js.UndefOr[String] = null
-      val m: Maybe[String] = null
+      val m: Maybe[String]      = null
 
       info("val u: js.UndefOr[String] = null")
       info("val m: Maybe[String] = null")

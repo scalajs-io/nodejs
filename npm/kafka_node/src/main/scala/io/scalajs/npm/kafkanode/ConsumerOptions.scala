@@ -24,4 +24,5 @@ class ConsumerOptions(var groupId: js.UndefOr[String] = js.undefined,
                       var fetchMinBytes: js.UndefOr[Int] = js.undefined,
                       var fetchMaxBytes: js.UndefOr[Int] = js.undefined,
                       var fromOffset: js.UndefOr[Long] = js.undefined,
-                      var encoding: js.UndefOr[String] = js.undefined) extends js.Object
+                      var encoding: js.UndefOr[String] = js.undefined)
+    extends js.Object

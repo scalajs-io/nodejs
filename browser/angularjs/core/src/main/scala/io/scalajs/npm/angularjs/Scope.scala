@@ -41,7 +41,9 @@ trait Scope extends js.Object {
     *                        adverse memory and performance implications.
     * @return
     */
-  def $watch(watchExpression: js.Any, listener: js.Function = js.native, objectEquality: Boolean = js.native): js.Function = js.native
+  def $watch(watchExpression: js.Any,
+             listener: js.Function = js.native,
+             objectEquality: Boolean = js.native): js.Function = js.native
 
   /**
     * A variant of $watch() where it watches an array of watchExpressions. If any one expression in the collection
@@ -217,12 +219,12 @@ object Scope {
     def dynamic: js.Dynamic = scope.asInstanceOf[js.Dynamic]
 
     @inline
-    def $watchScala[A <: js.Any, B <: js.Any](watchExpression: Scope => js.Any, listener: (A, B) => Any = null, objectEquality: Boolean = false): js.Function = {
+    def $watchScala[A <: js.Any, B <: js.Any](watchExpression: Scope => js.Any,
+                                              listener: (A, B) => Any = null,
+                                              objectEquality: Boolean = false): js.Function = {
       scope.$watch(watchExpression, listener, objectEquality)
     }
 
   }
 
 }
-
-

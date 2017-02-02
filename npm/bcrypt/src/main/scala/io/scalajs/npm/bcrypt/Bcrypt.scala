@@ -105,7 +105,8 @@ trait Bcrypt extends js.Object {
     * @param callback a callback to be fired once the data has been encrypted.
     * @example bcrypt.hash(data, salt, progress, cb)
     */
-  def hash(data: js.Any, salt: Salt, progress: js.Function, callback: js.Function2[BCryptError, Hash, Any]): Unit = js.native
+  def hash(data: js.Any, salt: Salt, progress: js.Function, callback: js.Function2[BCryptError, Hash, Any]): Unit =
+    js.native
 
   /**
     * Asynchronously creates a hash using the given data

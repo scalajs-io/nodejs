@@ -76,7 +76,15 @@ trait CanvasRenderingContext2D extends RenderingContext {
     * @param dheight the height to draw the image in the destination canvas. This allows scaling of the drawn image.
     *                If not specified, the image is not scaled in height when drawn.
     */
-  def drawImage(image: Image, sx: Double, sy: Double, sWidth: Double, sHeight: Double, dx: Double, dy: Double, dwidth: Double, dheight: Double): Unit = js.native
+  def drawImage(image: Image,
+                sx: Double,
+                sy: Double,
+                sWidth: Double,
+                sHeight: Double,
+                dx: Double,
+                dy: Double,
+                dwidth: Double,
+                dheight: Double): Unit = js.native
 
   /**
     * Draws a filled rectangle at (x, y) position whose size is determined by width and height.

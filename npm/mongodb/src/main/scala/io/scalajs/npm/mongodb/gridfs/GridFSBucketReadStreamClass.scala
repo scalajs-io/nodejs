@@ -28,7 +28,11 @@ object GridFSBucketReadStreamClass {
   implicit class GridFSBucketReadStreamClassExtensions(val `class`: GridFSBucketReadStreamClass) extends AnyVal {
 
     @inline
-    def apply(chunks: Collection, files: Collection, readPreference: js.Any, filter: js.Any, options: ReadStreamOptions) = {
+    def apply(chunks: Collection,
+              files: Collection,
+              readPreference: js.Any,
+              filter: js.Any,
+              options: ReadStreamOptions) = {
       `class`.New[GridFSBucketReadStream](chunks, files, readPreference, filter, options)
     }
   }

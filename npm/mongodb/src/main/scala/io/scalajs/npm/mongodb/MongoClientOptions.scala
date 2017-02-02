@@ -22,4 +22,5 @@ class MongoClientOptions(var w: js.UndefOr[js.Any] = js.undefined,
                          var recordQueryStats: js.UndefOr[Boolean] = js.undefined,
                          var retryMiliSeconds: js.UndefOr[Int] = js.undefined,
                          var numberOfRetries: js.UndefOr[Int] = js.undefined,
-                         var bufferMaxEntries: js.UndefOr[Int] = js.undefined) extends js.Object
+                         var bufferMaxEntries: js.UndefOr[Int] = js.undefined)
+    extends js.Object

@@ -18,10 +18,10 @@ import scala.scalajs.js
   */
 @js.native
 trait NAPTR extends js.Object {
-  var flags: String = js.native
-  var service: String = js.native
-  var regexp: String = js.native
+  var flags: String       = js.native
+  var service: String     = js.native
+  var regexp: String      = js.native
   var replacement: String = js.native
-  var order: Integer = js.native
+  var order: Integer      = js.native
   var preference: Integer = js.native
 }

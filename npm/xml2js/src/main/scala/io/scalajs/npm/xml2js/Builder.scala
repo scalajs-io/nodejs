@@ -16,4 +16,3 @@ class Builder(options: BuilderOptions) extends js.Object {
   def buildObject: js.Function1[js.Any, String] = js.native
 
 }
-

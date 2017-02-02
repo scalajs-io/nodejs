@@ -35,4 +35,5 @@ class IndexOptions(var w: js.Any = null,
                    var max: Integer = null,
                    var v: Integer = null,
                    var expireAfterSeconds: Integer = null,
-                   var name: Integer = null) extends js.Object
+                   var name: Integer = null)
+    extends js.Object

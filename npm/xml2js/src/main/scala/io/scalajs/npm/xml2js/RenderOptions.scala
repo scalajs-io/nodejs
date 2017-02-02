@@ -10,4 +10,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 @ScalaJSDefined
 class RenderOptions(var pretty: js.UndefOr[Boolean] = js.undefined,
                     var indent: js.UndefOr[String] = js.undefined,
-                    var newline: js.UndefOr[String] = js.undefined) extends js.Object
+                    var newline: js.UndefOr[String] = js.undefined)
+    extends js.Object

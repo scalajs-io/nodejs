@@ -9,6 +9,6 @@ import scala.scalajs.js
 @js.native
 trait Address extends js.Object {
   var address: js.UndefOr[String] = js.native
-  var family: js.UndefOr[String] = js.native
-  var port: js.UndefOr[Int] = js.native
+  var family: js.UndefOr[String]  = js.native
+  var port: js.UndefOr[Int]       = js.native
 }

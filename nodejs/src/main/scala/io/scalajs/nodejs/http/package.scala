@@ -23,7 +23,7 @@ package object http {
       */
     @inline
     def createServerFuture: Promise[(Server, ClientRequest, ServerResponse)] = {
-      val task = Promise[(Server, ClientRequest, ServerResponse)]()
+      val task           = Promise[(Server, ClientRequest, ServerResponse)]()
       var server: Server = null
       server = http.createServer((request: ClientRequest, response: ServerResponse) => {
         task.success((server, request, response))
@@ -35,7 +35,8 @@ package object http {
       * @see [[Http.get()]]
       */
     @inline
-    def getFuture(options: RequestOptions): Promise[ServerResponse] = futureCallbackA1[ServerResponse](http.get(options, _))
+    def getFuture(options: RequestOptions): Promise[ServerResponse] =
+      futureCallbackA1[ServerResponse](http.get(options, _))
 
     /**
       * @see [[Http.get()]]
@@ -47,13 +48,15 @@ package object http {
       * @see [[Http.request()]]
       */
     @inline
-    def requestFuture(options: RequestOptions): Promise[ServerResponse] = futureCallbackE1[js.Error, ServerResponse](http.request(options, _))
+    def requestFuture(options: RequestOptions): Promise[ServerResponse] =
+      futureCallbackE1[js.Error, ServerResponse](http.request(options, _))
 
     /**
       * @see [[Http.request()]]
       */
     @inline
-    def requestFuture(url: String): Promise[ServerResponse] = futureCallbackE1[js.Error, ServerResponse](http.request(url, _))
+    def requestFuture(url: String): Promise[ServerResponse] =
+      futureCallbackE1[js.Error, ServerResponse](http.request(url, _))
 
   }
 
@@ -75,7 +78,8 @@ package object http {
       * @example server.on("checkContinue", function (request, response) { ... })
       */
     @inline
-    def onCheckContinue(callback: (ClientRequest, ServerResponse) => Any): server.type = server.on("checkContinue", callback)
+    def onCheckContinue(callback: (ClientRequest, ServerResponse) => Any): server.type =
+      server.on("checkContinue", callback)
 
     /**
       * If a client connection emits an 'error' event, it will be forwarded here. Listener of this event is responsible

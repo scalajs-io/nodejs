@@ -13,11 +13,10 @@ import scala.scalajs.js.annotation.JSImport
 trait CassandraDriver extends js.Object {
 
   val consistencies: js.Dictionary[Int] = js.native
-  val policies: js.Dictionary[_] = js.native
-  val types: Types = js.native
+  val policies: js.Dictionary[_]        = js.native
+  val types: Types                      = js.native
 
 }
-
 
 /**
   * Cassandra-Driver Singleton

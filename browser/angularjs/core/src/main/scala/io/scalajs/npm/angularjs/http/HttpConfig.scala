@@ -23,4 +23,5 @@ class HttpConfig(var method: js.UndefOr[String] = js.undefined,
                  var cache: js.Any = js.undefined,
                  var withCredentials: js.UndefOr[Boolean] = js.undefined,
                  var timeout: js.UndefOr[Int | Double] = js.undefined,
-                 var responseType: js.UndefOr[String] = js.undefined) extends js.Object
+                 var responseType: js.UndefOr[String] = js.undefined)
+    extends js.Object

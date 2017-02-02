@@ -24,7 +24,7 @@ class Client(connectionString: String,
              clientId: String = js.native,
              zkOptions: ClientOptions | RawOptions = js.native,
              noAckBatchOptions: NoAckBatchOptions | RawOptions = js.native)
-  extends IEventEmitter {
+    extends IEventEmitter {
 
   def this() = this(null, null, null, null)
 

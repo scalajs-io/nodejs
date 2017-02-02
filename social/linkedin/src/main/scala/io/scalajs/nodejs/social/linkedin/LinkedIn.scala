@@ -11,12 +11,12 @@ import scala.scalajs.js
   */
 @js.native
 trait LinkedIn extends js.Object {
-  val API: LinkedInAPIService = js.native
-  val AUTH: js.Dynamic = js.native // TODO is AUTH a valid service?
-  val Event: LinkedInEventService = js.native
+  val API: LinkedInAPIService         = js.native
+  val AUTH: js.Dynamic                = js.native // TODO is AUTH a valid service?
+  val Event: LinkedInEventService     = js.native
   val ENV: LinkedInEnvironmentService = js.native
-  val UI: LinkedInUIService = js.native
-  val User: LinkedInUserService = js.native
+  val UI: LinkedInUIService           = js.native
+  val User: LinkedInUserService       = js.native
 
   /**
     * Initializes the LinkedIn JavaScript API
@@ -193,9 +193,17 @@ trait LinkedInEnvironmentService_Auth extends js.Object {
 @js.native
 trait LinkedInEventService extends js.Object {
 
-  def on(handle: LinkedIn, eventName: String, callback: js.Function, callbackScope: js.Object = js.native, extraData: js.Object = js.native): Unit = js.native
+  def on(handle: LinkedIn,
+         eventName: String,
+         callback: js.Function,
+         callbackScope: js.Object = js.native,
+         extraData: js.Object = js.native): Unit = js.native
 
-  def onOnce(handle: LinkedIn, eventName: String, callback: js.Function, callbackScope: js.Object = js.native, extraData: js.Object = js.native): Unit = js.native
+  def onOnce(handle: LinkedIn,
+             eventName: String,
+             callback: js.Function,
+             callbackScope: js.Object = js.native,
+             extraData: js.Object = js.native): Unit = js.native
 
 }
 

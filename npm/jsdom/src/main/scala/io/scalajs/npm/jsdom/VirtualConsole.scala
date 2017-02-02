@@ -7,6 +7,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait VirtualConsole extends js.Object {
-
-}
+trait VirtualConsole extends js.Object {}

@@ -19,4 +19,5 @@ class ContextOptions(var filename: js.UndefOr[String] = js.undefined,
                      var lineOffset: js.UndefOr[Int] = js.undefined,
                      var columnOffset: js.UndefOr[Int] = js.undefined,
                      var displayErrors: js.UndefOr[Boolean] = js.undefined,
-                     var timeout: js.UndefOr[Int] = js.undefined) extends js.Object
+                     var timeout: js.UndefOr[Int] = js.undefined)
+    extends js.Object

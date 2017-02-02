@@ -53,25 +53,25 @@ trait Exception extends js.Object {
 @js.native
 @JSName("Exception")
 object Exception extends js.Object {
-  val OK: String = js.native
-  val SYSTEM_ERROR: String = js.native
-  val RUNTIME_INCONSISTENCY: String = js.native
-  val DATA_INCONSISTENCY: String = js.native
-  val CONNECTION_LOSS: String = js.native
-  val MARSHALLING_ERROR: String = js.native
-  val UNIMPLEMENTED: String = js.native
-  val OPERATION_TIMEOUT: String = js.native
-  val BAD_ARGUMENTS: String = js.native
-  val API_ERROR: String = js.native
-  val NO_NODE: String = js.native
-  val NO_AUTH: String = js.native
-  val BAD_VERSION: String = js.native
+  val OK: String                         = js.native
+  val SYSTEM_ERROR: String               = js.native
+  val RUNTIME_INCONSISTENCY: String      = js.native
+  val DATA_INCONSISTENCY: String         = js.native
+  val CONNECTION_LOSS: String            = js.native
+  val MARSHALLING_ERROR: String          = js.native
+  val UNIMPLEMENTED: String              = js.native
+  val OPERATION_TIMEOUT: String          = js.native
+  val BAD_ARGUMENTS: String              = js.native
+  val API_ERROR: String                  = js.native
+  val NO_NODE: String                    = js.native
+  val NO_AUTH: String                    = js.native
+  val BAD_VERSION: String                = js.native
   val NO_CHILDREN_FOR_EPHEMERALS: String = js.native
-  val NODE_EXISTS: String = js.native
-  val NOT_EMPTY: String = js.native
-  val SESSION_EXPIRED: String = js.native
-  val INVALID_CALLBACK: String = js.native
-  val INVALID_ACL: String = js.native
-  val AUTH_FAILED: String = js.native
+  val NODE_EXISTS: String                = js.native
+  val NOT_EMPTY: String                  = js.native
+  val SESSION_EXPIRED: String            = js.native
+  val INVALID_CALLBACK: String           = js.native
+  val INVALID_ACL: String                = js.native
+  val AUTH_FAILED: String                = js.native
 
 }

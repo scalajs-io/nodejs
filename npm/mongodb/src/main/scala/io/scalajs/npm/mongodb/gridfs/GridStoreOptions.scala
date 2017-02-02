@@ -28,5 +28,5 @@ class GridStoreOptions(var root: js.UndefOr[String] = js.undefined,
                        var w: js.UndefOr[js.Any] = js.undefined,
                        var wtimeout: js.UndefOr[Int] = js.undefined,
                        var fsync: js.UndefOr[Boolean] = js.undefined,
-                       var j: js.UndefOr[Boolean] = js.undefined) extends js.Object
-
+                       var j: js.UndefOr[Boolean] = js.undefined)
+    extends js.Object

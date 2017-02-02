@@ -31,7 +31,9 @@ trait HtmlToJson extends js.Object {
     * @return a [[js.Promise promise]]
     * @example {{{ htmlToJson.batch(html, dictionary, [callback]) -> promise }}}
     */
-  def batch[T <: js.Any](html: String, dictionary: js.Dictionary[_], callback: js.Function2[Error, T, Any] = js.native): js.Promise[T] = js.native
+  def batch[T <: js.Any](html: String,
+                         dictionary: js.Dictionary[_],
+                         callback: js.Function2[Error, T, Any] = js.native): js.Promise[T] = js.native
 
   /**
     * Generates a method that wraps the passed filter argument. The generated method takes an HTML string
@@ -56,13 +58,17 @@ trait HtmlToJson extends js.Object {
     * This supports both callbacks and promises.
     * @example {{{ htmlToJson.parse(html, filter, [callback]) -> promise }}}
     */
-  def parse[T <: js.Any](html: String, filter: FilterOptions | RawOptions, callback: js.Function2[Error, T, Any] = js.native): js.Promise[T] = js.native
+  def parse[T <: js.Any](html: String,
+                         filter: FilterOptions | RawOptions,
+                         callback: js.Function2[Error, T, Any] = js.native): js.Promise[T] = js.native
 
   /**
     * The request() method takes options for a call to the request library and a filter, then returns the filtered response body.
     * @example {{{ htmlToJson.request(requestOptions, filter, [callback]) -> promise }}}
     */
-  def request[T <: js.Any](request: String | RequestOptions, filter: FilterOptions | RawOptions, callback: js.Function2[Error, T, Any] = js.native): js.Promise[T] = js.native
+  def request[T <: js.Any](request: String | RequestOptions,
+                           filter: FilterOptions | RawOptions,
+                           callback: js.Function2[Error, T, Any] = js.native): js.Promise[T] = js.native
 
 }
 

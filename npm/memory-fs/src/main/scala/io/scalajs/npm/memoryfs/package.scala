@@ -27,10 +27,12 @@ package object memoryfs {
     def mkdirpFuture(path: String): Promise[Unit] = futureCallbackE0[FileIOError](fs.mkdirp(path, _))
 
     @inline
-    def readdirFuture(path: String): Promise[Array[String]] = futureCallbackE1[FileIOError, js.Array[String]](fs.readdir(path, _))
+    def readdirFuture(path: String): Promise[Array[String]] =
+      futureCallbackE1[FileIOError, js.Array[String]](fs.readdir(path, _))
 
     @inline
-    def readFileFuture(path: String, optArg: js.Any = null): Promise[Buffer] = futureCallbackE1[FileIOError, Buffer](fs.readFile(path, optArg, _))
+    def readFileFuture(path: String, optArg: js.Any = null): Promise[Buffer] =
+      futureCallbackE1[FileIOError, Buffer](fs.readFile(path, optArg, _))
 
     @inline
     def rmdirFuture(path: String): Promise[Unit] = futureCallbackE0[FileIOError](fs.rmdir(path, _))
@@ -42,10 +44,12 @@ package object memoryfs {
     def unlinkFuture(path: String): Promise[Unit] = futureCallbackE0[FileIOError](fs.unlink(path, _))
 
     @inline
-    def writeFileFuture(path: String, content: String, encoding: String = null): Promise[Unit] = futureCallbackE0[FileIOError](fs.writeFile(path, content, encoding, _))
+    def writeFileFuture(path: String, content: String, encoding: String = null): Promise[Unit] =
+      futureCallbackE0[FileIOError](fs.writeFile(path, content, encoding, _))
 
     @inline
-    def writeFileFuture(path: String, content: Buffer): Promise[Unit] = futureCallbackE0[FileIOError](fs.writeFile(path, content, _))
+    def writeFileFuture(path: String, content: Buffer): Promise[Unit] =
+      futureCallbackE0[FileIOError](fs.writeFile(path, content, _))
 
   }
 

@@ -10,7 +10,7 @@ import scala.scalajs.js
 trait CPUTime extends js.Object {
   var user: Double = js.native
   var nice: Double = js.native
-  var sys: Double = js.native
+  var sys: Double  = js.native
   var idle: Double = js.native
-  var irq: Double = js.native
+  var irq: Double  = js.native
 }

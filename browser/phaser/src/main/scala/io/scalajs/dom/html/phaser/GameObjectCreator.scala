@@ -37,7 +37,10 @@ class GameObjectCreator(val game: Game) extends js.Object {
     *                when running under WebAudio.
     * @return The newly created text object.
     */
-  def audio(key: String, volume: JsNumber = js.native, loop: Boolean = js.native, connect: Boolean = js.native): Phaser.Sound = js.native
+  def audio(key: String,
+            volume: JsNumber = js.native,
+            loop: Boolean = js.native,
+            connect: Boolean = js.native): Phaser.Sound = js.native
 
   /**
     * Creates a new AudioSprite object.

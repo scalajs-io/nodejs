@@ -242,7 +242,7 @@ object FileUploader {
   */
 @ScalaJSDefined
 class FileUploadFilter extends js.Object {
-  var name: String = _
+  var name: String    = _
   var fn: js.Function = _
 }
 
@@ -261,24 +261,18 @@ object FileUploadFilter {
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait FileUploadHeaders extends js.Object {
-
-}
+trait FileUploadHeaders extends js.Object {}
 
 /**
   * File Upload Progress
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait FileUploadProgress extends js.Object {
-
-}
+trait FileUploadProgress extends js.Object {}
 
 /**
   * File Upload Response
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait FileUploadResponse extends js.Object {
-
-}
+trait FileUploadResponse extends js.Object {}

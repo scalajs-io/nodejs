@@ -13,6 +13,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class ConsoleDirOptions(var showHidden: Boolean = false,
-                        var depth: Integer = 2,
-                        var colors: Boolean = false) extends js.Object
+class ConsoleDirOptions(var showHidden: Boolean = false, var depth: Integer = 2, var colors: Boolean = false)
+    extends js.Object

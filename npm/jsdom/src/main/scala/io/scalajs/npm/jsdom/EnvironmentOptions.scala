@@ -66,8 +66,5 @@ class EnvironmentOptions(var html: js.UndefOr[String] = js.undefined,
                          var agentClass: js.UndefOr[String] = js.undefined,
                          var agentOptions: js.Any = js.undefined,
                          var strictSSL: js.UndefOr[Boolean] = js.undefined,
-                         var proxy: js.UndefOr[String] = js.undefined) extends js.Object
-
-
-
-
+                         var proxy: js.UndefOr[String] = js.undefined)
+    extends js.Object

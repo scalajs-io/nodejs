@@ -22,4 +22,5 @@ class WatchOptions(ignoreDotFiles: js.UndefOr[Boolean] = js.undefined,
                    interval: js.UndefOr[Int] = js.undefined,
                    ignoreUnreadableDir: js.UndefOr[Boolean] = js.undefined,
                    ignoreNotPermitted: js.UndefOr[Boolean] = js.undefined,
-                   ignoreDirectoryPattern: String = null) extends js.Object
+                   ignoreDirectoryPattern: String = null)
+    extends js.Object

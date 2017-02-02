@@ -6,6 +6,4 @@ import scala.scalajs.js
   * Created by ldaniels on 12/16/16.
   */
 @js.native
-class OscillatorNode extends js.Object{
-
-}
+class OscillatorNode extends js.Object {}

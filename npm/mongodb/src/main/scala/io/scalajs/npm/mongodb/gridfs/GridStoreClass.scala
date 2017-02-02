@@ -98,13 +98,15 @@ trait GridStoreClass extends js.Object {
     * Reads the contents of a file.
     * @example GridStore.read(db, name[, length][, offset][, options], callback)
     */
-  def read(db: Db, name: String, length: Int, offset: Int, options: GridStoreOptions, callback: js.Function): Unit = js.native
+  def read(db: Db, name: String, length: Int, offset: Int, options: GridStoreOptions, callback: js.Function): Unit =
+    js.native
 
   /**
     * Reads the data of this file.
     * @example GridStore.readlines(db, name[, separator][, options], callback)
     */
-  def readlines(db: Db, name: String, separator: String, options: GridStoreOptions, callback: js.Function): Unit = js.native
+  def readlines(db: Db, name: String, separator: String, options: GridStoreOptions, callback: js.Function): Unit =
+    js.native
 
   /**
     * Deletes the chunks and metadata information of a file from GridFS.
@@ -144,7 +146,8 @@ object GridStoreClass {
       * Checks if a file exists in the database.
       */
     @inline
-    def existFuture(db: Db, name: String): Future[GridStore] = callbackMongoFuture[GridStore](`class`.exist(db, name, _))
+    def existFuture(db: Db, name: String): Future[GridStore] =
+      callbackMongoFuture[GridStore](`class`.exist(db, name, _))
 
     /**
       * Gets the list of files stored in the GridFS.
@@ -164,7 +167,8 @@ object GridStoreClass {
       * Reads the contents of a file.
       */
     @inline
-    def readFuture[T <: js.Any](db: Db, name: String): Future[Array[T]] = callbackMongoFuture[js.Array[T]](`class`.read(db, name, _))
+    def readFuture[T <: js.Any](db: Db, name: String): Future[Array[T]] =
+      callbackMongoFuture[js.Array[T]](`class`.read(db, name, _))
 
     /**
       * Reads the contents of a file.
@@ -186,7 +190,11 @@ object GridStoreClass {
       * Reads the contents of a file.
       */
     @inline
-    def readFuture[T <: js.Any](db: Db, name: String, length: Int, offset: Int, options: GridStoreOptions): Future[Array[T]] = {
+    def readFuture[T <: js.Any](db: Db,
+                                name: String,
+                                length: Int,
+                                offset: Int,
+                                options: GridStoreOptions): Future[Array[T]] = {
       callbackMongoFuture[js.Array[T]](`class`.read(db, name, length, offset, options, _))
     }
 

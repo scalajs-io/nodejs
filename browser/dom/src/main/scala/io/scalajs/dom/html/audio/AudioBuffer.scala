@@ -75,5 +75,4 @@ class AudioBuffer() extends js.Object {
     */
   def copyToChannel(source: Float32Array, channelNumber: Int, startInChannel: Int = js.native): Unit = js.native
 
-
 }

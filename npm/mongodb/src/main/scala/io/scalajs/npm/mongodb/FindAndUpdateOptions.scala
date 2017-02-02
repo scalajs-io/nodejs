@@ -16,4 +16,5 @@ class FindAndUpdateOptions(var projection: js.UndefOr[js.Any] = js.undefined,
                            var sort: js.UndefOr[js.Any] = js.undefined,
                            var maxTimeMS: js.UndefOr[Integer] = js.undefined,
                            var upsert: js.UndefOr[Boolean] = js.undefined,
-                           var returnOriginal: js.UndefOr[Boolean] = js.undefined) extends js.Object
+                           var returnOriginal: js.UndefOr[Boolean] = js.undefined)
+    extends js.Object

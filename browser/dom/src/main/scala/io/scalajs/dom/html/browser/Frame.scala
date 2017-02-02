@@ -7,6 +7,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-class Frame extends js.Object {
-
-}
+class Frame extends js.Object {}

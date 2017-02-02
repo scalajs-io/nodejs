@@ -9,9 +9,9 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   */
 @ScalaJSDefined
 class FacebookAppConfig extends js.Object {
-  var appId: String = _
+  var appId: String   = _
   var status: Boolean = _
-  var xfbml: Boolean = _
+  var xfbml: Boolean  = _
   var version: String = _
 }
 
@@ -21,10 +21,7 @@ class FacebookAppConfig extends js.Object {
   */
 object FacebookAppConfig {
 
-  def apply(appId: String,
-            status: Boolean = true,
-            xfbml: Boolean = true,
-            version: String = "v2.5") = {
+  def apply(appId: String, status: Boolean = true, xfbml: Boolean = true, version: String = "v2.5") = {
     val config = new FacebookAppConfig()
     config.appId = appId
     config.status = status

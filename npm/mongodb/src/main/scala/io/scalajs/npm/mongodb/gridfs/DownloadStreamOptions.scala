@@ -10,5 +10,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class DownloadStreamOptions(var start: js.UndefOr[Int] = js.undefined,
-                            var end: js.UndefOr[Int] = js.undefined) extends js.Object
+class DownloadStreamOptions(var start: js.UndefOr[Int] = js.undefined, var end: js.UndefOr[Int] = js.undefined)
+    extends js.Object

@@ -212,7 +212,8 @@ trait TransducersJs extends js.Object {
     * @param coll (String | Array | Object): any iterable JavaScript value
     * @return a JavaScript value.
     */
-  def transduce(xf: ITransformer, f: ITransformer | js.Function, init: js.Any, coll: String | js.Any): js.Any = js.native
+  def transduce(xf: ITransformer, f: ITransformer | js.Function, init: js.Any, coll: String | js.Any): js.Any =
+    js.native
 
   /**
     * Ensure a value is not reduced. Unwraps if reduced.

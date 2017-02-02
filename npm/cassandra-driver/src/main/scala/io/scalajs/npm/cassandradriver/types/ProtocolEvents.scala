@@ -9,6 +9,6 @@ import scala.scalajs.js
 @js.native
 trait ProtocolEvents extends js.Object {
   var topologyChange: String = js.native
-  var statusChange: String = js.native
-  var schemaChange: String = js.native
+  var statusChange: String   = js.native
+  var schemaChange: String   = js.native
 }

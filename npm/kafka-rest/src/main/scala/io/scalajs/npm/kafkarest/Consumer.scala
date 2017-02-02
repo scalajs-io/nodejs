@@ -23,5 +23,4 @@ trait Consumer extends js.Object {
 
   def subscribe(name: String): stream.Readable = js.native
 
-
 }

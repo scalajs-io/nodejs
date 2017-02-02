@@ -23,4 +23,5 @@ class CookieOptions(var domain: js.UndefOr[String] = js.undefined,
                     var maxAge: js.UndefOr[String] = js.undefined,
                     var path: js.UndefOr[String] = js.undefined,
                     var secure: js.UndefOr[Boolean] = js.undefined,
-                    var signed: js.UndefOr[Boolean] = js.undefined) extends js.Object
+                    var signed: js.UndefOr[Boolean] = js.undefined)
+    extends js.Object

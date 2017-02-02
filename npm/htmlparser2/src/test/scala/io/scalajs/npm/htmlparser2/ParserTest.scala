@@ -15,22 +15,25 @@ class ParserTest extends FunSpec {
 
     it("should parse HTML documents") {
 
-      val parser = new Parser(new ParserHandler {
+      val parser = new Parser(
+        new ParserHandler {
 
-        override def onopentag(name: String, attribs: js.Dictionary[String]) {
-          if (name == "script" && attribs("type") == "text/javascript") {
-            console.log("JS! Hooray!")
+          override def onopentag(name: String, attribs: js.Dictionary[String]) {
+            if (name == "script" && attribs("type") == "text/javascript") {
+              console.log("JS! Hooray!")
+            }
           }
-        }
 
-        override def ontext(text: String): Unit = console.log("-->", text)
+          override def ontext(text: String): Unit = console.log("-->", text)
 
-        override def onclosetag(tagname: String) {
-          if (tagname == "script") {
-            console.log("That's it?!")
+          override def onclosetag(tagname: String) {
+            if (tagname == "script") {
+              console.log("That's it?!")
+            }
           }
-        }
-      }, new ParserOptions(decodeEntities = true))
+        },
+        new ParserOptions(decodeEntities = true)
+      )
       parser.write("Xyz <script type='text/javascript'>var foo = '<<bar>>'</script>")
       parser.end()
     }

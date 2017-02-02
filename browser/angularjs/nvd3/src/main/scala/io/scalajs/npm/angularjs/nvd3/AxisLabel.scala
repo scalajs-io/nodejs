@@ -8,5 +8,4 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class AxisLabel(val axisLabel: String,
-                val axisLabelDistance: js.UndefOr[Int] = js.undefined) extends js.Object
+class AxisLabel(val axisLabel: String, val axisLabelDistance: js.UndefOr[Int] = js.undefined) extends js.Object

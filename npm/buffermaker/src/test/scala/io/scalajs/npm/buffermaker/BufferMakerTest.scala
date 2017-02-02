@@ -22,7 +22,8 @@ class BufferMakerTest extends FunSpec {
         .make()
 
       info(someBuffer.toString())
-      Assert(someBuffer.toString(), "<Buffer 01 00 02 00 00 00 03 00 00 00 00 00 00 00 04 74 68 69 73 20 69 73 20 61 20 74 65 73 74 21>")
+      Assert(someBuffer.toString(),
+             "<Buffer 01 00 02 00 00 00 03 00 00 00 00 00 00 00 04 74 68 69 73 20 69 73 20 61 20 74 65 73 74 21>")
     }
 
     it("supports binary strings 2") {
@@ -50,7 +51,9 @@ class BufferMakerTest extends FunSpec {
         .make()
 
       info(someBuffer.toString())
-      Assert(someBuffer.toString(), "<Buffer 01 00 02 00 00 00 03 00 04 00 00 00 00 00 a0 40 40 c0 00 00 00 00 00 00 00 00 1c 40 40 20 00 00 00 00 00 00>")
+      Assert(
+        someBuffer.toString(),
+        "<Buffer 01 00 02 00 00 00 03 00 04 00 00 00 00 00 a0 40 40 c0 00 00 00 00 00 00 00 00 1c 40 40 20 00 00 00 00 00 00>")
     }
 
   }

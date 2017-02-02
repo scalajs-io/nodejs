@@ -39,8 +39,8 @@ class BufferTest extends FunSpec {
     }
 
     it("should support iterating entries [classic]") {
-      val buf = Buffer.from("Hello!")
-      val it = buf.entries()
+      val buf                   = Buffer.from("Hello!")
+      val it                    = buf.entries()
       var result: Entry[js.Any] = null
       do {
         result = it.next()

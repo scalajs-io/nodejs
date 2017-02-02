@@ -47,9 +47,16 @@ trait WebGL2RenderingContext extends WebGLRenderingContext {
     * @param mask   A GLbitfield specifying a bitwise OR mask indicating which buffers are to be copied.
     * @param filter A GLenum specifying the interpolation to be applied if the image is stretched.
     */
-  def blitFramebuffer(srcX0: GLint, srcY0: GLint, srcX1: GLint, srcY1: GLint,
-                      dstX0: GLint, dstY0: GLint, dstX1: GLint, dstY1: GLint,
-                      mask: GLbitfield, filter: GLenum): Unit = js.native
+  def blitFramebuffer(srcX0: GLint,
+                      srcY0: GLint,
+                      srcX1: GLint,
+                      srcY1: GLint,
+                      dstX0: GLint,
+                      dstY0: GLint,
+                      dstX1: GLint,
+                      dstY1: GLint,
+                      mask: GLbitfield,
+                      filter: GLenum): Unit = js.native
 
   /**
     * Copies part of the data of a buffer to another buffer.
@@ -59,7 +66,11 @@ trait WebGL2RenderingContext extends WebGLRenderingContext {
     * @param writeOffset A GLintptr specifying the byte offset from which to start writing to the buffer.
     * @param size        A GLsizei in bytes specifying the size of the data to be copied from readTarget to writeTarget.
     */
-  def copyBufferSubData(readTarget: GLenum, writeTarget: GLenum, readOffset: GLintptr, writeOffset: GLintptr, size: GLsizei): Unit = js.native
+  def copyBufferSubData(readTarget: GLenum,
+                        writeTarget: GLenum,
+                        readOffset: GLintptr,
+                        writeOffset: GLintptr,
+                        size: GLsizei): Unit = js.native
 
   /**
     * Reads data from a buffer binding point and writes them to an [[ArrayBuffer]] or SharedArrayBuffer.
@@ -69,7 +80,11 @@ trait WebGL2RenderingContext extends WebGLRenderingContext {
     * @param dstOffset     A [[GLuint]] specifying the element index offset where to start reading the buffer.
     * @param length        A [[GLuint]] defaulting to 0.
     */
-  def getBufferSubData(target: GLenum, srcByteOffset: GLintptr, dstData: ArrayBuffer, dstOffset: GLuint = js.native, length: Int = js.native): Unit = js.native
+  def getBufferSubData(target: GLenum,
+                       srcByteOffset: GLintptr,
+                       dstData: ArrayBuffer,
+                       dstOffset: GLuint = js.native,
+                       length: Int = js.native): Unit = js.native
 
   /**
     * Returns the indexed value for the given target.

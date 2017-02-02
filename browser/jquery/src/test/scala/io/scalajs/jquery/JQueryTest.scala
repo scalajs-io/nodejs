@@ -30,7 +30,7 @@ class JQueryTest extends FunSpec {
 
       // case #2
       $("#greatphoto").attr(new js.Object {
-        val alt: String = "Beijing Brush Seller"
+        val alt: String   = "Beijing Brush Seller"
         val title: String = "photo by Kelly Clark"
       })
 
@@ -43,14 +43,16 @@ class JQueryTest extends FunSpec {
 
     it("should provide a change() method") {
       val element = $("input")
-      element.change(_ => {
-        val $input = $(element)
-        $("p").html(
-          ".attr( 'checked' ): <b>" + $input.attr("checked") + "</b><br>" +
-            ".prop( 'checked' ): <b>" + $input.prop("checked") + "</b><br>" +
-            ".is( ':checked' ): <b>" + $input.is(":checked") + "</b>"
-        )
-      }).change()
+      element
+        .change(_ => {
+          val $input = $(element)
+          $("p").html(
+            ".attr( 'checked' ): <b>" + $input.attr("checked") + "</b><br>" +
+              ".prop( 'checked' ): <b>" + $input.prop("checked") + "</b><br>" +
+              ".is( ':checked' ): <b>" + $input.is(":checked") + "</b>"
+          )
+        })
+        .change()
     }
 
     it("should provide a children() method") {

@@ -20,4 +20,5 @@ class AutoDetectRendererOptions(var view: js.UndefOr[HTMLCanvasElement] = js.und
                                 var transparent: js.UndefOr[Boolean] = js.undefined,
                                 var antialias: js.UndefOr[Boolean] = js.undefined,
                                 var preserveDrawingBuffer: js.UndefOr[Boolean] = js.undefined,
-                                var resolution: js.UndefOr[Resolution] = js.undefined) extends js.Object
+                                var resolution: js.UndefOr[Resolution] = js.undefined)
+    extends js.Object

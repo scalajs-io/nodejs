@@ -114,7 +114,8 @@ object IncomingMessage {
     def onClose(callback: js.Function) = message.on("close", callback)
 
     @inline
-    def setTimeout(duration: FiniteDuration, callback: js.Function) = message.setTimeout(duration.toMillis.toDouble, callback)
+    def setTimeout(duration: FiniteDuration, callback: js.Function) =
+      message.setTimeout(duration.toMillis.toDouble, callback)
 
   }
 

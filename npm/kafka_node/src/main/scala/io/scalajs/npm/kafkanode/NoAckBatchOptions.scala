@@ -9,5 +9,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   */
 @ScalaJSDefined
 class NoAckBatchOptions(var noAckBatchSize: js.UndefOr[Int] = js.undefined,
-                        var noAckBatchAge: js.UndefOr[Int] = js.undefined) extends js.Object
-
+                        var noAckBatchAge: js.UndefOr[Int] = js.undefined)
+    extends js.Object

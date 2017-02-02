@@ -149,6 +149,8 @@ object BaseTexture extends js.Object {
     * @param scaleMode   @see [[PIXI.SCALE_MODES]]
     * @return the base texture
     */
-  def fromImage(imageUrl: String, crossorigin: Boolean = false, scaleMode: Int = PIXI.SCALE_MODES.DEFAULT): BaseTexture = js.native
+  def fromImage(imageUrl: String,
+                crossorigin: Boolean = false,
+                scaleMode: Int = PIXI.SCALE_MODES.DEFAULT): BaseTexture = js.native
 
 }

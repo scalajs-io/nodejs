@@ -18,6 +18,5 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSName("Phaser.ScaleManager")
-class ScaleManager(val game: Phaser.Game, val width: JsNumber | String, val height: JsNumber | String) extends js.Object {
-
-}
+class ScaleManager(val game: Phaser.Game, val width: JsNumber | String, val height: JsNumber | String)
+    extends js.Object {}

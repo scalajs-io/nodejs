@@ -8,6 +8,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait CanvasCaptureMediaStream extends js.Object {
-
-}
+trait CanvasCaptureMediaStream extends js.Object {}

@@ -9,6 +9,4 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 @JSImport("kafka-node", "KeyedMessage")
-class KeyedMessage(key: String, message: String) extends js.Object {
-
-}
+class KeyedMessage(key: String, message: String) extends js.Object {}

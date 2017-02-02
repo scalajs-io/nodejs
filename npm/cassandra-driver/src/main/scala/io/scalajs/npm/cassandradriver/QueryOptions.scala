@@ -13,4 +13,5 @@ class QueryOptions(val autoPage: Boolean = false,
                    val consistency: js.UndefOr[ConsistencyLevel] = js.undefined,
                    val fetchSize: Int = 5000,
                    val pageState: PageState = null,
-                   val prepare: Boolean = false) extends js.Object
+                   val prepare: Boolean = false)
+    extends js.Object

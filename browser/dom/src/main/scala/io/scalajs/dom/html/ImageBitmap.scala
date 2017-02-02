@@ -7,6 +7,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-class ImageBitmap extends js.Object {
-
-}
+class ImageBitmap extends js.Object {}

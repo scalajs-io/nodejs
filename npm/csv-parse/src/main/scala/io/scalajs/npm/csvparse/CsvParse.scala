@@ -20,14 +20,19 @@ trait CsvParse extends IEventEmitter {
   //      Streaming
   /////////////////////////////////////////////////////////////////////////////////
 
-  def apply(text: String, options: ParserOptions | RawOptions = js.native): Parser = js.native
+  def apply(text: String): Parser = js.native
+
+  def apply(options: ParserOptions | RawOptions): Parser = js.native
+
+  def apply(text: String, options: ParserOptions | RawOptions): Parser = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Asynchronous
   /////////////////////////////////////////////////////////////////////////////////
 
-  def apply(text: String, options: ParserOptions | RawOptions, callback: js.Function2[String, CsvResults, Any]): Unit =
-    js.native
+  def apply(options: ParserOptions | RawOptions, callback: js.Function2[String, CsvResults, Any]): Unit = js.native
+
+  def apply(text: String, options: ParserOptions | RawOptions, callback: js.Function2[String, CsvResults, Any]): Unit = js.native
 
   def apply(text: String, callback: js.Function2[String, CsvResults, Any]): Unit = js.native
 

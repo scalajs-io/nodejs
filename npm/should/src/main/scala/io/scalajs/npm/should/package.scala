@@ -12,10 +12,43 @@ package object should {
     * Should Extensions
     * @param value the given value
     */
-  implicit class ShouldExtensions(val value: js.Any) extends AnyVal {
+  implicit class ShouldExtensionsA(val value: js.Any) extends AnyVal {
 
     @inline
-    def should(implicit _should: Should): Assertion = _should(value)
+    def should: Assertion = Should(value)
+
+  }
+
+  /**
+    * Should Extensions
+    * @param value the given value
+    */
+  implicit class ShouldExtensionsB(val value: Int) extends AnyVal {
+
+    @inline
+    def should: Assertion = Should(value)
+
+  }
+
+  /**
+    * Should Extensions
+    * @param value the given value
+    */
+  implicit class ShouldExtensionsC(val value: Double) extends AnyVal {
+
+    @inline
+    def should: Assertion = Should(value)
+
+  }
+
+  /**
+    * Should Extensions
+    * @param value the given value
+    */
+  implicit class ShouldExtensionsD(val value: String) extends AnyVal {
+
+    @inline
+    def should: Assertion = Should(value)
 
   }
 

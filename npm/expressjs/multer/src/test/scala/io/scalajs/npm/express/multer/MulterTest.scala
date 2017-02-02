@@ -15,7 +15,7 @@ class MulterTest extends FunSpec {
 
     it("handles simple file uploads") {
       val app    = Express()
-      val upload = Multer()
+      val upload = Multer(new MulterOptions(dest = "uploads/"))
       app.post("/profile", upload.array(), (req: Request, res: Response, next: js.Function) => {
         // req.body contains the text fields
       })

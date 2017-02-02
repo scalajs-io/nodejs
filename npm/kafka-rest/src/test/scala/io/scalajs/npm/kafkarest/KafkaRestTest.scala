@@ -3,7 +3,7 @@ package io.scalajs.npm.kafkarest
 import java.util.UUID
 
 import io.scalajs.nodejs.{console, process}
-import io.scalajs.npm.kafkarest.KafkaRestTests.UserInfo
+import io.scalajs.npm.kafkarest.KafkaRestTest.UserInfo
 import io.scalajs.util.OptionHelper._
 import io.scalajs.util.ScalaJsHelper._
 import org.scalatest.FunSpec
@@ -18,10 +18,11 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * KafkaRest Tests
   * @author lawrence.daniels@gmail.com
   */
-class KafkaRestTests extends FunSpec {
+class KafkaRestTest extends FunSpec {
 
   describe("KafkaRest") {
-
+    // TODO use mock or embedded server
+    /*
     val kafka = new KafkaRest(new KafkaRestOptions(url = "http://localhost:8082"))
 
     it("should be able to list topics") {
@@ -49,7 +50,7 @@ class KafkaRestTests extends FunSpec {
       entertainers foreach { entertainer =>
         topic.produce(userInfoSchema, new KeyedMessage(key = UUID.randomUUID().toString, value = entertainer))
       }
-    }
+    }*/
 
   }
 
@@ -84,7 +85,7 @@ class KafkaRestTests extends FunSpec {
   * KafkaRest Tests Companion
   * @author lawrence.daniels@gmail.com
   */
-object KafkaRestTests {
+object KafkaRestTest {
 
   @ScalaJSDefined
   class UserInfo(val id: Int, val name: String) extends js.Object

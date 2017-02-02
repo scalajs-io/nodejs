@@ -16,7 +16,7 @@ import scala.scalajs.js.|
   *                               the first line and returning the column names, or true if autodiscovered in the first
   *                               CSV line. Defaults to null. Affects the result data set in the sense that records will
   *                               be objects instead of arrays.
-  * @param  comment               Treat all the characters after this one as a comment. Defaults to '' (disabled).
+  * @param  comment               Treat all the characters after this one as a comment. Defaults to "" (disabled).
   * @param  objname               Name of header-record title to name objects by.
   * @param relax                  Preserve quotes inside unquoted field.
   * @param relax_column_count     Discard inconsistent columns count. Default to false.

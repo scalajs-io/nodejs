@@ -1,9 +1,8 @@
 package io.scalajs.npm.async
 
 import io.scalajs.JSON
-import io.scalajs.nodejs
 import io.scalajs.nodejs.fs.Fs
-import io.scalajs.nodejs.{Error, console, errors}
+import io.scalajs.nodejs.{Error, console}
 import io.scalajs.npm.async.AsyncTest._
 import io.scalajs.util.ScalaJsHelper._
 import org.scalatest.FunSpec
@@ -96,7 +95,7 @@ class AsyncTest extends FunSpec {
     }
 
     it("supports forEachOf via callbacks") {
-      val obj     = js.Dictionary("dev" -> "/dev.json", "test" -> "/test.json", "prod" -> "/prod.json")
+      val obj = js.Dictionary("dev" -> "/dev.json", "test" -> "/test.json", "prod" -> "/prod.json")
       val configs = js.Dictionary[js.Any]()
 
       Async.forEachOf(
@@ -129,7 +128,7 @@ class AsyncTest extends FunSpec {
 
     it("supports forEachOf via promises (1)") {
       val envFiles = js.Dictionary("dev" -> "/dev.json", "test" -> "/test.json", "prod" -> "/prod.json")
-      val configs  = js.Dictionary[js.Any]()
+      val configs = js.Dictionary[js.Any]()
 
       Async.forEachOfFuture(envFiles) { (value: String, key: String, callback: js.Function1[Error, Any]) =>
         Fs.readFile(
@@ -142,7 +141,7 @@ class AsyncTest extends FunSpec {
                 configs(key) = JSON.parse(data)
               } match {
                 case Success(_) => callback(null)
-                case Failure(e) => callback(nodejs.Error(e.getMessage))
+                case Failure(e) => callback(new Error(e.getMessage))
               }
             }
             console.log("Done B")
@@ -152,8 +151,8 @@ class AsyncTest extends FunSpec {
     }
 
     it("supports forEachOf via promises (2)") {
-      val envs    = js.Array("dev", "test", "prod")
-      val files   = js.Array("/dev.json", "/test.json", "/prod.json")
+      val envs = js.Array("dev", "test", "prod")
+      val files = js.Array("/dev.json", "/test.json", "/prod.json")
       val configs = js.Dictionary[js.Any]()
 
       Async.forEachOfFuture(files) { (value: String, index: Int, callback: js.Function1[Error, Any]) =>
@@ -167,7 +166,7 @@ class AsyncTest extends FunSpec {
                 configs(envs(index)) = JSON.parse(data)
               } match {
                 case Success(_) => callback(null)
-                case Failure(e) => callback(nodejs.Error(e.getMessage))
+                case Failure(e) => callback(new Error(e.getMessage))
               }
             }
             console.log("Done C")

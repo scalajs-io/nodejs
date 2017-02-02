@@ -1,7 +1,11 @@
-package io.scalajs.npm.should
+package io.scalajs.npm
+package should
+
+import io.scalajs.JsNumber
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.|
 
 /**
   * should.js - test framework agnostic BDD-style assertions
@@ -13,7 +17,7 @@ import scala.scalajs.js.annotation.JSImport
 @js.native
 trait Should extends Assertion {
 
-  def apply(value: js.Any): Assertion = js.native
+  def apply(value: js.Any | JsNumber | String): Assertion = js.native
 
   /**
     * Object with configuration.

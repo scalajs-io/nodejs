@@ -16,7 +16,7 @@ class JsDomTest extends FunSpec {
   describe("JsDom") {
 
     it("should parse an HTML snippet into a DOM instance") {
-      val doc  = JsDom.jsdom("""<p id="p1"><a class="the-link" href="https://github.com/tmpvar/jsdom">jsdom!</a></p>""")
+      val doc = JsDom.jsdom("""<p id="p1"><a class="the-link" href="https://github.com/tmpvar/jsdom">jsdom!</a></p>""")
       val elem = doc.getElementsByClassName("the-link").headOption.orNull
       assert(elem != null)
 
@@ -33,7 +33,7 @@ class JsDomTest extends FunSpec {
           assert(err == null)
 
           import window.$
-          assert($("a").nonEmpty)
+          assert($("a") != null)
         }
       )
     }
@@ -62,7 +62,7 @@ class JsDomTest extends FunSpec {
             assert(err == null)
 
             import window.$
-            assert($("td.title:not(:last) a").nonEmpty)
+            assert($("td.title:not(:last) a") != null)
           }
         ))
     }
@@ -79,7 +79,7 @@ class JsDomTest extends FunSpec {
             assert(err == null)
 
             import window.$
-            assert($("td.title:not(:last) a").nonEmpty)
+            assert($("td.title:not(:last) a") != null)
           }
         ))
     }

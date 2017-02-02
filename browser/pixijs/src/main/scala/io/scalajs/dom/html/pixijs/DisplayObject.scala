@@ -1,15 +1,15 @@
 package io.scalajs.dom.html.pixijs
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSName
 
 /**
   * The base class for all objects that are rendered on the screen. This is an abstract class and should not be used
   * on its own rather it should be extended.
+  * @author lawrence.daniels@gmail.com
   */
 @js.native
-@JSName("DisplayObject")
-class DisplayObject extends js.Object {
+//@JSName("DisplayObject")
+trait DisplayObject extends js.Object {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -28,7 +28,7 @@ class DisplayObject extends js.Object {
     * This has no impact on the rotation/angle properties of the children, but it will update their worldTransform
     * and on-screen orientation and position.
     */
-  var angle: Double = js.native
+  def angle: Double = js.native
 
   /**
     * Set if this display object is cached as a bitmap. This basically takes a snap shot of the display object as it
@@ -52,12 +52,16 @@ class DisplayObject extends js.Object {
   /**
     * The position of the displayObject on the x axis relative to the local coordinates of the parent.
     */
-  var x: Double = js.native
+  def x: Double = js.native
+
+  def x_=(x : Double): Unit = js.native
 
   /**
     * The position of the displayObject on the y axis relative to the local coordinates of the parent.
     */
-  var y: Double = js.native
+  def y: Double = js.native
+
+  def y_=(y : Double): Unit = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods

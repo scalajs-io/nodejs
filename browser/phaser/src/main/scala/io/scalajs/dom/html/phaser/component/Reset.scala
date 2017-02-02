@@ -6,7 +6,7 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
 
 @js.native
-@JSName("Phaser.Component.Reset")
+//@JSName("Phaser.Component.Reset")
 trait Reset extends js.Object {
 
   def reset(x: Double, y: Double, health: Double = 1): DisplayObject = js.native

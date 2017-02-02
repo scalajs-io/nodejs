@@ -1,7 +1,9 @@
 package io.scalajs.jquery
 
+import io.scalajs.dom.Event
+import io.scalajs.dom.html.browser.window
+import io.scalajs.dom.html.browser.window.document
 import io.scalajs.jquery.JQuery.$
-import org.scalajs.dom.html.browser.window
 import org.scalatest._
 
 import scala.scalajs.js
@@ -12,10 +14,11 @@ import scala.scalajs.js
   */
 class JQueryTest extends FunSpec {
 
-  import window.document
 
   describe("JQuery") {
+    // No JQuery on the server - See cheerio instead
 
+    /*
     it("should provide a add() method for adding elements to an existing group") {
       $("h1").add("p").add("span")
     }
@@ -30,7 +33,7 @@ class JQueryTest extends FunSpec {
 
       // case #2
       $("#greatphoto").attr(new js.Object {
-        val alt: String   = "Beijing Brush Seller"
+        val alt: String = "Beijing Brush Seller"
         val title: String = "photo by Kelly Clark"
       })
 
@@ -38,21 +41,19 @@ class JQueryTest extends FunSpec {
       $("#w3s").attr("href", "http://www.w3schools.com/jquery")
 
       // case #4
-      $("#greatphoto").attr("title", (i, `val`) => `val` + " - photo by Kelly Clark")
+      $("#greatphoto").attr("title", (i: Int, value: String) => value + " - photo by Kelly Clark")
     }
 
     it("should provide a change() method") {
       val element = $("input")
-      element
-        .change(_ => {
-          val $input = $(element)
-          $("p").html(
-            ".attr( 'checked' ): <b>" + $input.attr("checked") + "</b><br>" +
-              ".prop( 'checked' ): <b>" + $input.prop("checked") + "</b><br>" +
-              ".is( ':checked' ): <b>" + $input.is(":checked") + "</b>"
-          )
-        })
-        .change()
+      element.change { _: Event =>
+        val $input = $(element)
+        $("p").html(
+          ".attr( 'checked' ): <b>" + $input.attr("checked") + "</b><br>" +
+            ".prop( 'checked' ): <b>" + $input.prop("checked") + "</b><br>" +
+            ".is( ':checked' ): <b>" + $input.is(":checked") + "</b>"
+        )
+      }.change()
     }
 
     it("should provide a children() method") {
@@ -74,12 +75,12 @@ class JQueryTest extends FunSpec {
       $("p").click()
 
       // case #2
-      $("#btn1").click { _ =>
+      $("#btn1").click { _: Event =>
         window.alert("Text: " + $("#test").text())
       }
 
       // case #3
-      $("ul").click { event =>
+      $("ul").click { event: Event =>
         val target = $(event.target)
         if (target.is("li")) {
           target.css("background-color", "red")
@@ -149,7 +150,7 @@ class JQueryTest extends FunSpec {
 
     it("should provide a text() method") {
       $("div").text($("img").attr("alt"))
-    }
+    }*/
 
   }
 

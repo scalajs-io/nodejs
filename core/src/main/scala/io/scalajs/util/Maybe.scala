@@ -1,5 +1,7 @@
 package io.scalajs.util
 
+import io.scalajs.util.JsUnderOrHelper._
+
 import scala.scalajs.js
 import scala.scalajs.js.{Any, |}
 import scala.scalajs.js.|.Evidence
@@ -71,7 +73,7 @@ object Maybe extends MaybeLowerPriorityImplicits {
     * @param aValue the given value
     * @return a Maybe implementation
     */
-  def apply[A](aValue: js.UndefOr[A]): Maybe[A] = if (aValue.isEmpty) Empty else Full(aValue.get)
+  def apply[A](aValue: js.UndefOr[A]): Maybe[A] = if (aValue.flat.isEmpty) Empty else Full(aValue.get)
 
   /**
     * Creates a Maybe monad from the given Option value
@@ -144,7 +146,7 @@ object Maybe extends MaybeLowerPriorityImplicits {
     def isDefined: Boolean = !isEmpty
 
     @inline
-    def isEmpty: Boolean = isNotDefined(aValue)
+    def isEmpty: Boolean = aValue == Empty || isNotDefined(aValue)
 
     @inline
     def nonEmpty: Boolean = isDefined
@@ -159,7 +161,10 @@ object Maybe extends MaybeLowerPriorityImplicits {
     def toLeft[B](right: => B): Either[A, B] = if (isEmpty) Right(right) else Left(get)
 
     @inline
-    def toOption: Option[A] = if (isEmpty) None else Option(get)
+    def toOption: Option[A] = aValue match {
+      case Full(value) => Option(value)
+      case _ => None
+    }
 
     @inline
     def toRight[B](left: => B): Either[B, A] = if (isEmpty) Left(left) else Right(get)

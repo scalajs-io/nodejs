@@ -4,5 +4,5 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
 
 @js.native
-@JSName("Phaser.Component.InputEnabled")
+//@JSName("Phaser.Component.InputEnabled")
 trait InputEnabled extends js.Object

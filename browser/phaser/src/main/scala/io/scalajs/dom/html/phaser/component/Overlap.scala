@@ -4,5 +4,5 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
 
 @js.native
-@JSName("Phaser.Component.Overlap")
+//@JSName("Phaser.Component.Overlap")
 trait Overlap extends js.Object

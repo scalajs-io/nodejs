@@ -3,7 +3,7 @@ package io.scalajs.jquery
 import io.scalajs.JsNumber
 import io.scalajs.dom.html.HTMLElement
 import io.scalajs.dom.html.css.CSSSelector
-import io.scalajs.dom.{Element, Event, Node}
+import io.scalajs.dom.{Element, Event, Node, Text}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSBracketAccess
@@ -43,14 +43,26 @@ trait JQueryElement extends HTMLElement {
   ///////////////////////////////////////////////////////////////
 
   /**
+    * Create a new jQuery object with elements added to the set of matched elements.
+    * @param selector could be any of the following:
+    *                 <ul>
+    *                 <li>selector: A string representing a selector expression to find additional elements to add to the set of matched elements.</li>
+    *                 <li>elements: One or more elements to add to the set of matched elements.</li>
+    *                 <li>html: An HTML fragment to add to the set of matched elements.</li>
+    *                 <li>selection: An existing jQuery object to add to the set of matched elements..</li>
+    *                 </ul>
+    */
+  def add(selector: Selector | CSSSelector | HTMLElement*): this.type = js.native
+
+  /**
     * The add() method adds elements to an existing group of elements.
-    * @param element Required. Specifies a selector expression, a jQuery object, one or more elements
-    *                or an HTML snippet to be added to an existing group of elements
-    * @param context Optional. Specifies the point in the document at which the selector expression
-    *                should begin matching
+    * @param selector Required. Specifies a selector expression, a jQuery object, one or more elements
+    *                 or an HTML snippet to be added to an existing group of elements
+    * @param context  Optional. Specifies the point in the document at which the selector expression
+    *                 should begin matching
     * @return self reference
     */
-  def add(element: Element | Selector | CSSSelector | js.Any, context: Element | js.Any = js.native): this.type = js.native
+  def add(selector: HTMLElement | Selector | CSSSelector, context: HTMLElement): this.type = js.native
 
   /**
     * Add the previous set of elements on the stack to the current set, optionally filtered by a selector.
@@ -190,7 +202,7 @@ trait JQueryElement extends HTMLElement {
     * Bind an event handler to the "change" JavaScript event, or trigger that event on an element.
     * @param callback A function to execute each time the event is triggered.
     */
-  def change(callback: js.Function1[Event, Any] = js.native): this.type = js.native
+  def change[A](callback: js.Function1[Event, A] = js.native): this.type = js.native
 
   /**
     * Get the children of each element in the set of matched elements, optionally filtered by a selector.
@@ -559,7 +571,7 @@ trait JQueryElement extends HTMLElement {
     * @param content One or more additional DOM elements, arrays of elements, HTML strings, or jQuery objects to
     *                insert at the beginning of each element in the set of matched elements.
     */
-  def prepend(content: js.Any, content1: js.Any*): this.type = js.native
+  def prepend(content: (String | HTMLElement | Text | js.Array[String | HTMLElement | Text])*): this.type = js.native
 
   /**
     * Insert content, specified by the parameter, to the beginning of each element in the set of matched elements.
@@ -569,12 +581,6 @@ trait JQueryElement extends HTMLElement {
     *           element in the set.
     */
   def prepend(fn: js.Function): this.type = js.native
-
-  /**
-    * Inserts content at the beginning of the selected elements
-    * @param content the specified content
-    */
-  def prepend(content: js.Any): this.type = js.native
 
   /**
     * Get the immediately preceding sibling of each element in the set of matched elements. If a selector is provided,
@@ -605,13 +611,7 @@ trait JQueryElement extends HTMLElement {
     * @param propertyName The name of the property to get.
     * @return the property value
     */
-  def prop[T <: js.Any](propertyName: String): T = js.native
-
-  /**
-    * Get the value of a property for the first element in the set of matched elements.
-    * @param name The name of the property to get.
-    */
-  def prop(name: String): Boolean = js.native
+  def prop(propertyName: String): String = js.native
 
   /**
     * Set one or more properties for the set of matched elements.

@@ -21,9 +21,10 @@ class HttpTest extends FunSpec {
         response.write("Hello World")
         response.end()
       })
-      server.listen(8888)
 
-      setTimeout(() => server.close(), 100.millis)
+      // don't listen on a port
+      //server.listen(58888)
+      //setTimeout(() => server.close(), 100.millis)
 
     }
   }

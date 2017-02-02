@@ -9,6 +9,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-class OpenEvent() extends Event {
-
-}
+class OpenEvent() extends Event {}

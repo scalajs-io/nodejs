@@ -9,6 +9,4 @@ import scala.scalajs.js.annotation.JSName
   */
 @js.native
 @JSName("Phaser.Utils.Debug")
-class Debug extends js.Object {
-
-}
+class Debug extends js.Object {}

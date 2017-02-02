@@ -16,12 +16,13 @@ class JwtSimpleTest extends FunSpec {
 
     it("should create JWT tokens and encrypt JSON payloads") {
       val payload = js.Dictionary("foo" -> "bar")
-      val secret = "scalajs"
+      val secret  = "scalajs"
 
       // encode
       val token = JwtSimple.encode(payload, secret)
       info(s"token: $token")
-      assert(token == "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmb28iOiJiYXIifQ.GmVaWnUkI1glyMfggMz6u4T-8I5KPfk8Kmc4PxKJz50")
+      assert(
+        token == "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmb28iOiJiYXIifQ.GmVaWnUkI1glyMfggMz6u4T-8I5KPfk8Kmc4PxKJz50")
 
       // decode
       val decoded = JwtSimple.decode(token, secret)

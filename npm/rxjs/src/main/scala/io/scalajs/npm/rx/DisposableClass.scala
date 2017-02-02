@@ -31,5 +31,4 @@ trait DisposableClass extends js.Object {
     */
   def isDisposable(d: js.Any): Boolean = js.native
 
-
 }

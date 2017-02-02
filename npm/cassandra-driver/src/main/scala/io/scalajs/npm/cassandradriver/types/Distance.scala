@@ -18,8 +18,8 @@ class Distance extends js.Object
 @js.native
 @JSImport("cassandra-driver", "types.distance")
 object Distance extends js.Object {
-  val local: Int = js.native
-  val remote: Int = js.native
+  val local: Int   = js.native
+  val remote: Int  = js.native
   val ignored: Int = js.native
 
 }

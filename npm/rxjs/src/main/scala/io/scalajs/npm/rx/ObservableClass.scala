@@ -29,7 +29,9 @@ trait ObservableClass extends js.Object {
     * @return An observable sequence which is determined by a case statement.
     * @example Rx.Observable.case(selector, sources, [elseSource|scheduler])
     */
-  def `case`[T](selector: js.Function, sources: js.Any = js.native, elseSource: Observable[T] | Scheduler = js.native): Observable[T] = js.native
+  def `case`[T](selector: js.Function,
+                sources: js.Any = js.native,
+                elseSource: Observable[T] | Scheduler = js.native): Observable[T] = js.native
 
   /**
     * Continues an observable sequence that is terminated by an exception with the next observable sequence.
@@ -89,7 +91,9 @@ trait ObservableClass extends js.Object {
     * @return (Observable): An observable sequence from the concatenated observable sequences or Promises.
     * @example Rx.Observable.for(sources, resultSelector, [thisArg])
     */
-  def `for`[T](sources: js.Array[Observable[T]], resultSelector: js.Function, thisArg: js.Any = js.native): Observable[T] = js.native
+  def `for`[T](sources: js.Array[Observable[T]],
+               resultSelector: js.Function,
+               thisArg: js.Any = js.native): Observable[T] = js.native
 
   /**
     * Runs all observable sequences in parallel and collect their last elements.
@@ -122,7 +126,10 @@ trait ObservableClass extends js.Object {
     * @return (Observable): The observable sequence whose elements are pulled from the given iterable sequence.
     * @example Rx.Observable.from(iterable, [mapFn], [thisArg], [scheduler])
     */
-  def from[T](iterable: js.Array[Observable[T]] | Iterator[Observable[T]], mapFn: js.Function = js.native, thisArg: js.Any = js.native, scheduler: Scheduler = js.native): Observable[T] = js.native
+  def from[T](iterable: js.Array[Observable[T]] | Iterator[Observable[T]],
+              mapFn: js.Function = js.native,
+              thisArg: js.Any = js.native,
+              scheduler: Scheduler = js.native): Observable[T] = js.native
 
   /**
     * Converts an array to an observable sequence, using an optional scheduler to enumerate the array.
@@ -144,7 +151,9 @@ trait ObservableClass extends js.Object {
     *         given, else the object created by the selector function.
     * @example Rx.Observable.fromCallback(func, [context], [selector])
     */
-  def fromCallback[T](func: js.Function, context: js.Any = js.native, selector: js.Function = js.native): Observable[T] = js.native
+  def fromCallback[T](func: js.Function,
+                      context: js.Any = js.native,
+                      selector: js.Function = js.native): Observable[T] = js.native
 
   /**
     * Creates an observable sequence by adding an event listener to the matching DOMElement, jQuery element,
@@ -163,7 +172,10 @@ trait ObservableClass extends js.Object {
     * @return (Observable): An observable sequence of events from the specified element and the specified event.
     * @example Rx.Observable.fromEvent(element, eventName, [selector], [options])
     */
-  def fromEvent(element: js.Any, eventName: String, selector: js.Function = js.native, options: ListenerOptions = js.native): Observable[Event] = js.native
+  def fromEvent(element: js.Any,
+                eventName: String,
+                selector: js.Function = js.native,
+                options: ListenerOptions = js.native): Observable[Event] = js.native
 
   /**
     * Creates an observable sequence by using the addHandler and removeHandler functions to add and remove the handlers,
@@ -174,7 +186,9 @@ trait ObservableClass extends js.Object {
     * @return (Observable): An observable sequence of events from the specified element and the specified event.
     * @example Rx.Observable.fromEventPattern(addHandler, [removeHandler], [selector])
     */
-  def fromEventPattern[T](addHandler: js.Function, removeHandler: js.Function = js.native, selector: js.Function = js.native): Observable[T] = js.native
+  def fromEventPattern[T](addHandler: js.Function,
+                          removeHandler: js.Function = js.native,
+                          selector: js.Function = js.native): Observable[T] = js.native
 
   /**
     * Converts a Node.js callback style function to an observable sequence. This must be in function (err, ...) format.
@@ -187,7 +201,9 @@ trait ObservableClass extends js.Object {
     *         if the first parameter is not falsy.
     * @example Rx.Observable.fromNodeCallback(func, [context], [selector])
     */
-  def fromNodeCallback[T](func: js.Function, context: js.Any = js.native, selector: js.Function = js.native): Observable[T] = js.native
+  def fromNodeCallback[T](func: js.Function,
+                          context: js.Any = js.native,
+                          selector: js.Function = js.native): Observable[T] = js.native
 
   /**
     * Converts a Promises/A+ spec compliant Promise and/or ES2015 compliant Promise or a factory function which returns
@@ -209,7 +225,11 @@ trait ObservableClass extends js.Object {
     * @return (Observable): The generated sequence.
     * @example Rx.Observable.generate(initialState, condition, iterate, resultSelector, [scheduler])
     */
-  def generate[T](initialState: T, condition: js.Function, iterate: js.Function, resultSelector: js.Function, scheduler: Scheduler = js.native): Observable[T] = js.native
+  def generate[T](initialState: T,
+                  condition: js.Function,
+                  iterate: js.Function,
+                  resultSelector: js.Function,
+                  scheduler: Scheduler = js.native): Observable[T] = js.native
 
   /**
     * Generates an observable sequence by iterating a state from an initial state until the condition fails.
@@ -224,7 +244,12 @@ trait ObservableClass extends js.Object {
     * @return (Observable): The generated sequence.
     * @example Rx.Observable.generateWithAbsoluteTime(initialState, condition, iterate, resultSelector, timeSelector, [scheduler])
     */
-  def generateWithAbsoluteTime[T](initialState: T, condition: js.Function, iterate: js.Function, resultSelector: js.Function, timeSelector: js.Function, scheduler: Scheduler = js.native): Observable[T] = js.native
+  def generateWithAbsoluteTime[T](initialState: T,
+                                  condition: js.Function,
+                                  iterate: js.Function,
+                                  resultSelector: js.Function,
+                                  timeSelector: js.Function,
+                                  scheduler: Scheduler = js.native): Observable[T] = js.native
 
   /**
     * Generates an observable sequence by iterating a state from an initial state until the condition fails.
@@ -238,7 +263,12 @@ trait ObservableClass extends js.Object {
     *                       If not provided, defaults to Scheduler.timeout.
     * @return (Observable): The generated sequence.
     */
-  def generateWithRelativeTime[T](initialState: T, condition: js.Function, iterate: js.Function, resultSelector: js.Function, timeSelector: js.Function, scheduler: Scheduler = js.native): Observable[T] = js.native
+  def generateWithRelativeTime[T](initialState: T,
+                                  condition: js.Function,
+                                  iterate: js.Function,
+                                  resultSelector: js.Function,
+                                  timeSelector: js.Function,
+                                  scheduler: Scheduler = js.native): Observable[T] = js.native
 
   /**
     * Determines whether an observable collection contains values. There is an alias for this method called
@@ -250,7 +280,9 @@ trait ObservableClass extends js.Object {
     * @return (Observable): The generated sequence.
     * @example Rx.Observable.if(condition, thenSource, [elseSource])
     */
-  def `if`[T](condition: js.Function, thenSource: Observable[T], elseSource: Observable[T] | Scheduler = js.native): Observable[T] = js.native
+  def `if`[T](condition: js.Function,
+              thenSource: Observable[T],
+              elseSource: Observable[T] | Scheduler = js.native): Observable[T] = js.native
 
   /**
     * Determines whether an observable collection contains values. There is an alias for this method called
@@ -263,7 +295,9 @@ trait ObservableClass extends js.Object {
     * @example Rx.Observable.ifThen(condition, thenSource, [elseSource])
     */
   @deprecated("Use Rx.Observable.if instead", since = "4.0")
-  def ifThen[T](condition: js.Function, thenSource: Observable[T], elseSource: Observable[T] | Scheduler = js.native): Observable[T] = js.native
+  def ifThen[T](condition: js.Function,
+                thenSource: Observable[T],
+                elseSource: Observable[T] | Scheduler = js.native): Observable[T] = js.native
 
   /**
     * Returns an observable sequence that produces a value after each period.
@@ -439,7 +473,9 @@ trait ObservableClass extends js.Object {
     * @return (Observable): An observable sequence that produces a value after due time has elapsed and then each period.
     * @example Rx.Observable.timer(dueTime, [period], [scheduler])
     */
-  def timer[T](dueTime: RelativeTime | js.Date, period: Period | Scheduler = js.native, scheduler: Scheduler = js.native): Observable[T] = js.native
+  def timer[T](dueTime: RelativeTime | js.Date,
+               period: Period | Scheduler = js.native,
+               scheduler: Scheduler = js.native): Observable[T] = js.native
 
   /**
     * Converts the function into an asynchronous function. Each invocation of the resulting asynchronous function causes
@@ -451,7 +487,8 @@ trait ObservableClass extends js.Object {
     * @return (Function): Asynchronous function.
     * @example Rx.Observable.toAsync(func, [context], [scheduler])
     */
-  def toAsync(func: js.Function, context: js.Any = js.native, scheduler: Scheduler = js.native): js.Function = js.native
+  def toAsync(func: js.Function, context: js.Any = js.native, scheduler: Scheduler = js.native): js.Function =
+    js.native
 
   /**
     * Returns an observable sequence that terminates with an exception, using the specified scheduler to send out the single onError message.

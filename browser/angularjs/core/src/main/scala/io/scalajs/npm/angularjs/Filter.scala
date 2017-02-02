@@ -18,6 +18,7 @@ trait Filter extends js.Object {
     *                   actual value (from the object in the array) should be considered a match.
     * @return
     */
-  def apply[T](name: String)(array: js.Array[T], expression: js.Any, comparator: js.Any = js.undefined): js.Array[T] = js.native
+  def apply[T](name: String)(array: js.Array[T], expression: js.Any, comparator: js.Any = js.undefined): js.Array[T] =
+    js.native
 
 }

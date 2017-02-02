@@ -10,6 +10,7 @@ import scala.scalajs.js
   */
 @js.native
 trait ClusterSettings extends js.Object {
+
   /** <Array> list of string arguments passed to the Node.js executable. (Default=process.execArgv) */
   var execArgv: js.Array[js.Any] = js.native
 
@@ -34,9 +35,7 @@ trait ClusterSettings extends js.Object {
   */
 object ClusterSettings {
 
-  def apply(exec: String = null,
-            args: js.Array[js.Any] = null,
-            silent: Boolean = false) = {
+  def apply(exec: String = null, args: js.Array[js.Any] = null, silent: Boolean = false) = {
     val settings = New[ClusterSettings]
     settings.exec = exec
     settings.args = args

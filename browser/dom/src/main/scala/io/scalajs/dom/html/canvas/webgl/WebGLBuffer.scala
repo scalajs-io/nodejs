@@ -20,6 +20,4 @@ import scala.scalajs.js.annotation.JSName
   */
 @js.native
 @JSName("WebGLBuffer")
-class WebGLBuffer extends js.Object {
-
-}
+class WebGLBuffer extends js.Object {}

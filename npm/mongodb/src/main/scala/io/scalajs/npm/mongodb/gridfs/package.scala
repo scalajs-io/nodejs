@@ -59,13 +59,15 @@ package object gridfs {
       * Retrieves the contents of this file and advances the read/write head. Works with Buffers only.
       */
     @inline
-    def readFuture[T <: js.Any](length: Int, buffer: Buffer): Future[Array[T]] = callbackMongoFuture[js.Array[T]](gridStore.read(length, buffer, _))
+    def readFuture[T <: js.Any](length: Int, buffer: Buffer): Future[Array[T]] =
+      callbackMongoFuture[js.Array[T]](gridStore.read(length, buffer, _))
 
     /**
       * Retrieves the contents of this file and advances the read/write head. Works with Buffers only.
       */
     @inline
-    def readFuture[T <: js.Any](buffer: Buffer): Future[Array[T]] = callbackMongoFuture[js.Array[T]](gridStore.read(buffer, _))
+    def readFuture[T <: js.Any](buffer: Buffer): Future[Array[T]] =
+      callbackMongoFuture[js.Array[T]](gridStore.read(buffer, _))
 
     /**
       * Retrieves the contents of this file and advances the read/write head. Works with Buffers only.
@@ -77,7 +79,8 @@ package object gridfs {
       * Reads the data of this file.
       */
     @inline
-    def readlinesFuture(separator: String): Future[Array[String]] = callbackMongoFuture[js.Array[String]](gridStore.readlines(separator, _))
+    def readlinesFuture(separator: String): Future[Array[String]] =
+      callbackMongoFuture[js.Array[String]](gridStore.readlines(separator, _))
 
     /**
       * Reads the data of this file.
@@ -96,13 +99,15 @@ package object gridfs {
       * Moves the read/write head to a new location.
       */
     @inline
-    def seekFuture(position: Int, seekLocation: Int): Future[GridStore] = callbackMongoFuture[GridStore](gridStore.seek(position, seekLocation, _))
+    def seekFuture(position: Int, seekLocation: Int): Future[GridStore] =
+      callbackMongoFuture[GridStore](gridStore.seek(position, seekLocation, _))
 
     /**
       * Moves the read/write head to a new location.
       */
     @inline
-    def seekFuture(seekLocation: Int): Future[GridStore] = callbackMongoFuture[GridStore](gridStore.seek(seekLocation, _))
+    def seekFuture(seekLocation: Int): Future[GridStore] =
+      callbackMongoFuture[GridStore](gridStore.seek(seekLocation, _))
 
     /**
       * Moves the read/write head to a new location.
@@ -120,13 +125,15 @@ package object gridfs {
       * Writes some data. This method will work properly only if initialized with mode “w” or “w+”.
       */
     @inline
-    def writeFuture(data: Buffer, close: Boolean): Future[GridStore] = callbackMongoFuture[GridStore](gridStore.write(data, close, _))
+    def writeFuture(data: Buffer, close: Boolean): Future[GridStore] =
+      callbackMongoFuture[GridStore](gridStore.write(data, close, _))
 
     /**
       * Writes some data. This method will work properly only if initialized with mode “w” or “w+”.
       */
     @inline
-    def writeFuture(data: String, close: Boolean): Future[GridStore] = callbackMongoFuture[GridStore](gridStore.write(data, close, _))
+    def writeFuture(data: String, close: Boolean): Future[GridStore] =
+      callbackMongoFuture[GridStore](gridStore.write(data, close, _))
 
     /**
       * Writes some data. This method will work properly only if initialized with mode “w” or “w+”.

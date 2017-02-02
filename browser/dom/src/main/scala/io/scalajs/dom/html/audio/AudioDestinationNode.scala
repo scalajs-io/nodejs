@@ -7,6 +7,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-class AudioDestinationNode extends js.Object {
-
-}
+class AudioDestinationNode extends js.Object {}

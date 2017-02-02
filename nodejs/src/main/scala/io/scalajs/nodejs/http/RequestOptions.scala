@@ -39,4 +39,5 @@ class RequestOptions(var protocol: js.UndefOr[String] = js.undefined,
                      var headers: js.UndefOr[js.Object] = js.undefined,
                      var auth: js.UndefOr[String] = js.undefined,
                      var agent: js.UndefOr[String] = js.undefined,
-                     var createConnection: js.UndefOr[js.Function] = js.undefined) extends js.Object
+                     var createConnection: js.UndefOr[js.Function] = js.undefined)
+    extends js.Object

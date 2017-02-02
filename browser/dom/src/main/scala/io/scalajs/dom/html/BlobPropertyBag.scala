@@ -14,5 +14,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class BlobPropertyBag(var `type`: js.UndefOr[String] = js.undefined,
-                      var endings: js.UndefOr[String] = js.undefined) extends js.Object
+class BlobPropertyBag(var `type`: js.UndefOr[String] = js.undefined, var endings: js.UndefOr[String] = js.undefined)
+    extends js.Object

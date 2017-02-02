@@ -14,4 +14,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 @ScalaJSDefined
 class DuplexOptions(var allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
                     var readableObjectMode: js.UndefOr[Boolean] = js.undefined,
-                    var writableObjectMode: js.UndefOr[Boolean] = js.undefined) extends js.Object
+                    var writableObjectMode: js.UndefOr[Boolean] = js.undefined)
+    extends js.Object

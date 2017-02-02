@@ -24,4 +24,5 @@ class CanvasRendererOptions(var view: js.UndefOr[HTMLCanvasElement] = js.undefin
                             var antialias: js.UndefOr[Boolean] = js.undefined,
                             var resolution: js.UndefOr[Resolution] = js.undefined,
                             var clearBeforeRender: js.UndefOr[Boolean] = js.undefined,
-                            var roundPixels: js.UndefOr[Boolean] = js.undefined) extends js.Object
+                            var roundPixels: js.UndefOr[Boolean] = js.undefined)
+    extends js.Object

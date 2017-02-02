@@ -17,41 +17,51 @@ class MongoAggregateTest extends FunSpec {
 
   it("supports aggregation") {
 
-    MongoClient.connect("mongodb://localhost:27017/test", (err, db) => {
-      jsAssert.equal(err == null, err.toString)
+    MongoClient.connect(
+      "mongodb://localhost:27017/test",
+      (err, db) => {
+        jsAssert.equal(err == null, err.toString)
 
-      // Some docs for insertion
-      val docs = js.Array(
-        doc("title" -> "this is my title", "author" -> "bob", "posted" -> new js.Date(),
-          "pageViews" -> 5, "tags" -> js.Array("fun", "good", "fun"), "other" -> doc("foo" -> 5),
-          "comments" -> js.Array(
-            doc("author" -> "joe"),
-            doc("text" -> "this is cool"),
-            doc("author" -> "sam"),
-            doc("text" -> "this is bad")
-          )))
+        // Some docs for insertion
+        val docs = js.Array(
+          doc(
+            "title"     -> "this is my title",
+            "author"    -> "bob",
+            "posted"    -> new js.Date(),
+            "pageViews" -> 5,
+            "tags"      -> js.Array("fun", "good", "fun"),
+            "other"     -> doc("foo" -> 5),
+            "comments" -> js.Array(
+              doc("author" -> "joe"),
+              doc("text"   -> "this is cool"),
+              doc("author" -> "sam"),
+              doc("text"   -> "this is bad")
+            )
+          ))
 
-      for {
-      // Create a collection
-        collection <- db.collectionFuture("aggregationExample1")
+        for {
+          // Create a collection
+          collection <- db.collectionFuture("aggregationExample1")
 
-        // Insert the docs
-        writeResults <- collection.insertMany(docs, new WriteOptions(w = 1))
+          // Insert the docs
+          writeResults <- collection.insertMany(docs, new WriteOptions(w = 1))
 
-        // Execute aggregate, notice the pipeline is expressed as an Array
-        result <- collection.aggregateFuture[Data](js.Array(
-          doc("$project" -> doc("author" -> 1, "tags" -> 1)),
-          doc("$unwind" -> "$tags"),
-          doc("$group" -> doc("_id" -> doc("tags" -> "$tags"), "authors" $addToSet "$author"))
-        ))
-      } {
-        jsAssert.equal("good", result(0)._id.tags)
-        jsAssert.deepEqual(js.Array("bob"), result(0).authors)
-        jsAssert.equal("fun", result(1)._id.tags)
-        jsAssert.deepEqual(js.Array("bob"), result(1).authors)
-        db.close()
+          // Execute aggregate, notice the pipeline is expressed as an Array
+          result <- collection.aggregateFuture[Data](
+            js.Array(
+              doc("$project" -> doc("author" -> 1, "tags" -> 1)),
+              doc("$unwind"  -> "$tags"),
+              doc("$group"   -> doc("_id" -> doc("tags" -> "$tags"), "authors" $addToSet "$author"))
+            ))
+        } {
+          jsAssert.equal("good", result(0)._id.tags)
+          jsAssert.deepEqual(js.Array("bob"), result(0).authors)
+          jsAssert.equal("fun", result(1)._id.tags)
+          jsAssert.deepEqual(js.Array("bob"), result(1).authors)
+          db.close()
+        }
       }
-    })
+    )
   }
 
 }
@@ -64,7 +74,7 @@ object MongoAggregateTest {
 
   @js.native
   trait Data extends js.Object {
-    var _id: Tags = js.native
+    var _id: Tags                 = js.native
     var authors: js.Array[String] = js.native
   }
 

@@ -16,7 +16,7 @@ import scala.scalajs.js
 @js.native
 trait SRV extends js.Object {
   var priority: Integer = js.native
-  var weight: Integer = js.native
-  var port: Integer = js.native
-  var name: String = js.native
+  var weight: Integer   = js.native
+  var port: Integer     = js.native
+  var name: String      = js.native
 }

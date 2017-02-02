@@ -25,7 +25,10 @@ package object querystring {
       * @return
       */
     @inline
-    def parseAs[T](str: String, sep: String = null, eq: String = null, options: QueryDecodeOptions | RawOptions = null): T = {
+    def parseAs[T](str: String,
+                   sep: String = null,
+                   eq: String = null,
+                   options: QueryDecodeOptions | RawOptions = null): T = {
       qs.parse(str, sep, eq, options).asInstanceOf[T]
     }
 

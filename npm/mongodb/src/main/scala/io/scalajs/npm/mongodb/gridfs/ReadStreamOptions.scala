@@ -15,4 +15,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 class ReadStreamOptions(var sort: js.UndefOr[Integer] = js.undefined,
                         var skip: js.UndefOr[Integer] = js.undefined,
                         var start: js.UndefOr[Integer] = js.undefined,
-                        var end: js.UndefOr[Integer] = js.undefined) extends js.Object
+                        var end: js.UndefOr[Integer] = js.undefined)
+    extends js.Object

@@ -19,7 +19,7 @@ class Texture(var baseTexture: BaseTexture,
               var crop: Rectangle = js.native,
               var trim: Rectangle = js.native,
               var rotate: Rectangle = js.native)
-  extends BaseTexture
+    extends BaseTexture
 
 /**
   * Texture Singleton

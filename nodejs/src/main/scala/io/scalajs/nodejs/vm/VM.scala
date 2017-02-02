@@ -60,7 +60,9 @@ trait VM extends js.Object {
     * @param options             the optional options
     * @example script.runInContext(contextifiedSandbox[, options])
     */
-  def runInContext(code: String, contextifiedSandbox: ScriptContext, options: ContextOptions | RawOptions = js.native): js.Any = js.native
+  def runInContext(code: String,
+                   contextifiedSandbox: ScriptContext,
+                   options: ContextOptions | RawOptions = js.native): js.Any = js.native
 
   /**
     * First contextifies the given sandbox, runs the compiled code contained by the vm.Script object within the created
@@ -70,7 +72,8 @@ trait VM extends js.Object {
     * @param options the optional options
     * @example vm.runInNewContext(code[, sandbox][, options])
     */
-  def runInNewContext(code: String, sandbox: js.Any, options: ContextOptions | RawOptions = js.native): js.Any = js.native
+  def runInNewContext(code: String, sandbox: js.Any, options: ContextOptions | RawOptions = js.native): js.Any =
+    js.native
 
   /**
     * Runs the compiled code contained by the vm.Script within the context of the current global object. Running code

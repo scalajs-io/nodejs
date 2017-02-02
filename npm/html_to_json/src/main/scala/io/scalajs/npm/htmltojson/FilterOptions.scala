@@ -14,7 +14,8 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   */
 @ScalaJSDefined
 class FilterOptions(var text: js.Function1[JQueryElement, String] = null,
-                    var images: js.UndefOr[js.Array[_]] = js.undefined) extends js.Object
+                    var images: js.UndefOr[js.Array[_]] = js.undefined)
+    extends js.Object
 
 /**
   * Html-to-Json Filter Options Companion

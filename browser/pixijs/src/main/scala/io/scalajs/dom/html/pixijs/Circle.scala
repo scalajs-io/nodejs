@@ -38,4 +38,3 @@ class Circle(var x: Double, var y: Double, var radius: Double) extends js.Object
   def getBounds(): Rectangle = js.native
 
 }
-

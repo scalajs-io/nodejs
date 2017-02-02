@@ -45,18 +45,14 @@ object WebSocket {
     * @author lawrence.daniels@gmail.com
     */
   @js.native
-  trait Receiver extends IEventEmitter {
-
-  }
+  trait Receiver extends IEventEmitter {}
 
   /**
     * WebSocket Sender
     * @author lawrence.daniels@gmail.com
     */
   @js.native
-  trait Sender extends IEventEmitter {
-
-  }
+  trait Sender extends IEventEmitter {}
 
   /**
     * WebSocket Events

@@ -14,12 +14,13 @@ class ReadlineTest extends FunSpec {
 
     it("should read/stream files from disk") {
       var lineNo = 0
-      val file = "./package.json"
-      val reader = Readline.createInterface(new ReadlineOptions(
-        input = Fs.createReadStream(file),
-        output = process.stdout,
-        terminal = false
-      ))
+      val file   = "./package.json"
+      val reader = Readline.createInterface(
+        new ReadlineOptions(
+          input = Fs.createReadStream(file),
+          output = process.stdout,
+          terminal = false
+        ))
 
       reader.onLine { line =>
         lineNo += 1
@@ -47,11 +48,10 @@ class ReadlineTest extends FunSpec {
 
       } onClose { () =>
         console.log("Have a great day!")
-        //process.exit(0)
+      //process.exit(0)
       }
     }
 
   }
 
 }
-

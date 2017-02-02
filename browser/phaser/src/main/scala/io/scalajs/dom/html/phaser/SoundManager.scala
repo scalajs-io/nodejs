@@ -120,7 +120,8 @@ class SoundManager(val game: Game) extends js.Object {
     *                running under WebAudio.
     * @return The new sound instance.
     */
-  def add(key: String, volume: Int = js.native, loop: Boolean = js.native, connect: Boolean = js.native): Sound = js.native
+  def add(key: String, volume: Int = js.native, loop: Boolean = js.native, connect: Boolean = js.native): Sound =
+    js.native
 
   /**
     * Adds a new AudioSprite into the SoundManager.
@@ -189,7 +190,8 @@ class SoundManager(val game: Game) extends js.Object {
     * @param callback        The callback which will be invoked once all files have finished decoding.
     * @param callbackContext The context in which the callback will run.
     */
-  def setDecodedCallback(files: String | js.Array[String], callback: js.Function, callbackContext: js.Any): Unit = js.native
+  def setDecodedCallback(files: String | js.Array[String], callback: js.Function, callbackContext: js.Any): Unit =
+    js.native
 
   /**
     * Sets the Input Manager touch callback to be SoundManager.unlock. Required for iOS audio device unlocking.

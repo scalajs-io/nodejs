@@ -104,7 +104,8 @@ object Db {
     }
 
     @inline
-    def dropCollectionFuture(name: String): Future[OperationResult] = callbackMongoFuture[OperationResult](db.dropCollection(name, _))
+    def dropCollectionFuture(name: String): Future[OperationResult] =
+      callbackMongoFuture[OperationResult](db.dropCollection(name, _))
 
     @inline
     def dropDatabaseFuture(): Future[OperationResult] = callbackMongoFuture[OperationResult](db.dropDatabase)

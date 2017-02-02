@@ -17,12 +17,13 @@ object MySQLTests extends FunSpec {
   describe("MySQL") {
 
     // establish a connection
-    val conn = MySQL.createConnection(new ConnectionOptions(
-      host = "localhost",
-      database = "servo",
-      user = "root",
-      password = ""
-    ))
+    val conn = MySQL.createConnection(
+      new ConnectionOptions(
+        host = "localhost",
+        database = "servo",
+        user = "root",
+        password = ""
+      ))
 
     // close connection after 60 seconds
     setTimeout(() => {
@@ -46,34 +47,37 @@ object MySQLTests extends FunSpec {
     }
 
     it("can execute queries via callbacks") {
-      conn.query("SELECT * FROM activity LIMIT 1", (err: js.Error, rows: js.Array[Activity], fields: js.Array[FieldPacket]) => {
-        console.log("fields => %j", fields.head)
-        console.log("rows => %j", rows.head)
-      })
+      conn.query(
+        "SELECT * FROM activity LIMIT 1",
+        (err: js.Error, rows: js.Array[Activity], fields: js.Array[FieldPacket]) => {
+          console.log("fields => %j", fields.head)
+          console.log("rows => %j", rows.head)
+        }
+      )
     }
 
   }
 
   @js.native
   trait Activity extends RowDataPacket {
-    var activity_id: String = js.native
-    var activity_timestamp_start: js.Date = js.native
-    var activity_timestamp_stop: js.Date = js.native
-    var activity_boarding: js.Date = js.native
-    var activity_unboarding: js.Date = js.native
-    var activity_creator_user_id: Integer = js.native
-    var activity_location_airport_id: Integer = js.native
-    var activity_status: Integer = js.native
-    var activity_inboundflightnumber: Integer = js.native
-    var activity_inboundairport_airport_id: Integer = js.native
+    var activity_id: String                          = js.native
+    var activity_timestamp_start: js.Date            = js.native
+    var activity_timestamp_stop: js.Date             = js.native
+    var activity_boarding: js.Date                   = js.native
+    var activity_unboarding: js.Date                 = js.native
+    var activity_creator_user_id: Integer            = js.native
+    var activity_location_airport_id: Integer        = js.native
+    var activity_status: Integer                     = js.native
+    var activity_inboundflightnumber: Integer        = js.native
+    var activity_inboundairport_airport_id: Integer  = js.native
     var activity_outboundairport_airport_id: Integer = js.native
-    var activity_outboundflightnumber: String = js.native
-    var activity_aircraft_aircraft_id: Integer = js.native
-    var activity_timestamp: js.Date = js.native
-    var activity_closer_user_id: Integer = js.native
-    var activity_mcccreated: Integer = js.native
-    var activity_consumptiondone: Integer = js.native
-    var activity_user_user_id: js.Any = js.native
+    var activity_outboundflightnumber: String        = js.native
+    var activity_aircraft_aircraft_id: Integer       = js.native
+    var activity_timestamp: js.Date                  = js.native
+    var activity_closer_user_id: Integer             = js.native
+    var activity_mcccreated: Integer                 = js.native
+    var activity_consumptiondone: Integer            = js.native
+    var activity_user_user_id: js.Any                = js.native
   }
 
 }

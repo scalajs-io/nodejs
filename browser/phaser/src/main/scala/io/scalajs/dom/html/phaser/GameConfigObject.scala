@@ -8,6 +8,4 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class GameConfigObject extends js.Object {
-
-}
+class GameConfigObject extends js.Object {}

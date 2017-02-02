@@ -9,6 +9,4 @@ import scala.scalajs.js.annotation.JSName
   */
 @js.native
 @JSName("WebGLProgram")
-class WebGLProgram extends js.Object {
-
-}
+class WebGLProgram extends js.Object {}

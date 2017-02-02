@@ -185,7 +185,6 @@ trait Fs extends IEventEmitter {
     */
   val S_IFSOCK: FileType = js.native
 
-
   /////////////////////////////////////////////////////////////////////////////////
   //      Classes
   /////////////////////////////////////////////////////////////////////////////////
@@ -262,7 +261,10 @@ trait Fs extends IEventEmitter {
     * @param callback the callback function
     * @example fs.appendFile(file, data[, options], callback)
     */
-  def appendFile(file: String | Buffer | Int, data: String | Buffer, options: AppendOptions | RawOptions, callback: js.Function): Unit = js.native
+  def appendFile(file: String | Buffer | Int,
+                 data: String | Buffer,
+                 options: AppendOptions | RawOptions,
+                 callback: js.Function): Unit = js.native
 
   /**
     * Asynchronously append data to a file, creating the file if it does not yet exist. data can be a string or a buffer.
@@ -302,7 +304,8 @@ trait Fs extends IEventEmitter {
     * @example fs.createWriteStream(path[, options])
     * @see [[Writable]]
     */
-  def createWriteStream(path: String | Buffer, options: FileOutputOptions | RawOptions = js.native): Writable = js.native
+  def createWriteStream(path: String | Buffer, options: FileOutputOptions | RawOptions = js.native): Writable =
+    js.native
 
   /**
     * Test whether or not the given path exists by checking with the file system. Then call the callback argument with
@@ -511,7 +514,10 @@ trait Fs extends IEventEmitter {
     * When using 'junction', the target argument will automatically be normalized to absolute path.
     * @example fs.symlink(target, path[, type], callback)
     */
-  def symlink(target: String | Buffer, path: String | Buffer, `type`: String, callback: js.Function1[FileIOError, Any]): Unit = js.native
+  def symlink(target: String | Buffer,
+              path: String | Buffer,
+              `type`: String,
+              callback: js.Function1[FileIOError, Any]): Unit = js.native
 
   /**
     * Asynchronous symlink(2). No arguments other than a possible exception are given to the completion callback.
@@ -520,7 +526,8 @@ trait Fs extends IEventEmitter {
     * When using 'junction', the target argument will automatically be normalized to absolute path.
     * @example fs.symlink(target, path[, type], callback)
     */
-  def symlink(target: String | Buffer, path: String | Buffer, callback: js.Function1[FileIOError, Any]): Unit = js.native
+  def symlink(target: String | Buffer, path: String | Buffer, callback: js.Function1[FileIOError, Any]): Unit =
+    js.native
 
   /**
     * Synchronous symlink(2). Returns undefined.
@@ -610,7 +617,10 @@ trait Fs extends IEventEmitter {
     * The encoding option is ignored if data is a buffer. It defaults to 'utf8'
     * @example fs.writeFile(file, data[, options], callback)
     */
-  def writeFile(file: String, data: String | Buffer, options: FileOutputOptions | RawOptions, callback: js.Function): Unit = js.native
+  def writeFile(file: String,
+                data: String | Buffer,
+                options: FileOutputOptions | RawOptions,
+                callback: js.Function): Unit = js.native
 
   /**
     * Asynchronously writes data to a file, replacing the file if it already exists. data can be a string or a buffer.
@@ -623,7 +633,8 @@ trait Fs extends IEventEmitter {
     * The synchronous version of fs.writeFile(). Returns undefined.
     * @example fs.writeFileSync(file, data[, options])
     */
-  def writeFileSync(file: String, data: String | Buffer, options: FileOutputOptions | RawOptions = js.native): Unit = js.native
+  def writeFileSync(file: String, data: String | Buffer, options: FileOutputOptions | RawOptions = js.native): Unit =
+    js.native
 
 }
 

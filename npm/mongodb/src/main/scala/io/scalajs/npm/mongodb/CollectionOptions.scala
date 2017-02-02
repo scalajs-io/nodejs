@@ -9,4 +9,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   */
 @ScalaJSDefined
 class CollectionOptions(var readPreference: js.UndefOr[String] = js.undefined,
-                        var strict: js.UndefOr[Boolean] = js.undefined) extends js.Object
+                        var strict: js.UndefOr[Boolean] = js.undefined)
+    extends js.Object

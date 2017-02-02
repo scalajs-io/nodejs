@@ -29,5 +29,5 @@ class InspectOptions(var showHidden: js.UndefOr[Boolean] = js.undefined,
                      var customInspect: js.UndefOr[Boolean] = js.undefined,
                      var showProxy: js.UndefOr[Boolean] = js.undefined,
                      var maxArrayLength: js.UndefOr[Int] = js.undefined,
-                     var breakLength: js.UndefOr[Int] = js.undefined) extends js.Object
-
+                     var breakLength: js.UndefOr[Int] = js.undefined)
+    extends js.Object

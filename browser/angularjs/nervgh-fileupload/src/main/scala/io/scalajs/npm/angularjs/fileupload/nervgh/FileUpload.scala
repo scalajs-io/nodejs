@@ -12,5 +12,3 @@ trait FileUpload extends js.Object {
   def upload[T](config: FileUploadConfig): FileUploadPromise[T] = js.native
 
 }
-
-

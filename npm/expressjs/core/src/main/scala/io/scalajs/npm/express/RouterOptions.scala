@@ -10,4 +10,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 @ScalaJSDefined
 class RouterOptions(var caseSensitive: js.UndefOr[Boolean] = js.undefined,
                     var mergeParams: js.UndefOr[Boolean] = js.undefined,
-                    var strict: js.UndefOr[Boolean] = js.undefined) extends js.Object
+                    var strict: js.UndefOr[Boolean] = js.undefined)
+    extends js.Object

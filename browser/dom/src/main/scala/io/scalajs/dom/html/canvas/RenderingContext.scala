@@ -7,6 +7,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait RenderingContext extends js.Object {
-
-}
+trait RenderingContext extends js.Object {}

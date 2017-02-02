@@ -60,12 +60,12 @@ object WsInstance {
     */
   @js.native
   trait WssInfo extends js.Object {
-    var domain: String = js.native
-    var _events: js.Object = js.native
-    var _eventsCount: Int = js.native
-    var _server: js.Object = js.native
-    var options: WssOptions = js.native
-    var path: String = js.native
+    var domain: String            = js.native
+    var _events: js.Object        = js.native
+    var _eventsCount: Int         = js.native
+    var _server: js.Object        = js.native
+    var options: WssOptions       = js.native
+    var path: String              = js.native
     var clients: js.Array[js.Any] = js.native
   }
 
@@ -75,15 +75,15 @@ object WsInstance {
     */
   @js.native
   trait WssOptions extends js.Object {
-    var host: String = js.native
-    var port: Integer = js.native
-    var server: WssServer = js.native
-    var verifyClient: js.Object = js.native
-    var handleProtocols: String = js.native
-    var path: String = js.native
-    var noServer: Boolean = js.native
-    var disableHixie: Boolean = js.native
-    var clientTracking: Boolean = js.native
+    var host: String               = js.native
+    var port: Integer              = js.native
+    var server: WssServer          = js.native
+    var verifyClient: js.Object    = js.native
+    var handleProtocols: String    = js.native
+    var path: String               = js.native
+    var noServer: Boolean          = js.native
+    var disableHixie: Boolean      = js.native
+    var clientTracking: Boolean    = js.native
     var perMessageDeflate: Boolean = js.native
   }
 
@@ -93,18 +93,18 @@ object WsInstance {
     */
   @js.native
   trait WssServer extends js.Object {
-    var domain: String = js.native
-    var _events: String = js.native
-    var _eventsCount: Integer = js.native
-    var _connections: Integer = js.native
-    var _handle: js.Any = js.native
-    var _usingSlaves: Boolean = js.native
-    var _slaves: js.Array[js.Any] = js.native
-    var _unref: Boolean = js.native
-    var allowHalfOpen: Boolean = js.native
-    var pauseOnConnect: Boolean = js.native
-    var httpAllowHalfOpen: Boolean = js.native
-    var timeout: Integer = js.native
+    var domain: String                = js.native
+    var _events: String               = js.native
+    var _eventsCount: Integer         = js.native
+    var _connections: Integer         = js.native
+    var _handle: js.Any               = js.native
+    var _usingSlaves: Boolean         = js.native
+    var _slaves: js.Array[js.Any]     = js.native
+    var _unref: Boolean               = js.native
+    var allowHalfOpen: Boolean        = js.native
+    var pauseOnConnect: Boolean       = js.native
+    var httpAllowHalfOpen: Boolean    = js.native
+    var timeout: Integer              = js.native
     var _pendingResponseData: Integer = js.native
   }
 

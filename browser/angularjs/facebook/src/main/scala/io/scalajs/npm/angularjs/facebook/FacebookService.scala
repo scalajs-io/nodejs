@@ -16,7 +16,7 @@ import scala.util.{Failure, Success, Try}
   * @see [[https://developers.facebook.com/docs/graph-api/using-graph-api/v2.5]]
   */
 class FacebookService() extends Service {
-  type CallbackObject = js.Function1[js.Dynamic, Unit]
+  type CallbackObject        = js.Function1[js.Dynamic, Unit]
   type PaginationCallback[T] = js.Function1[FacebookPagination[T], Unit]
 
   // define the API properties
@@ -40,7 +40,7 @@ class FacebookService() extends Service {
           Success(resp)
         case resp =>
           Failure(new RuntimeException(s"Facebook is not connected (status: ${resp.status})"))
-      })
+    })
     promise
   }
 
@@ -57,7 +57,7 @@ class FacebookService() extends Service {
         auth = resp.authResponse
         //console.log(s"facebookID = $facebookID, auth = ${angular.toJson(auth)}")
         Success(resp)
-      })
+    })
     promise
   }
 
@@ -79,7 +79,8 @@ class FacebookService() extends Service {
     */
   def getAchievement(achievementID: String) = {
     val promise = Promise[FacebookAchievementResponse]()
-    FB.api(fbURL(s"/achievements"), (response: js.UndefOr[FacebookAchievementResponse]) => handleResponse(promise, response))
+    FB.api(fbURL(s"/achievements"),
+           (response: js.UndefOr[FacebookAchievementResponse]) => handleResponse(promise, response))
     promise
   }
 
@@ -89,34 +90,40 @@ class FacebookService() extends Service {
 
   def createFriendList(friendListId: String) = {
     val promise = Promise[FacebookResponse]()
-    FB.api(fbURL(s"/$friendListId/member"), (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
+    FB.api(fbURL(s"/$friendListId/member"),
+           (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
     promise
   }
 
   def getFriends = {
     val promise = Promise[js.Array[TaggableFriend]]()
     val friends = emptyArray[TaggableFriend]
-    FB.api(fbURL("/friends"), (response: FacebookPagination[TaggableFriend]) => {
-      //console.log(s"response = ${angular.toJson(response)}")
-      val results = response.data
-      if (results.nonEmpty) {
-        friends.push(results: _*)
-        console.log(s"${friends.length} friend(s) loaded")
+    FB.api(
+      fbURL("/friends"),
+      (response: FacebookPagination[TaggableFriend]) => {
+        //console.log(s"response = ${angular.toJson(response)}")
+        val results = response.data
+        if (results.nonEmpty) {
+          friends.push(results: _*)
+          console.log(s"${friends.length} friend(s) loaded")
+        }
+        ()
       }
-      ()
-    })
+    )
     promise
   }
 
   def getFriendList(listType: js.UndefOr[String] = "close_friends") = {
     val promise = Promise[FacebookResponse]()
-    FB.api(fbURL("/friendlists", s"list_type=$listType"), (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
+    FB.api(fbURL("/friendlists", s"list_type=$listType"),
+           (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
     promise
   }
 
   def getFriendListMembers(friendListId: String) = {
     val promise = Promise[FacebookResponse]()
-    FB.api(fbURL(s"/$friendListId/members"), (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
+    FB.api(fbURL(s"/$friendListId/members"),
+           (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
     promise
   }
 
@@ -155,7 +162,8 @@ class FacebookService() extends Service {
     */
   def getPhotos(`type`: js.UndefOr[String] = js.undefined) = {
     val promise = Promise[FacebookPhotosResponse]()
-    FB.api(fbURL("/photos", `type` map (myType => s"type=$myType")), (response: FacebookPhotosResponse) => handleResponse(promise, response))
+    FB.api(fbURL("/photos", `type` map (myType => s"type=$myType")),
+           (response: FacebookPhotosResponse) => handleResponse(promise, response))
     promise
   }
 
@@ -173,19 +181,22 @@ class FacebookService() extends Service {
 
   def feed(appID: String, caption: String, link: String) = {
     val promise = Promise[FacebookResponse]()
-    FB.ui(FacebookCommand(app_id = appID, method = "feed", link = link, caption = caption), (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
+    FB.ui(FacebookCommand(app_id = appID, method = "feed", link = link, caption = caption),
+          (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
     promise
   }
 
   def send(appID: String, message: String, link: String) = {
     val promise = Promise[FacebookResponse]()
-    FB.ui(FacebookCommand(app_id = appID, method = "send", link = link), (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
+    FB.ui(FacebookCommand(app_id = appID, method = "send", link = link),
+          (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
     promise
   }
 
   def share(appID: String, link: String) = {
     val promise = Promise[FacebookResponse]()
-    FB.ui(FacebookCommand(app_id = appID, method = "share", href = link), (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
+    FB.ui(FacebookCommand(app_id = appID, method = "share", href = link),
+          (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
     promise
   }
 
@@ -207,8 +218,8 @@ class FacebookService() extends Service {
   private def handleResponse[A <: FacebookResponse](promise: Promise[A], response: js.UndefOr[A]) = {
     response.toOption match {
       case Some(resp) if resp.error.isEmpty => promise.success(resp)
-      case Some(resp) => promise.failure(new Exception(resp.error getOrElse "Cause unknown"))
-      case None => promise.failure(new Exception("No response from Facebook"))
+      case Some(resp)                       => promise.failure(new Exception(resp.error getOrElse "Cause unknown"))
+      case None                             => promise.failure(new Exception("No response from Facebook"))
     }
   }
 
@@ -230,15 +241,16 @@ class FacebookService() extends Service {
     })
   }
 
-  private def specialHandling[A <: FacebookResponse](promise: Promise[A], response: js.UndefOr[A])(handler: A => Try[A]) = {
+  private def specialHandling[A <: FacebookResponse](promise: Promise[A], response: js.UndefOr[A])(
+      handler: A => Try[A]) = {
     response.toOption match {
       case Some(resp) if resp.error.isEmpty =>
         handler(resp) match {
           case Success(value) => promise.success(value)
-          case Failure(e) => promise.failure(e)
+          case Failure(e)     => promise.failure(e)
         }
       case Some(resp) => promise.failure(new Exception(resp.error getOrElse "Cause unknown"))
-      case None => promise.failure(new Exception("No response from Facebook"))
+      case None       => promise.failure(new Exception("No response from Facebook"))
     }
   }
 

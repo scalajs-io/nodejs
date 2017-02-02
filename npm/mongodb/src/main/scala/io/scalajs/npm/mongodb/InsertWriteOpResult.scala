@@ -8,6 +8,7 @@ import scala.scalajs.js
   */
 @js.native
 trait InsertWriteOpResult extends js.Object {
+
   /** The total amount of documents inserted. */
   var insertedCount: Int = js.native
 

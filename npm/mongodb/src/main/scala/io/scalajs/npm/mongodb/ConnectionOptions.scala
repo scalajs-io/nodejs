@@ -13,4 +13,5 @@ class ConnectionOptions(var uri_decode_auth: js.UndefOr[Boolean] = js.undefined,
                         var db: js.UndefOr[js.Object] = js.undefined,
                         var server: js.UndefOr[js.Object] = js.undefined,
                         var replSet: js.UndefOr[js.Object] = js.undefined,
-                        var mongos: js.UndefOr[js.Object] = js.undefined) extends js.Object
+                        var mongos: js.UndefOr[js.Object] = js.undefined)
+    extends js.Object

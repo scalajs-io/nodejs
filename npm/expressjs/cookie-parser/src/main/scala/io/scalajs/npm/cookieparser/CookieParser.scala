@@ -28,7 +28,10 @@ trait CookieParser extends js.Object {
     * @param options an object that is passed to cookie.parse as the second option.
     * @return a middleware function
     */
-  def apply(secret: String | js.Array[String] = js.native, options: DeserializationOptions | RawOptions = js.native): js.Function3[Request, Response, js.Function, Any] = js.native
+  def apply(
+      secret: String | js.Array[String] = js.native,
+      options: DeserializationOptions | RawOptions = js.native): js.Function3[Request, Response, js.Function, Any] =
+    js.native
 
   /**
     * Parse a cookie value as a JSON cookie. This will return the parsed JSON value if it was a JSON cookie,

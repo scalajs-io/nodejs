@@ -8,9 +8,7 @@ import scala.scalajs.js.annotation.JSName
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait ACL extends js.Object {
-
-}
+trait ACL extends js.Object {}
 
 /**
   * ACL

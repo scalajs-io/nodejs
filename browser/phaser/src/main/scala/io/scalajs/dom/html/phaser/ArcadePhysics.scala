@@ -14,6 +14,7 @@ trait ArcadePhysics extends js.Object {
               processCallback: Option[js.Function2[_, _, Boolean]],
               callbackContext: Any = this): Unit = js.native
 
-  def moveToObject(displayObject: DisplayObject, destination: Any, speed: Int = 60, maxTime: Long = 0): Double = js.native
+  def moveToObject(displayObject: DisplayObject, destination: Any, speed: Int = 60, maxTime: Long = 0): Double =
+    js.native
 
 }

@@ -26,7 +26,8 @@ trait CsvParse extends IEventEmitter {
   //      Asynchronous
   /////////////////////////////////////////////////////////////////////////////////
 
-  def apply(text: String, options: ParserOptions | RawOptions, callback: js.Function2[String, CsvResults, Any]): Unit = js.native
+  def apply(text: String, options: ParserOptions | RawOptions, callback: js.Function2[String, CsvResults, Any]): Unit =
+    js.native
 
   def apply(text: String, callback: js.Function2[String, CsvResults, Any]): Unit = js.native
 

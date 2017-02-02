@@ -299,7 +299,8 @@ trait Process extends IEventEmitter {
     * @example {{{ process.send(message[, sendHandle[, options]][, callback]) }}}
     * @since 0.5.9
     */
-  def send(message: js.Any, sendHandle: js.Any, options: Process.TransferOptions, callback: js.Function): Boolean = js.native
+  def send(message: js.Any, sendHandle: js.Any, options: Process.TransferOptions, callback: js.Function): Boolean =
+    js.native
 
   /**
     * When Node.js is spawned with an IPC channel attached, it can send messages to its parent process
@@ -536,7 +537,8 @@ object Process {
       * detecting and keeping track of promises that were rejected whose rejections were not handled yet.
       * @param listener the event listener function
       */
-    def onUnhandledRejection[T](listener: (String, js.Promise[T]) => Any): process.type = process.on("unhandledRejection", listener)
+    def onUnhandledRejection[T](listener: (String, js.Promise[T]) => Any): process.type =
+      process.on("unhandledRejection", listener)
 
     /**
       * A process warning is similar to an error in that it describes exceptional conditions that are being brought to
@@ -575,9 +577,9 @@ object Process {
     */
   @js.native
   trait MemoryUsage extends js.Object {
-    var rss: Double = js.native
+    var rss: Double       = js.native
     var heapTotal: Double = js.native
-    var heapUsed: Double = js.native
+    var heapUsed: Double  = js.native
   }
 
   /**
@@ -585,10 +587,10 @@ object Process {
     */
   @js.native
   trait ReleaseInfo extends js.Object {
-    var name: String = js.native
-    var sourceUrl: String = js.native
+    var name: String       = js.native
+    var sourceUrl: String  = js.native
     var headersUrl: String = js.native
-    var libUrl: String = js.native
+    var libUrl: String     = js.native
   }
 
   /**
@@ -605,14 +607,14 @@ object Process {
   @js.native
   trait VersionInfo extends js.Object {
     var http_parser: js.UndefOr[String] = js.native
-    var node: js.UndefOr[String] = js.native
-    var v8: js.UndefOr[String] = js.native
-    var uv: js.UndefOr[String] = js.native
-    var zlib: js.UndefOr[String] = js.native
-    var ares: js.UndefOr[String] = js.native
-    var modules: js.UndefOr[String] = js.native
-    var icu: js.UndefOr[String] = js.native
-    var openssl: js.UndefOr[String] = js.native
+    var node: js.UndefOr[String]        = js.native
+    var v8: js.UndefOr[String]          = js.native
+    var uv: js.UndefOr[String]          = js.native
+    var zlib: js.UndefOr[String]        = js.native
+    var ares: js.UndefOr[String]        = js.native
+    var modules: js.UndefOr[String]     = js.native
+    var icu: js.UndefOr[String]         = js.native
+    var openssl: js.UndefOr[String]     = js.native
   }
 
   /**

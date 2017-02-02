@@ -46,7 +46,9 @@ package object cassandradriver {
       * @return the promise of a result
       */
     @inline
-    def eachRowFuture[T](query: String, params: CassandraParams, options: QueryOptions | RawOptions = null): Promise[(Int, T)] = {
+    def eachRowFuture[T](query: String,
+                         params: CassandraParams,
+                         options: QueryOptions | RawOptions = null): Promise[(Int, T)] = {
       futureCallbackA2[Int, T](client.eachRow(query, params, _))
     }
 
@@ -58,7 +60,9 @@ package object cassandradriver {
       * @return the promise of a result
       */
     @inline
-    def executeFuture(query: String, params: CassandraParams, options: QueryOptions | RawOptions): Promise[js.Dictionary[_]] = {
+    def executeFuture(query: String,
+                      params: CassandraParams,
+                      options: QueryOptions | RawOptions): Promise[js.Dictionary[_]] = {
       futureCallbackE1[Error, js.Dictionary[_]](client.execute(query, params, options, _))
     }
 

@@ -70,7 +70,8 @@ package object net {
       * @param host the host name or IP
       * @return a promise of an outcome
       */
-    @inline def connectFuture(port: Int, host: String): Promise[Unit] = futureCallbackA1[Unit](socket.connect(port, host, _))
+    @inline def connectFuture(port: Int, host: String): Promise[Unit] =
+      futureCallbackA1[Unit](socket.connect(port, host, _))
 
     /////////////////////////////////////////////////////////////////////////////////
     //      Events

@@ -16,23 +16,25 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 class NodeEmbeddedMongoDBTest extends FunSpec {
 
   describe("NodeEmbeddedMongoDB") {
-    val dbPath = Path.join(process.cwd(), "npm", "node-embedded-mongodb", "src", "test", "resources", "db")
+    val dbPath  = Path.join(process.cwd(), "npm", "node-embedded-mongodb", "src", "test", "resources", "db")
     val logPath = Path.join(process.cwd(), "npm", "node-embedded-mongodb", "src", "test", "resources", "log")
 
     it("can created an embedded MongoDB server") {
-      NodeEmbeddedMongoDB.start(dbPath, logPath, { err =>
-        assert(err == null, err)
+      NodeEmbeddedMongoDB.start(
+        dbPath,
+        logPath, { err =>
+          assert(err == null, err)
 
-        val url = "mongodb://localhost:27017/test"
-        MongoClient.connect(url, (error, db) => {
-          console.log("Connected to ", url)
+          val url = "mongodb://localhost:27017/test"
+          MongoClient.connect(url, (error, db) => {
+            console.log("Connected to ", url)
 
-
-          NodeEmbeddedMongoDB.stop { err =>
-            console.log(s"shutting down: $err")
-          }
-        })
-      })
+            NodeEmbeddedMongoDB.stop { err =>
+              console.log(s"shutting down: $err")
+            }
+          })
+        }
+      )
     }
 
   }

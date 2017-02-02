@@ -19,7 +19,7 @@ class CookieTest extends FunSpec {
       info(s"cookies => ${JSON.stringify(cookies)}")
       Assert.deepEqual(cookies, js.Dictionary("foo" -> "bar", "equation" -> "E=mc^2"))
     }
-    
+
     it("supports serializing cookies") {
       val results = Cookie.serialize("foo", "bar")
       info(s"results => $results")

@@ -24,8 +24,9 @@ class OSTest extends FunSpec {
 
     it("supports cpus()") {
       val cpus = OS.cpus()
-      cpus.zipWithIndex foreach { case (cpu, n) =>
-        info(s"cpu$n: ${JSON.stringify(cpu)}")
+      cpus.zipWithIndex foreach {
+        case (cpu, n) =>
+          info(s"cpu$n: ${JSON.stringify(cpu)}")
       }
       assert(isDefined(cpus))
     }
@@ -61,8 +62,9 @@ class OSTest extends FunSpec {
     }
 
     it("supports networkInterfaces()") {
-      OS.networkInterfaces() foreach { case (name, iface) =>
-        info(s"$name: ${JSON.stringify(iface)}")
+      OS.networkInterfaces() foreach {
+        case (name, iface) =>
+          info(s"$name: ${JSON.stringify(iface)}")
       }
       assert(isDefined(OS.networkInterfaces()))
     }

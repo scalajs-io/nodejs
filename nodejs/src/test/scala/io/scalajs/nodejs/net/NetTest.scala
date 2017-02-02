@@ -46,12 +46,14 @@ class NetTest extends FunSpec {
       }
 
       //A remote node repl that you can telnet to!
-      Net.createServer((socket: Socket) => {
-        val remote = REPL.start("node::remote> ", socket)
-        //Adding "mood" and "bonus" to the remote REPL's context.
-        remote.context.mood = mood
-        remote.context.bonus = "UNLOCKED"
-      }).listen(5001)
+      Net
+        .createServer((socket: Socket) => {
+          val remote = REPL.start("node::remote> ", socket)
+          //Adding "mood" and "bonus" to the remote REPL's context.
+          remote.context.mood = mood
+          remote.context.bonus = "UNLOCKED"
+        })
+        .listen(5001)
 
       info("Remote REPL started on port 5001.")
 

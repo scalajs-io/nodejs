@@ -28,6 +28,8 @@ object ExpressWS extends js.Object {
     * @return the [[WsInstance instance]]
     * @example expressWs(app[,server][, options])
     */
-  def apply(app: Application, server: Server = js.native, options: WSConfigOptions | RawOptions = js.native): WsInstance = js.native
+  def apply(app: Application,
+            server: Server = js.native,
+            options: WSConfigOptions | RawOptions = js.native): WsInstance = js.native
 
 }

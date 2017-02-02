@@ -19,7 +19,7 @@ import scala.scalajs.js.|
 class CanvasRenderer(var width: Double = js.native,
                      var height: Double = js.native,
                      var options: CanvasRendererOptions | RawOptions = js.native)
-  extends AbstractRenderer {
+    extends AbstractRenderer {
 
   /**
     * Whether the render view should be resized automatically

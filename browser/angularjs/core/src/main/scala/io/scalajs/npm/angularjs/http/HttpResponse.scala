@@ -59,7 +59,8 @@ trait HttpResponse[+T] extends js.Object {
 
   def error(callback: js.Function4[js.Any, StatusCode, HttpConfig, js.Any, Any]): HttpResponse[T] = js.native
 
-  def error(callback: js.Function5[js.Any, StatusCode, HttpConfig, js.Any, UndefOr[String], Any]): HttpResponse[T] = js.native
+  def error(callback: js.Function5[js.Any, StatusCode, HttpConfig, js.Any, UndefOr[String], Any]): HttpResponse[T] =
+    js.native
 
   def success(callback: js.Function): HttpResponse[T] = js.native
 
@@ -95,7 +96,9 @@ object HttpResponse {
     response
       .success(promise.success _)
       .error((data: js.Any, status: StatusCode, config: HttpConfig, headers: js.Any, statusText: UndefOr[String]) => {
-        promise failure new HttpError(status, statusText.flat getOrElse s"Failed to process HTTP request: '${angular.toJson(data)}'")
+        promise failure new HttpError(
+          status,
+          statusText.flat getOrElse s"Failed to process HTTP request: '${angular.toJson(data)}'")
       })
     promise.future
   }

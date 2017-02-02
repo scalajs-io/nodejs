@@ -7,6 +7,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-class DocumentImplementation extends js.Object {
-
-}
+class DocumentImplementation extends js.Object {}

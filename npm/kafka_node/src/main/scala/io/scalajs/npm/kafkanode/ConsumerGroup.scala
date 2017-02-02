@@ -14,6 +14,5 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSImport("kafka-node", "ConsumerGroup")
-class ConsumerGroup(options: ConsumerGroupOptions | RawOptions, topics: String | js.Array[String]) extends IEventEmitter {
-
-}
+class ConsumerGroup(options: ConsumerGroupOptions | RawOptions, topics: String | js.Array[String])
+    extends IEventEmitter {}

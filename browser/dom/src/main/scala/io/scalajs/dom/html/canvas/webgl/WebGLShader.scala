@@ -11,6 +11,4 @@ import scala.scalajs.js.annotation.JSName
   */
 @js.native
 @JSName("WebGLShader")
-class WebGLShader extends js.Object {
-
-}
+class WebGLShader extends js.Object {}

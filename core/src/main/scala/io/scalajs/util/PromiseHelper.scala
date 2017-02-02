@@ -91,7 +91,8 @@ object PromiseHelper {
   @inline
   def promiseWithError1[Z, A](f: js.Function2[Z, A, Any] => Unit): Promise[A] = {
     val task = Promise[A]()
-    f((err: Z, a: A) => if (err != null || js.isUndefined(err)) task.success(a) else task.failure(wrapJavaScriptException(err)))
+    f((err: Z, a: A) =>
+      if (err != null || js.isUndefined(err)) task.success(a) else task.failure(wrapJavaScriptException(err)))
     task
   }
 
@@ -103,7 +104,8 @@ object PromiseHelper {
   @inline
   def promiseWithError2[Z, A, B](f: js.Function3[Z, A, B, Any] => Unit): Promise[(A, B)] = {
     val task = Promise[(A, B)]()
-    f((err: Z, a: A, b: B) => if (err != null || js.isUndefined(err)) task.success((a, b)) else task.failure(wrapJavaScriptException(err)))
+    f((err: Z, a: A, b: B) =>
+      if (err != null || js.isUndefined(err)) task.success((a, b)) else task.failure(wrapJavaScriptException(err)))
     task
   }
 
@@ -115,7 +117,8 @@ object PromiseHelper {
   @inline
   def promiseWithError3[Z, A, B, C](f: js.Function4[Z, A, B, C, Any] => Unit): Promise[(A, B, C)] = {
     val task = Promise[(A, B, C)]()
-    f((err: Z, a: A, b: B, c: C) => if (err != null || js.isUndefined(err)) task.success((a, b, c)) else task.failure(wrapJavaScriptException(err)))
+    f((err: Z, a: A, b: B, c: C) =>
+      if (err != null || js.isUndefined(err)) task.success((a, b, c)) else task.failure(wrapJavaScriptException(err)))
     task
   }
 
@@ -127,7 +130,10 @@ object PromiseHelper {
   @inline
   def promiseWithError4[Z, A, B, C, D](f: js.Function5[Z, A, B, C, D, Any] => Unit): Promise[(A, B, C, D)] = {
     val task = Promise[(A, B, C, D)]()
-    f((err: Z, a: A, b: B, c: C, d: D) => if (err != null || js.isUndefined(err)) task.success((a, b, c, d)) else task.failure(wrapJavaScriptException(err)))
+    f(
+      (err: Z, a: A, b: B, c: C, d: D) =>
+        if (err != null || js.isUndefined(err)) task.success((a, b, c, d))
+        else task.failure(wrapJavaScriptException(err)))
     task
   }
 
@@ -135,7 +141,8 @@ object PromiseHelper {
   //    Monitoring Functions
   ////////////////////////////////////////////////////////////////////////
 
-  def time[T](action: String, task: => Future[T], showHeader: Boolean = false)(implicit ec: ExecutionContext): Future[T] = {
+  def time[T](action: String, task: => Future[T], showHeader: Boolean = false)(
+      implicit ec: ExecutionContext): Future[T] = {
     if (showHeader) println(s"$action...")
     val startTime = System.currentTimeMillis()
     task onComplete {

@@ -9,6 +9,4 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 @JSImport("mongodb", "Connection")
-class Connection extends js.Object {
-
-}
+class Connection extends js.Object {}

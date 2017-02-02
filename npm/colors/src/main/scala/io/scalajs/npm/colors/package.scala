@@ -113,7 +113,7 @@ package object colors {
     @inline
     def styledWith(id: => String): UndefOr[Colors] = {
       val property = js.Object.getOwnPropertyDescriptor(Colors, id)
-      val style = property.asInstanceOf[js.UndefOr[Style]]
+      val style    = property.asInstanceOf[js.UndefOr[Style]]
       style.map(_.value(text))
     }
 

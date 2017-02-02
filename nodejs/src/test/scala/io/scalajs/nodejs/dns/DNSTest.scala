@@ -30,15 +30,20 @@ class DNSTest extends FunSpec {
     }
 
     it("supports lookupService:SSH") {
-      DNS.lookupService("127.0.0.1", 22, (err: DnsError, hostname: String, service: String, family: js.Any) => {
-        assert(err == null)
-        info(s"lookupService - hostname => $hostname, service => $service, family => $family")
-      })
+      DNS.lookupService(
+        "127.0.0.1",
+        22,
+        (err: DnsError, hostname: String, service: String, family: js.Any) => {
+          assert(err == null)
+          info(s"lookupService - hostname => $hostname, service => $service, family => $family")
+        }
+      )
     }
 
     it("supports lookupServiceFuture:SSH") {
-      DNS.lookupServiceFuture("127.0.0.1", 22) map { case (hostname, service) =>
-        info(s"lookupServiceFuture - hostname: $hostname, service => $service")
+      DNS.lookupServiceFuture("127.0.0.1", 22) map {
+        case (hostname, service) =>
+          info(s"lookupServiceFuture - hostname: $hostname, service => $service")
       }
     }
 

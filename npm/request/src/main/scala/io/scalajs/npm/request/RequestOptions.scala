@@ -10,5 +10,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 @ScalaJSDefined
 class RequestOptions(var url: js.UndefOr[String] = js.undefined,
                      var form: js.Any = js.undefined,
-                     var formData: js.Any = js.undefined) extends js.Object
-
+                     var formData: js.Any = js.undefined)
+    extends js.Object

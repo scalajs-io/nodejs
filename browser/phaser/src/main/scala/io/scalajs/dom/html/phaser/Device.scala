@@ -8,6 +8,4 @@ import scala.scalajs.js.annotation.JSName
   */
 @js.native
 @JSName("Phaser.Device")
-class Device extends js.Object {
-
-}
+class Device extends js.Object {}

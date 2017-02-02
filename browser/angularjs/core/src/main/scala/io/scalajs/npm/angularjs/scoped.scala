@@ -26,7 +26,7 @@ object scoped {
     import c.universe._
 
     annottees map (_.tree) match {
-      case (decl@DefDef(mods, name, tparams, vparamss, tpt, rhs)) :: Nil =>
+      case (decl @ DefDef(mods, name, tparams, vparamss, tpt, rhs)) :: Nil =>
         vparamss.headOption match {
           case Some(params) =>
             val args = params.map(_.name)
@@ -40,7 +40,8 @@ object scoped {
         }
 
       case others =>
-        others.foreach(other => c.info(c.enclosingPosition, s"other - class type: ${other.getClass.getName}", force = true))
+        others.foreach(other =>
+          c.info(c.enclosingPosition, s"other - class type: ${other.getClass.getName}", force = true))
         c.abort(c.enclosingPosition, "A method declaration is required")
     }
   }

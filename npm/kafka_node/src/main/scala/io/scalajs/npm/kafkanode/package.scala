@@ -35,7 +35,8 @@ package object kafkanode {
     /**
       * @see [[Consumer.addTopics()]]
       */
-    def addTopicsAsync(topics: String, fromOffset: Boolean) = futureCallbackE1[js.Error, js.Any](consumer.addTopics(topics, _, fromOffset))
+    def addTopicsAsync(topics: String, fromOffset: Boolean) =
+      futureCallbackE1[js.Error, js.Any](consumer.addTopics(topics, _, fromOffset))
 
     /**
       * @see [[Consumer.addTopics()]]
@@ -55,7 +56,8 @@ package object kafkanode {
     /**
       * @see [[Consumer.removeTopics()]]
       */
-    def removeTopicsAsync(topics: js.Array[String]) = futureCallbackE1[js.Error, Boolean](consumer.removeTopics(topics, _))
+    def removeTopicsAsync(topics: js.Array[String]) =
+      futureCallbackE1[js.Error, Boolean](consumer.removeTopics(topics, _))
 
     /**
       * @see [[Consumer.on()]]
@@ -84,7 +86,8 @@ package object kafkanode {
     /**
       * @see [[HighLevelConsumer.addTopics()]]
       */
-    def addTopicsAsync(topics: String, fromOffset: Boolean) = futureCallbackE1[js.Error, js.Any](consumer.addTopics(topics, _, fromOffset))
+    def addTopicsAsync(topics: String, fromOffset: Boolean) =
+      futureCallbackE1[js.Error, js.Any](consumer.addTopics(topics, _, fromOffset))
 
     /**
       * @see [[HighLevelConsumer.addTopics()]]
@@ -109,7 +112,8 @@ package object kafkanode {
     /**
       * @see [[HighLevelConsumer.removeTopics()]]
       */
-    def removeTopicsAsync(topics: js.Array[String]) = futureCallbackE1[js.Error, Boolean](consumer.removeTopics(topics, _))
+    def removeTopicsAsync(topics: js.Array[String]) =
+      futureCallbackE1[js.Error, Boolean](consumer.removeTopics(topics, _))
 
     /**
       * @example consumer.on('error', function (message) {})
@@ -140,7 +144,8 @@ package object kafkanode {
     /**
       * @see [[HighLevelProducer.createTopics()]]
       */
-    def createTopicsAsync(topics: js.Array[String], async: Boolean) = futureCallbackE1[js.Error, js.Any](producer.createTopics(topics, async, _))
+    def createTopicsAsync(topics: js.Array[String], async: Boolean) =
+      futureCallbackE1[js.Error, js.Any](producer.createTopics(topics, async, _))
 
     /**
       * @see [[HighLevelProducer.send()]]
@@ -168,7 +173,8 @@ package object kafkanode {
     /**
       * @see [[Offset.commit()]]
       */
-    def commitAsync(groupId: String, payloads: js.Array[Payload]) = futureCallbackE1[js.Error, js.Any](offset.commit(groupId, payloads, _))
+    def commitAsync(groupId: String, payloads: js.Array[Payload]) =
+      futureCallbackE1[js.Error, js.Any](offset.commit(groupId, payloads, _))
 
     /**
       * @see [[Offset.fetch()]]
@@ -178,7 +184,8 @@ package object kafkanode {
     /**
       * @see [[Offset.fetchCommits()]]
       */
-    def fetchCommitsAsync(groupId: String, payloads: js.Array[Payload]) = futureCallbackE1[js.Error, js.Any](offset.fetchCommits(groupId, payloads, _))
+    def fetchCommitsAsync(groupId: String, payloads: js.Array[Payload]) =
+      futureCallbackE1[js.Error, js.Any](offset.fetchCommits(groupId, payloads, _))
 
   }
 
@@ -208,7 +215,8 @@ package object kafkanode {
     /**
       * @see [[Producer.send()]]
       */
-    @inline def sendFuture(payloads: js.Array[Payload]) = futureCallbackE1[js.Error, js.Any](producer.send(payloads, _))
+    @inline def sendFuture(payloads: js.Array[Payload]) =
+      futureCallbackE1[js.Error, js.Any](producer.send(payloads, _))
 
   }
 

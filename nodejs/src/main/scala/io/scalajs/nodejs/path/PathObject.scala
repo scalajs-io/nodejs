@@ -12,5 +12,5 @@ class PathObject(val root: js.UndefOr[String] = js.undefined,
                  val dir: js.UndefOr[String] = js.undefined,
                  val base: js.UndefOr[String] = js.undefined,
                  val ext: js.UndefOr[String] = js.undefined,
-                 val name: js.UndefOr[String] = js.undefined) extends js.Object
-
+                 val name: js.UndefOr[String] = js.undefined)
+    extends js.Object

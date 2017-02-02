@@ -24,15 +24,15 @@ class ServerTest extends FunSpec {
 
     it("works with Node Server") {
       val httpServer = Http.createServer()
-      val server = SocketIO(httpServer)
+      val server     = SocketIO(httpServer)
       httpServer.listen(3001)
       setTimeout(() => server.close(), 1.second)
     }
 
     it("works with Express") {
-      val app = Express()
+      val app        = Express()
       val httpServer = Http.createServer((_: ClientRequest, _: ServerResponse) => {})
-      val server = SocketIO(httpServer)
+      val server     = SocketIO(httpServer)
       httpServer.listen(3002)
       setTimeout(() => server.close(), 1.second)
     }
@@ -41,17 +41,20 @@ class ServerTest extends FunSpec {
       val port = 3003
 
       // schedule the client connection
-      setTimeout(() => {
-        info("client: Connecting to server...")
-        val client = SocketIOClient(s"http://localhost:$port")
-        client.onConnect(() => client.emit("status: I'm in love!"))
-        client.onEvent(data => console.log("client: I have an event", data))
-        client.onDisconnect(() => info(s"client: I've disconnected"))
-      }, 500.millis)
+      setTimeout(
+        () => {
+          info("client: Connecting to server...")
+          val client = SocketIOClient(s"http://localhost:$port")
+          client.onConnect(() => client.emit("status: I'm in love!"))
+          client.onEvent(data => console.log("client: I have an event", data))
+          client.onDisconnect(() => info(s"client: I've disconnected"))
+        },
+        500.millis
+      )
 
       // start the HTTP server
       val httpServer = Http.createServer()
-      val server = SocketIO(httpServer)
+      val server     = SocketIO(httpServer)
       server.onConnection { socket =>
         info(s"server: client connected on port $port")
         server.sockets.emit("an event sent to all connected clients")

@@ -16,5 +16,7 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSName("WebGLRenderer")
-class WebGLRenderer(width: Double = js.native, height: Double = js.native, options: WebGLRendererOptions | RawOptions = js.native)
-  extends AbstractRenderer
+class WebGLRenderer(width: Double = js.native,
+                    height: Double = js.native,
+                    options: WebGLRendererOptions | RawOptions = js.native)
+    extends AbstractRenderer

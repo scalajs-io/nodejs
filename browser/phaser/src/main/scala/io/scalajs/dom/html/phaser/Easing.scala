@@ -9,9 +9,7 @@ import scala.scalajs.js.annotation.JSName
   */
 @js.native
 @JSName("Phaser.Easing")
-class Easing extends js.Object {
-
-}
+class Easing extends js.Object {}
 
 /**
   * Phaser Easing Singleton

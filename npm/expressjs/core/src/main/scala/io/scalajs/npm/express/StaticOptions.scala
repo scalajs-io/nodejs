@@ -16,4 +16,5 @@ class StaticOptions(var dotfiles: js.UndefOr[String] = js.undefined,
                     var lastModified: js.UndefOr[Boolean] = js.undefined,
                     var maxAge: js.UndefOr[Double] = js.undefined,
                     var redirect: js.UndefOr[Boolean] = js.undefined,
-                    var setHeaders: js.UndefOr[js.Function] = js.undefined) extends js.Object
+                    var setHeaders: js.UndefOr[js.Function] = js.undefined)
+    extends js.Object

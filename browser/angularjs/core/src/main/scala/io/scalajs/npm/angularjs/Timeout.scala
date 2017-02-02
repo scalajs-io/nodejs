@@ -18,7 +18,10 @@ trait Timeout extends js.Object {
     * @param pass        additional parameters to the executed function.
     * @return A promise which will be notified on each iteration.
     */
-  def apply(fn: js.Function, delay: Int = 0, invokeApply: Boolean = true, pass: js.Any = js.native): js.Promise[js.Any] = js.native
+  def apply(fn: js.Function,
+            delay: Int = 0,
+            invokeApply: Boolean = true,
+            pass: js.Any = js.native): js.Promise[js.Any] = js.native
 
   /**
     * Cancels a task associated with the promise.

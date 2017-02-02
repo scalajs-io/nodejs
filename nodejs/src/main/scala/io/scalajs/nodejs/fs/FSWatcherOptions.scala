@@ -14,4 +14,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 @ScalaJSDefined
 class FSWatcherOptions(var encoding: js.UndefOr[String] = js.undefined,
                        var persistent: js.UndefOr[Boolean] = js.undefined,
-                       var recursive: js.UndefOr[Boolean] = js.undefined) extends js.Object
+                       var recursive: js.UndefOr[Boolean] = js.undefined)
+    extends js.Object

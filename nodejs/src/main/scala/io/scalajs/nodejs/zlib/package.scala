@@ -13,12 +13,12 @@ import scala.scalajs.js.|
   */
 package object zlib {
 
-  type AllocationType = Integer
-  type CompressionFlush = Integer
-  type CompressionFunction = Integer
-  type CompressionLevel = Integer
-  type CompressionStrategy = Integer
-  type DataType = Integer
+  type AllocationType        = Integer
+  type CompressionFlush      = Integer
+  type CompressionFunction   = Integer
+  type CompressionLevel      = Integer
+  type CompressionStrategy   = Integer
+  type DataType              = Integer
   type DeflateCompressMethod = Integer
 
   /**
@@ -47,7 +47,8 @@ package object zlib {
       * Flush pending data. Don't call this frivolously, premature flushes negatively impact the effectiveness of the compression algorithm.
       */
     @inline
-    def flushFuture(kind: CompressionFlush = null): Promise[Buffer] = futureCallbackE1[Error, Buffer](zlib.flush(kind, _))
+    def flushFuture(kind: CompressionFlush = null): Promise[Buffer] =
+      futureCallbackE1[Error, Buffer](zlib.flush(kind, _))
 
     /**
       * Compress a Buffer or string with Gzip.

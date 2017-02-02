@@ -10,6 +10,4 @@ import scala.scalajs.js
   * @see [[Server]]
   */
 @js.native
-trait Server extends net.Server {
-
-}
+trait Server extends net.Server {}

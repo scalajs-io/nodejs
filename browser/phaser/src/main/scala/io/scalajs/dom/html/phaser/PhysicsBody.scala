@@ -9,7 +9,6 @@ import scala.scalajs.js
 trait PhysicsBody extends DisplayObject {
   //var x: Double = js.native
   //var y: Double = js.native
-  var moves: Boolean = js.native
+  var moves: Boolean  = js.native
   var velocity: Point = js.native
 }
-

@@ -1,6 +1,5 @@
 package io.scalajs.dom
 
-
 import io.scalajs.dom.collection.NamedNodeMap
 
 import scala.scalajs.js

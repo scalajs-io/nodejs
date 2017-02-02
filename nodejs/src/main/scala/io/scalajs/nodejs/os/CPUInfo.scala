@@ -8,8 +8,7 @@ import scala.scalajs.js
   */
 @js.native
 trait CPUInfo extends js.Object {
-  var model: String = js.native
-  var speed: Double = js.native
+  var model: String            = js.native
+  var speed: Double            = js.native
   var times: js.Array[CPUTime] = js.native
 }
-

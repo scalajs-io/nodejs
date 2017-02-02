@@ -17,7 +17,8 @@ trait ObserverClass extends js.Object {
     * @return (Observer): The observer object implemented using the given actions.
     * @example Rx.Observer.create([onNext], [onError], [onCompleted])
     */
-  def create(onNext: js.Function = null, onError: js.Function = null, onCompleted: js.Function = null): Observer = js.native
+  def create(onNext: js.Function = null, onError: js.Function = null, onCompleted: js.Function = null): Observer =
+    js.native
 
   /**
     * Creates an observer from a notification callback.

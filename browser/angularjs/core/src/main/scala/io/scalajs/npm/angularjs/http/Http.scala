@@ -28,7 +28,9 @@ trait Http extends js.Object {
     * @param config Optional configuration object
     * @return a [[HttpResponse promise]] of an response
     */
-  def get[T <: js.Any](url: String, config: HttpConfig = js.native, headers: js.Dictionary[js.Any] = js.native): HttpResponse[T] = js.native
+  def get[T <: js.Any](url: String,
+                       config: HttpConfig = js.native,
+                       headers: js.Dictionary[js.Any] = js.native): HttpResponse[T] = js.native
 
   /**
     * Shortcut method to perform a DELETE request.
@@ -37,7 +39,10 @@ trait Http extends js.Object {
     * @param config Optional configuration object
     * @return a [[HttpResponse promise]] of an response
     */
-  def delete[T <: js.Any](url: String, data: js.Any = js.native, config: HttpConfig = js.native, headers: js.Dictionary[js.Any] = js.native): HttpResponse[T] = js.native
+  def delete[T <: js.Any](url: String,
+                          data: js.Any = js.native,
+                          config: HttpConfig = js.native,
+                          headers: js.Dictionary[js.Any] = js.native): HttpResponse[T] = js.native
 
   /**
     * Shortcut method to perform a HEAD request.
@@ -62,7 +67,11 @@ trait Http extends js.Object {
     * @param config Optional configuration object
     * @return a [[HttpResponse promise]] of an response
     */
-  def post[T <: js.Any](url: String, data: js.Any = js.native, config: HttpConfig = js.native, headers: js.Dictionary[js.Any] = js.native, responseType: String = js.native): HttpResponse[T] = js.native
+  def post[T <: js.Any](url: String,
+                        data: js.Any = js.native,
+                        config: HttpConfig = js.native,
+                        headers: js.Dictionary[js.Any] = js.native,
+                        responseType: String = js.native): HttpResponse[T] = js.native
 
   /**
     * Shortcut method to perform a PUT request.
@@ -71,7 +80,11 @@ trait Http extends js.Object {
     * @param data   Request content
     * @return a [[HttpResponse promise]] of an response
     */
-  def put[T <: js.Any](url: String, data: js.Any = js.native, config: HttpConfig = js.native, headers: js.Dictionary[js.Any] = js.native, responseType: String = js.native): HttpResponse[T] = js.native
+  def put[T <: js.Any](url: String,
+                       data: js.Any = js.native,
+                       config: HttpConfig = js.native,
+                       headers: js.Dictionary[js.Any] = js.native,
+                       responseType: String = js.native): HttpResponse[T] = js.native
 
   /**
     * Shortcut method to perform a PATCH request.
@@ -80,6 +93,10 @@ trait Http extends js.Object {
     * @param config Optional configuration object
     * @return a [[HttpResponse promise]] of an response
     */
-  def patch[T <: js.Any](url: String, data: js.Any = js.native, config: HttpConfig = js.native, headers: js.Dictionary[js.Any] = js.native, responseType: String = js.native): HttpResponse[T] = js.native
+  def patch[T <: js.Any](url: String,
+                         data: js.Any = js.native,
+                         config: HttpConfig = js.native,
+                         headers: js.Dictionary[js.Any] = js.native,
+                         responseType: String = js.native): HttpResponse[T] = js.native
 
 }

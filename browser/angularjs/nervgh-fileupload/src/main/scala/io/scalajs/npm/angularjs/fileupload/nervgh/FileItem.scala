@@ -153,4 +153,3 @@ trait FileItem extends js.Object {
   var onComplete: js.Function3[FileUploadResponse, js.Object, FileUploadHeaders, Unit] = js.native
 
 }
-

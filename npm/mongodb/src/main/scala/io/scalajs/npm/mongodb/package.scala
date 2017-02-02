@@ -25,7 +25,8 @@ package object mongodb {
   @inline
   def callbackMongoFuture[R](f: js.Function2[MongoError, R, Any] => Unit): Future[R] = {
     val promise = Promise[R]()
-    f((err: MongoError, result: R) => if (!isDefined(err)) promise.success(result) else promise.failure(runtime.wrapJavaScriptException(err)))
+    f((err: MongoError, result: R) =>
+      if (!isDefined(err)) promise.success(result) else promise.failure(runtime.wrapJavaScriptException(err)))
     promise.future
   }
 
@@ -226,15 +227,17 @@ package object mongodb {
     @inline
     def between[A, B](minValue: js.UndefOr[A], maxValue: js.UndefOr[B]): (String, js.Dictionary[js.Any]) = {
       (minValue.flat.toOption, maxValue.flat.toOption) match {
-        case (Some(min), Some(max)) => attribute -> doc("$gte" -> min.asInstanceOf[js.Any], "$lte" -> max.asInstanceOf[js.Any])
+        case (Some(min), Some(max)) =>
+          attribute -> doc("$gte" -> min.asInstanceOf[js.Any], "$lte" -> max.asInstanceOf[js.Any])
         case (Some(min), None) => attribute $gte min.asInstanceOf[js.Any]
         case (None, Some(max)) => attribute $lte max.asInstanceOf[js.Any]
-        case (None, None) => die("Maximum and minimum values are null and/or undefined")
+        case (None, None)      => die("Maximum and minimum values are null and/or undefined")
       }
     }
 
     @inline
-    def between[A, B](values: => (js.UndefOr[A], js.UndefOr[B])): (String, js.Dictionary[js.Any]) = between(values._1, values._2)
+    def between[A, B](values: => (js.UndefOr[A], js.UndefOr[B])): (String, js.Dictionary[js.Any]) =
+      between(values._1, values._2)
 
     /**
       * Projects the first element in an array that matches the specified $elemMatch condition.
@@ -447,7 +450,8 @@ package object mongodb {
     def connectFuture(url: String): Future[Db] = callbackMongoFuture[Db](client.connect(url, _))
 
     @inline
-    def connectFuture(url: String, options: ConnectionOptions): Future[Db] = callbackMongoFuture[Db](client.connect(url, options, _))
+    def connectFuture(url: String, options: ConnectionOptions): Future[Db] =
+      callbackMongoFuture[Db](client.connect(url, options, _))
 
     @inline
     def openFuture(): Future[Db] = callbackMongoFuture[Db](client.open)

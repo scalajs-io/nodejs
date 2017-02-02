@@ -6,6 +6,4 @@ import scala.scalajs.js
   * Created by ldaniels on 12/16/16.
   */
 @js.native
-class MediaStreamAudioSourceNode extends js.Object {
-
-}
+class MediaStreamAudioSourceNode extends js.Object {}

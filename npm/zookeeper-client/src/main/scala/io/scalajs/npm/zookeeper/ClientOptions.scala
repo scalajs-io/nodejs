@@ -13,4 +13,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 @ScalaJSDefined
 class ClientOptions(var sessionTimeout: js.UndefOr[Int] = js.undefined,
                     var spinDelay: js.UndefOr[Int] = js.undefined,
-                    var retries: js.UndefOr[Int] = js.undefined) extends js.Object
+                    var retries: js.UndefOr[Int] = js.undefined)
+    extends js.Object

@@ -27,32 +27,45 @@ class HtmlToJsonTest extends FunSpec {
   describe("HtmlToJson") {
 
     it("supports batch") {
-      Request("http://prolificinteractive.com/team", (error: String, response: ServerResponse, body: String) => {
+      Request(
+        "http://prolificinteractive.com/team",
+        (error: String, response: ServerResponse, body: String) => {
 
-        val sections = HtmlToJson.createParser(js.Array("#primary-nav a", js.Dictionary[js.Function](
-          "name" -> (($section: JQueryElement) => $section.text()),
-          "link" -> (($section: JQueryElement) => $section.attr("href"))
-        )))
-        info(s"sections => ${JSON.stringify(sections)}")
+          val sections = HtmlToJson.createParser(
+            js.Array(
+              "#primary-nav a",
+              js.Dictionary[js.Function](
+                "name" -> (($section: JQueryElement) => $section.text()),
+                "link" -> (($section: JQueryElement) => $section.attr("href"))
+              )
+            ))
+          info(s"sections => ${JSON.stringify(sections)}")
 
-        val socialInfo = js.Array("#footer .social-link", js.Dictionary[js.Function](
-          "name" -> (($link: JQueryElement) => $link.text()),
-          "link" -> (($link: JQueryElement) => $link.attr("href"))
-        ))
-        info(s"socialInfo => ${JSON.stringify(socialInfo)}")
+          val socialInfo = js.Array("#footer .social-link",
+                                    js.Dictionary[js.Function](
+                                      "name" -> (($link: JQueryElement) => $link.text()),
+                                      "link" -> (($link: JQueryElement) => $link.attr("href"))
+                                    ))
+          info(s"socialInfo => ${JSON.stringify(socialInfo)}")
 
-        val offices = HtmlToJson.createMethod(js.Array(".office", js.Dictionary[js.Function](
-          "location" -> (($office: JQueryElement) => $office.find(".location").text()),
-          "phone" -> (($office: JQueryElement) => $office.find(".phone").text())
-        )))
-        info(s"offices => ${JSON.stringify(offices)}")
+          val offices = HtmlToJson.createMethod(
+            js.Array(
+              ".office",
+              js.Dictionary[js.Function](
+                "location" -> (($office: JQueryElement) => $office.find(".location").text()),
+                "phone"    -> (($office: JQueryElement) => $office.find(".phone").text())
+              )
+            ))
+          info(s"offices => ${JSON.stringify(offices)}")
 
-        HtmlToJson.batch[Content](body, js.Dictionary(
-          "sections" -> sections,
-          "offices" -> offices,
-          "socialInfo" -> socialInfo
-        ))
-      })
+          HtmlToJson.batch[Content](body,
+                                    js.Dictionary(
+                                      "sections"   -> sections,
+                                      "offices"    -> offices,
+                                      "socialInfo" -> socialInfo
+                                    ))
+        }
+      )
     }
 
     it("supports parsing results via callback") {
@@ -68,7 +81,9 @@ class HtmlToJsonTest extends FunSpec {
 
     it("supports requesting results via callback") {
       val options = new FilterOptions().withText(_.find("div").text())
-      HtmlToJson.request("http://www.google.com", options, (err, result: Content) => info(s"result: ${JSON.stringify(result)}"))
+      HtmlToJson.request("http://www.google.com",
+                         options,
+                         (err, result: Content) => info(s"result: ${JSON.stringify(result)}"))
     }
 
     it("supports requesting results via promise") {
@@ -79,10 +94,11 @@ class HtmlToJsonTest extends FunSpec {
 
     it("supports custom parsers") {
       val linkParser = HtmlToJson.createParser(
-        js.Array("a[href]", js.Dictionary(
-          "text" -> (($a: JQueryElement) => $a.text()),
-          "href" -> (($a: JQueryElement) => $a.attr("href"))
-        )))
+        js.Array("a[href]",
+                 js.Dictionary(
+                   "text" -> (($a: JQueryElement) => $a.text()),
+                   "href" -> (($a: JQueryElement) => $a.attr("href"))
+                 )))
 
       info(s"linkParser = ${JSON.stringify(linkParser)}")
     }

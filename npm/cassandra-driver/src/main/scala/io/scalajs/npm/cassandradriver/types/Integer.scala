@@ -21,9 +21,9 @@ class Integer(bits: js.Array[Int], sign: Int) extends js.Object
 @JSImport("cassandra-driver", "types.Integer")
 object Integer extends js.Object {
   val TWO_PWR_32_DBL_ : Int = js.native
-  val ZERO: Int = js.native
-  val ONE: Int = js.native
-  val TWO_PWR_24_ : Int = js.native
+  val ZERO: Int             = js.native
+  val ONE: Int              = js.native
+  val TWO_PWR_24_ : Int     = js.native
 
   def fromBits(bits: js.Array[Int]): Integer = js.native
 

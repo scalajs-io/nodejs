@@ -33,7 +33,7 @@ class Group[T](var game: Game,
                var addToStage: Boolean,
                var enableBody: Boolean,
                var physicsBodyType: Int)
-  extends DisplayObjectContainer {
+    extends DisplayObjectContainer {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -57,7 +57,11 @@ class Group[T](var game: Game,
 
   def getFirstAlive(): js.UndefOr[T] = js.native
 
-  def getFirstAlive(createIfNull: Boolean = false, x: Double, y: Double, key: String = null, frame: String | Int = null): js.UndefOr[T] = js.native
+  def getFirstAlive(createIfNull: Boolean = false,
+                    x: Double,
+                    y: Double,
+                    key: String = null,
+                    frame: String | Int = null): js.UndefOr[T] = js.native
 
   def getFirstExists(exists: Boolean): js.UndefOr[T] = js.native
 
@@ -71,6 +75,11 @@ class Group[T](var game: Game,
 
   def removeAll(destroy: Boolean = false, silent: Boolean = false): Unit = js.native
 
-  def setAll(key: String, value: Any, checkAlive: Boolean = false, checkVisible: Boolean = false, operation: Int = 0, force: Boolean = false): Unit = js.native
+  def setAll(key: String,
+             value: Any,
+             checkAlive: Boolean = false,
+             checkVisible: Boolean = false,
+             operation: Int = 0,
+             force: Boolean = false): Unit = js.native
 
 }

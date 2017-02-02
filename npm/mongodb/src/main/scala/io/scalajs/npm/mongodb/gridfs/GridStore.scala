@@ -23,15 +23,18 @@ class GridStore(val db: Db,
                 val id: js.UndefOr[ObjectID] = js.native,
                 val filename: js.UndefOr[String] = js.native,
                 val mode: String,
-                val options: js.UndefOr[GridStoreOptions] = js.native) extends IEventEmitter {
+                val options: js.UndefOr[GridStoreOptions] = js.native)
+    extends IEventEmitter {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Constructors
   /////////////////////////////////////////////////////////////////////////////////
 
-  def this(db: Db, filename: String, mode: String) = this(db, id = js.undefined, filename, mode, options = js.undefined)
+  def this(db: Db, filename: String, mode: String) =
+    this(db, id = js.undefined, filename, mode, options = js.undefined)
 
-  def this(db: Db, filename: String, mode: String, options: GridStoreOptions) = this(db, id = js.undefined, filename, mode, options)
+  def this(db: Db, filename: String, mode: String, options: GridStoreOptions) =
+    this(db, id = js.undefined, filename, mode, options)
 
   def this(db: Db, id: ObjectID, mode: String) = this(db, id, filename = js.undefined, mode, options = js.undefined)
 

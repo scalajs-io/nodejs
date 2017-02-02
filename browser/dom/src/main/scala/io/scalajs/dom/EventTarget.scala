@@ -35,7 +35,8 @@ trait EventTarget extends js.Object {
     *                 interface, or simply a JavaScript function.
     * @param options  An options object that specifies characteristics about the event listener.
     */
-  def addEventListener(`type`: String, listener: js.Function, options: EventTargetOptions | RawOptions): Unit = js.native
+  def addEventListener(`type`: String, listener: js.Function, options: EventTargetOptions | RawOptions): Unit =
+    js.native
 
   /**
     * Register an event handler of a specific event type on the EventTarget.
@@ -60,7 +61,8 @@ trait EventTarget extends js.Object {
     * @param listener The EventListener function to remove from the event target.
     * @param options  An options object that specifies characteristics about the event listener.
     */
-  def removeEventListener(`type`: String, listener: js.Function, options: EventTargetOptions | RawOptions): Unit = js.native
+  def removeEventListener(`type`: String, listener: js.Function, options: EventTargetOptions | RawOptions): Unit =
+    js.native
 
   /**
     * Removes an event listener from the EventTarget.

@@ -59,5 +59,5 @@ class CursorOptions(var skip: js.UndefOr[Int] = js.undefined,
                     var dbName: js.UndefOr[String] = js.undefined,
                     var tailableRetryInterval: js.UndefOr[Int] = js.undefined,
                     var exhaust: js.UndefOr[Boolean] = js.undefined,
-                    var partial: js.UndefOr[Boolean] = js.undefined) extends js.Object
-
+                    var partial: js.UndefOr[Boolean] = js.undefined)
+    extends js.Object

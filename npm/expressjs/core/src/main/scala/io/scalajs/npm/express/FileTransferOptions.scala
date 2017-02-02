@@ -18,5 +18,5 @@ class FileTransferOptions(var maxAge: js.UndefOr[Int] = js.undefined,
                           var root: js.UndefOr[String] = js.undefined,
                           var lastModified: js.UndefOr[js.Date] = js.undefined,
                           var headers: js.UndefOr[js.Any] = js.undefined,
-                          var dotfiles: js.UndefOr[js.Array[String]] = js.undefined) extends js.Object
-
+                          var dotfiles: js.UndefOr[js.Array[String]] = js.undefined)
+    extends js.Object

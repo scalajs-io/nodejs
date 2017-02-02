@@ -126,7 +126,11 @@ class Buffer extends js.Object {
     *         -1 is returned if target should come after buf when sorted.
     * @example {{{ buf.compare(target[, targetStart[, targetEnd[, sourceStart[, sourceEnd]]]]) }}}
     */
-  def compare(target: Buffer, targetStart: Int = js.native, targetEnd: Int = js.native, sourceStart: Int = js.native, sourceEnd: Int = js.native): Int = js.native
+  def compare(target: Buffer,
+              targetStart: Int = js.native,
+              targetEnd: Int = js.native,
+              sourceStart: Int = js.native,
+              sourceEnd: Int = js.native): Int = js.native
 
   /**
     * Copies data from a region of buf to a region in target even if the target memory region overlaps with buf.
@@ -139,7 +143,10 @@ class Buffer extends js.Object {
     * @return The number of bytes copied.
     * @example {{{ buf.copy(target[, targetStart[, sourceStart[, sourceEnd]]]) }}}
     */
-  def copy(target: Buffer, targetStart: Int = js.native, sourceStart: Int = js.native, sourceEnd: Int = js.native): Int = js.native
+  def copy(target: Buffer,
+           targetStart: Int = js.native,
+           sourceStart: Int = js.native,
+           sourceEnd: Int = js.native): Int = js.native
 
   /**
     * Creates and returns an iterator of [index, byte] pairs from the Buffer contents.
@@ -165,7 +172,10 @@ class Buffer extends js.Object {
     * @return A reference to buf
     * @example {{{ buf.fill(value[, offset[, end]][, encoding]) }}}
     */
-  def fill(value: Buffer | Int | String, offset: Int = js.native, end: Int = js.native, encoding: String = js.native): this.type = js.native
+  def fill(value: Buffer | Int | String,
+           offset: Int = js.native,
+           end: Int = js.native,
+           encoding: String = js.native): this.type = js.native
 
   /**
     * Returns the index of the first occurrence of value in buf or -1 if buf does not contain value
@@ -185,7 +195,8 @@ class Buffer extends js.Object {
     * @return true if value was found in buf, false otherwise
     * @example {{{ buf.includes(value[, byteOffset][, encoding]) }}}
     */
-  def includes(value: Buffer | Int | String, byteOffset: Int = js.native, encoding: String = js.native): Boolean = js.native
+  def includes(value: Buffer | Int | String, byteOffset: Int = js.native, encoding: String = js.native): Boolean =
+    js.native
 
   /**
     * Creates and returns an iterator of buf keys (indices).
@@ -202,7 +213,8 @@ class Buffer extends js.Object {
     * @return The index of the last occurrence of value in buf or -1 if buf does not contain value
     * @example {{{ buf.lastIndexOf(value[, byteOffset][, encoding]) }}}
     */
-  def lastIndexOf(value: Buffer | Int | String, byteOffset: Int = js.native, encoding: String = js.native): Int = js.native
+  def lastIndexOf(value: Buffer | Int | String, byteOffset: Int = js.native, encoding: String = js.native): Int =
+    js.native
 
   /**
     * Returns the amount of memory allocated for buf in bytes.
@@ -531,7 +543,8 @@ class Buffer extends js.Object {
     * @return the Number of bytes written
     * @example {{{ buf.write(string[, offset[, length]][, encoding]) }}}
     */
-  def write(string: String, offset: Int = js.native, length: Int = js.native, encoding: String = js.native): Int = js.native
+  def write(string: String, offset: Int = js.native, length: Int = js.native, encoding: String = js.native): Int =
+    js.native
 
   /**
     * Writes value to buf at the specified offset with specified endian format (writeDoubleBE() writes big endian,

@@ -34,13 +34,35 @@ trait Async extends js.Object {
 
   def applyEach(functions: js.Array[js.Function], args: js.Any, args2: js.Any, callback: js.Function): Unit = js.native
 
-  def applyEach(functions: js.Array[js.Function], args: js.Any, args2: js.Any, args3: js.Any, callback: js.Function): Unit = js.native
+  def applyEach(functions: js.Array[js.Function],
+                args: js.Any,
+                args2: js.Any,
+                args3: js.Any,
+                callback: js.Function): Unit = js.native
 
-  def applyEach(functions: js.Array[js.Function], args: js.Any, args2: js.Any, args3: js.Any, args4: js.Any, callback: js.Function): Unit = js.native
+  def applyEach(functions: js.Array[js.Function],
+                args: js.Any,
+                args2: js.Any,
+                args3: js.Any,
+                args4: js.Any,
+                callback: js.Function): Unit = js.native
 
-  def applyEach(functions: js.Array[js.Function], args: js.Any, args2: js.Any, args3: js.Any, args4: js.Any, args5: js.Any, callback: js.Function): Unit = js.native
+  def applyEach(functions: js.Array[js.Function],
+                args: js.Any,
+                args2: js.Any,
+                args3: js.Any,
+                args4: js.Any,
+                args5: js.Any,
+                callback: js.Function): Unit = js.native
 
-  def applyEach(functions: js.Array[js.Function], args: js.Any, args2: js.Any, args3: js.Any, args4: js.Any, args5: js.Any, args6: js.Any, callback: js.Function): Unit = js.native
+  def applyEach(functions: js.Array[js.Function],
+                args: js.Any,
+                args2: js.Any,
+                args3: js.Any,
+                args4: js.Any,
+                args5: js.Any,
+                args6: js.Any,
+                callback: js.Function): Unit = js.native
 
   /**
     * Creates a function which is a composition of the passed asynchronous functions. Each function consumes the return
@@ -82,7 +104,10 @@ trait Async extends js.Object {
     *                 index, use forEachOf.
     * @param callback Optional A callback which is called when all iteratee functions have finished, or an error occurs.
     */
-  def eachLimit(coll: js.Array[_ <: js.Any], limit: Int, iteratee: js.Function, callback: AsyncResultCallback = null): Unit = js.native
+  def eachLimit(coll: js.Array[_ <: js.Any],
+                limit: Int,
+                iteratee: js.Function,
+                callback: AsyncResultCallback = null): Unit = js.native
 
   /**
     * Applies the function iteratee to each item in coll, in parallel. The iteratee is called with an item from the
@@ -98,7 +123,8 @@ trait Async extends js.Object {
     *                 index, use forEachOf.
     * @param callback An optional callback which is called when all iteratee functions have finished, or an error occurs.
     */
-  def eachSeries(coll: js.Array[_ <: js.Any], iteratee: js.Function, callback: AsyncResultCallback = null): Unit = js.native
+  def eachSeries(coll: js.Array[_ <: js.Any], iteratee: js.Function, callback: AsyncResultCallback = null): Unit =
+    js.native
 
   /**
     * Returns a new array of all the values in coll which pass an async truth test. This operation is performed in parallel,
@@ -109,7 +135,8 @@ trait Async extends js.Object {
     *                 Callback arguments changed in 2.0
     * @param callback callback(err, results) - Optional A callback which is called after all the iteratee functions have finished.
     */
-  def filter(coll: js.Array[_ <: js.Any], iteratee: js.Function, callback: AsyncResultCallback = null): Unit = js.native
+  def filter(coll: js.Array[_ <: js.Any], iteratee: js.Function, callback: AsyncResultCallback = null): Unit =
+    js.native
 
   /**
     * Like each, except that it passes the key (or index) as the second argument to the iteratee.

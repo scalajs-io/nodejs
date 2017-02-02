@@ -8,6 +8,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @since 0.6.7
   */
 @ScalaJSDefined
-class AppendOptions(var encoding: String = null,
-                    var mode: FileMode = 438 /* 0666 */ ,
-                    var flag: String = "a") extends js.Object
+class AppendOptions(var encoding: String = null, var mode: FileMode = 438 /* 0666 */, var flag: String = "a")
+    extends js.Object

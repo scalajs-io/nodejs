@@ -8,6 +8,7 @@ import scala.scalajs.js
   */
 @js.native
 trait DeleteWriteOpResult extends js.Object {
+
   /** The raw result returned from MongoDB, field will vary depending on server version. */
   var result: DeleteWriteOpResult.Outcome = js.native
 
@@ -31,6 +32,7 @@ object DeleteWriteOpResult {
     */
   @js.native
   trait Outcome extends js.Object {
+
     /** Is 1 if the command executed correctly. */
     var ok: Int = js.native
 

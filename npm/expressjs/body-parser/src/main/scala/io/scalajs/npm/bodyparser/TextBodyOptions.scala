@@ -25,4 +25,5 @@ class TextBodyOptions(var defaultCharset: js.UndefOr[String] = js.undefined,
                       var inflate: js.UndefOr[Boolean] = js.undefined,
                       var limit: js.UndefOr[Int] = js.undefined,
                       var `type`: js.UndefOr[String] = js.undefined,
-                      var verify: js.UndefOr[String] = js.undefined) extends js.Object
+                      var verify: js.UndefOr[String] = js.undefined)
+    extends js.Object

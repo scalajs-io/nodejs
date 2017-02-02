@@ -22,7 +22,8 @@ class MulterLimits(var fieldNameSize: js.UndefOr[Int],
                    var fileSize: js.UndefOr[Int],
                    var files: js.UndefOr[Int],
                    var parts: js.UndefOr[Int],
-                   var headerPairs: js.UndefOr[Int]) extends js.Object
+                   var headerPairs: js.UndefOr[Int])
+    extends js.Object
 
 /**
   * Multer Limits Companion

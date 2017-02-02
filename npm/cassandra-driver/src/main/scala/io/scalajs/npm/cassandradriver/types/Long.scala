@@ -21,14 +21,14 @@ class Long(low: Int, high: Int, unsigned: Boolean) extends js.Object
 @js.native
 @JSImport("cassandra-driver", "types.Long")
 object Long extends js.Object {
-  val ZERO: Long = js.native
-  val UZERO: Long = js.native
-  val ONE: Long = js.native
-  val UONE: Long = js.native
-  val NEG_ONE: Long = js.native
-  val MAX_VALUE: Long = js.native
+  val ZERO: Long               = js.native
+  val UZERO: Long              = js.native
+  val ONE: Long                = js.native
+  val UONE: Long               = js.native
+  val NEG_ONE: Long            = js.native
+  val MAX_VALUE: Long          = js.native
   val MAX_UNSIGNED_VALUE: Long = js.native
-  val MIN_VALUE: Long = js.native
+  val MIN_VALUE: Long          = js.native
 
   def fromBuffer(buffer: Buffer): Long = js.native
 
@@ -43,4 +43,3 @@ object Long extends js.Object {
   def toBuffer(value: Long): Buffer = js.native
 
 }
-

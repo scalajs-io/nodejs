@@ -31,4 +31,5 @@ class CssNumberOptions(var zIndex: String = null,
                        var columnCount: String = null,
                        var order: String = null,
                        var flexGrow: String = null,
-                       var flexShrink: String = null) extends js.Object
+                       var flexShrink: String = null)
+    extends js.Object

@@ -29,4 +29,5 @@ class ScriptOptions(var filename: js.UndefOr[String] = js.undefined,
                     var displayErrors: js.UndefOr[Boolean] = js.undefined,
                     var timeout: js.UndefOr[Int] = js.undefined,
                     var cachedData: js.UndefOr[Buffer] = js.undefined,
-                    var produceCachedData: js.UndefOr[Boolean] = js.undefined) extends js.Object
+                    var produceCachedData: js.UndefOr[Boolean] = js.undefined)
+    extends js.Object

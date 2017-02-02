@@ -66,4 +66,5 @@ class SerializationOptions(var domain: js.UndefOr[String] = js.undefined,
                            var maxAge: js.UndefOr[JsNumber] = js.undefined,
                            var path: js.UndefOr[String] = js.undefined,
                            var sameSite: js.UndefOr[Boolean | String] = js.undefined,
-                           var secure: js.UndefOr[Boolean] = js.undefined) extends js.Object
+                           var secure: js.UndefOr[Boolean] = js.undefined)
+    extends js.Object

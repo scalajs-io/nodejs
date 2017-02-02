@@ -31,7 +31,8 @@ trait Cookie extends js.Object {
     * @param options is an optional object containing additional serialization options.
     * @return
     */
-  def serialize(name: String, value: String | js.Any, options: SerializationOptions | RawOptions = js.native): String = js.native
+  def serialize(name: String, value: String | js.Any, options: SerializationOptions | RawOptions = js.native): String =
+    js.native
 
 }
 

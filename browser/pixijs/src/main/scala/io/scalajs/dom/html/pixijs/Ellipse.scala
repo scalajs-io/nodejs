@@ -39,4 +39,3 @@ class Ellipse(var x: Double, var y: Double, var width: Double, var height: Doubl
   def getBounds(): Rectangle = js.native
 
 }
-

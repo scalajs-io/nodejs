@@ -41,7 +41,8 @@ object MongoAdmin {
     def setProfilingLevelFuture(level: String) = callbackMongoFuture[String](admin.setProfilingLevel(level, _))
 
     @inline
-    def validateCollection(collectionName: String) = callbackMongoFuture[ValidationResult](admin.validateCollection(collectionName, _))
+    def validateCollection(collectionName: String) =
+      callbackMongoFuture[ValidationResult](admin.validateCollection(collectionName, _))
 
   }
 

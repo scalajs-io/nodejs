@@ -121,11 +121,13 @@ object Writable {
     */
   implicit class WritableExtensions(val writable: Writable) extends AnyVal {
 
-    def endFuture(data: String | Buffer, encoding: String = null): Promise[Unit] = futureCallbackE0[Error](writable.end(data, encoding, _))
+    def endFuture(data: String | Buffer, encoding: String = null): Promise[Unit] =
+      futureCallbackE0[Error](writable.end(data, encoding, _))
 
     def endFuture(): Promise[Unit] = futureCallbackE0[Error](writable.end(_))
 
-    def writeFuture(data: String | Buffer, encoding: String = null): Promise[Unit] = futureCallbackE0[Error](writable.write(data, encoding, _))
+    def writeFuture(data: String | Buffer, encoding: String = null): Promise[Unit] =
+      futureCallbackE0[Error](writable.write(data, encoding, _))
 
     /////////////////////////////////////////////////////////////////////////////////
     //      Events

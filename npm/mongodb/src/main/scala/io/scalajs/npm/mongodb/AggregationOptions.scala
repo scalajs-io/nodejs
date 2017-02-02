@@ -24,4 +24,5 @@ class AggregationOptions(var readPreference: js.UndefOr[ReadPreference] = js.und
                          var explain: js.UndefOr[JBoolean] = js.undefined,
                          var allowDiskUse: js.UndefOr[JBoolean] = js.undefined,
                          var maxTimeMS: js.UndefOr[Integer] = js.undefined,
-                         var bypassDocumentValidation: js.UndefOr[JBoolean] = js.undefined) extends js.Object
+                         var bypassDocumentValidation: js.UndefOr[JBoolean] = js.undefined)
+    extends js.Object

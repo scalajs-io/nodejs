@@ -27,4 +27,5 @@ class WebGLRendererOptions(var view: js.UndefOr[HTMLCanvasElement] = js.undefine
                            var forceFXAA: js.UndefOr[Boolean] = js.undefined,
                            var resolution: js.UndefOr[Resolution] = js.undefined,
                            var clearBeforeRender: js.UndefOr[Boolean] = js.undefined,
-                           var preserveDrawingBuffer: js.UndefOr[Boolean] = js.undefined) extends js.Object
+                           var preserveDrawingBuffer: js.UndefOr[Boolean] = js.undefined)
+    extends js.Object

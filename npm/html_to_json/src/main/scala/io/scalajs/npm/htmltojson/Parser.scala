@@ -9,6 +9,4 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 @JSImport("html-to-json", "Parser")
-class Parser(filter: js.Array[_]) extends js.Object {
-
-}
+class Parser(filter: js.Array[_]) extends js.Object {}

@@ -7,6 +7,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Keep extends ITransformer {
-
-}
+trait Keep extends ITransformer {}

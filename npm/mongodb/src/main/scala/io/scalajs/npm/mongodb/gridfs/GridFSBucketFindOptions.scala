@@ -18,4 +18,5 @@ class GridFSBucketFindOptions(var batchSize: js.UndefOr[Int] = js.undefined,
                               var maxTimeMS: js.UndefOr[Int] = js.undefined,
                               var noCursorTimeout: js.UndefOr[Boolean] = js.undefined,
                               var skip: js.UndefOr[Int] = js.undefined,
-                              var sort: js.UndefOr[js.Object] = js.undefined) extends js.Object
+                              var sort: js.UndefOr[js.Object] = js.undefined)
+    extends js.Object

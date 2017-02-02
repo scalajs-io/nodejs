@@ -20,4 +20,5 @@ class GridOptions(var _id: js.Any = js.undefined,
                   var root: js.UndefOr[String] = js.undefined,
                   var content_type: js.UndefOr[String] = js.undefined,
                   var chunk_size: js.UndefOr[Int] = js.undefined,
-                  var metadata: js.UndefOr[js.Object] = js.undefined) extends js.Object
+                  var metadata: js.UndefOr[js.Object] = js.undefined)
+    extends js.Object

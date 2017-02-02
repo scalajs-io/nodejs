@@ -7,6 +7,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-class Packet extends js.Object {
-
-}
+class Packet extends js.Object {}

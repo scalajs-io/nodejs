@@ -12,4 +12,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 @ScalaJSDefined
 class DeleteOptions(var w: js.UndefOr[js.Any] = js.undefined,
                     var wtimeout: js.UndefOr[Int] = js.undefined,
-                    var j: js.UndefOr[Boolean] = js.undefined) extends js.Object 
+                    var j: js.UndefOr[Boolean] = js.undefined)
+    extends js.Object

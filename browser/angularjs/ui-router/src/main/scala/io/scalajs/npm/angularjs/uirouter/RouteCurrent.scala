@@ -19,8 +19,8 @@ import scala.scalajs.js
   */
 @js.native
 trait RouteCurrent extends js.Object {
-  var controller: String = js.native
+  var controller: String         = js.native
   var locals: js.Dictionary[Any] = js.native
-  var $scope: Scope = js.native
-  var $template: String = js.native
+  var $scope: Scope              = js.native
+  var $template: String          = js.native
 }

@@ -7,7 +7,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait TakeWhile extends ITransformer {
-
-}
-
+trait TakeWhile extends ITransformer {}

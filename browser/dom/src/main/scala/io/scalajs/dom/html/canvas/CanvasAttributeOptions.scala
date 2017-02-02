@@ -9,4 +9,5 @@ import scala.scalajs.js.annotation.{JSBracketAccess, ScalaJSDefined}
   */
 @ScalaJSDefined
 class CanvasAttributeOptions(var width: js.UndefOr[Double] = js.undefined,
-                             var height: js.UndefOr[Double] = js.undefined) extends js.Object
+                             var height: js.UndefOr[Double] = js.undefined)
+    extends js.Object

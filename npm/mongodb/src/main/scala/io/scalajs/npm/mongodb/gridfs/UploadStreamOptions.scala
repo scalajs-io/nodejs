@@ -14,4 +14,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 class UploadStreamOptions(var chunkSizeBytes: Integer = null,
                           var metadata: js.Any = null,
                           var contentType: String = null,
-                          var aliases: js.Array[js.Any] = null) extends js.Object
+                          var aliases: js.Array[js.Any] = null)
+    extends js.Object

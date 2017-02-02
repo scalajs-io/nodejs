@@ -30,4 +30,5 @@ class SpawnOptions(val cwd: js.UndefOr[String] = js.undefined,
                    val detached: js.UndefOr[Boolean] = js.undefined,
                    val uid: js.UndefOr[JsNumber] = js.undefined,
                    val gid: js.UndefOr[JsNumber] = js.undefined,
-                   val shell: js.UndefOr[Boolean | String] = js.undefined) extends js.Object
+                   val shell: js.UndefOr[Boolean | String] = js.undefined)
+    extends js.Object

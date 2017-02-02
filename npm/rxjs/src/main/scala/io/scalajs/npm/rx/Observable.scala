@@ -200,7 +200,9 @@ trait Observable[T] extends js.Object {
     * @example Rx.Observable.prototype.concatMap(selector, [resultSelector], [thisArg])
     * @see [[https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/concatmap.md]]
     */
-  def concatMap(selector: js.Function | Iterator[_] | js.Promise[_], resultSelector: js.Function = js.native, thisArg: js.Any = js.native): Observable[T] = js.native
+  def concatMap(selector: js.Function | Iterator[_] | js.Promise[_],
+                resultSelector: js.Function = js.native,
+                thisArg: js.Any = js.native): Observable[T] = js.native
 
   /**
     * Returns the elements of the specified sequence or the specified value in a singleton sequence if the sequence is empty.
@@ -233,7 +235,8 @@ trait Observable[T] extends js.Object {
     * @example Rx.Observable.prototype.distinctUntilChanged([keySelector], [comparer])
     * @see [[https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/distinctuntilchanged.md]]
     */
-  def distinctUntilChanged(keySelector: js.Function = js.native, comparer: js.Function = js.native): Observable[T] = js.native
+  def distinctUntilChanged(keySelector: js.Function = js.native, comparer: js.Function = js.native): Observable[T] =
+    js.native
 
   /**
     * Invokes an action for each element in the observable sequence and invokes an action upon graceful or exceptional
@@ -251,7 +254,10 @@ trait Observable[T] extends js.Object {
     * @example Rx.Observable.prototype.do([observer] | [onNext], [onError], [onCompleted])
     * @see [[https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/do.md]]
     */
-  def `do`(observer: Observer = js.native, onNext: js.Function = js.native, onError: js.Function = js.native, onCompleted: js.Function = js.native): Observable[T] = js.native
+  def `do`(observer: Observer = js.native,
+           onNext: js.Function = js.native,
+           onError: js.Function = js.native,
+           onCompleted: js.Function = js.native): Observable[T] = js.native
 
   /**
     * Invokes an action upon graceful termination of the observable sequence.
@@ -352,7 +358,8 @@ trait Observable[T] extends js.Object {
     * @example Rx.Observable.prototype.flatMap(selector, [resultSelector])
     * @see [[https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/selectmany.md]]
     */
-  def flatMap[A, B](selector: js.Function, resultSelector: js.Function4[A, A, Int, Int, B] = js.native): Observable[B] = js.native
+  def flatMap[A, B](selector: js.Function,
+                    resultSelector: js.Function4[A, A, Int, Int, B] = js.native): Observable[B] = js.native
 
   /**
     * Transform the items emitted by an Observable into Observables, and mirror those items emitted by the most-recently
@@ -391,7 +398,10 @@ trait Observable[T] extends js.Object {
     * @example Rx.Observable.prototype.flatMapObserver(onNext, onError, onCompleted, [thisArg])
     * @see [[https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/flatmapobserver.md]]
     */
-  def flatMapObserver(onNext: js.Function, onError: js.Function, onCompleted: js.Function, thisArg: js.Any): Observable[T] = js.native
+  def flatMapObserver(onNext: js.Function,
+                      onError: js.Function,
+                      onCompleted: js.Function,
+                      thisArg: js.Any): Observable[T] = js.native
 
   /**
     * Subscribes an observer to the observable sequence.
@@ -401,7 +411,9 @@ trait Observable[T] extends js.Object {
     * @return (Disposable): The source sequence whose subscriptions and unsubscriptions happen on the specified scheduler.
     * @example Rx.Observable.prototype.forEach([observer] | [onNext], [onError], [onCompleted])
     */
-  def forEach(onNext: js.Function | Observable[T], onError: js.Function = js.native, onCompleted: js.Function = js.native): Disposable = js.native
+  def forEach(onNext: js.Function | Observable[T],
+              onError: js.Function = js.native,
+              onCompleted: js.Function = js.native): Disposable = js.native
 
   /**
     * Runs all observable sequences in parallel and collect their last elements.
@@ -648,7 +660,9 @@ trait Observable[T] extends js.Object {
     * @example Rx.Observable.prototype.selectConcat(selector, [resultSelector], [thisArg])
     * @see [[https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/concatmap.md]]
     */
-  def selectConcat(selector: js.Function | Iterator[_] | js.Promise[_], resultSelector: js.Function = js.native, thisArg: js.Any = js.native): Observable[T] = js.native
+  def selectConcat(selector: js.Function | Iterator[_] | js.Promise[_],
+                   resultSelector: js.Function = js.native,
+                   thisArg: js.Any = js.native): Observable[T] = js.native
 
   /**
     * Aliases: Rx.Observable.prototype.flatMap and Rx.Observable.prototype.selectMany are equivalent.
@@ -691,7 +705,10 @@ trait Observable[T] extends js.Object {
     * @example Rx.Observable.prototype.selectManyObserver(onNext, onError, onCompleted, [thisArg])
     * @see [[https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/flatmapobserver.md]]
     */
-  def selectManyObserver(onNext: js.Function, onError: js.Function, onCompleted: js.Function, thisArg: js.Any): Observable[T] = js.native
+  def selectManyObserver(onNext: js.Function,
+                         onError: js.Function,
+                         onCompleted: js.Function,
+                         thisArg: js.Any): Observable[T] = js.native
 
   /**
     * Returns a single element of an observable sequence that satisfies the condition in the predicate, or a default
@@ -708,7 +725,9 @@ trait Observable[T] extends js.Object {
     * @example Rx.Observable.prototype.single([predicate], [thisArg], [defaultValue])
     * @see [[https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/single.md]]
     */
-  def single(predicate: js.Function = js.native, thisArg: js.Any = js.native, defaultValue: T = js.native): Observable[T] = js.native
+  def single(predicate: js.Function = js.native,
+             thisArg: js.Any = js.native,
+             defaultValue: T = js.native): Observable[T] = js.native
 
   /**
     * Returns a single element of an observable sequence that satisfies the condition in the predicate, or a default
@@ -764,7 +783,9 @@ trait Observable[T] extends js.Object {
     * @return (Disposable): The source sequence whose subscriptions and unsubscriptions happen on the specified scheduler.
     * @example Rx.Observable.prototype.subscribe([observer] | [onNext], [onError], [onCompleted])
     */
-  def subscribe(onNext: js.Function | Observable[T] = js.native, onError: js.Function = js.native, onCompleted: js.Function = js.native): Disposable = js.native
+  def subscribe(onNext: js.Function | Observable[T] = js.native,
+                onError: js.Function = js.native,
+                onCompleted: js.Function = js.native): Disposable = js.native
 
   /**
     * Returns a specified number of contiguous elements from the start of an observable sequence, using the specified
@@ -826,7 +847,8 @@ trait Observable[T] extends js.Object {
     *         of the source sequence.
     * @example Rx.Observable.prototype.takeLastWithTime(duration, [timeScheduler], [loopScheduler])
     */
-  def takeLastWithTime(duration: Int, timeScheduler: Scheduler, loopScheduler: Scheduler = js.native): Observable[T] = js.native
+  def takeLastWithTime(duration: Int, timeScheduler: Scheduler, loopScheduler: Scheduler = js.native): Observable[T] =
+    js.native
 
   /**
     * Returns the values from the source observable sequence until the other observable sequence or Promise produces a value.
@@ -870,7 +892,10 @@ trait Observable[T] extends js.Object {
     * @example Rx.Observable.prototype.tap([observer] | [onNext], [onError], [onCompleted])
     * @see [[https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/operators/do.md]]
     */
-  def tap(observer: Observer = js.native, onNext: js.Function = js.native, onError: js.Function = js.native, onCompleted: js.Function = js.native): Observable[T] = js.native
+  def tap(observer: Observer = js.native,
+          onNext: js.Function = js.native,
+          onError: js.Function = js.native,
+          onCompleted: js.Function = js.native): Observable[T] = js.native
 
   /**
     * Invokes an action upon graceful termination of the observable sequence.
@@ -1056,11 +1081,17 @@ object Observable {
     @inline
     def drainFuture: Promise[js.Array[A]] = {
       val promise = Promise[js.Array[A]]()
-      val list = js.Array[A]()
+      val list    = js.Array[A]()
       val subscription = observable.forEachWith(
-        onNext = { value => list.push(value) },
-        onError = { err => promise.failure(wrapJavaScriptException(err)) },
-        onCompleted = { () => promise.success(list) }
+        onNext = { value =>
+          list.push(value)
+        },
+        onError = { err =>
+          promise.failure(wrapJavaScriptException(err))
+        },
+        onCompleted = { () =>
+          promise.success(list)
+        }
       )
       subscription.dispose()
       promise
@@ -1082,7 +1113,8 @@ object Observable {
       * @see [[Observable.filter()]]
       */
     @inline
-    def filterWith(predicate: (A, Int, Observable[A]) => Boolean, thisArg: js.Any): Observable[A] = observable.filter(predicate: js.Function, thisArg)
+    def filterWith(predicate: (A, Int, Observable[A]) => Boolean, thisArg: js.Any): Observable[A] =
+      observable.filter(predicate: js.Function, thisArg)
 
     /**
       * @see [[Observable.flatMap()]]
@@ -1100,7 +1132,8 @@ object Observable {
       * @see [[Observable.flatMap()]]
       */
     @inline
-    def flatMapWith[B, C](selector: (A, Int, Observable[A]) => B, resultSelector: (A, A, Int, Int) => C = null): Observable[C] = {
+    def flatMapWith[B, C](selector: (A, Int, Observable[A]) => B,
+                          resultSelector: (A, A, Int, Int) => C = null): Observable[C] = {
       observable.flatMap(selector: js.Function, resultSelector: js.Function4[A, A, Int, Int, C])
     }
 
@@ -1109,7 +1142,9 @@ object Observable {
       */
     @inline
     def forEachWith(onNext: A => Any, onError: js.Error => Any = null, onCompleted: () => Any = null): Disposable = {
-      observable.forEach(onNext = onNext: js.Function, onError = onError: js.Function, onCompleted = onCompleted: js.Function)
+      observable.forEach(onNext = onNext: js.Function,
+                         onError = onError: js.Function,
+                         onCompleted = onCompleted: js.Function)
     }
 
     /**

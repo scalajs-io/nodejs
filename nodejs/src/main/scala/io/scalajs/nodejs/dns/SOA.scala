@@ -19,11 +19,11 @@ import scala.scalajs.js
   */
 @js.native
 trait SOA extends js.Object {
-  var nsname: String = js.native
+  var nsname: String     = js.native
   var hostmaster: String = js.native
-  var serial: Integer = js.native
-  var refresh: Integer = js.native
-  var retry: Integer = js.native
-  var expire: Integer = js.native
-  var minttl: Integer = js.native
+  var serial: Integer    = js.native
+  var refresh: Integer   = js.native
+  var retry: Integer     = js.native
+  var expire: Integer    = js.native
+  var minttl: Integer    = js.native
 }

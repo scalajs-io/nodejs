@@ -329,11 +329,11 @@ class Cursor extends nodejs.stream.Readable {
 object Cursor {
 
   type CursorFlag = String
-  val TAILABLE: CursorFlag = "tailable"
-  val OPLOGREPLAY: CursorFlag = "oplogReplay"
+  val TAILABLE: CursorFlag        = "tailable"
+  val OPLOGREPLAY: CursorFlag     = "oplogReplay"
   val NOCURSORTIMEOUT: CursorFlag = "noCursorTimeout"
-  val AWAITDATA: CursorFlag = "awaitData"
-  val PARTIAL: CursorFlag = "partial"
+  val AWAITDATA: CursorFlag       = "awaitData"
+  val PARTIAL: CursorFlag         = "partial"
 
   /**
     * Cursor Extensions
@@ -359,7 +359,8 @@ object Cursor {
       * @param applySkipLimit if set to true will apply the skip and limits set on the cursor. Defaults to false.
       */
     @inline
-    def countFuture(applySkipLimit: Boolean): Future[Cursor] = callbackMongoFuture[Cursor](cursor.count(applySkipLimit, _))
+    def countFuture(applySkipLimit: Boolean): Future[Cursor] =
+      callbackMongoFuture[Cursor](cursor.count(applySkipLimit, _))
 
     /**
       * Iterates over all the documents for this cursor. As with {cursor.toArray}, not all of the elements will be
@@ -407,7 +408,8 @@ object Cursor {
       *             [[Server.READ_SECONDARY Server.READ_SECONDARY]], [[Server.READ_SECONDARY Server.READ_SECONDARY_ONLY]]
       */
     @inline
-    def setReadPreferenceFuture(pref: String): Future[Cursor] = callbackMongoFuture[Cursor](cursor.setReadPreference(pref, _))
+    def setReadPreferenceFuture(pref: String): Future[Cursor] =
+      callbackMongoFuture[Cursor](cursor.setReadPreference(pref, _))
 
     /**
       * Sets the skip parameter of this cursor to the given value.
@@ -435,7 +437,8 @@ object Cursor {
       *                  <b>Note</b> that the strings are case insensitive.
       */
     @inline
-    def sortFuture(key: String, direction: Int | String): Future[Cursor] = callbackMongoFuture[Cursor](cursor.sort(key, direction, _))
+    def sortFuture(key: String, direction: Int | String): Future[Cursor] =
+      callbackMongoFuture[Cursor](cursor.sort(key, direction, _))
 
     /**
       * Returns an array of documents. The caller is responsible for making sure that there is enough memory to store

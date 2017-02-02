@@ -16,4 +16,5 @@ class ReplacementOptions(var upsert: js.UndefOr[Boolean],
                          var w: js.UndefOr[Int],
                          var wtimeout: js.UndefOr[Int],
                          var j: js.UndefOr[Boolean],
-                         var bypassDocumentValidation: js.UndefOr[Boolean]) extends js.Object
+                         var bypassDocumentValidation: js.UndefOr[Boolean])
+    extends js.Object

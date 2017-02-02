@@ -65,4 +65,5 @@ class ParserOptions(var attrkey: js.UndefOr[String] = js.undefined,
                     var charsAsChildren: js.UndefOr[Boolean] = js.undefined,
                     var async: js.UndefOr[Boolean] = js.undefined,
                     var strict: js.UndefOr[Boolean] = js.undefined,
-                    var attrNameProcessors: js.UndefOr[Boolean] = js.undefined) extends js.Object
+                    var attrNameProcessors: js.UndefOr[Boolean] = js.undefined)
+    extends js.Object

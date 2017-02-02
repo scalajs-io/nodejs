@@ -19,6 +19,6 @@ class Server(val host: String, val port: Int) extends js.Object
 @JSName("Server")
 object Server extends js.Object {
   val READ_SECONDARY: String = js.native
-  val READ_PRIMARY: String = js.native
+  val READ_PRIMARY: String   = js.native
 
 }

@@ -22,34 +22,35 @@ class ColorsTest extends FunSpec {
     }
 
     it("should support direct method calls") {
-      console.log(Colors.green("hello")) // outputs green text
+      console.log(Colors.green("hello"))                        // outputs green text
       console.log(Colors.red.underline("i like cake and pies")) // outputs red underlined text
-      console.log(Colors.inverse("inverse the color")) // inverses the color
-      console.log(Colors.rainbow("OMG Rainbows!")) // rainbow
-      console.log(Colors.trap("Run the trap")) // Drops the bass
+      console.log(Colors.inverse("inverse the color"))          // inverses the color
+      console.log(Colors.rainbow("OMG Rainbows!"))              // rainbow
+      console.log(Colors.trap("Run the trap"))                  // Drops the bass
     }
 
     it("should support implicit method calls") {
-      console.log("hello".green) // outputs green text
+      console.log("hello".green)                        // outputs green text
       console.log("i like cake and pies".underline.red) // outputs red underlined text
-      console.log("inverse the color".inverse) // inverses the color
-      console.log("OMG Rainbows!".rainbow) // rainbow
-      console.log("Run the trap".trap) // Drops the bass
+      console.log("inverse the color".inverse)          // inverses the color
+      console.log("OMG Rainbows!".rainbow)              // rainbow
+      console.log("Run the trap".trap)                  // Drops the bass
     }
 
     it("should support themes") {
-      Colors.setTheme(js.Dictionary(
-        "silly" -> "rainbow",
-        "input" -> "grey",
-        "verbose" -> "cyan",
-        "prompt" -> "grey",
-        "info" -> "green",
-        "data" -> "grey",
-        "help" -> "cyan",
-        "warn" -> "yellow",
-        "debug" -> "blue",
-        "error" -> "red"
-      ))
+      Colors.setTheme(
+        js.Dictionary(
+          "silly"   -> "rainbow",
+          "input"   -> "grey",
+          "verbose" -> "cyan",
+          "prompt"  -> "grey",
+          "info"    -> "green",
+          "data"    -> "grey",
+          "help"    -> "cyan",
+          "warn"    -> "yellow",
+          "debug"   -> "blue",
+          "error"   -> "red"
+        ))
 
       // outputs red text
       console.log("this is an error" <<= "error")

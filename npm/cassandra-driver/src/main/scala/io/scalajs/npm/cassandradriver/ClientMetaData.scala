@@ -9,6 +9,7 @@ import scala.scalajs.js
 @js.native
 trait ClientMetaData extends js.Object {
 
-  def getFunction(keyspace: String, functionName: String, args: js.Array[_ <: js.Any], callback: js.Function): Unit = js.native
+  def getFunction(keyspace: String, functionName: String, args: js.Array[_ <: js.Any], callback: js.Function): Unit =
+    js.native
 
 }

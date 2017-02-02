@@ -13,4 +13,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 @ScalaJSDefined
 class ProducerOptions(var requireAcks: js.UndefOr[Int] = js.undefined,
                       var ackTimeoutMs: js.UndefOr[Int] = js.undefined,
-                      var partitionerType: js.UndefOr[Int] = js.undefined) extends js.Object
+                      var partitionerType: js.UndefOr[Int] = js.undefined)
+    extends js.Object

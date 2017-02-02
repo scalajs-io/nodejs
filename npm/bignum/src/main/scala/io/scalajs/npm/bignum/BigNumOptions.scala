@@ -12,5 +12,5 @@ import scala.scalajs.js.|
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class BigNumOptions(var endian: js.UndefOr[String] = js.undefined,
-                    var size: js.UndefOr[String | Int] = js.undefined) extends js.Object
+class BigNumOptions(var endian: js.UndefOr[String] = js.undefined, var size: js.UndefOr[String | Int] = js.undefined)
+    extends js.Object

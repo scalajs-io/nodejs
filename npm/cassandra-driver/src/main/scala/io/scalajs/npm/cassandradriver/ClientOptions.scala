@@ -14,4 +14,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 class ClientOptions(val contactPoints: js.Array[String],
                     val keyspace: js.UndefOr[String] = js.undefined,
                     val pooling: js.UndefOr[PoolingOptions] = js.undefined,
-                    val policies: js.UndefOr[LoadBalancingPolicyOptions] = js.undefined) extends js.Object
+                    val policies: js.UndefOr[LoadBalancingPolicyOptions] = js.undefined)
+    extends js.Object

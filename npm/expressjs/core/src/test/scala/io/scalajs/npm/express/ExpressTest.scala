@@ -38,12 +38,14 @@ class ExpressTest extends FunSpec {
     }
 
     it("should handle GET /ab*de") {
-      Http.get(s"http://localhost:$port/abcde", { response: ServerResponse =>
-        assert(response.statusCode == 200)
-        response.onData { chunk =>
-          assert(chunk.toString() === "Page Pattern Match")
+      Http.get(
+        s"http://localhost:$port/abcde", { response: ServerResponse =>
+          assert(response.statusCode == 200)
+          response.onData { chunk =>
+            assert(chunk.toString() === "Page Pattern Match")
+          }
         }
-      })
+      )
     }
 
     it("should handle DELETE /:id") {

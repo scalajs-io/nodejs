@@ -52,7 +52,8 @@ class MemoryFileSystem(data: js.Any) extends js.Object {
 
   def unlinkSync(path: String): Unit = js.native
 
-  def writeFile(path: String, content: String, encoding: String, callback: js.Function1[FileIOError, Any]): Unit = js.native
+  def writeFile(path: String, content: String, encoding: String, callback: js.Function1[FileIOError, Any]): Unit =
+    js.native
 
   def writeFile(path: String, content: String, callback: js.Function1[FileIOError, Any]): Unit = js.native
 

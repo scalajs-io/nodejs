@@ -38,4 +38,5 @@ class ServerOptions(var host: js.UndefOr[String] = js.undefined,
                     var path: js.UndefOr[String] = js.undefined,
                     var headers: js.UndefOr[js.Dictionary[String]] = js.undefined,
                     var auth: js.UndefOr[js.Dictionary[String]] = js.undefined,
-                    var agent: js.UndefOr[String] = js.undefined) extends js.Object
+                    var agent: js.UndefOr[String] = js.undefined)
+    extends js.Object

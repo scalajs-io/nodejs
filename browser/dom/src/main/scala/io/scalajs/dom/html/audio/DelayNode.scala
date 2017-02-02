@@ -6,6 +6,4 @@ import scala.scalajs.js
   * Created by ldaniels on 12/16/16.
   */
 @js.native
-class DelayNode extends js.Object{
-
-}
+class DelayNode extends js.Object {}

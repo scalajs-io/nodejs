@@ -8,6 +8,7 @@ import scala.scalajs.js
   */
 @js.native
 trait WriteError extends js.Object {
+
   /** Write concern error code */
   var code: Integer = js.native
 

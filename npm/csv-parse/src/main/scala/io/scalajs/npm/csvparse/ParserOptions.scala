@@ -51,4 +51,5 @@ class ParserOptions(var delimiter: js.UndefOr[String] = js.undefined,
                     var ltrim: js.UndefOr[Boolean] = js.undefined,
                     var rtrim: js.UndefOr[Boolean] = js.undefined,
                     var auto_parse: js.UndefOr[Boolean] = js.undefined,
-                    var auto_parse_date: js.UndefOr[Boolean] = js.undefined) extends js.Object
+                    var auto_parse_date: js.UndefOr[Boolean] = js.undefined)
+    extends js.Object

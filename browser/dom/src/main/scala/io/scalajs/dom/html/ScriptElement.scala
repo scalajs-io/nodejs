@@ -9,6 +9,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-class ScriptElement extends Element {
-
-}
+class ScriptElement extends Element {}

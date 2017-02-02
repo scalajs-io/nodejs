@@ -19,8 +19,8 @@ object AngularJsHelper {
     @inline
     def displayMessage = Option(cause.getMessage) match {
       case Some(s) if s.startsWith(HttpError) => cleanUp(s.drop(HttpError.length))
-      case Some(s) => s
-      case None => "Cause unknown"
+      case Some(s)                            => s
+      case None                               => "Cause unknown"
     }
 
     private def cleanUp(s: String) = s.replaceAllLiterally("\"", "").replaceAllLiterally("'", "")
@@ -35,7 +35,7 @@ object AngularJsHelper {
 
     @inline
     def indexOfOpt(substring: String): Option[Int] = Option(string).map(_.indexOf(substring)) flatMap {
-      case -1 => None
+      case -1    => None
       case index => Some(index)
     }
 

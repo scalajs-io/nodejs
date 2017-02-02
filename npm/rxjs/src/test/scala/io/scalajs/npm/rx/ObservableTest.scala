@@ -26,21 +26,21 @@ class ObservableTest extends FunSpec {
     }
 
     it("supports Rx.Observable.of + flatMapWith") {
-      Rx.Observable.of(2, 3, 5)
+      Rx.Observable
+        .of(2, 3, 5)
         .flatMapWith(
           selector = { (x, index, _) =>
-            js.Array(
-              x * x,
-              x * x * x,
-              x * x * x * x)
+            js.Array(x * x, x * x * x, x * x * x * x)
           },
           resultSelector = { (outer, inner, outerIndex, innerIndex) =>
             new Data(outer = outer, inner = inner, outerIdx = outerIndex, innerIdx = innerIndex)
-          })
+          }
+        )
         .drainFuture map { values =>
         val data = values.map(_.toJson).mkString(",")
         info(values.map(_.toJson).mkString("\n"))
-        assert(data == """{"outer":2,"inner":4,"outerIdx":0,"innerIdx":0},{"outer":2,"inner":8,"outerIdx":0,"innerIdx":1},{"outer":3,"inner":9,"outerIdx":1,"innerIdx":0},{"outer":2,"inner":16,"outerIdx":0,"innerIdx":2},{"outer":3,"inner":27,"outerIdx":1,"innerIdx":1},{"outer":5,"inner":25,"outerIdx":2,"innerIdx":0},{"outer":3,"inner":81,"outerIdx":1,"innerIdx":2},{"outer":5,"inner":125,"outerIdx":2,"innerIdx":1},{"outer":5,"inner":625,"outerIdx":2,"innerIdx":2}""")
+        assert(
+          data == """{"outer":2,"inner":4,"outerIdx":0,"innerIdx":0},{"outer":2,"inner":8,"outerIdx":0,"innerIdx":1},{"outer":3,"inner":9,"outerIdx":1,"innerIdx":0},{"outer":2,"inner":16,"outerIdx":0,"innerIdx":2},{"outer":3,"inner":27,"outerIdx":1,"innerIdx":1},{"outer":5,"inner":25,"outerIdx":2,"innerIdx":0},{"outer":3,"inner":81,"outerIdx":1,"innerIdx":2},{"outer":5,"inner":125,"outerIdx":2,"innerIdx":1},{"outer":5,"inner":625,"outerIdx":2,"innerIdx":2}""")
       }
     }
 
@@ -67,8 +67,11 @@ class ObservableTest extends FunSpec {
 
     it("supports Rx.Observable.transduce") {
       val isEven: js.Function = (x: Int) => x % 2 == 0
-      val mul10: js.Function = (x: Int) => x * 10
-      Rx.Observable.range(1, 5).transduce(TransducersJs.comp(TransducersJs.filter(isEven), TransducersJs.map(mul10))).drainFuture map { values =>
+      val mul10: js.Function  = (x: Int) => x * 10
+      Rx.Observable
+        .range(1, 5)
+        .transduce(TransducersJs.comp(TransducersJs.filter(isEven), TransducersJs.map(mul10)))
+        .drainFuture map { values =>
         info(s"output: $values")
         assert(values.toSeq == Seq(20, 40))
       }

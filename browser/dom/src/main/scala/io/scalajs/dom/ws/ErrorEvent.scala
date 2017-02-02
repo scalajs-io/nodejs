@@ -9,6 +9,4 @@ import scala.scalajs.js
   * being a WebSocket or a WebRTC RTCDataChannel.
   */
 @js.native
-class ErrorEvent() extends Event {
-
-}
+class ErrorEvent() extends Event {}

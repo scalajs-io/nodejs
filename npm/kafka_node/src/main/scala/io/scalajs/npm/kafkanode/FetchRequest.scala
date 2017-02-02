@@ -10,4 +10,5 @@ import scala.scalajs.js.annotation.ScalaJSDefined
 @ScalaJSDefined
 class FetchRequest(val topic: String,
                    val offset: js.UndefOr[Int] = js.undefined,
-                   val partition: js.UndefOr[Int] = js.undefined) extends js.Object
+                   val partition: js.UndefOr[Int] = js.undefined)
+    extends js.Object

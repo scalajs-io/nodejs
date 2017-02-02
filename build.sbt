@@ -775,6 +775,18 @@ lazy val bundle_mean_stack = (project in file("bundles/mean_stack")).
     description := "MEAN Stack bundle"
   )
 
+lazy val bundle_non_npm = (project in file("bundles/non-npm")).
+  aggregate(core, dom_html, jquery, nodejs, phaser, pixijs, bundle_social, bundle_angular).
+  dependsOn(core, dom_html, jquery, nodejs, phaser, pixijs, bundle_social, bundle_angular).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(publishingSettings: _*).
+  settings(
+    name := "non-npm-bundle",
+    organization := "io.scalajs",
+    description := "Everything but the third party npm packages"
+  )
+
 lazy val bundle_npm = (project in file("bundles/npm")).
   aggregate(
     bundle_expressjs,

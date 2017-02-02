@@ -4,6 +4,7 @@ import io.scalajs.collection.Iterator
 import io.scalajs.dom.USVString
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSName
 import scala.scalajs.js.|
 
 /**
@@ -16,6 +17,7 @@ import scala.scalajs.js.|
   * @author lawrence.daniels@gmail.com
   */
 @js.native
+@JSName("URLSearchParams")
 class URLSearchParams(init: USVString | URLSearchParams) extends js.Object {
 
   /////////////////////////////////////////////////////////////////////////////////

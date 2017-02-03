@@ -29,7 +29,7 @@ import scala.scalajs.js.annotation.JSName
   */
 @js.native
 @JSName("Phaser.BitmapText")
-class BitmapText(val game: Game,
+class BitmapText(var game: Phaser.Game,
                  override var x: Double,
                  override var y: Double,
                  val font: String,
@@ -61,5 +61,15 @@ class BitmapText(val game: Game,
     * Working in radians is slightly faster as it doesn't have to perform any calculations.
     */
   override var angle: Double = js.native
+
+  /**
+    * Base destroy method for generic display objects.
+    */
+  override def destroy(): Unit = js.native
+
+  /**
+    * Base destroy method for generic display objects.
+    */
+  override def destroy(destroyChildren: Boolean): Unit = js.native
 
 }

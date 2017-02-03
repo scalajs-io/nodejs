@@ -20,6 +20,9 @@ trait DisplayObject extends js.Object {
     */
   var alpha: Alpha = js.native
 
+  /**
+    *
+    */
   var anchor: Point = js.native
 
   /**
@@ -37,6 +40,9 @@ trait DisplayObject extends js.Object {
     */
   var cacheAsBitmap: Boolean = js.native
 
+  /**
+    *
+    */
   var visible: Boolean = js.native
 
   /**
@@ -54,14 +60,14 @@ trait DisplayObject extends js.Object {
     */
   def x: Double = js.native
 
-  def x_=(x : Double): Unit = js.native
+  def x_=(x: Double): Unit = js.native
 
   /**
     * The position of the displayObject on the y axis relative to the local coordinates of the parent.
     */
   def y: Double = js.native
 
-  def y_=(y : Double): Unit = js.native
+  def y_=(y: Double): Unit = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods

@@ -12,5 +12,5 @@ import scala.scalajs.js.annotation.JSName
   */
 @js.native
 @JSName("Phaser.Sound")
-class Sound(val game: Game, val key: String, val volume: Int = js.native, val loop: Boolean = js.native)
+class Sound(var game: Phaser.Game, val key: String, val volume: Int = js.native, val loop: Boolean = js.native)
     extends js.Object

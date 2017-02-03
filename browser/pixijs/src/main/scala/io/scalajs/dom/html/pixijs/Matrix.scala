@@ -12,6 +12,7 @@ import scala.scalajs.js.annotation.JSName
   * +---+---+---+
   * | 0 | 0 | 1 |
   * }}}
+  * @see https://phaser.io/docs/2.2.2/PIXI.Matrix.html
   */
 @js.native
 @JSName("Matrix")

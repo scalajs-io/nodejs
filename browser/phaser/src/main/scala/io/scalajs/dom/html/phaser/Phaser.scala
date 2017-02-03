@@ -53,11 +53,13 @@ object Phaser extends js.Object {
   type Frame = phaser.Frame
   type FrameData = phaser.FrameData
   type Game = phaser.Game
+  type Gamepad = phaser.Gamepad
   type GameObjectCreator = phaser.GameObjectCreator
   type GameObjectFactory = phaser.GameObjectFactory
   type Graphics = phaser.Graphics
   type Group[T] = phaser.Group[T]
   type Image = phaser.Image
+  type Input = phaser.Input
   type InputHandler = phaser.InputHandler
   type Keyboard = phaser.Keyboard
   type Line = phaser.Line
@@ -72,6 +74,7 @@ object Phaser extends js.Object {
   type Rectangle = phaser.Rectangle
   type RenderTexture = phaser.RenderTexture
   type RoundedRectangle = phaser.RoundedRectangle
+  type SinglePad = phaser.SinglePad
   type Signal = phaser.Signal
   type SignalBinding = phaser.SignalBinding
   type Sound = phaser.Sound
@@ -80,6 +83,8 @@ object Phaser extends js.Object {
   type State = phaser.State
   type Text = phaser.Text
   type Texture = phaser.Texture
+  type Tilemap = phaser.Tilemap
+  type TilemapLayer = phaser.TilemapLayer
   type TileSprite = phaser.TileSprite
   type Time = phaser.Time
   type Timer = phaser.Timer
@@ -134,18 +139,27 @@ object Phaser extends js.Object {
     type P2 = phaser.physics.P2
 
     @js.native
-    @JSName("P2")
-    object P2 extends js.Object {
-
-      type Material = phaser.physics.p2.Material
-
-    }
-
-    @js.native
     @JSName("Arcade")
     object Arcade extends js.Object {
 
       type Body = phaser.physics.arcade.Body
+
+    }
+
+    @js.native
+    @JSName("Ninja")
+    object Ninja extends js.Object {
+
+      type AABB = phaser.physics.ninja.AABB
+      type Body = phaser.physics.ninja.Body
+
+    }
+
+    @js.native
+    @JSName("P2")
+    object P2 extends js.Object {
+
+      type Material = phaser.physics.p2.Material
 
     }
 
@@ -155,7 +169,7 @@ object Phaser extends js.Object {
     * Phaser.Utils class references
     */
   @js.native
-  @JSName("Phaser.Utils")
+  @JSName("Utils")
   object Utils extends js.Object {
 
     type ArrayUtils = phaser.utils.ArrayUtils

@@ -1,6 +1,6 @@
 package io.scalajs.dom.html.phaser
 
-import io.scalajs.JsNumber
+import io.scalajs.{JsNumber, RawOptions}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSName, ScalaJSDefined}
@@ -22,8 +22,8 @@ import scala.scalajs.js.|
 class Text(game: Phaser.Game,
            x: Double,
            y: Double,
-           val text: String,
-           val style: StyleOptions = js.native) extends Sprite
+           var text: String,
+           var style: StyleOptions | RawOptions = js.native) extends Sprite
 
 /**
   * Text Style Options

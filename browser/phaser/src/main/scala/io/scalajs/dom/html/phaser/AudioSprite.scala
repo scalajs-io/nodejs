@@ -11,7 +11,7 @@ import scala.scalajs.js.annotation.JSName
   */
 @js.native
 @JSName("Phaser.AudioSprite")
-class AudioSprite(val game: Game, val key: String) extends js.Object {
+class AudioSprite(var game: Phaser.Game, var key: String) extends js.Object {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties

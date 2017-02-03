@@ -18,7 +18,7 @@ import scala.scalajs.js.annotation.JSName
   */
 @js.native
 @JSName("Phaser.Timer")
-class Timer(val game: Phaser.Game, val autoDestroy: Boolean = js.native) extends js.Object {
+class Timer(var game: Phaser.Game, val autoDestroy: Boolean = js.native) extends js.Object {
 
   /**
     * The duration in ms remaining until the next event will occur.

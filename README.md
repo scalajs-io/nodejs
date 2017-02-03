@@ -75,8 +75,8 @@ The following applications were developed using ScalaJs.io:
 
 | Application                                                            | Frontend              | Backend            | Scalajs.io version | Description                              |
 |------------------------------------------------------------------------|-----------------------|--------------------|--------------------|------------------------------------------|
-| [Scalajs-Invaders](https://github.com/ldaniels528/scalajs-invaders)    | Scala.js + DOM        | Scala + NodeJS     | 0.3.0.0            | Port of Phaser Invaders. |
-| [Socialize](https://github.com/ldaniels528/scalajs-nodejs-socialized)  | Scala.js + AngularJS  | Scala.js + NodeJS  | 0.2.3.1            | A Facebook-inspired Social networking web application. |
+| [Scalajs-Invaders](https://github.com/ldaniels528/scalajs-invaders)    | Scala.js + DOM        | Scala + NodeJS     | 0.3.0.1            | Port of Phaser Invaders. |
+| [Socialize](https://github.com/ldaniels528/scalajs-nodejs-socialized)  | Scala.js + AngularJS  | Scala.js + NodeJS  | 0.3.0.3            | A Facebook-inspired Social networking web application. |
 | [Todo MVC](https://github.com/ldaniels528/scalajs-nodejs-todomvc)      | Scala.js + AngularJS  | Scala.js + NodeJS  | 0.2.3.1            | A simple Todo example application. |
 | [Trifecta](https://github.com/ldaniels528/trifecta)                    | Scala.js + AngularJS  | Scala + Play 2.4.x | 0.3.0.0            | Trifecta is a web-based and CLI tool that simplifies inspecting Kafka messages and Zookeeper data. |
  

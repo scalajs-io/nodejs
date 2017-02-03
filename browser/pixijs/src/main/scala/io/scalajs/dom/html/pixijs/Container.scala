@@ -112,8 +112,8 @@ class Container extends DisplayObject {
 
   /**
     * Destroys the container
-    * @param destroyChildren if set to true, all the children will have their destroy method called as well
+    * @param destroyChildren optional: if set to true, all the children will have their destroy method called as well
     */
-  def destroy(destroyChildren: Boolean = false): Unit = js.native
+  def destroy(destroyChildren: Boolean): Unit = js.native
 
 }

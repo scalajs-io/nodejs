@@ -11,6 +11,7 @@ import scala.scalajs.js.annotation.JSName
   * @see https://phaser.io/docs/2.6.2/Phaser.Component.PhysicsBody.html
   */
 @js.native
+//@JSName("Phaser.Component.PhysicsBody")
 trait PhysicsBody extends js.Object {
 
   /**
@@ -30,21 +31,21 @@ trait PhysicsBody extends js.Object {
     * If you need a different result then adjust or re-create the Body shape offsets manually or reset the anchor
     * after enabling physics.
     */
-  var body: Phaser.Component.PhysicsBody = js.native
+  var body: Phaser.Physics.Arcade.Body /*| Phaser.Physics.P2.Body | Phaser.Physics.Ninja.Body*/ = js.native
 
   /**
     * The position of the Game Object on the x axis relative to the local coordinates of the parent.
     */
   def x: Double = js.native
 
-  def x_=(x : Double): Unit = js.native
+  def x_=(x: Double): Unit = js.native
 
   /**
     * The position of the Game Object on the y axis relative to the local coordinates of the parent.
     */
   def y: Double = js.native
 
-  def y_=(y : Double): Unit = js.native
+  def y_=(y: Double): Unit = js.native
 
 }
 

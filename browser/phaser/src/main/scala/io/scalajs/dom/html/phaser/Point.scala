@@ -7,11 +7,15 @@ import scala.scalajs.js
   * and y represents the vertical axis. The following code creates a point at (0,0):
   * {{{ var myPoint = new Phaser.Point(); }}}
   * You can also use them as 2D Vectors and you'll find different vector related methods in this class.
-  * @param x The horizontal position of this Point.
-  * @param y The vertical position of this Point.
+  * @param x0 The horizontal position of this Point.
+  * @param y0 The vertical position of this Point.
   */
 @js.native
-class Point(var x: Double, var y: Double) extends js.Object {
+class Point(x0: Double, y0: Double) extends js.Object {
+
+  var x: Double = js.native
+
+  var y: Double = js.native
 
   /**
     * Adds the coordinates of two points together to create a new point.

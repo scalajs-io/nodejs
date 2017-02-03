@@ -13,7 +13,7 @@ import scala.scalajs.js.annotation.JSName
   */
 @js.native
 @JSName("Phaser.GameObjectCreator")
-class GameObjectCreator(val game: Game) extends js.Object {
+class GameObjectCreator(var game: Phaser.Game) extends js.Object {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties

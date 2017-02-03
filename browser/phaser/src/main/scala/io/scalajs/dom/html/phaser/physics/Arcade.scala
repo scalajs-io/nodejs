@@ -5,17 +5,17 @@ import io.scalajs.dom.html.pixijs.DisplayObject
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
+import scala.scalajs.js.|
 
 /**
   * The Arcade Physics world. Contains Arcade Physics related collision, overlap and motion methods.
   * @param game reference to the current game instance.
-  * @version 2.6.2
   * @see http://phaser.io/docs/2.6.2/Phaser.Physics.Arcade.html
   * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSName("Phaser.Physics.Arcade")
-class Arcade(val game: Phaser.Game) extends js.Object {
+class Arcade(var game: Phaser.Game) extends js.Object {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -105,6 +105,35 @@ class Arcade(val game: Phaser.Game) extends js.Object {
     */
   def accelerateToObject(displayObject: DisplayObject, destination: js.Any, speed: Double, xSpeedMax: Double, ySpeedMax: Double): Double = js.native
 
+  /**
+    * Sets the acceleration.x/y property on the display object so it will move towards the target
+    * at the given speed (in pixels per second sq.)
+    *
+    * You must give a maximum speed value, beyond which the display object won't go any faster.
+    * Note: The display object does not continuously track the target. If the target changes location
+    * during transit the display object will not modify its course.
+    *
+    * Note: The display object doesn't stop moving once it reaches the destination coordinates.
+    * @param displayObject The display object to move.
+    * @param pointer       The pointer to move towards. Defaults to `Phaser.Input.activePointer`.
+    * @param speed         The speed it will accelerate in pixels per second.
+    * @param xSpeedMax     The maximum x velocity the display object can reach.
+    * @param ySpeedMax     The maximum y velocity the display object can reach.
+    * @return The angle (in radians) that the object should be visually set to in order to match its new trajectory.
+    */
+  def accelerateToPointer(displayObject: DisplayObject,
+                          pointer: Phaser.Pointer = js.native,
+                          speed: Double = js.native,
+                          xSpeedMax: Double = js.native,
+                          ySpeedMax: Double = js.native): Double = js.native
+
+  def moveToObject(displayObject: DisplayObject, destination: Any, speed: Int = 60, maxTime: Long = 0): Double = js.native
+
+  def overlap(object1: Sprite | Group[_] | js.Array[_],
+              object2: Sprite | Group[_] | js.Array[_],
+              overlapCallback: js.Function2[_, _, _],
+              processCallback: Option[js.Function2[_, _, Boolean]],
+              callbackContext: Any = js.native): Unit = js.native
 
 }
 

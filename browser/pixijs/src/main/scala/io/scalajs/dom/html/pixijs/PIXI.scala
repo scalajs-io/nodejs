@@ -1,4 +1,5 @@
-package io.scalajs.dom.html.pixijs
+package io.scalajs.dom.html
+package pixijs
 
 import io.scalajs.RawOptions
 import io.scalajs.dom.html.canvas.HTMLCanvasElement
@@ -58,6 +59,14 @@ object PIXI extends js.Object {
   val VERSION: String = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
+  //      Class References
+  /////////////////////////////////////////////////////////////////////////////////
+
+  type DisplayObject = pixijs.DisplayObject
+  type DisplayObjectContainer = pixijs.DisplayObjectContainer
+  type Matrix = pixijs.Matrix
+
+  /////////////////////////////////////////////////////////////////////////////////
   //      Methods
   /////////////////////////////////////////////////////////////////////////////////
 
@@ -87,23 +96,23 @@ object PIXI extends js.Object {
   @js.native
   @JSName("BLEND_MODES")
   object BLEND_MODES extends js.Object {
-    val NORMAL: BlendMode      = js.native
-    val ADD: BlendMode         = js.native
-    val MULTIPLY: BlendMode    = js.native
-    val SCREEN: BlendMode      = js.native
-    val OVERLAY: BlendMode     = js.native
-    val DARKEN: BlendMode      = js.native
-    val LIGHTEN: BlendMode     = js.native
+    val NORMAL: BlendMode = js.native
+    val ADD: BlendMode = js.native
+    val MULTIPLY: BlendMode = js.native
+    val SCREEN: BlendMode = js.native
+    val OVERLAY: BlendMode = js.native
+    val DARKEN: BlendMode = js.native
+    val LIGHTEN: BlendMode = js.native
     val COLOR_DODGE: BlendMode = js.native
-    val COLOR_BURN: BlendMode  = js.native
-    val HARD_LIGHT: BlendMode  = js.native
-    val SOFT_LIGHT: BlendMode  = js.native
-    val DIFFERENCE: BlendMode  = js.native
-    val EXCLUSION: BlendMode   = js.native
-    val HUE: BlendMode         = js.native
-    val SATURATION: BlendMode  = js.native
-    val COLOR: BlendMode       = js.native
-    val LUMINOSITY: BlendMode  = js.native
+    val COLOR_BURN: BlendMode = js.native
+    val HARD_LIGHT: BlendMode = js.native
+    val SOFT_LIGHT: BlendMode = js.native
+    val DIFFERENCE: BlendMode = js.native
+    val EXCLUSION: BlendMode = js.native
+    val HUE: BlendMode = js.native
+    val SATURATION: BlendMode = js.native
+    val COLOR: BlendMode = js.native
+    val LUMINOSITY: BlendMode = js.native
   }
 
   /**
@@ -113,15 +122,15 @@ object PIXI extends js.Object {
   @js.native
   @JSName("DEFAULT_RENDER_OPTIONS")
   object DEFAULT_RENDER_OPTIONS extends js.Object {
-    var view: HTMLCanvasElement        = js.native
-    var transparent: Boolean           = js.native
-    var antialias: Boolean             = js.native
-    var forceFXAA: Boolean             = js.native
+    var view: HTMLCanvasElement = js.native
+    var transparent: Boolean = js.native
+    var antialias: Boolean = js.native
+    var forceFXAA: Boolean = js.native
     var preserveDrawingBuffer: Boolean = js.native
-    var resolution: Resolution         = js.native
-    var backgroundColor: Color         = js.native
-    var clearBeforeRender: Boolean     = js.native
-    var autoResize: Boolean            = js.native
+    var resolution: Resolution = js.native
+    var backgroundColor: Color = js.native
+    var clearBeforeRender: Boolean = js.native
+    var autoResize: Boolean = js.native
   }
 
   /**
@@ -130,13 +139,13 @@ object PIXI extends js.Object {
   @js.native
   @JSName("DRAW_MODES")
   object DRAW_MODES extends js.Object {
-    var POINTS: Int         = js.native
-    var LINES: Int          = js.native
-    var LINE_LOOP: Int      = js.native
-    var LINE_STRIP: Int     = js.native
-    var TRIANGLES: Int      = js.native
+    var POINTS: Int = js.native
+    var LINES: Int = js.native
+    var LINE_LOOP: Int = js.native
+    var LINE_STRIP: Int = js.native
+    var TRIANGLES: Int = js.native
     var TRIANGLE_STRIP: Int = js.native
-    var TRIANGLE_FAN: Int   = js.native
+    var TRIANGLE_FAN: Int = js.native
   }
 
   /**
@@ -221,9 +230,9 @@ object PIXI extends js.Object {
   @js.native
   @JSName("RENDERER_TYPE")
   object RENDERER_TYPE extends js.Object {
-    val CANVAS: Int  = js.native
+    val CANVAS: Int = js.native
     val UNKNOWN: Int = js.native
-    val WEBGL: Int   = js.native
+    val WEBGL: Int = js.native
   }
 
   /**

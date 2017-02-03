@@ -9,7 +9,7 @@ import scala.scalajs.js
   * @param game Reference to the current game instance.
   */
 @js.native
-class World(val game: Game) extends js.Object {
+class World(var game: Phaser.Game) extends js.Object {
 
   /**
     * The alive property is useful for Groups that are children of other Groups and need to be included/excluded in

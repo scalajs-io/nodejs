@@ -6,8 +6,8 @@ import sbt._
 
 import scala.language.postfixOps
 
-val apiVersion = "0.3.0.2"
-val _scalaVersion = "2.12.1"
+val apiVersion = "0.3.0.3"
+val scalaJsVersion = "2.12.1"
 
 organization := "io.scalajs"
 
@@ -15,14 +15,14 @@ homepage := Some(url("https://github.com/ldaniels528/scalajs.io"))
 
 val commonSettings = Seq(
   version := apiVersion,
-  scalaVersion := _scalaVersion,
+  scalaVersion := scalaJsVersion,
   scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
   scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
   autoCompilerPlugins := true,
   scalaJSModuleKind := ModuleKind.CommonJSModule,
   addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
   libraryDependencies ++= Seq(
-    "org.scala-lang" % "scala-reflect" % _scalaVersion,
+    "org.scala-lang" % "scala-reflect" % scalaJsVersion,
     "org.scalatest" %%% "scalatest" % "3.0.1" % "test"
   ))
 

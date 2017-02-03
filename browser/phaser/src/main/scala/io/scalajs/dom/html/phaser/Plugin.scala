@@ -9,7 +9,7 @@ import scala.scalajs.js.annotation.JSName
   */
 @js.native
 @JSName("Phaser.Plugin")
-class Plugin(val game: Phaser.Game, val parent: Phaser.PluginManager) extends js.Object {
+class Plugin(var game: Phaser.Game, val parent: Phaser.PluginManager) extends js.Object {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties

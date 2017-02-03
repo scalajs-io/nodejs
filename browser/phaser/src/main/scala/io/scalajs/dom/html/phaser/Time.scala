@@ -15,7 +15,7 @@ import scala.scalajs.js.annotation.JSName
   */
 @js.native
 @JSName("Phaser.Time")
-class Time(val game: Phaser.Game) extends js.Object {
+class Time(var game: Phaser.Game) extends js.Object {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties

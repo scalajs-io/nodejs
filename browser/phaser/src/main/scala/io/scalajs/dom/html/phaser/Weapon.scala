@@ -26,7 +26,7 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSName("Phaser.Weapon")
-class Weapon(val game: Phaser.Game, val parent: Phaser.PluginManager) extends js.Object {
+class Weapon(var game: Phaser.Game, val parent: Phaser.PluginManager) extends js.Object {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -143,7 +143,7 @@ class Weapon(val game: Phaser.Game, val parent: Phaser.PluginManager) extends js
   /**
     * This is the Phaser.Group that contains all of the bullets managed by this plugin.
     */
-  var bullets: Phaser.Group[_] = js.native
+  var bullets: Phaser.Group[Phaser.Bullet] = js.native
 
   /**
     * The speed at which the bullets are fired. This value is given in pixels per second, and

@@ -26,7 +26,7 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSName("Phaser.SoundManager")
-class SoundManager(val game: Game) extends js.Object {
+class SoundManager(var game: Phaser.Game) extends js.Object {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties

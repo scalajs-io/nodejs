@@ -10,15 +10,17 @@ import scala.scalajs.js.|
   * Sprites are the lifeblood of your game, used for nearly everything visual.
   * At its most basic a Sprite consists of a set of coordinates and a texture that is rendered to the canvas.
   * They also contain additional properties allowing for physics motion (via Sprite.body), input handling (via Sprite.input),
-  * events (via Sprite.events), animation (via Sprite.animations), camera culling and more. Please see the Examples for use cases.
+  * events (via Sprite.events), animation (via Sprite.animations), camera culling and more.
+  * Please see the Examples for use cases.
+  * @see http://phaser.io/docs/2.6.2/Phaser.Sprite.html
   */
 @js.native
 @JSName("Phaser.Sprite")
-class Sprite(var game: Game,
+class Sprite(var game: Phaser.Game,
              override var x: Double,
              override var y: Double,
              var key: String | Phaser.RenderTexture | Phaser.BitmapData | Phaser.Texture,
-             var frame: String | Double)
+             var frame: String | Int)
   extends pixijs.Sprite
     with Phaser.Component.Core
     with Phaser.Component.Angle
@@ -65,5 +67,15 @@ class Sprite(var game: Game,
     * Warning: You cannot have a blend mode and a filter active on the same Sprite. Doing so will render the sprite invisible.
     */
   var blendMode: Double = js.native
+
+  /**
+    * Base destroy method for generic display objects.
+    */
+  override def destroy(): Unit = js.native
+
+  /**
+    * Base destroy method for generic display objects.
+    */
+  override def destroy(destroyChildren: Boolean): Unit = js.native
 
 }

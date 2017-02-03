@@ -9,6 +9,8 @@ import scala.scalajs.js.Array
   */
 package object phaser {
 
+  type ButtonCode = Int
+
   /**
     * Group Extensions
     * @author lawrence.daniels@gmail.com

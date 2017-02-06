@@ -130,4 +130,20 @@ class Crypto extends js.Object {
     */
   def getCiphers(): js.Array[String] = js.native
 
+  /**
+    * Provides a synchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. A selected HMAC digest
+    * algorithm specified by digest is applied to derive a key of the requested byte length (keylen) from the password,
+    * salt and iterations.
+    *
+    * If an error occurs an Error will be thrown, otherwise the derived key will be returned as a Buffer.
+    *
+    * The iterations argument must be a number set as high as possible. The higher the number of iterations, the more
+    * secure the derived key will be, but will take a longer amount of time to complete.
+    *
+    * The salt should also be as unique as possible. It is recommended that the salts are random and their lengths are
+    * greater than 16 bytes. See NIST SP 800-132 for details.
+    *
+    * (Doc source: https://nodejs.org/api/crypto.html#crypto_crypto_pbkdf2sync_password_salt_iterations_keylen_digest)
+    */
+  def pbkdf2Sync(password: String, salt: String, iterations: Int, keylen: Int, digest: String): Buffer = js.native
 }

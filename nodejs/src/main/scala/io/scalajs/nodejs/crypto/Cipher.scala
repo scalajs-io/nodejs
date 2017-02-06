@@ -71,7 +71,7 @@ trait Cipher extends Duplex {
     * cipher.update() after cipher.final() will result in an error being thrown.
     * @example cipher.update(data[, input_encoding][, output_encoding])
     */
-  def update(data: String, input_encoding: String, output_encoding: String = null): Unit = js.native
+  def update(data: String, input_encoding: String, output_encoding: String = null): js.Any = js.native
 
   /**
     * Updates the cipher with data. If the input_encoding argument is given, it's value must be one of 'utf8', 'ascii',

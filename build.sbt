@@ -58,7 +58,7 @@ lazy val dom_html = (project in file("browser/dom")).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(
-    name := "dom",
+    name := "dom-html",
     organization := "io.scalajs",
     description := "Scala.js DOM/HTML"
   )

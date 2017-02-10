@@ -1,5 +1,0 @@
-# "first", "last"
-"Bruce", "Wayne"
-"Charles", "Xavier"
-"Clark", "Kent"
-"Jack", "Reacher"

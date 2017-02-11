@@ -14,7 +14,6 @@ organization := "io.scalajs"
 homepage := Some(url("https://github.com/ldaniels528/scalajs.io"))
 
 val commonSettings = Seq(
-  version := apiVersion,
   scalaVersion := scalaJsVersion,
   scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
   scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
@@ -27,7 +26,7 @@ val commonSettings = Seq(
   ))
 
 /////////////////////////////////////////////////////////////////////////////////
-//      Core sub-projects
+//      Core Modules
 /////////////////////////////////////////////////////////////////////////////////
 
 lazy val core = (project in file("core")).
@@ -35,8 +34,20 @@ lazy val core = (project in file("core")).
   settings(commonSettings: _*).
   settings(
     name := "core",
+    version := apiVersion,
     organization := "io.scalajs",
-    description := "Scala.js core classes and utilities"
+    description := "ScalaJs.io core classes and utilities"
+  )
+
+lazy val dom_html = (project in file("dom_html")).
+  dependsOn(core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings: _*).
+  settings(
+    name := "dom-html",
+    version := apiVersion,
+    organization := "io.scalajs",
+    description := "Scala.js DOM/HTML"
   )
 
 lazy val nodejs = (project in file("nodejs")).
@@ -45,46 +56,9 @@ lazy val nodejs = (project in file("nodejs")).
   settings(commonSettings: _*).
   settings(
     name := "nodejs",
+    version := apiVersion,
     organization := "io.scalajs",
     description := "NodeJS bindings for Scala.js"
-  )
-
-/////////////////////////////////////////////////////////////////////////////////
-//      DOM/HTML sub-projects
-/////////////////////////////////////////////////////////////////////////////////
-
-lazy val dom_html = (project in file("browser/dom")).
-  dependsOn(core).
-  enablePlugins(ScalaJSPlugin).
-  settings(commonSettings: _*).
-  settings(
-    name := "dom-html",
-    organization := "io.scalajs",
-    description := "Scala.js DOM/HTML"
-  )
-
-/////////////////////////////////////////////////////////////////////////////////
-//      Social sub-projects
-/////////////////////////////////////////////////////////////////////////////////
-
-lazy val facebook = (project in file("social/facebook")).
-  dependsOn(core).
-  enablePlugins(ScalaJSPlugin).
-  settings(commonSettings: _*).
-  settings(
-    name := "social-facebook",
-    organization := "io.scalajs",
-    description := "Social/Facebook bindings for Scala.js"
-  )
-
-lazy val linkedin = (project in file("social/linkedin")).
-  dependsOn(core).
-  enablePlugins(ScalaJSPlugin).
-  settings(commonSettings: _*).
-  settings(
-    name := "social-linkedin",
-    organization := "io.scalajs",
-    description := "Social/LinkedIn bindings for Scala.js"
   )
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -92,13 +66,13 @@ lazy val linkedin = (project in file("social/linkedin")).
 /////////////////////////////////////////////////////////////////////////////////
 
 lazy val bundle_complete = (project in file("bundles/complete")).
-  aggregate(core, dom_html, nodejs, facebook, linkedin).
-  aggregate(core, dom_html, nodejs, facebook, linkedin).
+  dependsOn(core, dom_html, nodejs).
+  aggregate(core, dom_html, nodejs).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings: _*).
   settings(publishingSettings: _*).
   settings(
-    name := "complete-platform-bundle",
+    name := "complete-platform",
     organization := "io.scalajs",
     description := "Complete platform bundle"
   )

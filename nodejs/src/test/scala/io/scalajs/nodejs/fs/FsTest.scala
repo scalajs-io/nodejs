@@ -12,9 +12,9 @@ class FsTest extends FunSpec {
   describe("Fs") {
 
     it("should stream data") {
-      val file1 = "./nodejs/src/test/resources/fileA1.txt"
-      val file2 = "./nodejs/src/test/resources/fileA2.txt"
-      val file3 = "./nodejs/src/test/resources/fileC2.txt"
+      val file1 = "./src/test/resources/fileA1.txt"
+      val file2 = "./src/test/resources/fileA2.txt"
+      val file3 = "./src/test/resources/fileC2.txt"
 
       val readable = Fs.createReadStream(file1)
       val writable = Fs.createWriteStream(file2)
@@ -39,8 +39,8 @@ class FsTest extends FunSpec {
     }
 
     it("should pipe data from a Readable to a Writable") {
-      val file1 = "./nodejs/src/test/resources/fileB1.txt"
-      val file2 = "./nodejs/src/test/resources/fileB2.txt"
+      val file1 = "./src/test/resources/fileB1.txt"
+      val file2 = "./src/test/resources/fileB2.txt"
 
       val readable = Fs.createReadStream(file1)
       val writable = Fs.createWriteStream(file2)

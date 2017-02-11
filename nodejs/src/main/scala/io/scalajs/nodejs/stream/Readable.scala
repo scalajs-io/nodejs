@@ -24,6 +24,12 @@ trait Readable extends IEventEmitter {
   /////////////////////////////////////////////////////////////////////////////////
 
   /**
+    * Undocumented method
+    * @see https://github.com/nodejs/node-v0.x-archive/blob/cfcb1de130867197cbc9c6012b7e84e08e53d032/lib/fs.js#L1597-L1620
+    */
+  def close(callback: js.Function = js.native): Unit = js.native
+
+  /**
     * This method returns whether or not the readable has been explicitly paused by client code (using stream.pause()
     * without a corresponding stream.resume()).
     * @example readable.isPaused()

@@ -1,7 +1,6 @@
 package io.scalajs.nodejs.crypto
 
 import io.scalajs.nodejs.buffer.Buffer
-import io.scalajs.nodejs.stream
 import io.scalajs.nodejs.stream.Duplex
 
 import scala.scalajs.js
@@ -28,7 +27,17 @@ trait Decipher extends Duplex {
     * Attempts to call decipher.final() more than once will result in an error being thrown.
     * @example decipher.final([output_encoding])
     */
-  def `final`(output_encoding: String = null): js.Any = js.native
+  def `final`(output_encoding: String): String = js.native
+
+  /**
+    * Returns any remaining deciphered contents. If output_encoding parameter is one of 'binary', 'base64' or 'hex',
+    * a string is returned. If an output_encoding is not provided, a Buffer is returned.
+    *
+    * Once the decipher.final() method has been called, the Decipher object can no longer be used to decrypt data.
+    * Attempts to call decipher.final() more than once will result in an error being thrown.
+    * @example decipher.final([output_encoding])
+    */
+  def `final`(): Buffer = js.native
 
   /**
     * When using an authenticated encryption mode (only GCM is currently supported), the cipher.setAAD() method sets
@@ -68,7 +77,7 @@ trait Decipher extends Duplex {
     * Calling decipher.update() after decipher.final() will result in an error being thrown.
     * @example decipher.update(data[, input_encoding][, output_encoding])
     */
-  def update(data: String, input_encoding: String, output_encoding: String = null): js.Any = js.native
+  def update(data: String, input_encoding: String, output_encoding: String = null): String = js.native
 
   /**
     * Updates the decipher with data. If the input_encoding argument is given, it's value must be one of 'binary',
@@ -83,6 +92,6 @@ trait Decipher extends Duplex {
     * Calling decipher.update() after decipher.final() will result in an error being thrown.
     * @example decipher.update(data[, input_encoding][, output_encoding])
     */
-  def update(data: Buffer): Unit = js.native
+  def update(data: Buffer): Buffer = js.native
 
 }

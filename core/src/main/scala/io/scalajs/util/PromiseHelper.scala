@@ -92,7 +92,7 @@ object PromiseHelper {
   def promiseWithError1[Z, A](f: js.Function2[Z, A, Any] => Unit): Promise[A] = {
     val task = Promise[A]()
     f((err: Z, a: A) =>
-      if (err != null || js.isUndefined(err)) task.success(a) else task.failure(wrapJavaScriptException(err)))
+      if (err == null || js.isUndefined(err)) task.success(a) else task.failure(wrapJavaScriptException(err)))
     task
   }
 
@@ -105,7 +105,7 @@ object PromiseHelper {
   def promiseWithError2[Z, A, B](f: js.Function3[Z, A, B, Any] => Unit): Promise[(A, B)] = {
     val task = Promise[(A, B)]()
     f((err: Z, a: A, b: B) =>
-      if (err != null || js.isUndefined(err)) task.success((a, b)) else task.failure(wrapJavaScriptException(err)))
+      if (err == null || js.isUndefined(err)) task.success((a, b)) else task.failure(wrapJavaScriptException(err)))
     task
   }
 
@@ -118,7 +118,7 @@ object PromiseHelper {
   def promiseWithError3[Z, A, B, C](f: js.Function4[Z, A, B, C, Any] => Unit): Promise[(A, B, C)] = {
     val task = Promise[(A, B, C)]()
     f((err: Z, a: A, b: B, c: C) =>
-      if (err != null || js.isUndefined(err)) task.success((a, b, c)) else task.failure(wrapJavaScriptException(err)))
+      if (err == null || js.isUndefined(err)) task.success((a, b, c)) else task.failure(wrapJavaScriptException(err)))
     task
   }
 
@@ -132,7 +132,7 @@ object PromiseHelper {
     val task = Promise[(A, B, C, D)]()
     f(
       (err: Z, a: A, b: B, c: C, d: D) =>
-        if (err != null || js.isUndefined(err)) task.success((a, b, c, d))
+        if (err == null || js.isUndefined(err)) task.success((a, b, c, d))
         else task.failure(wrapJavaScriptException(err)))
     task
   }
@@ -142,7 +142,7 @@ object PromiseHelper {
   ////////////////////////////////////////////////////////////////////////
 
   def time[T](action: String, task: => Future[T], showHeader: Boolean = false)(
-      implicit ec: ExecutionContext): Future[T] = {
+    implicit ec: ExecutionContext): Future[T] = {
     if (showHeader) println(s"$action...")
     val startTime = System.currentTimeMillis()
     task onComplete {

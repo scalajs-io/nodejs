@@ -89,6 +89,19 @@ object PromiseHelper {
     * @return a Scala.js promise
     */
   @inline
+  def promiseWithError0[Z](f: js.Function1[Z, Any] => Unit): Promise[Unit] = {
+    val task = Promise[Unit]()
+    f((err: Z) =>
+      if (err == null || js.isUndefined(err)) task.success({}) else task.failure(wrapJavaScriptException(err)))
+    task
+  }
+
+  /**
+    * Converts a JavaScript-style callback to a Scala.js promise
+    * @param f the given callback function
+    * @return a Scala.js promise
+    */
+  @inline
   def promiseWithError1[Z, A](f: js.Function2[Z, A, Any] => Unit): Promise[A] = {
     val task = Promise[A]()
     f((err: Z, a: A) =>

@@ -6,7 +6,7 @@ import sbt._
 
 import scala.language.postfixOps
 
-val apiVersion = "0.3.0.4-SNAPSHOT"
+val apiVersion = "0.3.0.4"
 val scalaJsVersion = "2.12.1"
 
 organization := "io.scalajs"
@@ -65,7 +65,7 @@ lazy val nodejs = (project in file("nodejs")).
 //      Bundles
 /////////////////////////////////////////////////////////////////////////////////
 
-lazy val bundle_complete = (project in file("bundles/complete")).
+lazy val root = (project in file(".")).
   dependsOn(core, dom_html, nodejs).
   aggregate(core, dom_html, nodejs).
   enablePlugins(ScalaJSPlugin).
@@ -121,4 +121,4 @@ lazy val publishingSettings = Seq(
 )
 
 // loads the Scalajs-io root project at sbt startup
-onLoad in Global := (Command.process("project bundle_complete", _: State)) compose (onLoad in Global).value
+onLoad in Global := (Command.process("project root", _: State)) compose (onLoad in Global).value

@@ -11,7 +11,6 @@ import scala.scalajs.js.|
 /**
   * The repl module provides a Read-Eval-Print-Loop (REPL) implementation that is available
   * both as a standalone program or includable in other applications.
-  * @version 7.4.0
   * @see https://nodejs.org/api/repl.html#repl_repl
   * @author lawrence.daniels@gmail.com
   */

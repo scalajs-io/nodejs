@@ -12,7 +12,6 @@ import scala.scalajs.js.|
 /**
   * This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes.
   * Each class takes the same options, and is a readable/writable Stream.
-  * @version 7.4.0
   * @see https://nodejs.org/docs/latest/api/zlib.html
   * @author lawrence.daniels@gmail.com
   */
@@ -146,123 +145,123 @@ trait Zlib extends IEventEmitter {
     * Compress a Buffer or string with Deflate.
     * @example zlib.deflate(buf[, options], callback)
     */
-  def deflate(buf: String | Buffer, options: CompressionOptions | RawOptions, callback: js.Function): Unit = js.native
+  def deflate(buf: Buffer | String, options: CompressionOptions | RawOptions, callback: js.Function): Unit = js.native
 
   /**
     * Compress a Buffer or string with Deflate.
     * @example zlib.deflate(buf[, options], callback)
     */
-  def deflate(buf: String | Buffer, callback: js.Function): Unit = js.native
+  def deflate(buf: Buffer | String, callback: js.Function): Unit = js.native
 
   /**
     * Compress a Buffer or string with Deflate.
     * @example zlib.deflateSync(buf[, options])
     */
-  def deflateSync(buf: String | Buffer, options: CompressionOptions | RawOptions = js.native): Unit = js.native
+  def deflateSync(buf: Buffer | String, options: CompressionOptions | RawOptions = js.native): Unit = js.native
 
   /**
     * Compress a Buffer or string with DeflateRaw.
     * @example zlib.deflateRaw(buf[, options], callback)
     */
-  def deflateRaw(buf: String | Buffer, options: CompressionOptions | RawOptions, callback: js.Function): Unit =
+  def deflateRaw(buf: Buffer | String, options: CompressionOptions | RawOptions, callback: js.Function): Unit =
     js.native
 
   /**
     * Compress a Buffer or string with DeflateRaw.
     * @example zlib.deflateRaw(buf[, options], callback)
     */
-  def deflateRaw(buf: String | Buffer, callback: js.Function): Unit = js.native
+  def deflateRaw(buf: Buffer | String, callback: js.Function): Unit = js.native
 
   /**
     * Decompress a Buffer or string with Gunzip.
     * @example zlib.gunzip(buf[, options], callback)
     */
-  def gunzip(buf: String | Buffer, options: CompressionOptions | RawOptions, callback: js.Function): Unit = js.native
+  def gunzip(buf: Buffer | String, options: CompressionOptions | RawOptions, callback: js.Function): Unit = js.native
 
   /**
     * Decompress a Buffer or string with Gunzip.
     * @example zlib.gunzip(buf[, options], callback)
     */
-  def gunzip(buf: String | Buffer, callback: js.Function): Unit = js.native
+  def gunzip(buf: Buffer | String, callback: js.Function): Unit = js.native
 
   /**
     * Decompress a Buffer or string with Gunzip.
     * @example zlib.gunzipSync(buf[, options])
     */
-  def gunzipSync(buf: String | Buffer, options: CompressionOptions | RawOptions = js.native): Unit = js.native
+  def gunzipSync(buf: Buffer | String, options: CompressionOptions | RawOptions = js.native): Unit = js.native
 
   /**
     * Compress a Buffer or string with Gzip.
     * @example zlib.gzip(buf[, options], callback)
     */
-  def gzip(buf: String | Buffer, options: CompressionOptions | RawOptions, callback: js.Function): Unit = js.native
+  def gzip(buf: Buffer | String, options: CompressionOptions | RawOptions, callback: js.Function): Unit = js.native
 
   /**
     * Compress a Buffer or string with Gzip.
     * @example zlib.gzip(buf[, options], callback)
     */
-  def gzip(buf: String | Buffer, callback: js.Function): Unit = js.native
+  def gzip(buf: Buffer | String, callback: js.Function): Unit = js.native
 
   /**
     * Compress a Buffer or string with Gzip.
     * @example zlib.gzipSync(buf[, options])
     */
-  def gzipSync(buf: String | Buffer, options: CompressionOptions | RawOptions = js.native): Unit = js.native
+  def gzipSync(buf: Buffer | String, options: CompressionOptions | RawOptions = js.native): Unit = js.native
 
   /**
     * Decompress a Buffer or string with Inflate.
     * @example zlib.inflate(buf[, options], callback)
     */
-  def inflate(buf: String | Buffer, options: CompressionOptions | RawOptions, callback: js.Function): Unit = js.native
+  def inflate(buf: Buffer | String, options: CompressionOptions | RawOptions, callback: js.Function): Unit = js.native
 
   /**
     * Decompress a Buffer or string with Inflate.
     * @example zlib.inflate(buf[, options], callback)
     */
-  def inflate(buf: String | Buffer, callback: js.Function): Unit = js.native
+  def inflate(buf: Buffer | String, callback: js.Function): Unit = js.native
 
   /**
     * Decompress a Buffer or string with Inflate.
     * @example zlib.inflateSync(buf[, options])
     */
-  def inflateSync(buf: String | Buffer, options: CompressionOptions | RawOptions = js.native): Unit = js.native
+  def inflateSync(buf: Buffer | String, options: CompressionOptions | RawOptions = js.native): Unit = js.native
 
   /**
     * Decompress a Buffer or string with InflateRaw.
     * @example zlib.inflateRaw(buf[, options], callback)
     */
-  def inflateRaw(buf: String | Buffer, options: CompressionOptions | RawOptions, callback: js.Function): Unit =
+  def inflateRaw(buf: Buffer | String, options: CompressionOptions | RawOptions, callback: js.Function): Unit =
     js.native
 
   /**
     * Decompress a Buffer or string with InflateRaw.
     * @example zlib.inflateRaw(buf[, options], callback)
     */
-  def inflateRaw(buf: String | Buffer, callback: js.Function): Unit = js.native
+  def inflateRaw(buf: Buffer | String, callback: js.Function): Unit = js.native
 
   /**
     * Decompress a Buffer or string with InflateRaw.
     * @example zlib.inflateRawSync(buf[, options])
     */
-  def inflateRawSync(buf: String | Buffer, options: CompressionOptions | RawOptions = js.native): Unit = js.native
+  def inflateRawSync(buf: Buffer | String, options: CompressionOptions | RawOptions = js.native): Unit = js.native
 
   /**
     * Decompress a Buffer or string with Unzip.
     * @example zlib.unzip(buf[, options], callback)
     */
-  def unzip(buf: String | Buffer, options: CompressionOptions | RawOptions, callback: js.Function): Unit = js.native
+  def unzip(buf: Buffer | String, options: CompressionOptions | RawOptions, callback: js.Function): Unit = js.native
 
   /**
     * Decompress a Buffer or string with Unzip.
     * @example zlib.unzip(buf[, options], callback)
     */
-  def unzip(buf: String | Buffer, callback: js.Function): Unit = js.native
+  def unzip(buf: Buffer | String, callback: js.Function): Unit = js.native
 
   /**
     * Decompress a Buffer or string with Unzip.
     * @example zlib.unzipSync(buf[, options])
     */
-  def unzipSync(buf: String | Buffer, options: CompressionOptions | RawOptions = js.native): Unit = js.native
+  def unzipSync(buf: Buffer | String, options: CompressionOptions | RawOptions = js.native): Unit = js.native
 
 }
 

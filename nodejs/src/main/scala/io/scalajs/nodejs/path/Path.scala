@@ -6,7 +6,6 @@ import scala.scalajs.js.annotation.JSImport
 /**
   * This module contains utilities for handling and transforming file paths. The file system is not consulted to
   * check whether paths are valid.
-  * @version 7.4.0
   * @see https://nodejs.org/docs/latest/api/path.html
   * @author lawrence.daniels@gmail.com
   */

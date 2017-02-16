@@ -10,9 +10,11 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class FileInputOptions(var flags: js.UndefOr[String] = js.undefined,
-                       var encoding: js.UndefOr[String] = js.undefined,
-                       var fd: js.UndefOr[FileDescriptor] = js.undefined,
-                       var mode: js.UndefOr[Int] = js.undefined,
-                       var autoClose: js.UndefOr[Boolean] = js.undefined)
-    extends js.Object
+class FileInputOptions(val flags: js.UndefOr[String] = js.undefined,
+                       val encoding: js.UndefOr[String] = js.undefined,
+                       val fd: js.UndefOr[FileDescriptor] = js.undefined,
+                       val mode: js.UndefOr[Int] = js.undefined,
+                       val autoClose: js.UndefOr[Boolean] = js.undefined,
+                       val start: js.UndefOr[Int] = js.undefined,
+                       val end: js.UndefOr[Int] = js.undefined)
+  extends js.Object

@@ -1,7 +1,6 @@
 package io.scalajs.nodejs.cluster
 
 import io.scalajs.util.ScalaJsHelper._
-import io.scalajs.util.ScalaJsHelper
 
 import scala.scalajs.js
 
@@ -35,7 +34,7 @@ trait ClusterSettings extends js.Object {
   */
 object ClusterSettings {
 
-  def apply(exec: String = null, args: js.Array[js.Any] = null, silent: Boolean = false) = {
+  def apply(exec: String = null, args: js.Array[js.Any] = null, silent: Boolean = false): ClusterSettings = {
     val settings = New[ClusterSettings]
     settings.exec = exec
     settings.args = args

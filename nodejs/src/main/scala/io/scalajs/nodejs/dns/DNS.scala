@@ -1,5 +1,7 @@
 package io.scalajs.nodejs.dns
 
+import io.scalajs.RawOptions
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
@@ -10,7 +12,6 @@ import scala.scalajs.js.|
   * necessarily perform any network communication. This category contains only one function: dns.lookup(). Developers
   * looking to perform name resolution in the same way that other applications on the same operating system behave
   * should use dns.lookup().
-  * @version 7.4.0
   * @see https://nodejs.org/api/dns.html
   * @author lawrence.daniels@gmail.com
   */
@@ -44,7 +45,7 @@ trait DNS extends js.Object {
     * All properties are optional.
     * @example dns.lookup(hostname[, options], callback)
     */
-  def lookup(hostname: String, options: DnsOptions | Int, callback: js.Function): Unit = js.native
+  def lookup(hostname: String, options: DnsOptions | RawOptions | Int, callback: js.Function): Unit = js.native
 
   /**
     * Resolves a hostname (e.g. 'nodejs.org') into the first found A (IPv4) or AAAA (IPv6) record. options can be an
@@ -64,7 +65,7 @@ trait DNS extends js.Object {
     * All properties are optional.
     * @example dns.lookup(hostname[, options], callback)
     */
-  def lookup(hostname: String, callback: js.Function): Unit = js.native
+  def lookup(hostname: String, callback: js.Function2[DnsError, String, Any]): Unit = js.native
 
   /**
     * Resolves the given address and port into a hostname and service using the operating system's underlying
@@ -80,7 +81,7 @@ trait DNS extends js.Object {
     * @example dns.lookupService(address, port, callback)
     * @example dns.lookupService('127.0.0.1', 22, (err, hostname, service) => { ... })
     */
-  def lookupService(address: String, port: Int, callback: js.Function): Unit = js.native
+  def lookupService(address: String, port: Int, callback: js.Function3[DnsError, String, String, Any]): Unit = js.native
 
   /**
     * Uses the DNS protocol to resolve a hostname (e.g. 'nodejs.org') into an array of the record types specified by rrtype.

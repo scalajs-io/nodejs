@@ -9,7 +9,6 @@ import scala.scalajs.js.annotation.{JSImport, JSName}
   * Function objects ("listeners") to be called.
   *
   * The EventEmitter class is defined and exposed by the events module
-  * @version 7.4.0
   * @see https://nodejs.org/api/events.html
   * @author lawrence.daniels@gmail.com
   */

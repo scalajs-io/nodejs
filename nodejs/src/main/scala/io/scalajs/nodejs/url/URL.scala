@@ -7,7 +7,6 @@ import scala.scalajs.js.annotation.JSImport
 
 /**
   * This module has utilities for URL resolution and parsing. Call require('url') to use it.
-  * @version 7.4.0
   * @see https://nodejs.org/api/url.html
   * @author lawrence.daniels@gmail.com
   */

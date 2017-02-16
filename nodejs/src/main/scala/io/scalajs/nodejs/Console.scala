@@ -16,7 +16,6 @@ import scala.scalajs.js.annotation.JSImport
   * <li>A global console instance configured to write to stdout and stderr. Because this object is global, it can be
   * used without calling require('console').</li>
   * </ul>
-  * @version 7.4.0
   * @see https://nodejs.org/api/console.html
   * @author lawrence.daniels@gmail.com
   */

@@ -1,7 +1,7 @@
 package io.scalajs.nodejs
 
 import io.scalajs.nodejs.net.{ListenerOptions, Socket}
-import io.scalajs.util.ScalaJsHelper._
+import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Promise
 import scala.scalajs.js
@@ -23,7 +23,7 @@ package object http {
       */
     @inline
     def createServerFuture: Promise[(Server, ClientRequest, ServerResponse)] = {
-      val task           = Promise[(Server, ClientRequest, ServerResponse)]()
+      val task = Promise[(Server, ClientRequest, ServerResponse)]()
       var server: Server = null
       server = http.createServer((request: ClientRequest, response: ServerResponse) => {
         task.success((server, request, response))
@@ -36,27 +36,27 @@ package object http {
       */
     @inline
     def getFuture(options: RequestOptions): Promise[ServerResponse] =
-      futureCallbackA1[ServerResponse](http.get(options, _))
+    promiseCallback1[ServerResponse](http.get(options, _))
 
     /**
       * @see [[Http.get()]]
       */
     @inline
-    def getFuture(url: String): Promise[ServerResponse] = futureCallbackA1[ServerResponse](http.get(url, _))
+    def getFuture(url: String): Promise[ServerResponse] = promiseCallback1[ServerResponse](http.get(url, _))
 
     /**
       * @see [[Http.request()]]
       */
     @inline
     def requestFuture(options: RequestOptions): Promise[ServerResponse] =
-      futureCallbackE1[js.Error, ServerResponse](http.request(options, _))
+    promiseWithError1[js.Error, ServerResponse](http.request(options, _))
 
     /**
       * @see [[Http.request()]]
       */
     @inline
     def requestFuture(url: String): Promise[ServerResponse] =
-      futureCallbackE1[js.Error, ServerResponse](http.request(url, _))
+    promiseWithError1[js.Error, ServerResponse](http.request(url, _))
 
   }
 
@@ -79,7 +79,7 @@ package object http {
       */
     @inline
     def onCheckContinue(callback: (ClientRequest, ServerResponse) => Any): server.type =
-      server.on("checkContinue", callback)
+    server.on("checkContinue", callback)
 
     /**
       * If a client connection emits an 'error' event, it will be forwarded here. Listener of this event is responsible
@@ -98,13 +98,13 @@ package object http {
     def onConnect(callback: js.Function): server.type = server.on("connect", callback)
 
     @inline
-    def closeFuture(): Promise[Unit] = futureCallbackE0[js.Error](server.close)
+    def closeFuture(): Promise[Unit] = promiseWithError0[js.Error](server.close)
 
     @inline
-    def getConnectionsFuture: Promise[Int] = futureCallbackE1[js.Error, Int](server.getConnections)
+    def getConnectionsFuture: Promise[Int] = promiseWithError1[js.Error, Int](server.getConnections)
 
     @inline
-    def listenFuture(options: ListenerOptions): Promise[Unit] = futureCallbackE0[js.Error](server.listen(options, _))
+    def listenFuture(options: ListenerOptions): Promise[Unit] = promiseWithError0[js.Error](server.listen(options, _))
 
     @inline
     def onRequest(callback: js.Function): server.type = server.on("request", callback)

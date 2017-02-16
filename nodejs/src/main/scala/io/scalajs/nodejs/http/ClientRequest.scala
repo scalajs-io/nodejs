@@ -2,7 +2,7 @@ package io.scalajs.nodejs.http
 
 import io.scalajs.nodejs.net.Socket
 import io.scalajs.nodejs.stream.Readable
-import io.scalajs.util.ScalaJsHelper._
+import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Promise
 import scala.scalajs.js
@@ -193,11 +193,11 @@ object ClientRequest {
 
     @inline
     def endFuture(data: js.Any, encoding: String): Promise[js.Any] =
-      futureCallbackE1[js.Error, js.Any](client.end(data, encoding, _))
+      promiseWithError1[js.Error, js.Any](client.end(data, encoding, _))
 
     @inline
     def writeFuture(chunk: js.Any, encoding: String): Promise[js.Any] =
-      futureCallbackE1[js.Error, js.Any](client.write(chunk, encoding, _))
+      promiseWithError1[js.Error, js.Any](client.write(chunk, encoding, _))
 
     /**
       * Emitted when the request has been aborted by the client. This event is only emitted on the first call to abort().

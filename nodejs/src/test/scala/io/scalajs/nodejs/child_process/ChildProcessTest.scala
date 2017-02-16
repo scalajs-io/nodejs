@@ -2,7 +2,7 @@ package io.scalajs.nodejs
 package child_process
 
 import io.scalajs.nodejs.buffer.Buffer
-import io.scalajs.util.ScalaJsHelper._
+import io.scalajs.util.PromiseHelper._
 import org.scalatest.FunSpec
 
 import scala.scalajs.js.|

@@ -4,7 +4,7 @@ import java.lang.{Double => JDouble}
 
 import io.scalajs.dom.html.canvas.webgl.{WebGL2RenderingContext, WebGLRenderingContext}
 import io.scalajs.dom.html.{Blob, File, HTMLElement}
-import io.scalajs.util.ScalaJsHelper._
+import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Promise
 import scala.scalajs.js
@@ -148,7 +148,7 @@ object HTMLCanvasElement {
 
     @inline
     def toBlobFuture(mimeType: String = null, qualityArgument: JDouble = null): Promise[Blob] = {
-      futureCallbackA1[Blob](canvas.toBlob(_, mimeType, qualityArgument))
+      promiseCallback1[Blob](canvas.toBlob(_, mimeType, qualityArgument))
     }
 
   }

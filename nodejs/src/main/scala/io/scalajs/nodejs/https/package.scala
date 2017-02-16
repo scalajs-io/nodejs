@@ -2,7 +2,7 @@ package io.scalajs.nodejs
 
 import io.scalajs.RawOptions
 import io.scalajs.nodejs.http.{RequestOptions, ServerResponse}
-import io.scalajs.util.ScalaJsHelper.{futureCallbackA1, futureCallbackE1}
+import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Promise
 import scala.scalajs.js
@@ -25,7 +25,7 @@ package object https {
       */
     @inline
     def getFuture(options: RequestOptions | RawOptions): Promise[ServerResponse] = {
-      futureCallbackA1[ServerResponse](https.get(options, _))
+      promiseCallback1[ServerResponse](https.get(options, _))
     }
 
     /**
@@ -33,7 +33,7 @@ package object https {
       */
     @inline
     def getFuture(url: String): Promise[ServerResponse] = {
-      futureCallbackA1[ServerResponse](https.get(url, _))
+      promiseCallback1[ServerResponse](https.get(url, _))
     }
 
     /**
@@ -41,7 +41,7 @@ package object https {
       */
     @inline
     def requestFuture(options: RequestOptions | RawOptions): Promise[ServerResponse] = {
-      futureCallbackE1[js.Error, ServerResponse](https.request(options, _))
+      promiseWithError1[js.Error, ServerResponse](https.request(options, _))
     }
 
     /**
@@ -49,7 +49,7 @@ package object https {
       */
     @inline
     def requestFuture(url: String): Promise[ServerResponse] = {
-      futureCallbackE1[js.Error, ServerResponse](https.request(url, _))
+      promiseWithError1[js.Error, ServerResponse](https.request(url, _))
     }
 
   }

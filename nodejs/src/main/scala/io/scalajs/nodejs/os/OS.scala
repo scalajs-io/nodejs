@@ -5,7 +5,6 @@ import scala.scalajs.js.annotation.JSImport
 
 /**
   * Provides a few basic operating-system related utility functions.
-  * @version 7.4.0
   * @see https://nodejs.org/api/os.html
   * @author lawrence.daniels@gmail.com
   */

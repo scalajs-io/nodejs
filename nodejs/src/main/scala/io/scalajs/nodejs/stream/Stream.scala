@@ -11,7 +11,6 @@ import scala.scalajs.js.annotation.JSImport
   * and process.stdout are both stream instances.
   *
   * Streams can be readable, writable, or both. All streams are instances of EventEmitter.
-  * @version 7.4.0
   * @see https://nodejs.org/api/stream.html#stream_stream
   * @author lawrence.daniels@gmail.com
   */

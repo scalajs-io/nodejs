@@ -6,7 +6,6 @@ import scala.scalajs.js
 
 /**
   * Readline Interface
-  * @version 7.4.0
   * @see https://nodejs.org/api/readline.html#readline_class_interface
   * @author lawrence.daniels@gmail.com
   */

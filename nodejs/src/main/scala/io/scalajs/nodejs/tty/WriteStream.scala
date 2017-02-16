@@ -10,7 +10,6 @@ import scala.scalajs.js.annotation.JSImport
   * The tty.WriteStream class is a subclass of net.Socket that represents the writable side of a TTY.
   * In normal circumstances, process.stdout and process.stderr will be the only tty.WriteStream instances
   * created for a Node.js process and there should be no reason to create additional instances.
-  * @version 7.4.0
   * @see https://nodejs.org/api/tty.html
   * @since 0.5.8
   */

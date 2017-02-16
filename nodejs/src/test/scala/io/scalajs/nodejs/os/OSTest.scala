@@ -1,7 +1,7 @@
 package io.scalajs.nodejs.os
 
 import io.scalajs.JSON
-import io.scalajs.util.ScalaJsHelper._
+import io.scalajs.util.PromiseHelper._
 import org.scalatest.FunSpec
 
 /**

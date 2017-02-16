@@ -2,7 +2,7 @@ package io.scalajs.nodejs.http
 
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.events.IEventEmitter
-import io.scalajs.nodejs.stream.Writable
+import io.scalajs.nodejs.stream.Duplex
 
 import scala.scalajs.js
 
@@ -12,7 +12,7 @@ import scala.scalajs.js
   * @see [[https://nodejs.org/api/http.html#http_class_http_serverresponse]]
   */
 @js.native
-trait ServerResponse extends IEventEmitter with Writable {
+trait ServerResponse extends IEventEmitter with Duplex {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -88,8 +88,6 @@ trait ServerResponse extends IEventEmitter with Writable {
   def set(name: String, value: js.Any): Unit = js.native
 
   def set(headers: js.Any): Unit = js.native
-
-  def setEncoding(encoding: String): Unit = js.native
 
   /**
     * Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers,

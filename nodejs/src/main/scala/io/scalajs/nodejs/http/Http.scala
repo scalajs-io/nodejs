@@ -11,7 +11,6 @@ import scala.scalajs.js.annotation.JSImport
   * The HTTP interfaces in Node.js are designed to support many features of the protocol which have been
   * traditionally difficult to use. In particular, large, possibly chunk-encoded, messages. The interface
   * is careful to never buffer entire requests or responses--the user is able to stream data.
-  * @version 7.4.0
   * @see https://nodejs.org/api/http.html
   * @author lawrence.daniels@gmail.com
   */

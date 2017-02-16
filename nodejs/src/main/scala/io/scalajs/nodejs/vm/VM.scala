@@ -8,7 +8,6 @@ import scala.scalajs.js.|
 
 /**
   * The vm module provides APIs for compiling and running code within V8 Virtual Machine contexts.
-  * @version 7.4.0
   * @see https://nodejs.org/api/vm.html
   * @author lawrence.daniels@gmail.com
   */

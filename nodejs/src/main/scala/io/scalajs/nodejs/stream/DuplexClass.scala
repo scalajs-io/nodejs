@@ -1,7 +1,6 @@
 package io.scalajs.nodejs.stream
 
 import io.scalajs.util.ScalaJsHelper._
-import io.scalajs.util.ScalaJsHelper
 
 import scala.scalajs.js
 
@@ -38,7 +37,7 @@ object DuplexClass {
       * @return a new [[Duplex Duplex instance]]
       */
     @inline
-    def apply(options: DuplexOptions) = `class`.New[Duplex](options)
+    def apply(options: DuplexOptions): Duplex = `class`.New[Duplex](options)
 
   }
 

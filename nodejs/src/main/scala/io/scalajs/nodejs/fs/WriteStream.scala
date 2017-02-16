@@ -7,7 +7,7 @@ import scala.scalajs.js
 
 /**
   * fs.WriteStream - WriteStream is a Writable Stream.
-  * @version 6.2.1
+  * @see https://nodejs.org/api/fs.html#fs_class_fs_writestream
   */
 @js.native
 trait WriteStream extends Writable {

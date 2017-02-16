@@ -68,7 +68,7 @@ trait Crypto extends js.Object {
     *                  either a 'binary' encoded string or a Buffer.
     * @example crypto.createCipher(algorithm, password)
     */
-  def createCipher(algorithm: String, password: String | Buffer): Cipher = js.native
+  def createCipher(algorithm: String, password: Buffer | String): Cipher = js.native
 
   /**
     * Creates and returns a Decipher object that uses the given algorithm and password (key).
@@ -81,7 +81,7 @@ trait Crypto extends js.Object {
     * derive a key and IV on their own using crypto.pbkdf2() and to use crypto.createDecipheriv() to create the Decipher object.
     * @example crypto.createDecipher(algorithm, password)
     */
-  def createDecipher(algorithm: String, password: String | Buffer): Decipher = js.native
+  def createDecipher(algorithm: String, password: Buffer | String): Decipher = js.native
 
   /**
     * Creates and returns a Hash object that can be used to generate hash digests using the given algorithm.

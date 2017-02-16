@@ -19,7 +19,6 @@ import scala.scalajs.js.|
   * allocations outside the V8 heap. The size of the Buffer is established when it is created and cannot be resized.
   *
   * The Buffer class is a global within Node.js, making it unlikely that one would need to ever use require('buffer').
-  * @version 7.4.0
   * @see https://nodejs.org/api/buffer.html
   * @author lawrence.daniels@gmail.com
   */

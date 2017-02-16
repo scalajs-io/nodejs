@@ -8,7 +8,6 @@ import scala.scalajs.js.|
 
 /**
   * Query String
-  * @version 7.4.0
   * @see https://nodejs.org/api/querystring.html
   * @author lawrence.daniels@gmail.com
   */

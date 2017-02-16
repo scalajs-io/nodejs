@@ -7,7 +7,6 @@ import scala.scalajs.js.annotation.JSImport
 
 /**
   * net.Server - This class is used to create a TCP or local server.
-  * @version 7.4.0
   * @see https://nodejs.org/api/net.html#net_class_net_server
   * @author lawrence.daniels@gmail.com
   */

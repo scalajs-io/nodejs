@@ -3,7 +3,7 @@ package io.scalajs.nodejs.stream
 import io.scalajs.nodejs.Error
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.events.IEventEmitter
-import io.scalajs.util.ScalaJsHelper._
+import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Promise
 import scala.scalajs.js
@@ -14,12 +14,17 @@ import scala.scalajs.js.|
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-//@JSImport("stream", "Writable")
 trait Writable extends IEventEmitter {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
   /////////////////////////////////////////////////////////////////////////////////
+
+  /**
+    * Undocumented method
+    * @see https://github.com/nodejs/node-v0.x-archive/blob/cfcb1de130867197cbc9c6012b7e84e08e53d032/lib/fs.js#L1597-L1620
+    */
+  def close(callback: js.Function = js.native): Unit = js.native
 
   /**
     * Forces buffering of all writes.
@@ -37,7 +42,7 @@ trait Writable extends IEventEmitter {
     * @param callback the Callback for when this chunk of data is flushed
     * @example writable.end([chunk][, encoding][, callback])
     */
-  def end(chunk: String | Buffer, encoding: String, callback: js.Function): Unit = js.native
+  def end(chunk: Buffer | String, encoding: String, callback: js.Function): Unit = js.native
 
   /**
     * Call this method when no more data will be written to the stream. If supplied, the callback
@@ -47,7 +52,7 @@ trait Writable extends IEventEmitter {
     * @param encoding The encoding, if chunk is a String
     * @example writable.end([chunk][, encoding][, callback])
     */
-  def end(chunk: String | Buffer, encoding: String = js.native): Unit = js.native
+  def end(chunk: Buffer | String, encoding: String = js.native): Unit = js.native
 
   /**
     * Call this method when no more data will be written to the stream. If supplied, the callback
@@ -57,7 +62,7 @@ trait Writable extends IEventEmitter {
     * @param callback the Callback for when this chunk of data is flushed
     * @example writable.end([chunk][, encoding][, callback])
     */
-  def end(chunk: String | Buffer, callback: js.Function): Unit = js.native
+  def end(chunk: Buffer | String, callback: js.Function): Unit = js.native
 
   /**
     * Call this method when no more data will be written to the stream. If supplied, the callback
@@ -96,7 +101,7 @@ trait Writable extends IEventEmitter {
     * @return true, if the data was handled completely
     * @example writable.write(chunk[, encoding][, callback])
     */
-  def write(chunk: String | Buffer, encoding: String, callback: js.Function): Boolean = js.native
+  def write(chunk: Buffer | String, encoding: String, callback: js.Function): Boolean = js.native
 
   /**
     * Flush all data, buffered since stream.cork() call.
@@ -105,7 +110,7 @@ trait Writable extends IEventEmitter {
     * @return true, if the data was handled completely
     * @example writable.write(chunk[, encoding][, callback])
     */
-  def write(chunk: String | Buffer, encoding: String = null): Boolean = js.native
+  def write(chunk: Buffer | String, encoding: String = null): Boolean = js.native
 
 }
 
@@ -121,13 +126,16 @@ object Writable {
     */
   implicit class WritableExtensions(val writable: Writable) extends AnyVal {
 
-    def endFuture(data: String | Buffer, encoding: String = null): Promise[Unit] =
-      futureCallbackE0[Error](writable.end(data, encoding, _))
+    @inline
+    def endFuture(data: Buffer | String, encoding: String = null): Promise[Unit] =
+      promiseWithError0[Error](writable.end(data, encoding, _))
 
-    def endFuture(): Promise[Unit] = futureCallbackE0[Error](writable.end(_))
+    @inline
+    def endFuture(): Promise[Unit] = promiseWithError0[Error](writable.end(_))
 
-    def writeFuture(data: String | Buffer, encoding: String = null): Promise[Unit] =
-      futureCallbackE0[Error](writable.write(data, encoding, _))
+    @inline
+    def writeFuture(data: Buffer | String, encoding: String = null): Promise[Unit] =
+      promiseWithError0[Error](writable.write(data, encoding, _))
 
     /////////////////////////////////////////////////////////////////////////////////
     //      Events

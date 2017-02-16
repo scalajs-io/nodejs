@@ -11,7 +11,6 @@ import scala.scalajs.js.|
 /**
   * The child_process module provides the ability to spawn child processes in a manner that is similar,
   * but not identical, to popen(3). This capability is primarily provided by the child_process.spawn() function.
-  * @version 7.4.0
   * @see https://nodejs.org/api/child_process.html
   * @author lawrence.daniels@gmail.com
   */

@@ -7,7 +7,7 @@ import scala.scalajs.js
 
 /**
   * fs.ReadStream - ReadStream is a Readable Stream.
-  * @version 6.2.1
+  * @see https://nodejs.org/api/stream.html#stream_class_stream_readable
   */
 @js.native
 trait ReadStream extends Readable {
@@ -38,7 +38,8 @@ object ReadStream {
       * @param listener the event handler
       * @since 0.1.93
       */
-    @inline def onClose(listener: () => Any) = stream.on("close", listener)
+    @inline
+    def onClose(listener: () => Any): stream.type = stream.on("close", listener)
 
     /**
       * Emitted when the ReadStream's file is opened.
@@ -48,7 +49,8 @@ object ReadStream {
       *                 </ul>
       * @since 0.1.93
       */
-    @inline def onOpen(listener: FileDescriptor => Any) = stream.on("open", listener)
+    @inline
+    def onOpen(listener: FileDescriptor => Any): stream.type = stream.on("open", listener)
 
   }
 

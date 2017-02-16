@@ -1,7 +1,7 @@
 package io.scalajs.dom.html
 
 import io.scalajs.dom.html.browser.console
-import io.scalajs.util.ScalaJsHelper._
+import io.scalajs.util.PromiseHelper._
 import org.scalatest.FunSpec
 
 import scala.scalajs.js

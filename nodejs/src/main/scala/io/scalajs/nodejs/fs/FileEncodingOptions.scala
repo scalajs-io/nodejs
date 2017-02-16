@@ -8,4 +8,4 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @author lawrence.daniels@gmail.com
   */
 @ScalaJSDefined
-class FileEncodingOptions(encoding: String) extends js.Object
+class FileEncodingOptions(val encoding: js.UndefOr[String] = js.undefined) extends js.Object

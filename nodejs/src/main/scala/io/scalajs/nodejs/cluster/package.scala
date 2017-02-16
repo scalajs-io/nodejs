@@ -1,8 +1,8 @@
 package io.scalajs.nodejs
 
-import io.scalajs.util.ScalaJsHelper._
-import io.scalajs.util.ScalaJsHelper
+import io.scalajs.util.PromiseHelper._
 
+import scala.concurrent.Promise
 import scala.scalajs.js
 
 /**
@@ -30,7 +30,8 @@ package object cluster {
       * is stuck in a cleanup or if there are long-living connections.
       * @param callback the event handler
       */
-    def onDisconnect(callback: Worker => Any) = cluster.on("disconnect", callback)
+    @inline
+    def onDisconnect(callback: Worker => Any): cluster.type = cluster.on("disconnect", callback)
 
     /**
       * Similar to the cluster.on('exit') event, but specific to this worker.
@@ -41,14 +42,16 @@ package object cluster {
       *                 <li>signal <String> the name of the signal (eg. 'SIGHUP') that caused the process to be killed.</li>
       *                 </ul>
       */
-    def onExit(callback: (Worker, Int, String) => Any) = cluster.on("exit", callback)
+    @inline
+    def onExit(callback: (Worker, Int, String) => Any): cluster.type = cluster.on("exit", callback)
 
     /**
       * When a new worker is forked the cluster module will emit a 'fork' event. This can be used to log worker activity,
       * and create your own timeout.
       * @param callback the event handler
       */
-    def onFork(callback: Worker => Any) = cluster.on("fork", callback)
+    @inline
+    def onFork(callback: Worker => Any): cluster.type = cluster.on("fork", callback)
 
     /**
       * After calling listen() from a worker, when the 'listening' event is emitted on the server, a 'listening' event
@@ -59,7 +62,8 @@ package object cluster {
       * is listening on more than one address.
       * @param callback the event handler
       */
-    def onListening(callback: (Worker, Address) => Any) = cluster.on("listening", callback)
+    @inline
+    def onListening(callback: (Worker, Address) => Any): cluster.type = cluster.on("listening", callback)
 
     /**
       * Emitted when any worker receives a message.
@@ -69,7 +73,8 @@ package object cluster {
       * contrary to what the documentation stated.
       * @param callback the event handler
       */
-    def onMessage(callback: (Worker, Message, js.Any) => Any) = cluster.on("message", callback)
+    @inline
+    def onMessage(callback: (Worker, Message, js.Any) => Any): cluster.type = cluster.on("message", callback)
 
     /**
       * After forking a new worker, the worker should respond with an online message. When the master receives an online
@@ -77,7 +82,8 @@ package object cluster {
       * forks a worker, and 'online' is emitted when the worker is running.
       * @param callback the event handler
       */
-    def onOnline(callback: Worker => Any) = cluster.on("online", callback)
+    @inline
+    def onOnline(callback: Worker => Any): cluster.type = cluster.on("online", callback)
 
     /**
       * Emitted every time .setupMaster() is called.
@@ -87,7 +93,8 @@ package object cluster {
       * If accuracy is important, use cluster.settings.
       * @param callback the event handler
       */
-    def onSetup(callback: ClusterSettings => Any) = cluster.on("setup", callback)
+    @inline
+    def onSetup(callback: ClusterSettings => Any): cluster.type = cluster.on("setup", callback)
 
   }
 
@@ -111,7 +118,8 @@ package object cluster {
       * In a worker this sends a message to the master. It is identical to process.send().
       * @example worker.send(message[, sendHandle][, callback])
       */
-    def sendFuture[T](message: Message) = futureCallbackA1[T](worker.send(message, _))
+    @inline
+    def sendFuture[T](message: Message): Promise[T] = promiseCallback1[T](worker.send(message, _))
 
     /////////////////////////////////////////////////////////////////////////////////
     //      Worker Events
@@ -121,14 +129,16 @@ package object cluster {
       * Similar to the cluster.on('disconnect') event, but specific to this worker.
       * @param callback the event handler
       */
-    def onDisconnect(callback: () => Any) = worker.on("disconnect", callback)
+    @inline
+    def onDisconnect(callback: () => Any): worker.type = worker.on("disconnect", callback)
 
     /**
       * This event is the same as the one provided by child_process.fork().
       * In a worker you can also use process.on('error').
       * @param callback the error handler
       */
-    def onError(callback: js.Error => Any) = worker.on("error", callback)
+    @inline
+    def onError(callback: js.Error => Any): worker.type = worker.on("error", callback)
 
     /**
       * Similar to the cluster.on('exit') event, but specific to this worker.
@@ -139,13 +149,15 @@ package object cluster {
       *                 <li>signal <String> the name of the signal (eg. 'SIGHUP') that caused the process to be killed.</li>
       *                 </ul>
       */
-    def onExit(callback: (Worker, Int, String) => Any) = worker.on("exit", callback)
+    @inline
+    def onExit(callback: (Worker, Int, String) => Any): worker.type = worker.on("exit", callback)
 
     /**
       * Similar to the cluster.on('listening') event, but specific to this worker.
       * @param callback the event handler
       */
-    def onListening(callback: Address => Any) = worker.on("listening", callback)
+    @inline
+    def onListening(callback: Address => Any): worker.type = worker.on("listening", callback)
 
     /**
       * Similar to the cluster.on('message') event, but specific to this worker.
@@ -153,13 +165,15 @@ package object cluster {
       * In a worker you can also use process.on('message').
       * @param callback the event handler
       */
-    def onMessage(callback: Message => Any) = worker.on("message", callback)
+    @inline
+    def onMessage(callback: Message => Any): worker.type = worker.on("message", callback)
 
     /**
       * Similar to the cluster.on('online') event, but specific to this worker.
       * @param callback the event handler
       */
-    def onOnline(callback: () => Any) = worker.on("online", callback)
+    @inline
+    def onOnline(callback: () => Any): worker.type = worker.on("online", callback)
 
   }
 

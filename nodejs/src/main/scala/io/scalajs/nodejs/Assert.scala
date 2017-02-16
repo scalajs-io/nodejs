@@ -13,7 +13,6 @@ import scala.scalajs.js.annotation.JSImport
   *
   * The API for the assert module is Locked. This means that there will be no additions or changes to any of the
   * methods implemented and exposed by the module.
-  * @version 7.4.0
   * @author lawrence.daniels@gmail.com
   */
 @js.native

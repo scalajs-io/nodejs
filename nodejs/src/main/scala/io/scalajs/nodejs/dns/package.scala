@@ -1,10 +1,11 @@
 package io.scalajs.nodejs
 
-import io.scalajs.util.ScalaJsHelper.{futureCallbackE1, futureCallbackE2}
+import io.scalajs.RawOptions
+import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Promise
 import scala.scalajs.js
-import scala.scalajs.js.{Array, |}
+import scala.scalajs.js.|
 
 /**
   * dns package object
@@ -55,8 +56,9 @@ package object dns {
       * object or integer. If options is not provided, then IPv4 and IPv6 addresses are both valid. If options is an
       * integer, then it must be 4 or 6.
       */
-    def lookupFuture(hostname: String, options: DnsOptions | Int = null): Promise[String] = {
-      futureCallbackE1[DnsError, String](dns.lookup(hostname, options, _))
+    @inline
+    def lookupAsync(hostname: String, options: DnsOptions | RawOptions | Int = null): Promise[String] = {
+      promiseWithError1[DnsError, String](dns.lookup(hostname, options, _))
     }
 
     /**
@@ -71,8 +73,9 @@ package object dns {
       *
       * On error, err is an Error object, where err.code is the error code.
       */
-    def lookupServiceFuture(address: String, port: Int): Promise[(String, String)] = {
-      futureCallbackE2[DnsError, String, String](dns.lookupService(address, port, _))
+    @inline
+    def lookupServiceAsync(address: String, port: Int): Promise[(String, String)] = {
+      promiseWithError2[DnsError, String, String](dns.lookupService(address, port, _))
     }
 
     /**
@@ -80,8 +83,9 @@ package object dns {
       * On error, err is an Error object, where err.code is one of the error codes listed here.
       * @param hostname the hostname
       */
-    def resolveFuture[T](hostname: String, rrtype: RRType = null): Promise[T] = {
-      futureCallbackE1[DnsError, T](dns.resolve(hostname, rrtype, _))
+    @inline
+    def resolveAsync[T](hostname: String, rrtype: RRType = null): Promise[T] = {
+      promiseWithError1[DnsError, T](dns.resolve(hostname, rrtype, _))
     }
 
     /**
@@ -90,8 +94,9 @@ package object dns {
       * On error, err is an Error object, where err.code is one of the DNS error codes.
       * @param ipAddress the IP Address
       */
-    def reverseFuture(ipAddress: String): Promise[Array[String]] = {
-      futureCallbackE1[DnsError, js.Array[String]](dns.reverse(ipAddress, _))
+    @inline
+    def reverseAsync(ipAddress: String): Promise[js.Array[String]] = {
+      promiseWithError1[DnsError, js.Array[String]](dns.reverse(ipAddress, _))
     }
 
   }

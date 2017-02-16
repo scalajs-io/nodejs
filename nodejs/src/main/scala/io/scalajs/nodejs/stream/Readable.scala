@@ -1,20 +1,20 @@
 package io.scalajs.nodejs.stream
 
 import io.scalajs.RawOptions
+import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.nodejs.{Error, stream}
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * The Readable stream interface is the abstraction for a source of data that you are reading from.
   * In other words, data comes out of a Readable stream.
-  * @version 7.4.0
   * @see https://nodejs.org/api/stream.html#stream_readable_streams
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-//@JSImport("stream", "Readable")
 trait Readable extends IEventEmitter {
 
   var _read: js.Function0[Any] = js.native
@@ -183,7 +183,7 @@ object Readable {
       * flowing mode. Data will then be passed as soon as it is available.
       */
     @inline
-    def onData(listener: js.Function): readable.type = readable.on("data", listener)
+    def onData(listener: Buffer | String => Any): readable.type = readable.on("data", listener)
 
     /**
       * This event fires when there will be no more data to read. Note that the 'end' event will not fire unless the

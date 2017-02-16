@@ -16,7 +16,6 @@ import scala.scalajs.js.|
   * are lacking for your purposes, however, you are encouraged to write your own utilities.
   * We are not interested in any future additions to the util module that are unnecessary
   * for Node.js's internal functionality.
-  * @version 7.4.0
   * @see https://nodejs.org/api/util.html
   * @author lawrence.daniels@gmail.com
   */

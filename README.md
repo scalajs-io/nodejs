@@ -240,6 +240,7 @@ The following Third Party/OSS Node.js (npm) modules have been implemented:
 | [express-ws](https://github.com/scalajs-io/express-ws)                                | 2.0.0   | WebSocket endpoints for Express applications |
 | [feedparser-promised](https://github.com/scalajs-io/feedparser-promised)              | 1.1.1   | Wrapper around feedparser with promises. |
 | [filed](https://github.com/scalajs-io/filed)                                          | 0.1.0   | Simplified file library. |
+| [github-api-node](https://github.com/scalajs-io/github-api-node)                      | 0.11.2  | A higher-level wrapper around the Github API. |
 | [glob](https://github.com/scalajs-io/glob)                                            | 7.1.1   | A little globber. |
 | [html-to-json](https://github.com/scalajs-io/html-to-json)                            | 0.6.0   | Parses HTML strings into objects using flexible, composable filters. |
 | [htmlparser2](https://github.com/scalajs-io/htmlparser2)                              | 3.9.1   | A forgiving HTML/XML/RSS parser. The parser can handle streams and provides a callback interface. |

@@ -8,7 +8,6 @@ import scala.scalajs.js.annotation.JSImport
 /**
   * net - The net module provides you with an asynchronous network wrapper. It contains functions for creating both
   * servers and clients (called streams).
-  * @version 7.4.0
   * @see https://nodejs.org/api/net.html
   * @author lawrence.daniels@gmail.com
   */

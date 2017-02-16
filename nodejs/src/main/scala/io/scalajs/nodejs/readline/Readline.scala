@@ -11,7 +11,6 @@ import scala.scalajs.js.|
   * Readline allows reading of a stream (such as process.stdin) on a line-by-line basis.
   * To use this module, do require('readline').
   * Note that once you've invoked this module, your Node.js program will not terminate until you've closed the interface.
-  * @version 7.4.0
   * @see https://nodejs.org/api/readline.html
   * @author lawrence.daniels@gmail.com
   */

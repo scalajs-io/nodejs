@@ -1,86 +1,37 @@
 import org.scalajs.sbtplugin.ScalaJSPlugin
 import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
 import sbt.Keys.{libraryDependencies, _}
-import sbt.Project.projectToRef
 import sbt._
 
 import scala.language.postfixOps
 
-val apiVersion = "0.3.0.5"
+val scalaJsIOVersion = "0.3.0.5"
+val apiVersion = scalaJsIOVersion
 val scalaJsVersion = "2.12.1"
 
 organization := "io.scalajs"
 
 homepage := Some(url("https://github.com/scalajs-io/scalajs.io"))
 
-val commonSettings = Seq(
-  scalaVersion := scalaJsVersion,
-  scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
-  scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
-  autoCompilerPlugins := true,
-  scalaJSModuleKind := ModuleKind.CommonJSModule,
-  addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
-  logBuffered in Test := false,
-  libraryDependencies ++= Seq(
-    "org.scala-lang" % "scala-reflect" % scalaJsVersion,
-    "org.scalatest" %%% "scalatest" % "3.0.1" % "test"
-  ))
-
-/////////////////////////////////////////////////////////////////////////////////
-//      Core Modules
-/////////////////////////////////////////////////////////////////////////////////
-
-lazy val core = (project in file("core")).
+lazy val root = (project in file(".")).
   enablePlugins(ScalaJSPlugin).
-  settings(commonSettings: _*).
-  settings(
-    name := "core",
-    version := apiVersion,
-    organization := "io.scalajs",
-    description := "ScalaJs.io core classes and utilities"
-  )
-
-lazy val dom_html = (project in file("dom_html")).
-  dependsOn(core).
-  enablePlugins(ScalaJSPlugin).
-  settings(commonSettings: _*).
-  settings(
-    name := "dom-html",
-    version := apiVersion,
-    organization := "io.scalajs",
-    description := "Scala.js DOM/HTML"
-  )
-
-lazy val nodejs = (project in file("nodejs")).
-  dependsOn(core).
-  enablePlugins(ScalaJSPlugin).
-  settings(commonSettings: _*).
   settings(
     name := "nodejs",
     version := apiVersion,
     organization := "io.scalajs",
-    description := "NodeJS bindings for Scala.js"
-  )
-
-/////////////////////////////////////////////////////////////////////////////////
-//      Bundles
-/////////////////////////////////////////////////////////////////////////////////
-
-lazy val root = (project in file(".")).
-  dependsOn(core, dom_html, nodejs).
-  aggregate(core, dom_html, nodejs).
-  enablePlugins(ScalaJSPlugin).
-  settings(commonSettings: _*).
-  settings(publishingSettings: _*).
-  settings(
-    name := "complete-platform",
-    organization := "io.scalajs",
-    description := "Complete platform bundle"
-  )
-
-/////////////////////////////////////////////////////////////////////////////////
-//      Publishing
-/////////////////////////////////////////////////////////////////////////////////
+    description := "NodeJS bindings for Scala.js",
+    scalaVersion := scalaJsVersion,
+    scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
+    scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
+    autoCompilerPlugins := true,
+    scalaJSModuleKind := ModuleKind.CommonJSModule,
+    addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
+    logBuffered in Test := false,
+    libraryDependencies ++= Seq(
+      "org.scala-lang" % "scala-reflect" % scalaJsVersion,
+      "org.scalatest" %%% "scalatest" % "3.0.1" % "test",
+      "io.scalajs" %%% "core" % scalaJsIOVersion
+    ))
 
 lazy val publishingSettings = Seq(
   sonatypeProfileName := "org.xerial",
@@ -93,7 +44,7 @@ lazy val publishingSettings = Seq(
       Some("releases" at nexus + "service/local/staging/deploy/maven2")
   },
   pomExtra :=
-    <url>https://github.com/scalajs-io/scalajs-node-npm</url>
+    <url>https://github.com/scalajs-io/nodejs</url>
       <licenses>
         <license>
           <name>MIT License</name>
@@ -101,9 +52,9 @@ lazy val publishingSettings = Seq(
         </license>
       </licenses>
       <scm>
-        <connection>scm:git:github.com/scalajs-io/scalajs-node-npm.git</connection>
-        <developerConnection>scm:git:git@github.com:scalajs-io/scalajs-node-npm.git</developerConnection>
-        <url>github.com/scalajs-io/scalajs-node-npm.git</url>
+        <connection>scm:git:github.com/scalajs-io/nodejs.git</connection>
+        <developerConnection>scm:git:git@github.com:scalajs-io/nodejs.git</developerConnection>
+        <url>github.com/scalajs-io/nodejs.git</url>
       </scm>
       <developers>
         <developer>

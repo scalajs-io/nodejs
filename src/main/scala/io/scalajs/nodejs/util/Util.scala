@@ -2,7 +2,6 @@ package io.scalajs.nodejs.util
 
 import io.scalajs.RawOptions
 import io.scalajs.nodejs.events.IEventEmitter
-import io.scalajs.nodejs.fs.Stats
 import io.scalajs.nodejs.stream
 
 import scala.scalajs.js
@@ -72,7 +71,7 @@ trait Util extends IEventEmitter {
     * @param options  the given [[InspectOptions inspect options]]
     * @example util.inspect(object[, options])
     */
-  def inspect(`object`: js.Any, options: InspectOptions | RawOptions = js.native): Stats = js.native
+  def inspect(`object`: js.Any, options: InspectOptions | RawOptions = js.native): String = js.native
 
   /**
     * Returns true if the given "object" is an Array. Otherwise, returns false.

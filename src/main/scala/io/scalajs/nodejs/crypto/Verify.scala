@@ -1,8 +1,7 @@
 package io.scalajs.nodejs.crypto
 
 import io.scalajs.nodejs.buffer.Buffer
-import io.scalajs.nodejs.stream
-import io.scalajs.nodejs.stream.Duplex
+import io.scalajs.nodejs.stream.IDuplex
 
 import scala.scalajs.js
 
@@ -17,7 +16,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Verify extends Duplex {
+trait Verify extends IDuplex {
 
   /**
     * Updates the Verify content with the given data.

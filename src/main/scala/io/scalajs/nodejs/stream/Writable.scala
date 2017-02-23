@@ -1,6 +1,6 @@
-package io.scalajs.nodejs.stream
+package io.scalajs.nodejs
+package stream
 
-import io.scalajs.nodejs.Error
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.util.PromiseHelper._
@@ -17,14 +17,38 @@ import scala.scalajs.js.|
 trait Writable extends IEventEmitter {
 
   /////////////////////////////////////////////////////////////////////////////////
-  //      Methods
+  //      Internal Methods
   /////////////////////////////////////////////////////////////////////////////////
 
   /**
-    * Undocumented method
-    * @see https://github.com/nodejs/node-v0.x-archive/blob/cfcb1de130867197cbc9c6012b7e84e08e53d032/lib/fs.js#L1597-L1620
+    * All Writable stream implementations must provide a writable._write() method to send data to the underlying resource.
+    * @param chunk    The chunk to be written. Will always be a buffer unless the decodeStrings option was set to false.
+    * @param encoding If the chunk is a string, then encoding is the character encoding of that string.
+    *                 If chunk is a Buffer, or if the stream is operating in object mode, encoding may be ignored.
+    * @param callback Call this function (optionally with an error argument) when processing is complete for the supplied chunk.
     */
-  def close(callback: js.Function = js.native): Unit = js.native
+  def _write(chunk: String, encoding: String, callback: js.Function1[Error, Any]): Unit = js.native
+
+  /**
+    * All Writable stream implementations must provide a writable._write() method to send data to the underlying resource.
+    * @param chunk    The chunk to be written. Will always be a buffer unless the decodeStrings option was set to false.
+    * @param callback Call this function (optionally with an error argument) when processing is complete for the supplied chunk.
+    */
+  def _write(chunk: Buffer, callback: js.Function1[Error, Any]): Unit = js.native
+
+  /**
+    * The writable._writev() method may be implemented in addition to writable._write() in stream implementations
+    * that are capable of processing multiple chunks of data at once. If implemented, the method will be called with
+    * all chunks of data currently buffered in the write queue.
+    * @param chunks   The chunks to be written. Each chunk has following format: { chunk: ..., encoding: ... }.
+    * @param callback A callback function (optionally with an error argument) to be invoked when processing is
+    *                 complete for the supplied chunks.
+    */
+  def _writev(chunks: js.Array[Buffer | String], callback: js.Function1[Error, Any]): Unit = js.native
+
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Methods
+  /////////////////////////////////////////////////////////////////////////////////
 
   /**
     * Forces buffering of all writes.

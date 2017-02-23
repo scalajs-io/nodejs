@@ -5,13 +5,13 @@ import sbt._
 
 import scala.language.postfixOps
 
-val scalaJsIOVersion = "0.3.0.5"
+val scalaJsIOVersion = "0.3.0.6"
 val apiVersion = scalaJsIOVersion
 val scalaJsVersion = "2.12.1"
 
 organization := "io.scalajs"
 
-homepage := Some(url("https://github.com/scalajs-io/scalajs.io"))
+homepage := Some(url("https://github.com/scalajs-io/nodejs"))
 
 lazy val root = (project in file(".")).
   enablePlugins(ScalaJSPlugin).

@@ -1,7 +1,7 @@
 package io.scalajs.nodejs.net
 
 import io.scalajs.RawOptions
-import io.scalajs.nodejs.stream.Duplex
+import io.scalajs.nodejs.stream.{Duplex, IDuplex}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
@@ -15,7 +15,7 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSImport("net", "Socket")
-class Socket extends Duplex {
+class Socket extends IDuplex {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties

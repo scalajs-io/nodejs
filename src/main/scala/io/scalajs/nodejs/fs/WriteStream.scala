@@ -1,9 +1,13 @@
 package io.scalajs.nodejs.fs
 
+import io.scalajs.util.PromiseHelper._
 import io.scalajs.nodejs.FileDescriptor
+import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.stream.Writable
 
+import scala.concurrent.Promise
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * fs.WriteStream - WriteStream is a Writable Stream.
@@ -11,6 +15,10 @@ import scala.scalajs.js
   */
 @js.native
 trait WriteStream extends Writable {
+
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Properties
+  /////////////////////////////////////////////////////////////////////////////////
 
   /**
     * The number of bytes written so far. Does not include data that is still queued for writing.
@@ -22,7 +30,17 @@ trait WriteStream extends Writable {
     * If path is passed as a string, then writeStream.path will be a string. If path is passed as a Buffer, then
     * writeStream.path will be a Buffer.
     */
-  def path: js.Any = js.native
+  def path: Buffer | String = js.native
+
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Methods
+  /////////////////////////////////////////////////////////////////////////////////
+
+  /**
+    * Undocumented method
+    * @see https://github.com/nodejs/node-v0.x-archive/blob/cfcb1de130867197cbc9c6012b7e84e08e53d032/lib/fs.js#L1597-L1620
+    */
+  def close[A](callback: js.Function1[Unit, A]): Unit = js.native
 
 }
 
@@ -38,12 +56,24 @@ object WriteStream {
     */
   implicit class WriteStreamExtensions(val stream: WriteStream) extends AnyVal {
 
+    @inline
+    def closeAsync: Promise[Unit] = promiseCallback1[Unit](stream.close)
+
+  }
+
+  /**
+    * Write Stream Events
+    * @author lawrence.daniels@gmail.com
+    */
+  implicit class WriteStreamEvents(val stream: WriteStream) extends AnyVal {
+
     /**
       * Emitted when the WriteStream's underlying file descriptor has been closed using the fs.close() method.
       * @param listener the event handler
       * @since 0.1.93
       */
-    @inline def onClose(listener: () => Any) = stream.on("close", listener)
+    @inline
+    def onClose[A](listener: () => A): stream.type = stream.on("close", listener)
 
     /**
       * Emitted when the WriteStream's file is opened.
@@ -53,7 +83,8 @@ object WriteStream {
       *                 </ul>
       * @since 0.1.93
       */
-    @inline def onOpen(listener: FileDescriptor => Any) = stream.on("open", listener)
+    @inline
+    def onOpen[A](listener: FileDescriptor => A): stream.type = stream.on("open", listener)
 
   }
 

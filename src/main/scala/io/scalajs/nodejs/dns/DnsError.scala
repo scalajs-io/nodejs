@@ -9,14 +9,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-class DnsError(message: String = "") extends Error(message) {
-
-  def code: String = js.native
-
-  def errno: String = js.native
-
-  def syscall: String = js.native
-
-  def hostname: String = js.native
-
-}
+class DnsError(message: String = "") extends Error(message)

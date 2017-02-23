@@ -12,7 +12,7 @@ import scala.scalajs.js
   * @see [[https://nodejs.org/api/http.html#http_class_http_serverresponse]]
   */
 @js.native
-trait ServerResponse extends IEventEmitter with Duplex {
+trait ServerResponse extends Duplex with IEventEmitter  {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties

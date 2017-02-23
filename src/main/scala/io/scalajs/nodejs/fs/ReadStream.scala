@@ -1,23 +1,25 @@
 package io.scalajs.nodejs.fs
 
+import io.scalajs.nodejs
 import io.scalajs.nodejs.FileDescriptor
-import io.scalajs.nodejs.stream.Readable
+import io.scalajs.nodejs.buffer.Buffer
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * fs.ReadStream - ReadStream is a Readable Stream.
   * @see https://nodejs.org/api/stream.html#stream_class_stream_readable
   */
 @js.native
-trait ReadStream extends Readable {
+trait ReadStream extends nodejs.stream.Readable {
 
   /**
     * The path to the file the stream is reading from as specified in the first argument to fs.createReadStream().
     * If path is passed as a string, then readStream.path will be a string. If path is passed as a Buffer, then
     * readStream.path will be a Buffer.
     */
-  def path: js.Any = js.native
+  def path: String | Buffer = js.native
 
 }
 

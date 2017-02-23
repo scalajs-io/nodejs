@@ -15,7 +15,7 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSImport("net", "Socket")
-class Socket extends Duplex {
+class Socket extends Duplex(js.native) {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties

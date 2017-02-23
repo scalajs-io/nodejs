@@ -11,6 +11,12 @@ import scala.scalajs.js.annotation.JSName
 @JSName("Error")
 class Error(message: String = "") extends js.Error(message) {
 
+  def code: String = js.native
+
+  def errno: String = js.native
+
+  def syscall: String = js.native
+
   def stack: js.Any = js.native
 
 }

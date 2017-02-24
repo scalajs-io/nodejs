@@ -1,21 +1,22 @@
-package io.scalajs.nodejs.net
+package io.scalajs.nodejs
+package net
 
 import io.scalajs.RawOptions
-import io.scalajs.nodejs.stream.{Duplex, IDuplex}
+import io.scalajs.nodejs.stream.IDuplex
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
 import scala.scalajs.js.|
 
 /**
   * net.Socket - This object is an abstraction of a TCP or local socket. net.Socket instances implement a duplex Stream
   * interface. They can be created by the user and used as a client (with connect()) or they can be created by Node.js
   * and passed to the user through the 'connection' event of a server.
-  * @version 6.2.1
+  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("net", "Socket")
-class Socket extends IDuplex {
+class Socket(options: SocketOptions | RawOptions = js.native) extends IDuplex {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -224,6 +225,23 @@ class Socket extends IDuplex {
   * Socket Singleton
   * @author lawrence.daniels@gmail.com
   */
-@js.native
-@JSImport("net", "Socket")
-object Socket extends js.Object
+object Socket extends {
+
+
+}
+
+/**
+  * Socket Options
+  * @param fd fd allows you to specify the existing file descriptor of socket. Set readable and/or writable to true to allow
+  *           reads and/or writes on this socket (NOTE: Works only when fd is passed). About allowHalfOpen, refer to createServer()
+  *           and 'end' event.
+  * @param allowHalfOpen
+  * @param readable
+  * @param writable
+  * @author lawrence.daniels@gmail.com
+  */
+@ScalaJSDefined
+class SocketOptions(val fd: js.UndefOr[FileDescriptor] = js.undefined,
+                    val allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
+                    val readable: js.UndefOr[Boolean] = js.undefined,
+                    val writable: js.UndefOr[Boolean] = js.undefined) extends js.Object

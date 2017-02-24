@@ -66,7 +66,7 @@ trait Cipher extends IDuplex {
     * The cipher.setAutoPadding() method must be called before cipher.final().
     * @example cipher.setAutoPadding(auto_padding=true)
     */
-  def setAutoPadding(auto_padding: Boolean = true): Unit = js.native
+  def setAutoPadding(auto_padding: Boolean = js.native): Unit = js.native
 
   /**
     * Updates the cipher with data. If the input_encoding argument is given, it's value must be one of 'utf8', 'ascii',
@@ -81,7 +81,7 @@ trait Cipher extends IDuplex {
     * cipher.update() after cipher.final() will result in an error being thrown.
     * @example cipher.update(data[, input_encoding][, output_encoding])
     */
-  def update(data: String, input_encoding: String, output_encoding: String = null): String = js.native
+  def update(data: String, input_encoding: String, output_encoding: String = js.native): String = js.native
 
   /**
     * Updates the cipher with data. If the input_encoding argument is given, it's value must be one of 'utf8', 'ascii',

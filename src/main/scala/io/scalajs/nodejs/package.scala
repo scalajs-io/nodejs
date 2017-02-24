@@ -1,6 +1,6 @@
 package io.scalajs
 
-import io.scalajs.nodejs.timer._
+import io.scalajs.nodejs.timers._
 
 import scala.concurrent.duration.FiniteDuration
 import scala.language.implicitConversions
@@ -28,6 +28,18 @@ package object nodejs {
   @js.native
   @JSName("console")
   object console extends Console(null)
+
+  /**
+    * The directory name of the current module. This the same as the path.dirname() of the [[__filename]].
+    */
+  def __dirname: String = js.Dynamic.global.__dirname.asInstanceOf[String]
+
+  /**
+    * The file name of the current module. This is the resolved absolute path of the current module file.
+    * For a main program this is not necessarily the same as the file name used in the command line.
+    * See [[__dirname]] for the directory name of the current module.
+    */
+  def __filename: String = js.Dynamic.global.__filename.asInstanceOf[String]
 
   /**
     * In browsers, the top-level scope is the global scope. That means that in browsers if you're in the global scope
@@ -86,18 +98,25 @@ package object nodejs {
   /////////////////////////////////////////////////////////////////////////////////
 
   /**
-    * Implicit conversation to translate durations into an integer
+    * Implicit conversion to translate durations into an integer
     * @param duration the given [[FiniteDuration duration]]
     * @return the time in milliseconds as an integer
     */
   implicit def duration2Int(duration: FiniteDuration): Int = duration.toMillis.toInt
 
   /**
-    * Implicit conversation to translate durations into a double
+    * Implicit conversion to translate durations into a double
     * @param duration the given [[FiniteDuration duration]]
     * @return the time in milliseconds as a double
     */
   implicit def duration2Double(duration: FiniteDuration): Double = duration.toMillis.toDouble
+
+  /**
+    * Implicit conversion to transform Node [[Error]]s to [[Exception]]s
+    * @param error the given [[Error]]
+    * @return the resulting [[Exception]]
+    */
+  implicit def error2Exception(error: Error): Exception = js.JavaScriptException(error.message)
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Exit Codes -  Node.js will normally exit with a 0 status code when no more

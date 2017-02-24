@@ -40,7 +40,7 @@ trait ReadStream extends Readable {
     * Undocumented method
     * @see https://github.com/nodejs/node-v0.x-archive/blob/cfcb1de130867197cbc9c6012b7e84e08e53d032/lib/fs.js#L1597-L1620
     */
-  def close[A](callback: js.Function1[Unit, A]): Unit = js.native
+  def close(callback: js.Function1[Unit, Any]): Unit = js.native
 
 }
 
@@ -49,17 +49,6 @@ trait ReadStream extends Readable {
   * @author lawrence.daniels@gmail.com
   */
 object ReadStream {
-
-  /**
-    * Read Stream Extensions
-    * @author lawrence.daniels@gmail.com
-    */
-  implicit class ReadStreamExtensions(val stream: ReadStream) extends AnyVal {
-
-    @inline
-    def closeAsync: Promise[Unit] = promiseCallback1[Unit](stream.close)
-
-  }
 
   /**
     * Read Stream Events
@@ -73,7 +62,7 @@ object ReadStream {
       * @since 0.1.93
       */
     @inline
-    def onClose[A](listener: () => A): stream.type = stream.on("close", listener)
+    def onClose(listener: () => Any): stream.type = stream.on("close", listener)
 
     /**
       * Emitted when the ReadStream's file is opened.
@@ -84,7 +73,18 @@ object ReadStream {
       * @since 0.1.93
       */
     @inline
-    def onOpen[A](listener: FileDescriptor => A): stream.type = stream.on("open", listener)
+    def onOpen(listener: FileDescriptor => Any): stream.type = stream.on("open", listener)
+
+  }
+
+  /**
+    * Read Stream Extensions
+    * @author lawrence.daniels@gmail.com
+    */
+  implicit class ReadStreamExtensions(val stream: ReadStream) extends AnyVal {
+
+    @inline
+    def closeAsync: Promise[Unit] = promiseCallback1[Unit](stream.close)
 
   }
 

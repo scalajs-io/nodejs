@@ -3,7 +3,7 @@ package io.scalajs.nodejs
 import io.scalajs.nodejs.stream.Writable
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
 
 /**
   * The console module provides a simple debugging console that is similar to the JavaScript console mechanism
@@ -103,3 +103,16 @@ class Console(stdout: Writable, stderr: Writable = js.native) extends js.Object 
   def warn(data: js.Any, args: Any*): Unit = js.native
 
 }
+
+/**
+  * Console Dir Options
+  * @param showHidden if true then the object's non-enumerable and symbol properties will be shown too. Defaults to false.
+  * @param depth      tells util.inspect() how many times to recurse while formatting the object. This is useful for
+  *                   inspecting large complicated objects. Defaults to 2. To make it recurse indefinitely, pass null.
+  * @param colors     if true, then the output will be styled with ANSI color codes. Defaults to false. Colors are customizable;
+  *                   see customizing util.inspect() colors.
+  * @author lawrence.daniels@gmail.com
+  */
+@ScalaJSDefined
+class ConsoleDirOptions(var showHidden: Boolean = false, var depth: Integer = 2, var colors: Boolean = false)
+  extends js.Object

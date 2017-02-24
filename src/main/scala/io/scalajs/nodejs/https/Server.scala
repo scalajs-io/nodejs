@@ -1,13 +1,13 @@
-package io.scalajs.nodejs.https
-
-import io.scalajs.nodejs.net
+package io.scalajs.nodejs
+package https
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSImport
 
 /**
   * This class is a subclass of tls.Server and emits events same as http.Server. See http.Server for more information.
   * @author lawrence.daniels@gmail.com
-  * @see [[Server]]
   */
 @js.native
-trait Server extends net.Server {}
+@JSImport("https", "Server")
+class Server extends tls.Server

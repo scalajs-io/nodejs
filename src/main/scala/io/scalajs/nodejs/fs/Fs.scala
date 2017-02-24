@@ -1,13 +1,13 @@
-package io.scalajs.nodejs.fs
+package io.scalajs.nodejs
+package fs
 
 import io.scalajs.RawOptions
-import io.scalajs.nodejs.FileDescriptor
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.language.implicitConversions
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
 import scala.scalajs.js.|
 
 /**
@@ -20,7 +20,6 @@ import scala.scalajs.js.|
   *
   * When using the synchronous form any exceptions are immediately thrown. You can use try/catch to handle exceptions
   * or allow them to bubble up.
-  * @version 6.2.1
   * @author lawrence.daniels@gmail.com
   */
 @js.native
@@ -205,7 +204,7 @@ trait Fs extends IEventEmitter {
     *                 checks fail, the error argument will be populated.
     * @example fs.access(path[, mode], callback)
     */
-  def access(path: Buffer | String, mode: FileMode, callback: js.Function1[FileIOError, Any]): Unit = js.native
+  def access(path: Buffer | String, mode: FileMode, callback: FsCallback0): Unit = js.native
 
   /**
     * Tests a user's permissions for the file specified by path. mode is an optional integer that specifies
@@ -223,7 +222,7 @@ trait Fs extends IEventEmitter {
     *                 checks fail, the error argument will be populated.
     * @example fs.access(path[, mode], callback)
     */
-  def access(path: Buffer | String, callback: js.Function1[FileIOError, Any]): Unit = js.native
+  def access(path: Buffer | String, callback: FsCallback0): Unit = js.native
 
   /**
     * Synchronous version of fs.access(). This throws if any accessibility checks fail, and does nothing otherwise.
@@ -237,14 +236,14 @@ trait Fs extends IEventEmitter {
     * Asynchronously append data to a file, creating the file if it does not yet exist. data can be a string or a buffer.
     * @param file     the filename or file descriptor (Buffer | String | Number)
     * @param data     the data to append (Buffer | String)
-    * @param options  the [[AppendOptions optional append settings]]
+    * @param options  the [[FileAppendOptions optional append settings]]
     * @param callback the callback function
     * @example fs.appendFile(file, data[, options], callback)
     */
-  def appendFile(file: Buffer | String | Int,
+  def appendFile(file: Buffer | String | FileDescriptor,
                  data: Buffer | String,
-                 options: AppendOptions | RawOptions,
-                 callback: js.Function1[FileIOError, Any]): Unit = js.native
+                 options: FileAppendOptions | RawOptions,
+                 callback: FsCallback0): Unit = js.native
 
   /**
     * Asynchronously append data to a file, creating the file if it does not yet exist. data can be a string or a buffer.
@@ -253,19 +252,19 @@ trait Fs extends IEventEmitter {
     * @param callback the callback function
     * @example fs.appendFile(file, data[, options], callback)
     */
-  def appendFile(file: Buffer | String | Int,
+  def appendFile(file: Buffer | String | FileDescriptor,
                  data: Buffer | String,
-                 callback: js.Function1[FileIOError, Any]): Unit = js.native
+                 callback: FsCallback0): Unit = js.native
 
   /**
     * The synchronous version of fs.appendFile(). Returns undefined.
     * @param file    the filename or file descriptor (Buffer | String | Number)
     * @param data    the data to append (Buffer | String)
-    * @param options the [[AppendOptions optional append settings]]
+    * @param options the [[FileAppendOptions optional append settings]]
     */
-  def appendFileSync(file: Buffer | String | Int,
+  def appendFileSync(file: Buffer | String | FileDescriptor,
                      data: Buffer | String,
-                     options: AppendOptions | RawOptions = js.native): Unit = js.native
+                     options: FileAppendOptions | RawOptions = js.native): Unit = js.native
 
   /**
     * Asynchronous chmod(2). No arguments other than a possible exception are given to the completion callback.
@@ -273,7 +272,7 @@ trait Fs extends IEventEmitter {
     * @param mode     the file or directory mode
     * @param callback the completion callback.
     */
-  def chmod(path: Buffer | String, mode: FileMode, callback: js.Function1[FileIOError, Any]): Unit = js.native
+  def chmod(path: Buffer | String, mode: FileMode, callback: FsCallback0): Unit = js.native
 
   /**
     * Synchronous chmod(2). Returns undefined.
@@ -289,7 +288,7 @@ trait Fs extends IEventEmitter {
     * @param gid      the group ID
     * @param callback the completion callback.
     */
-  def chown(path: Buffer | String, uid: Int, gid: Int, callback: js.Function1[FileIOError, Any]): Unit = js.native
+  def chown(path: Buffer | String, uid: Int, gid: Int, callback: FsCallback0): Unit = js.native
 
   /**
     * Synchronous chown(2). Returns undefined.
@@ -303,7 +302,7 @@ trait Fs extends IEventEmitter {
     * Asynchronous close(2). No arguments other than a possible exception are given to the completion callback.
     * @example fs.close(fd, callback)
     */
-  def close(fd: FileDescriptor, callback: js.Function1[FileIOError, Any]): Unit = js.native
+  def close(fd: FileDescriptor, callback: FsCallback0): Unit = js.native
 
   /**
     * Synchronous close(2). Returns undefined.
@@ -349,7 +348,7 @@ trait Fs extends IEventEmitter {
     * Asynchronous fchmod(2). No arguments other than a possible exception are given to the completion callback.
     * @example fs.fchmod(fd, mode, callback)
     */
-  def fchmod(fd: FileDescriptor, mode: FileMode, callback: js.Function1[FileIOError, Any]): Unit = js.native
+  def fchmod(fd: FileDescriptor, mode: FileMode, callback: FsCallback0): Unit = js.native
 
   /**
     * Synchronous fchmod(2). Returns undefined.
@@ -364,7 +363,7 @@ trait Fs extends IEventEmitter {
     * @param gid      the group ID
     * @param callback the completion callback.
     */
-  def fchown(path: Buffer | String, uid: Int, gid: Int, callback: js.Function1[FileIOError, Any]): Unit = js.native
+  def fchown(path: Buffer | String, uid: Int, gid: Int, callback: FsCallback0): Unit = js.native
 
   /**
     * Synchronous fchown(2). Returns undefined.
@@ -378,7 +377,7 @@ trait Fs extends IEventEmitter {
     * Asynchronous fdatasync(2). No arguments other than a possible exception are given to the completion callback.
     * @example fs.fdatasync(fd, callback)
     */
-  def fdatasync(fd: FileDescriptor, callback: js.Function1[FileIOError, Any]): Unit = js.native
+  def fdatasync(fd: FileDescriptor, callback: FsCallback0): Unit = js.native
 
   /**
     * Synchronous fdatasync(2). Returns undefined.
@@ -392,7 +391,7 @@ trait Fs extends IEventEmitter {
     * @param fd       the file descriptor
     * @param callback the completion callback.
     */
-  def fstat(fd: FileDescriptor, callback: js.Function1[FileIOError, Any]): Unit = js.native
+  def fstat(fd: FileDescriptor, callback: FsCallback0): Unit = js.native
 
   /**
     * Synchronous fstat(2). Returns an instance of fs.Stats.
@@ -405,7 +404,7 @@ trait Fs extends IEventEmitter {
     * @param fd       the file descriptor
     * @param callback the completion callback.
     */
-  def fsync(fd: FileDescriptor, callback: js.Function1[FileIOError, Any]): Unit = js.native
+  def fsync(fd: FileDescriptor, callback: FsCallback0): Unit = js.native
 
   /**
     * Synchronous fsync(2). Returns undefined.
@@ -421,7 +420,7 @@ trait Fs extends IEventEmitter {
     * @param len      the desired length
     * @param callback the completion callback.
     */
-  def ftruncate(fd: FileDescriptor, len: Double, callback: js.Function1[FileIOError, Any]): Unit = js.native
+  def ftruncate(fd: FileDescriptor, len: Double, callback: FsCallback0): Unit = js.native
 
   /**
     * Synchronous ftruncate(2). Returns undefined.
@@ -446,7 +445,7 @@ trait Fs extends IEventEmitter {
     * Asynchronous lchmod(2). No arguments other than a possible exception are given to the completion callback.
     * @example fs.lchmod(path, mode, callback)
     */
-  def lchmod(path: Buffer | String, mode: FileMode, callback: js.Function1[FileIOError, Any]): Unit = js.native
+  def lchmod(path: Buffer | String, mode: FileMode, callback: FsCallback0): Unit = js.native
 
   /**
     * Synchronous lchmod(2). Returns undefined.
@@ -464,7 +463,7 @@ trait Fs extends IEventEmitter {
     * @param callback the completion callback.
     * @example fs.lchown(path, uid, gid, callback)
     */
-  def lchown(path: Buffer | String, uid: Integer, gid: Integer, callback: js.Function1[FileIOError, Any]): Unit = js.native
+  def lchown(path: Buffer | String, uid: Integer, gid: Integer, callback: FsCallback0): Unit = js.native
 
   /**
     * Synchronous chown(2). Returns undefined.
@@ -481,7 +480,7 @@ trait Fs extends IEventEmitter {
     * @param callback     the completion callback.
     * @example fs.link(srcpath, dstpath, callback)
     */
-  def link(existingPath: Buffer | String, newPath: Buffer | String, callback: js.Function1[FileIOError, Any]): Unit = js.native
+  def link(existingPath: Buffer | String, newPath: Buffer | String, callback: FsCallback0): Unit = js.native
 
   /**
     * Synchronous link(2). Returns undefined.
@@ -509,13 +508,13 @@ trait Fs extends IEventEmitter {
     * Asynchronous mkdir(2). No arguments other than a possible exception are given to the completion callback. mode defaults to 0o777.
     * @example fs.mkdir(path[, mode], callback)
     */
-  def mkdir(path: Buffer | String, mode: FileMode | js.Any, callback: js.Function1[FileIOError, Any]): Unit = js.native
+  def mkdir(path: Buffer | String, mode: FileMode | js.Any, callback: FsCallback0): Unit = js.native
 
   /**
     * Asynchronous mkdir(2). No arguments other than a possible exception are given to the completion callback. mode defaults to 0o777.
     * @example fs.mkdir(path[, mode], callback)
     */
-  def mkdir(path: Buffer | String, callback: js.Function1[FileIOError, Any]): Unit = js.native
+  def mkdir(path: Buffer | String, callback: FsCallback0): Unit = js.native
 
   /**
     * Creates a unique temporary directory.
@@ -530,7 +529,7 @@ trait Fs extends IEventEmitter {
     */
   def mkdtemp(prefix: String,
               options: String | FileEncodingOptions | RawOptions,
-              callback: js.Function2[FileIOError, String, Any]): Unit = js.native
+              callback: FsCallback1[String]): Unit = js.native
 
   /**
     * Creates a unique temporary directory.
@@ -542,7 +541,7 @@ trait Fs extends IEventEmitter {
     * @param callback the callback
     * @example fs.mkdtemp(prefix[, options], callback)
     */
-  def mkdtemp(prefix: String, callback: js.Function2[FileIOError, String, Any]): Unit = js.native
+  def mkdtemp(prefix: String, callback: FsCallback1[String]): Unit = js.native
 
   /**
     * The synchronous version of fs.mkdtemp(). Returns the created folder path.
@@ -559,7 +558,7 @@ trait Fs extends IEventEmitter {
     * @param path the path
     * @param mode the mode
     */
-  def mkdirSync(path: Buffer | String, mode: Int = js.native): Unit = js.native
+  def mkdirSync(path: Buffer | String, mode: FileMode = js.native): Unit = js.native
 
   /**
     * Asynchronous file open. See open(2).
@@ -592,7 +591,7 @@ trait Fs extends IEventEmitter {
   def open(path: Buffer | String,
            flags: String | Int,
            mode: FileMode,
-           callback: js.Function2[FileIOError, FileDescriptor, Any]): Unit = js.native
+           callback: FsCallback1[FileDescriptor]): Unit = js.native
 
   /**
     * Asynchronous file open. See open(2).
@@ -622,7 +621,7 @@ trait Fs extends IEventEmitter {
     */
   def open(path: Buffer | String,
            flags: String | Int,
-           callback: js.Function2[FileIOError, FileDescriptor, Any]): Unit = js.native
+           callback: FsCallback1[FileDescriptor]): Unit = js.native
 
   /**
     * Synchronous version of fs.open().
@@ -802,7 +801,7 @@ trait Fs extends IEventEmitter {
     * Asynchronous rename(2). No arguments other than a possible exception are given to the completion callback.
     * @example fs.rename(oldPath, newPath, callback)
     */
-  def rename(oldPath: String, newPath: String, callback: js.Function1[FileIOError, Any]): Unit = js.native
+  def rename(oldPath: String, newPath: String, callback: FsCallback0): Unit = js.native
 
   /**
     * Synchronous rename(2). Returns undefined.
@@ -814,7 +813,7 @@ trait Fs extends IEventEmitter {
     * Asynchronous rmdir(2). No arguments other than a possible exception are given to the completion callback.
     * @example fs.rmdir(path, callback)
     */
-  def rmdir(path: Buffer | String, callback: js.Function1[FileIOError, Any]): Unit = js.native
+  def rmdir(path: Buffer | String, callback: FsCallback0): Unit = js.native
 
   /**
     * Synchronous rmdir(2). Returns undefined.
@@ -845,7 +844,7 @@ trait Fs extends IEventEmitter {
   def symlink(target: Buffer | String,
               path: Buffer | String,
               `type`: String,
-              callback: js.Function1[FileIOError, Any]): Unit = js.native
+              callback: FsCallback0): Unit = js.native
 
   /**
     * Asynchronous symlink(2). No arguments other than a possible exception are given to the completion callback.
@@ -856,7 +855,7 @@ trait Fs extends IEventEmitter {
     */
   def symlink(target: Buffer | String,
               path: Buffer | String,
-              callback: js.Function1[FileIOError, Any]): Unit = js.native
+              callback: FsCallback0): Unit = js.native
 
   /**
     * Synchronous symlink(2). Returns undefined.
@@ -874,7 +873,7 @@ trait Fs extends IEventEmitter {
     */
   def truncate(path: Buffer | String | FileDescriptor,
                len: Int,
-               callback: js.Function1[FileIOError, Any]): Unit = js.native
+               callback: FsCallback0): Unit = js.native
 
   /**
     * Synchronous truncate(2). Returns undefined.
@@ -889,7 +888,7 @@ trait Fs extends IEventEmitter {
     * Asynchronous unlink(2). No arguments other than a possible exception are given to the completion callback.
     * @example fs.unlink(path, callback)
     */
-  def unlink(path: Buffer | String, callback: js.Function1[FileIOError, Any]): Unit = js.native
+  def unlink(path: Buffer | String, callback: FsCallback0): Unit = js.native
 
   /**
     * Synchronous unlink(2). Returns undefined.
@@ -907,7 +906,7 @@ trait Fs extends IEventEmitter {
     * fs.watchFile() and fs.unwatchFile() when possible.
     * @example fs.unwatchFile(filename[, listener])
     */
-  def unwatchFile(filename: Buffer | String, listener: js.Function = null): Unit = js.native
+  def unwatchFile(filename: Buffer | String, listener: js.Function = js.native): Unit = js.native
 
   /**
     * Change file timestamps of the file referenced by the supplied path.
@@ -927,10 +926,11 @@ trait Fs extends IEventEmitter {
   def utimesSync(path: Buffer | String, atime: Int, mtime: Int): Unit = js.native
 
   /**
-    * Watch for changes on filename, where filename is either a file or a directory. The returned object is a fs.[[FSWatcher]].
+    * Watch for changes on filename, where filename is either a file or a directory.
+    * The returned object is a fs.[[FSWatcher]].
     *
-    * The second argument is optional. If options is provided as a string, it specifies the encoding. Otherwise options
-    * should be passed as an object.
+    * The second argument is optional. If options is provided as a string, it specifies the encoding.
+    * Otherwise options should be passed as an object.
     *
     * The listener callback gets two arguments (event, filename). event is either 'rename' or 'change', and filename
     * is the name of the file which triggered the event.
@@ -943,10 +943,11 @@ trait Fs extends IEventEmitter {
   def watch(filename: Buffer | String, options: FSWatcherOptions | RawOptions, listener: js.Function): FSWatcher = js.native
 
   /**
-    * Watch for changes on filename, where filename is either a file or a directory. The returned object is a fs.[[FSWatcher]].
+    * Watch for changes on filename, where filename is either a file or a directory.
+    * The returned object is a fs.[[FSWatcher]].
     *
-    * The second argument is optional. If options is provided as a string, it specifies the encoding. Otherwise options
-    * should be passed as an object.
+    * The second argument is optional. If options is provided as a string, it specifies the encoding.
+    * Otherwise options should be passed as an object.
     *
     * The listener callback gets two arguments (event, filename). event is either 'rename' or 'change', and filename
     * is the name of the file which triggered the event.
@@ -958,10 +959,11 @@ trait Fs extends IEventEmitter {
   def watch(filename: Buffer | String, listener: js.Function): FSWatcher = js.native
 
   /**
-    * Watch for changes on filename, where filename is either a file or a directory. The returned object is a fs.[[FSWatcher]].
+    * Watch for changes on filename, where filename is either a file or a directory.
+    * The returned object is a fs.[[FSWatcher]].
     *
-    * The second argument is optional. If options is provided as a string, it specifies the encoding. Otherwise options
-    * should be passed as an object.
+    * The second argument is optional. If options is provided as a string, it specifies the encoding.
+    * Otherwise options should be passed as an object.
     *
     * The listener callback gets two arguments (event, filename). event is either 'rename' or 'change', and filename
     * is the name of the file which triggered the event.
@@ -970,7 +972,35 @@ trait Fs extends IEventEmitter {
     * @return a [[FSWatcher]]
     * @example fs.watch(filename[, options][, listener])
     */
-  def watch(filename: Buffer | String, options: FSWatcherOptions | RawOptions = js.native): FSWatcher = js.native
+  def watch(filename: Buffer | String,
+            options: FSWatcherOptions | RawOptions = js.native): FSWatcher = js.native
+
+  /**
+    * Watch for changes on filename. The callback listener will be called each time the file is accessed.
+    *
+    * The options argument may be omitted. If provided, it should be an object. The options object may contain
+    * a boolean named persistent that indicates whether the process should continue to run as long as files are
+    * being watched. The options object may specify an interval property indicating how often the target should
+    * be polled in milliseconds. The default is { persistent: true, interval: 5007 }.
+    * @param filename the filename (Buffer | String)
+    * @param options  the [[FSWatcherOptions optional settings]]
+    * @param listener the callback
+    */
+  def watchFile(filename: Buffer | String,
+                options: FileWatcherOptions | RawOptions,
+                listener: FsCallback2[Stats, Stats]): Unit = js.native
+
+  /**
+    * Watch for changes on filename. The callback listener will be called each time the file is accessed.
+    *
+    * The options argument may be omitted. If provided, it should be an object. The options object may contain
+    * a boolean named persistent that indicates whether the process should continue to run as long as files are
+    * being watched. The options object may specify an interval property indicating how often the target should
+    * be polled in milliseconds. The default is { persistent: true, interval: 5007 }.
+    * @param filename the filename (Buffer | String)
+    * @param listener the callback
+    */
+  def watchFile(filename: Buffer | String, listener: FsCallback2[Stats, Stats]): Unit = js.native
 
   /**
     * Asynchronously writes data to a file, replacing the file if it already exists. data can be a string or a buffer.
@@ -980,7 +1010,7 @@ trait Fs extends IEventEmitter {
   def writeFile(file: String,
                 data: Buffer | String,
                 options: FileOutputOptions | RawOptions,
-                callback: js.Function): Unit = js.native
+                listener: js.Function): Unit = js.native
 
   /**
     * Asynchronously writes data to a file, replacing the file if it already exists. data can be a string or a buffer.
@@ -1004,3 +1034,58 @@ trait Fs extends IEventEmitter {
 @js.native
 @JSImport("fs", JSImport.Namespace)
 object Fs extends Fs
+
+/**
+  * File Append Options
+  * @author lawrence.daniels@gmail.com
+  */
+@ScalaJSDefined
+class FileAppendOptions(val encoding: js.UndefOr[String] = js.undefined,
+                        val mode: js.UndefOr[FileMode] = js.undefined,
+                        val flag: js.UndefOr[String] = js.undefined)
+  extends js.Object
+
+/**
+  * File Encoding Options
+  * @author lawrence.daniels@gmail.com
+  */
+@ScalaJSDefined
+class FileEncodingOptions(val encoding: js.UndefOr[String] = js.undefined)
+  extends js.Object
+
+/**
+  * File Input Options
+  * @author lawrence.daniels@gmail.com
+  */
+@ScalaJSDefined
+class FileInputOptions(val flags: js.UndefOr[String] = js.undefined,
+                       val encoding: js.UndefOr[String] = js.undefined,
+                       val fd: js.UndefOr[FileDescriptor] = js.undefined,
+                       val mode: js.UndefOr[Int] = js.undefined,
+                       val autoClose: js.UndefOr[Boolean] = js.undefined,
+                       val start: js.UndefOr[Int] = js.undefined,
+                       val end: js.UndefOr[Int] = js.undefined)
+  extends js.Object
+
+/**
+  * File Input Options
+  * @author lawrence.daniels@gmail.com
+  */
+@ScalaJSDefined
+class FileOutputOptions(val flags: js.UndefOr[String] = js.undefined,
+                        val defaultEncoding: js.UndefOr[String] = js.undefined,
+                        val fd: js.UndefOr[FileDescriptor] = js.undefined,
+                        val mode: js.UndefOr[Int] = js.undefined,
+                        val autoClose: js.UndefOr[Boolean] = js.undefined,
+                        val start: js.UndefOr[Int] = js.undefined)
+  extends js.Object
+
+/**
+  * File Watcher Options
+  * @param persistent <Boolean>
+  * @param interval <Integer>
+  */
+@ScalaJSDefined
+class FileWatcherOptions(val persistent: js.UndefOr[Boolean] = js.undefined,
+                         val interval: js.UndefOr[Int] = js.undefined)
+  extends js.Object

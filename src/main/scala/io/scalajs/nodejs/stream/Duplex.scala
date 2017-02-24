@@ -1,4 +1,5 @@
-package io.scalajs.nodejs.stream
+package io.scalajs.nodejs
+package stream
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}

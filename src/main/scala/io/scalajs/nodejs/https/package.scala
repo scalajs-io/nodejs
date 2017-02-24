@@ -1,6 +1,6 @@
 package io.scalajs.nodejs
 
-import io.scalajs.RawOptions
+import io.scalajs.{RawOptions, nodejs}
 import io.scalajs.nodejs.http.{RequestOptions, ServerResponse}
 import io.scalajs.util.PromiseHelper._
 
@@ -41,7 +41,7 @@ package object https {
       */
     @inline
     def requestFuture(options: RequestOptions | RawOptions): Promise[ServerResponse] = {
-      promiseWithError1[js.Error, ServerResponse](https.request(options, _))
+      promiseWithError1[nodejs.Error, ServerResponse](https.request(options, _))
     }
 
     /**
@@ -49,7 +49,7 @@ package object https {
       */
     @inline
     def requestFuture(url: String): Promise[ServerResponse] = {
-      promiseWithError1[js.Error, ServerResponse](https.request(url, _))
+      promiseWithError1[nodejs.Error, ServerResponse](https.request(url, _))
     }
 
   }

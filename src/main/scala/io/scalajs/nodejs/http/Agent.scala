@@ -1,4 +1,5 @@
-package io.scalajs.nodejs.http
+package io.scalajs.nodejs
+package http
 
 import io.scalajs.RawOptions
 import io.scalajs.util.PromiseHelper._
@@ -108,7 +109,7 @@ object Agent {
       */
     @inline
     def createConnectionAsync(options: ConnectionOptions): Promise[js.Any] = {
-      promiseWithError1[js.Error, js.Any](agent.createConnection(options, _))
+      promiseWithError1[Error, js.Any](agent.createConnection(options, _))
     }
 
   }

@@ -1,4 +1,5 @@
-package io.scalajs.nodejs.http
+package io.scalajs.nodejs
+package http
 
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.events.IEventEmitter
@@ -8,8 +9,8 @@ import scala.scalajs.js
 
 /**
   * Node.js http.ServerResponse
-  * @author lawrence.daniels@gmail.com
   * @see [[https://nodejs.org/api/http.html#http_class_http_serverresponse]]
+  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait ServerResponse extends IEventEmitter with IDuplex {
@@ -139,6 +140,20 @@ trait ServerResponse extends IEventEmitter with IDuplex {
 object ServerResponse {
 
   /**
+    * Server Response Events
+    * @author lawrence.daniels@gmail.com
+    */
+  implicit class ServerResponseEvents(val response: ServerResponse) extends AnyVal {
+
+    @inline
+    def onData(handler: Buffer => Any): response.type = response.on("data", handler)
+
+    @inline
+    def onFinish(handler: js.Function): response.type = response.on("finish", handler)
+
+  }
+
+  /**
     * Server Response Extensions
     * @author lawrence.daniels@gmail.com
     */
@@ -150,19 +165,6 @@ object ServerResponse {
       */
     @inline
     def setContentType(contentType: String): Unit = response.setHeader("Content-Type", contentType)
-
-    /////////////////////////////////////////////////////////////////////////////////
-    //      Events
-    /////////////////////////////////////////////////////////////////////////////////
-
-    @inline
-    def onClose(handler: js.Function): response.type = response.on("close", handler)
-
-    @inline
-    def onData(handler: Buffer => Any): response.type = response.on("data", handler)
-
-    @inline
-    def onFinish(handler: js.Function): response.type = response.on("finish", handler)
 
     /////////////////////////////////////////////////////////////////////////////////
     //      Response Shortcuts

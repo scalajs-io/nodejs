@@ -1,4 +1,4 @@
-package io.scalajs.nodejs.timer
+package io.scalajs.nodejs.timers
 
 import scala.scalajs.js
 
@@ -7,4 +7,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Timer extends js.Object {}
+trait Timer extends js.Object

@@ -84,7 +84,7 @@ The following applications were developed using ScalaJs.io:
 <a name="discussions"></a>
 ### Discussions
  
-There's an on-going discussion about [ScalaJs.io on Reddit](https://www.reddit.com/r/scala/comments/4loosi/meansjs_scalajs_facades_for_the_nodejs_api/).    
+There's a discussion about [ScalaJs.io on Reddit](https://www.reddit.com/r/scala/comments/4loosi/meansjs_scalajs_facades_for_the_nodejs_api/).    
 
 <a name="advantages">
 ### Advantages over JavaScript
@@ -95,7 +95,7 @@ Scala.js offers many advantages over native JavaScript:
 * Excellent IDE support
 * No JavaScript Warts
 * More concise
-* [Go beyond JavaScript ES6, today](http://www.scala-js.org/)
+* [Go beyond JavaScript ES6, today](http://www.scala-js.org)
 
 Consider the following example in JavaScript. Here we have a nested collection of callbacks (read: pyramid of doom) 
 in order to gather the information that we display at the end.
@@ -180,7 +180,7 @@ implemented as well, including bcrypt, cassandra-driver, kafka-node, mysql, xml2
 <a name="node_modules">
 #### Modules
 
-The following core Node.js modules (v7.5.0) have been implemented:
+The following core Node.js modules (v7.6.0) have been implemented:
 
 | Node Module           | Description                                                                     |
 |-----------------------|---------------------------------------------------------------------------------|
@@ -209,14 +209,14 @@ The following core Node.js modules (v7.5.0) have been implemented:
 | vm                    | The vm module provides APIs for compiling and running code within V8 Virtual Machine contexts.|
 | zlib                  | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. |
 
-*NOTE*: The SBT artifact for the complete Node.js platform is: "io.scalajs.npm" %%% "nodejs" % "3.0.3" 
+*NOTE*: The SBT artifact for the complete Node.js platform is: "io.scalajs.npm" %%% "nodejs" % "3.0.6" 
 
 <a name="npm_modules">
 #### Third-party Modules
 
 The following Third Party/OSS Node.js (npm) modules have been implemented:
 
-| NPM Package                                                                           | Version | Description                                             |
+| Module / Package                                                                      | Version | Description                                             |
 |---------------------------------------------------------------------------------------|---------|---------------------------------------------------------|
 | [async](https://github.com/scalajs-io/async)                                          | 2.0.0   | Higher-order functions and common patterns for asynchronous code. |
 | [bcrypt](https://github.com/scalajs-io/bcrypt)                                        | 0.0.3   | A native JS bcrypt library for NodeJS. |
@@ -254,6 +254,8 @@ The following Third Party/OSS Node.js (npm) modules have been implemented:
 | [moment](https://github.com/scalajs-io/moment)                                        | 2.17.1  | Parse, validate, manipulate, and display dates in JavaScript. |
 | [moment-timezone](https://github.com/scalajs-io/moment)                               | 0.5.11  | Parse and display dates in any timezone. |
 | [mongodb](https://github.com/scalajs-io/mongodb)                                      | 2.2.22  | The official MongoDB driver for Node.js. |
+| [mongoose](https://github.com/scalajs-io/mongoose)                                    | 4.8.1   | Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment. |
+| [mpromise](https://github.com/scalajs-io/mpromise)                                    | 0.5.5   | A promises/A+ conformant implementation, written for mongoose. |
 | [multer](https://github.com/scalajs-io/multer)                                        | 1.1.0   | Multer is a node.js middleware for handling multipart/form-data. | Tesing required |
 | [mysql](https://github.com/scalajs-io/mysql)                                          | 2.10.2  | A node.js driver for mysql. |
 | [node-zookeeper-client](https://github.com/scalajs-io/node-zookeeper-client)          | 0.2.2   | A higher-level ZooKeeper client based on node-zookeeper with support for locking and master election. | Tesing required |
@@ -274,8 +276,7 @@ The following Third Party/OSS Node.js (npm) modules have been implemented:
 | [winston-daily-rotate-file](https://github.com/scalajs-io/winston-daily-rotate-file)  | 1.4.4   | A multi-transport async logging library for Node.js. |    
 | [xml2js](https://github.com/scalajs-io/xml2js)                                        | 0.4.16  | Simple XML to JavaScript object converter. |
 
-*NOTE*: The full SBT artifact expression is: "io.scalajs.npm" %%% "xxxx" % version 
-(e.g. "io.scalajs.npm" %%% "express" % "0.3.0.0")
+*NOTE*: The full SBT artifact expression is: "io.scalajs.npm" %%% "xxxx" % version (e.g. "io.scalajs.npm" %%% "express" % "4.14.1")
 
 I've provided an example to demonstrate how similar the Scala.js code is to the JavaScript
 that it replaces.

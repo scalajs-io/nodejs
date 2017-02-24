@@ -1,5 +1,7 @@
-package io.scalajs.nodejs.http
+package io.scalajs.nodejs
+package http
 
+import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.net.Socket
 import io.scalajs.nodejs.stream.Readable
 import io.scalajs.util.PromiseHelper._
@@ -25,7 +27,7 @@ import scala.scalajs.js
   * lead to a 'process out of memory' error.
   *
   * Note: Node.js does not check whether Content-Length and the length of the body which has been transmitted are equal or not.
-  * @version 6.2.1
+  * @author lawrence.daniels@gmail.com
   */
 @js.native
 class ClientRequest extends Readable {
@@ -186,6 +188,68 @@ class ClientRequest extends Readable {
 object ClientRequest {
 
   /**
+    * Client Request Events
+    * @author lawrence.daniels@gmail.com
+    */
+  implicit class ClientRequestEvents(val client: ClientRequest) extends AnyVal {
+
+    /**
+      * Emitted when the request has been aborted by the client. This event is only emitted on the first call to abort().
+      */
+    @inline
+    def onAbort(callback: () => Any): client.type = client.on("abort", callback)
+
+    /**
+      * Emitted when the request has been aborted by the server and the network socket has closed.
+      */
+    @inline
+    def onAborted(callback: () => Any): client.type = client.on("aborted", callback)
+
+    /**
+      * Emitted each time a server responds to a request with a CONNECT method. If this event is not being listened for,
+      * clients receiving a CONNECT method will have their connections closed.
+      * - response <http.IncomingMessage>
+      * - socket <net.Socket>
+      * - head <Buffer>
+      */
+    @inline
+    def onConnect(callback: (IncomingMessage, Socket, Buffer) => Any): client.type = client.on("connect", callback)
+
+    /**
+      * Emitted when the server sends a '100 Continue' HTTP response, usually because the request
+      * contained 'Expect: 100-continue'. This is an instruction that the client should send the request body.
+      */
+    @inline
+    def onContinue(callback: () => Any): client.type = client.on("continue", callback)
+
+    /**
+      * Emitted when a response is received to this request. This event is emitted only once.
+      * The response argument will be an instance of http.IncomingMessage.
+      * - response <http.IncomingMessage>
+      */
+    @inline
+    def onResponse(callback: IncomingMessage => Any): client.type = client.on("response", callback)
+
+    /**
+      * Emitted after a socket is assigned to this request.
+      * - socket <net.Socket>
+      */
+    @inline
+    def onSocket(callback: Socket => Any): client.type = client.on("socket", callback)
+
+    /**
+      * Emitted each time a server responds to a request with an upgrade. If this event isn't being listened for,
+      * clients receiving an upgrade header will have their connections closed.
+      * - response <http.IncomingMessage>
+      * - socket <net.Socket>
+      * - head <Buffer>
+      */
+    @inline
+    def onUpgrade(callback: (IncomingMessage, Socket, Buffer) => Any): client.type = client.on("upgrade", callback)
+
+  }
+
+  /**
     * Client Request Extensions
     * @author lawrence.daniels@gmail.com
     */
@@ -193,59 +257,11 @@ object ClientRequest {
 
     @inline
     def endFuture(data: js.Any, encoding: String): Promise[js.Any] =
-      promiseWithError1[js.Error, js.Any](client.end(data, encoding, _))
+      promiseWithError1[SystemError, js.Any](client.end(data, encoding, _))
 
     @inline
     def writeFuture(chunk: js.Any, encoding: String): Promise[js.Any] =
-      promiseWithError1[js.Error, js.Any](client.write(chunk, encoding, _))
-
-    /**
-      * Emitted when the request has been aborted by the client. This event is only emitted on the first call to abort().
-      */
-    @inline
-    def onAbort(callback: js.Function): client.type = client.on("abort", callback)
-
-    /**
-      * Emitted each time a request with an http Expect header is received, where the value is not 100-continue.
-      * If this event isn't listened for, the server will automatically respond with a 417 Expectation Failed as appropriate.
-      * <b>Note</b> that when this event is emitted and handled, the request event will not be emitted.
-      */
-    @inline
-    def onCheckExpectation(callback: js.Function): client.type = client.on("checkExpectation", callback)
-
-    /**
-      * Emitted each time a server responds to a request with a CONNECT method. If this event isn't being listened for,
-      * clients receiving a CONNECT method will have their connections closed.
-      */
-    @inline
-    def onConnect(callback: js.Function): client.type = client.on("connect", callback)
-
-    /**
-      * Emitted when the server sends a '100 Continue' HTTP response, usually because the request
-      * contained 'Expect: 100-continue'. This is an instruction that the client should send the request body.
-      */
-    @inline
-    def onContinue(callback: js.Function): client.type = client.on("continue", callback)
-
-    /**
-      * Emitted when a response is received to this request. This event is emitted only once.
-      * The response argument will be an instance of http.IncomingMessage.
-      */
-    @inline
-    def onResponse(callback: js.Function): client.type = client.on("response", callback)
-
-    /**
-      * Emitted after a socket is assigned to this request.
-      */
-    @inline
-    def onSocket(callback: js.Function): client.type = client.on("socket", callback)
-
-    /**
-      * Emitted each time a server responds to a request with an upgrade. If this event isn't being listened for,
-      * clients receiving an upgrade header will have their connections closed.
-      */
-    @inline
-    def onUpgrade(callback: js.Function): client.type = client.on("upgrade", callback)
+      promiseWithError1[SystemError, js.Any](client.write(chunk, encoding, _))
 
   }
 

@@ -1,9 +1,10 @@
-package io.scalajs.nodejs.net
+package io.scalajs.nodejs
+package net
 
 import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
 
 /**
   * net.Server - This class is used to create a TCP or local server.
@@ -11,17 +12,31 @@ import scala.scalajs.js.annotation.JSImport
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Server extends IEventEmitter {
+@JSImport("net", "Server")
+class Server() extends IEventEmitter {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
   /////////////////////////////////////////////////////////////////////////////////
 
   /**
+    * Returns the current number of concurrent connections on the server.
+    */
+  @deprecated("Use server.getConnections() instead.", since = "0.9.7")
+  def connections: Int = js.native
+
+  /**
     * A Boolean indicating whether or not the server is listening for connections.
     * @example server.listening
     */
   def listening: Boolean = js.native
+
+  /**
+    * Set this property to reject connections when the server's connection count gets high.
+    * It is not recommended to use this option once a socket has been sent to a child with child_process.fork().
+    * @example server.maxConnections
+    */
+  var maxConnections: Int = js.native
 
   /**
     * Limits maximum incoming headers count, equal to 1000 by default. If set to 0 - no limit will be applied.
@@ -58,16 +73,14 @@ trait Server extends IEventEmitter {
     * its only argument if the server was not open when it was closed.
     * @example server.close([callback])
     */
-  def close(callback: js.Function): Unit = js.native
+  def close(callback: js.Function = js.native): Unit = js.native
 
   /**
-    * Stops the server from accepting new connections and keeps existing connections. This function is asynchronous,
-    * the server is finally closed when all connections are ended and the server emits a 'close' event. The optional
-    * callback will be called once the 'close' event occurs. Unlike that event, it will be called with an Error as
-    * its only argument if the server was not open when it was closed.
-    * @example server.close([callback])
+    * Asynchronously get the number of concurrent connections on the server. Works when sockets were sent to forks.
+    * Callback should take two arguments err and count.
+    * @example server.getConnections(callback)
     */
-  def close(): Unit = js.native
+  def getConnections(callback: js.Function2[SystemError, Int, Any]): Unit = js.native
 
   /**
     * The port, host, and backlog properties of options, as well as the optional callback function, behave as
@@ -106,21 +119,88 @@ trait Server extends IEventEmitter {
   def listen(port: Int): Unit = js.native
 
   /**
-    * Sets the timeout value for sockets, and emits a 'timeout' event on the Server object, passing the socket
-    * as an argument, if a timeout occurs.
-    *
-    * If there is a 'timeout' event listener on the Server object, then it will be called with the timed-out socket as an argument.
-    * By default, the Server's timeout value is 2 minutes, and sockets are destroyed automatically if they time out. However, if you assign a callback to the Server's 'timeout' event, then you are responsible for handling socket timeouts.
+    * Opposite of unref, calling ref on a previously unrefd server will not let the program exit if it's
+    * the only server left (the default behavior). If the server is refd calling ref again will have no effect.
     * Returns server.
+    * @example server.ref()
     */
-  def setTimeout(msecs: Int, callback: js.Function): this.type = js.native
+  def ref(): this.type = js.native
+
+  /**
+    * Calling unref on a server will allow the program to exit if this is the only active server in the
+    * event system. If the server is already unrefd calling unref again will have no effect.
+    * Returns server.
+    * @example server.unref()
+    */
+  def unref(): this.type = js.native
+
+  /**
+    * Sets the timeout value for sockets, and emits a 'timeout' event on the Server object, passing the socket as
+    * an argument, if a timeout occurs.
+    *
+    * If there is a 'timeout' event listener on the Server object, then it will be called with the timed-out socket
+    * as an argument.
+    *
+    * By default, the Server's timeout value is 2 minutes, and sockets are destroyed automatically if they time out.
+    * However, if you assign a callback to the Server's 'timeout' event, then you are responsible for handling socket
+    * timeouts.
+    * @param msecs    the timeout in milliseconds
+    * @param callback the callback
+    * @return [[Server]]
+    */
+  def setTimeout(msecs: Double, callback: js.Function): this.type = js.native
 
 }
 
 /**
-  * Server Singleton
+  * Server Companion
   * @author lawrence.daniels@gmail.com
   */
-@js.native
-@JSImport("net", "Server")
-object Server extends js.Object
+object Server extends {
+
+  /**
+    * Server Events
+    * @param server the given [[Server]]
+    */
+  implicit class ServerEvents(val server: Server) extends AnyVal {
+
+    /**
+      * Emitted when the server closes. Note that if connections exist, this event is not emitted until all
+      * connections are ended.
+      */
+    @inline
+    def onClose(handler: () => Any): server.type = server.on("close", handler)
+
+    /**
+      * Emitted when a new connection is made. socket is an instance of net.Socket.
+      * - <net.Socket> The connection object
+      */
+    @inline
+    def onConnection(handler: Socket => Any): server.type = server.on("connection", handler)
+
+    /**
+      * Emitted when an error occurs. The 'close' event will be called directly following this event.
+      * See example in discussion of server.listen.
+      * - <Error>
+      */
+    @inline
+    def onError(handler: SystemError => Any): server.type = server.on("error", handler)
+
+    /**
+      * Emitted when the server has been bound after calling server.listen.
+      */
+    @inline
+    def onListening(handler: () => Any): server.type = server.on("listening", handler)
+
+  }
+
+}
+
+/**
+  * Server Options
+  * @author lawrence.daniels@gmail.com
+  */
+@ScalaJSDefined
+class ServerOptions(val allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
+                    val pauseOnConnect: js.UndefOr[Boolean] = js.undefined)
+  extends js.Object

@@ -10,15 +10,7 @@ import scala.scalajs.js.annotation.JSImport
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-@JSImport("path", JSImport.Namespace)
-object Path extends Path
-
-/**
-  * Path Type Definition
-  * @author lawrence.daniels@gmail.com
-  */
-@js.native
-class Path extends js.Object {
+trait Path extends js.Object {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -143,3 +135,11 @@ class Path extends js.Object {
   def resolve(args: String*): String = js.native
 
 }
+
+/**
+  * Path Singleton
+  * @author lawrence.daniels@gmail.com
+  */
+@js.native
+@JSImport("path", JSImport.Namespace)
+object Path extends Path

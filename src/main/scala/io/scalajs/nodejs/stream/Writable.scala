@@ -7,6 +7,7 @@ import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Promise
 import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
 import scala.scalajs.js.|
 
 /**
@@ -44,7 +45,7 @@ trait Writable extends IEventEmitter {
     * @param callback A callback function (optionally with an error argument) to be invoked when processing is
     *                 complete for the supplied chunks.
     */
-  def _writev(chunks: js.Array[Buffer | String], callback: js.Function1[Error, Any]): Unit = js.native
+  def _writev(chunks: js.Array[Chunk], callback: js.Function1[Error, Any]): Unit = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -62,11 +63,19 @@ trait Writable extends IEventEmitter {
     * is attached as a listener on the 'finish' event.
     * Calling stream.write() after calling stream.end() will raise an error.
     * @param chunk    The data to write (<String> | <Buffer>)
-    * @param encoding The encoding, if chunk is a String
     * @param callback the Callback for when this chunk of data is flushed
     * @example writable.end([chunk][, encoding][, callback])
     */
-  def end(chunk: Buffer | String, encoding: String, callback: js.Function): Unit = js.native
+  def end(chunk: Buffer, callback: js.Function1[Error, Any]): Unit = js.native
+
+  /**
+    * Call this method when no more data will be written to the stream. If supplied, the callback
+    * is attached as a listener on the 'finish' event.
+    * Calling stream.write() after calling stream.end() will raise an error.
+    * @param chunk The data to write (<String> | <Buffer>)
+    * @example writable.end([chunk][, encoding][, callback])
+    */
+  def end(chunk: Buffer): Unit = js.native
 
   /**
     * Call this method when no more data will be written to the stream. If supplied, the callback
@@ -76,17 +85,26 @@ trait Writable extends IEventEmitter {
     * @param encoding The encoding, if chunk is a String
     * @example writable.end([chunk][, encoding][, callback])
     */
-  def end(chunk: Buffer | String, encoding: String = js.native): Unit = js.native
+  def end(chunk: String, encoding: String, callback: js.Function1[Error, Any]): Unit = js.native
 
   /**
     * Call this method when no more data will be written to the stream. If supplied, the callback
     * is attached as a listener on the 'finish' event.
     * Calling stream.write() after calling stream.end() will raise an error.
     * @param chunk    The data to write (<String> | <Buffer>)
-    * @param callback the Callback for when this chunk of data is flushed
+    * @param encoding The encoding, if chunk is a String
     * @example writable.end([chunk][, encoding][, callback])
     */
-  def end(chunk: Buffer | String, callback: js.Function): Unit = js.native
+  def end(chunk: String, encoding: String): Unit = js.native
+
+  /**
+    * Call this method when no more data will be written to the stream. If supplied, the callback
+    * is attached as a listener on the 'finish' event.
+    * Calling stream.write() after calling stream.end() will raise an error.
+    * @param chunk The data to write (<String> | <Buffer>)
+    * @example writable.end([chunk][, encoding][, callback])
+    */
+  def end(chunk: String, callback: js.Function1[Error, Any]): Unit = js.native
 
   /**
     * Call this method when no more data will be written to the stream. If supplied, the callback
@@ -95,7 +113,7 @@ trait Writable extends IEventEmitter {
     * @param callback the Callback for when this chunk of data is flushed
     * @example writable.end([chunk][, encoding][, callback])
     */
-  def end(callback: js.Function): Unit = js.native
+  def end(callback: js.Function1[Error, Any]): Unit = js.native
 
   /**
     * Call this method when no more data will be written to the stream. If supplied, the callback
@@ -125,16 +143,24 @@ trait Writable extends IEventEmitter {
     * @return true, if the data was handled completely
     * @example writable.write(chunk[, encoding][, callback])
     */
-  def write(chunk: Buffer | String, encoding: String, callback: js.Function): Boolean = js.native
+  def write(chunk: String, encoding: String, callback: js.Function1[Error, Any]): Boolean = js.native
 
   /**
     * Flush all data, buffered since stream.cork() call.
     * @param chunk    The data to write (<String> | <Buffer>)
-    * @param encoding The encoding, if chunk is a String
+    * @param callback the Callback for when this chunk of data is flushed
     * @return true, if the data was handled completely
     * @example writable.write(chunk[, encoding][, callback])
     */
-  def write(chunk: Buffer | String, encoding: String = null): Boolean = js.native
+  def write(chunk: String, callback: js.Function1[Error, Any]): Boolean = js.native
+
+  /**
+    * Flush all data, buffered since stream.cork() call.
+    * @param chunk The data to write (<String> | <Buffer>)
+    * @return true, if the data was handled completely
+    * @example writable.write(chunk[, encoding][, callback])
+    */
+  def write(chunk: Buffer, callback: js.Function1[Error, Any]): Boolean = js.native
 
 }
 
@@ -145,39 +171,24 @@ trait Writable extends IEventEmitter {
 object Writable {
 
   /**
-    * Writable Extensions
+    * Writable Events
     * @author lawrence.daniels@gmail.com
     */
-  implicit class WritableExtensions(val writable: Writable) extends AnyVal {
-
-    @inline
-    def endFuture(data: Buffer | String, encoding: String = null): Promise[Unit] =
-      promiseWithError0[Error](writable.end(data, encoding, _))
-
-    @inline
-    def endFuture(): Promise[Unit] = promiseWithError0[Error](writable.end(_))
-
-    @inline
-    def writeFuture(data: Buffer | String, encoding: String = null): Promise[Unit] =
-      promiseWithError0[Error](writable.write(data, encoding, _))
-
-    /////////////////////////////////////////////////////////////////////////////////
-    //      Events
-    /////////////////////////////////////////////////////////////////////////////////
+  implicit class WritableEvents(val writable: Writable) extends AnyVal {
 
     /**
       * Emitted when the stream and any of its underlying resources (a file descriptor, for example) have been closed.
       * The event indicates that no more events will be emitted, and no further computation will occur.
       */
     @inline
-    def onClose(listener: js.Function): writable.type = writable.on("close", listener)
+    def onClose(listener: () => Any): writable.type = writable.on("close", listener)
 
     /**
       * If a stream.write(chunk) call returns false, then the 'drain' event will indicate when it is appropriate
       * to begin writing more data to the stream.
       */
     @inline
-    def onDrain(listener: js.Function): writable.type = writable.on("drain", listener)
+    def onDrain(listener: () => Any): writable.type = writable.on("drain", listener)
 
     /**
       * Emitted if there was an error when writing or piping data.
@@ -197,15 +208,51 @@ object Writable {
       * its set of destinations.
       */
     @inline
-    def onPipe(listener: js.Function): writable.type = writable.on("pipe", listener)
+    def onPipe(listener: Readable => Any): writable.type = writable.on("pipe", listener)
 
     /**
       * This is emitted whenever the stream.unpipe() method is called on a readable stream, removing this writable
       * from its set of destinations.
       */
     @inline
-    def onUnpipe(listener: js.Function): writable.type = writable.on("unpipe", listener)
+    def onUnpipe(listener: Readable => Any): writable.type = writable.on("unpipe", listener)
+
+  }
+
+  /**
+    * Writable Extensions
+    * @author lawrence.daniels@gmail.com
+    */
+  implicit class WritableExtensions(val writable: Writable) extends AnyVal {
+
+    @inline
+    def endAsync(chunk: Buffer): Promise[Unit] = promiseWithError0[Error](writable.end(chunk, _))
+
+    @inline
+    def endAsync(chunk: String, encoding: String = null): Promise[Unit] = {
+      promiseWithError0[Error](writable.end(chunk, encoding, _))
+    }
+
+    @inline
+    def endAsync(): Promise[Unit] = promiseWithError0[Error](writable.end)
+
+    @inline
+    def writeAsync(chunk: Buffer): Promise[Unit] = promiseWithError0[Error](writable.write(chunk, _))
+
+    @inline
+    def writeAsync(chunk: String, encoding: String = null): Promise[Unit] = {
+      promiseWithError0[Error](writable.write(chunk, encoding, _))
+    }
 
   }
 
 }
+
+/**
+  * Represents a chunk of data
+  * @param chunk    the chunk of data
+  * @param encoding the data's optional encoding
+  */
+@ScalaJSDefined
+class Chunk(val chunk: Buffer | String, val encoding: js.UndefOr[String] = js.undefined)
+  extends js.Object

@@ -49,14 +49,14 @@ package object http {
       */
     @inline
     def requestFuture(options: RequestOptions): Promise[ServerResponse] =
-    promiseWithError1[js.Error, ServerResponse](http.request(options, _))
+    promiseWithError1[SystemError, ServerResponse](http.request(options, _))
 
     /**
       * @see [[Http.request()]]
       */
     @inline
     def requestFuture(url: String): Promise[ServerResponse] =
-    promiseWithError1[js.Error, ServerResponse](http.request(url, _))
+    promiseWithError1[SystemError, ServerResponse](http.request(url, _))
 
   }
 
@@ -92,19 +92,19 @@ package object http {
       * @example server.on("clientError", function (exception, socket) { ... })
       */
     @inline
-    def onClientError(callback: (js.Error, Socket) => Any): server.type = server.on("clientError", callback)
+    def onClientError(callback: (SystemError, Socket) => Any): server.type = server.on("clientError", callback)
 
     @inline
     def onConnect(callback: js.Function): server.type = server.on("connect", callback)
 
     @inline
-    def closeFuture(): Promise[Unit] = promiseWithError0[js.Error](server.close)
+    def closeFuture(): Promise[Unit] = promiseWithError0[SystemError](server.close)
 
     @inline
-    def getConnectionsFuture: Promise[Int] = promiseWithError1[js.Error, Int](server.getConnections)
+    def getConnectionsFuture: Promise[Int] = promiseWithError1[SystemError, Int](server.getConnections)
 
     @inline
-    def listenFuture(options: ListenerOptions): Promise[Unit] = promiseWithError0[js.Error](server.listen(options, _))
+    def listenFuture(options: ListenerOptions): Promise[Unit] = promiseWithError0[SystemError](server.listen(options, _))
 
     @inline
     def onRequest(callback: js.Function): server.type = server.on("request", callback)

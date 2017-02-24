@@ -6,6 +6,7 @@ import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
 import scala.scalajs.js.|
 
 /**
@@ -63,7 +64,7 @@ trait Readable extends IEventEmitter {
     * Multiple destinations can be piped to safely.
     * @example readable.pipe(destination[, options])
     */
-  def pipe(destination: Writable, options: RawOptions = js.native): this.type = js.native
+  def pipe(destination: Writable, options: ReadablePipeOptions | RawOptions = js.native): this.type = js.native
 
   /**
     * When chunk is a Buffer or string, the chunk of data will be added to the internal queue for users
@@ -172,10 +173,54 @@ trait Readable extends IEventEmitter {
 object Readable {
 
   /**
-    * Reader Extensions
-    * @param readable the given [[stream.Readable]]
+    * Readable Events
+    * @author lawrence.daniels@gmail.com
     */
-  implicit class ReaderExtensions(val readable: stream.Readable) extends AnyVal {
+  implicit class ReadableEvents(val readable: Readable) extends AnyVal {
+
+    /**
+      * Emitted when the stream and any of its underlying resources (a file descriptor, for example) have been closed.
+      * The event indicates that no more events will be emitted, and no further computation will occur.
+      */
+    @inline
+    def onClose(listener: () => Any): readable.type = readable.on("close", listener)
+
+    /**
+      * Attaching a 'data' event listener to a stream that has not been explicitly paused will switch the stream into
+      * flowing mode. Data will then be passed as soon as it is available.
+      */
+    @inline
+    def onData(listener: Buffer | String | Any => Any): readable.type = readable.on("data", listener)
+
+    /**
+      * This event fires when there will be no more data to read. Note that the 'end' event will not fire unless the
+      * data is completely consumed. This can be done by switching into flowing mode, or by calling stream.read()
+      * repeatedly until you get to the end.
+      */
+    @inline
+    def onEnd(listener: () => Any): readable.type = readable.on("end", listener)
+
+    /**
+      * Emitted if there was an error when writing or piping data.
+      */
+    @inline
+    def onError(listener: Error => Any): readable.type = readable.on("error", listener)
+
+    /**
+      * When a chunk of data can be read from the stream, it will emit a 'readable' event. In some cases, listening
+      * for a 'readable' event will cause some data to be read into the internal buffer from the underlying system,
+      * if it hadn't already.
+      */
+    @inline
+    def onReadable(listener: () => Any): readable.type = readable.on("readable", listener)
+
+  }
+
+  /**
+    * Reader Extensions
+    * @param readable the given [[Readable]]
+    */
+  implicit class ReaderExtensions(val readable: Readable) extends AnyVal {
 
     @inline
     def iterator[T]: scala.Iterator[T] = new scala.Iterator[T] {
@@ -190,60 +235,20 @@ object Readable {
       }
     }
 
-  }
-
-  /**
-    * Readable Events
-    * @author lawrence.daniels@gmail.com
-    */
-  implicit class ReadableEvents(val readable: Readable) extends AnyVal {
-
     @inline
     def readOption[A]() = Option(readable.read[A]())
-
-    /////////////////////////////////////////////////////////////////////////////////
-    //      Events
-    /////////////////////////////////////////////////////////////////////////////////
-
-    /**
-      * Emitted when the stream and any of its underlying resources (a file descriptor, for example) have been closed.
-      * The event indicates that no more events will be emitted, and no further computation will occur.
-      */
-    @inline
-    def onClose[A](listener: () => A): readable.type = readable.on("close", listener)
-
-    /**
-      * Attaching a 'data' event listener to a stream that has not been explicitly paused will switch the stream into
-      * flowing mode. Data will then be passed as soon as it is available.
-      */
-    @inline
-    def onData[A](listener: Buffer | String | js.Any => A): readable.type = readable.on("data", listener)
-
-    /**
-      * This event fires when there will be no more data to read. Note that the 'end' event will not fire unless the
-      * data is completely consumed. This can be done by switching into flowing mode, or by calling stream.read()
-      * repeatedly until you get to the end.
-      */
-    @inline
-    def onEnd[A](listener: () => A): readable.type = readable.on("end", listener)
-
-    /**
-      * Emitted if there was an error when writing or piping data.
-      */
-    @inline
-    def onError[A](listener: Error => A): readable.type = readable.on("error", listener)
-
-    /**
-      * When a chunk of data can be read from the stream, it will emit a 'readable' event. In some cases, listening
-      * for a 'readable' event will cause some data to be read into the internal buffer from the underlying system,
-      * if it hadn't already.
-      */
-    @inline
-    def onReadable[A](listener: () => A): readable.type = readable.on("readable", listener)
 
   }
 
 }
+
+/**
+  * Readable Pipe Options
+  * @param end End the writer when the reader ends. Defaults to true.
+  */
+@ScalaJSDefined
+class ReadablePipeOptions(val end: js.UndefOr[Boolean] = js.undefined)
+  extends js.Object
 
 /**
   * Readable State

@@ -13,7 +13,21 @@ import scala.scalajs.js.|
   */
 package object dns {
 
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Type Definitions
+  /////////////////////////////////////////////////////////////////////////////////
+
+  type DnsError = SystemError
+
+  type DnsCallback1[A] = js.Function2[DnsError, A, Any]
+
+  type DnsCallback2[A, B] = js.Function3[DnsError, A, B, Any]
+
   type RRType = String
+
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Constants
+  /////////////////////////////////////////////////////////////////////////////////
 
   // IPV4 addresses, default
   val RRTYPE_A: RRType = "A"
@@ -85,7 +99,7 @@ package object dns {
       */
     @inline
     def resolveAsync[T](hostname: String, rrtype: RRType = null): Promise[T] = {
-      promiseWithError1[DnsError, T](dns.resolve(hostname, rrtype, _))
+      promiseWithError1[DnsError, T](dns.resolve[T](hostname, rrtype, _))
     }
 
     /**

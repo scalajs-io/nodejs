@@ -1,5 +1,6 @@
 package io.scalajs.nodejs
 
+import io.scalajs.nodejs
 import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Promise
@@ -138,7 +139,7 @@ package object cluster {
       * @param callback the error handler
       */
     @inline
-    def onError(callback: js.Error => Any): worker.type = worker.on("error", callback)
+    def onError(callback: nodejs.Error => Any): worker.type = worker.on("error", callback)
 
     /**
       * Similar to the cluster.on('exit') event, but specific to this worker.

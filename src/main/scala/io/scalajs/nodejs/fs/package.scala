@@ -17,9 +17,17 @@ package object fs {
   //      Type Definitions
   /////////////////////////////////////////////////////////////////////////////////
 
+  type FileIOError = SystemError
+
   type FileMode = Integer
 
   type FileType = Int
+
+  type FsCallback0 = js.Function1[FileIOError, Any]
+
+  type FsCallback1[A] = js.Function2[FileIOError, A, Any]
+
+  type FsCallback2[A, B] = js.Function3[FileIOError, A, B, Any]
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Implicit conversions and classes
@@ -36,7 +44,7 @@ package object fs {
       promiseWithError0[FileIOError](fs.access(path, mode, _))
 
     @inline
-    def appendFileAsync(file: Buffer | String, data: Buffer | String, options: AppendOptions): Promise[Unit] =
+    def appendFileAsync(file: Buffer | String, data: Buffer | String, options: FileAppendOptions): Promise[Unit] =
       promiseWithError0[FileIOError](fs.appendFile(file, data, options, _))
 
     @inline

@@ -1,4 +1,4 @@
-package io.scalajs.nodejs.timer
+package io.scalajs.nodejs.timers
 
 import scala.scalajs.js
 

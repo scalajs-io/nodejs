@@ -283,7 +283,7 @@ trait Process extends IEventEmitter {
     * additional I/O events (including timers) fire in subsequent ticks of the event loop.
     * @example process.nextTick(callback[, arg][, ...])
     */
-  def nextTick(callback: js.Function, args: js.Any*): Unit = js.native
+  def nextTick(callback: js.Function0[Any], args: js.Any*): Unit = js.native
 
   /**
     * TODO find documentation

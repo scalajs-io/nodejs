@@ -40,7 +40,7 @@ trait WriteStream extends Writable {
     * Undocumented method
     * @see https://github.com/nodejs/node-v0.x-archive/blob/cfcb1de130867197cbc9c6012b7e84e08e53d032/lib/fs.js#L1597-L1620
     */
-  def close[A](callback: js.Function1[Unit, A]): Unit = js.native
+  def close(callback: js.Function1[Unit, Any]): Unit = js.native
 
 }
 
@@ -49,17 +49,6 @@ trait WriteStream extends Writable {
   * @author lawrence.daniels@gmail.com
   */
 object WriteStream {
-
-  /**
-    * Write Stream Extensions
-    * @author lawrence.daniels@gmail.com
-    */
-  implicit class WriteStreamExtensions(val stream: WriteStream) extends AnyVal {
-
-    @inline
-    def closeAsync: Promise[Unit] = promiseCallback1[Unit](stream.close)
-
-  }
 
   /**
     * Write Stream Events
@@ -73,7 +62,7 @@ object WriteStream {
       * @since 0.1.93
       */
     @inline
-    def onClose[A](listener: () => A): stream.type = stream.on("close", listener)
+    def onClose(listener: () => Any): stream.type = stream.on("close", listener)
 
     /**
       * Emitted when the WriteStream's file is opened.
@@ -84,7 +73,18 @@ object WriteStream {
       * @since 0.1.93
       */
     @inline
-    def onOpen[A](listener: FileDescriptor => A): stream.type = stream.on("open", listener)
+    def onOpen(listener: FileDescriptor => Any): stream.type = stream.on("open", listener)
+
+  }
+
+  /**
+    * Write Stream Extensions
+    * @author lawrence.daniels@gmail.com
+    */
+  implicit class WriteStreamExtensions(val stream: WriteStream) extends AnyVal {
+
+    @inline
+    def closeAsync: Promise[Unit] = promiseCallback1[Unit](stream.close)
 
   }
 

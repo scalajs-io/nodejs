@@ -1,7 +1,7 @@
 package io.scalajs.nodejs.crypto
 
 import io.scalajs.nodejs.buffer.Buffer
-import io.scalajs.nodejs.stream.Duplex
+import io.scalajs.nodejs.stream.IDuplex
 
 import scala.scalajs.js
 
@@ -17,7 +17,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Decipher extends Duplex {
+trait Decipher extends IDuplex {
 
   /**
     * Returns any remaining deciphered contents. If output_encoding parameter is one of 'binary', 'base64' or 'hex',

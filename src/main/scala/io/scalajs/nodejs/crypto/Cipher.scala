@@ -1,7 +1,7 @@
 package io.scalajs.nodejs.crypto
 
 import io.scalajs.nodejs.buffer.Buffer
-import io.scalajs.nodejs.stream.Duplex
+import io.scalajs.nodejs.stream.IDuplex
 
 import scala.scalajs.js
 
@@ -17,7 +17,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Cipher extends Duplex {
+trait Cipher extends IDuplex {
 
   /**
     * Returns any remaining enciphered contents. If output_encoding parameter is one of 'binary', 'base64' or 'hex',
@@ -27,7 +27,7 @@ trait Cipher extends Duplex {
     * Attempts to call cipher.final() more than once will result in an error being thrown.
     * @example cipher.final([output_encoding])
     */
-  def `final`(output_encoding: String ): String = js.native
+  def `final`(output_encoding: String): String = js.native
 
   /**
     * Returns any remaining enciphered contents. If output_encoding parameter is one of 'binary', 'base64' or 'hex',

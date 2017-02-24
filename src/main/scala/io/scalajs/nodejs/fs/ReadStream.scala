@@ -1,9 +1,11 @@
-package io.scalajs.nodejs.fs
+package io.scalajs.nodejs
+package fs
 
-import io.scalajs.nodejs
-import io.scalajs.nodejs.FileDescriptor
 import io.scalajs.nodejs.buffer.Buffer
+import io.scalajs.nodejs.stream.Readable
+import io.scalajs.util.PromiseHelper.promiseCallback1
 
+import scala.concurrent.Promise
 import scala.scalajs.js
 import scala.scalajs.js.|
 
@@ -12,14 +14,33 @@ import scala.scalajs.js.|
   * @see https://nodejs.org/api/stream.html#stream_class_stream_readable
   */
 @js.native
-trait ReadStream extends nodejs.stream.Readable {
+trait ReadStream extends Readable {
+
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Properties
+  /////////////////////////////////////////////////////////////////////////////////
+
+  /**
+    * The number of bytes read so far.
+    */
+  def bytesRead: Double = js.native
 
   /**
     * The path to the file the stream is reading from as specified in the first argument to fs.createReadStream().
     * If path is passed as a string, then readStream.path will be a string. If path is passed as a Buffer, then
     * readStream.path will be a Buffer.
     */
-  def path: String | Buffer = js.native
+  def path: Buffer | String = js.native
+
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Methods
+  /////////////////////////////////////////////////////////////////////////////////
+
+  /**
+    * Undocumented method
+    * @see https://github.com/nodejs/node-v0.x-archive/blob/cfcb1de130867197cbc9c6012b7e84e08e53d032/lib/fs.js#L1597-L1620
+    */
+  def close[A](callback: js.Function1[Unit, A]): Unit = js.native
 
 }
 
@@ -35,13 +56,24 @@ object ReadStream {
     */
   implicit class ReadStreamExtensions(val stream: ReadStream) extends AnyVal {
 
+    @inline
+    def closeAsync: Promise[Unit] = promiseCallback1[Unit](stream.close)
+
+  }
+
+  /**
+    * Read Stream Events
+    * @author lawrence.daniels@gmail.com
+    */
+  implicit class ReadStreamEvents(val stream: ReadStream) extends AnyVal {
+
     /**
       * Emitted when the ReadStream's underlying file descriptor has been closed using the fs.close() method.
       * @param listener the event handler
       * @since 0.1.93
       */
     @inline
-    def onClose(listener: () => Any): stream.type = stream.on("close", listener)
+    def onClose[A](listener: () => A): stream.type = stream.on("close", listener)
 
     /**
       * Emitted when the ReadStream's file is opened.
@@ -52,7 +84,7 @@ object ReadStream {
       * @since 0.1.93
       */
     @inline
-    def onOpen(listener: FileDescriptor => Any): stream.type = stream.on("open", listener)
+    def onOpen[A](listener: FileDescriptor => A): stream.type = stream.on("open", listener)
 
   }
 

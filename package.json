@@ -1,6 +1,6 @@
 {
   "name": "nodejs-sfs",
-  "version": "0.3.0.5",
+  "version": "0.3.05",
   "private": true,
   "dependencies": {
     "source-map": "^0.5.6"

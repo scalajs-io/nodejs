@@ -2,7 +2,7 @@ package io.scalajs.nodejs.http
 
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.events.IEventEmitter
-import io.scalajs.nodejs.stream.Duplex
+import io.scalajs.nodejs.stream.IDuplex
 
 import scala.scalajs.js
 
@@ -12,7 +12,7 @@ import scala.scalajs.js
   * @see [[https://nodejs.org/api/http.html#http_class_http_serverresponse]]
   */
 @js.native
-trait ServerResponse extends Duplex with IEventEmitter  {
+trait ServerResponse extends IEventEmitter with IDuplex {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties

@@ -1,8 +1,6 @@
 package io.scalajs.nodejs.http
 
 import io.scalajs.nodejs.net.Socket
-import io.scalajs.nodejs.stream
-import io.scalajs.nodejs.net.Socket
 import io.scalajs.nodejs.stream.Readable
 
 import scala.concurrent.duration.FiniteDuration
@@ -111,10 +109,10 @@ object IncomingMessage {
   implicit class IncomingMessageExtensions(val message: IncomingMessage) extends AnyVal {
 
     @inline
-    def onClose(callback: js.Function) = message.on("close", callback)
+    def onClose(callback: js.Function): message.type = message.on("close", callback)
 
     @inline
-    def setTimeout(duration: FiniteDuration, callback: js.Function) =
+    def setTimeout(duration: FiniteDuration, callback: js.Function): Unit =
       message.setTimeout(duration.toMillis.toDouble, callback)
 
   }

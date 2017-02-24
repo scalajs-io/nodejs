@@ -1,9 +1,9 @@
-package io.scalajs.nodejs.stream
+package io.scalajs.nodejs
+package stream
 
 import io.scalajs.RawOptions
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.events.IEventEmitter
-import io.scalajs.nodejs.{Error, stream}
 
 import scala.scalajs.js
 import scala.scalajs.js.|
@@ -17,7 +17,27 @@ import scala.scalajs.js.|
 @js.native
 trait Readable extends IEventEmitter {
 
-  var _read: js.Function0[Any] = js.native
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Properties
+  /////////////////////////////////////////////////////////////////////////////////
+
+  def _readableState: ReadableState = js.native
+
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Internal Methods
+  /////////////////////////////////////////////////////////////////////////////////
+
+  /**
+    * All Readable stream implementations must provide an implementation of the readable._read() method
+    * to fetch data from the underlying resource.
+    *
+    * When readable._read() is called, if data is available from the resource, the implementation should
+    * begin pushing that data into the read queue using the this.push(dataChunk) method. _read() should
+    * continue reading from the resource and pushing data until readable.push() returns false. Only when _read()
+    * is called again after it has stopped should it resume pushing additional data onto the queue.
+    * @param size the number of bytes to read asynchronously
+    */
+  def _read(size: Int): Unit = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -46,9 +66,35 @@ trait Readable extends IEventEmitter {
   def pipe(destination: Writable, options: RawOptions = js.native): this.type = js.native
 
   /**
-    * TODO find documentation for this method
+    * When chunk is a Buffer or string, the chunk of data will be added to the internal queue for users
+    * of the stream to consume. Passing chunk as null signals the end of the stream (EOF), after which
+    * no more data can be written.
+    *
+    * When the Readable is operating in paused mode, the data added with readable.push() can be read out
+    * by calling the readable.read() method when the 'readable' event is emitted.
+    *
+    * When the Readable is operating in flowing mode, the data added with readable.push() will be delivered
+    * by emitting a 'data' event.
+    * @param chunk    the chunk of data to push into the read queue
+    * @param encoding the encoding of String chunks. Must be a valid Buffer encoding, such as 'utf8' or 'ascii'
+    * @return true if additional chunks of data may continued to be pushed; false otherwise.
     */
-  def push(value: js.Any): this.type = js.native
+  def push(chunk: String, encoding: String = js.native): Boolean = js.native
+
+  /**
+    * When chunk is a Buffer or string, the chunk of data will be added to the internal queue for users
+    * of the stream to consume. Passing chunk as null signals the end of the stream (EOF), after which
+    * no more data can be written.
+    *
+    * When the Readable is operating in paused mode, the data added with readable.push() can be read out
+    * by calling the readable.read() method when the 'readable' event is emitted.
+    *
+    * When the Readable is operating in flowing mode, the data added with readable.push() will be delivered
+    * by emitting a 'data' event.
+    * @param chunk the chunk of data to push into the read queue
+    * @return true if additional chunks of data may continued to be pushed; false otherwise.
+    */
+  def push(chunk: Buffer): Boolean = js.native
 
   /**
     * The read() method pulls some data out of the internal buffer and returns it. If there is no data available,
@@ -126,29 +172,23 @@ trait Readable extends IEventEmitter {
 object Readable {
 
   /**
-    * Stream Reading Iterator
-    * @author lawrence.daniels@gmail.com
-    */
-  class StreamReadingIterator[T](readable: stream.Readable) extends scala.Iterator[T] {
-    private var result: T = readable.read[T]()
-
-    override def hasNext: Boolean = result != null
-
-    override def next(): T = {
-      val value = result
-      result = readable.read[T]()
-      value
-    }
-  }
-
-  /**
     * Reader Extensions
     * @param readable the given [[stream.Readable]]
     */
   implicit class ReaderExtensions(val readable: stream.Readable) extends AnyVal {
 
     @inline
-    def iterator[A]: scala.Iterator[A] = new StreamReadingIterator[A](readable)
+    def iterator[T]: scala.Iterator[T] = new scala.Iterator[T] {
+      var result: T = readable.read[T]()
+
+      override def hasNext: Boolean = result != null
+
+      override def next(): T = {
+        val value = result
+        result = readable.read[T]()
+        value
+      }
+    }
 
   }
 
@@ -159,7 +199,7 @@ object Readable {
   implicit class ReadableEvents(val readable: Readable) extends AnyVal {
 
     @inline
-    def readOption[T]() = Option(readable.read[T]())
+    def readOption[A]() = Option(readable.read[A]())
 
     /////////////////////////////////////////////////////////////////////////////////
     //      Events
@@ -170,14 +210,14 @@ object Readable {
       * The event indicates that no more events will be emitted, and no further computation will occur.
       */
     @inline
-    def onClose(listener: js.Function): readable.type = readable.on("close", listener)
+    def onClose[A](listener: () => A): readable.type = readable.on("close", listener)
 
     /**
       * Attaching a 'data' event listener to a stream that has not been explicitly paused will switch the stream into
       * flowing mode. Data will then be passed as soon as it is available.
       */
     @inline
-    def onData(listener: Buffer | String => Any): readable.type = readable.on("data", listener)
+    def onData[A](listener: Buffer | String | js.Any => A): readable.type = readable.on("data", listener)
 
     /**
       * This event fires when there will be no more data to read. Note that the 'end' event will not fire unless the
@@ -185,13 +225,13 @@ object Readable {
       * repeatedly until you get to the end.
       */
     @inline
-    def onEnd(listener: () => Any): readable.type = readable.on("end", listener)
+    def onEnd[A](listener: () => A): readable.type = readable.on("end", listener)
 
     /**
       * Emitted if there was an error when writing or piping data.
       */
     @inline
-    def onError(listener: Error => Any): readable.type = readable.on("error", listener)
+    def onError[A](listener: Error => A): readable.type = readable.on("error", listener)
 
     /**
       * When a chunk of data can be read from the stream, it will emit a 'readable' event. In some cases, listening
@@ -199,8 +239,17 @@ object Readable {
       * if it hadn't already.
       */
     @inline
-    def onReadable(listener: js.Function): readable.type = readable.on("readable", listener)
+    def onReadable[A](listener: () => A): readable.type = readable.on("readable", listener)
 
   }
 
+}
+
+/**
+  * Readable State
+  * @author lawrence.daniels@gmail.com
+  */
+@js.native
+trait ReadableState extends js.Object {
+  var flowing: java.lang.Boolean = js.native
 }

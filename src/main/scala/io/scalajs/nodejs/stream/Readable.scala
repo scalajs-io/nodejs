@@ -6,7 +6,6 @@ import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
-import scala.scalajs.js.|
 
 /**
   * The Readable stream interface is the abstraction for a source of data that you are reading from.
@@ -210,14 +209,14 @@ object Readable {
       * The event indicates that no more events will be emitted, and no further computation will occur.
       */
     @inline
-    def onClose[A](listener: () => A): readable.type = readable.on("close", listener)
+    def onClose(listener: () => Any): readable.type = readable.on("close", listener)
 
     /**
       * Attaching a 'data' event listener to a stream that has not been explicitly paused will switch the stream into
       * flowing mode. Data will then be passed as soon as it is available.
       */
     @inline
-    def onData[A](listener: Buffer | String | js.Any => A): readable.type = readable.on("data", listener)
+    def onData[A](listener: A => Any): readable.type = readable.on("data", listener)
 
     /**
       * This event fires when there will be no more data to read. Note that the 'end' event will not fire unless the
@@ -225,13 +224,13 @@ object Readable {
       * repeatedly until you get to the end.
       */
     @inline
-    def onEnd[A](listener: () => A): readable.type = readable.on("end", listener)
+    def onEnd(listener: () => Any): readable.type = readable.on("end", listener)
 
     /**
       * Emitted if there was an error when writing or piping data.
       */
     @inline
-    def onError[A](listener: Error => A): readable.type = readable.on("error", listener)
+    def onError(listener: Error => Any): readable.type = readable.on("error", listener)
 
     /**
       * When a chunk of data can be read from the stream, it will emit a 'readable' event. In some cases, listening
@@ -239,7 +238,7 @@ object Readable {
       * if it hadn't already.
       */
     @inline
-    def onReadable[A](listener: () => A): readable.type = readable.on("readable", listener)
+    def onReadable(listener: () => Any): readable.type = readable.on("readable", listener)
 
   }
 

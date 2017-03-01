@@ -190,7 +190,7 @@ object Readable {
       * flowing mode. Data will then be passed as soon as it is available.
       */
     @inline
-    def onData(listener: Buffer | String | Any => Any): readable.type = readable.on("data", listener)
+    def onData[A](listener: A => Any): readable.type = readable.on("data", listener)
 
     /**
       * This event fires when there will be no more data to read. Note that the 'end' event will not fire unless the

@@ -77,7 +77,7 @@ trait Process extends IEventEmitter {
     * Specifying a code to process.exit(code) will override any previous setting of process.exitCode.
     * @example process.exitCode
     */
-  def exitCode: Int = js.native
+  var exitCode: Int = js.native
 
   /**
     * TODO find documentation for this property

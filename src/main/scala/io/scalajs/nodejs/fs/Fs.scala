@@ -1003,6 +1003,102 @@ trait Fs extends IEventEmitter {
   def watchFile(filename: Buffer | String, listener: FsCallback2[Stats, Stats]): Unit = js.native
 
   /**
+    * Write buffer to the file specified by fd.
+    * <p><b>Note</b>: that it is unsafe to use fs.write multiple times on the same file without waiting for the callback.
+    * For this scenario, fs.createWriteStream is strongly recommended.</p>
+    * <p>On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the
+    * position argument and always appends the data to the end of the file.</p>
+    * @param fd       the file descriptor
+    * @param buffer   the buffer containing the data to write
+    * @param offset   determines the part of the buffer to be written, and length is an integer specifying
+    *                 the number of bytes to write.
+    * @param length   the optional length of the data to write
+    * @param position refers to the offset from the beginning of the file where this data should be written.
+    *                 If typeof position !== 'number', the data will be written at the current position. See pwrite(2).
+    * @param callback will be given three arguments (err, written, buffer) where written specifies how many
+    *                 bytes were written from buffer.
+    * @example {{{ fs.write(fd, buffer[, offset[, length[, position]]], callback) }}}
+    **/
+  def write(fd: FileDescriptor,
+            buffer: Buffer | js.Any,
+            offset: Int = js.native,
+            length: Int = js.native,
+            position: Int = js.native,
+            callback: js.Function3[FileIOError, Int, Buffer, Any]): Unit = js.native
+
+  /**
+    * Write buffer to the file specified by fd.
+    * <p><b>Note</b>: that it is unsafe to use fs.write multiple times on the same file without waiting for the callback.
+    * For this scenario, fs.createWriteStream is strongly recommended.</p>
+    * <p>On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the
+    * position argument and always appends the data to the end of the file.</p>
+    * @param fd       the file descriptor
+    * @param buffer   the buffer containing the data to write
+    *                 If typeof position !== 'number', the data will be written at the current position. See pwrite(2).
+    * @param callback will be given three arguments (err, written, buffer) where written specifies how many
+    *                 bytes were written from buffer.
+    * @example {{{ fs.write(fd, buffer[, offset[, length[, position]]], callback) }}}
+    **/
+  def write(fd: FileDescriptor,
+            buffer: Buffer | js.Any,
+            callback: js.Function3[FileIOError, Int, Buffer, Any]): Unit = js.native
+
+  /**
+    * Write string to the file specified by fd. If string is not a string, then the value will be coerced to one.
+    * Unlike when writing buffer, the entire string must be written. No substring may be specified.
+    * This is because the byte offset of the resulting data may not be the same as the string offset.
+    * Note that it is unsafe to use fs.write multiple times on the same file without waiting for the callback.
+    * For this scenario, fs.createWriteStream is strongly recommended.
+    * On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the
+    * position argument and always appends the data to the end of the file.
+    * @param fd       the file descriptor
+    * @param string   the data to write
+    * @param position refers to the offset from the beginning of the file where this data should be written.
+    *                 If typeof position !== 'number' the data will be written at the current position. See pwrite(2).
+    * @param encoding is the expected string encoding.
+    * @param callback will receive the arguments (err, written, string) where written specifies how many bytes
+    *                 the passed string required to be written. Note that bytes written is not the same as
+    *                 string characters. See Buffer.byteLength.
+    * @example {{{ fs.write(fd, string[, position[, encoding]], callback) }}}
+    */
+  def write(fd: FileDescriptor, string: String, position: Int, encoding: String, callback: js.Function3[FileIOError, Int, String, Any]): Unit = js.native
+
+  /**
+    * Write string to the file specified by fd. If string is not a string, then the value will be coerced to one.
+    * Unlike when writing buffer, the entire string must be written. No substring may be specified.
+    * This is because the byte offset of the resulting data may not be the same as the string offset.
+    * Note that it is unsafe to use fs.write multiple times on the same file without waiting for the callback.
+    * For this scenario, fs.createWriteStream is strongly recommended.
+    * On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the
+    * position argument and always appends the data to the end of the file.
+    * @param fd       the file descriptor
+    * @param string   the data to write
+    * @param encoding is the expected string encoding.
+    * @param callback will receive the arguments (err, written, string) where written specifies how many bytes
+    *                 the passed string required to be written. Note that bytes written is not the same as
+    *                 string characters. See Buffer.byteLength.
+    * @example {{{ fs.write(fd, string[, position[, encoding]], callback) }}}
+    */
+  def write(fd: FileDescriptor, string: String, encoding: String, callback: js.Function3[FileIOError, Int, String, Any]): Unit = js.native
+
+  /**
+    * Write string to the file specified by fd. If string is not a string, then the value will be coerced to one.
+    * Unlike when writing buffer, the entire string must be written. No substring may be specified.
+    * This is because the byte offset of the resulting data may not be the same as the string offset.
+    * Note that it is unsafe to use fs.write multiple times on the same file without waiting for the callback.
+    * For this scenario, fs.createWriteStream is strongly recommended.
+    * On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the
+    * position argument and always appends the data to the end of the file.
+    * @param fd       the file descriptor
+    * @param string   the data to write
+    * @param callback will receive the arguments (err, written, string) where written specifies how many bytes
+    *                 the passed string required to be written. Note that bytes written is not the same as
+    *                 string characters. See Buffer.byteLength.
+    * @example {{{ fs.write(fd, string[, position[, encoding]], callback) }}}
+    */
+  def write(fd: FileDescriptor, string: String, callback: js.Function3[FileIOError, Int, String, Any]): Unit = js.native
+
+  /**
     * Asynchronously writes data to a file, replacing the file if it already exists. data can be a string or a buffer.
     * The encoding option is ignored if data is a buffer. It defaults to 'utf8'
     * @example fs.writeFile(file, data[, options], callback)
@@ -1083,7 +1179,7 @@ class FileOutputOptions(val flags: js.UndefOr[String] = js.undefined,
 /**
   * File Watcher Options
   * @param persistent <Boolean>
-  * @param interval <Integer>
+  * @param interval   <Integer>
   */
 @ScalaJSDefined
 class FileWatcherOptions(val persistent: js.UndefOr[Boolean] = js.undefined,

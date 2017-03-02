@@ -180,7 +180,7 @@ implemented as well, including bcrypt, cassandra-driver, kafka-node, mysql, xml2
 <a name="node_modules">
 #### Modules
 
-The following core Node.js modules (v7.6.0) have been implemented:
+The following core Node.js modules (v7.7.1) have been implemented:
 
 | Node Module           | Description                                                                     |
 |-----------------------|---------------------------------------------------------------------------------|

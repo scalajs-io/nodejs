@@ -17,17 +17,27 @@ package object fs {
   //      Type Definitions
   /////////////////////////////////////////////////////////////////////////////////
 
+  type EventType = String
+
   type FileIOError = SystemError
 
   type FileMode = Integer
 
   type FileType = Int
 
+  type Flags = String | Int
+
   type FsCallback0 = js.Function1[FileIOError, Any]
 
   type FsCallback1[A] = js.Function2[FileIOError, A, Any]
 
   type FsCallback2[A, B] = js.Function3[FileIOError, A, B, Any]
+
+  type FsCallback3[A, B, C] = js.Function4[FileIOError, A, B, C, Any]
+
+  type GID = Int
+
+  type UID = Int
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Implicit conversions and classes
@@ -86,8 +96,8 @@ package object fs {
       promiseWithError0[FileIOError](fs.rename(oldPath, newPath, _))
 
     @inline
-    def realpathAsync(path: String, options: FileEncodingOptions = null): Promise[Unit] =
-      promiseWithError0[FileIOError](fs.realpath(path, options, _))
+    def realpathAsync(path: String, options: FileEncodingOptions = null): Promise[String] =
+      promiseWithError1[FileIOError, String](fs.realpath(path, options, _))
 
     @inline
     def rmdirAsync(path: Buffer | String): Promise[Unit] = promiseWithError0[FileIOError](fs.rmdir(path, _))

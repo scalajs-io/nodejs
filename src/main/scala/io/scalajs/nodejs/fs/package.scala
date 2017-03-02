@@ -5,6 +5,7 @@ import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Promise
 import scala.scalajs.js
+import scala.scalajs.js.typedarray.Uint8Array
 import scala.scalajs.js.|
 
 /**
@@ -123,6 +124,27 @@ package object fs {
     @inline
     def watchAsync(filename: String, options: FSWatcherOptions = null): Promise[(String, String)] =
       promiseCallback2[String, String](fs.watch(filename, options, _))
+
+    @inline
+    def writeAsync(fd: FileDescriptor,
+                   buffer: Buffer | Uint8Array,
+                   offset: Integer = null,
+                   length: Integer = null,
+                   position: Integer = null): Promise[(FileType, Buffer)] = {
+      promiseWithError2[FileIOError, Int, Buffer](fs.write(fd, buffer, offset, length, position, _))
+    }
+
+    @inline
+    def writeAsync(fd: FileDescriptor, string: String, position: Int, encoding: String): Promise[(FileType, String)] =
+      promiseWithError2[FileIOError, Int, String](fs.write(fd, string, position, encoding, _))
+
+    @inline
+    def writeAsync(fd: FileDescriptor, string: String, position: Int): Promise[(FileType, String)] =
+      promiseWithError2[FileIOError, Int, String](fs.write(fd, string, position, null, _))
+
+    @inline
+    def writeAsync(fd: FileDescriptor, string: String): Promise[(FileType, String)] =
+      promiseWithError2[FileIOError, Int, String](fs.write(fd, string, _))
 
     @inline
     def writeFileAsync(file: String, data: Buffer | String, options: FileOutputOptions = null): Promise[Unit] =

@@ -1069,9 +1069,9 @@ trait Fs extends IEventEmitter {
     **/
   def write(fd: FileDescriptor,
             buffer: Buffer | Uint8Array,
-            offset: Int = js.native,
-            length: Int = js.native,
-            position: Int = js.native,
+            offset: Integer = js.native,
+            length: Integer = js.native,
+            position: Integer = js.native,
             callback: FsCallback2[Int, Buffer]): Unit = js.native
 
   /**

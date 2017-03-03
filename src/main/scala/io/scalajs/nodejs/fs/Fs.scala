@@ -49,7 +49,7 @@ trait Fs extends IEventEmitter {
   val W_OK: FileMode = js.native
 
   /**
-    * File can be executed by the calling process. This has no effect on Windows (will behave like fs.[[F_OK]]).
+    * File can be executed by the calling process. This has no effect on Windows (will behave like [[F_OK]]).
     */
   val X_OK: FileMode = js.native
 
@@ -195,9 +195,9 @@ trait Fs extends IEventEmitter {
     * <ul>
     * <li>fs.F_OK - File is visible to the calling process. This is useful for determining if a file exists,
     * but says nothing about rwx permissions. Default if no mode is specified.</li>
-    * <li>fs.[[R_OK]] - File can be read by the calling process.</li>
-    * <li>fs.[[W_OK]] - File can be written by the calling process.</li>
-    * <li>fs.[[X_OK]] - File can be executed by the calling process. This has no effect on Windows (will behave like fs.[[F_OK]]).</li>
+    * <li>[[R_OK]] - File can be read by the calling process.</li>
+    * <li>[[W_OK]] - File can be written by the calling process.</li>
+    * <li>[[X_OK]] - File can be executed by the calling process. This has no effect on Windows (will behave like [[F_OK]]).</li>
     * </ul>
     * @param path     the path (Buffer | String)
     * @param mode     the optional mode
@@ -214,9 +214,9 @@ trait Fs extends IEventEmitter {
     * <ul>
     * <li>fs.F_OK - File is visible to the calling process. This is useful for determining if a file exists,
     * but says nothing about rwx permissions. Default if no mode is specified.</li>
-    * <li>fs.[[R_OK]] - File can be read by the calling process.</li>
-    * <li>fs.[[W_OK]] - File can be written by the calling process.</li>
-    * <li>fs.[[X_OK]] - File can be executed by the calling process. This has no effect on Windows (will behave like fs.[[F_OK]]).</li>
+    * <li>[[R_OK]] - File can be read by the calling process.</li>
+    * <li>[[W_OK]] - File can be written by the calling process.</li>
+    * <li>[[X_OK]] - File can be executed by the calling process. This has no effect on Windows (will behave like [[F_OK]]).</li>
     * </ul>
     * @param path     the path (Buffer | String)
     * @param callback is a callback function that is invoked with a possible error argument. If any of the accessibility
@@ -400,13 +400,14 @@ trait Fs extends IEventEmitter {
     * @param fd       the file descriptor
     * @param callback the completion callback.
     */
-  def fstat(fd: FileDescriptor, callback: FsCallback0): Unit = js.native
+  def fstat(fd: FileDescriptor, callback: FsCallback1[Stats]): Unit = js.native
 
   /**
-    * Synchronous fstat(2). Returns an instance of fs.Stats.
+    * Synchronous fstat(2).
     * @param fd the file descriptor
+    * @return an instance of [[fs.Stats]].
     */
-  def fstatSync(fd: FileDescriptor): Unit = js.native
+  def fstatSync(fd: FileDescriptor): Stats = js.native
 
   /**
     * Asynchronous fsync(2). No arguments other than a possible exception are given to the completion callback.
@@ -424,21 +425,21 @@ trait Fs extends IEventEmitter {
 
   /**
     * Asynchronous ftruncate(2). No arguments other than a possible exception are given to the completion callback.
-    * If the file referred to by the file descriptor was larger than len bytes, only the first len bytes will be
+    * If the file referred to by the file descriptor was larger than length bytes, only the first length bytes will be
     * retained in the file.
     * @param fd       the file descriptor
-    * @param len      the desired length
+    * @param length   the desired length
     * @param callback the completion callback.
     */
-  def ftruncate(fd: FileDescriptor, len: Double, callback: FsCallback0): Unit = js.native
+  def ftruncate(fd: FileDescriptor, length: Double, callback: FsCallback0): Unit = js.native
 
   /**
     * Synchronous ftruncate(2).
-    * @param fd  the file descriptor
-    * @param len the desired length
+    * @param fd     the file descriptor
+    * @param length the desired length
     * @return undefined.
     */
-  def ftruncateSync(fd: FileDescriptor, len: Double): Unit = js.native
+  def ftruncateSync(fd: FileDescriptor, length: Double): Unit = js.native
 
   /**
     * Change the file timestamps of a file referenced by the supplied file descriptor.
@@ -516,7 +517,7 @@ trait Fs extends IEventEmitter {
   /**
     * Synchronous lstat(2).
     * @param path the path (Buffer | String)
-    * @return an instance of fs.Stats.
+    * @return an instance of [[fs.Stats]].
     */
   def lstatSync(path: Buffer | String): Stats = js.native
 
@@ -525,7 +526,7 @@ trait Fs extends IEventEmitter {
     * mode defaults to 0o777.
     * @example fs.mkdir(path[, mode], callback)
     */
-  def mkdir(path: Buffer | String, mode: FileMode | js.Any, callback: FsCallback0): Unit = js.native
+  def mkdir(path: Buffer | String, mode: FileMode, callback: FsCallback0): Unit = js.native
 
   /**
     * Asynchronous mkdir(2). No arguments other than a possible exception are given to the completion callback.
@@ -785,7 +786,7 @@ trait Fs extends IEventEmitter {
     */
   def readlink(path: Buffer | String,
                options: String | FileEncodingOptions | RawOptions,
-               callback: js.Function2[FileIOError, String, Any]): Unit = js.native
+               callback: FsCallback1[String]): Unit = js.native
 
   /**
     * Synchronous readlink(2).
@@ -864,14 +865,14 @@ trait Fs extends IEventEmitter {
   def rmdirSync(path: Buffer | String): Unit = js.native
 
   /**
-    * Asynchronous stat(2). The callback gets two arguments (err, stats) where stats is a fs.[[Stats]] object.
+    * Asynchronous stat(2). The callback gets two arguments (err, stats) where stats is a [[fs.Stats]] object.
     * See the fs.Stats section for more information.
     * @example fs.stat(path, callback)
     */
   def stat(path: Buffer | String, callback: FsCallback1[Stats]): Stats = js.native
 
   /**
-    * Synchronous stat(2). Returns an instance of fs.[[Stats]].
+    * Synchronous stat(2). Returns an instance of [[fs.Stats]].
     * @example fs.statSync(path)
     */
   def statSync(path: Buffer | String): Stats = js.native
@@ -912,7 +913,7 @@ trait Fs extends IEventEmitter {
     * @param path     the path  <String> | <Buffer>
     * @param length   the length
     * @param callback the completion callback.
-    * @example fs.truncate(path, len, callback)
+    * @example fs.truncate(path, length, callback)
     */
   def truncate(path: Buffer | FileDescriptor | String, length: Int, callback: FsCallback0): Unit = js.native
 
@@ -922,7 +923,7 @@ trait Fs extends IEventEmitter {
     * @param path   the path or file descriptor - <String> | <Buffer> | <Integer>
     * @param length the length
     * @return undefined.
-    * @example fs.truncateSync(path, len)
+    * @example fs.truncateSync(path, length)
     */
   def truncateSync(path: Buffer | FileDescriptor | String, length: Int): Unit = js.native
 
@@ -971,7 +972,7 @@ trait Fs extends IEventEmitter {
 
   /**
     * Watch for changes on filename, where filename is either a file or a directory.
-    * The returned object is a fs.[[FSWatcher]].
+    * The returned object is a [[fs.FSWatcher]].
     *
     * The second argument is optional. If options is provided as a string, it specifies the encoding.
     * Otherwise options should be passed as an object.
@@ -990,7 +991,7 @@ trait Fs extends IEventEmitter {
 
   /**
     * Watch for changes on filename, where filename is either a file or a directory.
-    * The returned object is a fs.[[FSWatcher]].
+    * The returned object is a [[fs.FSWatcher]].
     *
     * The second argument is optional. If options is provided as a string, it specifies the encoding.
     * Otherwise options should be passed as an object.
@@ -1008,7 +1009,7 @@ trait Fs extends IEventEmitter {
 
   /**
     * Watch for changes on filename, where filename is either a file or a directory.
-    * The returned object is a fs.[[FSWatcher]].
+    * The returned object is a [[fs.FSWatcher]].
     *
     * The second argument is optional. If options is provided as a string, it specifies the encoding.
     * Otherwise options should be passed as an object.

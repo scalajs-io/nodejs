@@ -23,32 +23,25 @@ import scala.scalajs.js.|
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-@JSImport("buffer", JSImport.Namespace)
-class Buffer extends js.Object {
+@JSImport("buffer", "Buffer")
+class Buffer() extends js.Object {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Constructors
   /////////////////////////////////////////////////////////////////////////////////
 
   /**
-    * new Buffer(size)
+    * @example new Buffer(size)
     */
   @inline
   def this(size: Int) = this()
 
   /**
-    * new Buffer(str, [encoding])
+    * @example new Buffer(str, [encoding])
     */
   @inline
   @deprecated("Use Buffer.from(str[, encoding]) instead.", since = "6.0.0")
-  def this(str: String, encoding: String) = this()
-
-  /**
-    * new Buffer(str, [encoding])
-    */
-  @inline
-  @deprecated("Use Buffer.from(str[, encoding]) instead.", since = "6.0.0")
-  def this(str: String) = this()
+  def this(str: String, encoding: String = js.native) = this()
 
   /**
     * @example new Buffer(array)
@@ -203,6 +196,15 @@ class Buffer extends js.Object {
     * @example buf.keys()
     */
   def keys(): Iterator[Int] = js.native
+
+  /**
+    * The largest size allowed for a single Buffer instance.
+    * On 32-bit architectures, this value is (2^30)-1 (~1GB). On 64-bit architectures, this value is (2^31)-1 (~2GB).
+    * Note that this is a property on the buffer module returned by require('buffer'), not on the Buffer global or
+    * a Buffer instance.
+    * @return the largest size allowed
+    */
+  def kMaxLength: Int = js.native
 
   /**
     * Identical to buf.indexOf(), except buf is searched from back to front instead of front to back.
@@ -522,6 +524,17 @@ class Buffer extends js.Object {
     * @example {{{ buf.toString([encoding[, start[, end]]]) }}}
     */
   def toString(encoding: String = js.native, start: Int = js.native, end: Int = js.native): String = js.native
+
+  /**
+    * Re-encodes the given Buffer instance from one character encoding to another. Returns a new Buffer instance.
+    * Throws if the fromEnc or toEnc specify invalid character encodings or if conversion from fromEnc to toEnc
+    * is not permitted.
+    * @param source  A Buffer instance
+    * @param fromEnc The current encoding
+    * @param toEnc   To target encoding
+    * @return a new [[Buffer]]
+    */
+  def transcode(source: Buffer, fromEnc: String, toEnc: String): Buffer = js.native
 
   /**
     * Creates and returns an iterator for buf values (bytes). This function is called automatically when a [[Buffer]]

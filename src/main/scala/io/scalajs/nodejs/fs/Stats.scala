@@ -16,13 +16,13 @@ trait Stats extends js.Object {
 
   def dev: Int = js.native
 
-  def mode: Int = js.native
+  def mode: FileMode = js.native
 
   def nlink: Int = js.native
 
-  def uid: Int = js.native
+  def uid: UID = js.native
 
-  def gid: Int = js.native
+  def gid: GID = js.native
 
   def rdev: Int = js.native
 

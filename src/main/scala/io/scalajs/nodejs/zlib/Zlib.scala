@@ -81,37 +81,37 @@ trait Zlib extends IEventEmitter {
     * Returns a new DeflateRaw object with an options.
     * @example zlib.createDeflateRaw(options)
     */
-  def createDeflateRaw(options: CompressionOptions | RawOptions): DeflateRaw = js.native
+  def createDeflateRaw(options: CompressionOptions | RawOptions = js.native): DeflateRaw = js.native
 
   /**
     * Returns a new Gunzip object with an options.
     * @example zlib.createGunzip(options)
     */
-  def createGunzip(options: CompressionOptions | RawOptions): Gunzip = js.native
+  def createGunzip(options: CompressionOptions | RawOptions = js.native): Gunzip = js.native
 
   /**
     * Returns a new Gzip object with an options.
     * @example zlib.createGzip(options)
     */
-  def createGzip(options: CompressionOptions | RawOptions): Gzip = js.native
+  def createGzip(options: CompressionOptions | RawOptions = js.native): Gzip = js.native
 
   /**
     * Returns a new Inflate object with an options.
     * @example zlib.createInflate(options)
     */
-  def createInflate(options: CompressionOptions | RawOptions): Inflate = js.native
+  def createInflate(options: CompressionOptions | RawOptions = js.native): Inflate = js.native
 
   /**
     * Returns a new InflateRaw object with an options.
     * @example zlib.createInflateRaw(options)
     */
-  def createInflateRaw(options: CompressionOptions | RawOptions): InflateRaw = js.native
+  def createInflateRaw(options: CompressionOptions | RawOptions = js.native): InflateRaw = js.native
 
   /**
     * Returns a new Unzip object with an options.
     * @example zlib.createUnzip(options)
     */
-  def createUnzip(options: CompressionOptions | RawOptions): Unzip = js.native
+  def createUnzip(options: CompressionOptions | RawOptions = js.native): Unzip = js.native
 
   /**
     * Flush pending data. Don't call this frivolously, premature flushes negatively impact the effectiveness of the compression algorithm.

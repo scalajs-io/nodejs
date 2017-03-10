@@ -1,5 +1,7 @@
 package io.scalajs.nodejs.zlib
 
+import io.scalajs.nodejs.stream
+
 import scala.scalajs.js
 
 /**
@@ -7,4 +9,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait CompressionAlgorithm extends js.Object
+trait CompressionAlgorithm extends stream.Readable with stream.Writable

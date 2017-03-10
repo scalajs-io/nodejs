@@ -1,4 +1,5 @@
-package io.scalajs.nodejs.zlib
+package io.scalajs.nodejs
+package zlib
 
 import scala.scalajs.js
 
@@ -7,4 +8,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Inflate extends CompressionAlgorithm
+trait Inflate extends CompressionAlgorithm with stream.Readable

@@ -14,7 +14,7 @@ class ZlibTest extends FunSpec {
 
   describe("Zlib") {
 
-    it("should compress strings or buffer") {
+    it("should compress strings and buffers") {
       val original = Buffer.from("This is a compression example")
 
       for {

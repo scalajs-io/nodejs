@@ -1,4 +1,5 @@
-package io.scalajs.nodejs.zlib
+package io.scalajs.nodejs
+package zlib
 
 import scala.scalajs.js
 

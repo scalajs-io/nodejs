@@ -1,9 +1,11 @@
 package io.scalajs.nodejs.timers
 
+import io.scalajs.nodejs.clearInterval
+
 import scala.scalajs.js
 
 /**
-  * Interval Object
+  * Interval Handle
   * @author lawrence.daniels@gmail.com
   */
 @js.native
@@ -31,6 +33,17 @@ object Interval {
     def _unrefed: js.UndefOr[Boolean] = js.native
 
     def msecs: js.UndefOr[Int] = js.native
+
+  }
+
+  /**
+    * Interval Enrichment
+    * @param interval the given [[Interval interval]] handle
+    */
+  implicit class IntervalEnrichment(val interval: Interval) extends AnyVal {
+
+    @inline
+    def clear(): Unit = clearInterval(interval)
 
   }
 

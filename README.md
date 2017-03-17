@@ -79,7 +79,29 @@ The following applications were developed using ScalaJs.io:
 | [Socialize](https://github.com/ldaniels528/scalajs-nodejs-socialized)  | Scala.js + AngularJS  | Scala.js + NodeJS  | 0.3.0.3            | A Facebook-inspired Social networking web application. |
 | [Todo MVC](https://github.com/ldaniels528/scalajs-nodejs-todomvc)      | Scala.js + AngularJS  | Scala.js + NodeJS  | 0.2.3.1            | A simple Todo example application. |
 | [Trifecta](https://github.com/ldaniels528/trifecta)                    | Scala.js + AngularJS  | Scala + Play 2.4.x | 0.3.0.0            | Trifecta is a web-based and CLI tool that simplifies inspecting Kafka messages and Zookeeper data. |
+
+### The MEAN Stack &#8212; AngularJS, MongoDB, Mongoose, Express and more
+
+| Module / Package                                                                      | Version | Description                                             |
+|---------------------------------------------------------------------------------------|---------|---------------------------------------------------------|
+| [angular](https://github.com/scalajs-io/angular)                                      | 1.6.3   | AngularJS/core binding for Scala.js |
+| [angular-anchor-scroll](https://github.com/scalajs-io/angular-anchor-scroll)          | 1.6.3   | AngularJS/anchorScroll binding for Scala.js |
+| [angular-animate](https://github.com/scalajs-io/angular-animate)                      | 1.6.3   | AngularJS/animate binding for Scala.js |
+| [angular-cookies](https://github.com/scalajs-io/angular-cookies)                      | 1.6.3   | AngularJS/cookies binding for Scala.js |
+| [angular-facebook](https://github.com/scalajs-io/angular-facebook)                    | 1.6.3   | AngularJS/facebook binding for Scala.js |
+| [angular-md5](https://github.com/scalajs-io/angular-md5)                              | 1.6.3   | AngularJS/md5 binding for Scala.js |
+| [angular-file-upload](https://github.com/scalajs-io/angular-file-upload)              | 1.6.3   | AngularJS/fileupload binding for Scala.js |
+| [angular-nvd3](https://github.com/scalajs-io/angular-nvd3)                            | 1.6.3   | AngularJS/nvd3 binding for Scala.js |
+| [angular-sanitize](https://github.com/scalajs-io/angular-sanitize)                    | 1.6.3   | AngularJS/sanitize binding for Scala.js |
+| [angular-ui-bootstrap](https://github.com/scalajs-io/angular-ui-bootstrap)            | 1.6.3   | AngularJS/ui-bootstrap binding for Scala.js |
+| [angular-ui-router](https://github.com/scalajs-io/angular-ui-router)                  | 1.6.3   | AngularJS/ui-router binding for Scala.js |
+| [angularjs-toaster](https://github.com/scalajs-io/angularjs-toaster)                  | 1.6.3   | AngularJS/toaster binding for Scala.js |
+| [express](https://github.com/scalajs-io/express)                                      | 4.13.4  | Fast, unopinionated, minimalist web framework for Node.js |
+| [mongodb](https://github.com/scalajs-io/mongodb)                                      | 2.2.22  | The official MongoDB driver for Node.js. |
+| [mongoose](https://github.com/scalajs-io/mongoose)                                    | 4.8.1   | Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment. |
+| [mpromise](https://github.com/scalajs-io/mpromise)                                    | 0.5.5   | A promises/A+ conformant implementation, written for mongoose. |
  
+Looking for a complete list of available bindings? Go [here](https://github.com/scalajs-io/scalajs.io-platform)  
  
 <a name="discussions"></a>
 ### Discussions

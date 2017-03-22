@@ -231,7 +231,7 @@ The following core Node.js modules (v7.7.1) have been implemented:
 | vm                    | The vm module provides APIs for compiling and running code within V8 Virtual Machine contexts.|
 | zlib                  | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. |
 
-*NOTE*: The SBT artifact for the complete Node.js platform is: "io.scalajs.npm" %%% "nodejs" % "3.0.6" 
+*NOTE*: The SBT artifact for the complete Node.js platform is: "io.scalajs.npm" %%% "nodejs" % "0.4.0-pre1" 
 
 <a name="npm_modules">
 #### Third-party Modules
@@ -298,7 +298,7 @@ The following Third Party/OSS Node.js (npm) modules have been implemented:
 | [winston-daily-rotate-file](https://github.com/scalajs-io/winston-daily-rotate-file)  | 1.4.4   | A multi-transport async logging library for Node.js. |    
 | [xml2js](https://github.com/scalajs-io/xml2js)                                        | 0.4.16  | Simple XML to JavaScript object converter. |
 
-*NOTE*: The full SBT artifact expression is: "io.scalajs.npm" %%% "xxxx" % version (e.g. "io.scalajs.npm" %%% "express" % "4.14.1-4")
+*NOTE*: The full SBT artifact expression is: "io.scalajs.npm" %%% "xxxx" % version (e.g. "io.scalajs.npm" %%% "express" % "0.4.0-pre1")
 
 I've provided an example to demonstrate how similar the Scala.js code is to the JavaScript
 that it replaces.

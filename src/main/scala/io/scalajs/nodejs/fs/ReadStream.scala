@@ -23,7 +23,7 @@ trait ReadStream extends Readable {
   /**
     * The number of bytes read so far.
     */
-  def bytesRead: Double = js.native
+  def bytesRead: js.UndefOr[Double] = js.native
 
   /**
     * The path to the file the stream is reading from as specified in the first argument to fs.createReadStream().

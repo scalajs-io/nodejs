@@ -53,7 +53,7 @@ trait Process extends IEventEmitter {
   /**
     * An object containing the user environment.
     */
-  def env: js.Dictionary[String] = js.native
+  def env: Environment = js.native
 
   /**
     * This is the set of Node.js-specific command line options from the executable that started the process.

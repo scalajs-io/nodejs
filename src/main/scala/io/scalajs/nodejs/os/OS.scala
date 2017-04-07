@@ -50,7 +50,7 @@ trait OS extends js.Object {
     * spent in: user, nice, sys, idle, and irq).
     * @example os.cpus()
     */
-  def cpus(): js.Array[js.Any] = js.native
+  def cpus(): js.Array[CPUInfo] = js.native
 
   /**
     * Returns the endianness of the CPU. Possible values are 'BE' for big endian or 'LE' for little endian.

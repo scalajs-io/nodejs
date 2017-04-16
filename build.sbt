@@ -5,7 +5,7 @@ import sbt._
 
 import scala.language.postfixOps
 
-val scalaJsIOVersion = "0.4.0-pre3"
+val scalaJsIOVersion = "0.4.0-pre4"
 val apiVersion = scalaJsIOVersion
 val scalaJsVersion = "2.12.1"
 

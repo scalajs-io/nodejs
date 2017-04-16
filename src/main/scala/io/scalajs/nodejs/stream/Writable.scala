@@ -1,10 +1,9 @@
 package io.scalajs.nodejs
 package stream
 
-import io.scalajs.util.PromiseHelper._
-import io.scalajs.util.PromiseHelper.Implicits._
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.events.IEventEmitter
+import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Promise
 import scala.scalajs.js
@@ -139,14 +138,32 @@ trait Writable extends IEventEmitter {
   /**
     * Flush all data, buffered since stream.cork() call.
     * @param chunk    The data to write (<String> | <Buffer>)
+    * @param callback the Callback for when this chunk of data is flushed
+    * @return true, if the data was handled completely
+    * @example writable.write(chunk[, encoding][, callback])
+    */
+  def write(chunk: Buffer | String, callback: js.Function1[Error, Any] = js.native): Boolean = js.native
+
+  /**
+    * Flush all data, buffered since stream.cork() call.
+    * @param chunk    The data to write (<String> | <Buffer>)
+    * @param encoding The encoding, if chunk is a String
+    * @return true, if the data was handled completely
+    * @example writable.write(chunk[, encoding][, callback])
+    */
+  def write(chunk: Buffer | String, encoding: String): Boolean = js.native
+
+  /**
+    * Flush all data, buffered since stream.cork() call.
+    * @param chunk    The data to write (<String> | <Buffer>)
     * @param encoding The encoding, if chunk is a String
     * @param callback the Callback for when this chunk of data is flushed
     * @return true, if the data was handled completely
     * @example writable.write(chunk[, encoding][, callback])
     */
   def write(chunk: Buffer | String,
-            encoding: String = js.native,
-            callback: js.Function1[Error, Any] = js.native): Boolean = js.native
+            encoding: String,
+            callback: js.Function1[Error, Any]): Boolean = js.native
 
 }
 
@@ -160,7 +177,7 @@ object Writable {
     * Writable Events
     * @author lawrence.daniels@gmail.com
     */
-  implicit class WritableEvents(val writable: Writable) extends AnyVal {
+  implicit class WritableEvents[T <: Writable](val writable: T) extends AnyVal {
 
     /**
       * Emitted when the stream and any of its underlying resources (a file descriptor, for example) have been closed.
@@ -209,7 +226,7 @@ object Writable {
     * Writable Extensions
     * @author lawrence.daniels@gmail.com
     */
-  implicit class WritableExtensions(val writable: Writable) extends AnyVal {
+  implicit class WritableExtensions[T <: Writable](val writable: T) extends AnyVal {
 
     @inline
     def endAsync(chunk: Buffer): Promise[Unit] = promiseWithError0[Error](writable.end(chunk, _))

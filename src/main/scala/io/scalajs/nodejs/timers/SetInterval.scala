@@ -18,6 +18,6 @@ trait SetInterval extends js.Object {
     * or less than 1, Node.js will use 1 as the delay.
     * @example setInterval(callback, delay[, arg][, ...])
     */
-  def apply(callback: js.Function, delay: Int, args: js.Any*): Interval = js.native
+  def apply(callback: js.Function, delay: Int, args: js.Any*): Timeout = js.native
 
 }

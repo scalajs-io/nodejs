@@ -1,7 +1,9 @@
 package io.scalajs.nodejs.fs
 
+import io.scalajs.JSON
 import io.scalajs.nodejs.setImmediate
 import io.scalajs.nodejs.util.Util
+import io.scalajs.util.ScalaJsHelper._
 import org.scalatest.FunSpec
 
 import scala.scalajs.js
@@ -15,12 +17,16 @@ class FsTest extends FunSpec {
   describe("Fs") {
 
     it("supports watching files") {
-      val watcher = Fs.watch("./src/test/resources/", (value: js.Any) => {
-        info(s"watcher value: ${Util.inspect(value)}")
+      val watcher = Fs.watch("./src/test/resources/", (eventType, file) => {
+        info(s"watcher: eventType = '$eventType' file = '$file'")
       })
       info(s"watcher: ${Util.inspect(watcher)}")
 
-      setImmediate(() => Fs.writeFile("./src/test/resources/1.txt", "Hello", () => {}))
+      setImmediate(() => Fs.writeFile("./src/test/resources/1.txt", "Hello", error => {
+        if (isDefined(error)) {
+          alert(s"error: ${JSON.stringify(error)}")
+        }
+      }))
     }
 
     it("should stream data") {
@@ -31,7 +37,7 @@ class FsTest extends FunSpec {
       val readable = Fs.createReadStream(file1)
       val writable = Fs.createWriteStream(file2)
       readable.setEncoding("utf8")
-      readable.onData(chunk => writable.write(chunk))
+      readable.onData[String](chunk => writable.write(chunk))
       writable.onFinish { () =>
         info("Comparing file sizes:")
         info(s"$file1 is ${Fs.statSync(file1).size} bytes")

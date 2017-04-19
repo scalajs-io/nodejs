@@ -53,7 +53,7 @@ trait Process extends IEventEmitter {
   /**
     * An object containing the user environment.
     */
-  def env: js.Dictionary[String] = js.native
+  def env: Environment = js.native
 
   /**
     * This is the set of Node.js-specific command line options from the executable that started the process.
@@ -245,9 +245,9 @@ trait Process extends IEventEmitter {
     * Returns the current high-resolution real time in a [seconds, nanoseconds] tuple Array. It is relative to an
     * arbitrary time in the past. It is not related to the time of day and therefore not subject to clock drift.
     * The primary use is for measuring performance between intervals.
-    * @example process.hrtime()
+    * @example process.hrtime([time])
     */
-  def hrtime(): js.Array[Int] = js.native
+  def hrtime(time: js.Array[Int] = js.native): js.Array[Int] = js.native
 
   /**
     * Reads /etc/group and initializes the group access list, using all groups of which the user is a member.

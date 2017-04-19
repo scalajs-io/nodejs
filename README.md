@@ -76,9 +76,9 @@ The following applications were developed using ScalaJs.io:
 | Application                                                            | Frontend              | Backend            | Scalajs.io version | Description                              |
 |------------------------------------------------------------------------|-----------------------|--------------------|--------------------|------------------------------------------|
 | [Phaser-Invaders](https://github.com/scalajs-io/phaser-invaders-demo)  | Scala.js + DOM        | Scala + NodeJS     | 0.3.0.1            | Port of Phaser Invaders. |
-| [Socialize](https://github.com/ldaniels528/scalajs-nodejs-socialized)  | Scala.js + AngularJS  | Scala.js + NodeJS  | 0.3.0.3            | A Facebook-inspired Social networking web application. |
-| [Todo MVC](https://github.com/ldaniels528/scalajs-nodejs-todomvc)      | Scala.js + AngularJS  | Scala.js + NodeJS  | 0.2.3.1            | A simple Todo example application. |
-| [Trifecta](https://github.com/ldaniels528/trifecta)                    | Scala.js + AngularJS  | Scala + Play 2.4.x | 0.3.0.0            | Trifecta is a web-based and CLI tool that simplifies inspecting Kafka messages and Zookeeper data. |
+| [Socialize](https://github.com/scalajs-io/scalajs-nodejs-socialized)  | Scala.js + AngularJS  | Scala.js + NodeJS  | 0.3.0.3            | A Facebook-inspired Social networking web application. |
+| [Todo MVC](https://github.com/scalajs-io/scalajs-nodejs-todomvc)      | Scala.js + AngularJS  | Scala.js + NodeJS  | 0.2.3.1            | A simple Todo example application. |
+| [Trifecta](https://github.com/scalajs-io/trifecta)                    | Scala.js + AngularJS  | Scala + Play 2.4.x | 0.3.0.0            | Trifecta is a web-based and CLI tool that simplifies inspecting Kafka messages and Zookeeper data. |
 
 ### The MEAN Stack &#8212; AngularJS, MongoDB, Mongoose, Express and more
 
@@ -101,7 +101,7 @@ The following applications were developed using ScalaJs.io:
 | [mongoose](https://github.com/scalajs-io/mongoose)                                    | 4.8.1   | Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment. |
 | [mpromise](https://github.com/scalajs-io/mpromise)                                    | 0.5.5   | A promises/A+ conformant implementation, written for mongoose. |
  
-Looking for a complete list of available bindings? Go [here](https://github.com/scalajs-io/scalajs.io-platform)  
+Looking for a complete list of available bindings? Go [here](https://github.com/scalajs-io/scalajs-io-platform)  
  
 <a name="discussions"></a>
 ### Discussions
@@ -231,7 +231,7 @@ The following core Node.js modules (v7.7.1) have been implemented:
 | vm                    | The vm module provides APIs for compiling and running code within V8 Virtual Machine contexts.|
 | zlib                  | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. |
 
-*NOTE*: The SBT artifact for the complete Node.js platform is: "io.scalajs.npm" %%% "nodejs" % "0.4.0-pre2" 
+*NOTE*: The SBT artifact for the complete Node.js platform is: "io.scalajs" %%% "nodejs" % "0.4.0-pre4" 
 
 <a name="npm_modules">
 #### Third-party Modules
@@ -298,7 +298,7 @@ The following Third Party/OSS Node.js (npm) modules have been implemented:
 | [winston-daily-rotate-file](https://github.com/scalajs-io/winston-daily-rotate-file)  | 1.4.4   | A multi-transport async logging library for Node.js. |    
 | [xml2js](https://github.com/scalajs-io/xml2js)                                        | 0.4.16  | Simple XML to JavaScript object converter. |
 
-*NOTE*: The full SBT artifact expression is: "io.scalajs.npm" %%% "xxxx" % version (e.g. "io.scalajs.npm" %%% "express" % "0.4.0-pre2")
+*NOTE*: The full SBT artifact expression is: "io.scalajs.npm" %%% "xxxx" % version (e.g. "io.scalajs.npm" %%% "express" % "0.4.0-pre4")
 
 I've provided an example to demonstrate how similar the Scala.js code is to the JavaScript
 that it replaces.

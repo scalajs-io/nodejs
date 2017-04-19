@@ -674,7 +674,7 @@ trait Fs extends IEventEmitter {
     *                 data will be read from the current file position.
     * @return the number of bytesRead.
     */
-  def readSync(fd: FileDescriptor, buffer: Buffer, offset: Int, length: Int, position: Int): Buffer = js.native
+  def readSync(fd: FileDescriptor, buffer: Buffer, offset: Int, length: Int, position: Int): Int = js.native
 
   /**
     * Asynchronous readdir(3). Reads the contents of a directory.

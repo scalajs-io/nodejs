@@ -10,9 +10,9 @@ import scala.scalajs.js
 trait ClearInterval extends js.Object {
 
   /**
-    * Stops an intervalObject, as created by setInterval, from triggering.
+    * Stops an interval, as created by setInterval, from triggering.
     * @example clearInterval(intervalObject)
     */
-  def apply(intervalObject: Interval): Unit = js.native
+  def apply(handle: Timeout): Unit = js.native
 
 }

@@ -10,9 +10,9 @@ import scala.scalajs.js
 trait ClearTimeout extends js.Object {
 
   /**
-    * Prevents a timeoutObject, as created by setTimeout, from triggering.
+    * Prevents a timeout, as created by setTimeout, from triggering.
     * @example clearTimeout(timeoutObject)
     */
-  def apply(timeoutObject: Timeout): Unit = js.native
+  def apply(handle: Timeout): Unit = js.native
 
 }

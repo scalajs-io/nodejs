@@ -18,7 +18,7 @@ import scala.scalajs.js.|
 trait REPL extends IEventEmitter {
   var REPL_MODE_SLOPPY: String = js.native
   var REPL_MODE_STRICT: String = js.native
-  var REPL_MODE_MAGIC: String  = js.native
+  var REPL_MODE_MAGIC: String = js.native
 
   /**
     * @example repl.start([options])

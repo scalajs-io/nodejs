@@ -10,9 +10,10 @@ import scala.scalajs.js
 trait ClearImmediate extends js.Object {
 
   /**
-    * Stops an immediateObject, as created by setImmediate, from triggering.
+    * Stops an immediate, as created by setImmediate, from triggering.
+    * @param handle the immediate handle
     * @example clearImmediate(immediateObject)
     */
-  def apply(immediateObject: Immediate): Unit = js.native
+  def apply(handle: Immediate): Unit = js.native
 
 }

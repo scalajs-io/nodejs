@@ -231,7 +231,7 @@ The following core Node.js modules (v7.7.1) have been implemented:
 | vm                    | The vm module provides APIs for compiling and running code within V8 Virtual Machine contexts.|
 | zlib                  | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. |
 
-*NOTE*: The SBT artifact for the complete Node.js platform is: "io.scalajs.npm" %%% "nodejs" % "0.4.0-pre4" 
+*NOTE*: The SBT artifact for the complete Node.js platform is: "io.scalajs" %%% "nodejs" % "0.4.0-pre4" 
 
 <a name="npm_modules">
 #### Third-party Modules

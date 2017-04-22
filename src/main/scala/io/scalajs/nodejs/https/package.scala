@@ -1,11 +1,10 @@
 package io.scalajs.nodejs
 
-import io.scalajs.{RawOptions, nodejs}
 import io.scalajs.nodejs.http.{RequestOptions, ServerResponse}
 import io.scalajs.util.PromiseHelper._
+import io.scalajs.{RawOptions, nodejs}
 
-import scala.concurrent.Promise
-import scala.scalajs.js
+import scala.concurrent.Future
 import scala.scalajs.js.|
 
 /**
@@ -24,7 +23,7 @@ package object https {
       * Like http.get() but for HTTPS.
       */
     @inline
-    def getFuture(options: RequestOptions | RawOptions): Promise[ServerResponse] = {
+    def getFuture(options: RequestOptions | RawOptions): Future[ServerResponse] = {
       promiseCallback1[ServerResponse](https.get(options, _))
     }
 
@@ -32,7 +31,7 @@ package object https {
       * Like http.get() but for HTTPS.
       */
     @inline
-    def getFuture(url: String): Promise[ServerResponse] = {
+    def getFuture(url: String): Future[ServerResponse] = {
       promiseCallback1[ServerResponse](https.get(url, _))
     }
 
@@ -40,7 +39,7 @@ package object https {
       * Makes a request to a secure web server.
       */
     @inline
-    def requestFuture(options: RequestOptions | RawOptions): Promise[ServerResponse] = {
+    def requestFuture(options: RequestOptions | RawOptions): Future[ServerResponse] = {
       promiseWithError1[nodejs.Error, ServerResponse](https.request(options, _))
     }
 
@@ -48,7 +47,7 @@ package object https {
       * Makes a request to a secure web server.
       */
     @inline
-    def requestFuture(url: String): Promise[ServerResponse] = {
+    def requestFuture(url: String): Future[ServerResponse] = {
       promiseWithError1[nodejs.Error, ServerResponse](https.request(url, _))
     }
 

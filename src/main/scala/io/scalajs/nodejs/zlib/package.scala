@@ -4,7 +4,7 @@ import io.scalajs.RawOptions
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.util.PromiseHelper._
 
-import scala.concurrent.Promise
+import scala.concurrent.Future
 import scala.scalajs.js.|
 
 /**
@@ -31,7 +31,7 @@ package object zlib {
       * Asynchronously compresses a Buffer or string with Deflate.
       */
     @inline
-    def deflateAsync(buf: Buffer | String, options: CompressionOptions | RawOptions = null): Promise[Buffer] = {
+    def deflateFuture(buf: Buffer | String, options: CompressionOptions | RawOptions = null): Future[Buffer] = {
       promiseWithError1[Error, Buffer](zlib.deflate(buf, options, _))
     }
 
@@ -39,7 +39,7 @@ package object zlib {
       * Asynchronously compresses a Buffer or string with DeflateRaw.
       */
     @inline
-    def deflateRawAsync(buf: Buffer | String, options: CompressionOptions | RawOptions = null): Promise[Buffer] = {
+    def deflateRawFuture(buf: Buffer | String, options: CompressionOptions | RawOptions = null): Future[Buffer] = {
       promiseWithError1[Error, Buffer](zlib.deflateRaw(buf, options, _))
     }
 
@@ -47,14 +47,14 @@ package object zlib {
       * Flush pending data. Don't call this frivolously, premature flushes negatively impact the effectiveness of the compression algorithm.
       */
     @inline
-    def flushAsync(kind: CompressionFlush = null): Promise[Buffer] =
+    def flushFuture(kind: CompressionFlush = null): Future[Buffer] =
     promiseWithError1[Error, Buffer](zlib.flush(kind, _))
 
     /**
       * Compress a Buffer or string with Gzip.
       */
     @inline
-    def gzipAsync(buf: Buffer | String, options: CompressionOptions | RawOptions = null): Promise[Buffer] = {
+    def gzipFuture(buf: Buffer | String, options: CompressionOptions | RawOptions = null): Future[Buffer] = {
       promiseWithError1[Error, Buffer](zlib.gzip(buf, options, _))
     }
 
@@ -62,7 +62,7 @@ package object zlib {
       * Decompress a Buffer or string with Gunzip.
       */
     @inline
-    def gunzipAsync(buf: Buffer | String, options: CompressionOptions | RawOptions = null): Promise[Buffer] = {
+    def gunzipFuture(buf: Buffer | String, options: CompressionOptions | RawOptions = null): Future[Buffer] = {
       promiseWithError1[Error, Buffer](zlib.gunzip(buf, options, _))
     }
 
@@ -70,14 +70,14 @@ package object zlib {
       * Decompress a Buffer or string with Inflate.
       */
     @inline
-    def inflateAsync(buf: Buffer | String, options: CompressionOptions | RawOptions = null): Promise[Buffer] = {
+    def inflateFuture(buf: Buffer | String, options: CompressionOptions | RawOptions = null): Future[Buffer] = {
       promiseWithError1[Error, Buffer](zlib.inflate(buf, options, _))
     }
 
     /**
       * Decompress a Buffer or string with InflateRaw.
       */
-    def inflateRawAsync(buf: Buffer | String, options: CompressionOptions | RawOptions = null): Promise[Buffer] = {
+    def inflateRawFuture(buf: Buffer | String, options: CompressionOptions | RawOptions = null): Future[Buffer] = {
       promiseWithError1[Error, Buffer](zlib.inflateRaw(buf, options, _))
     }
 
@@ -86,7 +86,7 @@ package object zlib {
       * @example zlib.params(level, strategy, callback)
       */
     @inline
-    def paramsAsync(level: CompressionLevel, strategy: CompressionStrategy): Promise[Buffer] = {
+    def paramsFuture(level: CompressionLevel, strategy: CompressionStrategy): Future[Buffer] = {
       promiseWithError1[Error, Buffer](zlib.params(level, strategy, _))
     }
 
@@ -94,7 +94,7 @@ package object zlib {
       * Decompress a Buffer or string with Unzip.
       */
     @inline
-    def unzipAsync(buf: Buffer | String, options: CompressionOptions | RawOptions = null): Promise[Buffer] = {
+    def unzipFuture(buf: Buffer | String, options: CompressionOptions | RawOptions = null): Future[Buffer] = {
       promiseWithError1[Error, Buffer](zlib.unzip(buf, options, _))
     }
 

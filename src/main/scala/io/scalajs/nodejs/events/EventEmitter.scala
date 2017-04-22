@@ -1,7 +1,7 @@
 package io.scalajs.nodejs.events
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSImport, JSName}
+import scala.scalajs.js.annotation.{JSGlobal, JSImport, JSName}
 
 /**
   * Much of the Node.js core API is built around an idiomatic asynchronous event-driven architecture
@@ -140,7 +140,7 @@ trait IEventEmitter extends js.Object {
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-@JSName("EventEmitter")
+@JSGlobal("EventEmitter")
 object EventEmitter extends IEventEmitter {
 
   /**

@@ -3,7 +3,7 @@ package io.scalajs.nodejs
 import io.scalajs.RawOptions
 import io.scalajs.util.PromiseHelper._
 
-import scala.concurrent.Promise
+import scala.concurrent.Future
 import scala.scalajs.js
 import scala.scalajs.js.|
 
@@ -71,7 +71,7 @@ package object dns {
       * integer, then it must be 4 or 6.
       */
     @inline
-    def lookupAsync(hostname: String, options: DnsOptions | RawOptions | Int = null): Promise[String] = {
+    def lookupFuture(hostname: String, options: DnsOptions | RawOptions | Int = null): Future[String] = {
       promiseWithError1[DnsError, String](dns.lookup(hostname, options, _))
     }
 
@@ -88,7 +88,7 @@ package object dns {
       * On error, err is an Error object, where err.code is the error code.
       */
     @inline
-    def lookupServiceAsync(address: String, port: Int): Promise[(String, String)] = {
+    def lookupServiceFuture(address: String, port: Int): Future[(String, String)] = {
       promiseWithError2[DnsError, String, String](dns.lookupService(address, port, _))
     }
 
@@ -98,7 +98,7 @@ package object dns {
       * @param hostname the hostname
       */
     @inline
-    def resolveAsync[T](hostname: String, rrtype: RRType = null): Promise[T] = {
+    def resolveFuture[T](hostname: String, rrtype: RRType = null): Future[T] = {
       promiseWithError1[DnsError, T](dns.resolve[T](hostname, rrtype, _))
     }
 
@@ -109,7 +109,7 @@ package object dns {
       * @param ipAddress the IP Address
       */
     @inline
-    def reverseAsync(ipAddress: String): Promise[js.Array[String]] = {
+    def reverseFuture(ipAddress: String): Future[js.Array[String]] = {
       promiseWithError1[DnsError, js.Array[String]](dns.reverse(ipAddress, _))
     }
 

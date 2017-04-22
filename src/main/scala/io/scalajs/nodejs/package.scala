@@ -5,7 +5,7 @@ import io.scalajs.nodejs.timers._
 import scala.concurrent.duration.FiniteDuration
 import scala.language.implicitConversions
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSName
+import scala.scalajs.js.annotation.JSGlobal
 
 /**
   * nodejs package object
@@ -28,7 +28,7 @@ package object nodejs {
     * Used to print to stdout and stderr. See the console section.
     */
   @js.native
-  @JSName("console")
+  @JSGlobal("console")
   object console extends Console(null)
 
   /**
@@ -49,14 +49,14 @@ package object nodejs {
     * scope; var something inside a Node.js module will be local to that module.
     */
   @js.native
-  @JSName("global")
+  @JSGlobal("global")
   object global extends Global
 
   /**
     * The process object. See the process object section.
     */
   @js.native
-  @JSName("process")
+  @JSGlobal("process")
   object process extends Process
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -64,35 +64,35 @@ package object nodejs {
   /////////////////////////////////////////////////////////////////////////////////
 
   @js.native
-  @JSName("clearImmediate")
+  @JSGlobal("clearImmediate")
   object clearImmediate extends ClearImmediate
 
   @js.native
-  @JSName("clearInterval")
+  @JSGlobal("clearInterval")
   object clearInterval extends ClearInterval
 
   @js.native
-  @JSName("clearTimeout")
+  @JSGlobal("clearTimeout")
   object clearTimeout extends ClearTimeout
 
   @js.native
-  @JSName("ref")
+  @JSGlobal("ref")
   object ref extends Ref
 
   @js.native
-  @JSName("setImmediate")
+  @JSGlobal("setImmediate")
   object setImmediate extends SetImmediate
 
   @js.native
-  @JSName("setInterval")
+  @JSGlobal("setInterval")
   object setInterval extends SetInterval
 
   @js.native
-  @JSName("setTimeout")
+  @JSGlobal("setTimeout")
   object setTimeout extends SetTimeout
 
   @js.native
-  @JSName("unref")
+  @JSGlobal("unref")
   object unref extends UnRef
 
   /////////////////////////////////////////////////////////////////////////////////

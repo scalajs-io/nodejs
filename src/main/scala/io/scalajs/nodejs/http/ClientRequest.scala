@@ -6,7 +6,7 @@ import io.scalajs.nodejs.net.Socket
 import io.scalajs.nodejs.stream.Readable
 import io.scalajs.util.PromiseHelper._
 
-import scala.concurrent.Promise
+import scala.concurrent.Future
 import scala.scalajs.js
 
 /**
@@ -256,12 +256,14 @@ object ClientRequest {
   implicit class ClientRequestEnrichment(val client: ClientRequest) extends AnyVal {
 
     @inline
-    def endFuture(data: js.Any, encoding: String): Promise[js.Any] =
+    def endFuture(data: js.Any, encoding: String): Future[js.Any] = {
       promiseWithError1[SystemError, js.Any](client.end(data, encoding, _))
+    }
 
     @inline
-    def writeFuture(chunk: js.Any, encoding: String): Promise[js.Any] =
+    def writeFuture(chunk: js.Any, encoding: String): Future[js.Any] = {
       promiseWithError1[SystemError, js.Any](client.write(chunk, encoding, _))
+    }
 
   }
 

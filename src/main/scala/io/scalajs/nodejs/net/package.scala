@@ -3,7 +3,7 @@ package io.scalajs.nodejs
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.util.PromiseHelper._
 
-import scala.concurrent.Promise
+import scala.concurrent.Future
 import scala.scalajs.js
 
 /**
@@ -55,14 +55,14 @@ package object net {
       * @param path the connection path
       * @return a promise of an outcome
       */
-    @inline def connectFuture(path: String): Promise[Unit] = promiseCallback1[Unit](socket.connect(path, _))
+    @inline def connectFuture(path: String): Future[Unit] = promiseCallback1[Unit](socket.connect(path, _))
 
     /**
       * Opens the connection for a given socket.
       * @param port the port number
       * @return a promise of an outcome
       */
-    @inline def connectFuture(port: Int): Promise[Unit] = promiseCallback1[Unit](socket.connect(port, _))
+    @inline def connectFuture(port: Int): Future[Unit] = promiseCallback1[Unit](socket.connect(port, _))
 
     /**
       * Opens the connection for a given socket.
@@ -70,8 +70,9 @@ package object net {
       * @param host the host name or IP
       * @return a promise of an outcome
       */
-    @inline def connectFuture(port: Int, host: String): Promise[Unit] =
-    promiseCallback1[Unit](socket.connect(port, host, _))
+    @inline def connectFuture(port: Int, host: String): Future[Unit] = {
+      promiseCallback1[Unit](socket.connect(port, host, _))
+    }
 
     /////////////////////////////////////////////////////////////////////////////////
     //      Events

@@ -4,7 +4,7 @@ package http
 import io.scalajs.RawOptions
 import io.scalajs.util.PromiseHelper._
 
-import scala.concurrent.Promise
+import scala.concurrent.Future
 import scala.scalajs.js
 import scala.scalajs.js.|
 
@@ -108,7 +108,7 @@ object Agent {
       * flexibility is desired.
       */
     @inline
-    def createConnectionAsync(options: ConnectionOptions): Promise[js.Any] = {
+    def createConnectionFuture(options: ConnectionOptions): Future[js.Any] = {
       promiseWithError1[Error, js.Any](agent.createConnection(options, _))
     }
 

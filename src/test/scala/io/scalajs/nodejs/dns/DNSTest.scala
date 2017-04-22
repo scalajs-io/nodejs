@@ -23,9 +23,9 @@ class DNSTest extends FunSpec {
       })
     }
 
-    it("supports lookupAsync") {
-      DNS.lookupAsync(domain).future map { ipAddress =>
-        info(s"lookupAsync - ipAddress: $ipAddress")
+    it("supports lookupFuture") {
+      DNS.lookupFuture(domain) map { ipAddress =>
+        info(s"lookupFuture - ipAddress: $ipAddress")
       }
     }
 
@@ -36,9 +36,9 @@ class DNSTest extends FunSpec {
       })
     }
 
-    it("supports lookupServiceAsync:SSH") {
-      DNS.lookupServiceAsync("127.0.0.1", 22).future map { case (hostname, service) =>
-        info(s"lookupServiceAsync - hostname: $hostname, service => $service")
+    it("supports lookupServiceFuture:SSH") {
+      DNS.lookupServiceFuture("127.0.0.1", 22) map { case (hostname, service) =>
+        info(s"lookupServiceFuture - hostname: $hostname, service => $service")
       }
     }
 
@@ -49,27 +49,27 @@ class DNSTest extends FunSpec {
       })
     }
 
-    it("supports resolveAsync:MX") {
-      DNS.resolveAsync[js.Array[MX]](domain, RRTYPE_MX).future map { response =>
-        info(s"resolveAsync:MX - response: ${response.toJson}")
+    it("supports resolveFuture:MX") {
+      DNS.resolveFuture[js.Array[MX]](domain, RRTYPE_MX) map { response =>
+        info(s"resolveFuture:MX - response: ${response.toJson}")
       }
     }
 
-    it("supports resolveAsync:NS") {
-      DNS.resolveAsync[js.Array[String]](domain, "NS").future map { addresses =>
-        info(s"resolveAsync - addresses: ${addresses.mkString(", ")}")
+    it("supports resolveFuture:NS") {
+      DNS.resolveFuture[js.Array[String]](domain, "NS") map { addresses =>
+        info(s"resolveFuture - addresses: ${addresses.mkString(", ")}")
       }
     }
 
-    it("supports resolveAsync:SOA") {
-      DNS.resolveAsync[SOA](domain, RRTYPE_SOA).future foreach { response =>
-        info(s"resolveAsync:SOA: response: ${response.toJson}")
+    it("supports resolveFuture:SOA") {
+      DNS.resolveFuture[SOA](domain, RRTYPE_SOA) foreach { response =>
+        info(s"resolveFuture:SOA: response: ${response.toJson}")
       }
     }
 
-    it("supports reverseAsync") {
-      DNS.reverseAsync("216.58.218.142").future map { hostnames =>
-        info(s"reverseAsync - hostname: ${hostnames.mkString(", ")}")
+    it("supports reverseFuture") {
+      DNS.reverseFuture("216.58.218.142") map { hostnames =>
+        info(s"reverseFuture - hostname: ${hostnames.mkString(", ")}")
       }
     }
 

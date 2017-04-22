@@ -24,6 +24,18 @@ trait Readable extends IEventEmitter {
 
   def _readableState: ReadableState = js.native
 
+  /**
+    * All Readable stream implementations must provide an implementation of the readable._read() method
+    * to fetch data from the underlying resource.
+    *
+    * When readable._read() is called, if data is available from the resource, the implementation should
+    * begin pushing that data into the read queue using the this.push(dataChunk) method. _read() should
+    * continue reading from the resource and pushing data until readable.push() returns false. Only when _read()
+    * is called again after it has stopped should it resume pushing additional data onto the queue.
+    * @see [[Readable._read()]]
+    */
+  var _read: js.Function = js.native
+
   /////////////////////////////////////////////////////////////////////////////////
   //      Internal Methods
   /////////////////////////////////////////////////////////////////////////////////
@@ -38,7 +50,7 @@ trait Readable extends IEventEmitter {
     * is called again after it has stopped should it resume pushing additional data onto the queue.
     * @param size the number of bytes to read asynchronously
     */
-  def _read(size: Int): Unit = js.native
+  def _read(size: Int = js.native): Unit = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods

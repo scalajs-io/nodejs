@@ -5,7 +5,7 @@ import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.stream.Writable
 import io.scalajs.util.PromiseHelper._
 
-import scala.concurrent.Promise
+import scala.concurrent.Future
 import scala.scalajs.js
 import scala.scalajs.js.|
 
@@ -84,7 +84,7 @@ object WriteStream {
   implicit class WriteStreamExtensions(val stream: WriteStream) extends AnyVal {
 
     @inline
-    def closeAsync: Promise[Unit] = promiseCallback1[Unit](stream.close)
+    def closeFuture: Future[Unit] = promiseCallback1[Unit](stream.close)
 
   }
 

@@ -3,7 +3,7 @@ package io.scalajs.nodejs
 import io.scalajs.nodejs
 import io.scalajs.util.PromiseHelper._
 
-import scala.concurrent.Promise
+import scala.concurrent.Future
 import scala.scalajs.js
 
 /**
@@ -120,7 +120,7 @@ package object cluster {
       * @example worker.send(message[, sendHandle][, callback])
       */
     @inline
-    def sendFuture[T](message: Message): Promise[T] = promiseCallback1[T](worker.send(message, _))
+    def sendFuture[T](message: Message): Future[T] = promiseCallback1[T](worker.send(message, _))
 
     /////////////////////////////////////////////////////////////////////////////////
     //      Worker Events

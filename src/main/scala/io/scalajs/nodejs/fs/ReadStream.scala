@@ -5,7 +5,7 @@ import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.stream.Readable
 import io.scalajs.util.PromiseHelper.promiseCallback1
 
-import scala.concurrent.Promise
+import scala.concurrent.Future
 import scala.scalajs.js
 import scala.scalajs.js.|
 
@@ -84,7 +84,7 @@ object ReadStream {
   implicit class ReadStreamExtensions(val stream: ReadStream) extends AnyVal {
 
     @inline
-    def closeAsync: Promise[Unit] = promiseCallback1[Unit](stream.close)
+    def closeFuture: Future[Unit] = promiseCallback1[Unit](stream.close)
 
   }
 

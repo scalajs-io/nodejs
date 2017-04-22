@@ -7,4 +7,4 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait ScriptContext extends js.Object {}
+trait ScriptContext extends js.Object

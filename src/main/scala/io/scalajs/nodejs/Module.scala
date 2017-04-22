@@ -1,7 +1,7 @@
 package io.scalajs.nodejs
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSName
+import scala.scalajs.js.annotation.JSGlobal
 
 /**
   * In each module, the module free variable is a reference to the object representing the current module.
@@ -69,7 +69,7 @@ trait Module extends js.Object {
 object Module {
 
   @js.native
-  @JSName("module")
+  @JSGlobal("module")
   implicit object module extends Module
 
 }

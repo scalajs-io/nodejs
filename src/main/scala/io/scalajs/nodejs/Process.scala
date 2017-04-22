@@ -4,7 +4,7 @@ import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.nodejs.tty.{ReadStream, WriteStream}
 import io.scalajs.util.PromiseHelper._
 
-import scala.concurrent.Promise
+import scala.concurrent.Future
 import scala.scalajs.js
 import scala.scalajs.js.JSConverters._
 import scala.scalajs.js.UndefOr
@@ -448,7 +448,7 @@ object Process {
       * @see [[Process.send()]]
       */
     @inline
-    def sendFuture(message: js.Any, sendHandle: js.Any, options: Process.TransferOptions): Promise[Boolean] = {
+    def sendFuture(message: js.Any, sendHandle: js.Any, options: Process.TransferOptions): Future[Boolean] = {
       promiseWithError1[Error, Boolean](process.send(message, sendHandle, options, _))
     }
 
@@ -456,7 +456,7 @@ object Process {
       * @see [[Process.send()]]
       */
     @inline
-    def sendFuture(message: js.Any, sendHandle: js.Any): Promise[Boolean] = {
+    def sendFuture(message: js.Any, sendHandle: js.Any): Future[Boolean] = {
       promiseWithError1[Error, Boolean](process.send(message, sendHandle, _))
     }
 
@@ -464,7 +464,7 @@ object Process {
       * @see [[Process.send()]]
       */
     @inline
-    def sendFuture(message: js.Any): Promise[Boolean] = {
+    def sendFuture(message: js.Any): Future[Boolean] = {
       promiseWithError1[Error, Boolean](process.send(message, _))
     }
 

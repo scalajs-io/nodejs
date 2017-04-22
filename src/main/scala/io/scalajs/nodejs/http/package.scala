@@ -3,7 +3,7 @@ package io.scalajs.nodejs
 import io.scalajs.nodejs.net.{ListenerOptions, Socket}
 import io.scalajs.util.PromiseHelper._
 
-import scala.concurrent.Promise
+import scala.concurrent.{Future, Promise}
 import scala.scalajs.js
 
 /**
@@ -22,42 +22,44 @@ package object http {
       * @see [[Http.createServer()]]
       */
     @inline
-    def createServerFuture: Promise[(Server, ClientRequest, ServerResponse)] = {
+    def createServerFuture: Future[(Server, ClientRequest, ServerResponse)] = {
       val task = Promise[(Server, ClientRequest, ServerResponse)]()
       var server: Server = null
       server = http.createServer((request: ClientRequest, response: ServerResponse) => {
         task.success((server, request, response))
       })
-      task
+      task.future
     }
 
     /**
       * @see [[Http.get()]]
       */
     @inline
-    def getFuture(options: RequestOptions): Promise[ServerResponse] =
-    promiseCallback1[ServerResponse](http.get(options, _))
+    def getFuture(options: RequestOptions): Future[ServerResponse] = {
+      promiseCallback1[ServerResponse](http.get(options, _))
+    }
 
     /**
       * @see [[Http.get()]]
       */
     @inline
-    def getFuture(url: String): Promise[ServerResponse] = promiseCallback1[ServerResponse](http.get(url, _))
+    def getFuture(url: String): Future[ServerResponse] = promiseCallback1[ServerResponse](http.get(url, _))
 
     /**
       * @see [[Http.request()]]
       */
     @inline
-    def requestFuture(options: RequestOptions): Promise[ServerResponse] =
-    promiseWithError1[SystemError, ServerResponse](http.request(options, _))
+    def requestFuture(options: RequestOptions): Future[ServerResponse] = {
+      promiseWithError1[SystemError, ServerResponse](http.request(options, _))
+    }
 
     /**
       * @see [[Http.request()]]
       */
     @inline
-    def requestFuture(url: String): Promise[ServerResponse] =
-    promiseWithError1[SystemError, ServerResponse](http.request(url, _))
-
+    def requestFuture(url: String): Future[ServerResponse] = {
+      promiseWithError1[SystemError, ServerResponse](http.request(url, _))
+    }
   }
 
   /**
@@ -98,13 +100,13 @@ package object http {
     def onConnect(callback: js.Function): server.type = server.on("connect", callback)
 
     @inline
-    def closeFuture(): Promise[Unit] = promiseWithError0[SystemError](server.close)
+    def closeFuture(): Future[Unit] = promiseWithError0[SystemError](server.close)
 
     @inline
-    def getConnectionsFuture: Promise[Int] = promiseWithError1[SystemError, Int](server.getConnections)
+    def getConnectionsFuture: Future[Int] = promiseWithError1[SystemError, Int](server.getConnections)
 
     @inline
-    def listenFuture(options: ListenerOptions): Promise[Unit] = promiseWithError0[SystemError](server.listen(options, _))
+    def listenFuture(options: ListenerOptions): Future[Unit] = promiseWithError0[SystemError](server.listen(options, _))
 
     @inline
     def onRequest(callback: js.Function): server.type = server.on("request", callback)

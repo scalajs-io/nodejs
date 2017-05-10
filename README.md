@@ -108,7 +108,7 @@ Looking for a complete list of available bindings? Go [here](https://github.com/
  
 There's a discussion about [ScalaJs.io on Reddit](https://www.reddit.com/r/scala/comments/4loosi/meansjs_scalajs_facades_for_the_nodejs_api/).    
 
-<a name="advantages">
+<a name="advantages"></a>
 ### Advantages over JavaScript
 
 Scala.js offers many advantages over native JavaScript:

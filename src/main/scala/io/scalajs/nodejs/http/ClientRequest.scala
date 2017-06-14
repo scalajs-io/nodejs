@@ -8,6 +8,7 @@ import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Future
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSImport
 
 /**
   * http.ClientRequest - This object is created internally and returned from http.request(). It represents an in-progress
@@ -30,6 +31,7 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
+@JSImport("http", "ClientRequest")
 class ClientRequest extends Readable {
 
   def headers: js.Dictionary[String] = js.native

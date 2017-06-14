@@ -2,6 +2,7 @@ package io.scalajs.nodejs
 package child_process
 
 import io.scalajs.RawOptions
+import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.nodejs.buffer.Buffer
 
 import scala.scalajs.js
@@ -15,7 +16,7 @@ import scala.scalajs.js.|
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait ChildProcess extends js.Object {
+trait ChildProcess extends IEventEmitter {
 
   /**
     * Spawns a shell then executes the command within that shell, buffering any generated output.

@@ -1,6 +1,6 @@
 {
   "name": "scalajs-io",
-  "version": "0.4.0-pre5",
+  "version": "0.4.0",
   "private": true,
   "dependencies": {
     "async": "^2.0.1",
@@ -42,7 +42,7 @@
     "rx": "^4.1.0",
     "should": "^11.1.2",
     "socket.io": "^1.7.2",
-    "source-map": "^0.5.6",
+    "source-map-support": "^0.4.14",
     "splitargs": "0.0.7",
     "tingodb": "^0.5.1",
     "transducers-js": "^0.4.174",

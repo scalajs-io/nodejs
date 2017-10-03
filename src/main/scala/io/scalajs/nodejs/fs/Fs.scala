@@ -30,7 +30,7 @@ trait Fs extends IEventEmitter {
   //      File Access Constants
   //
   //      The following constants are meant for use with fs.access().
-  /////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////                         `
 
   /**
     * File is visible to the calling process. This is useful for determining if a file exists, but says

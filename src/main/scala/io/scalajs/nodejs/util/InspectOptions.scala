@@ -1,7 +1,7 @@
 package io.scalajs.nodejs.util
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
+
 
 /**
   * Inspect Options
@@ -22,7 +22,7 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @see [[https://nodejs.org/api/util.html#util_util_inspect_object_options]]
   * @author lawrence.daniels@gmail.com
   */
-@ScalaJSDefined
+
 class InspectOptions(var showHidden: js.UndefOr[Boolean] = js.undefined,
                      var depth: js.UndefOr[Int] = js.undefined,
                      var colors: js.UndefOr[Boolean] = js.undefined,

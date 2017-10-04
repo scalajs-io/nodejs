@@ -2,7 +2,7 @@ package io.scalajs.nodejs
 package stream
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
+import scala.scalajs.js.annotation.JSImport
 
 /**
   * A "duplex" stream is one that is both Readable and Writable, such as a TCP socket connection.
@@ -35,7 +35,7 @@ trait IDuplex extends Readable with Writable
   * @param writableObjectMode Sets objectMode for writable side of the stream. Has no effect if objectMode is true
   *                           (Default: false).
   */
-@ScalaJSDefined
+
 class DuplexOptions(var allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
                     var readableObjectMode: js.UndefOr[Boolean] = js.undefined,
                     var writableObjectMode: js.UndefOr[Boolean] = js.undefined)

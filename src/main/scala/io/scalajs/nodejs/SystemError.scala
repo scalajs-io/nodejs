@@ -55,5 +55,5 @@ class SystemError(message0: String = js.native) extends Error(message0) {
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-@JSImport("errors", "SystemError")
+@JSImport("errors", JSImport.Namespace)
 object SystemError extends Error

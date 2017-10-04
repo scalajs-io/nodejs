@@ -1,7 +1,8 @@
 package io.scalajs.nodejs.cluster
 
 import io.scalajs.JSON
-import io.scalajs.nodejs._
+import io.scalajs.nodejs.setTimeout
+import io.scalajs.util.DurationHelper._
 import org.scalatest.FunSpec
 
 import scala.concurrent.duration._
@@ -15,7 +16,6 @@ class ClusterTest extends FunSpec {
 
   describe("Cluster") {
 
-    /*
     it("cluster should be master") {
       info(s"cluster.isMaster => ${Cluster.isMaster}")
       assert(Cluster.isMaster)
@@ -52,7 +52,7 @@ class ClusterTest extends FunSpec {
 
         Cluster.onExit((worker, code, signal) => info(s"worker ${worker.process.pid} died"))
       }
-    }*/
+    }
 
   }
 

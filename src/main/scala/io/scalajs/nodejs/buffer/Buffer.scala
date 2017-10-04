@@ -3,7 +3,7 @@ package io.scalajs.nodejs.buffer
 import io.scalajs.collection.Iterator
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSBracketAccess, JSGlobal, JSImport, JSName}
+import scala.scalajs.js.annotation.{JSBracketAccess, JSGlobal, JSImport}
 import scala.scalajs.js.typedarray.ArrayBuffer
 import scala.scalajs.js.|
 
@@ -839,7 +839,7 @@ class Buffer() extends js.Object {
 }
 
 @js.native
-@JSGlobal("Buffer")
+@JSGlobal
 object Buffer extends js.Object {
 
   /////////////////////////////////////////////////////////////////////////////////

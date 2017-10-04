@@ -7,7 +7,7 @@ import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Future
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
+
 import scala.scalajs.js.|
 
 /**
@@ -236,7 +236,7 @@ object Writable {
   * @param chunk    the chunk of data
   * @param encoding the data's optional encoding
   */
-@ScalaJSDefined
+
 class Chunk(val chunk: Buffer | String,
             val encoding: js.UndefOr[String] = js.undefined)
   extends js.Object

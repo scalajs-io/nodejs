@@ -3,13 +3,13 @@ package io.scalajs.nodejs.readline
 import io.scalajs.nodejs.stream.{Readable, Writable}
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
+
 
 /**
   * Readline Options
   * @author lawrence.daniels@gmail.com
   */
-@ScalaJSDefined
+
 class ReadlineOptions(var input: js.UndefOr[Readable] = js.undefined,
                       var output: js.UndefOr[Writable] = js.undefined,
                       var completer: js.UndefOr[js.Function] = js.undefined,

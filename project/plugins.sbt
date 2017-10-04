@@ -8,7 +8,7 @@ addSbtPlugin("com.geirsson" % "sbt-scalafmt" % "0.5.5")
 
 // Testing
 
-//addSbtPlugin("com.artima.supersafe" % "sbtplugin" % "1.1.0")
+//addSbtPlugin("com.artima.supersafe" % "sbtplugin" % "1.1.2")
 
 // Publishing
 

@@ -1,7 +1,7 @@
 package io.scalajs.nodejs.http
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
+
 
 /**
   * Client Request Options
@@ -26,7 +26,7 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @see [[Agent.createConnection() ]]
   * @author lawrence.daniels@gmail.com
   */
-@ScalaJSDefined
+
 class RequestOptions(var protocol: js.UndefOr[String] = js.undefined,
                      var host: js.UndefOr[String] = js.undefined,
                      var hostname: js.UndefOr[String] = js.undefined,

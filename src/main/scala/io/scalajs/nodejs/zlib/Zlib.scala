@@ -4,7 +4,6 @@ import io.scalajs.RawOptions
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.events.IEventEmitter
 
-import scala.language.implicitConversions
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
@@ -23,42 +22,42 @@ trait Zlib extends IEventEmitter {
   /////////////////////////////////////////////////////////////////////////////////
 
   // Allowed flush values
-  val Z_NO_FLUSH: CompressionFlush      = js.native
+  val Z_NO_FLUSH: CompressionFlush = js.native
   val Z_PARTIAL_FLUSH: CompressionFlush = js.native
-  val Z_SYNC_FLUSH: CompressionFlush    = js.native
-  val Z_FULL_FLUSH: CompressionFlush    = js.native
-  val Z_FINISH: CompressionFlush        = js.native
-  val Z_BLOCK: CompressionFlush         = js.native
-  val Z_TREES: CompressionFlush         = js.native
+  val Z_SYNC_FLUSH: CompressionFlush = js.native
+  val Z_FULL_FLUSH: CompressionFlush = js.native
+  val Z_FINISH: CompressionFlush = js.native
+  val Z_BLOCK: CompressionFlush = js.native
+  val Z_TREES: CompressionFlush = js.native
 
   // Return codes for the compression/decompression functions.
-  val Z_OK: CompressionFunction            = js.native
-  val Z_STREAM_END: CompressionFunction    = js.native
-  val Z_NEED_DICT: CompressionFunction     = js.native
-  val Z_ERRNO: CompressionFunction         = js.native
-  val Z_STREAM_ERROR: CompressionFunction  = js.native
-  val Z_DATA_ERROR: CompressionFunction    = js.native
-  val Z_MEM_ERROR: CompressionFunction     = js.native
-  val Z_BUF_ERROR: CompressionFunction     = js.native
+  val Z_OK: CompressionFunction = js.native
+  val Z_STREAM_END: CompressionFunction = js.native
+  val Z_NEED_DICT: CompressionFunction = js.native
+  val Z_ERRNO: CompressionFunction = js.native
+  val Z_STREAM_ERROR: CompressionFunction = js.native
+  val Z_DATA_ERROR: CompressionFunction = js.native
+  val Z_MEM_ERROR: CompressionFunction = js.native
+  val Z_BUF_ERROR: CompressionFunction = js.native
   val Z_VERSION_ERROR: CompressionFunction = js.native
 
   // Compression levels
-  val Z_NO_COMPRESSION: CompressionLevel      = js.native
-  val Z_BEST_SPEED: CompressionLevel          = js.native
-  val Z_BEST_COMPRESSION: CompressionLevel    = js.native
+  val Z_NO_COMPRESSION: CompressionLevel = js.native
+  val Z_BEST_SPEED: CompressionLevel = js.native
+  val Z_BEST_COMPRESSION: CompressionLevel = js.native
   val Z_DEFAULT_COMPRESSION: CompressionLevel = js.native
 
   // Compression strategies
-  val Z_FILTERED: CompressionStrategy         = js.native
-  val Z_HUFFMAN_ONLY: CompressionStrategy     = js.native
-  val Z_RLE: CompressionStrategy              = js.native
-  val Z_FIXED: CompressionStrategy            = js.native
+  val Z_FILTERED: CompressionStrategy = js.native
+  val Z_HUFFMAN_ONLY: CompressionStrategy = js.native
+  val Z_RLE: CompressionStrategy = js.native
+  val Z_FIXED: CompressionStrategy = js.native
   val Z_DEFAULT_STRATEGY: CompressionStrategy = js.native
 
   // Possible values of the data_type field
-  val Z_BINARY: DataType  = js.native
-  val Z_TEXT: DataType    = js.native
-  val Z_ASCII: DataType   = js.native
+  val Z_BINARY: DataType = js.native
+  val Z_TEXT: DataType = js.native
+  val Z_ASCII: DataType = js.native
   val Z_UNKNOWN: DataType = js.native
 
   // The deflate compression method (the only one supported in this version).

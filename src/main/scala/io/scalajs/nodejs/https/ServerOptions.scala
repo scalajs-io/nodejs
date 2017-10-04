@@ -1,7 +1,7 @@
 package io.scalajs.nodejs.https
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
+
 
 /**
   * Server Options
@@ -27,7 +27,7 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   *                     </ul>
   * @author lawrence.daniels@gmail.com
   */
-@ScalaJSDefined
+
 class ServerOptions(var host: js.UndefOr[String] = js.undefined,
                     var hostname: js.UndefOr[String] = js.undefined,
                     var family: js.UndefOr[String] = js.undefined,

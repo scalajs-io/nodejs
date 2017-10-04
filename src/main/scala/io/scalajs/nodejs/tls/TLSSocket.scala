@@ -6,7 +6,7 @@ import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.net.Socket
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
+import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
 
 /**
@@ -68,7 +68,7 @@ class TLSSocket(socket: Socket, options: TLSSocketOptions | RawOptions = js.nati
   * @param secureContext      Optional TLS context object created with tls.createSecureContext(). If a secureContext
   *                           is not provided, one will be created by calling tls.createSecureContext() with no options.
   */
-@ScalaJSDefined
+
 class TLSSocketOptions(val isServer: js.UndefOr[Boolean] = js.undefined,
                        val server: js.UndefOr[net.Server] = js.undefined,
                        val requestCert: js.UndefOr[Boolean] = js.undefined,

@@ -1,7 +1,7 @@
 package io.scalajs.nodejs.vm
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
+
 
 /**
   * Script Context Options
@@ -14,7 +14,7 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   *                      is terminated, an Error will be thrown.
   * @author lawrence.daniels@gmail.com
   */
-@ScalaJSDefined
+
 class ContextOptions(var filename: js.UndefOr[String] = js.undefined,
                      var lineOffset: js.UndefOr[Int] = js.undefined,
                      var columnOffset: js.UndefOr[Int] = js.undefined,

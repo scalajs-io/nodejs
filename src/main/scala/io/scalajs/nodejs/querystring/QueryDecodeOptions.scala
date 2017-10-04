@@ -1,7 +1,7 @@
 package io.scalajs.nodejs.querystring
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
+
 
 /**
   * Query String Decode Options
@@ -12,7 +12,7 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   *                           into a collection of key and value pairs.
   * @author lawrence.daniels@gmail.com
   */
-@ScalaJSDefined
+
 class QueryDecodeOptions(val decodeURIComponent: js.UndefOr[js.Function] = js.undefined,
                          val maxKeys: js.UndefOr[Int] = js.undefined)
     extends js.Object

@@ -1,17 +1,116 @@
-package io.scalajs.nodejs.url
+package io.scalajs.nodejs
+package url
 
 import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.|
 
 /**
   * This module has utilities for URL resolution and parsing. Call require('url') to use it.
+  * @param input The input URL to parse
+  * @param base  The base URL to resolve against if the input is not absolute.
   * @see https://nodejs.org/api/url.html
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait URL extends IEventEmitter {
+@JSImport("url", "URL")
+class URL(input: String, base: String | URL = js.native) extends js.Object {
+
+  /**
+    * The auth property is the username and password portion of the URL, also referred to as "userinfo".
+    * This string subset follows the protocol and double slashes (if present) and precedes the host component,
+    * delimited by an ASCII "at sign" (@). The format of the string is {username}[:{password}],
+    * with the [:{password}] portion being optional.
+    */
+  var auth: String = js.native
+
+  /**
+    * Gets and sets the fragment portion of the URL.
+    */
+  var hash: String = js.native
+
+  /**
+    * Gets and sets the host portion of the URL.
+    */
+  var host: String = js.native
+
+  /**
+    * Gets and sets the hostname portion of the URL.
+    * The key difference between url.host and url.hostname is that url.hostname does not include the port.
+    */
+  var hostname: String = js.native
+
+  /**
+    * Gets and sets the serialized URL.
+    */
+  var href: String = js.native
+
+  /**
+    * Gets the read-only serialization of the URL's origin.
+    */
+  var origin: String = js.native
+
+  /**
+    * Gets and sets the password portion of the URL.
+    */
+  var password: String = js.native
+
+  /**
+    * Gets and sets the path portion of the URL.
+    */
+  var pathname: String = js.native
+
+  /**
+    * Gets and sets the port portion of the URL.
+    */
+  var port: String = js.native
+
+  /**
+    * Gets and sets the protocol portion of the URL.
+    */
+  var protocol: String = js.native
+
+  /**
+    * Gets and sets the serialized query portion of the URL.
+    */
+  var search: String = js.native
+
+  /**
+    * Gets the URLSearchParams object representing the query parameters of the URL. This property is read-only;
+    * to replace the entirety of query parameters of the URL, use the url.search setter.
+    * See URLSearchParams documentation for details.
+    */
+  var searchParams: URLSearchParams = js.native
+
+  /**
+    * Gets and sets the username portion of the URL.
+    */
+  var username: String = js.native
+
+  /////////////////////////////////////////////////////////////////////////////////
+  //      Methods
+  /////////////////////////////////////////////////////////////////////////////////
+
+  /**
+    * The toJSON() method on the URL object returns the serialized URL. The value returned is equivalent to that of
+    * url.href and url.toString().
+    *
+    * This method is automatically called when an URL object is serialized with JSON.stringify().
+    * @return a JSON representation of the URL
+    */
+  def toJSON(): String = js.native
+
+}
+
+/**
+  * This module has utilities for URL resolution and parsing. Call require('url') to use it.
+  * @author lawrence.daniels@gmail.com
+  */
+@js.native
+@JSImport("url", JSImport.Namespace)
+object URL extends IEventEmitter {
 
   /**
     * Take a parsed URL object, and return a formatted URL string.
@@ -82,11 +181,3 @@ trait URL extends IEventEmitter {
   def resolve(from: String, to: String): String = js.native
 
 }
-
-/**
-  * URL Singleton
-  * @author lawrence.daniels@gmail.com
-  */
-@js.native
-@JSImport("url", JSImport.Namespace)
-object URL extends URL

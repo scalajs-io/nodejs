@@ -1,13 +1,13 @@
 package io.scalajs.nodejs.os
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
+
 
 /**
   * Represents a Network Interface
   * @author lawrence.daniels@gmail.com
   */
-@ScalaJSDefined
+
 class NetworkInterface(val address: String,
                        val netmask: String,
                        val family: String,

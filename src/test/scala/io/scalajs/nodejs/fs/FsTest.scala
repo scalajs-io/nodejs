@@ -6,8 +6,6 @@ import io.scalajs.nodejs.util.Util
 import io.scalajs.util.ScalaJsHelper._
 import org.scalatest.FunSpec
 
-import scala.scalajs.js
-
 /**
   * File System (Fs) Tests
   * @author lawrence.daniels@gmail.com

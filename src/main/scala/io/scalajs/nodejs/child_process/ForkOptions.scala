@@ -4,7 +4,7 @@ package child_process
 import io.scalajs.JsNumber
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
+
 
 /**
   * Fork Options
@@ -22,7 +22,7 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @param gid      <Number> Sets the group identity of the process. (See setgid(2).)
   * @author lawrence.daniels@gmail.com
   */
-@ScalaJSDefined
+
 class ForkOptions(val cwd: js.UndefOr[String] = js.undefined,
                   val env: js.Any = js.undefined,
                   val execPath: js.UndefOr[String] = js.undefined,

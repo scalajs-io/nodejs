@@ -6,7 +6,7 @@ import io.scalajs.nodejs.querystring.QueryStringTest.MyParams
 import org.scalatest.FunSpec
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
+
 
 /**
   * Query String Test
@@ -52,7 +52,7 @@ class QueryStringTest extends FunSpec {
   */
 object QueryStringTest {
 
-  @ScalaJSDefined
+
   class MyParams(val foo: String, val bar: String) extends js.Object
 
 }

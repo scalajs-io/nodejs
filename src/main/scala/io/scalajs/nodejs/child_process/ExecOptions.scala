@@ -4,7 +4,7 @@ package child_process
 import io.scalajs.JsNumber
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
+
 
 /**
   * Spawns a shell then executes the command within that shell, buffering any generated output.
@@ -24,7 +24,7 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @param uid        <Number> Sets the user identity of the process. (See setuid(2).)
   * @param gid        <Number> Sets the group identity of the process. (See setgid(2).)
   */
-@ScalaJSDefined
+
 class ExecOptions(val cwd: js.UndefOr[String] = js.undefined,
                   val env: js.Any = js.undefined,
                   val encoding: js.UndefOr[String] = js.undefined,

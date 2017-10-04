@@ -1,4 +1,5 @@
-package io.scalajs.nodejs.url
+package io.scalajs.nodejs
+package url
 
 import io.scalajs.util.JSONHelper._
 import io.scalajs.util.JsUnderOrHelper._
@@ -10,10 +11,22 @@ import org.scalatest._
   */
 class URLTest extends FunSpec {
 
-  describe("URL") {
+  describe("URL class") {
+
+    it("Gets and sets the serialized query portion of the URL") {
+      val myURL = new URL("https://example.org/abc?123")
+      info(myURL.search) // Prints ?123
+
+      myURL.search = "abc=xyz"
+      info(myURL.href)
+    }
+
+  }
+
+  describe("URL object") {
 
     val originalUrl = "https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=node"
-    val parsedUrl   = URL.parse(originalUrl)
+    val parsedUrl = URL.parse(originalUrl)
 
     it("should break down URLs into components") {
       assert(

@@ -49,7 +49,7 @@ package object fs {
     * File System Extensions
     * @param fs the given [[Fs file system]] instance
     */
-  implicit class FsExtensions(val fs: Fs) extends AnyVal {
+  final implicit class FsExtensions(val fs: Fs) extends AnyVal {
 
     @inline
     def accessFuture(path: Buffer | String, mode: FileMode = null): Future[Unit] = {
@@ -58,8 +58,8 @@ package object fs {
 
     @inline
     def appendFileFuture(file: Buffer | FileDescriptor | String,
-                        data: Buffer | String,
-                        options: FileAppendOptions = null): Future[Unit] = {
+                         data: Buffer | String,
+                         options: FileAppendOptions = null): Future[Unit] = {
       promiseWithError0[FileIOError](fs.appendFile(file, data, options, _))
     }
 
@@ -114,7 +114,7 @@ package object fs {
 
     @inline
     def readdirFuture(path: Buffer | String,
-                     options: String | FileEncodingOptions | RawOptions = null): Future[js.Array[String]] = {
+                      options: String | FileEncodingOptions | RawOptions = null): Future[js.Array[String]] = {
       promiseWithError1[FileIOError, js.Array[String]](fs.readdir(path, options, _))
     }
 
@@ -162,10 +162,10 @@ package object fs {
 
     @inline
     def writeFuture(fd: FileDescriptor,
-                   buffer: Buffer | Uint8Array,
-                   offset: Integer = null,
-                   length: Integer = null,
-                   position: Integer = null): Future[(FileType, Buffer)] = {
+                    buffer: Buffer | Uint8Array,
+                    offset: Integer = null,
+                    length: Integer = null,
+                    position: Integer = null): Future[(FileType, Buffer)] = {
       promiseWithError2[FileIOError, Int, Buffer](fs.write(fd, buffer, offset, length, position, _))
     }
 

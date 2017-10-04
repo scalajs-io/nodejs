@@ -3,7 +3,7 @@ package io.scalajs.nodejs.child_process
 import io.scalajs.JsNumber
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
+
 import scala.scalajs.js.|
 
 /**
@@ -22,7 +22,7 @@ import scala.scalajs.js.|
   *                 The shell should understand the -c switch on UNIX, or /d /s /c on Windows. Defaults to false (no shell).
   * @author lawrence.daniels@gmail.com
   */
-@ScalaJSDefined
+
 class SpawnOptions(val cwd: js.UndefOr[String] = js.undefined,
                    val env: js.Any = js.undefined,
                    val argv0: js.UndefOr[String] = js.undefined,

@@ -3,7 +3,7 @@ package io.scalajs.nodejs
 import io.scalajs.nodejs.stream.Writable
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
+import scala.scalajs.js.annotation.JSImport
 
 /**
   * The console module provides a simple debugging console that is similar to the JavaScript console mechanism
@@ -16,7 +16,7 @@ import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
   * <li>A global console instance configured to write to stdout and stderr. Because this object is global, it can be
   * used without calling require('console').</li>
   * </ul>
-  * @see https://nodejs.org/api/console.html
+  * @see https://nodejs.org/dist/latest-v8.x/docs/api/console.html
   * @author lawrence.daniels@gmail.com
   */
 @js.native
@@ -36,6 +36,28 @@ class Console(stdout: Writable, stderr: Writable = js.native) extends js.Object 
     * @example console.assert(value[, message][, ...])
     */
   def assert(value: js.Any, args: Any*): Unit = js.native
+
+  /**
+    * When stdout is a TTY, calling console.clear() will attempt to clear the TTY. When stdout is not a TTY,
+    * this method does nothing.
+    *
+    * Note: The specific operation of console.clear() can vary across operating systems and terminal types.
+    * For most Linux operating systems, console.clear() operates similarly to the clear shell command.
+    * On Windows, console.clear() will clear only the output in the current terminal viewport for the Node.js binary.
+    */
+  def clear(): Unit = js.native
+
+  /**
+    * Maintains an internal counter specific to label and outputs to stdout the number of times console.count() has been called with the given label.
+    * @param label the display label for the counter. Defaults to 'default'.
+    */
+  def count(label: String = js.native): Unit = js.native
+
+  /**
+    * Resets the internal counter specific to label.
+    * @param label the display label for the counter. Defaults to 'default'.
+    */
+  def countReset(label: String = js.native): Unit = js.native
 
   /**
     * Uses util.inspect() on obj and prints the resulting string to stdout.
@@ -58,6 +80,23 @@ class Console(stdout: Writable, stderr: Writable = js.native) extends js.Object 
     * @example console.error([data][, ...])
     */
   def error(data: js.Any, args: Any*): Unit = js.native
+
+  /**
+    * Increases indentation of subsequent lines by two spaces.
+    * If one or more labels are provided, those are printed first without the additional indentation.
+    * @param label the labels
+    */
+  def group(label: js.Any*): Unit = js.native
+
+  /**
+    * An alias for console.group().
+    */
+  def groupCollapsed(): Unit = js.native
+
+  /**
+    * Decreases indentation of subsequent lines by two spaces.
+    */
+  def groupEnd(): Unit = js.native
 
   /**
     * The console.info() function is an alias for console.log().
@@ -113,6 +152,7 @@ class Console(stdout: Writable, stderr: Writable = js.native) extends js.Object 
   *                   see customizing util.inspect() colors.
   * @author lawrence.daniels@gmail.com
   */
-@ScalaJSDefined
-class ConsoleDirOptions(var showHidden: Boolean = false, var depth: Integer = 2, var colors: Boolean = false)
+class ConsoleDirOptions(var showHidden: js.UndefOr[Boolean] = js.undefined,
+                        var depth: js.UndefOr[Int] = js.undefined,
+                        var colors: js.UndefOr[Boolean] = js.undefined)
   extends js.Object

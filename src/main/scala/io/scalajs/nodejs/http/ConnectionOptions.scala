@@ -1,7 +1,6 @@
 package io.scalajs.nodejs.http
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * Connection Options
@@ -13,7 +12,7 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   *                       true (default: 256).
   * @author lawrence.daniels@gmail.com
   */
-@ScalaJSDefined
+
 class ConnectionOptions(var keepAlive: js.UndefOr[Boolean] = js.undefined,
                         var keepAliveMsecs: js.UndefOr[Int] = js.undefined,
                         var maxSockets: js.UndefOr[Double] = js.undefined,

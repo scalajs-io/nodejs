@@ -5,13 +5,9 @@ import sbt._
 
 import scala.language.postfixOps
 
-val scalaJsIOVersion = "0.4.1"
+val scalaJsIOVersion = "0.4.2"
 val apiVersion = scalaJsIOVersion
 val scalaJsVersion = "2.12.3"
-
-organization := "io.scalajs"
-
-homepage := Some(url("https://github.com/scalajs-io/nodejs"))
 
 lazy val root = (project in file(".")).
   enablePlugins(ScalaJSPlugin).
@@ -20,15 +16,18 @@ lazy val root = (project in file(".")).
     version := apiVersion,
     organization := "io.scalajs",
     description := "NodeJS bindings for Scala.js",
+    homepage := Some(url("https://github.com/scalajs-io/nodejs")),
     scalaVersion := scalaJsVersion,
     scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
+    scalacOptions += "-P:scalajs:sjsDefinedByDefault",
     scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
     autoCompilerPlugins := true,
     scalaJSModuleKind := ModuleKind.CommonJSModule,
     addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
-    logBuffered in Test := false,
+    logBuffered in Test := true,
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaJsVersion,
+      "org.scalactic" %% "scalactic" % "3.0.1",
       "org.scalatest" %%% "scalatest" % "3.0.1" % "test",
       "io.scalajs" %%% "core" % scalaJsIOVersion
     ))

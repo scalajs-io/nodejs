@@ -6,7 +6,7 @@ import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
+
 import scala.scalajs.js.|
 
 /**
@@ -258,7 +258,7 @@ object Readable {
   * Readable Pipe Options
   * @param end End the writer when the reader ends. Defaults to true.
   */
-@ScalaJSDefined
+
 class ReadablePipeOptions(val end: js.UndefOr[Boolean] = js.undefined)
   extends js.Object
 

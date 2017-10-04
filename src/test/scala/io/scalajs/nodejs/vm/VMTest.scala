@@ -4,7 +4,7 @@ import io.scalajs.nodejs.vm.VMTest.{ExpectedData, Sandbox}
 import org.scalatest.FunSpec
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
+
 
 /**
   * VM Tests
@@ -57,7 +57,7 @@ object VMTest {
   /**
     * Sandbox Object
     */
-  @ScalaJSDefined
+
   class Sandbox(var animal: String, var count: Int, var name: String) extends js.Object
 
   case class ExpectedData(animal: String, count: Int, name: String)

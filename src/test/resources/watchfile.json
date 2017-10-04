@@ -1,6 +1,6 @@
 {
   "name": "scalajs-io",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "private": true,
   "dependencies": {
     "async": "^2.0.1",

@@ -1,7 +1,7 @@
 package io.scalajs.nodejs
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSGlobal, JSImport, JSName}
+import scala.scalajs.js.annotation.{JSGlobal, JSImport}
 
 /**
   * Creates a new Error object and sets the error.message property to the provided text message.
@@ -13,7 +13,7 @@ import scala.scalajs.js.annotation.{JSGlobal, JSImport, JSName}
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-@JSGlobal("Error")
+@JSImport("errors", "Error")
 class Error(message0: String = js.native) extends js.Object {
 
   /**
@@ -36,7 +36,7 @@ class Error(message0: String = js.native) extends js.Object {
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-@JSImport("errors", "Error")
+@JSGlobal
 object Error extends js.Object {
 
   /////////////////////////////////////////////////////////////////////////////////

@@ -3,7 +3,7 @@ package io.scalajs.nodejs.repl
 import io.scalajs.nodejs.stream.{Readable, Writable}
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
+
 
 /**
   * REPL Options
@@ -33,7 +33,7 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   *                        </ul>
   * @author lawrence.daniels@gmail.com
   */
-@ScalaJSDefined
+
 class REPLOptions(var prompt: js.UndefOr[String] = js.undefined,
                   var input: js.UndefOr[Readable] = js.undefined,
                   var output: js.UndefOr[Writable] = js.undefined,

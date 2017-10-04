@@ -5,7 +5,7 @@ import io.scalajs.RawOptions
 import io.scalajs.nodejs.stream.IDuplex
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
+import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
 
 /**
@@ -240,7 +240,7 @@ object Socket extends {
   * @param writable
   * @author lawrence.daniels@gmail.com
   */
-@ScalaJSDefined
+
 class SocketOptions(val fd: js.UndefOr[FileDescriptor] = js.undefined,
                     val allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
                     val readable: js.UndefOr[Boolean] = js.undefined,

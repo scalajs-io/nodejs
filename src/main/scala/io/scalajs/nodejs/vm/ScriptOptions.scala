@@ -3,7 +3,7 @@ package io.scalajs.nodejs.vm
 import io.scalajs.nodejs.buffer.Buffer
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
+
 
 /**
   * Script Options
@@ -22,7 +22,7 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   *                          code cache data is produced successfully.
   * @author lawrence.daniels@gmail.com
   */
-@ScalaJSDefined
+
 class ScriptOptions(var filename: js.UndefOr[String] = js.undefined,
                     var lineOffset: js.UndefOr[Int] = js.undefined,
                     var columnOffset: js.UndefOr[Int] = js.undefined,

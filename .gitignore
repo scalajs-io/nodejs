@@ -1,3 +1,5 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Scala template
 *.class
 *.log
 
@@ -6,7 +8,9 @@
 .history
 .lib/
 dist/*
-target/
+project/target/*
+project/project/*
+target/*
 lib_managed/
 src_managed/
 project/boot/
@@ -18,4 +22,5 @@ project/plugins/project/
 
 #Intellij
 .idea
+
 1.txt

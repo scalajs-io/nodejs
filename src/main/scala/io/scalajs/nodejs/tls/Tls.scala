@@ -4,7 +4,7 @@ package tls
 import io.scalajs.RawOptions
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
+import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
 
 /**
@@ -37,5 +37,5 @@ trait Tls extends js.Object {
 object Tls extends Tls
 
 
-@ScalaJSDefined
+
 class TlsConnectOptions() extends js.Object

@@ -3,7 +3,6 @@ package http
 
 import org.scalatest.FunSpec
 
-import scala.concurrent.duration._
 import scala.scalajs.js
 
 /**

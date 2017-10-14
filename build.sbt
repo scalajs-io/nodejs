@@ -5,17 +5,19 @@ import sbt._
 
 import scala.language.postfixOps
 
-val scalaJsIOVersion = "0.4.2"
+val scalaJsIOVersion = "0.4.3"
 val apiVersion = scalaJsIOVersion
 val scalaJsVersion = "2.12.3"
 
 lazy val root = (project in file(".")).
+  aggregate(common, current, lts).
+  dependsOn(common, current, lts).
   enablePlugins(ScalaJSPlugin).
   settings(
-    name := "nodejs",
+    name := "nodejs-platform",
     version := apiVersion,
     organization := "io.scalajs",
-    description := "NodeJS bindings for Scala.js",
+    description := "NodeJS build artifact",
     homepage := Some(url("https://github.com/scalajs-io/nodejs")),
     scalaVersion := scalaJsVersion,
     scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
@@ -29,7 +31,76 @@ lazy val root = (project in file(".")).
       "org.scala-lang" % "scala-reflect" % scalaJsVersion,
       "org.scalactic" %% "scalactic" % "3.0.1",
       "org.scalatest" %%% "scalatest" % "3.0.1" % "test",
-      "io.scalajs" %%% "nodejs-core" % scalaJsIOVersion
+      "io.scalajs" %%% "core" % scalaJsIOVersion
+    ))
+
+lazy val common = (project in file("./app/common")).
+  enablePlugins(ScalaJSPlugin).
+  settings(
+    name := "nodejs-common",
+    version := apiVersion,
+    organization := "io.scalajs",
+    description := "NodeJS common API",
+    homepage := Some(url("https://github.com/scalajs-io/nodejs")),
+    scalaVersion := scalaJsVersion,
+    scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
+    scalacOptions += "-P:scalajs:sjsDefinedByDefault",
+    scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
+    autoCompilerPlugins := true,
+    scalaJSModuleKind := ModuleKind.CommonJSModule,
+    addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
+    logBuffered in Test := true,
+    libraryDependencies ++= Seq(
+      "org.scala-lang" % "scala-reflect" % scalaJsVersion,
+      "org.scalactic" %% "scalactic" % "3.0.1",
+      "org.scalatest" %%% "scalatest" % "3.0.1" % "test",
+      "io.scalajs" %%% "core" % scalaJsIOVersion
+    ))
+
+lazy val current = (project in file("./app/current")).
+  dependsOn(common).
+  enablePlugins(ScalaJSPlugin).
+  settings(
+    name := "nodejs",
+    version := apiVersion,
+    organization := "io.scalajs",
+    description := "NodeJS v8.7.0 API for Scala.js",
+    homepage := Some(url("https://github.com/scalajs-io/nodejs")),
+    scalaVersion := scalaJsVersion,
+    scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
+    scalacOptions += "-P:scalajs:sjsDefinedByDefault",
+    scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
+    autoCompilerPlugins := true,
+    scalaJSModuleKind := ModuleKind.CommonJSModule,
+    addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
+    logBuffered in Test := true,
+    libraryDependencies ++= Seq(
+      "org.scala-lang" % "scala-reflect" % scalaJsVersion,
+      "org.scalactic" %% "scalactic" % "3.0.1",
+      "org.scalatest" %%% "scalatest" % "3.0.1" % "test"
+    ))
+
+lazy val lts = (project in file("./app/lts")).
+  dependsOn(common).
+  enablePlugins(ScalaJSPlugin).
+  settings(
+    name := "nodejs-lts",
+    version := apiVersion,
+    organization := "io.scalajs",
+    description := "NodeJS LTS v6.11.4 API for Scala.js",
+    homepage := Some(url("https://github.com/scalajs-io/nodejs")),
+    scalaVersion := scalaJsVersion,
+    scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
+    scalacOptions += "-P:scalajs:sjsDefinedByDefault",
+    scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
+    autoCompilerPlugins := true,
+    scalaJSModuleKind := ModuleKind.CommonJSModule,
+    addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
+    logBuffered in Test := true,
+    libraryDependencies ++= Seq(
+      "org.scala-lang" % "scala-reflect" % scalaJsVersion,
+      "org.scalactic" %% "scalactic" % "3.0.1",
+      "org.scalatest" %%% "scalatest" % "3.0.1" % "test"
     ))
 
 lazy val publishingSettings = Seq(

@@ -8,9 +8,7 @@
 .history
 .lib/
 dist/*
-project/target/*
-project/project/*
-target/*
+target/
 lib_managed/
 src_managed/
 project/boot/
@@ -20,7 +18,17 @@ project/plugins/project/
 .scala_dependencies
 .worksheet
 
-#Intellij
-.idea
+# ENSIME specific
+.ensime_cache/
+.ensime
+### SBT template
+# Simple Build Tool
+# http://www.scala-sbt.org/release/docs/Getting-Started/Directories.html#configuring-version-control
 
-1.txt
+target/
+lib_managed/
+src_managed/
+project/boot/
+.history
+.cache
+

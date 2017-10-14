@@ -29,7 +29,7 @@ lazy val root = (project in file(".")).
       "org.scala-lang" % "scala-reflect" % scalaJsVersion,
       "org.scalactic" %% "scalactic" % "3.0.1",
       "org.scalatest" %%% "scalatest" % "3.0.1" % "test",
-      "io.scalajs" %%% "core" % scalaJsIOVersion
+      "io.scalajs" %%% "nodejs-core" % scalaJsIOVersion
     ))
 
 lazy val publishingSettings = Seq(

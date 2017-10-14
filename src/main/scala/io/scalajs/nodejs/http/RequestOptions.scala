@@ -26,7 +26,6 @@ import scala.scalajs.js
   * @see [[Agent.createConnection() ]]
   * @author lawrence.daniels@gmail.com
   */
-
 class RequestOptions(var protocol: js.UndefOr[String] = js.undefined,
                      var host: js.UndefOr[String] = js.undefined,
                      var hostname: js.UndefOr[String] = js.undefined,

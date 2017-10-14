@@ -11,7 +11,7 @@ import org.scalatest._
   */
 class URLTest extends FunSpec {
 
-  describe("URL class") {
+  describe("URL") {
 
     it("Gets and sets the serialized query portion of the URL") {
       val myURL = new URL("https://example.org/abc?123")
@@ -23,26 +23,26 @@ class URLTest extends FunSpec {
 
   }
 
-  describe("URL object") {
+  describe("URLObject") {
 
     val originalUrl = "https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=node"
-    val parsedUrl = URL.parse(originalUrl)
+    val urlObject = URL.parse(originalUrl)
 
     it("should break down URLs into components") {
       assert(
-        parsedUrl.toJson == """{"protocol":"https:","slashes":true,"auth":null,"host":"www.google.com","port":null,"hostname":"www.google.com","hash":"#q=node","search":"?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8","query":"sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8","pathname":"/webhp","path":"/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8","href":"https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=node"}""")
+        urlObject.toJson == """{"protocol":"https:","slashes":true,"auth":null,"host":"www.google.com","port":null,"hostname":"www.google.com","hash":"#q=node","search":"?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8","query":"sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8","pathname":"/webhp","path":"/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8","href":"https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=node"}""")
     }
 
     it("should be properly extracted") {
-      assert(parsedUrl.query ?== "sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8")
+      assert(urlObject.query ?== "sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8")
     }
 
     it("should properly extract the search query") {
-      assert(parsedUrl.search ?== "?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8")
+      assert(urlObject.search ?== "?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8")
     }
 
     it("should reconstituted the URL to match the original") {
-      assert(URL.format(parsedUrl) == originalUrl)
+      assert(URL.format(urlObject) == originalUrl)
     }
 
   }

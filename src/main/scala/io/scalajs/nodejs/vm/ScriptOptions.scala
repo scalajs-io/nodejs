@@ -22,7 +22,6 @@ import scala.scalajs.js
   *                          code cache data is produced successfully.
   * @author lawrence.daniels@gmail.com
   */
-
 class ScriptOptions(var filename: js.UndefOr[String] = js.undefined,
                     var lineOffset: js.UndefOr[Int] = js.undefined,
                     var columnOffset: js.UndefOr[Int] = js.undefined,
@@ -30,4 +29,4 @@ class ScriptOptions(var filename: js.UndefOr[String] = js.undefined,
                     var timeout: js.UndefOr[Int] = js.undefined,
                     var cachedData: js.UndefOr[Buffer] = js.undefined,
                     var produceCachedData: js.UndefOr[Boolean] = js.undefined)
-    extends js.Object
+  extends js.Object

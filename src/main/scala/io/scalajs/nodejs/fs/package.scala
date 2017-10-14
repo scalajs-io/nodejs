@@ -16,32 +16,6 @@ import scala.scalajs.js.|
 package object fs {
 
   /////////////////////////////////////////////////////////////////////////////////
-  //      Type Definitions
-  /////////////////////////////////////////////////////////////////////////////////
-
-  type EventType = String
-
-  type FileIOError = SystemError
-
-  type FileMode = Integer
-
-  type FileType = Int
-
-  type Flags = String | Int
-
-  type FsCallback0 = js.Function1[FileIOError, Any]
-
-  type FsCallback1[A] = js.Function2[FileIOError, A, Any]
-
-  type FsCallback2[A, B] = js.Function3[FileIOError, A, B, Any]
-
-  type FsCallback3[A, B, C] = js.Function4[FileIOError, A, B, C, Any]
-
-  type GID = Int
-
-  type UID = Int
-
-  /////////////////////////////////////////////////////////////////////////////////
   //      Implicit conversions and classes
   /////////////////////////////////////////////////////////////////////////////////
 

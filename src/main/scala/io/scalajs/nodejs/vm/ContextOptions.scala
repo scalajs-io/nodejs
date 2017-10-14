@@ -14,10 +14,9 @@ import scala.scalajs.js
   *                      is terminated, an Error will be thrown.
   * @author lawrence.daniels@gmail.com
   */
-
 class ContextOptions(var filename: js.UndefOr[String] = js.undefined,
                      var lineOffset: js.UndefOr[Int] = js.undefined,
                      var columnOffset: js.UndefOr[Int] = js.undefined,
                      var displayErrors: js.UndefOr[Boolean] = js.undefined,
                      var timeout: js.UndefOr[Int] = js.undefined)
-    extends js.Object
+  extends js.Object

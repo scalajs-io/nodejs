@@ -116,7 +116,7 @@ object URL extends IEventEmitter {
     * Take a parsed URL object, and return a formatted URL string.
     * @example url.format(urlObj)
     */
-  def format(urlObj: ParsedURL): String = js.native
+  def format(urlObj: URLObject): String = js.native
 
   /**
     * Take a URL string, and return an object.
@@ -129,7 +129,7 @@ object URL extends IEventEmitter {
     * than { pathname: '//foo/bar' }. Defaults to false.
     * @example url.parse(urlStr[, parseQueryString][, slashesDenoteHost])
     */
-  def parse(urlStr: String, parseQueryString: String, slashesDenoteHost: Boolean): ParsedURL = js.native
+  def parse(urlStr: String, parseQueryString: String, slashesDenoteHost: Boolean): URLObject = js.native
 
   /**
     * Take a URL string, and return an object.
@@ -142,7 +142,7 @@ object URL extends IEventEmitter {
     * than { pathname: '//foo/bar' }. Defaults to false.
     * @example url.parse(urlStr[, parseQueryString][, slashesDenoteHost])
     */
-  def parse(urlStr: String, parseQueryString: String): ParsedURL = js.native
+  def parse(urlStr: String, parseQueryString: String): URLObject = js.native
 
   /**
     * Take a URL string, and return an object.
@@ -155,7 +155,7 @@ object URL extends IEventEmitter {
     * than { pathname: '//foo/bar' }. Defaults to false.
     * @example url.parse(urlStr[, parseQueryString][, slashesDenoteHost])
     */
-  def parse(urlStr: String, slashesDenoteHost: Boolean): ParsedURL = js.native
+  def parse(urlStr: String, slashesDenoteHost: Boolean): URLObject = js.native
 
   /**
     * Take a URL string, and return an object.
@@ -168,7 +168,7 @@ object URL extends IEventEmitter {
     * than { pathname: '//foo/bar' }. Defaults to false.
     * @example url.parse(urlStr[, parseQueryString][, slashesDenoteHost])
     */
-  def parse(urlStr: String): ParsedURL = js.native
+  def parse(urlStr: String): URLObject = js.native
 
   /**
     * Take a base URL, and a href URL, and resolve them as a browser would for an anchor tag.

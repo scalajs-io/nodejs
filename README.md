@@ -1,8 +1,10 @@
-ScalaJs.io
-==========
-This is a complete Scala.js facade for Node.js, io.js and npm; which means you can develop full-blown Node.js/io.js 
-applications using popular JavaScript software stacks including the MEAN Stack (MongoDB, Express, Angular, Node)
-and many other popular npm packages.
+NodeJS (current & LTS)
+======================
+This is a complete Scala.js facade for Node.js and npm packages; which means you can develop full-blown Node.js 
+applications using popular JavaScript software stacks including the MEAN Stack ([MongoDB](https://github.com/scalajs-io/mongodb), 
+[Express](https://github.com/scalajs-io/express), [Angular](https://github.com/scalajs-io/angular), Node),
+[Cassandra](https://github.com/scalajs-io/cassandra-driver), [MySQL](https://github.com/scalajs-io/mysql) 
+and many other popular [npm packages](https://github.com/scalajs-io/scalajs.io-platform).
  
 ## Table of Contents
 
@@ -50,7 +52,7 @@ Currently, there are at least four development use cases for ScalaJs.io:
 <a name="build_requirements"></a>
 ### Build Requirements
 
-* [SBT 0.13.13] (http://www.scala-sbt.org/download.html)
+* [SBT 0.13.16] (http://www.scala-sbt.org/download.html)
 
 <a name="building_sdk"></a>
 #### Build/publish the SDK
@@ -73,12 +75,12 @@ resolvers += Resolver.sonatypeRepo("releases")
    
 The following applications were developed using ScalaJs.io:
 
-| Application                                                            | Frontend              | Backend            | Scalajs.io version | Description                              |
-|------------------------------------------------------------------------|-----------------------|--------------------|--------------------|------------------------------------------|
-| [Phaser-Invaders](https://github.com/scalajs-io/phaser-invaders-demo)  | Scala.js + DOM        | Scala + NodeJS     | 0.3.0.1            | Port of Phaser Invaders. |
-| [Socialize](https://github.com/scalajs-io/scalajs-nodejs-socialized)  | Scala.js + AngularJS  | Scala.js + NodeJS  | 0.3.0.3            | A Facebook-inspired Social networking web application. |
-| [Todo MVC](https://github.com/scalajs-io/scalajs-nodejs-todomvc)      | Scala.js + AngularJS  | Scala.js + NodeJS  | 0.2.3.1            | A simple Todo example application. |
-| [Trifecta](https://github.com/scalajs-io/trifecta)                    | Scala.js + AngularJS  | Scala + Play 2.4.x | 0.3.0.0            | Trifecta is a web-based and CLI tool that simplifies inspecting Kafka messages and Zookeeper data. |
+| Application                                                           | Frontend              | Backend            | Scalajs.io version | Description                              |
+|-----------------------------------------------------------------------|-----------------------|--------------------|--------------------|------------------------------------------|
+| [Phaser-Invaders](https://github.com/scalajs-io/phaser-invaders-demo) | Scala.js + DOM        | Scala + NodeJS     | 0.3.x              | Port of Phaser Invaders. |
+| [Socialize](https://github.com/scalajs-io/scalajs-nodejs-socialized)  | Scala.js + AngularJS  | Scala.js + NodeJS  | 0.4.0              | A Facebook-inspired Social networking web application. |
+| [Todo MVC](https://github.com/scalajs-io/scalajs-nodejs-todomvc)      | Scala.js + AngularJS  | Scala.js + NodeJS  | 0.2.x              | A simple Todo example application. |
+| [Trifecta](https://github.com/scalajs-io/trifecta)                    | Scala.js + AngularJS  | Scala + Play 2.4.x | 0.4.0              | Trifecta is a web-based and CLI tool that simplifies inspecting Kafka messages and Zookeeper data. |
 
 ### The MEAN Stack &#8212; AngularJS, MongoDB, Mongoose, Express and more
 
@@ -202,7 +204,7 @@ implemented as well, including bcrypt, cassandra-driver, kafka-node, mysql, xml2
 <a name="node_modules">
 #### Modules
 
-The following core Node.js modules (v7.7.1) have been implemented:
+The following core Node.js modules (v8.7.0) have been implemented:
 
 | Node Module           | Description                                                                     |
 |-----------------------|---------------------------------------------------------------------------------|
@@ -231,7 +233,9 @@ The following core Node.js modules (v7.7.1) have been implemented:
 | vm                    | The vm module provides APIs for compiling and running code within V8 Virtual Machine contexts.|
 | zlib                  | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. |
 
-*NOTE*: The SBT artifact for the complete Node.js platform is: "io.scalajs" %%% "nodejs" % "0.4.2" 
+**NOTE**: The SBT artifacts for Node.js platform are (choose one): 
+* NodeJS v8.7.0: "io.scalajs" %%% "nodejs" % "0.4.2" 
+* NodeJS LTS v6.11.4: "io.scalajs" %%% "nodejs-lts" % "0.4.2" 
 
 <a name="npm_modules">
 #### Third-party Modules

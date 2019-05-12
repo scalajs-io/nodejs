@@ -15,12 +15,12 @@ class FsTest extends FunSpec {
   describe("Fs") {
 
     it("supports watching files") {
-      val watcher = Fs.watch("./app/src/test/resources/", (eventType, file) => {
+      val watcher = Fs.watch("./app/lts/src/test/resources/", (eventType, file) => {
         info(s"watcher: eventType = '$eventType' file = '$file'")
       })
       info(s"watcher: ${Util.inspect(watcher)}")
 
-      setImmediate(() => Fs.writeFile("./app/src/test/resources/1.txt", "Hello", error => {
+      setImmediate(() => Fs.writeFile("./app/lts/src/test/resources/1.txt", "Hello", error => {
         if (isDefined(error)) {
           alert(s"error: ${JSON.stringify(error)}")
         }
@@ -28,9 +28,9 @@ class FsTest extends FunSpec {
     }
 
     it("should stream data") {
-      val file1 = "./app/src/test/resources/fileA1.txt"
-      val file2 = "./app/src/test/resources/fileA2.txt"
-      val file3 = "./app/src/test/resources/fileC2.txt"
+      val file1 = "./app/lts/src/test/resources/fileA1.txt"
+      val file2 = "./app/lts/src/test/resources/fileA2.txt"
+      val file3 = "./app/lts/src/test/resources/fileC2.txt"
 
       val readable = Fs.createReadStream(file1)
       val writable = Fs.createWriteStream(file2)
@@ -55,8 +55,8 @@ class FsTest extends FunSpec {
     }
 
     it("should pipe data from a Readable to a Writable") {
-      val file1 = "./app/src/test/resources/fileB1.txt"
-      val file2 = "./app/src/test/resources/fileB2.txt"
+      val file1 = "./app/lts/src/test/resources/fileB1.txt"
+      val file2 = "./app/lts/src/test/resources/fileB2.txt"
 
       val readable = Fs.createReadStream(file1)
       val writable = Fs.createWriteStream(file2)

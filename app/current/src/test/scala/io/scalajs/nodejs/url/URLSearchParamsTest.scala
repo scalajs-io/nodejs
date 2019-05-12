@@ -28,7 +28,7 @@ class URLSearchParamsTest extends FunSpec {
         "query" -> js.Array("first", "second")
       ))
       info(params.getAll("query").mkString(", ")) // Prints [ "first,second" ]
-      assert(params.getAll("query") == js.Array("first,second"))
+      assert(params.getAll("query").toSeq == Seq("first,second"))
     }
 
     it("should iterates over each name-value pair in the query and invokes the given function") {

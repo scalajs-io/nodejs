@@ -7,7 +7,9 @@ import scala.language.postfixOps
 
 val scalaJsIOVersion = "0.4.3"
 val apiVersion = scalaJsIOVersion
-val scalaJsVersion = "2.12.3"
+val scalaJsVersion = "2.12.8"
+val scalatestVersion = "3.0.5"
+val scalacticVersion = "3.0.5"
 
 lazy val root = (project in file(".")).
   aggregate(common, current, lts).
@@ -29,8 +31,8 @@ lazy val root = (project in file(".")).
     logBuffered in Test := true,
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaJsVersion,
-      "org.scalactic" %% "scalactic" % "3.0.1",
-      "org.scalatest" %%% "scalatest" % "3.0.1" % "test",
+      "org.scalactic" %% "scalactic" % scalacticVersion,
+      "org.scalatest" %%% "scalatest" % scalatestVersion % "test",
       "io.scalajs" %%% "core" % scalaJsIOVersion
     ))
 
@@ -52,8 +54,8 @@ lazy val common = (project in file("./app/common")).
     logBuffered in Test := true,
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaJsVersion,
-      "org.scalactic" %% "scalactic" % "3.0.1",
-      "org.scalatest" %%% "scalatest" % "3.0.1" % "test",
+      "org.scalactic" %% "scalactic" % scalacticVersion,
+      "org.scalatest" %%% "scalatest" % scalatestVersion % "test",
       "io.scalajs" %%% "core" % scalaJsIOVersion
     ))
 
@@ -76,8 +78,8 @@ lazy val current = (project in file("./app/current")).
     logBuffered in Test := true,
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaJsVersion,
-      "org.scalactic" %% "scalactic" % "3.0.1",
-      "org.scalatest" %%% "scalatest" % "3.0.1" % "test"
+      "org.scalactic" %% "scalactic" % scalacticVersion,
+      "org.scalatest" %%% "scalatest" % scalatestVersion % "test"
     ))
 
 lazy val lts = (project in file("./app/lts")).

@@ -1,20 +1,12 @@
 // Scala.js
 
-addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.20")
-
-// Code Formatting
-
-addSbtPlugin("com.geirsson" % "sbt-scalafmt" % "0.5.5")
-
-// Testing
-
-//addSbtPlugin("com.artima.supersafe" % "sbtplugin" % "1.1.2")
+addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.28")
 
 // Publishing
 
-addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "1.1")
+addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "2.3")
 
-addSbtPlugin("com.typesafe.sbt" % "sbt-pgp" % "0.8.3")
+addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.1.0")
 
 // Resolvers
 

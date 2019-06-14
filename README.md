@@ -234,8 +234,8 @@ The following core Node.js modules (v8.7.0) have been implemented:
 | zlib                  | This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. |
 
 **NOTE**: The SBT artifacts for Node.js platform are (choose one): 
-* NodeJS v8.7.0: "io.scalajs" %%% "nodejs" % "0.4.2" 
-* NodeJS LTS v6.11.4: "io.scalajs" %%% "nodejs-lts" % "0.4.2" 
+* NodeJS v8.7.0: "io.scalajs" %%% "nodejs" % "0.5.0" 
+* NodeJS LTS v6.11.4: "io.scalajs" %%% "nodejs-lts" % "0.5.0" 
 
 <a name="npm_modules">
 #### Third-party Modules
@@ -302,7 +302,7 @@ The following Third Party/OSS Node.js (npm) modules have been implemented:
 | [winston-daily-rotate-file](https://github.com/scalajs-io/winston-daily-rotate-file)  | 1.4.4   | A multi-transport async logging library for Node.js. |    
 | [xml2js](https://github.com/scalajs-io/xml2js)                                        | 0.4.16  | Simple XML to JavaScript object converter. |
 
-*NOTE*: The full SBT artifact expression is: "io.scalajs.npm" %%% "xxxx" % version (e.g. "io.scalajs.npm" %%% "express" % "0.4.2")
+*NOTE*: The full SBT artifact expression is: "io.scalajs.npm" %%% "xxxx" % version (e.g. "io.scalajs.npm" %%% "express" % "0.5.0")
 
 I've provided an example to demonstrate how similar the Scala.js code is to the JavaScript
 that it replaces.

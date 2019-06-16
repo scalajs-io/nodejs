@@ -1,3 +1,6 @@
+A fork of https://github.com/scalajs-io/nodejs to sustain the project.
+
+
 NodeJS (current & LTS)
 ======================
 This is a complete Scala.js facade for Node.js and npm packages; which means you can develop full-blown Node.js 

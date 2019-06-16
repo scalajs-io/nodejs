@@ -4,7 +4,6 @@ import io.scalajs.nodejs.buffer.Buffer
 
 import scala.scalajs.js
 
-
 /**
   * Script Options
   * @param filename          Specifies the filename used in stack traces produced by this script.
@@ -29,4 +28,4 @@ class ScriptOptions(var filename: js.UndefOr[String] = js.undefined,
                     var timeout: js.UndefOr[Int] = js.undefined,
                     var cachedData: js.UndefOr[Buffer] = js.undefined,
                     var produceCachedData: js.UndefOr[Boolean] = js.undefined)
-  extends js.Object
+    extends js.Object

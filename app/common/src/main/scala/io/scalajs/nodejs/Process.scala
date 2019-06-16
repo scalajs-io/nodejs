@@ -577,9 +577,9 @@ object Process {
     */
   @js.native
   trait MemoryUsage extends js.Object {
-    var rss: Double = js.native
+    var rss: Double       = js.native
     var heapTotal: Double = js.native
-    var heapUsed: Double = js.native
+    var heapUsed: Double  = js.native
   }
 
   /**
@@ -587,10 +587,10 @@ object Process {
     */
   @js.native
   trait ReleaseInfo extends js.Object {
-    var name: String = js.native
-    var sourceUrl: String = js.native
+    var name: String       = js.native
+    var sourceUrl: String  = js.native
     var headersUrl: String = js.native
-    var libUrl: String = js.native
+    var libUrl: String     = js.native
   }
 
   /**
@@ -607,14 +607,14 @@ object Process {
   @js.native
   trait VersionInfo extends js.Object {
     var http_parser: js.UndefOr[String] = js.native
-    var node: js.UndefOr[String] = js.native
-    var v8: js.UndefOr[String] = js.native
-    var uv: js.UndefOr[String] = js.native
-    var zlib: js.UndefOr[String] = js.native
-    var ares: js.UndefOr[String] = js.native
-    var modules: js.UndefOr[String] = js.native
-    var icu: js.UndefOr[String] = js.native
-    var openssl: js.UndefOr[String] = js.native
+    var node: js.UndefOr[String]        = js.native
+    var v8: js.UndefOr[String]          = js.native
+    var uv: js.UndefOr[String]          = js.native
+    var zlib: js.UndefOr[String]        = js.native
+    var ares: js.UndefOr[String]        = js.native
+    var modules: js.UndefOr[String]     = js.native
+    var icu: js.UndefOr[String]         = js.native
+    var openssl: js.UndefOr[String]     = js.native
   }
 
   /**

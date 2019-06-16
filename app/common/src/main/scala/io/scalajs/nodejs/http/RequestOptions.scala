@@ -2,7 +2,6 @@ package io.scalajs.nodejs.http
 
 import scala.scalajs.js
 
-
 /**
   * Client Request Options
   * @param protocol         Protocol to use. Defaults to 'http:'.

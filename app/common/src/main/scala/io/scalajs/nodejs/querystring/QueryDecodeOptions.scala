@@ -2,7 +2,6 @@ package io.scalajs.nodejs.querystring
 
 import scala.scalajs.js
 
-
 /**
   * Query String Decode Options
   * @param decodeURIComponent The function to use when decoding percent-encoded characters in the query string.
@@ -12,7 +11,6 @@ import scala.scalajs.js
   *                           into a collection of key and value pairs.
   * @author lawrence.daniels@gmail.com
   */
-
 class QueryDecodeOptions(val decodeURIComponent: js.UndefOr[js.Function] = js.undefined,
                          val maxKeys: js.UndefOr[Int] = js.undefined)
     extends js.Object

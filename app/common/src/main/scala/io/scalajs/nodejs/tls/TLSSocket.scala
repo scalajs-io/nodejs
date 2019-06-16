@@ -45,7 +45,7 @@ class TLSSocket(socket: Socket, options: TLSSocketOptions | RawOptions = js.nati
     * Can be used to speed up handshake establishment when reconnecting to the server.
     * @return the ASN.1 encoded TLS session
     */
-  def getSession(): js.UndefOr[String] =  js.native
+  def getSession(): js.UndefOr[String] = js.native
 
 }
 
@@ -68,7 +68,6 @@ class TLSSocket(socket: Socket, options: TLSSocketOptions | RawOptions = js.nati
   * @param secureContext      Optional TLS context object created with tls.createSecureContext(). If a secureContext
   *                           is not provided, one will be created by calling tls.createSecureContext() with no options.
   */
-
 class TLSSocketOptions(val isServer: js.UndefOr[Boolean] = js.undefined,
                        val server: js.UndefOr[net.Server] = js.undefined,
                        val requestCert: js.UndefOr[Boolean] = js.undefined,
@@ -79,4 +78,4 @@ class TLSSocketOptions(val isServer: js.UndefOr[Boolean] = js.undefined,
                        val session: js.UndefOr[Buffer] = js.undefined,
                        val requestOCSP: js.UndefOr[Boolean] = js.undefined,
                        val secureContext: js.UndefOr[js.Any] = js.undefined)
-  extends js.Object
+    extends js.Object

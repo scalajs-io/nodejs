@@ -4,7 +4,6 @@ import io.scalajs.nodejs.stream.{Readable, Writable}
 
 import scala.scalajs.js
 
-
 /**
   * REPL Options
   * @param prompt          the prompt and stream for all I/O. Defaults to > .
@@ -33,7 +32,6 @@ import scala.scalajs.js
   *                        </ul>
   * @author lawrence.daniels@gmail.com
   */
-
 class REPLOptions(var prompt: js.UndefOr[String] = js.undefined,
                   var input: js.UndefOr[Readable] = js.undefined,
                   var output: js.UndefOr[Writable] = js.undefined,

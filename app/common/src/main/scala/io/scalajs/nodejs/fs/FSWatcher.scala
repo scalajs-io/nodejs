@@ -5,7 +5,6 @@ import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
 
-
 /**
   * fs.FSWatcher - Objects returned from fs.watch() are of this type.
   * @author lawrence.daniels@gmail.com
@@ -70,8 +69,7 @@ object FSWatcher {
   *                   The applies when a directory is specified, and only on supported platforms (See Caveats) (default: false)
   * @author lawrence.daniels@gmail.com
   */
-
 class FSWatcherOptions(val encoding: js.UndefOr[String] = js.undefined,
                        val persistent: js.UndefOr[Boolean] = js.undefined,
                        val recursive: js.UndefOr[Boolean] = js.undefined)
-  extends js.Object
+    extends js.Object

@@ -144,9 +144,7 @@ trait Writable extends IEventEmitter {
     * @return true, if the data was handled completely
     * @example writable.write(chunk[, encoding][, callback])
     */
-  def write(chunk: Buffer | String,
-            encoding: String,
-            callback: js.Function1[Error, Any]): Boolean = js.native
+  def write(chunk: Buffer | String, encoding: String, callback: js.Function1[Error, Any]): Boolean = js.native
 
 }
 
@@ -236,7 +234,4 @@ object Writable {
   * @param chunk    the chunk of data
   * @param encoding the data's optional encoding
   */
-
-class Chunk(val chunk: Buffer | String,
-            val encoding: js.UndefOr[String] = js.undefined)
-  extends js.Object
+class Chunk(val chunk: Buffer | String, val encoding: js.UndefOr[String] = js.undefined) extends js.Object

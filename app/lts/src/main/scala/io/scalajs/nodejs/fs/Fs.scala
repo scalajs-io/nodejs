@@ -100,9 +100,7 @@ trait Fs extends IEventEmitter with FSConstants {
     * @param callback the callback function
     * @example fs.appendFile(file, data[, options], callback)
     */
-  def appendFile(file: Buffer | FileDescriptor | String,
-                 data: Buffer | String,
-                 callback: FsCallback0): Unit = js.native
+  def appendFile(file: Buffer | FileDescriptor | String, data: Buffer | String, callback: FsCallback0): Unit = js.native
 
   /**
     * The synchronous version of fs.appendFile().
@@ -216,7 +214,8 @@ trait Fs extends IEventEmitter with FSConstants {
     * @param options the optional stream options
     * @example fs.createReadStream(path[, options])
     */
-  def createReadStream(path: Buffer | String, options: FileInputOptions | RawOptions = js.native): ReadStream = js.native
+  def createReadStream(path: Buffer | String, options: FileInputOptions | RawOptions = js.native): ReadStream =
+    js.native
 
   /**
     * Returns a new WriteStream object.
@@ -224,7 +223,8 @@ trait Fs extends IEventEmitter with FSConstants {
     * @param options the optional stream options
     * @example fs.createWriteStream(path[, options])
     */
-  def createWriteStream(path: Buffer | String, options: FileOutputOptions | RawOptions = js.native): WriteStream = js.native
+  def createWriteStream(path: Buffer | String, options: FileOutputOptions | RawOptions = js.native): WriteStream =
+    js.native
 
   /**
     * Test whether or not the given path exists by checking with the file system. Then call the callback argument with
@@ -446,9 +446,8 @@ trait Fs extends IEventEmitter with FSConstants {
     * @param callback the callback
     * @example fs.mkdtemp(prefix[, options], callback)
     */
-  def mkdtemp(prefix: String,
-              options: String | FileEncodingOptions | RawOptions,
-              callback: FsCallback1[String]): Unit = js.native
+  def mkdtemp(prefix: String, options: String | FileEncodingOptions | RawOptions, callback: FsCallback1[String]): Unit =
+    js.native
 
   /**
     * Creates a unique temporary directory.
@@ -469,8 +468,7 @@ trait Fs extends IEventEmitter with FSConstants {
     * @param prefix  the prefix
     * @param options the optional encoding setting
     */
-  def mkdtempSync(prefix: String,
-                  options: String | FileEncodingOptions | RawOptions = js.native): String = js.native
+  def mkdtempSync(prefix: String, options: String | FileEncodingOptions | RawOptions = js.native): String = js.native
 
   /**
     * Asynchronous file open. See open(2).
@@ -625,9 +623,8 @@ trait Fs extends IEventEmitter with FSConstants {
     *                 If no encoding is specified, then the raw buffer is returned.
     * @example fs.readFile(file[, options], callback)
     */
-  def readFile(file: Buffer | FileDescriptor | String,
-               encoding: String,
-               callback: FsCallback1[String]): Unit = js.native
+  def readFile(file: Buffer | FileDescriptor | String, encoding: String, callback: FsCallback1[String]): Unit =
+    js.native
 
   /**
     * Asynchronously reads the entire contents of a file.
@@ -656,7 +653,8 @@ trait Fs extends IEventEmitter with FSConstants {
     *         Otherwise it returns a buffer.
     * @example fs.readFileSync(file[, options])
     */
-  def readFileSync(file: Buffer | FileDescriptor | String, options: FileInputOptions | RawOptions = js.native): js.Any = js.native
+  def readFileSync(file: Buffer | FileDescriptor | String, options: FileInputOptions | RawOptions = js.native): js.Any =
+    js.native
 
   /**
     * Synchronous version of fs.readFile.
@@ -690,8 +688,8 @@ trait Fs extends IEventEmitter with FSConstants {
     *                to 'buffer', the link path returned will be passed as a Buffer object.
     * @return the symbolic link's string value.
     */
-  def readlinkSync(path: Buffer | String,
-                   options: String | FileEncodingOptions | RawOptions = js.native): String = js.native
+  def readlinkSync(path: Buffer | String, options: String | FileEncodingOptions | RawOptions = js.native): String =
+    js.native
 
   /**
     * Asynchronous realpath(2).
@@ -728,8 +726,8 @@ trait Fs extends IEventEmitter with FSConstants {
     * @return the resolved path.
     * @example fs.realpathSync(path[, options])
     */
-  def realpathSync(path: Buffer | String,
-                   options: FileEncodingOptions | String | RawOptions = js.native): String = js.native
+  def realpathSync(path: Buffer | String, options: FileEncodingOptions | String | RawOptions = js.native): String =
+    js.native
 
   /**
     * Asynchronous rename(2). No arguments other than a possible exception are given to the completion callback.
@@ -777,10 +775,7 @@ trait Fs extends IEventEmitter with FSConstants {
     * When using 'junction', the target argument will automatically be normalized to absolute path.
     * @example fs.symlink(target, path[, type], callback)
     */
-  def symlink(target: Buffer | String,
-              path: Buffer | String,
-              `type`: String,
-              callback: FsCallback0): Unit = js.native
+  def symlink(target: Buffer | String, path: Buffer | String, `type`: String, callback: FsCallback0): Unit = js.native
 
   /**
     * Asynchronous symlink(2). No arguments other than a possible exception are given to the completion callback.
@@ -789,18 +784,14 @@ trait Fs extends IEventEmitter with FSConstants {
     * When using 'junction', the target argument will automatically be normalized to absolute path.
     * @example fs.symlink(target, path[, type], callback)
     */
-  def symlink(target: Buffer | String,
-              path: Buffer | String,
-              callback: FsCallback0): Unit = js.native
+  def symlink(target: Buffer | String, path: Buffer | String, callback: FsCallback0): Unit = js.native
 
   /**
     * Synchronous symlink(2).
     * @return undefined.
     * @example fs.symlinkSync(target, path[, type])
     */
-  def symlinkSync(target: Buffer | String,
-                  path: Buffer | String,
-                  `type`: String = js.native): Unit = js.native
+  def symlinkSync(target: Buffer | String, path: Buffer | String, `type`: String = js.native): Unit = js.native
 
   /**
     * Asynchronous truncate(2). No arguments other than a possible exception are given to the completion callback.
@@ -829,7 +820,7 @@ trait Fs extends IEventEmitter with FSConstants {
   def unlink(path: Buffer | String, callback: FsCallback0): Unit = js.native
 
   /**
-    * Synchronous unlink(2). 
+    * Synchronous unlink(2).
     * @return undefined.
     * @example fs.unlinkSync(path)
     */
@@ -916,8 +907,7 @@ trait Fs extends IEventEmitter with FSConstants {
     * @return a [[FSWatcher]]
     * @example fs.watch(filename[, options][, listener])
     */
-  def watch(filename: Buffer | String,
-            options: FSWatcherOptions | RawOptions = js.native): FSWatcher = js.native
+  def watch(filename: Buffer | String, options: FSWatcherOptions | RawOptions = js.native): FSWatcher = js.native
 
   /**
     * Watch for changes on filename. The callback listener will be called each time the file is accessed.
@@ -983,9 +973,7 @@ trait Fs extends IEventEmitter with FSConstants {
     *                 bytes were written from buffer.
     * @example {{{ fs.write(fd, buffer[, offset[, length[, position]]], callback) }}}
     **/
-  def write(fd: FileDescriptor,
-            buffer: Buffer | Uint8Array,
-            callback: FsCallback2[Int, Buffer]): Unit = js.native
+  def write(fd: FileDescriptor, buffer: Buffer | Uint8Array, callback: FsCallback2[Int, Buffer]): Unit = js.native
 
   /**
     * Write string to the file specified by fd. If string is not a string, then the value will be coerced to one.
@@ -1005,7 +993,11 @@ trait Fs extends IEventEmitter with FSConstants {
     *                 string characters. See Buffer.byteLength.
     * @example {{{ fs.write(fd, string[, position[, encoding]], callback) }}}
     */
-  def write(fd: FileDescriptor, string: String, position: Int, encoding: String, callback: FsCallback2[Int, String]): Unit = js.native
+  def write(fd: FileDescriptor,
+            string: String,
+            position: Int,
+            encoding: String,
+            callback: FsCallback2[Int, String]): Unit = js.native
 
   /**
     * Write string to the file specified by fd. If string is not a string, then the value will be coerced to one.
@@ -1064,7 +1056,8 @@ trait Fs extends IEventEmitter with FSConstants {
     * @return undefined.
     * @example fs.writeFileSync(file, data[, options])
     */
-  def writeFileSync(file: String, data: Buffer | String, options: FileOutputOptions | RawOptions = js.native): Unit = js.native
+  def writeFileSync(file: String, data: Buffer | String, options: FileOutputOptions | RawOptions = js.native): Unit =
+    js.native
 
   /**
     * Write buffer to the file specified by fd.
@@ -1076,7 +1069,11 @@ trait Fs extends IEventEmitter with FSConstants {
     * @param position refers to the offset from the beginning of the file where this data should be written.
     * @example {{{ fs.writeSync(fd, buffer[, offset[, length[, position]]]) }}}
     */
-  def writeSync(fd: FileDescriptor, buffer: Buffer | Uint8Array, offset: Int = js.native, length: Int = js.native, position: Int = js.native): Unit = js.native
+  def writeSync(fd: FileDescriptor,
+                buffer: Buffer | Uint8Array,
+                offset: Int = js.native,
+                length: Int = js.native,
+                position: Int = js.native): Unit = js.native
 
   /**
     * Write buffer to the file specified by fd.
@@ -1139,14 +1136,13 @@ object Fs extends Fs
 class FileAppendOptions(val encoding: js.UndefOr[String] = js.undefined,
                         val mode: js.UndefOr[FileMode] = js.undefined,
                         val flag: js.UndefOr[String] = js.undefined)
-  extends js.Object
+    extends js.Object
 
 /**
   * File Encoding Options
   * @author lawrence.daniels@gmail.com
   */
-class FileEncodingOptions(val encoding: js.UndefOr[String] = js.undefined)
-  extends js.Object
+class FileEncodingOptions(val encoding: js.UndefOr[String] = js.undefined) extends js.Object
 
 /**
   * File Input Options
@@ -1159,7 +1155,7 @@ class FileInputOptions(val flags: js.UndefOr[String] = js.undefined,
                        val autoClose: js.UndefOr[Boolean] = js.undefined,
                        val start: js.UndefOr[Int] = js.undefined,
                        val end: js.UndefOr[Int] = js.undefined)
-  extends js.Object
+    extends js.Object
 
 /**
   * File Input Options
@@ -1171,7 +1167,7 @@ class FileOutputOptions(val flags: js.UndefOr[String] = js.undefined,
                         val mode: js.UndefOr[Int] = js.undefined,
                         val autoClose: js.UndefOr[Boolean] = js.undefined,
                         val start: js.UndefOr[Int] = js.undefined)
-  extends js.Object
+    extends js.Object
 
 /**
   * File Watcher Options
@@ -1180,4 +1176,4 @@ class FileOutputOptions(val flags: js.UndefOr[String] = js.undefined,
   */
 class FileWatcherOptions(val persistent: js.UndefOr[Boolean] = js.undefined,
                          val interval: js.UndefOr[Int] = js.undefined)
-  extends js.Object
+    extends js.Object

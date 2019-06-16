@@ -5,7 +5,6 @@ import io.scalajs.JsNumber
 
 import scala.scalajs.js
 
-
 /**
   * Fork Options
   * @param cwd      <String> Current working directory of the child process
@@ -22,7 +21,6 @@ import scala.scalajs.js
   * @param gid      <Number> Sets the group identity of the process. (See setgid(2).)
   * @author lawrence.daniels@gmail.com
   */
-
 class ForkOptions(val cwd: js.UndefOr[String] = js.undefined,
                   val env: js.Any = js.undefined,
                   val execPath: js.UndefOr[String] = js.undefined,

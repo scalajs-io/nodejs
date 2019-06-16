@@ -2,7 +2,6 @@ package io.scalajs.nodejs.vm
 
 import scala.scalajs.js
 
-
 /**
   * Script Context Options
   * @param filename      Specifies the filename used in stack traces produced by this script.
@@ -19,4 +18,4 @@ class ContextOptions(var filename: js.UndefOr[String] = js.undefined,
                      var columnOffset: js.UndefOr[Int] = js.undefined,
                      var displayErrors: js.UndefOr[Boolean] = js.undefined,
                      var timeout: js.UndefOr[Int] = js.undefined)
-  extends js.Object
+    extends js.Object

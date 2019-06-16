@@ -225,10 +225,7 @@ class Socket(options: SocketOptions | RawOptions = js.native) extends IDuplex {
   * Socket Singleton
   * @author lawrence.daniels@gmail.com
   */
-object Socket extends {
-
-
-}
+object Socket extends {}
 
 /**
   * Socket Options
@@ -240,8 +237,8 @@ object Socket extends {
   * @param writable
   * @author lawrence.daniels@gmail.com
   */
-
 class SocketOptions(val fd: js.UndefOr[FileDescriptor] = js.undefined,
                     val allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
                     val readable: js.UndefOr[Boolean] = js.undefined,
-                    val writable: js.UndefOr[Boolean] = js.undefined) extends js.Object
+                    val writable: js.UndefOr[Boolean] = js.undefined)
+    extends js.Object

@@ -2,7 +2,6 @@ package io.scalajs.nodejs.https
 
 import scala.scalajs.js
 
-
 /**
   * Server Options
   * @param host         A domain name or IP address of the server to issue the request to. Defaults to 'localhost'.
@@ -27,7 +26,6 @@ import scala.scalajs.js
   *                     </ul>
   * @author lawrence.daniels@gmail.com
   */
-
 class ServerOptions(var host: js.UndefOr[String] = js.undefined,
                     var hostname: js.UndefOr[String] = js.undefined,
                     var family: js.UndefOr[String] = js.undefined,

@@ -82,7 +82,11 @@ package object fs {
     }
 
     @inline
-    def readFuture(fd: FileDescriptor, buffer: Buffer, offset: Int, length: Int, position: Int): Future[(Int, Buffer)] = {
+    def readFuture(fd: FileDescriptor,
+                   buffer: Buffer,
+                   offset: Int,
+                   length: Int,
+                   position: Int): Future[(Int, Buffer)] = {
       promiseWithError2[FileIOError, Int, Buffer](Fs.read(fd, buffer, offset, length, position, _))
     }
 

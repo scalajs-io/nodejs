@@ -35,8 +35,7 @@ trait IDuplex extends Readable with Writable
   * @param writableObjectMode Sets objectMode for writable side of the stream. Has no effect if objectMode is true
   *                           (Default: false).
   */
-
 class DuplexOptions(var allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
                     var readableObjectMode: js.UndefOr[Boolean] = js.undefined,
                     var writableObjectMode: js.UndefOr[Boolean] = js.undefined)
-  extends js.Object
+    extends js.Object

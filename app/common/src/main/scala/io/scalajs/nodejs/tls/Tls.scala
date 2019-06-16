@@ -36,6 +36,4 @@ trait Tls extends js.Object {
 @JSImport("tls", JSImport.Namespace)
 object Tls extends Tls
 
-
-
 class TlsConnectOptions() extends js.Object

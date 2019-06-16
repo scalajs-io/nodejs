@@ -162,4 +162,5 @@ class URLSearchParams extends js.Object {
 class UrlFormatOptions(val auth: js.UndefOr[Boolean] = js.undefined,
                        val fragment: js.UndefOr[Boolean] = js.undefined,
                        val search: js.UndefOr[Boolean] = js.undefined,
-                       val unicode: js.UndefOr[Boolean] = js.undefined) extends js.Object
+                       val unicode: js.UndefOr[Boolean] = js.undefined)
+    extends js.Object

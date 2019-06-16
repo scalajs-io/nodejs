@@ -2,7 +2,6 @@ package io.scalajs.nodejs.dns
 
 import scala.scalajs.js
 
-
 /**
   * DNS Options
   * @param family The record family. If present, must be the integer 4 or 6. If not provided, both IP v4
@@ -14,7 +13,6 @@ import scala.scalajs.js
   *               single address. Defaults to false.
   * @author lawrence.daniels@gmail.com
   */
-
 class DnsOptions(var family: js.UndefOr[Int] = js.undefined,
                  var hints: js.UndefOr[Int] = js.undefined,
                  var all: js.UndefOr[Boolean] = js.undefined)

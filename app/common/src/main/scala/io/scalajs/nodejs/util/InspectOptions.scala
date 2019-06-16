@@ -2,7 +2,6 @@ package io.scalajs.nodejs.util
 
 import scala.scalajs.js
 
-
 /**
   * Inspect Options
   * @param showHidden     If true, the object's non-enumerable symbols and properties will be included in the
@@ -22,7 +21,6 @@ import scala.scalajs.js
   * @see [[https://nodejs.org/api/util.html#util_util_inspect_object_options]]
   * @author lawrence.daniels@gmail.com
   */
-
 class InspectOptions(var showHidden: js.UndefOr[Boolean] = js.undefined,
                      var depth: js.UndefOr[Int] = js.undefined,
                      var colors: js.UndefOr[Boolean] = js.undefined,

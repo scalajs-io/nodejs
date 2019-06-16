@@ -200,7 +200,6 @@ object Server extends {
   * Server Options
   * @author lawrence.daniels@gmail.com
   */
-
 class ServerOptions(val allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
                     val pauseOnConnect: js.UndefOr[Boolean] = js.undefined)
-  extends js.Object
+    extends js.Object

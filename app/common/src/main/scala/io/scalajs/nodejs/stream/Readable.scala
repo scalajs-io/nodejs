@@ -258,9 +258,7 @@ object Readable {
   * Readable Pipe Options
   * @param end End the writer when the reader ends. Defaults to true.
   */
-
-class ReadablePipeOptions(val end: js.UndefOr[Boolean] = js.undefined)
-  extends js.Object
+class ReadablePipeOptions(val end: js.UndefOr[Boolean] = js.undefined) extends js.Object
 
 /**
   * Readable State

@@ -12,7 +12,6 @@ import scala.scalajs.js
   *                       true (default: 256).
   * @author lawrence.daniels@gmail.com
   */
-
 class ConnectionOptions(var keepAlive: js.UndefOr[Boolean] = js.undefined,
                         var keepAliveMsecs: js.UndefOr[Int] = js.undefined,
                         var maxSockets: js.UndefOr[Double] = js.undefined,

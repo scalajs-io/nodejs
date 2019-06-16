@@ -7,7 +7,13 @@ import scala.language.postfixOps
 
 val scalaJsIOVersion = "0.4.3"
 val apiVersion = scalaJsIOVersion
-val scalaJsVersion = "2.12.8"
+
+
+val scala212Version = "2.12.8"
+val scala213Version = "2.13.0"
+val scalaJsVersion = scala212Version
+val supportedScalaVersions = Seq(scala212Version, scala213Version)
+
 val scalatestVersion = "3.0.5"
 val scalacticVersion = "3.0.5"
 
@@ -22,6 +28,7 @@ lazy val root = (project in file(".")).
     description := "NodeJS build artifact",
     homepage := Some(url("https://github.com/scalajs-io/nodejs")),
     scalaVersion := scalaJsVersion,
+    crossScalaVersions := supportedScalaVersions,
     scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
     scalacOptions += "-P:scalajs:sjsDefinedByDefault",
     scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
@@ -45,6 +52,7 @@ lazy val common = (project in file("./app/common")).
     description := "NodeJS common API",
     homepage := Some(url("https://github.com/scalajs-io/nodejs")),
     scalaVersion := scalaJsVersion,
+    crossScalaVersions := supportedScalaVersions,
     scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
     scalacOptions += "-P:scalajs:sjsDefinedByDefault",
     scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
@@ -69,6 +77,7 @@ lazy val current = (project in file("./app/current")).
     description := "NodeJS v8.7.0 API for Scala.js",
     homepage := Some(url("https://github.com/scalajs-io/nodejs")),
     scalaVersion := scalaJsVersion,
+    crossScalaVersions := supportedScalaVersions,
     scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
     scalacOptions += "-P:scalajs:sjsDefinedByDefault",
     scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
@@ -92,6 +101,7 @@ lazy val lts = (project in file("./app/lts")).
     description := "NodeJS LTS v6.11.4 API for Scala.js",
     homepage := Some(url("https://github.com/scalajs-io/nodejs")),
     scalaVersion := scalaJsVersion,
+    crossScalaVersions := supportedScalaVersions,
     scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
     scalacOptions += "-P:scalajs:sjsDefinedByDefault",
     scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),

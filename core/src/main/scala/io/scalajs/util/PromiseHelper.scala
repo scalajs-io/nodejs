@@ -124,6 +124,22 @@ object PromiseHelper {
   }
 
   /**
+    * Converts a JavaScript-style callback to a Scala.js promise.
+    * Promise always success and contains true if callback does not receive error, otherwise contains false.
+    *
+    * @param f the given callback function
+    * @return a Scala.js promise
+    */
+  @inline
+  def promiseWithErrorAsBoolean[Z](f: js.Function1[Z, Any] => Unit): Future[Boolean] = {
+    val task = Promise[Boolean]()
+    f(
+      (err: Z) => if (err == null || js.isUndefined(err)) task.success(true) else task.success(false)
+    )
+    task.future
+  }
+
+  /**
     * Converts a JavaScript-style callback to a Scala.js promise
     * @param f the given callback function
     * @return a Scala.js promise

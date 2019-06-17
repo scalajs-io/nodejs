@@ -3,14 +3,12 @@ val apiVersion = scalaJsIOVersion
 val scala212Version = "2.12.8"
 val scala213Version = "2.13.0"
 val supportedScalaVersion = Seq(scala212Version, scala213Version)
-val scalaJsVersion = scala213Version
 
 val scalatestVersion = "3.0.8"
 val scalacticVersion = "3.0.8"
 
 lazy val commonSettings = Seq(
   autoCompilerPlugins := true,
-  scalaVersion := scalaJsVersion,
   crossScalaVersions := supportedScalaVersion,
   scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
   scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
@@ -45,7 +43,7 @@ lazy val core = (project in file("./core")).
     description := "Core utilities for the ScalaJs.io platform",
     version := apiVersion,
     libraryDependencies ++= Seq(
-      "org.scala-lang" % "scala-reflect" % scalaJsVersion,
+      "org.scala-lang" % "scala-reflect" % scalaVersion.value,
       "org.scalatest" %%% "scalatest" % scalatestVersion % "test"
     ))
 
@@ -62,7 +60,7 @@ lazy val root = (project in file(".")).
     description := "NodeJS build artifact",
     homepage := Some(url("https://github.com/scalajs-io/nodejs")),
     libraryDependencies ++= Seq(
-      "org.scala-lang" % "scala-reflect" % scalaJsVersion,
+      "org.scala-lang" % "scala-reflect" % scalaVersion.value,
       "org.scalactic" %% "scalactic" % scalacticVersion,
       "org.scalatest" %%% "scalatest" % scalatestVersion % "test",
     )).
@@ -80,7 +78,7 @@ lazy val common = (project in file("./app/common")).
     description := "NodeJS common API",
     homepage := Some(url("https://github.com/scalajs-io/nodejs")),
     libraryDependencies ++= Seq(
-      "org.scala-lang" % "scala-reflect" % scalaJsVersion,
+      "org.scala-lang" % "scala-reflect" % scalaVersion.value,
       "org.scalactic" %% "scalactic" % scalacticVersion,
       "org.scalatest" %%% "scalatest" % scalatestVersion % "test",
     )).
@@ -99,7 +97,7 @@ lazy val current = (project in file("./app/current")).
     description := "NodeJS v8.7.0 API for Scala.js",
     homepage := Some(url("https://github.com/scalajs-io/nodejs")),
     libraryDependencies ++= Seq(
-      "org.scala-lang" % "scala-reflect" % scalaJsVersion,
+      "org.scala-lang" % "scala-reflect" % scalaVersion.value,
       "org.scalactic" %% "scalactic" % scalacticVersion,
       "org.scalatest" %%% "scalatest" % scalatestVersion % "test"
     )).
@@ -118,7 +116,7 @@ lazy val lts = (project in file("./app/lts")).
     description := "NodeJS LTS v6.11.4 API for Scala.js",
     homepage := Some(url("https://github.com/scalajs-io/nodejs")),
     libraryDependencies ++= Seq(
-      "org.scala-lang" % "scala-reflect" % scalaJsVersion,
+      "org.scala-lang" % "scala-reflect" % scalaVersion.value,
       "org.scalactic" %% "scalactic" % scalacticVersion,
       "org.scalatest" %%% "scalatest" % scalatestVersion % "test"
     )).

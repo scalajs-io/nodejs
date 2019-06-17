@@ -50,98 +50,80 @@ lazy val core = (project in file("./core")).
     ))
 
 lazy val root = (project in file(".")).
-  aggregate(common, current, lts).
-  dependsOn(common, current, lts).
+  aggregate(core, common, current, lts).
+  dependsOn(core, common, current, lts).
   enablePlugins(ScalaJSPlugin).
+  settings(commonSettings).
+  settings(commonScalaJsSettings).
   settings(
     name := "nodejs-platform",
     version := apiVersion,
     organization := "io.scalajs",
     description := "NodeJS build artifact",
     homepage := Some(url("https://github.com/scalajs-io/nodejs")),
-    scalaVersion := scalaJsVersion,
-    scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
-    scalacOptions += "-P:scalajs:sjsDefinedByDefault",
-    scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
-    autoCompilerPlugins := true,
-    scalaJSModuleKind := ModuleKind.CommonJSModule,
-    addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
-    logBuffered in Test := true,
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaJsVersion,
       "org.scalactic" %% "scalactic" % scalacticVersion,
       "org.scalatest" %%% "scalatest" % scalatestVersion % "test",
-      "io.scalajs" %%% "core" % scalaJsIOVersion
-    ))
+    )).
+  settings(commonMacroParadiseSetting).
+  dependsOn(core)
 
 lazy val common = (project in file("./app/common")).
   enablePlugins(ScalaJSPlugin).
+  settings(commonSettings).
+  settings(commonScalaJsSettings).
   settings(
     name := "nodejs-common",
     version := apiVersion,
     organization := "io.scalajs",
     description := "NodeJS common API",
     homepage := Some(url("https://github.com/scalajs-io/nodejs")),
-    scalaVersion := scalaJsVersion,
-    scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
-    scalacOptions += "-P:scalajs:sjsDefinedByDefault",
-    scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
-    autoCompilerPlugins := true,
-    scalaJSModuleKind := ModuleKind.CommonJSModule,
-    addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
-    logBuffered in Test := true,
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaJsVersion,
       "org.scalactic" %% "scalactic" % scalacticVersion,
       "org.scalatest" %%% "scalatest" % scalatestVersion % "test",
-      "io.scalajs" %%% "core" % scalaJsIOVersion
-    ))
+    )).
+  settings(commonMacroParadiseSetting).
+  dependsOn(core)
 
 lazy val current = (project in file("./app/current")).
   dependsOn(common).
   enablePlugins(ScalaJSPlugin).
+  settings(commonSettings).
+  settings(commonScalaJsSettings).
   settings(
     name := "nodejs",
     version := apiVersion,
     organization := "io.scalajs",
     description := "NodeJS v8.7.0 API for Scala.js",
     homepage := Some(url("https://github.com/scalajs-io/nodejs")),
-    scalaVersion := scalaJsVersion,
-    scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
-    scalacOptions += "-P:scalajs:sjsDefinedByDefault",
-    scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
-    autoCompilerPlugins := true,
-    scalaJSModuleKind := ModuleKind.CommonJSModule,
-    addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
-    logBuffered in Test := true,
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaJsVersion,
       "org.scalactic" %% "scalactic" % scalacticVersion,
       "org.scalatest" %%% "scalatest" % scalatestVersion % "test"
-    ))
+    )).
+  settings(commonMacroParadiseSetting).
+  dependsOn(core)
 
 lazy val lts = (project in file("./app/lts")).
   dependsOn(common).
   enablePlugins(ScalaJSPlugin).
+  settings(commonSettings).
+  settings(commonScalaJsSettings).
   settings(
     name := "nodejs-lts",
     version := apiVersion,
     organization := "io.scalajs",
     description := "NodeJS LTS v6.11.4 API for Scala.js",
     homepage := Some(url("https://github.com/scalajs-io/nodejs")),
-    scalaVersion := scalaJsVersion,
-    scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
-    scalacOptions += "-P:scalajs:sjsDefinedByDefault",
-    scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
-    autoCompilerPlugins := true,
-    scalaJSModuleKind := ModuleKind.CommonJSModule,
-    addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
-    logBuffered in Test := true,
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaJsVersion,
-      "org.scalactic" %% "scalactic" % "3.0.1",
-      "org.scalatest" %%% "scalatest" % "3.0.1" % "test"
-    ))
+      "org.scalactic" %% "scalactic" % scalacticVersion,
+      "org.scalatest" %%% "scalatest" % scalatestVersion % "test"
+    )).
+  settings(commonMacroParadiseSetting).
+  dependsOn(core)
 
 lazy val publishingSettings = Seq(
   sonatypeProfileName := "org.xerial",

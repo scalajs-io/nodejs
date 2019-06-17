@@ -37,16 +37,21 @@ class DNSTest extends FunSpec {
     }
 
     it("supports lookupServiceFuture:SSH") {
-      DNS.lookupServiceFuture("127.0.0.1", 22) map { case (hostname, service) =>
-        info(s"lookupServiceFuture - hostname: $hostname, service => $service")
+      DNS.lookupServiceFuture("127.0.0.1", 22) map {
+        case (hostname, service) =>
+          info(s"lookupServiceFuture - hostname: $hostname, service => $service")
       }
     }
 
     it("supports resolve:NS") {
-      DNS.resolve(domain, "NS", (err: DnsError, addresses: js.Array[String]) => {
-        Assert.equal(err, null, err.toJson)
-        info(s"resolve:NS - addresses: ${addresses.mkString(", ")}")
-      })
+      DNS.resolve(
+        domain,
+        "NS",
+        (err: DnsError, addresses: js.Array[String]) => {
+          Assert.equal(err, null, err.toJson)
+          info(s"resolve:NS - addresses: ${addresses.mkString(", ")}")
+        }
+      )
     }
 
     it("supports resolveFuture:MX") {

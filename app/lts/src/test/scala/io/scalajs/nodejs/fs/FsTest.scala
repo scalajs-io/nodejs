@@ -20,11 +20,14 @@ class FsTest extends FunSpec {
       })
       info(s"watcher: ${Util.inspect(watcher)}")
 
-      setImmediate(() => Fs.writeFile("./app/lts/src/test/resources/1.txt", "Hello", error => {
-        if (isDefined(error)) {
-          alert(s"error: ${JSON.stringify(error)}")
-        }
-      }))
+      setImmediate(
+        () =>
+          Fs.writeFile("./app/lts/src/test/resources/1.txt", "Hello", error => {
+            if (isDefined(error)) {
+              alert(s"error: ${JSON.stringify(error)}")
+            }
+          })
+      )
     }
 
     it("should stream data") {

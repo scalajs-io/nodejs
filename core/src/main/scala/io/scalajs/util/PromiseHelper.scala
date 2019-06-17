@@ -101,7 +101,9 @@ object PromiseHelper {
     * @return a Scala.js promise
     */
   @inline
-  def promiseCallback7[A, B, C, D, E, F, G](f: js.Function7[A, B, C, D, E, F, G, Any] => Unit): Future[(A, B, C, D, E, F, G)] = {
+  def promiseCallback7[A, B, C, D, E, F, G](
+      f: js.Function7[A, B, C, D, E, F, G, Any] => Unit
+  ): Future[(A, B, C, D, E, F, G)] = {
     val task = Promise[(A, B, C, D, E, F, G)]()
     f((a: A, b: B, c: C, d: D, e: E, f: F, g: G) => task.success((a, b, c, d, e, f, g)))
     task.future
@@ -113,7 +115,9 @@ object PromiseHelper {
     * @return a Scala.js promise
     */
   @inline
-  def promiseCallback8[A, B, C, D, E, F, G, H](f: js.Function8[A, B, C, D, E, F, G, H, Any] => Unit): Future[(A, B, C, D, E, F, G, H)] = {
+  def promiseCallback8[A, B, C, D, E, F, G, H](
+      f: js.Function8[A, B, C, D, E, F, G, H, Any] => Unit
+  ): Future[(A, B, C, D, E, F, G, H)] = {
     val task = Promise[(A, B, C, D, E, F, G, H)]()
     f((a: A, b: B, c: C, d: D, e: E, f: F, g: G, h: H) => task.success((a, b, c, d, e, f, g, h)))
     task.future
@@ -127,8 +131,10 @@ object PromiseHelper {
   @inline
   def promiseWithError0[Z](f: js.Function1[Z, Any] => Unit): Future[Unit] = {
     val task = Promise[Unit]()
-    f((err: Z) =>
-      if (err == null || js.isUndefined(err)) task.success({}) else task.failure(wrapJavaScriptException(err)))
+    f(
+      (err: Z) =>
+        if (err == null || js.isUndefined(err)) task.success({}) else task.failure(wrapJavaScriptException(err))
+    )
     task.future
   }
 
@@ -140,8 +146,10 @@ object PromiseHelper {
   @inline
   def promiseWithError1[Z, A](f: js.Function2[Z, A, Any] => Unit): Future[A] = {
     val task = Promise[A]()
-    f((err: Z, a: A) =>
-      if (err == null || js.isUndefined(err)) task.success(a) else task.failure(wrapJavaScriptException(err)))
+    f(
+      (err: Z, a: A) =>
+        if (err == null || js.isUndefined(err)) task.success(a) else task.failure(wrapJavaScriptException(err))
+    )
     task.future
   }
 
@@ -153,8 +161,10 @@ object PromiseHelper {
   @inline
   def promiseWithError2[Z, A, B](f: js.Function3[Z, A, B, Any] => Unit): Future[(A, B)] = {
     val task = Promise[(A, B)]()
-    f((err: Z, a: A, b: B) =>
-      if (err == null || js.isUndefined(err)) task.success((a, b)) else task.failure(wrapJavaScriptException(err)))
+    f(
+      (err: Z, a: A, b: B) =>
+        if (err == null || js.isUndefined(err)) task.success((a, b)) else task.failure(wrapJavaScriptException(err))
+    )
     task.future
   }
 
@@ -166,8 +176,10 @@ object PromiseHelper {
   @inline
   def promiseWithError3[Z, A, B, C](f: js.Function4[Z, A, B, C, Any] => Unit): Future[(A, B, C)] = {
     val task = Promise[(A, B, C)]()
-    f((err: Z, a: A, b: B, c: C) =>
-      if (err == null || js.isUndefined(err)) task.success((a, b, c)) else task.failure(wrapJavaScriptException(err)))
+    f(
+      (err: Z, a: A, b: B, c: C) =>
+        if (err == null || js.isUndefined(err)) task.success((a, b, c)) else task.failure(wrapJavaScriptException(err))
+    )
     task.future
   }
 
@@ -182,7 +194,8 @@ object PromiseHelper {
     f(
       (err: Z, a: A, b: B, c: C, d: D) =>
         if (err == null || js.isUndefined(err)) task.success((a, b, c, d))
-        else task.failure(wrapJavaScriptException(err)))
+        else task.failure(wrapJavaScriptException(err))
+    )
     task.future
   }
 
@@ -197,7 +210,8 @@ object PromiseHelper {
     f(
       (err: Z, a: A, b: B, c: C, d: D, e: E) =>
         if (err == null || js.isUndefined(err)) task.success((a, b, c, d, e))
-        else task.failure(wrapJavaScriptException(err)))
+        else task.failure(wrapJavaScriptException(err))
+    )
     task.future
   }
 
@@ -207,12 +221,15 @@ object PromiseHelper {
     * @return a Scala.js promise
     */
   @inline
-  def promiseWithError6[Z, A, B, C, D, E, F](f: js.Function7[Z, A, B, C, D, E, F, Any] => Unit): Future[(A, B, C, D, E, F)] = {
+  def promiseWithError6[Z, A, B, C, D, E, F](
+      f: js.Function7[Z, A, B, C, D, E, F, Any] => Unit
+  ): Future[(A, B, C, D, E, F)] = {
     val task = Promise[(A, B, C, D, E, F)]()
     f(
       (err: Z, a: A, b: B, c: C, d: D, e: E, f: F) =>
         if (err == null || js.isUndefined(err)) task.success((a, b, c, d, e, f))
-        else task.failure(wrapJavaScriptException(err)))
+        else task.failure(wrapJavaScriptException(err))
+    )
     task.future
   }
 
@@ -221,7 +238,8 @@ object PromiseHelper {
   ////////////////////////////////////////////////////////////////////////
 
   def time[T](action: String, task: => Future[T], showHeader: Boolean = false)(
-    implicit ec: ExecutionContext): Future[T] = {
+      implicit ec: ExecutionContext
+  ): Future[T] = {
     if (showHeader) println(s"$action...")
     val startTime = System.currentTimeMillis()
     task onComplete {

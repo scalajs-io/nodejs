@@ -20,7 +20,8 @@ class ReadlineTest extends FunSpec {
           input = Fs.createReadStream(file),
           output = process.stdout,
           terminal = false
-        ))
+        )
+      )
 
       reader.onLine { line =>
         lineNo += 1

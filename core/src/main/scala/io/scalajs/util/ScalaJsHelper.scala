@@ -47,11 +47,11 @@ object ScalaJsHelper {
 
     @inline
     def getJSClassName: Option[String] = {
-      val keyword ="function "
-      val info = obj.dynamic.constructor.toString()
+      val keyword = "function "
+      val info    = obj.dynamic.constructor.toString()
       (info.indexOf(keyword), info.indexOf('(')) match {
         case (a, b) if a == -1 | b == -1 | a > b => None
-        case (a, b) => Some(info.substring(a + keyword.length, b))
+        case (a, b)                              => Some(info.substring(a + keyword.length, b))
       }
     }
 
@@ -69,7 +69,7 @@ object ScalaJsHelper {
 
     @inline
     def indexWhereOpt(f: A => Boolean): Option[Int] = array.indexWhere(f) match {
-      case -1 => None
+      case -1    => None
       case index => Some(index)
     }
 

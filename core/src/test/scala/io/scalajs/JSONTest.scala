@@ -56,6 +56,9 @@ class JSONTest extends FunSpec {
     it("""should convert object '{"x":5}' to a JSON string""") {
       val result = JSON.stringify(new js.Object {
         val x = 5
+
+        // Workaround for unused warning
+        override def toString: String = s"$x"
       })
       assert(result == """{"x":5}""")
     }

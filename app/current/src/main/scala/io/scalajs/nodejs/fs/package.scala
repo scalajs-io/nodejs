@@ -46,7 +46,7 @@ package object fs {
     def closeFuture(fd: FileDescriptor): Future[Unit] = promiseWithError0[FileIOError](fs.close(fd, _))
 
     @inline
-    def existsFuture(path: String): Future[Boolean] = promiseCallback1[Boolean](fs.exists(path, _))
+    def existsFuture(path: String): Future[Boolean] = promiseWithErrorAsBoolean[FileIOError](fs.access(path, _))
 
     @inline
     def fdatasyncFuture(fd: FileDescriptor): Future[Unit] = promiseWithError0[FileIOError](fs.fdatasync(fd, _))

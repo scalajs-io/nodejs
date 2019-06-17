@@ -16,13 +16,16 @@ class ChildProcessTest extends FunSpec {
   describe("ChildProcess") {
 
     it("supports exec(...)") {
-      ChildProcess.exec("cat ./package.json | wc -l", (error: Error, stdout: Buffer | String, stderr: Buffer | String) => {
-        if (isDefined(error)) {
-          console.error(s"exec error: $error")
+      ChildProcess.exec(
+        "cat ./package.json | wc -l",
+        (error: Error, stdout: Buffer | String, stderr: Buffer | String) => {
+          if (isDefined(error)) {
+            console.error(s"exec error: $error")
+          }
+          info(s"stdout: $stdout")
+          info(s"stderr: $stderr")
         }
-        info(s"stdout: $stdout")
-        info(s"stderr: $stderr")
-      })
+      )
     }
 
   }

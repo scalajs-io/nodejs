@@ -23,10 +23,12 @@ class URLSearchParamsTest extends FunSpec {
     }
 
     it("should parse the dictionary/object as a query string") {
-      val params = new URLSearchParams(js.Dictionary(
-        "user" -> "abc",
-        "query" -> js.Array("first", "second")
-      ))
+      val params = new URLSearchParams(
+        js.Dictionary(
+          "user"  -> "abc",
+          "query" -> js.Array("first", "second")
+        )
+      )
       info(params.getAll("query").mkString(", ")) // Prints [ "first,second" ]
       assert(params.getAll("query").toSeq == Seq("first,second"))
     }

@@ -4,7 +4,6 @@ import org.scalatest.FunSpec
 
 import scala.scalajs.js
 
-
 /**
   * JSON Test
   * @author lawrence.daniels@gmail.com

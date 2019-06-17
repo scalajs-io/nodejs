@@ -1,7 +1,7 @@
-val scalaJsIOVersion = "0.4.3"
-val apiVersion = scalaJsIOVersion
-val scala212Version = "2.12.8"
-val scala213Version = "2.13.0"
+val scalaJsIOVersion      = "0.4.3"
+val apiVersion            = scalaJsIOVersion
+val scala212Version       = "2.12.8"
+val scala213Version       = "2.13.0"
 val supportedScalaVersion = Seq(scala212Version, scala213Version)
 
 val scalatestVersion = "3.0.8"
@@ -11,49 +11,50 @@ lazy val commonSettings = Seq(
   autoCompilerPlugins := true,
   crossScalaVersions := supportedScalaVersion,
   scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
-  scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
+  scalacOptions in (Compile, doc) ++= Seq("-no-link-warnings")
 )
 lazy val commonScalaJsSettings = Seq(
   scalacOptions += "-P:scalajs:sjsDefinedByDefault",
   scalaJSModuleKind := ModuleKind.CommonJSModule,
-  logBuffered in Test := true,
+  logBuffered in Test := true
 )
 lazy val commonMacroParadiseSetting = Seq(
   Compile / scalacOptions ++= {
     CrossVersion.partialVersion(scalaVersion.value) match {
       case Some((2, n)) if n >= 13 => "-Ymacro-annotations" :: Nil
-      case _ => Nil
+      case _                       => Nil
     }
   },
   libraryDependencies ++= {
     CrossVersion.partialVersion(scalaVersion.value) match {
       case Some((2, n)) if n >= 13 => Nil
-      case _ => compilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full) :: Nil
+      case _                       => compilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full) :: Nil
     }
   }
 )
 
-lazy val core = (project in file("./core")).
-  enablePlugins(ScalaJSPlugin).
-  settings(commonSettings).
-  settings(commonScalaJsSettings).
-  settings(
+lazy val core = (project in file("./core"))
+  .enablePlugins(ScalaJSPlugin)
+  .settings(commonSettings)
+  .settings(commonScalaJsSettings)
+  .settings(
     name := "core",
     organization := "io.scalajs",
     description := "Core utilities for the ScalaJs.io platform",
     version := apiVersion,
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-      "org.scalatest" %%% "scalatest" % scalatestVersion % "test"
-    ))
+      "org.scalatest"  %%% "scalatest"   % scalatestVersion % "test"
+    )
+  )
 
-lazy val root = (project in file(".")).
-  aggregate(core, common, current, lts).
-  dependsOn(core, common, current, lts).
-  enablePlugins(ScalaJSPlugin).
-  settings(commonSettings).
-  settings(commonScalaJsSettings).
-  settings(
+lazy val root = (project in file("."))
+  .aggregate(core, common, current, lts)
+  .dependsOn(core, common, current, lts)
+  .enablePlugins(ScalaJSPlugin)
+  .settings(commonSettings)
+  .settings(commonScalaJsSettings)
+  .settings(
     name := "nodejs-platform",
     version := apiVersion,
     organization := "io.scalajs",
@@ -61,17 +62,18 @@ lazy val root = (project in file(".")).
     homepage := Some(url("https://github.com/scalajs-io/nodejs")),
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-      "org.scalactic" %% "scalactic" % scalacticVersion,
-      "org.scalatest" %%% "scalatest" % scalatestVersion % "test",
-    )).
-  settings(commonMacroParadiseSetting).
-  dependsOn(core)
+      "org.scalactic"  %% "scalactic"    % scalacticVersion,
+      "org.scalatest"  %%% "scalatest"   % scalatestVersion % "test"
+    )
+  )
+  .settings(commonMacroParadiseSetting)
+  .dependsOn(core)
 
-lazy val common = (project in file("./app/common")).
-  enablePlugins(ScalaJSPlugin).
-  settings(commonSettings).
-  settings(commonScalaJsSettings).
-  settings(
+lazy val common = (project in file("./app/common"))
+  .enablePlugins(ScalaJSPlugin)
+  .settings(commonSettings)
+  .settings(commonScalaJsSettings)
+  .settings(
     name := "nodejs-common",
     version := apiVersion,
     organization := "io.scalajs",
@@ -79,18 +81,19 @@ lazy val common = (project in file("./app/common")).
     homepage := Some(url("https://github.com/scalajs-io/nodejs")),
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-      "org.scalactic" %% "scalactic" % scalacticVersion,
-      "org.scalatest" %%% "scalatest" % scalatestVersion % "test",
-    )).
-  settings(commonMacroParadiseSetting).
-  dependsOn(core)
+      "org.scalactic"  %% "scalactic"    % scalacticVersion,
+      "org.scalatest"  %%% "scalatest"   % scalatestVersion % "test"
+    )
+  )
+  .settings(commonMacroParadiseSetting)
+  .dependsOn(core)
 
-lazy val current = (project in file("./app/current")).
-  dependsOn(common).
-  enablePlugins(ScalaJSPlugin).
-  settings(commonSettings).
-  settings(commonScalaJsSettings).
-  settings(
+lazy val current = (project in file("./app/current"))
+  .dependsOn(common)
+  .enablePlugins(ScalaJSPlugin)
+  .settings(commonSettings)
+  .settings(commonScalaJsSettings)
+  .settings(
     name := "nodejs",
     version := apiVersion,
     organization := "io.scalajs",
@@ -98,18 +101,19 @@ lazy val current = (project in file("./app/current")).
     homepage := Some(url("https://github.com/scalajs-io/nodejs")),
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-      "org.scalactic" %% "scalactic" % scalacticVersion,
-      "org.scalatest" %%% "scalatest" % scalatestVersion % "test"
-    )).
-  settings(commonMacroParadiseSetting).
-  dependsOn(core)
+      "org.scalactic"  %% "scalactic"    % scalacticVersion,
+      "org.scalatest"  %%% "scalatest"   % scalatestVersion % "test"
+    )
+  )
+  .settings(commonMacroParadiseSetting)
+  .dependsOn(core)
 
-lazy val lts = (project in file("./app/lts")).
-  dependsOn(common).
-  enablePlugins(ScalaJSPlugin).
-  settings(commonSettings).
-  settings(commonScalaJsSettings).
-  settings(
+lazy val lts = (project in file("./app/lts"))
+  .dependsOn(common)
+  .enablePlugins(ScalaJSPlugin)
+  .settings(commonSettings)
+  .settings(commonScalaJsSettings)
+  .settings(
     name := "nodejs-lts",
     version := apiVersion,
     organization := "io.scalajs",
@@ -117,11 +121,12 @@ lazy val lts = (project in file("./app/lts")).
     homepage := Some(url("https://github.com/scalajs-io/nodejs")),
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-      "org.scalactic" %% "scalactic" % scalacticVersion,
-      "org.scalatest" %%% "scalatest" % scalatestVersion % "test"
-    )).
-  settings(commonMacroParadiseSetting).
-  dependsOn(core)
+      "org.scalactic"  %% "scalactic"    % scalacticVersion,
+      "org.scalatest"  %%% "scalatest"   % scalatestVersion % "test"
+    )
+  )
+  .settings(commonMacroParadiseSetting)
+  .dependsOn(core)
 
 lazy val publishingSettings = Seq(
   sonatypeProfileName := "org.xerial",

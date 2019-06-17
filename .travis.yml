@@ -1,0 +1,24 @@
+dist: xenial
+language: scala
+
+scala:
+  - 2.12.8
+  - 2.13.0
+
+jdk:
+  - openjdk8
+  - openjdk11
+
+script:
+  - sbt ++$TRAVIS_SCALA_VERSION test
+
+before_cache:
+  - rm -fv $HOME/.ivy2/.sbt.ivy.lock
+  - find $HOME/.ivy2/cache -name "ivydata-*.properties" -print -delete
+  - find $HOME/.sbt        -name "*.lock"               -print -delete
+
+cache:
+  directories:
+    - $HOME/.ivy2/cache
+    - $HOME/.sbt/boot
+

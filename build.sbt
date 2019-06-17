@@ -40,6 +40,9 @@ lazy val commonMacroParadiseSetting = Seq(
   }
 )
 
+lazy val root = (project in file("."))
+  .aggregate(core, common, current)
+
 lazy val core = (project in file("./core"))
   .enablePlugins(ScalaJSPlugin)
   .settings(commonSettings)
@@ -55,33 +58,10 @@ lazy val core = (project in file("./core"))
     )
   )
 
-lazy val root = (project in file("."))
-  .aggregate(core, common, current)
-  .dependsOn(core, common, current)
-  .enablePlugins(ScalaJSPlugin)
-  .settings(commonSettings)
-  .settings(commonScalaJsSettings)
-  .settings(
-    name := "nodejs-platform",
-    version := apiVersion,
-    organization := "io.scalajs",
-    description := "NodeJS build artifact",
-    homepage := Some(url("https://github.com/scalajs-io/nodejs")),
-    libraryDependencies ++= Seq(
-      "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-      "org.scalactic"  %% "scalactic"    % scalacticVersion,
-      "org.scalatest"  %%% "scalatest"   % scalatestVersion % "test"
-    )
-  )
-  .settings(commonMacroParadiseSetting)
-  .dependsOn(core)
-
 lazy val common = (project in file("./app/common"))
   .enablePlugins(ScalaJSPlugin)
   .settings(commonSettings)
   .settings(commonScalaJsSettings)
-  // For Util module
-//  .settings(scalacOptions in Test --= Seq("-deprecation"))
   .settings(
     name := "nodejs-common",
     version := apiVersion,

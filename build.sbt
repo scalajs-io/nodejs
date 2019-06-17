@@ -10,7 +10,14 @@ val scalacticVersion = "3.0.8"
 lazy val commonSettings = Seq(
   autoCompilerPlugins := true,
   crossScalaVersions := supportedScalaVersion,
-  scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
+  scalacOptions ++= Seq(
+    "-deprecation",
+    "-unchecked",
+    "-feature",
+    "-language:implicitConversions",
+    "-Xlint",
+    "-Xfatal-warnings"
+  ),
   scalacOptions in (Compile, doc) ++= Seq("-no-link-warnings")
 )
 lazy val commonScalaJsSettings = Seq(
@@ -73,6 +80,8 @@ lazy val common = (project in file("./app/common"))
   .enablePlugins(ScalaJSPlugin)
   .settings(commonSettings)
   .settings(commonScalaJsSettings)
+  // For Util module
+//  .settings(scalacOptions in Test --= Seq("-deprecation"))
   .settings(
     name := "nodejs-common",
     version := apiVersion,

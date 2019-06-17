@@ -1,11 +1,6 @@
 package io.scalajs.nodejs.net
 
-import io.scalajs.nodejs.repl.REPL
-import io.scalajs.nodejs.{console, setTimeout, _}
 import org.scalatest.FunSpec
-
-import scala.concurrent.duration._
-import scala.scalajs.js
 
 /**
   * Network (Net) Tests

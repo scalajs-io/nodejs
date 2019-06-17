@@ -1,15 +1,53 @@
-import org.scalajs.sbtplugin.ScalaJSPlugin
-import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
-import sbt.Keys.{libraryDependencies, _}
-import sbt._
-
-import scala.language.postfixOps
-
 val scalaJsIOVersion = "0.4.3"
 val apiVersion = scalaJsIOVersion
-val scalaJsVersion = "2.12.8"
-val scalatestVersion = "3.0.5"
-val scalacticVersion = "3.0.5"
+val scala212Version = "2.12.8"
+val scala213Version = "2.13.0"
+val supportedScalaVersion = Seq(scala212Version, scala213Version)
+val scalaJsVersion = scala213Version
+
+val scalatestVersion = "3.0.8"
+val scalacticVersion = "3.0.8"
+
+lazy val commonSettings = Seq(
+  autoCompilerPlugins := true,
+  scalaVersion := scalaJsVersion,
+  crossScalaVersions := supportedScalaVersion,
+  scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
+  scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
+)
+lazy val commonScalaJsSettings = Seq(
+  scalacOptions += "-P:scalajs:sjsDefinedByDefault",
+  scalaJSModuleKind := ModuleKind.CommonJSModule,
+  logBuffered in Test := true,
+)
+lazy val commonMacroParadiseSetting = Seq(
+  Compile / scalacOptions ++= {
+    CrossVersion.partialVersion(scalaVersion.value) match {
+      case Some((2, n)) if n >= 13 => "-Ymacro-annotations" :: Nil
+      case _ => Nil
+    }
+  },
+  libraryDependencies ++= {
+    CrossVersion.partialVersion(scalaVersion.value) match {
+      case Some((2, n)) if n >= 13 => Nil
+      case _ => compilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full) :: Nil
+    }
+  }
+)
+
+lazy val core = (project in file("./core")).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings).
+  settings(commonScalaJsSettings).
+  settings(
+    name := "core",
+    organization := "io.scalajs",
+    description := "Core utilities for the ScalaJs.io platform",
+    version := apiVersion,
+    libraryDependencies ++= Seq(
+      "org.scala-lang" % "scala-reflect" % scalaJsVersion,
+      "org.scalatest" %%% "scalatest" % scalatestVersion % "test"
+    ))
 
 lazy val root = (project in file(".")).
   aggregate(common, current, lts).

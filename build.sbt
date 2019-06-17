@@ -56,8 +56,8 @@ lazy val core = (project in file("./core"))
   )
 
 lazy val root = (project in file("."))
-  .aggregate(core, common, current, lts)
-  .dependsOn(core, common, current, lts)
+  .aggregate(core, common, current)
+  .dependsOn(core, common, current)
   .enablePlugins(ScalaJSPlugin)
   .settings(commonSettings)
   .settings(commonScalaJsSettings)
@@ -107,26 +107,6 @@ lazy val current = (project in file("./app/current"))
     version := apiVersion,
     organization := "io.scalajs",
     description := "NodeJS v8.7.0 API for Scala.js",
-    homepage := Some(url("https://github.com/scalajs-io/nodejs")),
-    libraryDependencies ++= Seq(
-      "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-      "org.scalactic"  %% "scalactic"    % scalacticVersion,
-      "org.scalatest"  %%% "scalatest"   % scalatestVersion % "test"
-    )
-  )
-  .settings(commonMacroParadiseSetting)
-  .dependsOn(core)
-
-lazy val lts = (project in file("./app/lts"))
-  .dependsOn(common)
-  .enablePlugins(ScalaJSPlugin)
-  .settings(commonSettings)
-  .settings(commonScalaJsSettings)
-  .settings(
-    name := "nodejs-lts",
-    version := apiVersion,
-    organization := "io.scalajs",
-    description := "NodeJS LTS v6.11.4 API for Scala.js",
     homepage := Some(url("https://github.com/scalajs-io/nodejs")),
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaVersion.value,

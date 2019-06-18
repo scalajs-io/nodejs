@@ -9,7 +9,7 @@ import scala.scalajs.js.|
 
 /**
   * AWS.S3
-  * @see http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html
+  * @see [[http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html]]
   * @author lawrence.daniels@gmail.com
   */
 @js.native
@@ -91,29 +91,5 @@ class S3(options: ClientConfiguration | RawOptions = js.native) extends Service 
 
 }
 
-/**
-  * AWS.S3 Singleton
-  * @author lawrence.daniels@gmail.com
-  */
-object S3 {
 
-  object Types {
-
-    type AbortMultipartUploadRequest = s3.AbortMultipartUploadRequest
-
-    type ClientConfiguration = s3.ClientConfiguration
-
-    type CompleteMultipartUploadRequest = s3.CompleteMultipartUploadRequest
-
-    type GetObjectOutput = s3.GetObjectOutput
-
-    type GetObjectRequest = s3.GetObjectRequest
-
-    type ListObjectsOutput = s3.ListObjectsOutput
-
-    type ListObjectsV2Output = s3.ListObjectsV2Output
-
-  }
-
-}
 

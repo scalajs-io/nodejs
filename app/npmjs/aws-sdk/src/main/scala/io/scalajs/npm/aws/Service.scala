@@ -27,7 +27,7 @@ class Service(val config: ServiceConfigurationOptions | RawOptions = js.native) 
   /**
     * An Endpoint object representing the endpoint URL for service requests.
     */
-  var endpoint: Endpoint = js.native
+  var endpoint: AWS.Endpoint = js.native
 
   //////////////////////////////////////////////////////////////
   //    Methods

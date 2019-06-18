@@ -3,6 +3,7 @@
   "version": "0.4.1",
   "private": true,
   "dependencies": {
+    "aws-sdk": "^2.477.0",
     "mkdirp": "^0.5.1",
     "moment": "^2.24.0",
     "moment-duration-format": "^2.3.2",

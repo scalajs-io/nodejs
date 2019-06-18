@@ -12,7 +12,6 @@ import scala.scalajs.js.|
   * @param input The input URL to parse
   * @param base  The base URL to resolve against if the input is not absolute.
   * @see https://nodejs.org/api/url.html
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("url", "URL")
@@ -106,7 +105,6 @@ class URL(input: String, base: String | URL = js.native) extends js.Object {
 
 /**
   * This module has utilities for URL resolution and parsing. Call require('url') to use it.
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("url", JSImport.Namespace)

@@ -16,7 +16,6 @@ import scala.scalajs.js.|
   * We are not interested in any future additions to the util module that are unnecessary
   * for Node.js's internal functionality.
   * @see https://nodejs.org/api/util.html
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Util extends IEventEmitter {
@@ -220,7 +219,6 @@ trait Util extends IEventEmitter {
 
 /**
   * Util Singleton
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("util", JSImport.Namespace)

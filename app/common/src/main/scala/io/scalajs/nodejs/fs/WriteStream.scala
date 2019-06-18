@@ -46,13 +46,11 @@ trait WriteStream extends Writable {
 
 /**
   * Write Stream Companion
-  * @author lawrence.daniels@gmail.com
   */
 object WriteStream {
 
   /**
     * Write Stream Events
-    * @author lawrence.daniels@gmail.com
     */
   implicit class WriteStreamEvents(val stream: WriteStream) extends AnyVal {
 
@@ -79,7 +77,6 @@ object WriteStream {
 
   /**
     * Write Stream Extensions
-    * @author lawrence.daniels@gmail.com
     */
   implicit class WriteStreamExtensions(val stream: WriteStream) extends AnyVal {
 

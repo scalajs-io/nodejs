@@ -6,7 +6,6 @@ import scala.scalajs.js
 
 /**
   * Option Helper
-  * @author lawrence.daniels@gmail.com
   */
 object OptionHelper {
 

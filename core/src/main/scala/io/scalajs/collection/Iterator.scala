@@ -7,7 +7,6 @@ import scala.scalajs.js
   * such as what values are looped over in a for..of construct. Some built-in types are built-in iterables
   * with a default iteration behavior, such as Array or Map, while other types (such as Object) are not.
   * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Iterator[+A] extends js.Object {

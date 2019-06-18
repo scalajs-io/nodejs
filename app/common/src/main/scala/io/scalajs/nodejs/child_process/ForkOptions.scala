@@ -19,7 +19,6 @@ import scala.scalajs.js
   *                 value 'ipc' or an error will be thrown. For instance [0, 1, 2, 'ipc'].
   * @param uid      <Number> Sets the user identity of the process. (See setuid(2).)
   * @param gid      <Number> Sets the group identity of the process. (See setgid(2).)
-  * @author lawrence.daniels@gmail.com
   */
 class ForkOptions(val cwd: js.UndefOr[String] = js.undefined,
                   val env: js.Any = js.undefined,

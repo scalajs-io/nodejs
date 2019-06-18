@@ -7,7 +7,6 @@ import scala.scalajs.js
 
 /**
   * REPL Server
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait REPLServer extends IEventEmitter with Interface {
@@ -57,7 +56,6 @@ trait REPLServer extends IEventEmitter with Interface {
 
 /**
   * REPL Server Companion
-  * @author lawrence.daniels@gmail.com
   */
 object REPLServer {
 

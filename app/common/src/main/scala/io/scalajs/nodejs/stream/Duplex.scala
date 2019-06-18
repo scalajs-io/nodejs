@@ -14,7 +14,6 @@ import scala.scalajs.js.annotation.JSImport
   * from Readable, and then parasitically from Writable. It is thus up to the user to implement both
   * the low-level stream._read(n) method as well as the low-level stream._write(chunk, encoding, callback)
   * method on extension duplex classes.
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("stream", "Duplex")

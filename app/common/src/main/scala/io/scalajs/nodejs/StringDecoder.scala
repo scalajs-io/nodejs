@@ -9,7 +9,6 @@ import scala.scalajs.js.annotation.JSImport
 /**
   * To use this module, do require('string_decoder'). StringDecoder decodes a buffer to a string. It is a simple
   * interface to [[Buffer.toString()]] but provides additional support for utf8.
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("string_decoder", "StringDecoder")

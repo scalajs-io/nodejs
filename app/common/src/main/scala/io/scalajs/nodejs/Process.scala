@@ -11,7 +11,6 @@ import scala.scalajs.js.UndefOr
 
 /**
   * The process object is a global object and can be accessed from anywhere. It is an instance of EventEmitter.
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Process extends IEventEmitter {
@@ -406,7 +405,6 @@ trait Process extends IEventEmitter {
 
 /**
   * Process Object Companion
-  * @author lawrence.daniels@gmail.com
   */
 object Process {
 

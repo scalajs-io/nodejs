@@ -9,7 +9,6 @@ import scala.scalajs.js.annotation.JSImport
   * net - The net module provides you with an asynchronous network wrapper. It contains functions for creating both
   * servers and clients (called streams).
   * @see https://nodejs.org/api/net.html
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Net extends IEventEmitter {
@@ -156,7 +155,6 @@ trait Net extends IEventEmitter {
 
 /**
   * Net Singleton
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("net", JSImport.Namespace)

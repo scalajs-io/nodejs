@@ -7,7 +7,6 @@ import scala.scalajs.js
 
 /**
   * VM Tests
-  * @author lawrence.daniels@gmail.com
   */
 class VMTest extends FunSpec {
 
@@ -49,7 +48,6 @@ class VMTest extends FunSpec {
 
 /**
   * VM Test Companion
-  * @author lawrence.daniels@gmail.com
   */
 object VMTest {
 

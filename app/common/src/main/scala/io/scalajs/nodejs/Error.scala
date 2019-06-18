@@ -10,7 +10,6 @@ import scala.scalajs.js.annotation.{JSGlobal, JSImport}
   * Stack traces are dependent on V8's stack trace API. Stack traces extend only to either (a) the
   * beginning of synchronous code execution, or (b) the number of frames given by the property
   * Error.stackTraceLimit, whichever is smaller.
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("errors", "Error")
@@ -33,7 +32,6 @@ class Error(message0: String = js.native) extends js.Object {
 
 /**
   * Error Singleton
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSGlobal

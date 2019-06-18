@@ -9,7 +9,6 @@ import scala.scalajs.js.|
 
 /**
   * nodejs package object
-  * @author lawrence.daniels@gmail.com
   */
 package object nodejs {
 

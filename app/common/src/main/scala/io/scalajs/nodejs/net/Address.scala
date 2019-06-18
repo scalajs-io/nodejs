@@ -4,7 +4,6 @@ import scala.scalajs.js
 
 /**
   * Server IP Address
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Address extends js.Object {

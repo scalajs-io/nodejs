@@ -8,7 +8,6 @@ import scala.scalajs.js.|
   * The JSON object contains methods for parsing JavaScript Object Notation (JSON) and converting values to JSON.
   * It can't be called or constructed, and aside from its two method properties it has no interesting functionality of its own.
   * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait JSON extends js.Object {
@@ -46,7 +45,6 @@ trait JSON extends js.Object {
 
 /**
   * JSON Singleton Object
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSGlobal("JSON")

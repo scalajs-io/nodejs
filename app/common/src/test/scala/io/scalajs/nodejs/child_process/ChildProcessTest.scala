@@ -10,7 +10,6 @@ import scala.scalajs.js.|
 /**
   * ChildProcess Test
   *
-  * @author lawrence.daniels@gmail.com
   */
 class ChildProcessTest extends FunSpec {
 

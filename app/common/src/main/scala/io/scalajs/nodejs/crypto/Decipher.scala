@@ -14,7 +14,6 @@ import scala.scalajs.js
   *
   * The crypto.createDecipher() or crypto.createDecipheriv() methods are used to create Decipher instances.
   * Decipher objects are not to be created directly using the new keyword.
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Decipher extends IDuplex {

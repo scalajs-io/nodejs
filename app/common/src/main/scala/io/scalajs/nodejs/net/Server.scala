@@ -9,7 +9,6 @@ import scala.scalajs.js.annotation.JSImport
 /**
   * net.Server - This class is used to create a TCP or local server.
   * @see https://nodejs.org/api/net.html#net_class_net_server
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("net", "Server")
@@ -154,7 +153,6 @@ class Server() extends IEventEmitter {
 
 /**
   * Server Companion
-  * @author lawrence.daniels@gmail.com
   */
 object Server extends {
 
@@ -198,7 +196,6 @@ object Server extends {
 
 /**
   * Server Options
-  * @author lawrence.daniels@gmail.com
   */
 class ServerOptions(val allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
                     val pauseOnConnect: js.UndefOr[Boolean] = js.undefined)

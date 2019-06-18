@@ -6,7 +6,6 @@ import scala.scalajs.js
 
 /**
   * Timeout Handle
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Timeout extends js.Object {
@@ -21,7 +20,6 @@ trait Timeout extends js.Object {
 
 /**
   * Timeout Companion
-  * @author lawrence.daniels@gmail.com
   */
 object Timeout {
 

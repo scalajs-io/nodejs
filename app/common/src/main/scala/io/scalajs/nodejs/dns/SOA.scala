@@ -15,7 +15,6 @@ import scala.scalajs.js
   * minttl: 3600
   * }
   * </pre>
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait SOA extends js.Object {

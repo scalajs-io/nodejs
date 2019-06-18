@@ -28,7 +28,6 @@ import scala.scalajs.js.annotation.JSImport
   * lead to a 'process out of memory' error.
   *
   * Note: Node.js does not check whether Content-Length and the length of the body which has been transmitted are equal or not.
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("http", "ClientRequest")
@@ -185,13 +184,11 @@ class ClientRequest extends Readable {
 
 /**
   * Client Request Companion
-  * @author lawrence.daniels@gmail.com
   */
 object ClientRequest {
 
   /**
     * Client Request Events
-    * @author lawrence.daniels@gmail.com
     */
   implicit class ClientRequestEvents(val client: ClientRequest) extends AnyVal {
 
@@ -253,7 +250,6 @@ object ClientRequest {
 
   /**
     * Client Request Extensions
-    * @author lawrence.daniels@gmail.com
     */
   implicit class ClientRequestEnrichment(val client: ClientRequest) extends AnyVal {
 

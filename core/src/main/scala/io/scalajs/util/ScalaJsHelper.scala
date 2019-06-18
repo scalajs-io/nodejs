@@ -6,7 +6,6 @@ import scala.scalajs.js
 
 /**
   * ScalaJS Convenience Helper Functions
-  * @author lawrence.daniels@gmail.com
   */
 object ScalaJsHelper {
 

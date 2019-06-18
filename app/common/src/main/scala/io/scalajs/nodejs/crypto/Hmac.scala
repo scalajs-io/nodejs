@@ -14,7 +14,6 @@ import scala.scalajs.js
   *
   * The crypto.createHmac() method is used to create Hmac instances. Hmac objects are not to be created directly using
   * the new keyword.
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Hmac extends IDuplex {

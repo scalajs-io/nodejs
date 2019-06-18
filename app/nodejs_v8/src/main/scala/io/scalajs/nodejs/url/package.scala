@@ -7,7 +7,6 @@ import scala.scalajs.js.|
 
 /**
   * url package object
-  * @author lawrence.daniels@gmail.com
   */
 package object url {
 

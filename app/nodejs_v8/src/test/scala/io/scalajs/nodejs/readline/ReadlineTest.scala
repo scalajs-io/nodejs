@@ -6,7 +6,6 @@ import org.scalatest.FunSpec
 
 /**
   * Readline Tests
-  * @author lawrence.daniels@gmail.com
   */
 class ReadlineTest extends FunSpec {
 

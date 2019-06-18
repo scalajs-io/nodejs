@@ -6,7 +6,6 @@ import org.scalatest.FunSpec
 
 /**
   * OS Tests
-  * @author lawrence.daniels@gmail.com
   */
 class OSTest extends FunSpec {
 

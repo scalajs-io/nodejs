@@ -9,7 +9,6 @@ import scala.scalajs.js.|
 
 /**
   * dns package object
-  * @author lawrence.daniels@gmail.com
   */
 package object dns {
 

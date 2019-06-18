@@ -4,7 +4,6 @@ import scala.scalajs.js
 
 /**
   * NodeJS HTTP Client
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Client extends js.Object {

@@ -14,7 +14,6 @@ import scala.scalajs.js
   *
   * The crypto.createSign() method is used to create Sign instances. Sign objects are not to be created directly using
   * the new keyword.
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Sign extends IDuplex {

@@ -6,7 +6,6 @@ import scala.scalajs.js.annotation.JSBracketAccess
 
 /**
   * JavaScript Collection
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait JsCollection[A] extends js.Object {
@@ -29,7 +28,6 @@ trait JsCollection[A] extends js.Object {
 
 /**
   * JsCollection Companion
-  * @author lawrence.daniels@gmail.com
   */
 object JsCollection {
 

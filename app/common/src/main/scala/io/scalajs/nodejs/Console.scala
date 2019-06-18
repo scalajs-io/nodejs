@@ -17,7 +17,6 @@ import scala.scalajs.js.annotation.JSImport
   * used without calling require('console').</li>
   * </ul>
   * @see https://nodejs.org/dist/latest-v8.x/docs/api/console.html
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("console", "Console")
@@ -150,7 +149,6 @@ class Console(stdout: Writable, stderr: Writable = js.native) extends js.Object 
   *                   inspecting large complicated objects. Defaults to 2. To make it recurse indefinitely, pass null.
   * @param colors     if true, then the output will be styled with ANSI color codes. Defaults to false. Colors are customizable;
   *                   see customizing util.inspect() colors.
-  * @author lawrence.daniels@gmail.com
   */
 class ConsoleDirOptions(var showHidden: js.UndefOr[Boolean] = js.undefined,
                         var depth: js.UndefOr[Int] = js.undefined,

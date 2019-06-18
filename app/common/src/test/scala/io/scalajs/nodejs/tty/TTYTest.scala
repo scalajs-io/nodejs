@@ -4,7 +4,6 @@ import org.scalatest.FunSpec
 
 /**
   * TTY Test
-  * @author lawrence.daniels@gmail.com
   */
 class TTYTest extends FunSpec {
 

@@ -4,7 +4,6 @@ import scala.scalajs.js
 
 /**
   * CPU Time
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait CPUTime extends js.Object {

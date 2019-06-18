@@ -12,7 +12,6 @@ import scala.scalajs.js.|
   * This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes.
   * Each class takes the same options, and is a readable/writable Stream.
   * @see https://nodejs.org/docs/latest/api/zlib.html
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Zlib extends IEventEmitter {
@@ -266,7 +265,6 @@ trait Zlib extends IEventEmitter {
 
 /**
   * Zlib Singleton
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("zlib", JSImport.Namespace)

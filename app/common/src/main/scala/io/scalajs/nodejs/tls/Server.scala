@@ -9,7 +9,6 @@ import scala.scalajs.js.annotation.JSImport
 /**
   * The tls.Server class is a subclass of net.Server that accepts encrypted connections using TLS or SSL.
   * @see https://nodejs.org/dist/v7.6.0/docs/api/tls.html#tls_class_tls_server
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("tls", "Server")

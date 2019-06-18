@@ -10,7 +10,6 @@ import scala.scalajs.js
   * @param maxSockets     Maximum number of sockets to allow per host. Default = Infinity.
   * @param maxFreeSockets Maximum number of sockets to leave open in a free state. Only relevant if keepAlive is set to
   *                       true (default: 256).
-  * @author lawrence.daniels@gmail.com
   */
 class ConnectionOptions(var keepAlive: js.UndefOr[Boolean] = js.undefined,
                         var keepAliveMsecs: js.UndefOr[Int] = js.undefined,

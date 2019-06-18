@@ -4,7 +4,6 @@ import org.scalatest.{FunSpec, MustMatchers}
 
 /**
   * Crypto Test
-  * @author lawrence.daniels@gmail.com
   */
 class CryptoTest extends FunSpec with MustMatchers {
 

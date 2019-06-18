@@ -11,7 +11,6 @@ import scala.scalajs.js
   *                      is attached to the stack trace.
   * @param timeout       Specifies the number of milliseconds to execute code before terminating execution. If execution
   *                      is terminated, an Error will be thrown.
-  * @author lawrence.daniels@gmail.com
   */
 class ContextOptions(var filename: js.UndefOr[String] = js.undefined,
                      var lineOffset: js.UndefOr[Int] = js.undefined,

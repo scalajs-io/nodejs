@@ -4,7 +4,6 @@ import scala.reflect.macros.blackbox
 
 /**
   * Macro Helper
-  * @author lawrence.daniels@gmail.com
   */
 object MacroHelper {
 

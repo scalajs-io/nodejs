@@ -18,7 +18,6 @@ import scala.scalajs.js.|
   * @param shell    <Boolean> | <String> If true, runs command inside of a shell.
   *                 Uses '/bin/sh' on UNIX, and 'cmd.exe' on Windows. A different shell can be specified as a string.
   *                 The shell should understand the -c switch on UNIX, or /d /s /c on Windows. Defaults to false (no shell).
-  * @author lawrence.daniels@gmail.com
   */
 class SpawnOptions(
     val cwd: js.UndefOr[String] = js.undefined,

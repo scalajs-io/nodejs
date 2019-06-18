@@ -4,7 +4,6 @@ import scala.concurrent.duration._
 
 /**
   * Duration Helper
-  * @author lawrence.daniels@gmail.com
   */
 object DurationHelper {
 

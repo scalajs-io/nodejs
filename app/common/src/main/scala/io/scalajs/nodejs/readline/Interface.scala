@@ -7,7 +7,6 @@ import scala.scalajs.js
 /**
   * Readline Interface
   * @see https://nodejs.org/api/readline.html#readline_class_interface
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Interface extends IEventEmitter {
@@ -86,7 +85,6 @@ trait Interface extends IEventEmitter {
 
 /**
   * Readline Interface Companion
-  * @author lawrence.daniels@gmail.com
   */
 object Interface {
 

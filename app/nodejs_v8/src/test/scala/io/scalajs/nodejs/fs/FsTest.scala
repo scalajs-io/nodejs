@@ -9,7 +9,6 @@ import org.scalatest.FunSpec
 /**
   * File System (Fs) Tests
   *
-  * @author lawrence.daniels@gmail.com
   */
 class FsTest extends FunSpec {
 

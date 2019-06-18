@@ -5,7 +5,6 @@ import org.scalatest._
 
 /**
   * URL Tests
-  * @author lawrence.daniels@gmail.com
   */
 class URLTest extends FunSpec {
 

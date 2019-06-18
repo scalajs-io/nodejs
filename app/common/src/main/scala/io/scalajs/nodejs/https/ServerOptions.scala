@@ -24,7 +24,6 @@ import scala.scalajs.js
   *                     <li>Agent object: explicitly use the passed in Agent.</li>
   *                     <li>false: opts out of connection pooling with an Agent, defaults request to Connection: close.</li>
   *                     </ul>
-  * @author lawrence.daniels@gmail.com
   */
 class ServerOptions(var host: js.UndefOr[String] = js.undefined,
                     var hostname: js.UndefOr[String] = js.undefined,

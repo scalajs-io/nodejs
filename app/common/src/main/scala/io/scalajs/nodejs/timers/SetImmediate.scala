@@ -6,7 +6,6 @@ import scala.scalajs.js
   * Schedules "immediate" execution of callback after I/O events' callbacks and before timers set
   * by setTimeout and setInterval are triggered. Returns an immediateObject for possible use with
   * clearImmediate. Additional optional arguments may be passed to the callback.
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait SetImmediate extends js.Object {

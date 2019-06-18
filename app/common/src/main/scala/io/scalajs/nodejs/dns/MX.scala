@@ -10,7 +10,6 @@ import scala.scalajs.js
   * priority: 10
   * }
   * </pre>
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait MX extends js.Object {

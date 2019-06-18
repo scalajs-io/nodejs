@@ -6,7 +6,6 @@ import scala.scalajs.js
 
 /**
   * Readline Options
-  * @author lawrence.daniels@gmail.com
   */
 class ReadlineOptions(var input: js.UndefOr[Readable] = js.undefined,
                       var output: js.UndefOr[Writable] = js.undefined,

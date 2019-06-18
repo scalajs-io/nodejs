@@ -4,7 +4,6 @@ import scala.scalajs.js
 
 /**
   * Contextify Script
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait ContextifyScript extends js.Object {

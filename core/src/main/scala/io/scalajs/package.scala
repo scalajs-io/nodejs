@@ -5,7 +5,6 @@ import scala.scalajs.js.|
 
 /**
   * scalajs package object
-  * @author lawrence.daniels@gmail.com
   */
 package object scalajs {
 

@@ -9,7 +9,6 @@ import scala.scalajs.js
 
 /**
   * Query String Test
-  * @author lawrence.daniels@gmail.com
   */
 class QueryStringTest extends FunSpec {
 
@@ -51,7 +50,6 @@ class QueryStringTest extends FunSpec {
 
 /**
   * Query String Test Companion
-  * @author lawrence.daniels@gmail.com
   */
 object QueryStringTest {
 

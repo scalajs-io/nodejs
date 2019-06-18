@@ -13,7 +13,6 @@ import scala.scalajs.js
   * </ul>
   * The crypto.createHash() method is used to create Hash instances. Hash objects are not to be created directly using
   * the new keyword.
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Hash extends IDuplex {

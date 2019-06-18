@@ -6,7 +6,6 @@ import scala.scalajs.js
 
 /**
   * JSON Helper
-  * @author lawrence.daniels@gmail.com
   */
 object JSONHelper {
 

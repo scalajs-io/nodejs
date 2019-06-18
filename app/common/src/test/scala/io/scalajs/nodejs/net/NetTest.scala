@@ -4,7 +4,6 @@ import org.scalatest.FunSpec
 
 /**
   * Network (Net) Tests
-  * @author lawrence.daniels@gmail.com
   */
 class NetTest extends FunSpec {
 

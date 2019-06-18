@@ -5,7 +5,6 @@ import scala.scalajs.js
 
 /**
   * An object containing commonly used constants for file system operations
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait FSConstants extends js.Object {

@@ -4,7 +4,6 @@ import scala.scalajs.js
 
 /**
   * Parsed URL Object
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait URLObject extends js.Object {

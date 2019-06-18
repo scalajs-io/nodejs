@@ -5,7 +5,6 @@ import scala.scalajs.js.JSConverters._
 
 /**
   * js.UnderOr Helper
-  * @author lawrence.daniels@gmail.com
   */
 object JsUnderOrHelper {
 

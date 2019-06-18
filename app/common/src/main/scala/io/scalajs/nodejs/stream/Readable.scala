@@ -13,7 +13,6 @@ import scala.scalajs.js.|
   * The Readable stream interface is the abstraction for a source of data that you are reading from.
   * In other words, data comes out of a Readable stream.
   * @see https://nodejs.org/api/stream.html#stream_readable_streams
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Readable extends IEventEmitter {
@@ -180,13 +179,11 @@ trait Readable extends IEventEmitter {
 
 /**
   * Readable Companion
-  * @author lawrence.daniels@gmail.com
   */
 object Readable {
 
   /**
     * Readable Events
-    * @author lawrence.daniels@gmail.com
     */
   implicit class ReadableEvents(val readable: Readable) extends AnyVal {
 
@@ -262,7 +259,6 @@ class ReadablePipeOptions(val end: js.UndefOr[Boolean] = js.undefined) extends j
 
 /**
   * Readable State
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait ReadableState extends js.Object {

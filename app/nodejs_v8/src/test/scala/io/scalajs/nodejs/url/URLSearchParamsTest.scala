@@ -7,7 +7,6 @@ import scala.scalajs.js
 
 /**
   * URLSearchParams Tests
-  * @author lawrence.daniels@gmail.com
   */
 class URLSearchParamsTest extends FunSpec {
 

@@ -7,7 +7,6 @@ import scala.scalajs.js
 
 /**
   * Buffer Tests
-  * @author lawrence.daniels@gmail.com
   */
 class BufferTest extends FunSpec {
 

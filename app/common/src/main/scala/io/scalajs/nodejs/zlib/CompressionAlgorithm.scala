@@ -6,7 +6,6 @@ import scala.scalajs.js
 
 /**
   * Compression Algorithm
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait CompressionAlgorithm extends stream.Readable with stream.Writable

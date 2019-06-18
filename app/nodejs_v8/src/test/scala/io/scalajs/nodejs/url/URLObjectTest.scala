@@ -7,7 +7,6 @@ import org.scalatest.FunSpec
 
 /**
   * URLObject Tests
-  * @author lawrence.daniels@gmail.com
   */
 class URLObjectTest extends FunSpec {
 

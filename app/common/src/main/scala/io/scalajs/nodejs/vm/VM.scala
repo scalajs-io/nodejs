@@ -9,7 +9,6 @@ import scala.scalajs.js.|
 /**
   * The vm module provides APIs for compiling and running code within V8 Virtual Machine contexts.
   * @see https://nodejs.org/api/vm.html
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait VM extends js.Object {
@@ -94,7 +93,6 @@ trait VM extends js.Object {
 
 /**
   * Virtual Machine Singleton
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("vm", JSImport.Namespace)

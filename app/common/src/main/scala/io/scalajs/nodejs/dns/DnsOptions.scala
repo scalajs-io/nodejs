@@ -11,7 +11,6 @@ import scala.scalajs.js
   *               ORing their values. See supported getaddrinfo flags for more information on supported flags.</li>
   * @param all    When true, the callback returns all resolved addresses in an array, otherwise returns a
   *               single address. Defaults to false.
-  * @author lawrence.daniels@gmail.com
   */
 class DnsOptions(var family: js.UndefOr[Int] = js.undefined,
                  var hints: js.UndefOr[Int] = js.undefined,

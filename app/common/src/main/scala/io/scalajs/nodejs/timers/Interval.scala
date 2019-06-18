@@ -6,7 +6,6 @@ import scala.scalajs.js
 
 /**
   * Interval Handle
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Interval extends js.Object {
@@ -21,7 +20,6 @@ trait Interval extends js.Object {
 
 /**
   * Interval Companion
-  * @author lawrence.daniels@gmail.com
   */
 object Interval {
 

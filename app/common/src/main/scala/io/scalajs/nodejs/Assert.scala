@@ -12,7 +12,6 @@ import scala.scalajs.js.annotation.JSImport
   *
   * The API for the assert module is Locked. This means that there will be no additions or changes to any of the
   * methods implemented and exposed by the module.
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Assert extends IEventEmitter {
@@ -134,7 +133,6 @@ trait Assert extends IEventEmitter {
 
 /**
   * Assert Singleton
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("assert", JSImport.Namespace)

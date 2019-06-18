@@ -1,6 +1,6 @@
 // Scala.js
 
-addSbtPlugin("org.scala-js" % "sbt-scalajs" % "1.0.0-M2")
+addSbtPlugin("org.scala-js" % "sbt-scalajs" % "1.0.0-M3")
 
 // Publishing
 

@@ -5,7 +5,7 @@ import sbt._
 import scala.language.postfixOps
 
 val apiVersion = "0.5.0"
-val scalaJvmVersion = "2.13.0-M2"
+val scalaJvmVersion = "2.13.0-M3"
 
 val commonSettings = Seq(
   organization := "io.scalajs",

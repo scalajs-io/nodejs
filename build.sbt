@@ -44,8 +44,11 @@ lazy val commonMacroParadiseSetting = Seq(
 lazy val root = (project in file("."))
   .aggregate(core, common, nodejs_v8)
   .settings(
-    name := "scala-js-nodejs"
+    name := "scala-js-nodejs",
+    publish := {},
+    publishLocal := {}
   )
+  .settings(publishingSettings)
 
 lazy val core = (project in file("./core"))
   .enablePlugins(ScalaJSPlugin)
@@ -53,9 +56,8 @@ lazy val core = (project in file("./core"))
   .settings(commonScalaJsSettings)
   .settings(
     name := "core",
-    organization := "io.scalajs",
-    description := "Core utilities for the ScalaJs.io platform",
-    version := apiVersion,
+    publish := {},
+    publishLocal := {},
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaVersion.value,
       "org.scalatest"  %%% "scalatest"   % scalatestVersion % "test"
@@ -68,9 +70,8 @@ lazy val common = (project in file("./app/common"))
   .settings(commonScalaJsSettings)
   .settings(
     name := "nodejs-common",
-    organization := "io.scalajs",
-    description := "NodeJS common API",
-    homepage := Some(url("https://github.com/scalajs-io/nodejs")),
+    publish := {},
+    publishLocal := {},
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaVersion.value,
       "org.scalactic"  %% "scalactic"    % scalacticVersion,

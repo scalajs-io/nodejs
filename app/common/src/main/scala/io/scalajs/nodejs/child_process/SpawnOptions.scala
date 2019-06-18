@@ -1,13 +1,11 @@
 package io.scalajs.nodejs.child_process
 
-import io.scalajs.JsNumber
-
 import scala.scalajs.js
-
 import scala.scalajs.js.|
 
 /**
   * Spawn Options
+  *
   * @param cwd      <String> Current working directory of the child process
   * @param env      <Object> Environment key-value pairs
   * @param argv0    <String> Explicitly set the value of argv[0] sent to the child process.
@@ -22,12 +20,15 @@ import scala.scalajs.js.|
   *                 The shell should understand the -c switch on UNIX, or /d /s /c on Windows. Defaults to false (no shell).
   * @author lawrence.daniels@gmail.com
   */
-class SpawnOptions(val cwd: js.UndefOr[String] = js.undefined,
-                   val env: js.Any = js.undefined,
-                   val argv0: js.UndefOr[String] = js.undefined,
-                   val stdio: js.UndefOr[Array[String] | String] = js.undefined,
-                   val detached: js.UndefOr[Boolean] = js.undefined,
-                   val uid: js.UndefOr[JsNumber] = js.undefined,
-                   val gid: js.UndefOr[JsNumber] = js.undefined,
-                   val shell: js.UndefOr[Boolean | String] = js.undefined)
-    extends js.Object
+class SpawnOptions(
+    val cwd: js.UndefOr[String] = js.undefined,
+    val env: js.Any = js.undefined,
+    val argv0: js.UndefOr[String] = js.undefined,
+    val stdio: js.UndefOr[js.Array[String | io.scalajs.nodejs.FileDescriptor] | js.Array[
+      io.scalajs.nodejs.FileDescriptor
+    ] | js.Array[String] | String] = js.undefined,
+    val detached: js.UndefOr[Boolean] = js.undefined,
+    val uid: js.UndefOr[Int] = js.undefined,
+    val gid: js.UndefOr[Int] = js.undefined,
+    val shell: js.UndefOr[Boolean | String] = js.undefined
+) extends js.Object

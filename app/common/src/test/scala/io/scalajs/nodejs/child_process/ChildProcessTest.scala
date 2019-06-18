@@ -9,6 +9,7 @@ import scala.scalajs.js.|
 
 /**
   * ChildProcess Test
+  *
   * @author lawrence.daniels@gmail.com
   */
 class ChildProcessTest extends FunSpec {
@@ -18,7 +19,7 @@ class ChildProcessTest extends FunSpec {
     it("supports exec(...)") {
       ChildProcess.exec(
         "cat ./package.json | wc -l",
-        (error: Error, stdout: Buffer | String, stderr: Buffer | String) => {
+        callback = (error: Error, stdout: Buffer | String, stderr: Buffer | String) => {
           if (isDefined(error)) {
             console.error(s"exec error: $error")
           }
@@ -28,6 +29,10 @@ class ChildProcessTest extends FunSpec {
       )
     }
 
+    it("supports execSync(...)") {
+      val r = ChildProcess.execSync("cat ./package.json | wc -l")
+      assert(r.asInstanceOf[Buffer].toString().trim.toInt > 0)
+    }
   }
 
 }

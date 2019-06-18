@@ -1,0 +1,9 @@
+{
+  "name": "csvtojson-sjs",
+  "version": "0.5.0",
+  "private": true,
+  "dependencies": {
+    "csvtojson": "^2.0.8",
+    "source-map-support": "^0.5.12"
+  }
+}

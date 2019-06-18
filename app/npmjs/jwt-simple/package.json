@@ -1,0 +1,9 @@
+{
+  "name": "jwt-simple-sjs",
+  "version": "0.5.0",
+  "private": true,
+  "dependencies": {
+    "jwt-simple": "^0.5.6",
+    "source-map-support": "^0.5.12"
+  }
+}

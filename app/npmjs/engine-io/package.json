@@ -1,0 +1,9 @@
+{
+  "name": "engine-io-sjs",
+  "version": "0.5.0",
+  "private": true,
+  "dependencies": {
+    "engine.io": "^3.3.2",
+    "source-map-support": "^0.5.12"
+  }
+}

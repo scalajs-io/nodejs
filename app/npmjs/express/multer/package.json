@@ -1,0 +1,10 @@
+{
+  "name": "multer-sjs",
+  "version": "0.5.0",
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.1",
+    "multer": "^1.4.1",
+    "source-map-support": "^0.5.12"
+  }
+}

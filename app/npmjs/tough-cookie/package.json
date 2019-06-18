@@ -1,0 +1,9 @@
+{
+  "name": "tough-cookie-sjs",
+  "version": "0.5.0",
+  "private": true,
+  "dependencies": {
+    "source-map-support": "^0.5.12",
+    "tough-cookie": "^3.0.1"
+  }
+}

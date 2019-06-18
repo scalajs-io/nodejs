@@ -47,8 +47,7 @@ lazy val root = (project in file("."))
   .aggregate(core, common, nodejs_v8)
   .settings(
     name := "scala-js-nodejs",
-    publish := {},
-    publishLocal := {}
+    publishArtifact := false
   )
   .settings(commonSettings)
   .settings(publishingSettings)
@@ -59,8 +58,7 @@ lazy val core = (project in file("./core"))
   .settings(commonScalaJsSettings)
   .settings(
     name := "core",
-    publish := {},
-    publishLocal := {},
+    publishArtifact := false,
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaVersion.value,
       "org.scalatest"  %%% "scalatest"   % scalatestVersion % "test"
@@ -73,8 +71,7 @@ lazy val common = (project in file("./app/common"))
   .settings(commonScalaJsSettings)
   .settings(
     name := "nodejs-common",
-    publish := {},
-    publishLocal := {},
+    publishArtifact := false,
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaVersion.value,
       "org.scalactic"  %% "scalactic"    % scalacticVersion,

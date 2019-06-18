@@ -41,7 +41,7 @@ lazy val commonMacroParadiseSetting = Seq(
 )
 
 lazy val root = (project in file("."))
-  .aggregate(core, common, current)
+  .aggregate(core, common, nodejs_v8)
 
 lazy val core = (project in file("./core"))
   .enablePlugins(ScalaJSPlugin)
@@ -77,7 +77,7 @@ lazy val common = (project in file("./app/common"))
   .settings(commonMacroParadiseSetting)
   .dependsOn(core)
 
-lazy val current = (project in file("./app/current"))
+lazy val nodejs_v8 = (project in file("./app/nodejs_v8"))
   .dependsOn(common)
   .enablePlugins(ScalaJSPlugin)
   .settings(commonSettings)

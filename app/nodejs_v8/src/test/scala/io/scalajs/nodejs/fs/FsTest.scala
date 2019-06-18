@@ -8,21 +8,24 @@ import org.scalatest.FunSpec
 
 /**
   * File System (Fs) Tests
+  *
   * @author lawrence.daniels@gmail.com
   */
 class FsTest extends FunSpec {
 
+  val TEST_RESOURCES = "./app/nodejs_v8/src/test/resources/"
+
   describe("Fs") {
 
     it("supports watching files") {
-      val watcher = Fs.watch("./app/current/src/test/resources/", (eventType, file) => {
+      val watcher = Fs.watch(s"${TEST_RESOURCES}", (eventType, file) => {
         info(s"watcher: eventType = '$eventType' file = '$file'")
       })
       info(s"watcher: ${Util.inspect(watcher)}")
 
       setImmediate(
         () =>
-          Fs.writeFile("./app/current/src/test/resources/1.txt", "Hello", error => {
+          Fs.writeFile(s"${TEST_RESOURCES}1.txt", "Hello", error => {
             if (isDefined(error)) {
               alert(s"error: ${JSON.stringify(error)}")
             }
@@ -31,9 +34,9 @@ class FsTest extends FunSpec {
     }
 
     it("should stream data") {
-      val file1 = "./app/current/src/test/resources/fileA1.txt"
-      val file2 = "./app/current/src/test/resources/fileA2.txt"
-      val file3 = "./app/current/src/test/resources/fileC2.txt"
+      val file1 = s"${TEST_RESOURCES}fileA1.txt"
+      val file2 = s"${TEST_RESOURCES}fileA2.txt"
+      val file3 = s"${TEST_RESOURCES}fileC2.txt"
 
       val readable = Fs.createReadStream(file1)
       val writable = Fs.createWriteStream(file2)
@@ -58,8 +61,8 @@ class FsTest extends FunSpec {
     }
 
     it("should pipe data from a Readable to a Writable") {
-      val file1 = "./app/current/src/test/resources/fileB1.txt"
-      val file2 = "./app/current/src/test/resources/fileB2.txt"
+      val file1 = s"${TEST_RESOURCES}fileB1.txt"
+      val file2 = s"${TEST_RESOURCES}fileB2.txt"
 
       val readable = Fs.createReadStream(file1)
       val writable = Fs.createWriteStream(file2)

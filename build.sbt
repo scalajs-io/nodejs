@@ -8,6 +8,8 @@ val supportedScalaVersion = Seq(scala212Version, scala213Version)
 val scalatestVersion = "3.0.8"
 val scalacticVersion = "3.0.8"
 
+organization in ThisBuild := "net.exoego"
+
 lazy val commonSettings = Seq(
   autoCompilerPlugins := true,
   crossScalaVersions := supportedScalaVersion,
@@ -88,9 +90,8 @@ lazy val nodejs_v8 = (project in file("./app/nodejs_v8"))
   .settings(commonScalaJsSettings)
   .settings(
     name := "nodejs_v8",
-    organization := "io.scalajs",
     description := "NodeJS v8.7.0 API for Scala.js",
-    homepage := Some(url("https://github.com/scalajs-io/nodejs")),
+    homepage := Some(url("https://github.com/exoego/scala-js-nodejs")),
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaVersion.value,
       "org.scalactic"  %% "scalactic"    % scalacticVersion,

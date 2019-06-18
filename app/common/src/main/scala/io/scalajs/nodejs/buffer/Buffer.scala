@@ -20,7 +20,6 @@ import scala.scalajs.js.|
   *
   * The Buffer class is a global within Node.js, making it unlikely that one would need to ever use require('buffer').
   * @see https://nodejs.org/api/buffer.html
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("buffer", "Buffer")

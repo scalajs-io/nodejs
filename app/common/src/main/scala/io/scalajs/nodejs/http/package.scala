@@ -8,13 +8,11 @@ import scala.scalajs.js
 
 /**
   * http package object
-  * @author lawrence.daniels@gmail.com
   */
 package object http {
 
   /**
     * Http Extensions
-    * @author lawrence.daniels@gmail.com
     */
   implicit class HttpExtensions(val http: Http) extends AnyVal {
 
@@ -64,7 +62,6 @@ package object http {
 
   /**
     * Server Events
-    * @author lawrence.daniels@gmail.com
     */
   implicit class ServerEvents(val server: Server) extends AnyVal {
 

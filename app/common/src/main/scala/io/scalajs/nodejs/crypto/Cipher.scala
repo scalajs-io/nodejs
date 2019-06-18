@@ -14,7 +14,6 @@ import scala.scalajs.js
   * </ul>
   * The crypto.createCipher() or crypto.createCipheriv() methods are used to create Cipher instances. Cipher objects
   * are not to be created directly using the new keyword.
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Cipher extends IDuplex {

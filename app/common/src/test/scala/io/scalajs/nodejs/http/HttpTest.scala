@@ -7,7 +7,6 @@ import scala.scalajs.js
 
 /**
   * Http Tests
-  * @author lawrence.daniels@gmail.com
   */
 class HttpTest extends FunSpec {
 

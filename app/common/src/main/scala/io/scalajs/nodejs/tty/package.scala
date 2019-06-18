@@ -2,7 +2,6 @@ package io.scalajs.nodejs
 
 /**
   * tty package object
-  * @author lawrence.daniels@gmail.com
   */
 package object tty {
 

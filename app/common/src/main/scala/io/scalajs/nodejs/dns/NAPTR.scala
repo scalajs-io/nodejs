@@ -14,7 +14,6 @@ import scala.scalajs.js
   * preference: 100
   * }
   * </pre>
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait NAPTR extends js.Object {

@@ -9,7 +9,6 @@ import scala.scalajs.js
 
 /**
   * DNS Tests
-  * @author lawrence.daniels@gmail.com
   */
 class DNSTest extends FunSpec {
   private val domain = "yahoo.com"

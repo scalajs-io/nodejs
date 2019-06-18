@@ -9,7 +9,6 @@ import scala.scalajs.js.|
 /**
   * Query String
   * @see https://nodejs.org/api/querystring.html
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("querystring", JSImport.Namespace)
@@ -17,7 +16,6 @@ object QueryString extends QueryString
 
 /**
   * Query String Type Definition
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait QueryString extends js.Object {

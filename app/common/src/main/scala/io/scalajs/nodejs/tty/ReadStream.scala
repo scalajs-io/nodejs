@@ -12,7 +12,6 @@ import scala.scalajs.js.annotation.JSImport
   * In normal circumstances process.stdin will be the only tty.ReadStream instance in a Node.js process
   * and there should be no reason to create additional instances.
   * @see https://nodejs.org/api/tty.html
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("tty", "ReadStream")

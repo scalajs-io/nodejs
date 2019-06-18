@@ -6,7 +6,6 @@ import scala.scalajs.js.|
 
 /**
   * query string package object
-  * @author lawrence.daniels@gmail.com
   */
 package object querystring {
 

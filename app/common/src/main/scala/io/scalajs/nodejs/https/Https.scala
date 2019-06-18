@@ -11,7 +11,6 @@ import scala.scalajs.js.|
 /**
   * HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a separate module.
   * @see https://nodejs.org/api/https.html
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Https extends IEventEmitter {
@@ -75,7 +74,6 @@ trait Https extends IEventEmitter {
 
 /**
   * Https Singleton
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("https", JSImport.Namespace)

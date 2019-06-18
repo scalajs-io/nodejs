@@ -10,7 +10,6 @@ import scala.scalajs.js.annotation.JSImport
 
 /**
   * http.Server - This class inherits from net.Server and has the following additional events
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("http", "Server")
@@ -18,7 +17,6 @@ class Server extends net.Server
 
 /**
   * Server Companion
-  * @author lawrence.daniels@gmail.com
   */
 object Server {
 

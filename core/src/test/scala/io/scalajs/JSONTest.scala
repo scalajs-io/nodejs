@@ -6,7 +6,6 @@ import scala.scalajs.js
 
 /**
   * JSON Test
-  * @author lawrence.daniels@gmail.com
   */
 class JSONTest extends FunSpec {
 

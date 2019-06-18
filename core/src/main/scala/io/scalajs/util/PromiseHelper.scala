@@ -7,7 +7,6 @@ import scala.util.{Failure, Success}
 
 /**
   * Promise Helper
-  * @author lawrence.daniels@gmail.com
   */
 object PromiseHelper {
 
@@ -285,7 +284,6 @@ object PromiseHelper {
 
   /**
     * Implicit conversion
-    * @author lawrence.daniels@gmail.com
     */
   object Implicits {
 

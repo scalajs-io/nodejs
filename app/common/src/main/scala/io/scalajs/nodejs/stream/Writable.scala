@@ -12,7 +12,6 @@ import scala.scalajs.js.|
 
 /**
   * The Writable stream interface is an abstraction for a destination that you are writing data to.
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Writable extends IEventEmitter {
@@ -150,13 +149,11 @@ trait Writable extends IEventEmitter {
 
 /**
   * Writable Companion
-  * @author lawrence.daniels@gmail.com
   */
 object Writable {
 
   /**
     * Writable Events
-    * @author lawrence.daniels@gmail.com
     */
   implicit class WritableEvents[T <: Writable](val writable: T) extends AnyVal {
 
@@ -205,7 +202,6 @@ object Writable {
 
   /**
     * Writable Extensions
-    * @author lawrence.daniels@gmail.com
     */
   implicit class WritableExtensions[T <: Writable](val writable: T) extends AnyVal {
 

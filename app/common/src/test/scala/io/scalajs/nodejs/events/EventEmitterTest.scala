@@ -7,7 +7,6 @@ import scala.scalajs.js
 
 /**
   * EventEmitter Tests
-  * @author lawrence.daniels@gmail.com
   */
 class EventEmitterTest extends FunSpec {
 

@@ -14,7 +14,6 @@ import scala.scalajs.js.annotation.JSImport
   * amount of time, it may be appropriate to create an un-pooled Buffer instance using SlowBuffer then copy
   * out the relevant bits.
   * @see https://nodejs.org/api/buffer.html#buffer_class_slowbuffer
-  * @author lawrence.daniels@gmail.com
   */
 @deprecated("Use Buffer.allocUnsafeSlow() instead.", since = "6.0.0")
 @js.native

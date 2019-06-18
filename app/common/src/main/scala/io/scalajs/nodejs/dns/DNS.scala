@@ -13,7 +13,6 @@ import scala.scalajs.js.|
   * looking to perform name resolution in the same way that other applications on the same operating system behave
   * should use dns.lookup().
   * @see https://nodejs.org/api/dns.html
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait DNS extends js.Object {
@@ -236,7 +235,6 @@ trait DNS extends js.Object {
 
 /**
   * DNS Singleton
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("dns", JSImport.Namespace)

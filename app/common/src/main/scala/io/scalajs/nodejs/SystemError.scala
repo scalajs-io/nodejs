@@ -6,7 +6,6 @@ import scala.scalajs.js.|
 
 /**
   * System Error
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("errors", "SystemError")
@@ -52,7 +51,6 @@ class SystemError(message0: String = js.native) extends Error(message0) {
 
 /**
   * System Error Singleton
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("errors", JSImport.Namespace)

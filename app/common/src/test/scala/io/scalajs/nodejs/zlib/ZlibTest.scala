@@ -7,7 +7,6 @@ import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 
 /**
   * Zlib Tests
-  * @author lawrence.daniels@gmail.com
   */
 class ZlibTest extends FunSpec {
 

@@ -10,7 +10,6 @@ import scala.scalajs.js
 
 /**
   * Cluster Tests
-  * @author lawrence.daniels@gmail.com
   */
 class ClusterTest extends FunSpec {
 

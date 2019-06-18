@@ -19,7 +19,6 @@ import scala.scalajs.js
   *                          a Buffer with V8's code cache data will be produced and stored in the cachedData property of the returned
   *                          vm.Script instance. The cachedDataProduced value will be set to either true or false depending on whether
   *                          code cache data is produced successfully.
-  * @author lawrence.daniels@gmail.com
   */
 class ScriptOptions(var filename: js.UndefOr[String] = js.undefined,
                     var lineOffset: js.UndefOr[Int] = js.undefined,

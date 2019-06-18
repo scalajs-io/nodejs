@@ -6,7 +6,6 @@ import scala.scalajs.js
 
 /**
   * Assert Test
-  * @author lawrence.daniels@gmail.com
   */
 class AssertTest extends FunSpec {
 

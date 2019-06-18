@@ -19,7 +19,6 @@ import scala.scalajs.js
   * @param breakLength    The length at which an object's keys are split across multiple lines. Set to Infinity to
   *                       format an object as a single line. Defaults to 60 for legacy compatibility.
   * @see [[https://nodejs.org/api/util.html#util_util_inspect_object_options]]
-  * @author lawrence.daniels@gmail.com
   */
 class InspectOptions(var showHidden: js.UndefOr[Boolean] = js.undefined,
                      var depth: js.UndefOr[Int] = js.undefined,

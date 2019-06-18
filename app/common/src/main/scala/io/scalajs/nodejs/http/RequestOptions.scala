@@ -23,7 +23,6 @@ import scala.scalajs.js
   * @param createConnection A function that produces a socket/stream to use for the request when the agent option is not used.
   *                         This can be used to avoid creating a custom Agent class just to override the default createConnection function.
   * @see [[Agent.createConnection() ]]
-  * @author lawrence.daniels@gmail.com
   */
 class RequestOptions(var protocol: js.UndefOr[String] = js.undefined,
                      var host: js.UndefOr[String] = js.undefined,

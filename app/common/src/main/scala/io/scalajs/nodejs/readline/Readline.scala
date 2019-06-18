@@ -12,7 +12,6 @@ import scala.scalajs.js.|
   * To use this module, do require('readline').
   * Note that once you've invoked this module, your Node.js program will not terminate until you've closed the interface.
   * @see https://nodejs.org/api/readline.html
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Readline extends IEventEmitter {
@@ -56,7 +55,6 @@ trait Readline extends IEventEmitter {
 
 /**
   * Readline Singleton
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("readline", JSImport.Namespace)

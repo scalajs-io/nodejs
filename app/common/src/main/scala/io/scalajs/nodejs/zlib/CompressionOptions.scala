@@ -12,7 +12,6 @@ import scala.scalajs.js
   * @param memLevel    (compression only)
   * @param strategy    (compression only)
   * @param windowBits  ???
-  * @author lawrence.daniels@gmail.com
   */
 class CompressionOptions(var chunkSize: js.UndefOr[Int] = js.undefined,
                          var dictionary: js.UndefOr[js.Dictionary[js.Any]] = js.undefined,

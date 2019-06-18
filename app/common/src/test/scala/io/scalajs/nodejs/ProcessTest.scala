@@ -8,7 +8,6 @@ import scala.scalajs.js
 
 /**
   * Process Tests
-  * @author lawrence.daniels@gmail.com
   */
 class ProcessTest extends FunSpec {
 

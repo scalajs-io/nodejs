@@ -6,7 +6,6 @@ import scala.scalajs.js.annotation.JSImport
 /**
   * Provides a few basic operating-system related utility functions.
   * @see https://nodejs.org/api/os.html
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait OS extends js.Object {
@@ -148,7 +147,6 @@ trait OS extends js.Object {
 
 /**
   * Operating System Singleton
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("os", JSImport.Namespace)

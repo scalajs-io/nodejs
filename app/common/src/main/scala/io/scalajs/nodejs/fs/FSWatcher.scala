@@ -7,7 +7,6 @@ import scala.scalajs.js
 
 /**
   * fs.FSWatcher - Objects returned from fs.watch() are of this type.
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait FSWatcher extends IEventEmitter {
@@ -23,13 +22,11 @@ trait FSWatcher extends IEventEmitter {
 
 /**
   * File System Watcher Companion
-  * @author lawrence.daniels@gmail.com
   */
 object FSWatcher {
 
   /**
     * File System Watcher Extensions
-    * @author lawrence.daniels@gmail.com
     */
   implicit class FSWatcherExtensions(val watcher: FSWatcher) extends AnyVal {
 
@@ -67,7 +64,6 @@ object FSWatcher {
   * @param persistent Indicates whether the process should continue to run as long as files are being watched (default: true)
   * @param recursive  Indicates whether all subdirectories should be watched, or only the current directory.
   *                   The applies when a directory is specified, and only on supported platforms (See Caveats) (default: false)
-  * @author lawrence.daniels@gmail.com
   */
 class FSWatcherOptions(val encoding: js.UndefOr[String] = js.undefined,
                        val persistent: js.UndefOr[Boolean] = js.undefined,

@@ -12,7 +12,6 @@ import scala.scalajs.js.annotation.JSImport
   * traditionally difficult to use. In particular, large, possibly chunk-encoded, messages. The interface
   * is careful to never buffer entire requests or responses--the user is able to stream data.
   * @see https://nodejs.org/api/http.html
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Http extends IEventEmitter {
@@ -128,7 +127,6 @@ trait Http extends IEventEmitter {
 
 /**
   * Http Singleton
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("http", JSImport.Namespace)

@@ -9,13 +9,11 @@ import scala.scalajs.js.|
 
 /**
   * https package object
-  * @author lawrence.daniels@gmail.com
   */
 package object https {
 
   /**
     * Https Extensions
-    * @author lawrence.daniels@gmail.com
     */
   final implicit class HttpExtensions(val https: Https) extends AnyVal {
 

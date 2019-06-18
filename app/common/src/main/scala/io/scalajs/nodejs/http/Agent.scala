@@ -14,7 +14,6 @@ import scala.scalajs.js.|
   * HTTP requests are waiting on a socket to become free the socket is closed. This means
   * that Node.js's pool has the benefit of keep-alive when under load but still does not
   * require developers to manually close the HTTP clients using KeepAlive.
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Agent extends js.Object {
@@ -92,13 +91,11 @@ trait Agent extends js.Object {
 
 /**
   * Agent Companion
-  * @author lawrence.daniels@gmail.com
   */
 object Agent {
 
   /**
     * Agent Extensions
-    * @author lawrence.daniels@gmail.com
     */
   implicit class AgentExtensions(val agent: Agent) extends AnyVal {
 

@@ -4,7 +4,6 @@ import org.scalatest.FunSpec
 
 /**
   * Path Tests
-  * @author lawrence.daniels@gmail.com
   */
 class PathTest extends FunSpec {
 

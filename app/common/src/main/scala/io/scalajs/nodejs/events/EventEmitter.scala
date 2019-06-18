@@ -10,7 +10,6 @@ import scala.scalajs.js.annotation.JSImport
   *
   * The EventEmitter class is defined and exposed by the events module
   * @see https://nodejs.org/api/events.html
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("events", "EventEmitter")
@@ -18,7 +17,6 @@ class EventEmitter extends IEventEmitter
 
 /**
   * EventEmitter Interface
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait IEventEmitter extends js.Object {
@@ -137,7 +135,6 @@ trait IEventEmitter extends js.Object {
 
 /**
   * EventEmitter Singleton
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("events", JSImport.Namespace)

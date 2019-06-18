@@ -5,7 +5,6 @@ import scala.scalajs.js
 
 /**
   * Date Helper
-  * @author lawrence.daniels@gmail.com
   */
 object DateHelper {
 

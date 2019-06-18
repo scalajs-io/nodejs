@@ -4,7 +4,6 @@ import scala.scalajs.js
 
 /**
   * buffer package object
-  * @author lawrence.daniels@gmail.com
   */
 package object buffer {
 
@@ -14,7 +13,6 @@ package object buffer {
 
   /**
     * Buffer Extensions
-    * @author lawrence.daniels@gmail.com
     */
   implicit class BufferExtensions(val buffer: Buffer) extends AnyVal {
 

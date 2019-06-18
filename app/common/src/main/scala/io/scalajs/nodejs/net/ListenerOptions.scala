@@ -4,7 +4,6 @@ import scala.scalajs.js
 
 /**
   * Listener Options
-  * @author lawrence.daniels@gmail.com
   */
 class ListenerOptions(var host: js.UndefOr[String] = js.undefined,
                       var port: js.UndefOr[Int] = js.undefined,

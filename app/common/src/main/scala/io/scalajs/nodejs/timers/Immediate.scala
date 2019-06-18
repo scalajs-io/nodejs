@@ -6,7 +6,6 @@ import scala.scalajs.js
 
 /**
   * Immediate Handle
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Immediate extends js.Object {
@@ -17,7 +16,6 @@ trait Immediate extends js.Object {
 
 /**
   * Immediate Companion
-  * @author lawrence.daniels@gmail.com
   */
 object Immediate {
 

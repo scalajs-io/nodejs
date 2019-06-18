@@ -10,7 +10,6 @@ import scala.scalajs.js.|
   * The crypto module provides cryptographic functionality that includes a set of wrappers
   * for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions.
   * @see https://nodejs.org/dist/latest-v7.x/docs/api/crypto.html#crypto_crypto
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Crypto extends js.Object {
@@ -145,7 +144,6 @@ trait Crypto extends js.Object {
 
 /**
   * Crypto Singleton
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("crypto", JSImport.Namespace)

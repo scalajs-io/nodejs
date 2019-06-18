@@ -4,7 +4,6 @@ import scala.scalajs.js
 
 /**
   * Represents a Network Interface
-  * @author lawrence.daniels@gmail.com
   */
 class NetworkInterface(val address: String,
                        val netmask: String,

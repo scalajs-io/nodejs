@@ -12,7 +12,6 @@ import scala.scalajs.js.|
   * net.Socket - This object is an abstraction of a TCP or local socket. net.Socket instances implement a duplex Stream
   * interface. They can be created by the user and used as a client (with connect()) or they can be created by Node.js
   * and passed to the user through the 'connection' event of a server.
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("net", "Socket")
@@ -223,7 +222,6 @@ class Socket(options: SocketOptions | RawOptions = js.native) extends IDuplex {
 
 /**
   * Socket Singleton
-  * @author lawrence.daniels@gmail.com
   */
 object Socket extends {}
 
@@ -235,7 +233,6 @@ object Socket extends {}
   * @param allowHalfOpen
   * @param readable
   * @param writable
-  * @author lawrence.daniels@gmail.com
   */
 class SocketOptions(val fd: js.UndefOr[FileDescriptor] = js.undefined,
                     val allowHalfOpen: js.UndefOr[Boolean] = js.undefined,

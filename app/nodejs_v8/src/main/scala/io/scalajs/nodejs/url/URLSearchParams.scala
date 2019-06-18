@@ -13,7 +13,6 @@ import scala.scalajs.js.|
   * The WHATWG URLSearchParams interface and the querystring module have similar purpose, but the purpose
   * of the querystring module is more general, as it allows the customization of delimiter characters (& and =).
   * On the other hand, this API is designed purely for URL query strings.
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("url", "URLSearchParams")

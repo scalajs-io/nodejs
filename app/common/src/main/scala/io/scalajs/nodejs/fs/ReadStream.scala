@@ -46,13 +46,11 @@ trait ReadStream extends Readable {
 
 /**
   * Read Stream Companion
-  * @author lawrence.daniels@gmail.com
   */
 object ReadStream {
 
   /**
     * Read Stream Events
-    * @author lawrence.daniels@gmail.com
     */
   implicit class ReadStreamEvents(val stream: ReadStream) extends AnyVal {
 
@@ -79,7 +77,6 @@ object ReadStream {
 
   /**
     * Read Stream Extensions
-    * @author lawrence.daniels@gmail.com
     */
   implicit class ReadStreamExtensions(val stream: ReadStream) extends AnyVal {
 

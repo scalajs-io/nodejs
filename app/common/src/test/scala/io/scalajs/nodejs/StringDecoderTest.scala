@@ -5,7 +5,6 @@ import org.scalatest.FunSpec
 
 /**
   * StringDecoder Tests
-  * @author lawrence.daniels@gmail.com
   */
 class StringDecoderTest extends FunSpec {
 

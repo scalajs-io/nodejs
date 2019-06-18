@@ -21,7 +21,6 @@ import scala.scalajs.js.|
   *
   * When using the synchronous form any exceptions are immediately thrown. You can use try/catch to handle exceptions
   * or allow them to bubble up.
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait Fs extends IEventEmitter with FSConstants {
@@ -1128,7 +1127,6 @@ trait Fs extends IEventEmitter with FSConstants {
 
 /**
   * File System Singleton
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("fs", JSImport.Namespace)
@@ -1136,7 +1134,6 @@ object Fs extends Fs
 
 /**
   * File Append Options
-  * @author lawrence.daniels@gmail.com
   */
 class FileAppendOptions(val encoding: js.UndefOr[String] = js.undefined,
                         val mode: js.UndefOr[FileMode] = js.undefined,
@@ -1145,13 +1142,11 @@ class FileAppendOptions(val encoding: js.UndefOr[String] = js.undefined,
 
 /**
   * File Encoding Options
-  * @author lawrence.daniels@gmail.com
   */
 class FileEncodingOptions(val encoding: js.UndefOr[String] = js.undefined) extends js.Object
 
 /**
   * File Input Options
-  * @author lawrence.daniels@gmail.com
   */
 class FileInputOptions(val flags: js.UndefOr[String] = js.undefined,
                        val encoding: js.UndefOr[String] = js.undefined,
@@ -1164,7 +1159,6 @@ class FileInputOptions(val flags: js.UndefOr[String] = js.undefined,
 
 /**
   * File Input Options
-  * @author lawrence.daniels@gmail.com
   */
 class FileOutputOptions(val flags: js.UndefOr[String] = js.undefined,
                         val defaultEncoding: js.UndefOr[String] = js.undefined,

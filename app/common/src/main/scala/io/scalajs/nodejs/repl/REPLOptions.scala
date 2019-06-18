@@ -30,7 +30,6 @@ import scala.scalajs.js
   *                        <li>repl.REPL_MODE_MAGIC - attempt to run commands in default mode. If they fail to parse,
   *                        re-try in strict mode.</li>
   *                        </ul>
-  * @author lawrence.daniels@gmail.com
   */
 class REPLOptions(var prompt: js.UndefOr[String] = js.undefined,
                   var input: js.UndefOr[Readable] = js.undefined,

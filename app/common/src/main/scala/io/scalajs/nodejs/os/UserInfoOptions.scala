@@ -4,7 +4,6 @@ import scala.scalajs.js
 
 /**
   * User Info Options
-  * @author lawrence.daniels@gmail.com
   */
 class UserInfoOptions(var encoding: js.UndefOr[String] = js.undefined,
                       var username: js.UndefOr[String] = js.undefined,

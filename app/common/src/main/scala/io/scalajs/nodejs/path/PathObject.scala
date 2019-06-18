@@ -4,7 +4,6 @@ import scala.scalajs.js
 
 /**
   * Path Object
-  * @author lawrence.daniels@gmail.com
   */
 class PathObject(val root: js.UndefOr[String] = js.undefined,
                  val dir: js.UndefOr[String] = js.undefined,

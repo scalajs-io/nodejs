@@ -10,7 +10,6 @@ import scala.scalajs.js
 /**
   * Node.js http.ServerResponse
   * @see [[https://nodejs.org/api/http.html#http_class_http_serverresponse]]
-  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait ServerResponse extends IEventEmitter with IDuplex {
@@ -135,13 +134,11 @@ trait ServerResponse extends IEventEmitter with IDuplex {
 
 /**
   * Server Response
-  * @author lawrence.daniels@gmail.com
   */
 object ServerResponse {
 
   /**
     * Server Response Events
-    * @author lawrence.daniels@gmail.com
     */
   implicit class ServerResponseEvents(val response: ServerResponse) extends AnyVal {
 
@@ -155,7 +152,6 @@ object ServerResponse {
 
   /**
     * Server Response Extensions
-    * @author lawrence.daniels@gmail.com
     */
   implicit class ServerResponseExtensions(val response: ServerResponse) extends AnyVal {
 

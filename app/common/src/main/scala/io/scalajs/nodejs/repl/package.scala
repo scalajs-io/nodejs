@@ -4,7 +4,6 @@ import scala.scalajs.js
 
 /**
   * repl package object
-  * @author lawrence.daniels@gmail.com
   */
 package object repl {
 

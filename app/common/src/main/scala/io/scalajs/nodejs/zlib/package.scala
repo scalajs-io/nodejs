@@ -9,7 +9,6 @@ import scala.scalajs.js.|
 
 /**
   * zlib package object
-  * @author lawrence.daniels@gmail.com
   */
 package object zlib {
 
@@ -23,7 +22,6 @@ package object zlib {
 
   /**
     * Zlib Extensions
-    * @author lawrence.daniels@gmail.com
     */
   final implicit class ZlibExtensions(val zlib: Zlib) extends AnyVal {
 

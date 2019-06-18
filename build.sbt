@@ -42,23 +42,28 @@ lazy val commonMacroParadiseSetting = Seq(
     }
   }
 )
+val nonPublishingSetting = Seq(
+  publishArtifact := false,
+  publish := {},
+  publishLocal := {}
+)
 
 lazy val root = (project in file("."))
   .aggregate(core, common, nodejs_v8)
-  .settings(
-    name := "scala-js-nodejs",
-    publishArtifact := false
-  )
   .settings(commonSettings)
   .settings(publishingSettings)
+  .settings(nonPublishingSetting)
+  .settings(
+    name := "scala-js-nodejs-all"
+  )
 
 lazy val core = (project in file("./core"))
   .enablePlugins(ScalaJSPlugin)
   .settings(commonSettings)
   .settings(commonScalaJsSettings)
+  .settings(publishingSettings)
   .settings(
-    name := "core",
-    publishArtifact := false,
+    name := "scala-js-nodejs-core",
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaVersion.value,
       "org.scalatest"  %%% "scalatest"   % scalatestVersion % "test"
@@ -69,16 +74,16 @@ lazy val common = (project in file("./app/common"))
   .enablePlugins(ScalaJSPlugin)
   .settings(commonSettings)
   .settings(commonScalaJsSettings)
+  .settings(commonMacroParadiseSetting)
+  .settings(publishingSettings)
   .settings(
-    name := "nodejs-common",
-    publishArtifact := false,
+    name := "scala-js-nodejs-common",
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaVersion.value,
       "org.scalactic"  %% "scalactic"    % scalacticVersion,
       "org.scalatest"  %%% "scalatest"   % scalatestVersion % "test"
     )
   )
-  .settings(commonMacroParadiseSetting)
   .dependsOn(core)
 
 lazy val nodejs_v8 = (project in file("./app/nodejs_v8"))
@@ -86,8 +91,10 @@ lazy val nodejs_v8 = (project in file("./app/nodejs_v8"))
   .enablePlugins(ScalaJSPlugin)
   .settings(commonSettings)
   .settings(commonScalaJsSettings)
+  .settings(commonMacroParadiseSetting)
+  .settings(publishingSettings)
   .settings(
-    name := "nodejs_v8",
+    name := "scala-js-nodejs-v8",
     description := "NodeJS v8.7.0 API for Scala.js",
     homepage := Some(url("https://github.com/exoego/scala-js-nodejs")),
     libraryDependencies ++= Seq(
@@ -96,7 +103,6 @@ lazy val nodejs_v8 = (project in file("./app/nodejs_v8"))
       "org.scalatest"  %%% "scalatest"   % scalatestVersion % "test"
     )
   )
-  .settings(commonMacroParadiseSetting)
   .dependsOn(core)
 
 lazy val publishingSettings = Seq(

@@ -50,6 +50,7 @@ lazy val root = (project in file("."))
     publish := {},
     publishLocal := {}
   )
+  .settings(commonSettings)
   .settings(publishingSettings)
 
 lazy val core = (project in file("./core"))

@@ -42,6 +42,9 @@ lazy val commonMacroParadiseSetting = Seq(
 
 lazy val root = (project in file("."))
   .aggregate(core, common, nodejs_v8)
+  .settings(
+    name := "scala-js-nodejs"
+  )
 
 lazy val core = (project in file("./core"))
   .enablePlugins(ScalaJSPlugin)
@@ -83,7 +86,7 @@ lazy val nodejs_v8 = (project in file("./app/nodejs_v8"))
   .settings(commonSettings)
   .settings(commonScalaJsSettings)
   .settings(
-    name := "nodejs",
+    name := "nodejs_v8",
     version := apiVersion,
     organization := "io.scalajs",
     description := "NodeJS v8.7.0 API for Scala.js",

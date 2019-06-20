@@ -2,7 +2,18 @@
   "name": "nodejs-sfs",
   "version": "0.4.2",
   "private": true,
+  "scripts": {
+    "lint-md": "remark .",
+    "fix-md": "remark . -o"
+  },
+  "remarkConfig": {
+    "plugins": [
+      "remark-preset-lint-recommended"
+    ]
+  },
   "dependencies": {
+    "remark-cli": "^6.0.1",
+    "remark-preset-lint-recommended": "^3.0.2",
     "source-map-support": "^0.4.14"
   }
 }

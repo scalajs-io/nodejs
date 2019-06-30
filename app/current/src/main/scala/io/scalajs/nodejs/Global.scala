@@ -70,7 +70,7 @@ trait Global extends js.Object {
 
   def clearTimeout: ClearTimeout = js.native
 
-  def console: Console = js.native
+  def console: console_module.Console = js.native
 
   def process: Process = js.native
 

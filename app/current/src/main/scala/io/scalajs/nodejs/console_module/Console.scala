@@ -1,11 +1,11 @@
-package io.scalajs.nodejs
+package io.scalajs.nodejs.console_module
 
 import com.thoughtworks.enableIf
 import io.scalajs.nodejs.stream.Writable
 import io.scalajs.nodejs.util.InspectOptions
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.annotation.{JSGlobal, JSImport}
 import scala.scalajs.js.|
 
 /**
@@ -89,7 +89,7 @@ class Console protected () extends js.Object {
   def dir(obj: js.Any, options: ConsoleDirOptions = js.native): Unit = js.native
 
   /**
-    * This method calls[[console.log()]] passing it the arguments received.
+    * This method calls[[log()]] passing it the arguments received.
     * Please note that this method does not produce any XML formatting
     */
   def dirxml(data: js.Any*): Unit = js.native
@@ -118,7 +118,7 @@ class Console protected () extends js.Object {
   def group(label: Any*): Unit = js.native
 
   /**
-    * An alias for [[console.group()]]
+    * An alias for [[group()]]
     * @param label
     */
   def groupCollapsed(label: js.Any*): Unit = js.native
@@ -129,7 +129,7 @@ class Console protected () extends js.Object {
   def groupEnd(): Unit = js.native
 
   /**
-    * The `console.info()` function is an alias for [[console.log()]].
+    * The `console.info()` function is an alias for [[log()]].
     */
   def info(message: js.Any, optionalParams: js.Any*): Unit = js.native
 
@@ -153,19 +153,19 @@ class Console protected () extends js.Object {
   /**
     * Starts a timer that can be used to compute the duration of an operation.
     * Timers are identified by a unique `label`.
-    * Use the same `label` when calling [[console.timeEnd()]] to stop the timer and output the elapsed time in
-    * milliseconds to `stdout`.
+    * Use the same `label` when calling [[timeEnd()]] to stop the timer and output the elapsed time in milliseconds to
+    * `stdout`.
     * Timer durations are accurate to the sub-millisecond.
     */
   def time(label: String = js.native): Unit = js.native
 
   /**
-    * Stops a timer that was previously started by calling [[console.time()]] and prints the result to `stdout`.
+    * Stops a timer that was previously started by calling [[time()]] and prints the result to `stdout`.
     */
   def timeEnd(label: String = js.native): Unit = js.native
 
   /**
-    * Stops a timer that was previously started by calling [[console.time()]] and prints the result to `.stdout`.`
+    * Stops a timer that was previously started by calling [[time()]] and prints the result to `.stdout`.`
     */
   @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
   def timeLog(label: String, data: js.Any*): Unit = js.native
@@ -177,14 +177,14 @@ class Console protected () extends js.Object {
   def trace(message: js.Any, optionalParams: js.Any*): Unit = js.native
 
   /**
-    * The `console.warn()` function is an alias for [[console.error()]
+    * The `console.warn()` function is an alias for [[error()]
     */
   def warn(message: js.Any, optionalParams: js.Any*): Unit = js.native
 
   /**
     * This method does not display anything unless used in the inspector.
     *
-    * The `console.markTimeline()` method is the deprecated form of [[console.timeStamp()]].
+    * The `console.markTimeline()` method is the deprecated form of [[timeStamp()]].
     * @param label
     */
   @deprecated("Use timeStamp instead", "NodeJS 8.0.0")
@@ -192,7 +192,7 @@ class Console protected () extends js.Object {
 
   /**
     * This method does not display anything unless used in the inspector.
-    * The `console.profile()` method starts a JavaScript CPU profile with an optional label until [[console.profileEnd()]] is called.
+    * The `console.profile()` method starts a JavaScript CPU profile with an optional label until [[profileEnd()]] is called.
     * The profile is then added to the **Profile** panel of the inspector.
     */
   def profile(label: String = js.native): Unit = js.native
@@ -200,7 +200,7 @@ class Console protected () extends js.Object {
   /**
     * This method does not display anything unless used in the inspector.
     * Stops the current JavaScript CPU profiling session if one has been started and prints the report to the **Profiles** panel of the inspector.
-    * See [[console.profile()]] for an example.
+    * See [[profile()]] for an example.
     *
     * If this method is called without a label, the most recently started profile is stopped.
     */
@@ -214,18 +214,25 @@ class Console protected () extends js.Object {
 
   /**
     * This method does not display anything unless used in the inspector.
-    * The `console.timeline()` method is the deprecated form of [[console.time()]].
+    * The `console.timeline()` method is the deprecated form of [[time()]].
     */
   @deprecated("Use time instead", "NodeJS 8.0.0")
   def timeline(label: String = js.native): Unit = js.native
 
   /**
     * This method does not display anything unless used in the inspector.
-    * The `console.timelineEnd()` method is the deprecated form of [[console.timeEnd()]].
+    * The `console.timelineEnd()` method is the deprecated form of [[timeEnd()]].
     */
   @deprecated("Use time instead", "NodeJS 8.0.0")
   def timelineEnd(label: String = js.native): Unit = js.native
 }
+
+/**
+  * A global `Console` instance configured to write to [[io.scalajs.nodejs.process.stdout]] and [[io.scalajs.nodejs.process.stderr]].
+  */
+@js.native
+@JSGlobal("console")
+object Console extends Console
 
 /**
   *

@@ -103,6 +103,29 @@ lazy val current = (project in file("./app/current"))
   )
   .dependsOn(core, compilerSwitches)
 
+lazy val nodejs_v10 = (project in file("./app/nodejs-v10"))
+  .enablePlugins(ScalaJSPlugin)
+  .settings(commonSettings)
+  .settings(commonScalaJsSettings)
+  .settings(commonMacroParadiseSetting)
+  .settings(publishingSettings)
+  .settings(
+    unmanagedSourceDirectories in Compile += (baseDirectory in current).value / "src" / "main" / "scala",
+    scalacOptions ++= Seq(
+      "-Xmacro-settings:nodeJs10.16.0"
+    ),
+    name := "scala-js-nodejs-v10",
+    description := "NodeJS v10.16.0 API for Scala.js",
+    homepage := Some(url("https://github.com/exoego/scala-js-nodejs")),
+    libraryDependencies ++= Seq(
+      "org.scala-lang"            % "scala-reflect" % scalaVersion.value,
+      "org.scalactic"             %% "scalactic"    % scalacticVersion,
+      "org.scalatest"             %%% "scalatest"   % scalatestVersion % "test",
+      "com.thoughtworks.enableIf" %% "enableif"     % enableIfVersion
+    )
+  )
+  .dependsOn(core, compilerSwitches)
+
 lazy val nodejs_v8 = (project in file("./app/nodejs-v8"))
   .enablePlugins(ScalaJSPlugin)
   .settings(commonSettings)
@@ -115,7 +138,7 @@ lazy val nodejs_v8 = (project in file("./app/nodejs-v8"))
       "-Xmacro-settings:nodeJs8.16.0"
     ),
     name := "scala-js-nodejs-v8",
-    description := "NodeJS v8.7.0 API for Scala.js",
+    description := "NodeJS v8.16.0 API for Scala.js",
     homepage := Some(url("https://github.com/exoego/scala-js-nodejs")),
     libraryDependencies ++= Seq(
       "org.scala-lang"            % "scala-reflect" % scalaVersion.value,

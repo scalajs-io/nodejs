@@ -2,11 +2,9 @@ package io.scalajs.nodejs.console_module
 
 import com.thoughtworks.enableIf
 import io.scalajs.nodejs.stream.Writable
-import io.scalajs.nodejs.util.InspectOptions
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSGlobal, JSImport}
-import scala.scalajs.js.|
 
 /**
   * The console module provides a simple debugging console that is similar to the JavaScript console mechanism
@@ -233,37 +231,3 @@ class Console protected () extends js.Object {
 @js.native
 @JSGlobal("console")
 object Console extends Console
-
-/**
-  *
-  * @param stdout
-  * @param stderr
-  * @param ignoreErrors Ignore errors when writing to the underlying streams. Defaults to `true`.
-  * @param colorMode      Set color support for this `Console` instance.
-  *                       Setting to `true` enables coloring while inspecting values,
-  *                       setting to `'auto'` will make color support depend on the value of the `isTTY` property and the value returned by `getColorDepth()` on the respective stream.
-  *                       This option can not be used, if `inspectOptions.colors` is set as well. Defaults to `'auto'`.
-  * @param inspectOptions Specifies options that are passed along to [[io.scalajs.nodejs.util.Util.inspect()]].
-  *
-  *                       **Node:** This is available after Node.js v11.7.0.
-  */
-class ConsoleOptions(
-    var stdout: Writable,
-    var stderr: js.UndefOr[Writable] = js.undefined,
-    var ignoreErrors: Boolean = true,
-    var colorMode: Boolean | String = "auto",
-    var inspectOptions: js.UndefOr[InspectOptions] = js.undefined
-) extends js.Object
-
-/**
-  * Console Dir Options
-  * @param showHidden if true then the object's non-enumerable and symbol properties will be shown too. Defaults to `false`.
-  * @param depth      tells util.inspect() how many times to recurse while formatting the object. This is useful for
-  *                   inspecting large complicated objects. Defaults to `2`. To make it recurse indefinitely, pass null.
-  * @param colors     if true, then the output will be styled with ANSI color codes. Defaults to `false`. Colors are customizable;
-  *                   see customizing util.inspect() colors.
-  */
-class ConsoleDirOptions(var showHidden: js.UndefOr[Boolean] = js.undefined,
-                        var depth: js.UndefOr[Int] = js.undefined,
-                        var colors: js.UndefOr[Boolean] = js.undefined)
-    extends js.Object

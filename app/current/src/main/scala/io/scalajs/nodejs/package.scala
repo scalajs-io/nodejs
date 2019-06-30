@@ -48,13 +48,14 @@ package object nodejs {
   /////////////////////////////////////////////////////////////////////////////////
   //      Built-in Properties
   /////////////////////////////////////////////////////////////////////////////////
+  @deprecated("Use console_module.Console. Every module stays each own package.", "0.9.0")
+  type Console = console_module.Console
 
-  /**
-    * Used to print to stdout and stderr. See the console section.
-    */
-  @js.native
-  @JSGlobal("console")
-  object console extends Console(null)
+  @deprecated("Use console_module.Console. Every module stays each own package.", "0.9.0")
+  type ConsoleDirOptions = console_module.ConsoleDirOptions
+
+  @deprecated("Use console_module.Console. Every module stays each own package.", "0.9.0")
+  val console = console_module.Console
 
   /**
     * The directory name of the current module. This the same as the path.dirname() of the [[__filename]].

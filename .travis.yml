@@ -5,9 +5,18 @@ scala:
   - 2.12.8
   - 2.13.0
 
+env:
+  - TRAVIS_NODE_VERSION="12.5.0"
+
 jdk:
   - openjdk8
   - openjdk11
+
+install:
+  - rm -rf ~/.nvm &&
+    git clone https://github.com/nvm-sh/nvm.git ~/.nvm &&
+    (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) &&
+    source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
 
 script:
   - sbt ++$TRAVIS_SCALA_VERSION scalafmtSbtCheck scalafmtCheck test:scalafmtCheck test

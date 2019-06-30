@@ -54,7 +54,7 @@ package object nodejs {
     */
   @js.native
   @JSGlobal("console")
-  object console extends Console(null)
+  object console extends Console
 
   /**
     * The directory name of the current module. This the same as the path.dirname() of the [[__filename]].

@@ -7,6 +7,7 @@ val supportedScalaVersion = Seq(scala212Version, scala213Version)
 
 val scalatestVersion = "3.0.8"
 val scalacticVersion = "3.0.8"
+val enableIfVersion  = "1.1.7"
 
 organization in ThisBuild := "net.exoego"
 
@@ -18,10 +19,12 @@ lazy val commonSettings = Seq(
     "-unchecked",
     "-feature",
     "-language:implicitConversions",
-    "-Xlint",
-    "-Xfatal-warnings"
+    "-Xlint"
   ),
-  scalacOptions in (Compile, doc) ++= Seq("-no-link-warnings")
+  scalacOptions in (Compile, doc) ++= Seq(
+    "-Xfatal-warnings",
+    "-no-link-warnings"
+  )
 )
 lazy val commonScalaJsSettings = Seq(
   scalacOptions += "-P:scalajs:sjsDefinedByDefault",
@@ -43,13 +46,14 @@ lazy val commonMacroParadiseSetting = Seq(
   }
 )
 val nonPublishingSetting = Seq(
+  skip in publish := true,
   publishArtifact := false,
   publish := {},
   publishLocal := {}
 )
 
 lazy val root = (project in file("."))
-  .aggregate(core, common, nodejs_v8)
+  .aggregate(core, current, nodejs_v8)
   .settings(commonSettings)
   .settings(publishingSettings)
   .settings(nonPublishingSetting)
@@ -70,40 +74,80 @@ lazy val core = (project in file("./core"))
     )
   )
 
-lazy val common = (project in file("./app/common"))
-  .enablePlugins(ScalaJSPlugin)
+lazy val compilerSwitches = (project in file("./compiler-switches"))
   .settings(commonSettings)
-  .settings(commonScalaJsSettings)
-  .settings(commonMacroParadiseSetting)
-  .settings(publishingSettings)
+  .settings(nonPublishingSetting)
   .settings(
-    name := "scala-js-nodejs-common",
     libraryDependencies ++= Seq(
-      "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-      "org.scalactic"  %% "scalactic"    % scalacticVersion,
-      "org.scalatest"  %%% "scalatest"   % scalatestVersion % "test"
+      "org.scala-lang" % "scala-reflect" % scalaVersion.value
     )
   )
-  .dependsOn(core)
 
-lazy val nodejs_v8 = (project in file("./app/nodejs_v8"))
-  .dependsOn(common)
+lazy val current = (project in file("./app/current"))
   .enablePlugins(ScalaJSPlugin)
   .settings(commonSettings)
   .settings(commonScalaJsSettings)
   .settings(commonMacroParadiseSetting)
   .settings(publishingSettings)
   .settings(
-    name := "scala-js-nodejs-v8",
-    description := "NodeJS v8.7.0 API for Scala.js",
+    scalacOptions ++= Seq(
+      "-Xmacro-settings:nodeJs12.5.0"
+    ),
+    name := "scala-js-nodejs-v12",
+    libraryDependencies ++= Seq(
+      "org.scala-lang"            % "scala-reflect" % scalaVersion.value,
+      "org.scalactic"             %% "scalactic"    % scalacticVersion,
+      "org.scalatest"             %%% "scalatest"   % scalatestVersion % "test",
+      "com.thoughtworks.enableIf" %% "enableif"     % enableIfVersion
+    )
+  )
+  .dependsOn(core, compilerSwitches)
+
+lazy val nodejs_v10 = (project in file("./app/nodejs-v10"))
+  .enablePlugins(ScalaJSPlugin)
+  .settings(commonSettings)
+  .settings(commonScalaJsSettings)
+  .settings(commonMacroParadiseSetting)
+  .settings(publishingSettings)
+  .settings(
+    unmanagedSourceDirectories in Compile += (baseDirectory in current).value / "src" / "main" / "scala",
+    scalacOptions ++= Seq(
+      "-Xmacro-settings:nodeJs10.16.0"
+    ),
+    name := "scala-js-nodejs-v10",
+    description := "NodeJS v10.16.0 API for Scala.js",
     homepage := Some(url("https://github.com/exoego/scala-js-nodejs")),
     libraryDependencies ++= Seq(
-      "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-      "org.scalactic"  %% "scalactic"    % scalacticVersion,
-      "org.scalatest"  %%% "scalatest"   % scalatestVersion % "test"
+      "org.scala-lang"            % "scala-reflect" % scalaVersion.value,
+      "org.scalactic"             %% "scalactic"    % scalacticVersion,
+      "org.scalatest"             %%% "scalatest"   % scalatestVersion % "test",
+      "com.thoughtworks.enableIf" %% "enableif"     % enableIfVersion
     )
   )
-  .dependsOn(core)
+  .dependsOn(core, compilerSwitches)
+
+lazy val nodejs_v8 = (project in file("./app/nodejs-v8"))
+  .enablePlugins(ScalaJSPlugin)
+  .settings(commonSettings)
+  .settings(commonScalaJsSettings)
+  .settings(commonMacroParadiseSetting)
+  .settings(publishingSettings)
+  .settings(
+    unmanagedSourceDirectories in Compile += (baseDirectory in current).value / "src" / "main" / "scala",
+    scalacOptions ++= Seq(
+      "-Xmacro-settings:nodeJs8.16.0"
+    ),
+    name := "scala-js-nodejs-v8",
+    description := "NodeJS v8.16.0 API for Scala.js",
+    homepage := Some(url("https://github.com/exoego/scala-js-nodejs")),
+    libraryDependencies ++= Seq(
+      "org.scala-lang"            % "scala-reflect" % scalaVersion.value,
+      "org.scalactic"             %% "scalactic"    % scalacticVersion,
+      "org.scalatest"             %%% "scalatest"   % scalatestVersion % "test",
+      "com.thoughtworks.enableIf" %% "enableif"     % enableIfVersion
+    )
+  )
+  .dependsOn(core, compilerSwitches)
 
 lazy val publishingSettings = Seq(
   licenses := Seq("APL2" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt")),

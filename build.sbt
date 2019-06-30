@@ -53,7 +53,7 @@ val nonPublishingSetting = Seq(
 )
 
 lazy val root = (project in file("."))
-  .aggregate(core, common, nodejs_v8)
+  .aggregate(core, current, nodejs_v8)
   .settings(commonSettings)
   .settings(publishingSettings)
   .settings(nonPublishingSetting)
@@ -83,14 +83,17 @@ lazy val compilerSwitches = (project in file("./compiler-switches"))
     )
   )
 
-lazy val common = (project in file("./app/common"))
+lazy val current = (project in file("./app/current"))
   .enablePlugins(ScalaJSPlugin)
   .settings(commonSettings)
   .settings(commonScalaJsSettings)
   .settings(commonMacroParadiseSetting)
   .settings(publishingSettings)
   .settings(
-    name := "scala-js-nodejs-common",
+    scalacOptions ++= Seq(
+      "-Xmacro-settings:nodeJs12.5.0"
+    ),
+    name := "scala-js-nodejs-v12",
     libraryDependencies ++= Seq(
       "org.scala-lang"            % "scala-reflect" % scalaVersion.value,
       "org.scalactic"             %% "scalactic"    % scalacticVersion,
@@ -100,14 +103,14 @@ lazy val common = (project in file("./app/common"))
   )
   .dependsOn(core, compilerSwitches)
 
-lazy val nodejs_v8 = (project in file("./app/nodejs_v8"))
+lazy val nodejs_v8 = (project in file("./app/nodejs-v8"))
   .enablePlugins(ScalaJSPlugin)
   .settings(commonSettings)
   .settings(commonScalaJsSettings)
   .settings(commonMacroParadiseSetting)
   .settings(publishingSettings)
   .settings(
-    unmanagedSourceDirectories in Compile += (baseDirectory in common).value / "src" / "main" / "scala",
+    unmanagedSourceDirectories in Compile += (baseDirectory in current).value / "src" / "main" / "scala",
     scalacOptions ++= Seq(
       "-Xmacro-settings:nodeJs8.16.0"
     ),

@@ -21,10 +21,14 @@ lazy val commonSettings = Seq(
     "-language:implicitConversions",
     "-Xlint"
   ),
-  scalacOptions in (Compile, doc) ++= Seq(
+  scalacOptions in Compile in compile ++= Seq(
+    "-Xfatal-warnings"
+  ),
+  scalacOptions in Compile in doc ++= Seq(
     "-Xfatal-warnings",
     "-no-link-warnings"
-  )
+  ),
+  autoAPIMappings := true
 )
 lazy val commonScalaJsSettings = Seq(
   scalacOptions += "-P:scalajs:sjsDefinedByDefault",
@@ -170,7 +174,7 @@ lazy val publishingSettings = Seq(
   publishArtifact in Test := false,
   publishArtifact in (Compile, packageDoc) := true,
   publishArtifact in (Compile, packageSrc) := true,
-  publishArtifact in packageDoc := false,
+  publishArtifact in packageDoc := true,
   pomIncludeRepository := { _ =>
     false
   },
@@ -182,7 +186,6 @@ lazy val publishingSettings = Seq(
   ),
   publishConfiguration := publishConfiguration.value.withOverwrite(false),
   publishLocalConfiguration := publishLocalConfiguration.value.withOverwrite(true),
-  sources in (Compile, doc) := Seq.empty,
   releaseIgnoreUntrackedFiles := true,
   releaseProcess := Seq[ReleaseStep](
     checkSnapshotDependencies,

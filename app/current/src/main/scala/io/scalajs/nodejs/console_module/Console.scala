@@ -46,7 +46,7 @@ class Console protected () extends js.Object {
     * A simple assertion test that verifies whether `value` is truthy.
     * If it is not, an `AssertionError` is thrown.
     * If provided, the error `message` is formatted using `util.format()` and used as the error message.
-    * @value The value tested for being truthy
+    * @param value The value tested for being truthy
     * @param optionalParams The arguments passed to the error message
     */
   def assert(value: js.Any, optionalParams: Any*): Unit = js.native

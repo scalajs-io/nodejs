@@ -59,12 +59,12 @@ lazy val nodejs = (project in file("app/nodejs")).
     version := apiVersion
   )
 
-lazy val jvm = (project in file("app/jvm")).
+lazy val jvm_io = (project in file("app/jvm/io")).
   dependsOn(nodejs, sync_request).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings ++ publishingSettings: _*).
   settings(
-    name := "jvm-compatibility",
+    name := "jvm-io",
     organization := "io.scalajs",
     description := "JVM-like Compatibility helpers",
     version := apiVersion
@@ -478,14 +478,14 @@ lazy val async = (project in file("app/npmjs/async")).
     version := apiVersion
   )
 
-lazy val aws_s3 = (project in file("app/npmjs/aws/s3")).
+lazy val aws_sdk = (project in file("app/npmjs/aws-sdk")).
   dependsOn(nodejs).
   enablePlugins(ScalaJSPlugin).
   settings(commonSettings ++ publishingSettings: _*).
   settings(
-    name := "aws-s3",
+    name := "aws-sdk",
     organization := "io.scalajs.npm",
-    description := "AWS S3 binding for Scala.js",
+    description := "AWS SDK binding for Scala.js",
     version := apiVersion
   )
 
@@ -1094,10 +1094,10 @@ lazy val complete_platform = (project in file("app/bundles/complete")).
   aggregate(
     amcharts, core, dom_html, jquery, nodejs, phaser, pixijs, facebook, linkedin, angular_platform,
     // npm packages
-    async, aws_s3, bcrypt, bignum, body_parser, brake, buffermaker, cassandra_driver, chalk, cheerio,
+    async, aws_sdk, bcrypt, bignum, body_parser, brake, buffermaker, cassandra_driver, chalk, cheerio,
     colors, combined_stream, cookie, cookie_parser, csv_parse, csvtojson, drama, engine_io, escape_html,
     express, express_csv, express_fileupload, express_ws, feedparser, filed, form_data, github_api_node,
-    glob, gzip_uncompressed_size, html_to_json, htmlparser2, ip, jsdom, jvm, jwt_simple, kafka_node,
+    glob, gzip_uncompressed_size, html_to_json, htmlparser2, ip, jsdom, jvm_io, jwt_simple, kafka_node,
     md5, memory_fs, mkdirp, moment, moment_duration_format, moment_range, moment_timezone,
     mongodb, mongoose, mpromise, multer, mysql, nock, node_fetch, node_zookeeper_client,
     numeral, oppressor, otaat_repl, readable_stream, redis, request, rxjs, splitargs,
@@ -1106,10 +1106,10 @@ lazy val complete_platform = (project in file("app/bundles/complete")).
   dependsOn(
     amcharts, core, dom_html, jquery, nodejs, phaser, pixijs, facebook, linkedin, angular_platform,
     // npm packages
-    async, aws_s3, bcrypt, bignum, body_parser, brake, buffermaker, cassandra_driver, chalk, cheerio,
+    async, aws_sdk, bcrypt, bignum, body_parser, brake, buffermaker, cassandra_driver, chalk, cheerio,
     colors, combined_stream, cookie, cookie_parser, csv_parse, csvtojson, drama, engine_io, escape_html,
     express, express_csv, express_fileupload, express_ws, feedparser, filed, form_data, github_api_node,
-    glob, gzip_uncompressed_size, html_to_json, htmlparser2, ip, jsdom, jvm, jwt_simple, kafka_node,
+    glob, gzip_uncompressed_size, html_to_json, htmlparser2, ip, jsdom, jvm_io, jwt_simple, kafka_node,
     md5, memory_fs, mkdirp, moment, moment_duration_format, moment_range, moment_timezone,
     mongodb, mongoose, mpromise, multer, mysql, nock, node_fetch, node_zookeeper_client,
     numeral, oppressor, otaat_repl, readable_stream, redis, request, rxjs, splitargs,

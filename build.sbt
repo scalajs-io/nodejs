@@ -24,7 +24,8 @@ lazy val commonSettings = Seq(
   scalacOptions in (Compile, doc) ++= Seq(
     "-Xfatal-warnings",
     "-no-link-warnings"
-  )
+  ),
+  autoAPIMappings := true
 )
 lazy val commonScalaJsSettings = Seq(
   scalacOptions += "-P:scalajs:sjsDefinedByDefault",

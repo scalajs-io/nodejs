@@ -21,7 +21,10 @@ lazy val commonSettings = Seq(
     "-language:implicitConversions",
     "-Xlint"
   ),
-  scalacOptions in (Compile, doc) ++= Seq(
+  scalacOptions in Compile in compile ++= Seq(
+    "-Xfatal-warnings"
+  ),
+  scalacOptions in Compile in doc ++= Seq(
     "-Xfatal-warnings",
     "-no-link-warnings"
   ),

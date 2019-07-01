@@ -19,7 +19,7 @@ install:
     source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
 
 script:
-  - sbt ++$TRAVIS_SCALA_VERSION scalafmtSbtCheck scalafmtCheck test:scalafmtCheck test
+  - sbt ++$TRAVIS_SCALA_VERSION scalafmtSbtCheck scalafmtCheck test:scalafmtCheck current/doc core/doc test
 
 before_cache:
   - rm -fv $HOME/.ivy2/.sbt.ivy.lock

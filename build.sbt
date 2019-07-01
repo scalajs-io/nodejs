@@ -5,7 +5,7 @@ import sbt._
 import scala.language.postfixOps
 
 val apiVersion = "0.5.0"
-val scalaJvmVersion = "2.13.0-M3"
+val scalaJvmVersion = "2.13.0"
 
 val commonSettings = Seq(
   organization := "io.scalajs",
@@ -17,11 +17,10 @@ val commonSettings = Seq(
   scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
   autoCompilerPlugins := true,
   //scalaJSModuleKind := ModuleKind.CommonJSModule,
-  addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full),
   libraryDependencies ++= Seq(
-    "org.scala-lang" % "scala-reflect" % scalaJvmVersion//,
-    //"org.scalatest" %%% "scalatest" % "3.2.0-SNAP10" % "test"
-  )) ++ publishingSettings
+    "org.scala-lang" % "scala-reflect" % scalaJvmVersion,
+    "org.scalatest" %%% "scalatest" % "3.0.8" % "test"
+  ))// ++ publishingSettings
 
 /////////////////////////////////////////////////////////////////////////////////
 //      ScalaJs.io Core projects

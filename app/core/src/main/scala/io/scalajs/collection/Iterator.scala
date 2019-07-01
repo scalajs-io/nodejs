@@ -1,6 +1,5 @@
 package io.scalajs.collection
 
-import scala.language.implicitConversions
 import scala.scalajs.js
 
 /**

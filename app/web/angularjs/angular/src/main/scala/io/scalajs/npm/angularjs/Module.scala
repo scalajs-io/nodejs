@@ -1,7 +1,6 @@
 package io.scalajs.npm.angularjs
 
 import scala.language.experimental.macros
-import scala.language.implicitConversions
 import scala.scalajs.js
 
 /**

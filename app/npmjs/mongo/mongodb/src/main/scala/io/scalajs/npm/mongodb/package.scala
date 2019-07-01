@@ -4,7 +4,6 @@ import io.scalajs.util.JsUnderOrHelper._
 import io.scalajs.util.ScalaJsHelper._
 
 import scala.concurrent.Promise
-import scala.language.{existentials, implicitConversions}
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js.JSConverters._
 import scala.scalajs.{js, runtime}

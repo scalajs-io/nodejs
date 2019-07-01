@@ -881,7 +881,7 @@ object Collection {
 
     @inline
     def findOneFuture[A <: js.Any](selector: js.Any, fields: js.Array[String]): Future[Option[A]] = {
-      promiseWithError1[MongoError, A](coll.find[A](selector, js.Dictionary(fields.map(_ -> 1): _*))
+      promiseWithError1[MongoError, A](coll.find[A](selector, js.Dictionary(fields.toSeq.map(_ -> 1): _*))
         .limit(1).next(_)).map(Option(_))
     }
 

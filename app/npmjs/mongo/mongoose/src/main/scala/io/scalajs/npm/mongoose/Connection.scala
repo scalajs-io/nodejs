@@ -65,7 +65,7 @@ trait Connection extends IEventEmitter {
     * @param options optional collection options
     * @return the [[Collection collection]] instance
     */
-  def collection(name: String, options: RawOptions = js.native)
+  def collection(name: String, options: RawOptions = js.native): Collection = js.native
 
   /**
     * Models defined on the mongoose instance are available to all connection created by the same mongoose instance.

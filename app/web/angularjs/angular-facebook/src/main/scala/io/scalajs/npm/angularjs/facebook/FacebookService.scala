@@ -104,7 +104,7 @@ class FacebookService() extends Service {
         //console.log(s"response = ${angular.toJson(response)}")
         val results = response.data
         if (results.nonEmpty) {
-          friends.push(results: _*)
+          friends.push(results.toSeq: _*)
           console.log(s"${friends.length} friend(s) loaded")
         }
         ()
@@ -138,7 +138,7 @@ class FacebookService() extends Service {
       //console.log(s"response = ${angular.toJson(response)}")
       val results = response.data
       if (results.nonEmpty) {
-        friends.push(results: _*)
+        friends.push(results.toSeq: _*)
         console.log(s"${friends.length} friend(s) loaded")
       }
       ()

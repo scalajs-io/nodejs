@@ -1,7 +1,5 @@
 package io.scalajs.npm.mongodb.gridfs
 
-import io.scalajs.npm.mongodb.Chunk
-
 import scala.scalajs.js
 
 /**
@@ -9,7 +7,7 @@ import scala.scalajs.js
   * @param _id          unique id for this file.
   * @param root         root collection to use. Defaults to [[GridStoreClass.DEFAULT_ROOT_COLLECTION DEFAULT_ROOT_COLLECTION]].
   * @param content_type mime type of the file. Defaults to [[GridStoreClass.DEFAULT_CONTENT_TYPE DEFAULT_CONTENT_TYPE]].
-  * @param chunk_size   size for the chunk. Defaults to [[Chunk.DEFAULT_CHUNK_SIZE]].
+  * @param chunk_size   size for the chunk. Defaults to [[io.scalajs.nodejs.stream.Chunk#DEFAULT_CHUNK_SIZE]].
   * @param metadata     arbitrary data the user wants to store.
   * @author lawrence.daniels@gmail.com
   */

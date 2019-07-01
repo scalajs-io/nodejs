@@ -4,7 +4,6 @@ import io.scalajs.dom.{Document, Element}
 import io.scalajs.jquery.JQuery
 import io.scalajs.npm.angularjs.Module.EnrichedModule
 
-import scala.language.implicitConversions
 import scala.scalajs.js
 import scala.scalajs.js.|
 

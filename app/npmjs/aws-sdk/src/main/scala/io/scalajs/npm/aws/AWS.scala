@@ -12,28 +12,27 @@ object AWS {
 
   type Endpoint = aws.Endpoint
 
-  type Kinesis = kinesis.Kinesis
+  type Kinesis = aws.kinesis.Kinesis
 
   type Request[T, E] = aws.Request[T, E]
 
-  type S3 = s3.S3
-
-  object Kinesis {
-
-  }
+  type S3 = aws.s3.S3
 
   object S3 {
 
     object Types {
-      type AbortMultipartUploadRequest = s3.AbortMultipartUploadRequest
-      type ClientConfiguration = s3.ClientConfiguration
-      type CompleteMultipartUploadRequest = s3.CompleteMultipartUploadRequest
-      type GetObjectOutput = s3.GetObjectOutput
-      type GetObjectRequest = s3.GetObjectRequest
-      type ListObjectsOutput = s3.ListObjectsOutput
-      type ListObjectsV2Output = s3.ListObjectsV2Output
+      type AbortMultipartUploadRequest = aws.s3.AbortMultipartUploadRequest
+      type ClientConfiguration = aws.s3.ClientConfiguration
+      type CompleteMultipartUploadRequest = aws.s3.CompleteMultipartUploadRequest
+      type GetObjectOutput = aws.s3.GetObjectOutput
+      type GetObjectRequest = aws.s3.GetObjectRequest
+      type ListObjectsOutput = aws.s3.ListObjectsOutput
+      type ListObjectsV2Output = aws.s3.ListObjectsV2Output
     }
-
   }
+
+  type SES = aws.ses.SES
+
+  type SNS = aws.sns.SNS
 
 }

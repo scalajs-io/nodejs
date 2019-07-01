@@ -13,6 +13,15 @@ import scala.scalajs.js
   * AddTagsToStream has a limit of five transactions per second per account.
   * @param StreamName The name of the stream.
   * @param Tags       A set of up to 10 key-value pairs to use to create the tags.
+  * @example {{{
+  * {
+  *   "StreamName": "exampleStreamName",
+  *   "Tags": {
+  *      "Project" : "myProject",
+  *      "Environment" : "Production"
+  *    }
+  * }
+  * }}}
   */
 class AddTagsToStream(var StreamName: js.UndefOr[String] = js.undefined,
                       var Tags: js.UndefOr[js.Dictionary[String]] = js.undefined) extends js.Object

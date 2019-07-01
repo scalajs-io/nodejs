@@ -2,6 +2,7 @@ package io.scalajs.npm.aws
 package s3
 
 import io.scalajs.nodejs.{console, process}
+import io.scalajs.npm.aws.ses.SES
 import org.scalatest.FunSpec
 
 /**

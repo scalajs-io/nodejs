@@ -1,8 +1,7 @@
-package io.scalajs.npm.mongodb
-
-import java.lang.{Boolean => JBoolean}
+package io.scalajs.npm.tingodb
 
 import io.scalajs.RawOptions
+import io.scalajs.npm.mongodb.{AggregationCursor, AggregationOptions, BulkWriteOpResultObject, CollectionStats, Cursor, DeleteOptions, DeleteWriteOpResult, FindAndModifyWriteOpResult, FindAndUpdateOptions, IndexOptions, InsertWriteOpResult, MongoCallback0, MongoCallback1, MongoError, RenameOptions, ReplacementOptions, UpdateOptions, UpdateWriteOpResultObject, WriteOptions}
 import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Future
@@ -11,7 +10,7 @@ import scala.scalajs.js
 import scala.scalajs.js.|
 
 /**
-  * Mongo Collection
+  * TingoDB Collection
   * @see [[http://mongodb.github.io/node-mongodb-native/2.1/api/index.html]]
   * @author lawrence.daniels@gmail.com
   */
@@ -198,7 +197,6 @@ trait Collection extends js.Object {
     * @param callback The command result callback
     * @example dropAllIndexes(callback)
     */
-  @deprecated("Use dropIndexes", since = "2.0")
   def dropAllIndexes(callback: js.Function): Unit = js.native
 
   /**
@@ -255,7 +253,6 @@ trait Collection extends js.Object {
     * @param callback The command result callback
     * @example findAndModify(query, sort, doc, options, callback)
     */
-  @deprecated("Use findOneAndUpdate, findOneAndReplace or findOneAndDelete instead", since = "2.0")
   def findAndModify(query: js.Any, sort: js.Array[js.Any], doc: js.Any, options: RawOptions, callback: js.Function2[MongoError, js.Any, Any]): Unit = js.native
 
   /**
@@ -265,7 +262,6 @@ trait Collection extends js.Object {
     * @param callback The command result callback
     * @example findAndModify(query, sort, doc, options, callback)
     */
-  @deprecated("Use findOneAndUpdate, findOneAndReplace or findOneAndDelete instead", since = "2.0")
   def findAndModify(query: js.Any, sort: js.Array[js.Any], doc: js.Any, callback: js.Function2[MongoError, js.Any, Any]): Unit = js.native
 
   /**
@@ -275,7 +271,6 @@ trait Collection extends js.Object {
     * @param options Optional settings.
     * @example findAndModify(query, sort, doc, options, callback)
     */
-  @deprecated("Use findOneAndUpdate, findOneAndReplace or findOneAndDelete instead", since = "2.0")
   def findAndModify[A <: js.Any](query: js.Any,
                                  sort: js.Array[js.Any],
                                  doc: js.Any,
@@ -308,7 +303,6 @@ trait Collection extends js.Object {
     * @return a [[js.Promise completion promise]]
     * @example findOne(query[, options], callback)
     */
-  @deprecated("Use find().limit(1).next(function(err, doc){})", since = "2.0")
   def findOne(query: js.Any, options: RawOptions, callback: js.Function2[MongoError, js.Any, Any]): Unit = js.native
 
   /**
@@ -317,7 +311,6 @@ trait Collection extends js.Object {
     * @param callback The command result callback
     * @example findOne(query[, options], callback)
     */
-  @deprecated("Use find().limit(1).next(function(err, doc){})", since = "2.0")
   def findOne(query: js.Any, callback: js.Function2[MongoError, js.Any, Any]): Unit = js.native
 
   /**
@@ -327,7 +320,6 @@ trait Collection extends js.Object {
     * @return a [[js.Promise completion promise]]
     * @example findOne(query[, options], callback)
     */
-  @deprecated("Use find().limit(1).next(function(err, doc){})", since = "2.0")
   def findOne[A <: js.Any](query: js.Any, options: RawOptions = js.native): js.Promise[A] = js.native
 
   /**
@@ -439,7 +431,7 @@ trait Collection extends js.Object {
     * @param indexes  One or more index names to check.
     * @param callback The command result callback
     * @example indexExists(indexes, callback)
-    * @return Future 
+    * @return Future
     */
   def indexExists(indexes: js.Array[String], callback: MongoCallback1[Boolean]): Unit = js.native
 
@@ -447,7 +439,7 @@ trait Collection extends js.Object {
     * Checks if one or more indexes exist on the collection, fails on first non-existing index
     * @param indexes One or more index names to check.
     * @example indexExists(indexes, callback)
-    * @return Future 
+    * @return Future
     */
   def indexExists(indexes: js.Array[String]): js.Promise[Boolean] = js.native
 
@@ -456,7 +448,7 @@ trait Collection extends js.Object {
     * @param indexes  One or more index names to check.
     * @param callback The command result callback
     * @example indexExists(indexes, callback)
-    * @return Future 
+    * @return Future
     */
   def indexExists(indexes: String, callback: MongoCallback1[Boolean]): Unit = js.native
 
@@ -464,7 +456,7 @@ trait Collection extends js.Object {
     * Checks if one or more indexes exist on the collection, fails on first non-existing index
     * @param indexes One or more index names to check.
     * @example indexExists(indexes, callback)
-    * @return Future 
+    * @return Future
     */
   def indexExists(indexes: String): js.Promise[Boolean] = js.native
 
@@ -499,7 +491,6 @@ trait Collection extends js.Object {
     * This behavior can be overridden by setting the forceServerObjectId flag.
     * @param doc the given document
     */
-  @deprecated("Use insertOne, insertMany or bulkWrite", since = "2.0")
   def insert(doc: js.Any, options: WriteOptions | RawOptions = js.native): js.Promise[InsertWriteOpResult] = js.native
 
   /**
@@ -508,7 +499,6 @@ trait Collection extends js.Object {
     * This behavior can be overridden by setting the forceServerObjectId flag.
     * @param doc Document to insert.
     */
-  @deprecated("Use insertOne, insertMany or bulkWrite", since = "2.0")
   def insert(doc: js.Any, callback: MongoCallback1[InsertWriteOpResult]): Unit = js.native
 
   /**
@@ -518,7 +508,6 @@ trait Collection extends js.Object {
     * @param doc      Document to insert.
     * @param callback The command result callback
     */
-  @deprecated("Use insertOne, insertMany or bulkWrite", since = "2.0")
   def insert(doc: js.Any,
              options: WriteOptions | RawOptions,
              callback: MongoCallback1[InsertWriteOpResult]): Unit = js.native
@@ -655,19 +644,16 @@ trait Collection extends js.Object {
   /**
     * Remove documents.
     */
-  @deprecated("Use deleteOne, deleteMany or bulkWrite", since = "2.0")
   def remove(): Unit = js.native
 
   /**
     * Remove documents.
     */
-  @deprecated("Use deleteOne, deleteMany or bulkWrite", since = "2.0")
   def remove(selector: js.Any): Unit = js.native
 
   /**
     * Remove documents.
     */
-  @deprecated("Use deleteOne, deleteMany or bulkWrite", since = "2.0")
   def remove(selector: js.Any, options: WriteOptions, callback: js.Function): Unit = js.native
 
   /**
@@ -712,7 +698,6 @@ trait Collection extends js.Object {
     * @param options  Optional settings.
     * @param callback The command result callback
     */
-  @deprecated("Use insertOne, insertMany, updateOne or updateMany", since = "2.0")
   def save(doc: js.Any, options: RawOptions, callback: js.Function): Unit = js.native
 
   /**
@@ -721,7 +706,6 @@ trait Collection extends js.Object {
     * @param doc      Document to save
     * @param callback The command result callback
     */
-  @deprecated("Use insertOne, insertMany, updateOne or updateMany", since = "2.0")
   def save(doc: js.Any, callback: js.Function): Unit = js.native
 
   /**
@@ -730,7 +714,6 @@ trait Collection extends js.Object {
     * @param doc     Document to save
     * @param options Optional settings.
     */
-  @deprecated("Use insertOne, insertMany, updateOne or updateMany", since = "2.0")
   def save(doc: js.Any, options: RawOptions | RawOptions = js.native): Unit = js.native
 
   /**
@@ -748,7 +731,6 @@ trait Collection extends js.Object {
     * @param options  Optional settings.
     * @param callback The command result callback
     */
-  @deprecated("Use updateOne, updateMany or bulkWrite", since = "2.0")
   def update(selector: js.Any,
              document: js.Any,
              options: WriteOptions | RawOptions,
@@ -760,7 +742,6 @@ trait Collection extends js.Object {
     * @param document The update document.
     * @param callback The command result callback
     */
-  @deprecated("Use updateOne, updateMany or bulkWrite", since = "2.0")
   def update(selector: js.Any,
              document: js.Any,
              callback: js.Function2[MongoError, UpdateWriteOpResultObject, Any]): Unit = js.native
@@ -770,7 +751,6 @@ trait Collection extends js.Object {
     * @param selector The selector for the update operation.
     * @param document The update document.
     */
-  @deprecated("Use updateOne, updateMany or bulkWrite", since = "2.0")
   def update(selector: js.Any, document: js.Any): js.Promise[UpdateWriteOpResultObject] = js.native
 
   /**
@@ -779,7 +759,6 @@ trait Collection extends js.Object {
     * @param document The update document.
     * @param options  Optional settings.
     */
-  @deprecated("Use updateOne, updateMany or bulkWrite", since = "2.0")
   def update(selector: js.Any,
              document: js.Any,
              options: WriteOptions | RawOptions = js.native): js.Promise[UpdateWriteOpResultObject] = js.native
@@ -887,210 +866,3 @@ object Collection {
   }
 
 }
-
-/**
-  * Collection Statistics
-  */
-@js.native
-trait CollectionStats extends js.Object with Okayable {
-  var ns: String = js.native
-  var size: Double = js.native
-  var avgObjSize: Double = js.native
-  var storageSize: Double = js.native
-  var capped: Boolean = js.native
-  var count: Int = js.native
-  var nindexes: Int = js.native
-  var totalIndexSize: Int = js.native
-  var indexSizes: js.Any = js.native
-  var wiredTiger: js.Object = js.native
-}
-
-/**
-  * Aggregation Options
-  * @param readPreference           The preferred read preference
-  * @param cursor                   Return the query as cursor, on 2.6 > it returns as a real cursor on pre 2.6 it
-  *                                 returns as an emulated cursor.
-  * @param explain                  Explain returns the aggregation execution plan (requires mongodb 2.6 >).
-  * @param allowDiskUse             allowDiskUse lets the server know if it can use disk to store temporary results for
-  *                                 the aggregation (requires mongodb 2.6 >).
-  * @param maxTimeMS                maxTimeMS specifies a cumulative time limit in milliseconds for processing operations
-  *                                 on the cursor.
-  *                                 MongoDB interrupts the operation at the earliest following interrupt point.
-  * @param bypassDocumentValidation Allow driver to bypass schema validation in MongoDB 3.2 or higher.
-  */
-
-class AggregationOptions(var readPreference: js.UndefOr[ReadPreference] = js.undefined,
-                         var cursor: js.UndefOr[AggregationCursorOptions] = js.undefined,
-                         var explain: js.UndefOr[JBoolean] = js.undefined,
-                         var allowDiskUse: js.UndefOr[JBoolean] = js.undefined,
-                         var maxTimeMS: js.UndefOr[Integer] = js.undefined,
-                         var bypassDocumentValidation: js.UndefOr[JBoolean] = js.undefined) extends js.Object
-
-/**
-  * Aggregation Cursor Options
-  * @param batchSize The batchSize for the cursor
-  */
-
-class AggregationCursorOptions(var batchSize: js.UndefOr[Int] = js.undefined) extends js.Object
-
-/**
-  * Mongo Collection Retrieval Options
-  * @param w                   number | string	null	optional - The write concern.
-  * @param wtimeout            number	null	optional - The write concern timeout.
-  * @param j                   boolean	false	optional - Specify a journal write concern.
-  * @param raw                 boolean	false	optional - Return document results as raw BSON buffers.
-  * @param pkFactory           object	null	optional - A primary key factory object for generation of custom _id keys.
-  * @param readPreference      ReadPreference | string	null	optional - The preferred read preference
-  *                            (ReadPreference.PRIMARY, ReadPreference.PRIMARY_PREFERRED, ReadPreference.SECONDARY,
-  *                         ReadPreference.SECONDARY_PREFERRED, ReadPreference.NEAREST).
-  * @param serializeFunctions  boolean	false	optional - Serialize functions on any object.
-  * @param strict              boolean	false	optional - Returns an error if the collection does not exist
-  * @param capped              boolean	false	optional - Create a capped collection.
-  * @param autoIndexId         boolean	true	optional - Create an index on the _id field of the document, True by default on MongoDB 2.2 or higher off for version < 2.2.
-  * @param size                number	null	optional - The size of the capped collection in bytes.
-  * @param max                 number	null	optional - The maximum number of documents in the capped collection.
-  * @param flags               number	null	optional - Optional. Available for the MMAPv1 storage engine only to
-  *                            set the usePowerOf2Sizes and the noPadding flag.
-  * @param storageEngine       object	null	optional - Allows users to specify configuration to the storage engine on
-  *                            a per-collection basis when creating a collection on MongoDB 3.0 or higher.
-  * @param validator           object	null	optional - Allows users to specify validation rules or expressions for
-  *                            the collection. For more information, see Document Validation on MongoDB 3.2 or higher.
-  * @param validationLevel     string	null	optional - Determines how strictly MongoDB applies the validation rules
-  *                            to existing documents during an update on MongoDB 3.2 or higher.
-  * @param validationAction    string	null	optional - Determines whether to error on invalid documents or just warn
-  *                            about the violations but allow invalid documents to be inserted on MongoDB 3.2 or higher.
-  * @param indexOptionDefaults object	null	optional - Allows users to specify a default configuration for indexes
-  *                            when creating a collection on MongoDB 3.2 or higher.
-  * @param  viewOn             string	null	optional - The name of the source collection or view from which to create
-  *                            the view. The name is not the full namespace of the collection or view; i.e. does not
-  *                            include the database name and implies the same database as the view to create
-  *                            on MongoDB 3.4 or higher.
-  * @param   pipeline          array	null	optional - An array that consists of the aggregation pipeline stage.
-  *                            create creates the view by applying the specified pipeline to the viewOn collection
-  *                            or view on MongoDB 3.4 or higher.
-  * @param  collation          object	null	optional - Specify collation (MongoDB 3.4 or higher) settings for update
-  *                            operation (see 3.4 documentation for available fields).
-  */
-class CollectionOptions(var w: js.UndefOr[String] = js.undefined,
-                        var wtimeout: js.UndefOr[Boolean] = js.undefined,
-                        var j: js.UndefOr[Boolean] = js.undefined,
-                        var raw: js.UndefOr[Boolean] = js.undefined,
-                        var pkFactory: js.UndefOr[Boolean] = js.undefined,
-                        var readPreference: js.UndefOr[Boolean] = js.undefined,
-                        var serializeFunctions: js.UndefOr[Boolean] = js.undefined,
-                        var strict: js.UndefOr[Boolean] = js.undefined,
-                        var capped: js.UndefOr[Boolean] = js.undefined,
-                        var autoIndexId: js.UndefOr[String] = js.undefined,
-                        var size: js.UndefOr[Boolean] = js.undefined,
-                        var max: js.UndefOr[Boolean] = js.undefined,
-                        var flags: js.UndefOr[Boolean] = js.undefined,
-                        var storageEngine: js.UndefOr[Boolean] = js.undefined,
-                        var validator: js.UndefOr[Boolean] = js.undefined,
-                        var validationLevel: js.UndefOr[Boolean] = js.undefined,
-                        var validationAction: js.UndefOr[Boolean] = js.undefined,
-                        var indexOptionDefaults: js.UndefOr[Boolean] = js.undefined,
-                        var viewOn: js.UndefOr[Boolean] = js.undefined,
-                        var pipeline: js.UndefOr[Boolean] = js.undefined,
-                        var collation: js.UndefOr[Boolean] = js.undefined) extends js.Object
-
-/**
-  * Delete Options
-  * @param w        optional: The write concern.
-  * @param wtimeout optional: The write concern timeout.
-  * @param j        optional: Specify a journal write concern.
-  */
-class DeleteOptions(var w: js.UndefOr[js.Any] = js.undefined,
-                    var wtimeout: js.UndefOr[Int] = js.undefined,
-                    var j: js.UndefOr[Boolean] = js.undefined) extends js.Object
-
-/**
-  * Find-And-Update Options
-  * @param projection     Limits the fields to return for all matching documents.
-  * @param sort           Determines which document the operation modifies if the query selects multiple documents.
-  * @param maxTimeMS      The maximum amount of time to allow the query to run.
-  * @param upsert         the document if it does not exist.
-  * @param returnOriginal When false, returns the updated document rather than the original. The default is true.
-  */
-class FindAndUpdateOptions(var projection: js.UndefOr[js.Any] = js.undefined,
-                           var sort: js.UndefOr[js.Any] = js.undefined,
-                           var maxTimeMS: js.UndefOr[Integer] = js.undefined,
-                           var upsert: js.UndefOr[Boolean] = js.undefined,
-                           var returnOriginal: js.UndefOr[Boolean] = js.undefined) extends js.Object
-
-/**
-  * Index Options
-  * @param w                       The write concern (number | string;	default: null).
-  * @param wtimeout                The write concern timeout (default: null).
-  * @param j                       Specify a journal write concern (default: false).
-  * @param unique                  Creates an unique index (default: false).
-  * @param sparse                  Creates a sparse index (default: false).
-  * @param background              Creates the index in the background, yielding whenever possible (default: false).
-  * @param dropDups                A unique index cannot be created on a key that has pre-existing duplicate values.
-  *                                If you would like to create the index anyway keeping the first document the database
-  *                                indexes and deleting all
-  *                                subsequent documents that have duplicate value (default: false).
-  * @param min                     For geospatial indexes set the lower bound for the co-ordinates (default: null).
-  * @param max                     For geospatial indexes set the high bound for the co-ordinates (default: null).
-  * @param v                       Specify the format version of the indexes (default: null).
-  * @param expireAfterSeconds      Allows you to expire data on indexes applied to a data (MongoDB 2.2 or higher) (default: null).
-  * @param name                    Override the auto-generated index name (useful if the resulting name is larger than
-  *                                128 bytes) (default: null)
-  * @param partialFilterExpression Creates a partial index based on the given filter object (MongoDB 3.2 or higher)
-  */
-class IndexOptions(var w: js.UndefOr[Int | String] = js.undefined,
-                   var wtimeout: js.UndefOr[Int] = js.undefined,
-                   var j: js.UndefOr[Boolean] = js.undefined,
-                   var unique: js.UndefOr[Boolean] = js.undefined,
-                   var sparse: js.UndefOr[Boolean] = js.undefined,
-                   var background: js.UndefOr[Boolean] = js.undefined,
-                   var dropDups: js.UndefOr[Boolean] = js.undefined,
-                   var min: js.UndefOr[Int] = js.undefined,
-                   var max: js.UndefOr[Int] = js.undefined,
-                   var v: js.UndefOr[Int] = js.undefined,
-                   var expireAfterSeconds: js.UndefOr[Int] = js.undefined,
-                   var name: js.UndefOr[Int] = js.undefined,
-                   var partialFilterExpression: js.UndefOr[js.Any] = js.undefined) extends js.Object
-
-/**
-  * Rename Options
-  * @param dropTarget drop the target name collection if it previously exists.
-  */
-class RenameOptions(var dropTarget: js.UndefOr[Boolean] = js.undefined) extends js.Object
-
-/**
-  * Replacement Options
-  * @param w                         The write concern
-  * @param wtimeout                  The write concern timeout.
-  * @param j                         Specify a journal write concern.
-  * @param upsert                    Update operation is an upsert.
-  * @param  bypassDocumentValidation Allow driver to bypass schema validation in MongoDB 3.2 or higher.
-  */
-class ReplacementOptions(var w: js.UndefOr[Int | String] = js.undefined,
-                         var wtimeout: js.UndefOr[Int] = js.undefined,
-                         var j: js.UndefOr[Boolean] = js.undefined,
-                         var upsert: js.UndefOr[Boolean] = js.undefined,
-                         var bypassDocumentValidation: js.UndefOr[Boolean] = js.undefined) extends js.Object
-
-/**
-  * Document Update Options
-  * @param w        The write concern
-  * @param wtimeout The write concern timeout.
-  * @param j        Specify a journal write concern.
-  * @param upsert   Update operation is an upsert.
-  */
-class UpdateOptions(var w: js.UndefOr[Int | String] = js.undefined,
-                    var wtimeout: js.UndefOr[Int] = js.undefined,
-                    var j: js.UndefOr[Boolean] = js.undefined,
-                    var upsert: js.UndefOr[Boolean] = js.undefined) extends js.Object
-
-/**
-  * Write Options
-  * @author lawrence.daniels@gmail.com
-  */
-class WriteOptions(var w: js.UndefOr[Int | String] = js.undefined,
-                   var wtimeout: js.UndefOr[Int] = js.undefined,
-                   var j: js.UndefOr[Boolean] = js.undefined,
-                   var ordered: js.UndefOr[Boolean] = js.undefined,
-                   var upsert: js.UndefOr[Boolean] = js.undefined,
-                   var multi: js.UndefOr[Boolean] = js.undefined,
-                   var bypassDocumentValidation: js.UndefOr[Boolean] = js.undefined) extends js.Object

@@ -3,27 +3,36 @@ package io.scalajs.npm.tingodb
 import io.scalajs.JSON
 import io.scalajs.nodejs.console
 import io.scalajs.nodejs.fs.Fs
-import io.scalajs.npm.mongodb._
+import io.scalajs.nodejs.util.Util
 import io.scalajs.npm.tingodb.TingoDBTest.Actor
 import org.scalatest.FunSpec
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSExportTopLevel
 
 /**
   * TingoDB Test
   * @author lawrence.daniels@gmail.com
   */
+@JSExportTopLevel(name = "TingoDBTest")
 class TingoDBTest extends FunSpec {
   val dbPath = "./temp"
   val collName = "actresses"
   val collPath = dbPath + "/" + collName
 
+  if (!Fs.existsSync(dbPath)) Fs.mkdirSync(dbPath)
+
   describe("TingoDB") {
 
     it("supports in-memory databases") {
       val tingoDB = TingoDB(new TingoDbOptions(memStore = true))
+      console.info(s"tingoDB => ${Util.inspect(tingoDB)}")
+
       val db = tingoDB.Db(dbPath, new TingoDbOptions())
+      console.info(s"db => ${Util.inspect(db)}")
+
       val collection = db.collection(collName)
+      console.info(s"collection => ${Util.inspect(collection)}")
 
       // Insert a single document
       // define some actors
@@ -32,8 +41,9 @@ class TingoDBTest extends FunSpec {
         new Actor(firstName = "Halle", lastName = "Berry", age = 50),
         new Actor(firstName = "Grace", lastName = "Park", age = 42)
       )
-      collection.insert(actors, new WriteOptions(w=1), { (err, result) =>
-       // assert.equal(null, err);
+      collection.insert(actors, { (err, result) =>
+        // assert.equal(null, err);
+        console.info(s"result => ${JSON.stringify(result)}")
 
         // Fetch the document
         collection.findOne(new Actor(firstName = "Drew"), { (err, item) =>

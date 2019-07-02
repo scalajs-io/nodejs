@@ -20,7 +20,7 @@ class CombinedStreamTest extends FunSpec {
     }
 
     it("supports pausing streams") {
-      val combinedStream = CombinedStream.create(CombineStreamOptions(pauseStreams = false))
+      val combinedStream = CombinedStream.create(new CombineStreamOptions(pauseStreams = false))
       combinedStream.append(Fs.createReadStream("./src/test/resources/file1.txt"))
       combinedStream.append(Fs.createReadStream("./src/test/resources/file2.txt"))
       combinedStream.pipe(process.stdout)

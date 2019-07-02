@@ -4,6 +4,10 @@
   "private": true,
   "dependencies": {
     "aws-sdk": "^2.477.0",
+    "bcrypt": "^3.0.6",
+    "github-api-node": "^0.11.2",
+    "glob": "^7.1.4",
+    "ip": "^1.1.5",
     "mkdirp": "^0.5.1",
     "moment": "^2.24.0",
     "moment-duration-format": "^2.3.2",

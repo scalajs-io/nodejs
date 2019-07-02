@@ -37,7 +37,7 @@ object Source {
     */
   class FileSource(path: String) extends Source {
 
-    override def getLines: Iterator[String] = mkString.split('\n').toIterator
+    override def getLines: Iterator[String] = mkString.split('\n').iterator
 
     override def mkString: String = Fs.readFileSync(path).toString("utf8")
 
@@ -50,7 +50,7 @@ object Source {
     */
   class StringSource(content: String) extends Source {
 
-    override def getLines: Iterator[String] = mkString.split('\n').toIterator
+    override def getLines: Iterator[String] = mkString.split('\n').iterator
 
     override def mkString: String = content
 
@@ -63,7 +63,7 @@ object Source {
     */
   class URLSource(url: String) extends Source {
 
-    override def getLines: Iterator[String] = mkString.split('\n').toIterator
+    override def getLines: Iterator[String] = mkString.split('\n').iterator
 
     override def mkString: String = SyncRequest(method = "GET", url).getBody()
 

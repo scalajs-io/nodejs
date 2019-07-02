@@ -227,7 +227,7 @@ object Request {
     def getQuery(name: String): Option[Either[String, js.Array[String]]] = {
       request.query.asInstanceOf[js.Dictionary[js.Any]].get(name) match {
         case Some(value) if js.typeOf(value) == "string" => Some(Left(value.toString))
-        case Some(values: js.Array[String]) => Some(Right(values))
+        case Some(values) if js.Array.isArray(values) => Some(Right(values.asInstanceOf[js.Array[String]]))
         case None => None
       }
     }

@@ -1,7 +1,7 @@
 package io.scalajs.npm.jvm
 
 import io.scalajs.nodejs.fs.Fs
-import io.scalajs.nodejs.process
+import io.scalajs.nodejs.path.Path
 import io.scalajs.npm.jvm.File._
 
 import scala.scalajs.js
@@ -12,7 +12,7 @@ import scala.scalajs.js.JSConverters._
   * @author lawrence.daniels@gmail.com
   */
 class File(path: String) extends js.Object {
-  private val (parent, name) = splitPath(path)
+  private val (parent, name) = (Path.dirname(path), Path.basename(path))
   private val fullPath = (parent + separator + name).replaceAllLiterally(separator * 2, separator)
 
   /**
@@ -118,21 +118,13 @@ class File(path: String) extends js.Object {
   * @author lawrence.daniels@gmail.com
   */
 object File {
-  val separator: String = "/"
+  val separator: String = Path.sep
   val separatorChar: Char = separator.head
 
   private def getFiles(path: String): List[String] = Fs.statSync(path) match {
     case stat if stat.isDirectory() => Fs.readdirSync(path).toList.flatMap(subPath => getFiles(s"$path/$subPath"))
     case stat if stat.isFile() => path :: Nil
     case _ => Nil
-  }
-
-  private def splitPath(path: String): (String, String) = path.trim match {
-    case s if s.endsWith(separator) => splitPath(s.dropRight(1))
-    case s if s.contains(separator) =>
-      val index = s.lastIndexOf(separator)
-      (s.take(index), s.substring(index + 1))
-    case s => (process.cwd(), s)
   }
 
 }

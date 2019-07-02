@@ -1,26 +1,39 @@
 import org.scalajs.sbtplugin.ScalaJSPlugin
-import sbt.Keys._
+import sbt.Keys.{scalaVersion, _}
 import sbt._
 
-import scala.language.postfixOps
-
 val apiVersion = "0.5.0"
-val scalaJvmVersion = "2.13.0"
+val scalaVersion_2_12_x = "2.12.8"
+val scalaVersion_2_13_x = "2.13.0"
+
+val supportedScalaVersions = List(scalaVersion_2_12_x, scalaVersion_2_13_x)
+
+/////////////////////////////////////////////////////////////////////////////////
+//      Common Settings
+/////////////////////////////////////////////////////////////////////////////////
+
+ThisBuild / organization := "io.scalajs"
+ThisBuild / version := apiVersion
+ThisBuild / scalaVersion := scalaVersion_2_13_x
 
 val commonSettings = Seq(
   organization := "io.scalajs",
   version := apiVersion,
-  scalaVersion := scalaJvmVersion,
+  crossScalaVersions := supportedScalaVersions,
   scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
-  //scalacOptions += "-P:scalajs:sjsDefinedByDefault",
-  //scalacOptions += "-P:scalajs:suppressMissingJSGlobalDeprecations",
   scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
   autoCompilerPlugins := true,
-  //scalaJSModuleKind := ModuleKind.CommonJSModule,
+  scalaJSLinkerConfig ~= (_.withModuleKind(ModuleKind.CommonJSModule)),
   libraryDependencies ++= Seq(
-    "org.scala-lang" % "scala-reflect" % scalaJvmVersion,
-    "org.scalatest" %%% "scalatest" % "3.0.8" % "test"
-  ))// ++ publishingSettings
+    "org.scalatest" %%% "scalatest" % scalatestVersion(scalaVersion) % "test",
+    "org.scala-lang" % "scala-reflect" % scalaVersion.value
+  )) // ++ publishingSettings
+
+def scalatestVersion(scalaVersion: SettingKey[String]): String = scalaVersion.value match {
+  case v if v == scalaVersion_2_12_x => "3.0.8"
+  case v if v == scalaVersion_2_13_x => "3.0.8"
+  case v => throw new IllegalArgumentException(s"Invalid Scala version $v")
+}
 
 /////////////////////////////////////////////////////////////////////////////////
 //      ScalaJs.io Core projects
@@ -266,7 +279,8 @@ lazy val angular_platform = (project in file("app/bundles/angularjs-v1-bundle"))
     name := "angularjs-v1-bundle",
     organization := "io.scalajs.npm",
     description := "AngularJS v1.7.x platform bundle",
-    version := apiVersion
+    version := apiVersion,
+    crossScalaVersions := Nil
   )
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -1119,7 +1133,9 @@ lazy val complete_platform = (project in file("app/bundles/complete")).
   settings(
     name := "complete-platform",
     organization := "io.scalajs",
-    description := "Complete platform bundle"
+    description := "Complete platform bundle",
+    crossScalaVersions := Nil,
+    publish / skip := true
   )
 
 /////////////////////////////////////////////////////////////////////////////////

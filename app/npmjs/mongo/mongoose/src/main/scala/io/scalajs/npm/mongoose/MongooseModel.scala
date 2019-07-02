@@ -675,7 +675,6 @@ object MongooseModel {
   * @param model   optional name of the model to use for population
   * @param options optional query options like sort, limit, etc
   */
-
 class PopulateOptions(val path: js.UndefOr[String] = js.undefined,
                       val select: js.UndefOr[String | js.Array[String]] = js.undefined,
                       val `match`: js.UndefOr[js.Any] = js.undefined,

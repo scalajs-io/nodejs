@@ -14,7 +14,7 @@ import scala.scalajs.js.|
 @js.native
 trait TingoDB extends js.Object {
 
-    def apply(options: TingoDbOptions | RawOptions = js.native): TingoDBObject = js.native
+  def apply(options: TingoDbOptions | RawOptions = js.native): TingoDBObject = js.native
 
 }
 

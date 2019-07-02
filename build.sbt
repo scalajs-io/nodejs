@@ -2,11 +2,12 @@ import org.scalajs.sbtplugin.ScalaJSPlugin
 import sbt.Keys.{scalaVersion, _}
 import sbt._
 
-val apiVersion = "0.5.0"
+val apiVersion = "0.6.0"
+val scalaVersion_2_11_x = "2.11.12"
 val scalaVersion_2_12_x = "2.12.8"
 val scalaVersion_2_13_x = "2.13.0"
 
-val supportedScalaVersions = List(scalaVersion_2_12_x, scalaVersion_2_13_x)
+val supportedScalaVersions = List(scalaVersion_2_11_x, scalaVersion_2_12_x, scalaVersion_2_13_x)
 
 /////////////////////////////////////////////////////////////////////////////////
 //      Common Settings
@@ -21,19 +22,15 @@ val commonSettings = Seq(
   version := apiVersion,
   crossScalaVersions := supportedScalaVersions,
   scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
+  scalacOptions += "-P:scalajs:sjsDefinedByDefault",
+  scalacOptions += "-P:scalajs:suppressMissingJSGlobalDeprecations",
   scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
   autoCompilerPlugins := true,
   scalaJSLinkerConfig ~= (_.withModuleKind(ModuleKind.CommonJSModule)),
   libraryDependencies ++= Seq(
-    "org.scalatest" %%% "scalatest" % scalatestVersion(scalaVersion) % "test",
+    "org.scalatest" %%% "scalatest" % "3.0.8" % "test",
     "org.scala-lang" % "scala-reflect" % scalaVersion.value
-  )) // ++ publishingSettings
-
-def scalatestVersion(scalaVersion: SettingKey[String]): String = scalaVersion.value match {
-  case v if v == scalaVersion_2_12_x => "3.0.8"
-  case v if v == scalaVersion_2_13_x => "3.0.8"
-  case v => throw new IllegalArgumentException(s"Invalid Scala version $v")
-}
+  )) ++ publishingSettings
 
 /////////////////////////////////////////////////////////////////////////////////
 //      ScalaJs.io Core projects

@@ -1,7 +1,6 @@
 package io.scalajs.social.linkedin
 
 import scala.concurrent.{Future, Promise}
-import scala.language.implicitConversions
 import scala.scalajs.js
 import scala.scalajs.runtime.wrapJavaScriptException
 

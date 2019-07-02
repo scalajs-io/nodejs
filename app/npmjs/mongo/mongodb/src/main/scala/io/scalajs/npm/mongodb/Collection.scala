@@ -256,8 +256,7 @@ trait Collection extends js.Object {
     * @example findAndModify(query, sort, doc, options, callback)
     */
   @deprecated("Use findOneAndUpdate, findOneAndReplace or findOneAndDelete instead", since = "2.0")
-  def findAndModify(query: js.Any, sort: js.Array[js.Any], doc: js.Any, options: RawOptions, callback: js.Function): Unit =
-  js.native
+  def findAndModify(query: js.Any, sort: js.Array[js.Any], doc: js.Any, options: RawOptions, callback: js.Function2[MongoError, js.Any, Any]): Unit = js.native
 
   /**
     * Find and update a document.
@@ -267,7 +266,7 @@ trait Collection extends js.Object {
     * @example findAndModify(query, sort, doc, options, callback)
     */
   @deprecated("Use findOneAndUpdate, findOneAndReplace or findOneAndDelete instead", since = "2.0")
-  def findAndModify(query: js.Any, sort: js.Array[js.Any], doc: js.Any, callback: js.Function): Unit = js.native
+  def findAndModify(query: js.Any, sort: js.Array[js.Any], doc: js.Any, callback: js.Function2[MongoError, js.Any, Any]): Unit = js.native
 
   /**
     * Find and update a document.
@@ -290,7 +289,7 @@ trait Collection extends js.Object {
     * @param callback The command result callback
     * @example findAndRemove(query, sort, options, callback)
     */
-  def findAndRemove(query: js.Any, sort: js.Array[js.Any], options: RawOptions, callback: js.Function): Unit = js.native
+  def findAndRemove(query: js.Any, sort: js.Array[js.Any], options: RawOptions, callback: js.Function2[MongoError, js.Any, Any]): Unit = js.native
 
   /**
     * Find and remove a document.
@@ -310,7 +309,7 @@ trait Collection extends js.Object {
     * @example findOne(query[, options], callback)
     */
   @deprecated("Use find().limit(1).next(function(err, doc){})", since = "2.0")
-  def findOne(query: js.Any, options: RawOptions, callback: js.Function): Unit = js.native
+  def findOne(query: js.Any, options: RawOptions, callback: js.Function2[MongoError, js.Any, Any]): Unit = js.native
 
   /**
     * Fetches the first document that matches the query
@@ -319,7 +318,7 @@ trait Collection extends js.Object {
     * @example findOne(query[, options], callback)
     */
   @deprecated("Use find().limit(1).next(function(err, doc){})", since = "2.0")
-  def findOne(query: js.Any, callback: js.Function): Unit = js.native
+  def findOne(query: js.Any, callback: js.Function2[MongoError, js.Any, Any]): Unit = js.native
 
   /**
     * Fetches the first document that matches the query
@@ -338,7 +337,7 @@ trait Collection extends js.Object {
     * @param callback The command result callback
     * @example findOneAndDelete(filter[, options], callback)
     */
-  def findOneAndDelete(filter: js.Any, options: RawOptions, callback: js.Function): Unit = js.native
+  def findOneAndDelete(filter: js.Any, options: RawOptions, callback: js.Function2[MongoError, js.Any, Any]): Unit = js.native
 
   /**
     * Find a document and delete it in one atomic operation, requires a write lock for the duration of the operation.
@@ -346,7 +345,7 @@ trait Collection extends js.Object {
     * @param callback The command result callback
     * @example findOneAndDelete(filter[, options], callback)
     */
-  def findOneAndDelete(filter: js.Any, callback: js.Function): Unit = js.native
+  def findOneAndDelete(filter: js.Any, callback: js.Function2[MongoError, js.Any, Any]): Unit = js.native
 
   /**
     * Find a document and replace it in one atomic operation, requires a write lock for the duration of the operation.
@@ -881,7 +880,7 @@ object Collection {
 
     @inline
     def findOneFuture[A <: js.Any](selector: js.Any, fields: js.Array[String]): Future[Option[A]] = {
-      promiseWithError1[MongoError, A](coll.find[A](selector, js.Dictionary(fields.map(_ -> 1): _*))
+      promiseWithError1[MongoError, A](coll.find[A](selector, js.Dictionary(fields.toSeq.map(_ -> 1): _*))
         .limit(1).next(_)).map(Option(_))
     }
 
@@ -1001,7 +1000,6 @@ class CollectionOptions(val w: js.UndefOr[String] = js.undefined,
   * @param wtimeout optional: The write concern timeout.
   * @param j        optional: Specify a journal write concern.
   */
-
 class DeleteOptions(var w: js.UndefOr[js.Any] = js.undefined,
                     var wtimeout: js.UndefOr[Int] = js.undefined,
                     var j: js.UndefOr[Boolean] = js.undefined) extends js.Object
@@ -1014,7 +1012,6 @@ class DeleteOptions(var w: js.UndefOr[js.Any] = js.undefined,
   * @param upsert         the document if it does not exist.
   * @param returnOriginal When false, returns the updated document rather than the original. The default is true.
   */
-
 class FindAndUpdateOptions(var projection: js.UndefOr[js.Any] = js.undefined,
                            var sort: js.UndefOr[js.Any] = js.undefined,
                            var maxTimeMS: js.UndefOr[Integer] = js.undefined,
@@ -1041,7 +1038,6 @@ class FindAndUpdateOptions(var projection: js.UndefOr[js.Any] = js.undefined,
   *                                128 bytes) (default: null)
   * @param partialFilterExpression Creates a partial index based on the given filter object (MongoDB 3.2 or higher)
   */
-
 class IndexOptions(val w: js.UndefOr[Int | String] = js.undefined,
                    val wtimeout: js.UndefOr[Int] = js.undefined,
                    val j: js.UndefOr[Boolean] = js.undefined,
@@ -1060,7 +1056,6 @@ class IndexOptions(val w: js.UndefOr[Int | String] = js.undefined,
   * Rename Options
   * @param dropTarget drop the target name collection if it previously exists.
   */
-
 class RenameOptions(val dropTarget: js.UndefOr[Boolean] = js.undefined) extends js.Object
 
 /**
@@ -1071,7 +1066,6 @@ class RenameOptions(val dropTarget: js.UndefOr[Boolean] = js.undefined) extends 
   * @param upsert                    Update operation is an upsert.
   * @param  bypassDocumentValidation Allow driver to bypass schema validation in MongoDB 3.2 or higher.
   */
-
 class ReplacementOptions(val w: js.UndefOr[Int | String] = js.undefined,
                          val wtimeout: js.UndefOr[Int] = js.undefined,
                          val j: js.UndefOr[Boolean] = js.undefined,
@@ -1085,7 +1079,6 @@ class ReplacementOptions(val w: js.UndefOr[Int | String] = js.undefined,
   * @param j        Specify a journal write concern.
   * @param upsert   Update operation is an upsert.
   */
-
 class UpdateOptions(var w: js.UndefOr[Int | String] = js.undefined,
                     var wtimeout: js.UndefOr[Int] = js.undefined,
                     var j: js.UndefOr[Boolean] = js.undefined,
@@ -1095,7 +1088,6 @@ class UpdateOptions(var w: js.UndefOr[Int | String] = js.undefined,
   * Write Options
   * @author lawrence.daniels@gmail.com
   */
-
 class WriteOptions(var w: js.UndefOr[Int | String] = js.undefined,
                    var wtimeout: js.UndefOr[Int] = js.undefined,
                    var j: js.UndefOr[Boolean] = js.undefined,

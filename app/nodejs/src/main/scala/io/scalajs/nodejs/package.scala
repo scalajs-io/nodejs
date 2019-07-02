@@ -3,7 +3,6 @@ package io.scalajs
 import io.scalajs.nodejs.timers._
 
 import scala.concurrent.duration.FiniteDuration
-import scala.language.implicitConversions
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
 import scala.scalajs.js.|

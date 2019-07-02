@@ -5,7 +5,7 @@ import io.scalajs.npm.angularjs.Service
 import io.scalajs.social.facebook._
 import io.scalajs.util.ScalaJsHelper._
 
-import scala.concurrent.Promise
+import scala.concurrent.{Future, Promise}
 import scala.scalajs.js
 import scala.scalajs.js.Dynamic.literal
 import scala.util.{Failure, Success, Try}
@@ -16,7 +16,7 @@ import scala.util.{Failure, Success, Try}
   * @see [[https://developers.facebook.com/docs/graph-api/using-graph-api/v2.5]]
   */
 class FacebookService() extends Service {
-  type CallbackObject        = js.Function1[js.Dynamic, Unit]
+  type CallbackObject = js.Function1[js.Dynamic, Unit]
   type PaginationCallback[T] = js.Function1[FacebookPagination[T], Unit]
 
   // define the API properties
@@ -30,7 +30,7 @@ class FacebookService() extends Service {
 
   def facebookID: js.UndefOr[String] = auth.map(_.userID)
 
-  def getLoginStatus = {
+  def getLoginStatus: Future[FacebookLoginStatusResponse] = {
     val promise = Promise[FacebookLoginStatusResponse]()
     FB.getLoginStatus((response: js.UndefOr[FacebookLoginStatusResponse]) =>
       specialHandling(promise, response) {
@@ -40,28 +40,28 @@ class FacebookService() extends Service {
           Success(resp)
         case resp =>
           Failure(new RuntimeException(s"Facebook is not connected (status: ${resp.status})"))
-    })
-    promise
+      })
+    promise.future
   }
 
-  def getUserProfile = {
+  def getUserProfile: Future[FacebookProfileResponse] = {
     val promise = Promise[FacebookProfileResponse]()
     FB.api(fbURL(), (response: js.UndefOr[FacebookProfileResponse]) => handleResponse(promise, response))
     promise.future
   }
 
-  def login() = {
+  def login(): Future[FacebookLoginStatusResponse] = {
     val promise = Promise[FacebookLoginStatusResponse]()
     FB.login((response: js.UndefOr[FacebookLoginStatusResponse]) =>
       specialHandling(promise, response) { resp =>
         auth = resp.authResponse
         //console.log(s"facebookID = $facebookID, auth = ${angular.toJson(auth)}")
         Success(resp)
-    })
-    promise
+      })
+    promise.future
   }
 
-  def logout() = {
+  def logout(): Future[FacebookLoginStatusResponse] = {
     val promise = Promise[FacebookLoginStatusResponse]()
     FB.logout((response: js.UndefOr[FacebookLoginStatusResponse]) => handleResponse(promise, response))
     promise.future
@@ -77,10 +77,10 @@ class FacebookService() extends Service {
     * @return a promise of a [[FacebookAchievementResponse achievement response]]
     * @see [[https://developers.facebook.com/docs/games/achievements]]
     */
-  def getAchievement(achievementID: String) = {
+  def getAchievement(achievementID: String): Future[FacebookAchievementResponse] = {
     val promise = Promise[FacebookAchievementResponse]()
     FB.api(fbURL(s"/achievements"),
-           (response: js.UndefOr[FacebookAchievementResponse]) => handleResponse(promise, response))
+      (response: js.UndefOr[FacebookAchievementResponse]) => handleResponse(promise, response))
     promise.future
   }
 
@@ -88,42 +88,37 @@ class FacebookService() extends Service {
   //      Friend-related Functions
   ///////////////////////////////////////////////////////////////////////////
 
-  def createFriendList(friendListId: String) = {
+  def createFriendList(friendListId: String): Future[FacebookResponse] = {
     val promise = Promise[FacebookResponse]()
-    FB.api(fbURL(s"/$friendListId/member"),
-           (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
+    FB.api(fbURL(s"/$friendListId/member"), (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
     promise.future
   }
 
-  def getFriends = {
+  def getFriends: Promise[js.Array[TaggableFriend]] = {
     val promise = Promise[js.Array[TaggableFriend]]()
     val friends = emptyArray[TaggableFriend]
-    FB.api(
-      fbURL("/friends"),
-      (response: FacebookPagination[TaggableFriend]) => {
-        //console.log(s"response = ${angular.toJson(response)}")
-        val results = response.data
-        if (results.nonEmpty) {
-          friends.push(results.toSeq: _*)
-          console.log(s"${friends.length} friend(s) loaded")
-        }
-        ()
+    FB.api(fbURL("/friends"), (response: FacebookPagination[TaggableFriend]) => {
+      //console.log(s"response = ${angular.toJson(response)}")
+      val results = response.data
+      if (results.nonEmpty) {
+        friends.push(results.toSeq: _*)
+        console.log(s"${friends.length} friend(s) loaded")
       }
-    )
+      ()
+    })
     promise
   }
 
-  def getFriendList(listType: js.UndefOr[String] = "close_friends") = {
+  def getFriendList(listType: js.UndefOr[String] = "close_friends"): Future[FacebookResponse] = {
     val promise = Promise[FacebookResponse]()
     FB.api(fbURL("/friendlists", s"list_type=$listType"),
-           (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
+      (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
     promise.future
   }
 
-  def getFriendListMembers(friendListId: String) = {
+  def getFriendListMembers(friendListId: String): Future[FacebookResponse] = {
     val promise = Promise[FacebookResponse]()
-    FB.api(fbURL(s"/$friendListId/members"),
-           (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
+    FB.api(fbURL(s"/$friendListId/members"), (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
     promise.future
   }
 
@@ -131,10 +126,10 @@ class FacebookService() extends Service {
     * Retrieves all "taggable" friends for the authenticated user
     * @return the array of [[TaggableFriend taggable friends]]
     */
-  def getTaggableFriends = {
+  def getTaggableFriends: Future[js.Array[TaggableFriend]] = {
     val promise = Promise[js.Array[TaggableFriend]]()
     val friends = emptyArray[TaggableFriend]
-    val callback: PaginationCallback[TaggableFriend] = (response: FacebookPagination[TaggableFriend]) => {
+    val callback: PaginationCallback[TaggableFriend] = { response: FacebookPagination[TaggableFriend] =>
       //console.log(s"response = ${angular.toJson(response)}")
       val results = response.data
       if (results.nonEmpty) {
@@ -143,7 +138,7 @@ class FacebookService() extends Service {
       }
       ()
     }
-    FB.api(fbURL("/taggable_friends"), { (response: TaggableFriendsResponse) =>
+    FB.api(fbURL("/taggable_friends"), { response: TaggableFriendsResponse =>
       handlePaginatedResults(response, callback)
       promise.success(friends)
     })
@@ -160,10 +155,10 @@ class FacebookService() extends Service {
     * @return a promise of an array of [[FacebookPhoto photos]]
     * @see [[https://developers.facebook.com/docs/graph-api/reference/user/photos/]]
     */
-  def getPhotos(`type`: js.UndefOr[String] = js.undefined) = {
+  def getPhotos(`type`: js.UndefOr[String] = js.undefined): Future[FacebookPhotosResponse] = {
     val promise = Promise[FacebookPhotosResponse]()
     FB.api(fbURL("/photos", `type` map (myType => s"type=$myType")),
-           (response: FacebookPhotosResponse) => handleResponse(promise, response))
+      (response: FacebookPhotosResponse) => handleResponse(promise, response))
     promise.future
   }
 
@@ -171,32 +166,30 @@ class FacebookService() extends Service {
   //      Page-related Functions
   ///////////////////////////////////////////////////////////////////////////
 
-  def getConversations(pageAccessToken: String) = {
-    FB.api("/me/conversations", literal(access_token = pageAccessToken))
-  }
+  def getConversations(pageAccessToken: String): js.Any = FB.api("/me/conversations", literal(access_token = pageAccessToken))
 
   ///////////////////////////////////////////////////////////////////////////
   //      Other Functions
   ///////////////////////////////////////////////////////////////////////////
 
-  def feed(appID: String, caption: String, link: String) = {
+  def feed(appID: String, caption: String, link: String): Future[FacebookResponse] = {
     val promise = Promise[FacebookResponse]()
     FB.ui(FacebookCommand(app_id = appID, method = "feed", link = link, caption = caption),
-          (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
+      (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
     promise.future
   }
 
-  def send(appID: String, message: String, link: String) = {
+  def send(appID: String, message: String, link: String): Future[FacebookResponse] = {
     val promise = Promise[FacebookResponse]()
     FB.ui(FacebookCommand(app_id = appID, method = "send", link = link),
-          (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
+      (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
     promise.future
   }
 
-  def share(appID: String, link: String) = {
+  def share(appID: String, link: String): Future[FacebookResponse] = {
     val promise = Promise[FacebookResponse]()
     FB.ui(FacebookCommand(app_id = appID, method = "share", href = link),
-          (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
+      (response: js.UndefOr[FacebookResponse]) => handleResponse(promise, response))
     promise.future
   }
 
@@ -211,16 +204,17 @@ class FacebookService() extends Service {
     * @param fbUserID the optional Facebook User ID (e.g. "10203751019174743")
     * @return the URL (e.g. "/me/photos?access_token=....")
     */
-  private def fbURL(path: String = "", args: js.UndefOr[String] = js.undefined, fbUserID: String = "me") = {
+  private def fbURL(path: String = "", args: js.UndefOr[String] = js.undefined, fbUserID: String = "me"): String = {
     s"/$fbUserID$path?access_token=$accessToken" + (args map (myArgs => s"&$myArgs") getOrElse "")
   }
 
-  private def handleResponse[A <: FacebookResponse](promise: Promise[A], response: js.UndefOr[A]) = {
+  private def handleResponse[A <: FacebookResponse](promise: Promise[A], response: js.UndefOr[A]): Unit = {
     response.toOption match {
       case Some(resp) if resp.error.isEmpty => promise.success(resp)
-      case Some(resp)                       => promise.failure(new Exception(resp.error getOrElse "Cause unknown"))
-      case None                             => promise.failure(new Exception("No response from Facebook"))
+      case Some(resp) => promise.failure(new Exception(resp.error getOrElse "Cause unknown"))
+      case None => promise.failure(new Exception("No response from Facebook"))
     }
+    ()
   }
 
   /**
@@ -230,7 +224,7 @@ class FacebookService() extends Service {
     * @tparam A the paginated data type
     * @see [[https://developers.facebook.com/docs/graph-api/using-graph-api/v2.5#paging]]
     */
-  private def handlePaginatedResults[A](response: FacebookPagination[A], callback: PaginationCallback[A]) {
+  private def handlePaginatedResults[A](response: FacebookPagination[A], callback: PaginationCallback[A]): Unit = {
     // TODO implement both cursor and time-based pagination
     // perform the callback for this response
     callback(response)
@@ -241,17 +235,17 @@ class FacebookService() extends Service {
     })
   }
 
-  private def specialHandling[A <: FacebookResponse](promise: Promise[A], response: js.UndefOr[A])(
-      handler: A => Try[A]) = {
+  private def specialHandling[A <: FacebookResponse](promise: Promise[A], response: js.UndefOr[A])(handler: A => Try[A]): Unit = {
     response.toOption match {
       case Some(resp) if resp.error.isEmpty =>
         handler(resp) match {
           case Success(value) => promise.success(value)
-          case Failure(e)     => promise.failure(e)
+          case Failure(e) => promise.failure(e)
         }
       case Some(resp) => promise.failure(new Exception(resp.error getOrElse "Cause unknown"))
-      case None       => promise.failure(new Exception("No response from Facebook"))
+      case None => promise.failure(new Exception("No response from Facebook"))
     }
+    ()
   }
 
 }

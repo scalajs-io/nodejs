@@ -111,7 +111,7 @@ case class ModuleMacro(c: blackbox.Context) {
 
   private def getIdentifierName(factoryType: Type): String = getIdentifierName(factoryType.toString.split('.').last)
 
-  private def getIdentifierName(name: String): String = name.head.toLower + name.tail
+  private def getIdentifierName(name: String): String = name.toLowerCase.take(1) + name.tail
 
   private def makeArgumentList(ms: MethodSymbol) = {
     if (ms.paramLists.isEmpty) (Nil, Nil)

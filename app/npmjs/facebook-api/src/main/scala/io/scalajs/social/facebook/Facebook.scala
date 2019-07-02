@@ -9,7 +9,7 @@ import scala.scalajs.js
 @js.native
 trait Facebook extends js.Object {
 
-  def api(url: String, callback: js.Function): Unit = js.native
+  def api(url: String, callback: js.Function): js.Any = js.native
 
   def api(url: String, params: js.Object): Unit = js.native
 

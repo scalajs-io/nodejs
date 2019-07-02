@@ -16,7 +16,7 @@ class NockTest extends FunSpec {
   describe("Nock") {
 
     it("can intercept an HTTP GET request and reply with a status code") {
-      val couchdb = Nock("http://myapp.iriscouch.com")
+      Nock("http://myapp.iriscouch.com")
         .get("/users/1")
         .reply(200, js.Dictionary(
           "_id" -> "123ABC",
@@ -142,7 +142,7 @@ object NockTest {
   class Person(val name: String, val surname: String) extends js.Object
 
   class Items(val results: js.Array[Item]) extends js.Object
-  ø
+
   class Item(val id: String) extends js.Object
 
 }

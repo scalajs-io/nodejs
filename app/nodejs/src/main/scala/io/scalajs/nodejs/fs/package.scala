@@ -45,7 +45,7 @@ package object fs {
     @inline
     def closeFuture(fd: FileDescriptor): Future[Unit] = promiseWithError0[FileIOError](fs.close(fd, _))
 
-    @inline
+    @deprecated("Use fs.statFuture() or fs.accessFuture() instead.", since = "1.0.0")
     def existsFuture(path: String): Future[Boolean] = promiseCallback1[Boolean](fs.exists(path, _))
 
     @inline

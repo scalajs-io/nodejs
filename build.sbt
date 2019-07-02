@@ -72,7 +72,7 @@ lazy val jvm_io = (project in file("app/jvm/io")).
   settings(
     name := "jvm-io",
     organization := "io.scalajs",
-    description := "JVM-like Compatibility helpers"
+    description := "JVM Inspired I/O"
   )
 
 /////////////////////////////////////////////////////////////////////////////////

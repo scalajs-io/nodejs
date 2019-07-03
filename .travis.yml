@@ -13,13 +13,16 @@ jdk:
   - openjdk11
 
 install:
-  - rm -rf ~/.nvm &&
-    git clone https://github.com/nvm-sh/nvm.git ~/.nvm &&
-    (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) &&
-    source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
+  - rm -rf ~/.nvm && git clone https://github.com/nvm-sh/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && Ksource ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
+  - pip install --user codecov
 
 script:
-  - sbt ++$TRAVIS_SCALA_VERSION scalafmtSbtCheck scalafmtCheck test:scalafmtCheck current/doc core/doc test
+  - sbt ++$TRAVIS_SCALA_VERSION scalafmtSbtCheck scalafmtCheck test:scalafmtCheck clean current/doc core/doc coverage test
+  - if [[ "$TRAVIS_SCALA_VERSION" != 2.13.* ]]; # Primary support is 2.12.x
+    then
+      sbt ++$TRAVIS_SCALA_VERSION coverageReport coverageAggregate && codecov;
+    else echo "Skipping code coverage reporting on 2.13";
+    fi
 
 before_cache:
   - rm -fv $HOME/.ivy2/.sbt.ivy.lock

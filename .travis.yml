@@ -13,10 +13,7 @@ jdk:
   - openjdk11
 
 install:
-  - rm -rf ~/.nvm &&
-    git clone https://github.com/nvm-sh/nvm.git ~/.nvm &&
-    (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) &&
-    source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
+  - rm -rf ~/.nvm && git clone https://github.com/nvm-sh/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && Ksource ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
   - pip install --user codecov
 
 script:

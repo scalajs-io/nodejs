@@ -1,13 +1,11 @@
 package io.scalajs.npm
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.http.IncomingMessage
 import io.scalajs.nodejs.{SystemError, stream}
 import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Future
 import scala.scalajs.js
-import scala.scalajs.js.|
 
 /**
   * request package object
@@ -28,7 +26,7 @@ package object request {
   implicit class RequestExtensions(val client: Request) extends AnyVal {
 
     @inline
-    def deleteFuture(options: RequestOptions | RawOptions): Future[(IncomingMessage, RequestBody)] = {
+    def deleteFuture(options: RequestOptions): Future[(IncomingMessage, RequestBody)] = {
       promiseWithError2[RequestError, IncomingMessage, RequestBody](client.del(options, _))
     }
 
@@ -38,7 +36,7 @@ package object request {
     }
 
     @inline
-    def getFuture(options: RequestOptions | RawOptions): Future[(IncomingMessage, RequestBody)] = {
+    def getFuture(options: RequestOptions): Future[(IncomingMessage, RequestBody)] = {
       promiseWithError2[RequestError, IncomingMessage, RequestBody](client.get(options, _))
     }
 
@@ -48,7 +46,7 @@ package object request {
     }
 
     @inline
-    def headFuture(options: RequestOptions | RawOptions): Future[(IncomingMessage, RequestBody)] = {
+    def headFuture(options: RequestOptions): Future[(IncomingMessage, RequestBody)] = {
       promiseWithError2[RequestError, IncomingMessage, RequestBody](client.head(options, _))
     }
 
@@ -58,7 +56,7 @@ package object request {
     }
 
     @inline
-    def patchFuture(options: RequestOptions | RawOptions): Future[(IncomingMessage, RequestBody)] = {
+    def patchFuture(options: RequestOptions): Future[(IncomingMessage, RequestBody)] = {
       promiseWithError2[RequestError, IncomingMessage, RequestBody](client.patch(options, _))
     }
 
@@ -68,7 +66,7 @@ package object request {
     }
 
     @inline
-    def postFuture(options: RequestOptions | RawOptions): Future[(IncomingMessage, RequestBody)] = {
+    def postFuture(options: RequestOptions): Future[(IncomingMessage, RequestBody)] = {
       promiseWithError2[RequestError, IncomingMessage, RequestBody](client.post(options, _))
     }
 
@@ -78,12 +76,12 @@ package object request {
     }
 
     @inline
-    def postFuture(url: String, options: RequestOptions | RawOptions): Future[(IncomingMessage, RequestBody)] = {
+    def postFuture(url: String, options: RequestOptions): Future[(IncomingMessage, RequestBody)] = {
       promiseWithError2[RequestError, IncomingMessage, RequestBody](client.post(url, options, _))
     }
 
     @inline
-    def putFuture(options: RequestOptions | RawOptions): Future[(IncomingMessage, RequestBody)] = {
+    def putFuture(options: RequestOptions): Future[(IncomingMessage, RequestBody)] = {
       promiseWithError2[RequestError, IncomingMessage, RequestBody](client.put(options, _))
     }
 

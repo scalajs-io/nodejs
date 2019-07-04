@@ -1,7 +1,5 @@
 package io.scalajs.npm.githubapinode
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 
 /**
@@ -191,6 +189,6 @@ trait Repositories extends js.Object {
     * @param options       the optional settings
     * @param callback      the callback
     */
-  def write(branch: String, pathToFile: String, contents: String, commitMessage: String, options: RawOptions, callback: GitHubCallback0): Unit = js.native
+  def write(branch: String, pathToFile: String, contents: String, commitMessage: String, options: js.Any, callback: GitHubCallback0): Unit = js.native
 
 }

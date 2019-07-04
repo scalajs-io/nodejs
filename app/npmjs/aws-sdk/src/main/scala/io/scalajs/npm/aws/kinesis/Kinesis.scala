@@ -1,11 +1,9 @@
 package io.scalajs.npm.aws.kinesis
 
-import io.scalajs.RawOptions
 import io.scalajs.npm.aws.{AWSCallback, AWSRequest, Service}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * AWS.Kinesis - Constructs a service interface object. Each API operation is exposed as a function on service.
@@ -23,7 +21,7 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSImport("aws-sdk", "Kinesis")
-class Kinesis(options: KinesisOptions | RawOptions = js.native) extends Service {
+class Kinesis(options: KinesisOptions = js.native) extends Service {
 
   /**
     * Adds or updates tags for the specified Kinesis data stream. Each time you invoke this operation, you can specify
@@ -36,7 +34,7 @@ class Kinesis(options: KinesisOptions | RawOptions = js.native) extends Service 
     * [[AddTagsToStream]] has a limit of five transactions per second per account.
     * @return a [[AWSRequest handle]] to the operation request for subsequent event callback registration.
     */
-  def addTagsToStream(params: AddTagsToStream | RawOptions,
+  def addTagsToStream(params: AddTagsToStream,
                       callback: AWSCallback[AddTagsToStreamResult] = js.native): AWSRequest[AddTagsToStreamResult] = js.native
 
   /**
@@ -71,7 +69,7 @@ class Kinesis(options: KinesisOptions | RawOptions = js.native) extends Service 
     * [[CreateStream]] has a limit of five transactions per second per account.
     * @return a [[AWSRequest handle]] to the operation request for subsequent event callback registration.
     */
-  def createStream(params: CreateStream | RawOptions,
+  def createStream(params: CreateStream,
                    callback: AWSCallback[CreateStreamResult] = js.native): AWSRequest[CreateStreamResult] = js.native
 
   /**
@@ -82,7 +80,7 @@ class Kinesis(options: KinesisOptions | RawOptions = js.native) extends Service 
     * to 24 hours, any data already in the stream that is older than 24 hours is inaccessible.
     * @return a [[AWSRequest handle]] to the operation request for subsequent event callback registration.
     */
-  def decreaseStreamRetentionPeriod(params: DecreaseStreamRetentionPeriod | RawOptions,
+  def decreaseStreamRetentionPeriod(params: DecreaseStreamRetentionPeriod,
                                     callback: AWSCallback[DecreaseStreamRetentionPeriodResult] = js.native): AWSRequest[DecreaseStreamRetentionPeriodResult] = js.native
 
   /**
@@ -103,7 +101,7 @@ class Kinesis(options: KinesisOptions | RawOptions = js.native) extends Service 
     * [[DeleteStream]] has a limit of five transactions per second per account.
     * @return a [[AWSRequest handle]] to the operation request for subsequent event callback registration.
     */
-  def deleteStream(params: DeleteStream | RawOptions,
+  def deleteStream(params: DeleteStream,
                    callback: AWSCallback[DeleteStreamResult] = js.native): AWSRequest[DeleteStreamResult] = js.native
 
   /**
@@ -116,7 +114,7 @@ class Kinesis(options: KinesisOptions | RawOptions = js.native) extends Service 
     * This operation has a limit of five transactions per second per account.
     * @return a [[AWSRequest handle]] to the operation request for subsequent event callback registration.
     */
-  def deregisterStreamConsumer(params: DeregisterStreamConsumer | RawOptions,
+  def deregisterStreamConsumer(params: DeregisterStreamConsumer,
                                callback: AWSCallback[DeregisterStreamConsumerResult] = js.native): AWSRequest[DeregisterStreamConsumerResult] = js.native
 
   /**
@@ -127,7 +125,7 @@ class Kinesis(options: KinesisOptions | RawOptions = js.native) extends Service 
     * This operation has a limit of one transaction per second per account.
     * @return a [[AWSRequest handle]] to the operation request for subsequent event callback registration.
     */
-  def describeLimits(params: DescribeLimits | RawOptions,
+  def describeLimits(params: DescribeLimits,
                      callback: AWSCallback[DescribeLimitsResult] = js.native): AWSRequest[DescribeLimitsResult] = js.native
 
   /** Describes the specified Kinesis data stream.
@@ -147,7 +145,7 @@ class Kinesis(options: KinesisOptions | RawOptions = js.native) extends Service 
     * This operation has a limit of 10 transactions per second per account.
     * @return a [[AWSRequest handle]] to the operation request for subsequent event callback registration.
     */
-  def describeStream(params: DescribeStream | RawOptions,
+  def describeStream(params: DescribeStream,
                      callback: AWSCallback[DescribeStreamResult] = js.native): AWSRequest[DescribeStreamResult] = js.native
 
   /**
@@ -157,7 +155,7 @@ class Kinesis(options: KinesisOptions | RawOptions = js.native) extends Service 
     * @param params a list of parameters for the given state. See each waiter resource state for required parameters.
     * @return a [[AWSRequest handle]] to the operation request for subsequent event callback registration.
     */
-  def waitFor(state: String, params: StreamStatus | RawOptions,
+  def waitFor(state: String, params: StreamStatus,
               callback: AWSCallback[WaitForResult] = js.native): AWSRequest[WaitForResult] = js.native
 
 }

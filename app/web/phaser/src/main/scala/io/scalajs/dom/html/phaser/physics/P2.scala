@@ -1,8 +1,6 @@
 package io.scalajs.dom.html.phaser
 package physics
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
 
@@ -14,7 +12,7 @@ import scala.scalajs.js.annotation.JSGlobal
   */
 @js.native
 @JSGlobal("Phaser.Physics.P2")
-class P2(var game: Phaser.Game, val config: RawOptions = js.native) extends js.Object {
+class P2(var game: Phaser.Game, val config: js.Any = js.native) extends js.Object {
 
   /**
     * Enable to automatically apply body damping each step.

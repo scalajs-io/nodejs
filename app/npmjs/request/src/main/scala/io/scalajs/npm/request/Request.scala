@@ -1,6 +1,5 @@
 package io.scalajs.npm.request
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.nodejs.stream.{Readable, Writable}
 import io.scalajs.npm.toughcookie.{Cookie, CookieJar, CookieStore}
@@ -18,7 +17,7 @@ import scala.scalajs.js.|
 @js.native
 trait Request extends IEventEmitter {
 
-  def apply(form: RequestOptions | MultipartForm | RawOptions): Readable = js.native
+  def apply(form: RequestOptions | MultipartForm): Readable = js.native
 
   def apply(url: String): Readable = js.native
 
@@ -37,14 +36,14 @@ trait Request extends IEventEmitter {
     * @param options the given [[RequestOptions default options]]
     * @return a self reference
     */
-  def defaults(options: RequestOptions | RawOptions): this.type = js.native
+  def defaults(options: RequestOptions): this.type = js.native
 
   /**
     * Same as Request(), but defaults to method: "DELETE".
     * @param options  the given [[RequestOptions request options]]
     * @param callback the callback function
     */
-  def del(options: RequestOptions | RawOptions, callback: RequestCallBack): Unit = js.native
+  def del(options: RequestOptions, callback: RequestCallBack): Unit = js.native
 
   /**
     * Same as request(), but defaults to method: "DELETE".
@@ -65,7 +64,7 @@ trait Request extends IEventEmitter {
     * @param options  the given [[RequestOptions request options]]
     * @param callback the callback function
     */
-  def delete(options: RequestOptions | RawOptions, callback: RequestCallBack): Unit = js.native
+  def delete(options: RequestOptions, callback: RequestCallBack): Unit = js.native
 
   /**
     * Same as request(), but defaults to method: "DELETE".
@@ -81,11 +80,11 @@ trait Request extends IEventEmitter {
     */
   def delete(url: String, callback: RequestCallBack): Unit = js.native
 
-  def form(values: RawOptions): this.type = js.native
+  def form(values: js.Any): this.type = js.native
 
-  def get(options: RequestOptions | MultipartForm | RawOptions, callback: RequestCallBack): Unit = js.native
+  def get(options: RequestOptions | MultipartForm, callback: RequestCallBack): Unit = js.native
 
-  def get(options: RequestOptions | MultipartForm | RawOptions): Readable = js.native
+  def get(options: RequestOptions | MultipartForm): Readable = js.native
 
   def get(url: String): Readable = js.native
 
@@ -96,7 +95,7 @@ trait Request extends IEventEmitter {
     * @param options  the given [[RequestOptions request options]]
     * @param callback the callback function
     */
-  def head(options: RequestOptions | RawOptions, callback: RequestCallBack): Unit = js.native
+  def head(options: RequestOptions, callback: RequestCallBack): Unit = js.native
 
   /**
     * Same as request(), but defaults to method: "HEAD".
@@ -124,7 +123,7 @@ trait Request extends IEventEmitter {
     * @param options  the given [[RequestOptions request options]]
     * @param callback the callback function
     */
-  def patch(options: RequestOptions | RawOptions, callback: RequestCallBack): Unit = js.native
+  def patch(options: RequestOptions, callback: RequestCallBack): Unit = js.native
 
   /**
     * Same as Request(), but defaults to method: "PATCH".
@@ -145,7 +144,7 @@ trait Request extends IEventEmitter {
     * @param options  the given [[RequestOptions request options]]
     * @param callback the callback function
     */
-  def post(options: RequestOptions | RawOptions, callback: RequestCallBack): Unit = js.native
+  def post(options: RequestOptions, callback: RequestCallBack): Unit = js.native
 
   /**
     * Use Request as a Writable stream to easily POST Readable streams (like files, other HTTP requests, or otherwise).
@@ -167,14 +166,14 @@ trait Request extends IEventEmitter {
     * @param options  the given [[RequestOptions request options]]
     * @param callback the callback -> (error, response, body)
     */
-  def post(url: String, options: RequestOptions | RawOptions, callback: RequestCallBack): Unit = js.native
+  def post(url: String, options: RequestOptions, callback: RequestCallBack): Unit = js.native
 
   /**
     * Same as Request(), but defaults to method: "PUT".
     * @param options  the given [[RequestOptions request options]]
     * @param callback the callback function
     */
-  def put(options: RequestOptions | RawOptions, callback: RequestCallBack): Unit = js.native
+  def put(options: RequestOptions, callback: RequestCallBack): Unit = js.native
 
   /**
     * Same as Request(), but defaults to method: "PUT".

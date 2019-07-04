@@ -1,6 +1,6 @@
 package io.scalajs.dom.html.phaser
 
-import io.scalajs.{JsNumber, RawOptions}
+import io.scalajs.JsNumber
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
@@ -37,7 +37,7 @@ class Button(game: Phaser.Game,
              y: Double,
              key: String,
              var callback: js.Function,
-             var callbackContext: RawOptions,
+             var callbackContext: js.Any,
              var overFrame: String | JsNumber,
              var outFrame: String | JsNumber,
              var downFrame: String | JsNumber,

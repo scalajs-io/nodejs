@@ -1,6 +1,5 @@
 package io.scalajs.npm.combinedstream
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.stream.Readable
 
@@ -111,6 +110,6 @@ object CombinedStream extends js.Object {
     * @param options the given [[CombineStreamOptions optional settings]]
     * @return a new combined stream object.
     */
-  def create(options: CombineStreamOptions | RawOptions = js.native): CombinedStream = js.native
+  def create(options: CombineStreamOptions = js.native): CombinedStream = js.native
 
 }

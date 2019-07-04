@@ -1,9 +1,6 @@
 package io.scalajs.dom
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
-import scala.scalajs.js.|
 
 /**
   * EventTarget is an interface implemented by objects that can receive events and may have listeners for them.
@@ -35,7 +32,7 @@ trait EventTarget extends js.Object {
     *                 interface, or simply a JavaScript function.
     * @param options  An options object that specifies characteristics about the event listener.
     */
-  def addEventListener(`type`: String, listener: js.Function, options: EventTargetOptions | RawOptions): Unit =
+  def addEventListener(`type`: String, listener: js.Function, options: EventTargetOptions): Unit =
     js.native
 
   /**
@@ -61,7 +58,7 @@ trait EventTarget extends js.Object {
     * @param listener The EventListener function to remove from the event target.
     * @param options  An options object that specifies characteristics about the event listener.
     */
-  def removeEventListener(`type`: String, listener: js.Function, options: EventTargetOptions | RawOptions): Unit =
+  def removeEventListener(`type`: String, listener: js.Function, options: EventTargetOptions): Unit =
     js.native
 
   /**

@@ -1,7 +1,5 @@
 package io.scalajs.npm.cookie
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
@@ -22,7 +20,7 @@ trait Cookie extends js.Object {
     * @param options is an optional object containing additional parsing options.
     * @return an object of all cookie name-value pairs.
     */
-  def parse(str: String, options: DeserializationOptions | RawOptions = js.native): js.Dictionary[String] = js.native
+  def parse(str: String, options: DeserializationOptions = js.native): js.Dictionary[String] = js.native
 
   /**
     * Serialize a cookie name-value pair into a Set-Cookie header string.
@@ -31,7 +29,7 @@ trait Cookie extends js.Object {
     * @param options is an optional object containing additional serialization options.
     * @return
     */
-  def serialize(name: String, value: String | js.Any, options: SerializationOptions | RawOptions = js.native): String =
+  def serialize(name: String, value: String | js.Any, options: SerializationOptions = js.native): String =
     js.native
 
 }

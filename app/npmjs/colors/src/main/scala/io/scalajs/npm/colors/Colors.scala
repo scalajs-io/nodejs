@@ -1,7 +1,5 @@
 package io.scalajs.npm.colors
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
@@ -32,7 +30,7 @@ trait Colors extends js.Object {
 
   def apply(text: String): this.type = js.native
 
-  def setTheme(theme: RawOptions): Colors = js.native
+  def setTheme(theme: js.Any): Colors = js.native
 
   def strip(text: String): String = js.native
 

@@ -1,6 +1,5 @@
 package io.scalajs.nodejs
 
-import io.scalajs.RawOptions
 import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Future
@@ -71,7 +70,7 @@ package object dns {
       * integer, then it must be 4 or 6.
       */
     @inline
-    def lookupFuture(hostname: String, options: DnsOptions | RawOptions | Int = null): Future[String] = {
+    def lookupFuture(hostname: String, options: DnsOptions | Int = null): Future[String] = {
       promiseWithError1[DnsError, String](dns.lookup(hostname, options, _))
     }
 

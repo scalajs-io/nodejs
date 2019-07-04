@@ -1,6 +1,5 @@
 package io.scalajs.npm.mongoose
 
-import io.scalajs.RawOptions
 import io.scalajs.npm.mongodb.Cursor
 
 import scala.scalajs.js
@@ -53,7 +52,7 @@ class Aggregate[T]() extends QueryExecutable[T] {
     * @param collation the collation options
     * @param value     the boolean indicator
     */
-  def collation(collation: RawOptions, value: Boolean): this.type = js.native
+  def collation(collation: js.Any, value: Boolean): this.type = js.native
 
   /**
     * Sets the cursor option option for the aggregation query (ignored for < 2.6.0).
@@ -68,7 +67,7 @@ class Aggregate[T]() extends QueryExecutable[T] {
     *   });
     * }}}
     */
-  def cursor(options: RawOptions): AggregateCursor[T] = js.native
+  def cursor(options: js.Any): AggregateCursor[T] = js.native
 
   /**
     * Execute the aggregation with explain
@@ -81,7 +80,7 @@ class Aggregate[T]() extends QueryExecutable[T] {
     * Combines multiple aggregation pipelines.
     * @param facet the options
     */
-  def facet(facet: RawOptions): this.type = js.native
+  def facet(facet: js.Any): this.type = js.native
 
   /**
     * Appends new custom $graphLookup operator(s) to this aggregate pipeline,
@@ -90,7 +89,7 @@ class Aggregate[T]() extends QueryExecutable[T] {
     * even if { allowDiskUse: true } is specified.
     * @param options to $graphLookup as described in the above link
     */
-  def graphLookup(options: RawOptions): this.type = js.native
+  def graphLookup(options: js.Any): this.type = js.native
 
   /**
     * Appends a new custom $group operator to this aggregate pipeline.
@@ -108,7 +107,7 @@ class Aggregate[T]() extends QueryExecutable[T] {
     * Appends new custom $lookup operator(s) to this aggregate pipeline.
     * @param options to $lookup as described in the above link
     */
-  def lookup(options: RawOptions): this.type = js.native
+  def lookup(options: js.Any): this.type = js.native
 
   /**
     * Appends a new custom $match operator to this aggregate pipeline.
@@ -128,7 +127,7 @@ class Aggregate[T]() extends QueryExecutable[T] {
     * <b>NOTE</b>: MUST be used as the first operator in the pipeline.
     * @param parameters the given parameters
     */
-  def near(parameters: RawOptions): this.type = js.native
+  def near(parameters: js.Any): this.type = js.native
 
   /**
     * Appends a new $project operator to this aggregate pipeline.

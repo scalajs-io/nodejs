@@ -1,10 +1,7 @@
 package io.scalajs.npm.express.multer
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * Multer is a node.js middleware for handling multipart/form-data.
@@ -15,11 +12,11 @@ import scala.scalajs.js.|
 @js.native
 trait Multer extends js.Object {
 
-  def apply(options: MulterOptions | RawOptions): MulterInstance = js.native
+  def apply(options: MulterOptions): MulterInstance = js.native
 
-  def diskStorage(option: DiskStorageOptions | RawOptions): DiskStorage = js.native
+  def diskStorage(option: DiskStorageOptions): DiskStorage = js.native
 
-  def memoryStorage(option: MemoryStorageOptions | RawOptions): MemoryStorage = js.native
+  def memoryStorage(option: MemoryStorageOptions): MemoryStorage = js.native
 
 }
 

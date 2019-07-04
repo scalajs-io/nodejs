@@ -1,13 +1,11 @@
 package io.scalajs.nodejs
 package tls
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.net.Socket
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * The tls.TLSSocket is a subclass of net.Socket that performs transparent encryption of written data
@@ -19,7 +17,7 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSImport("tls", "TLSSocket")
-class TLSSocket(socket: Socket, options: TLSSocketOptions | RawOptions = js.native) extends net.Socket {
+class TLSSocket(socket: Socket, options: TLSSocketOptions = js.native) extends net.Socket {
 
   /**
     * Returns an object representing the peer's certificate. The returned object has some properties corresponding to

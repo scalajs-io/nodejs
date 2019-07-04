@@ -1,10 +1,7 @@
 package io.scalajs.npm.mkdirp
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * mkdirp - Recursively mkdir, like mkdir -p
@@ -45,7 +42,7 @@ trait Mkdirp extends js.Object {
     * @param callback the callback/error handler
     * @example {{{ mkdirp(dir, opts, cb) }}}
     */
-  def apply(path: String, options: MkdirpOptions | RawOptions, callback: MkdirpCallback): Unit = js.native
+  def apply(path: String, options: MkdirpOptions, callback: MkdirpCallback): Unit = js.native
 
   /**
     * Synchronously create a new directory and any necessary subdirectories at dir with octal permission
@@ -61,7 +58,7 @@ trait Mkdirp extends js.Object {
     * @param options the optional settings
     * @example {{{ mkdirp.sync(dir, options) }}}
     */
-  def sync(path: String, options: MkdirpOptions | RawOptions = js.native): String = js.native
+  def sync(path: String, options: MkdirpOptions = js.native): String = js.native
 
 }
 

@@ -1,10 +1,7 @@
 package io.scalajs.nodejs.vm
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * The vm module provides APIs for compiling and running code within V8 Virtual Machine contexts.
@@ -42,7 +39,7 @@ trait VM extends js.Object {
     * @param options the optional options
     * @example vm.createScript(code[, options])
     */
-  def createScript(code: String, options: ScriptOptions | RawOptions = js.native): ContextifyScript = js.native
+  def createScript(code: String, options: ScriptOptions = js.native): ContextifyScript = js.native
 
   /**
     * The vm.runInDebugContext() method compiles and executes code inside the V8 debug context.
@@ -61,7 +58,7 @@ trait VM extends js.Object {
     */
   def runInContext(code: String,
                    contextifiedSandbox: ScriptContext,
-                   options: ContextOptions | RawOptions = js.native): js.Any = js.native
+                   options: ContextOptions = js.native): js.Any = js.native
 
   /**
     * First contextifies the given sandbox, runs the compiled code contained by the vm.Script object within the created
@@ -71,7 +68,7 @@ trait VM extends js.Object {
     * @param options the optional options
     * @example vm.runInNewContext(code[, sandbox][, options])
     */
-  def runInNewContext(code: String, sandbox: js.Any, options: ContextOptions | RawOptions = js.native): js.Any =
+  def runInNewContext(code: String, sandbox: js.Any, options: ContextOptions = js.native): js.Any =
     js.native
 
   /**
@@ -81,7 +78,7 @@ trait VM extends js.Object {
     * @param options the optional options
     * @example script.runInThisContext([options])
     */
-  def runInThisContext(code: String, options: ContextOptions | RawOptions = js.native): ContextifyScript = js.native
+  def runInThisContext(code: String, options: ContextOptions = js.native): ContextifyScript = js.native
 
   /**
     * Returns true if the given sandbox object has been contextified using vm.createContext().

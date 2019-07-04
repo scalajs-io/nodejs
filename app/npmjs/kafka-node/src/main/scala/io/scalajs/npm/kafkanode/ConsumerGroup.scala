@@ -1,11 +1,9 @@
 package io.scalajs.npm.kafkanode
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * Consumer Group - The new consumer group uses Kafka broker coordinators instead of Zookeeper
@@ -14,11 +12,11 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSImport("kafka-node", "ConsumerGroup")
-class ConsumerGroup(options: ConsumerGroupOptions | RawOptions)
+class ConsumerGroup(options: ConsumerGroupOptions)
   extends IEventEmitter {
 
-  def this(options: ConsumerGroupOptions | RawOptions, topics: String) = this(options)
+  def this(options: ConsumerGroupOptions, topics: String) = this(options)
 
-  def this(options: ConsumerGroupOptions | RawOptions, topics: js.Array[String]) = this(options)
+  def this(options: ConsumerGroupOptions, topics: js.Array[String]) = this(options)
 
 }

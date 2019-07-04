@@ -79,7 +79,7 @@ trait Cursor[T] extends nodejs.stream.Readable {
     * @example count(applySkipLimit, [options], [callback])
     */
   def count(applySkipLimit: Boolean,
-            options: CountOptions | RawOptions,
+            options: CountOptions,
             callback: MongoCallback1[Int]): js.Promise[Int] = js.native
 
   /**

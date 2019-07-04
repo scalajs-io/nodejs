@@ -1,11 +1,9 @@
 package io.scalajs.npm
 
-import io.scalajs.RawOptions
 import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Future
 import scala.scalajs.js
-import scala.scalajs.js.|
 
 /**
   * mkdirp package object
@@ -22,7 +20,7 @@ package object mkdirp {
   implicit class MkdirpEnrichment(val m: Mkdirp) extends AnyVal {
 
     @inline
-    def future(path: String, options: MkdirpOptions | RawOptions = null): Future[String] = {
+    def future(path: String, options: MkdirpOptions = null): Future[String] = {
       promiseWithError1[MkdirpError, String](m(path, options, _))
     }
 

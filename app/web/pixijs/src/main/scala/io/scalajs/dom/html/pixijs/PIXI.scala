@@ -1,11 +1,9 @@
 package io.scalajs.dom.html
 package pixijs
 
-import io.scalajs.RawOptions
 import io.scalajs.dom.html.canvas.HTMLCanvasElement
 
 import scala.scalajs.js
-import scala.scalajs.js._
 import scala.scalajs.js.annotation.{JSGlobal, JSName}
 
 /**
@@ -82,7 +80,7 @@ object PIXI extends js.Object {
     */
   def autoDetectRenderer(width: Double = js.native,
                          height: Double = js.native,
-                         options: AutoDetectRendererOptions | RawOptions = js.native,
+                         options: AutoDetectRendererOptions = js.native,
                          noWebGL: Boolean = js.native): AbstractRenderer = js.native
 
   /////////////////////////////////////////////////////////////////////////////////

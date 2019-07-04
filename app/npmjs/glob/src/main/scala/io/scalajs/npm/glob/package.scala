@@ -1,11 +1,10 @@
 package io.scalajs.npm
 
-import io.scalajs.RawOptions
 import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Future
 import scala.scalajs.js
-import scala.scalajs.js.{Array, |}
+import scala.scalajs.js.Array
 
 /**
   * glob package object
@@ -24,7 +23,7 @@ package object glob {
   implicit class GlobObjectEnrichment(val glob: GlobClass) extends AnyVal {
 
     @inline
-    def future(pattern: String, options: GlobOptions | RawOptions = null): Future[Array[String]] = {
+    def future(pattern: String, options: GlobOptions = null): Future[Array[String]] = {
       promiseWithError1[GlobError, js.Array[String]](glob(pattern, options, _))
     }
 

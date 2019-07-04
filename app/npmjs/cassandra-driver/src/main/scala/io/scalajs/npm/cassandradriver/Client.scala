@@ -1,13 +1,11 @@
 package io.scalajs.npm.cassandradriver
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.Error
 import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.nodejs.stream.Readable
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * Cassandra Client
@@ -25,7 +23,7 @@ class Client(options: ClientOptions = js.native) extends IEventEmitter {
     * @param callback the callback function
     * @example {{{ client.batch(queries, { prepare: true }, function(err) { ... }) }}}
     */
-  def batch(queries: js.Array[BatchUpdate], options: QueryOptions | RawOptions, callback: js.Function): Unit =
+  def batch(queries: js.Array[BatchUpdate], options: QueryOptions, callback: js.Function): Unit =
     js.native
 
   /**
@@ -39,7 +37,7 @@ class Client(options: ClientOptions = js.native) extends IEventEmitter {
     */
   def eachRow[T](query: String,
                  params: CassandraParams,
-                 options: RawOptions,
+                 options: js.Any,
                  callback: js.Function2[Int, T, Any]): Unit = js.native
 
   /**
@@ -54,7 +52,7 @@ class Client(options: ClientOptions = js.native) extends IEventEmitter {
     */
   def eachRow[T](query: String,
                  params: CassandraParams,
-                 options: RawOptions,
+                 options: js.Any,
                  callback: js.Function2[Int, T, Any],
                  endCallback: js.Function): Unit = js.native
 
@@ -96,7 +94,7 @@ class Client(options: ClientOptions = js.native) extends IEventEmitter {
     */
   def execute(update: String,
               params: CassandraParams,
-              options: QueryOptions | RawOptions,
+              options: QueryOptions,
               callback: js.Function2[Error, js.Dictionary[_], Any]): Unit = js.native
 
   /**

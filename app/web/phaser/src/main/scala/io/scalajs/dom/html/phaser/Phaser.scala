@@ -1,12 +1,10 @@
 package io.scalajs.dom.html
 package phaser
 
-import io.scalajs.RawOptions
 import io.scalajs.dom.html.pixijs.DisplayObject
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSGlobal, JSName}
-import scala.scalajs.js.|
 
 /**
   * phaser - A fast, free and fun HTML5 Game Framework for Desktop and Mobile web browsers.
@@ -83,38 +81,7 @@ object Phaser extends js.Object {
   type Game = phaser.Game
   type Gamepad = phaser.Gamepad
   type GameObjectCreator = phaser.GameObjectCreator
-
-  /**
-    * A reference to the GameObjectFactory which can be used to add new objects to the World.
-    * @param game the running [[Game]].
-    */
-  @js.native
-  class GameObjectFactory(var game: Game = js.native) extends js.Object {
-
-    /**
-      * A reference to the game world.
-      */
-    var world: World = js.native
-
-    def tween(aliens: DisplayObject): Tween = js.native
-
-    def text(x: Double = js.native,
-             y: Double = js.native,
-             text: String = js.native,
-             style: js.Dictionary[_] = js.native,
-             group: Group[_] = js.native): Text = js.native
-
-    def sprite(x: Int = js.native, y: Int = js.native, key: String = js.native, frame: Any = js.native, group: Group[_] = js.native): Sprite = js.native
-
-    def group(parent: Any = js.native,
-              name: String = js.native,
-              addToStage: Boolean = js.native,
-              enableBody: Boolean = js.native,
-              physicsBodyType: Int = js.native): Group[Sprite] = js.native
-
-    def tileSprite(x: Int, y: Int, width: Int, height: Int, key: String, frame: Any = js.native, group: Group[_] = js.native): TileSprite = js.native
-  }
-
+  type GameObjectFactory = phaser.GameObjectFactory
   type Graphics = phaser.Graphics
   type Group[T] = phaser.Group[T]
   type Image = phaser.Image
@@ -140,6 +107,7 @@ object Phaser extends js.Object {
   type SoundManager = phaser.SoundManager
   type Sprite = phaser.Sprite
   type State = phaser.State
+  type Text = phaser.Text
   type Texture = phaser.Texture
   type Tilemap = phaser.Tilemap
   type TilemapLayer = phaser.TilemapLayer
@@ -242,25 +210,6 @@ object Phaser extends js.Object {
     }
 
   }
-
-  /**
-    * Create a new game object for displaying Text.
-    *
-    * This uses a local hidden Canvas object and renders the type into it. It then makes a texture from this for rendering to the view.
-    * Because of this you can only display fonts that are currently loaded and available to the browser: fonts must be pre-loaded.
-    * @param game  Current game instance.
-    * @param x     X position of the new text object.
-    * @param y     Y position of the new text object.
-    * @param text  The actual text that will be written.
-    * @param style The style properties to be set on the Text.
-    */
-  @js.native
-  @JSName("Text")
-  class Text(game: Phaser.Game,
-             x: Double,
-             y: Double,
-             var text: String,
-             var style: StyleOptions | RawOptions = js.native) extends Sprite
 
   /**
     * Phaser.Utils class references

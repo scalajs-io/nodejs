@@ -1,6 +1,5 @@
 package io.scalajs.npm.mongoose
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.npm.mongodb.Db
 
@@ -65,7 +64,7 @@ trait Connection extends IEventEmitter {
     * @param options optional collection options
     * @return the [[Collection collection]] instance
     */
-  def collection(name: String, options: RawOptions = js.native): Collection = js.native
+  def collection(name: String, options: js.Any = js.native): Collection = js.native
 
   /**
     * Models defined on the mongoose instance are available to all connection created by the same mongoose instance.
@@ -91,7 +90,7 @@ trait Connection extends IEventEmitter {
     * @param callback the  plugin callback
     * @param options  the optional options
     */
-  def plugin(callback: js.Function, options: RawOptions = js.native): Unit = js.native
+  def plugin(callback: js.Function, options: js.Any = js.native): Unit = js.native
 
   /**
     * Sets mongoose options

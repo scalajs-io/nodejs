@@ -1,6 +1,5 @@
 package io.scalajs.npm.aws.ses
 
-import io.scalajs.RawOptions
 import io.scalajs.npm.aws.AWSError
 
 import scala.scalajs.js
@@ -22,7 +21,7 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 @JSImport("aws-sdk", "SES")
-class SES(options: RawOptions = js.native) extends js.Object {
+class SES(options: js.Any = js.native) extends js.Object {
 
   def cloneReceiptRuleSet[T](params: js.Dictionary[js.Any], callback: js.Function2[AWSError, T, Any]): Unit = js.native
 

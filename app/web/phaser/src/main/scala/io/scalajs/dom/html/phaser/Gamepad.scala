@@ -1,7 +1,5 @@
 package io.scalajs.dom.html.phaser
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
 
@@ -106,7 +104,7 @@ class Gamepad(var game: Phaser.Game) extends js.Object {
     *                  onConnectCallback, onDisconnectCallback, onDownCallback, onUpCallback,
     *                  onAxisCallback, onFloatCallback
     */
-  def addCallbacks(context: RawOptions, callbacks: Callbacks): Unit = js.native
+  def addCallbacks(context: js.Any, callbacks: Callbacks): Unit = js.native
 
   /**
     * Destroys this object and the associated event listeners.

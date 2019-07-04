@@ -1,6 +1,5 @@
 package io.scalajs.nodejs.fs
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.url.URL
 import io.scalajs.nodejs.{GID, UID}
@@ -46,7 +45,7 @@ trait Promises extends js.Object {
     */
   def appendFile(path: String | Buffer | URL | FileHandle,
                  data: String | Buffer,
-                 options: FileAppendOptions | RawOptions = js.native): js.Promise[Unit] = js.native
+                 options: FileAppendOptions = js.native): js.Promise[Unit] = js.native
 
   /**
     * Changes the permissions of a file then resolves the Promise with no arguments upon succces.
@@ -129,7 +128,7 @@ trait Promises extends js.Object {
     * @param options the [[FileEncodingOptions options]]
     * @return the [[js.Promise promise]] of a [[Stats]]
     */
-  def lstat(path: String | Buffer | URL, options: FileEncodingOptions | RawOptions = js.native): js.Promise[Stats] = js.native
+  def lstat(path: String | Buffer | URL, options: FileEncodingOptions = js.native): js.Promise[Stats] = js.native
 
   /**
     * @example mkdir(path[, options])#
@@ -137,7 +136,7 @@ trait Promises extends js.Object {
     * @param options the [[FileEncodingOptions options]]
     * @return a [[js.Promise promise]]
     */
-  def mkdir(path: String | Buffer | URL, options: FileEncodingOptions | RawOptions = js.native): js.Promise[Unit] = js.native
+  def mkdir(path: String | Buffer | URL, options: FileEncodingOptions = js.native): js.Promise[Unit] = js.native
 
   /**
     * Creates a unique temporary directory and resolves the Promise with the created folder path. A unique directory
@@ -152,7 +151,7 @@ trait Promises extends js.Object {
     * @param options the [[FileEncodingOptions options]]
     * @return a [[js.Promise promise]]
     */
-  def mkdtemp(prefix: String, options: FileEncodingOptions | String | RawOptions = js.native): js.Promise[String] = js.native
+  def mkdtemp(prefix: String, options: FileEncodingOptions | String = js.native): js.Promise[String] = js.native
 
   /**
     * Asynchronous file open that returns a Promise that, when resolved, yields a [[FileHandle]] object. See open(2).
@@ -183,7 +182,7 @@ trait Promises extends js.Object {
     * @param options the [[FileEncodingOptions options]]
     * @return a [[js.Promise promise]]
     */
-  def readdir(path: String | Buffer | URL, options: FileEncodingOptions | String | RawOptions): js.Promise[js.Array[Dirent]] = js.native
+  def readdir(path: String | Buffer | URL, options: FileEncodingOptions | String): js.Promise[js.Array[Dirent]] = js.native
 
   /**
     * Asynchronously reads the entire contents of a file.
@@ -203,7 +202,7 @@ trait Promises extends js.Object {
     * @param options the [[FileEncodingOptions options]]
     * @return a [[js.Promise promise]]
     */
-  def readFile(path: String | Buffer | URL, options: FileEncodingOptions | RawOptions = js.native): js.Promise[String] = js.native
+  def readFile(path: String | Buffer | URL, options: FileEncodingOptions = js.native): js.Promise[String] = js.native
 
   /**
     * The optional options argument can be a string specifying an encoding, or an object with an encoding property
@@ -214,7 +213,7 @@ trait Promises extends js.Object {
     * @param options the [[FileEncodingOptions options]]
     * @return a [[js.Promise promise]]
     */
-  def readlink(path: String | Buffer | URL, options: FileEncodingOptions | RawOptions = js.native): js.Promise[String] = js.native
+  def readlink(path: String | Buffer | URL, options: FileEncodingOptions = js.native): js.Promise[String] = js.native
 
   /**
     * Determines the actual location of path using the same semantics as the fs.realpath.native() function then
@@ -233,7 +232,7 @@ trait Promises extends js.Object {
     * @param options the [[FileEncodingOptions options]]
     * @return the [[js.Promise promised]] path
     */
-  def realpath(path: String | Buffer | URL, options: FileEncodingOptions | String | RawOptions = js.native): js.Promise[String] = js.native
+  def realpath(path: String | Buffer | URL, options: FileEncodingOptions | String = js.native): js.Promise[String] = js.native
 
   /**
     * Renames oldPath to newPath and resolves the Promise with no arguments upon success.
@@ -262,7 +261,7 @@ trait Promises extends js.Object {
     * @param options the [[FileStatOptions options]]
     * @return a [[js.Promise promise]]
     */
-  def stat(path: String | Buffer | URL, options: FileStatOptions | RawOptions = js.native): js.Promise[Stats] = js.native
+  def stat(path: String | Buffer | URL, options: FileStatOptions = js.native): js.Promise[Stats] = js.native
 
   /**
     * Creates a symbolic link then resolves the Promise with no arguments upon success.

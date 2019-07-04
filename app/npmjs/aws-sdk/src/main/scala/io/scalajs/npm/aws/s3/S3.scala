@@ -1,11 +1,8 @@
 package io.scalajs.npm.aws
 package s3
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * AWS.S3
@@ -14,7 +11,7 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSImport("aws-sdk", "S3")
-class S3(options: ClientConfiguration | RawOptions = js.native) extends Service {
+class S3(options: ClientConfiguration = js.native) extends Service {
 
   /**
     * Aborts a multipart upload.To verify that all parts have been removed, so you don't get charged
@@ -71,22 +68,22 @@ class S3(options: ClientConfiguration | RawOptions = js.native) extends Service 
   def deleteBucketInventoryConfiguration(params: DeleteBucketInventoryConfigurationRequest,
                                          callback: AWSCallback[Unit] = js.native): AWSRequest[Unit] = js.native
 
-  def getBucketLocation(params: BucketParams | RawOptions,
+  def getBucketLocation(params: BucketParams,
                         callback: AWSCallback[GetBucketLocationOutput] = js.native): AWSRequest[GetBucketLocationOutput] = js.native
 
   def getObject(params: GetObjectRequest,
                 callback: AWSCallback[GetObjectOutput] = js.native): AWSRequest[GetObjectOutput] = js.native
 
-  def headBucket(params: RawOptions,
+  def headBucket(params: js.Any,
                  callback: AWSCallback[js.Any] = js.native): AWSRequest[js.Any] = js.native
 
-  def headObject(params: RawOptions,
+  def headObject(params: js.Any,
                  callback: AWSCallback[js.Any] = js.native): AWSRequest[js.Any] = js.native
 
-  def listObjects(params: ListObjectsRequest | RawOptions,
+  def listObjects(params: ListObjectsRequest,
                   callback: AWSCallback[ListObjectsOutput] = js.native): AWSRequest[ListObjectsOutput] = js.native
 
-  def listObjectsV2(params: ListObjectsV2Request | RawOptions,
+  def listObjectsV2(params: ListObjectsV2Request,
                     callback: AWSCallback[ListObjectsV2Output] = js.native): AWSRequest[ListObjectsV2Output] = js.native
 
 }

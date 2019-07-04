@@ -1,11 +1,9 @@
 package io.scalajs.npm.kafkanode
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * Kafka-Node Consumer
@@ -13,7 +11,7 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSImport("kafka-node", "Producer")
-class Consumer(client: Client, payloads: js.Array[FetchRequest], options: ConsumerOptions | RawOptions = js.native)
+class Consumer(client: Client, payloads: js.Array[FetchRequest], options: ConsumerOptions = js.native)
     extends IEventEmitter {
 
   /**

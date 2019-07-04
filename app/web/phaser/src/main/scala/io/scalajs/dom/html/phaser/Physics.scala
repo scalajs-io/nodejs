@@ -1,7 +1,5 @@
 package io.scalajs.dom.html.phaser
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
 import scala.scalajs.js.|
@@ -22,7 +20,7 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSGlobal("Phaser.Physics")
-class Physics(var game: Phaser.Game, var config: PhysicsConfig | RawOptions) extends js.Object {
+class Physics(var game: Phaser.Game, var config: PhysicsConfig) extends js.Object {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties

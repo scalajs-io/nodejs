@@ -1,6 +1,5 @@
 package io.scalajs.npm.tingodb
 
-import io.scalajs.RawOptions
 import io.scalajs.npm.mongodb.{Admin, CollectionInfo, CollectionOptions, Cursor, DbOptions}
 
 import scala.scalajs.js
@@ -14,7 +13,7 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSImport("tingodb", "Db")
-class Db(databaseName: String, options: DbOptions | RawOptions = js.native) extends js.Object {
+class Db(databaseName: String, options: DbOptions = js.native) extends js.Object {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods

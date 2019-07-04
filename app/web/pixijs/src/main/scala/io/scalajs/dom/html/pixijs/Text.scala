@@ -1,11 +1,9 @@
 package io.scalajs.dom.html.pixijs
 
-import io.scalajs.RawOptions
 import io.scalajs.dom.html.canvas.HTMLCanvasElement
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
-import scala.scalajs.js.|
 
 /**
   * A Text Object will create a line or multiple lines of text. To split a line you can use '\n' in your text string,
@@ -15,7 +13,7 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSGlobal("Text")
-class Text(var text: String, var style: TextStyleOptions | RawOptions = js.native) extends js.Object {
+class Text(var text: String, var style: TextStyleOptions = js.native) extends js.Object {
 
   /**
     * The opacity of the object.

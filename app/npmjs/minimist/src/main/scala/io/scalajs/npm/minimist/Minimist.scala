@@ -1,10 +1,7 @@
 package io.scalajs.npm.minimist
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * minimist - parse argument options
@@ -20,7 +17,7 @@ trait Minimist extends js.Object {
     * @param options the optional settings
     * @return an argument object argv populated with the array arguments from args.
     */
-  def apply(args: js.Array[String], options: MinimistOptions | RawOptions = js.native): js.Dictionary[js.Any] = js.native
+  def apply(args: js.Array[String], options: MinimistOptions = js.native): js.Dictionary[js.Any] = js.native
 
 }
 

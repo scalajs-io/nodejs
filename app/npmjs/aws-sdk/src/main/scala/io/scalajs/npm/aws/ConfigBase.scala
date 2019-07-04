@@ -1,10 +1,7 @@
 package io.scalajs.npm.aws
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * AWS.ConfigBase
@@ -32,7 +29,7 @@ class ConfigBase(val options: ConfigurationOptions = js.native) extends Configur
     * @param options          a map of option keys and values.
     * @param allowUnknownKeys Whether unknown keys can be set on the configuration object.
     */
-  def update(options: ConfigurationOptions | RawOptions, allowUnknownKeys: Boolean = js.native): Unit = js.native
+  def update(options: ConfigurationOptions, allowUnknownKeys: Boolean = js.native): Unit = js.native
 
   /**
     * Gets the promise dependency the SDK will use wherever Promises are returned.

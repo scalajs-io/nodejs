@@ -1,6 +1,5 @@
 package io.scalajs.npm
 
-import io.scalajs.RawOptions
 import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Future
@@ -149,7 +148,7 @@ package object githubapinode {
                    pathToFile: String,
                    contents: String,
                    commitMessage: String,
-                   options: RawOptions): Future[Unit] = {
+                   options: js.Any): Future[Unit] = {
       promiseWithError0[GithubError](repo.write(branch, pathToFile, contents, commitMessage, options, _))
     }
 
@@ -177,7 +176,7 @@ package object githubapinode {
       * @return the array of repositories
       */
     @inline
-    def reposFuture(options: RawOptions = null): Future[js.Array[Repository]] = {
+    def reposFuture(options: js.Any = null): Future[js.Array[Repository]] = {
       promiseWithError1[GithubError, js.Array[Repository]](user.repos(options, _))
     }
 

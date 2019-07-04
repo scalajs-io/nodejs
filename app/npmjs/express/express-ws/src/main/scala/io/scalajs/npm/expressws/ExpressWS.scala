@@ -1,12 +1,10 @@
 package io.scalajs.npm.expressws
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.http.Server
 import io.scalajs.npm.express.Application
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * WebSocket endpoints for Express applications. Lets you define WebSocket endpoints like
@@ -28,7 +26,7 @@ trait ExpressWS extends js.Object {
     */
   def apply(app: Application,
             server: Server = js.native,
-            options: WSConfigOptions | RawOptions = js.native): WsInstance = js.native
+            options: WSConfigOptions = js.native): WsInstance = js.native
 
 }
 

@@ -1,7 +1,5 @@
 package io.scalajs.nodejs.dns
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
@@ -45,7 +43,7 @@ trait DNS extends js.Object {
     * All properties are optional.
     * @example dns.lookup(hostname[, options], callback)
     */
-  def lookup(hostname: String, options: DnsOptions | RawOptions | Int, callback: DnsCallback1[String]): Unit = js.native
+  def lookup(hostname: String, options: DnsOptions | Int, callback: DnsCallback1[String]): Unit = js.native
 
   /**
     * Resolves a hostname (e.g. 'nodejs.org') into the first found A (IPv4) or AAAA (IPv6) record. options can be an

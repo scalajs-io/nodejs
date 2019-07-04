@@ -1,10 +1,7 @@
 package io.scalajs.npm.tingodb
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * TingoDB is an embedded JavaScript in-process filesystem or in-memory database upwards compatible
@@ -14,7 +11,7 @@ import scala.scalajs.js.|
 @js.native
 trait TingoDB extends js.Object {
 
-  def apply(options: TingoDbOptions | RawOptions = js.native): TingoDBObject = js.native
+  def apply(options: TingoDbOptions = js.native): TingoDBObject = js.native
 
 }
 

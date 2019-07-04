@@ -1,12 +1,10 @@
 package io.scalajs.npm.kafkanode
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.Error
 import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * Kafka-Node High-level Producer
@@ -14,7 +12,7 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSImport("kafka-node", "HighLevelProducer")
-class HighLevelProducer(client: Client, options: ProducerOptions | RawOptions = js.native) extends IEventEmitter {
+class HighLevelProducer(client: Client, options: ProducerOptions = js.native) extends IEventEmitter {
 
   /**
     * @example createTopics(topics, [async,] callback)

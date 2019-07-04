@@ -1,7 +1,5 @@
 package io.scalajs.dom.html.phaser
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
 
@@ -85,6 +83,6 @@ class GameObjectCreator(var game: Phaser.Game) extends js.Object {
     * @param style The style object containing style attributes like font, font size , etc.
     * @return The newly created [[Phaser.BitmapText text object]].
     */
-  def text(x: Double, y: Double, text: String, style: RawOptions): Phaser.Text = js.native
+  def text(x: Double, y: Double, text: String, style: js.Any): Phaser.Text = js.native
 
 }

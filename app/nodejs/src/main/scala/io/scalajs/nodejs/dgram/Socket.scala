@@ -1,7 +1,6 @@
 package io.scalajs.nodejs
 package dgram
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.nodejs.net.Address
@@ -59,7 +58,7 @@ class Socket extends IEventEmitter {
     * @param callback the callback
     * @example bind(options[, callback])
     */
-  def bind(options: RawOptions, callback: js.Function): Unit = js.native
+  def bind(options: js.Any, callback: js.Function): Unit = js.native
 
   /**
     * For UDP sockets, causes the dgram.Socket to listen for datagram messages on a named port and optional address.
@@ -69,7 +68,7 @@ class Socket extends IEventEmitter {
     * @param options the optional settings
     * @example bind(options[, callback])
     */
-  def bind(options: RawOptions): Unit = js.native
+  def bind(options: js.Any): Unit = js.native
 
   /**
     * Broadcasts a datagram on the socket. The destination port and address must be specified.

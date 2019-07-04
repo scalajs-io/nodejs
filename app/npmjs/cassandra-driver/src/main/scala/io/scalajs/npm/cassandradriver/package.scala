@@ -1,12 +1,10 @@
 package io.scalajs.npm
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.Error
 import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Future
 import scala.scalajs.js
-import scala.scalajs.js.|
 
 /**
   * DataStax Cassandra Package object
@@ -34,7 +32,7 @@ package object cassandradriver {
       * @return the promise of an error result
       */
     @inline
-    def batchFuture(queries: js.Array[BatchUpdate], options: QueryOptions | RawOptions = null): Future[Unit] = {
+    def batchFuture(queries: js.Array[BatchUpdate], options: QueryOptions = null): Future[Unit] = {
       promiseWithError0[Error](client.batch(queries, options, _))
     }
 
@@ -48,7 +46,7 @@ package object cassandradriver {
     @inline
     def eachRowFuture[T](query: String,
                          params: CassandraParams,
-                         options: QueryOptions | RawOptions = null): Future[(Int, T)] = {
+                         options: QueryOptions = null): Future[(Int, T)] = {
       promiseCallback2[Int, T](client.eachRow(query, params, _))
     }
 
@@ -62,7 +60,7 @@ package object cassandradriver {
     @inline
     def executeFuture(query: String,
                       params: CassandraParams,
-                      options: QueryOptions | RawOptions): Future[js.Dictionary[_]] = {
+                      options: QueryOptions): Future[js.Dictionary[_]] = {
       promiseWithError1[Error, js.Dictionary[_]](client.execute(query, params, options, _))
     }
 

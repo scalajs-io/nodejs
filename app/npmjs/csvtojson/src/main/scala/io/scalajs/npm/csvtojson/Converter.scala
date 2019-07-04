@@ -1,11 +1,9 @@
 package io.scalajs.npm.csvtojson
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.stream.Writable
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * csvtojson Converter
@@ -13,7 +11,7 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSImport("csvtojson", "Converter")
-class Converter(options: ConverterOptions | RawOptions) extends Writable
+class Converter(options: ConverterOptions) extends Writable
 
 /**
   * Converter Options

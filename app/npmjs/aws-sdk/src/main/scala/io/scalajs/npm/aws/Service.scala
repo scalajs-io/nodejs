@@ -1,10 +1,7 @@
 package io.scalajs.npm.aws
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * AWS.Service
@@ -13,7 +10,7 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSImport("aws-sdk", "Service")
-class Service(val config: ServiceConfigurationOptions | RawOptions = js.native) extends js.Object {
+class Service(val config: ServiceConfigurationOptions = js.native) extends js.Object {
 
   //////////////////////////////////////////////////////////////
   //    Properties
@@ -43,7 +40,7 @@ class Service(val config: ServiceConfigurationOptions | RawOptions = js.native) 
     */
   def defineService(serviceIdentifier: String,
                     versions: js.Array[String],
-                    features: RawOptions): Class[Service] = js.native
+                    features: js.Any): Class[Service] = js.native
 
   /**
     * Calls an operation on a service with the given input parameters.

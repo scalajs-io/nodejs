@@ -1,11 +1,10 @@
 package io.scalajs.npm.mongodb
 package gridfs
 
-import io.scalajs.{RawOptions, nodejs}
+import io.scalajs.nodejs
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * GridFS Bucket Read Stream
@@ -18,7 +17,7 @@ class GridFSBucketReadStream(chunks: Collection,
                              files: Collection,
                              readPreference: js.Any,
                              filter: js.Any,
-                             options: ReadStreamOptions | RawOptions)
+                             options: ReadStreamOptions)
   extends nodejs.stream.Readable {
 
   /**

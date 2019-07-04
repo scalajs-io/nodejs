@@ -1,7 +1,6 @@
 package io.scalajs.nodejs
 package child_process
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.events.IEventEmitter
 
@@ -25,7 +24,7 @@ trait ChildProcess extends IEventEmitter {
     * @return the [[ChildProcess]]
     * @example {{{ child_process.exec(command[, options][, callback]) }}}
     */
-  def exec(command: String, options: ExecOptions | RawOptions): this.type = js.native
+  def exec(command: String, options: ExecOptions): this.type = js.native
 
   /**
     * Spawns a shell then executes the command within that shell, buffering any generated output.
@@ -46,7 +45,7 @@ trait ChildProcess extends IEventEmitter {
     * @example {{{ child_process.exec(command[, options][, callback]) }}}
     */
   def exec(command: String,
-           options: ExecOptions | RawOptions,
+           options: ExecOptions,
            callback: js.Function3[Error, Buffer | String, Buffer | String, Any]): this.type = js.native
 
   /**
@@ -76,7 +75,7 @@ trait ChildProcess extends IEventEmitter {
     */
   def fork(modulePath: String,
            args: js.Array[String] = js.native,
-           options: ForkOptions | RawOptions = js.native): this.type = js.native
+           options: ForkOptions = js.native): this.type = js.native
 
   /**
     * The child_process.spawn() method spawns a new process using the given command, with command line arguments
@@ -89,7 +88,7 @@ trait ChildProcess extends IEventEmitter {
     */
   def spawn(command: String,
             args: js.Array[String] = js.native,
-            options: SpawnOptions | RawOptions = js.native): this.type = js.native
+            options: SpawnOptions = js.native): this.type = js.native
 
 }
 

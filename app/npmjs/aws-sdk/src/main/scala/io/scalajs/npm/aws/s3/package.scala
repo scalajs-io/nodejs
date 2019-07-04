@@ -1,11 +1,9 @@
 package io.scalajs.npm.aws
 
-import io.scalajs.RawOptions
 import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Future
 import scala.scalajs.js
-import scala.scalajs.js.|
 
 /**
   * aws.s3 package object
@@ -28,7 +26,7 @@ package object s3 {
   implicit class S3Enrichment(val s3: S3) extends AnyVal {
 
     @inline
-    def getBucketLocationFuture(params: BucketParams | RawOptions): Future[GetBucketLocationOutput] = {
+    def getBucketLocationFuture(params: BucketParams): Future[GetBucketLocationOutput] = {
       promiseWithError1[AWSError, GetBucketLocationOutput](s3.getBucketLocation(params, _))
     }
 

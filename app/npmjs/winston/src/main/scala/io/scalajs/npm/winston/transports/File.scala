@@ -7,7 +7,7 @@ package transports
   */
 @js.native
 @JSImport("winston", "transports.File")
-class File(options: FileTransportOptions | RawOptions = js.native) extends Transport
+class File(options: FileTransportOptions = js.native) extends Transport
 
 /**
   * File Transport Singleton
@@ -25,5 +25,5 @@ object File extends Transport
 class FileTransportOptions(val name: js.UndefOr[String] = js.undefined,
                            val filename: js.UndefOr[String] = js.undefined,
                            val level: js.UndefOr[String] = js.undefined,
-                           val formatter: js.UndefOr[js.Function1[FileTransportOptions | RawOptions, String]] = js.undefined,
+                           val formatter: js.UndefOr[js.Function1[FileTransportOptions, String]] = js.undefined,
                            val timestamp: js.UndefOr[js.Function1[Unit, Double]] = js.undefined) extends js.Object

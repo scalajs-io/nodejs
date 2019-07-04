@@ -1,7 +1,6 @@
 package io.scalajs.npm.mongodb
 package gridfs
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.stream
 
 import scala.scalajs.js
@@ -15,7 +14,7 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSImport("mongodb", "GridFSBucketWriteStream")
-class GridFSBucketWriteStream(bucket: GridFSBucket, filename: String, options: WriteStreamOptions | RawOptions = js.native)
+class GridFSBucketWriteStream(bucket: GridFSBucket, filename: String, options: WriteStreamOptions = js.native)
   extends stream.Writable {
 
   /**

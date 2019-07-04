@@ -1,7 +1,5 @@
 package io.scalajs.npm.githubapinode
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 
 /**
@@ -22,6 +20,6 @@ trait Gists extends js.Object {
     * @param delta the given delta
     * @param callback the callback
     */
-  def update(delta: RawOptions, callback: GitHubCallback1[Gist]): Unit = js.native
+  def update(delta: js.Any, callback: GitHubCallback1[Gist]): Unit = js.native
 
 }

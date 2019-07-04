@@ -1,11 +1,10 @@
 package io.scalajs.npm.formdata
 
+import io.scalajs.nodejs
 import io.scalajs.nodejs.http.IncomingMessage
-import io.scalajs.{RawOptions, nodejs}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * form-data - A library to create readable "multipart/form-data" streams. Can be used to submit forms
@@ -20,7 +19,7 @@ object FormData extends js.Object {
   @js.native
   class FormData() extends js.Object {
 
-    def append(field: String, value: js.Any, options: FormOptions | RawOptions = js.native): Unit = js.native
+    def append(field: String, value: js.Any, options: FormOptions = js.native): Unit = js.native
 
     def getBoundary(): js.Any = js.native
 

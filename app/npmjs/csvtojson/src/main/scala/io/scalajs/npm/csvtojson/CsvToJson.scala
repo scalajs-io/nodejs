@@ -1,10 +1,7 @@
 package io.scalajs.npm.csvtojson
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * csvtojson - A tool concentrating on converting csv data to JSON with customised parser supporting
@@ -13,7 +10,7 @@ import scala.scalajs.js.|
 @js.native
 trait CsvToJson extends js.Object {
 
-  def apply(options: ParsingOptions | RawOptions = js.native): CsvToJsonImpl = js.native
+  def apply(options: ParsingOptions = js.native): CsvToJsonImpl = js.native
 
 }
 

@@ -1,8 +1,6 @@
 package io.scalajs.npm.mongodb
 package gridfs
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
@@ -21,7 +19,7 @@ class GridFSBucket() extends js.Object {
     * @param options the [[GridFSOptions options]]
     * @return a new [[GridFSBucket]]
     */
-  def this(db: Db, options: GridFSOptions | RawOptions = js.native) = this()
+  def this(db: Db, options: GridFSOptions = js.native) = this()
 
   /**
     * Deletes a file with the given id
@@ -44,7 +42,7 @@ class GridFSBucket() extends js.Object {
     * Convenience wrapper around find on the files collection
     * @example find(filter, options)
     */
-  def find[T](filter: js.Any, options: GridFSBucketFindOptions | RawOptions = js.native): Cursor[T] = js.native
+  def find[T](filter: js.Any, options: GridFSBucketFindOptions = js.native): Cursor[T] = js.native
 
   /**
     * Returns a readable stream (GridFSBucketReadStream) for streaming file data from GridFS.
@@ -53,7 +51,7 @@ class GridFSBucket() extends js.Object {
     * @example openDownloadStream(id, options)
     */
   def openDownloadStream(id: ObjectID | String | Int,
-                         options: DownloadStreamOptions | RawOptions = js.native): GridFSBucketReadStream = js.native
+                         options: DownloadStreamOptions = js.native): GridFSBucketReadStream = js.native
 
   /**
     * Returns a readable stream (GridFSBucketReadStream) for streaming the file with the given name from GridFS.
@@ -64,7 +62,7 @@ class GridFSBucket() extends js.Object {
     * @example bucket.openDownloadStreamByName('meistersinger.mp3')
     */
   def openDownloadStreamByName(filename: String,
-                               options: DownloadStreamByNameOptions | RawOptions = js.native): GridFSBucketReadStream = js.native
+                               options: DownloadStreamByNameOptions = js.native): GridFSBucketReadStream = js.native
 
   /**
     * Returns a writable stream (GridFSBucketWriteStream) for writing buffers to GridFS. The stream's 'id' property
@@ -75,7 +73,7 @@ class GridFSBucket() extends js.Object {
     * @example bucket.openUploadStream('./meistersinger.mp3')
     */
   def openUploadStream(filename: String,
-                       options: UploadStreamOptions | RawOptions = js.native): GridFSBucketWriteStream = js.native
+                       options: UploadStreamOptions = js.native): GridFSBucketWriteStream = js.native
 
   /**
     * Returns a writable stream (GridFSBucketWriteStream) for writing buffers to GridFS for a custom file id.
@@ -87,7 +85,7 @@ class GridFSBucket() extends js.Object {
     */
   def openUploadStreamWithId(id: ObjectID | String | Int,
                              filename: String,
-                             options: UploadStreamOptions | RawOptions = js.native): GridFSBucketWriteStream = js.native
+                             options: UploadStreamOptions = js.native): GridFSBucketWriteStream = js.native
 
 }
 

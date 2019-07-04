@@ -1,6 +1,5 @@
 package io.scalajs.nodejs.fs
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.url.URL
 import io.scalajs.nodejs.{FileDescriptor, GID, UID}
@@ -41,7 +40,7 @@ trait FileHandle extends js.Object {
     * @param options the encoding or [[FileAppendOptions options]] object
     * @return a [[js.Promise promise]]
     */
-  def appendFile(data: String | Buffer, options: String | FileAppendOptions | RawOptions): js.Promise[Unit] = js.native
+  def appendFile(data: String | Buffer, options: String | FileAppendOptions): js.Promise[Unit] = js.native
 
   /**
     * Modifies the permissions on the file. The Promise is resolved with no arguments upon success.
@@ -119,7 +118,7 @@ trait FileHandle extends js.Object {
     * @param options the [[FileEncodingOptions options]]
     * @return a [[js.Promise promise]]
     */
-  def readFile(options: FileEncodingOptions | RawOptions): js.Promise[String] = js.native
+  def readFile(options: FileEncodingOptions): js.Promise[String] = js.native
 
   /**
     * Retrieves the fs.Stats for the file.
@@ -127,7 +126,7 @@ trait FileHandle extends js.Object {
     * @param options the [[FileStatOptions options]]
     * @return a [[js.Promise promise]]
     */
-  def stat(options: FileStatOptions | RawOptions = js.native): js.Promise[Stats] = js.native
+  def stat(options: FileStatOptions = js.native): js.Promise[Stats] = js.native
 
   /**
     * Asynchronous fsync(2). The Promise is resolved with no arguments upon success.
@@ -227,6 +226,6 @@ trait FileHandle extends js.Object {
     * @param options the [[FileOutputOptions options]]
     * @return a [[js.Promise promise]]
     */
-  def writeFile(data: String | Buffer | Uint8Array, options: FileOutputOptions | RawOptions): js.Promise[Unit] = js.native
+  def writeFile(data: String | Buffer | Uint8Array, options: FileOutputOptions): js.Promise[Unit] = js.native
 
 }

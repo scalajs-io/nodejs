@@ -1,6 +1,5 @@
 package io.scalajs.npm
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.npm.mongodb.{ConnectionOptions, MongoError}
 import io.scalajs.npm.mongoose.MongooseModel.CRUD
@@ -80,7 +79,7 @@ package object mongoose {
   implicit class MongooseEnrichment(val connectable: Connectable) extends AnyVal {
 
     @inline
-    def connectFuture(url: String, options: ConnectionOptions | RawOptions = null): Future[Connection] = {
+    def connectFuture(url: String, options: ConnectionOptions = null): Future[Connection] = {
       promiseWithError1[MongooseError, Connection](connectable.connect(url, options, _))
     }
 

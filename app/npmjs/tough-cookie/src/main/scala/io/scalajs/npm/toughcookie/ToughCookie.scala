@@ -1,7 +1,5 @@
 package io.scalajs.npm.toughcookie
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
@@ -76,7 +74,7 @@ trait ToughCookie extends js.Object {
     * @param cookieString the given cookie string
     * @param options      the parsing options
     */
-  def parse(cookieString: String, options: RawOptions = js.native): Cookie = js.native
+  def parse(cookieString: String, options: js.Any = js.native): Cookie = js.native
 
   /**
     * Alias for Cookie.fromJSON(string)

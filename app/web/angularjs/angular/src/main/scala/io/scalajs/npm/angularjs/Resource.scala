@@ -1,9 +1,6 @@
 package io.scalajs.npm.angularjs
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
-import scala.scalajs.js.|
 
 /**
   * Resource - A factory which creates a resource object that lets you interact with RESTful server-side data sources.
@@ -33,7 +30,7 @@ trait Resource extends js.Object {
   def apply[T <: ResourceClass[T]](url: String,
                                    paramDefaults: js.Any = js.native,
                                    actions: js.Any = js.native,
-                                   options: ResourceOptions | RawOptions): T = js.native
+                                   options: ResourceOptions): T = js.native
 
 }
 

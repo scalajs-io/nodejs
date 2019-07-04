@@ -1,9 +1,6 @@
 package io.scalajs.npm.angularjs.uibootstrap
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
-import scala.scalajs.js.|
 
 /**
   * AngularJS Modal Service (\$modal)
@@ -19,6 +16,6 @@ trait Modal extends js.Object {
     * @tparam T the return type
     * @return a new [[ModalInstance Modal Instance]]
     */
-  def open[T](options: ModalOptions | RawOptions): ModalInstance[T] = js.native
+  def open[T](options: ModalOptions): ModalInstance[T] = js.native
 
 }

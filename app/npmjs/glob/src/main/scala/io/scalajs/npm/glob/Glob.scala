@@ -1,12 +1,10 @@
 package io.scalajs.npm.glob
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.events.EventEmitter
 import io.scalajs.nodejs.fs.Stats
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * glob - a little globber.
@@ -120,7 +118,7 @@ trait GlobClass extends js.Object {
     * @param options  the optional [[GlobOptions settings]]
     * @param callback the callback
     */
-  def apply(pattern: String, options: GlobOptions | RawOptions, callback: GlobCallback): Unit = js.native
+  def apply(pattern: String, options: GlobOptions, callback: GlobCallback): Unit = js.native
 
   /**
     * Perform an asynchronous glob search.
@@ -135,7 +133,7 @@ trait GlobClass extends js.Object {
     * @param options the optional [[GlobOptions settings]]
     * @return true if there are any special characters in the pattern, and false otherwise.
     */
-  def hasMagic(pattern: String, options: GlobOptions | RawOptions = js.native): Boolean = js.native
+  def hasMagic(pattern: String, options: GlobOptions = js.native): Boolean = js.native
 
   /**
     * Perform a synchronous glob search.
@@ -143,6 +141,6 @@ trait GlobClass extends js.Object {
     * @param options the optional [[GlobOptions settings]]
     * @return the filenames found matching the pattern
     */
-  def sync(pattern: String, options: GlobOptions | RawOptions = js.native): js.Array[String] = js.native
+  def sync(pattern: String, options: GlobOptions = js.native): js.Array[String] = js.native
 
 }

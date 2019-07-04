@@ -1,7 +1,6 @@
 package io.scalajs.nodejs
 package fs
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.nodejs.url.URL
@@ -98,7 +97,7 @@ trait Fs extends js.Object with IEventEmitter with FSConstants {
     */
   def appendFile(file: Buffer | FileDescriptor | String,
                  data: Buffer | String,
-                 options: FileAppendOptions | RawOptions,
+                 options: FileAppendOptions,
                  callback: FsCallback0): Unit = js.native
 
   /**
@@ -121,7 +120,7 @@ trait Fs extends js.Object with IEventEmitter with FSConstants {
     */
   def appendFileSync(file: Buffer | FileDescriptor | String,
                      data: Buffer | String,
-                     options: FileAppendOptions | RawOptions = js.native): Unit = js.native
+                     options: FileAppendOptions = js.native): Unit = js.native
 
   /**
     * Asynchronous chmod(2). No arguments other than a possible exception are given to the completion callback.
@@ -224,7 +223,7 @@ trait Fs extends js.Object with IEventEmitter with FSConstants {
     * @param options the optional stream options
     * @example fs.createReadStream(path[, options])
     */
-  def createReadStream(path: Buffer | String | URL, options: FileInputOptions | RawOptions = js.native): ReadStream = js.native
+  def createReadStream(path: Buffer | String | URL, options: FileInputOptions = js.native): ReadStream = js.native
 
   /**
     * Returns a new WriteStream object.
@@ -232,7 +231,7 @@ trait Fs extends js.Object with IEventEmitter with FSConstants {
     * @param options the optional stream options
     * @example fs.createWriteStream(path[, options])
     */
-  def createWriteStream(path: Buffer | String | URL, options: FileOutputOptions | RawOptions = js.native): WriteStream = js.native
+  def createWriteStream(path: Buffer | String | URL, options: FileOutputOptions = js.native): WriteStream = js.native
 
   /**
     * Test whether or not the given path exists by checking with the file system. Then call the callback argument with
@@ -455,7 +454,7 @@ trait Fs extends js.Object with IEventEmitter with FSConstants {
     * @example fs.mkdtemp(prefix[, options], callback)
     */
   def mkdtemp(prefix: String,
-              options: String | FileEncodingOptions | RawOptions,
+              options: String | FileEncodingOptions,
               callback: FsCallback1[String]): Unit = js.native
 
   /**
@@ -478,7 +477,7 @@ trait Fs extends js.Object with IEventEmitter with FSConstants {
     * @param options the optional encoding setting
     */
   def mkdtempSync(prefix: String,
-                  options: String | FileEncodingOptions | RawOptions = js.native): String = js.native
+                  options: String | FileEncodingOptions = js.native): String = js.native
 
   /**
     * Asynchronous file open. See open(2).
@@ -590,7 +589,7 @@ trait Fs extends js.Object with IEventEmitter with FSConstants {
     * @example fs.readdir(path[, options], callback)
     */
   def readdir[T](path: Buffer | String | URL,
-                 options: String | FileEncodingOptions | RawOptions,
+                 options: String | FileEncodingOptions,
                  callback: FsCallback1[js.Array[T]]): Unit = js.native
 
   /**
@@ -614,7 +613,7 @@ trait Fs extends js.Object with IEventEmitter with FSConstants {
     * @return an array of filenames excluding '.' and '..'.
     */
   def readdirSync[T](path: Buffer | String | URL,
-                  options: FileEncodingOptions | String | RawOptions = js.native): js.Array[T] = js.native
+                  options: FileEncodingOptions | String = js.native): js.Array[T] = js.native
 
   /**
     * Asynchronously reads the entire contents of a file.
@@ -625,7 +624,7 @@ trait Fs extends js.Object with IEventEmitter with FSConstants {
     * @example fs.readFile(file[, options], callback)
     */
   def readFile(file: Buffer | FileDescriptor | String | URL,
-               options: String | FileInputOptions | RawOptions | String,
+               options: String | FileInputOptions | String,
                callback: FsCallback1[js.Any]): Unit = js.native
 
   /**
@@ -667,7 +666,7 @@ trait Fs extends js.Object with IEventEmitter with FSConstants {
     *         Otherwise it returns a buffer.
     * @example fs.readFileSync(file[, options])
     */
-  def readFileSync(file: Buffer | FileDescriptor | String | URL, options: FileInputOptions | RawOptions = js.native): js.Any = js.native
+  def readFileSync(file: Buffer | FileDescriptor | String | URL, options: FileInputOptions = js.native): js.Any = js.native
 
   /**
     * Synchronous version of fs.readFile.
@@ -689,7 +688,7 @@ trait Fs extends js.Object with IEventEmitter with FSConstants {
     * @example fs.readlink(path[, options], callback)
     */
   def readlink(path: Buffer | String | URL,
-               options: String | FileEncodingOptions | RawOptions,
+               options: String | FileEncodingOptions,
                callback: FsCallback1[String]): Unit = js.native
 
   /**
@@ -702,7 +701,7 @@ trait Fs extends js.Object with IEventEmitter with FSConstants {
     * @return the symbolic link's string value.
     */
   def readlinkSync(path: Buffer | String | URL,
-                   options: String | FileEncodingOptions | RawOptions = js.native): String = js.native
+                   options: String | FileEncodingOptions = js.native): String = js.native
 
   /**
     * Asynchronous realpath(2).
@@ -716,7 +715,7 @@ trait Fs extends js.Object with IEventEmitter with FSConstants {
     * @example fs.realpath(path[, options], callback)
     */
   def realpath(path: Buffer | String | URL,
-               options: FileEncodingOptions | String | RawOptions,
+               options: FileEncodingOptions | String,
                callback: FsCallback1[String]): Unit = js.native
 
   /**
@@ -740,7 +739,7 @@ trait Fs extends js.Object with IEventEmitter with FSConstants {
     * @example fs.realpathSync(path[, options])
     */
   def realpathSync(path: Buffer | String | URL,
-                   options: FileEncodingOptions | String | RawOptions = js.native): String = js.native
+                   options: FileEncodingOptions | String = js.native): String = js.native
 
   /**
     * Asynchronous rename(2). No arguments other than a possible exception are given to the completion callback.
@@ -892,7 +891,7 @@ trait Fs extends js.Object with IEventEmitter with FSConstants {
     * @example fs.watch(filename[, options][, listener])
     */
   def watch(filename: Buffer | String | URL,
-            options: FSWatcherOptions | RawOptions,
+            options: FSWatcherOptions,
             listener: js.Function2[EventType, String, Any]): FSWatcher = js.native
 
   /**
@@ -928,7 +927,7 @@ trait Fs extends js.Object with IEventEmitter with FSConstants {
     * @example fs.watch(filename[, options][, listener])
     */
   def watch(filename: Buffer | String | URL,
-            options: FSWatcherOptions | RawOptions = js.native): FSWatcher = js.native
+            options: FSWatcherOptions = js.native): FSWatcher = js.native
 
   /**
     * Watch for changes on filename. The callback listener will be called each time the file is accessed.
@@ -942,7 +941,7 @@ trait Fs extends js.Object with IEventEmitter with FSConstants {
     * @param listener the callback
     */
   def watchFile(filename: Buffer | String | URL,
-                options: FileWatcherOptions | RawOptions,
+                options: FileWatcherOptions,
                 listener: FsCallback2[Stats, Stats]): Unit = js.native
 
   /**
@@ -1060,7 +1059,7 @@ trait Fs extends js.Object with IEventEmitter with FSConstants {
     */
   def writeFile(file: String,
                 data: Buffer | String,
-                options: FileOutputOptions | RawOptions,
+                options: FileOutputOptions,
                 callback: FsCallback0): Unit = js.native
 
   /**
@@ -1075,7 +1074,7 @@ trait Fs extends js.Object with IEventEmitter with FSConstants {
     * @return undefined.
     * @example fs.writeFileSync(file, data[, options])
     */
-  def writeFileSync(file: String, data: Buffer | String, options: FileOutputOptions | RawOptions = js.native): Unit = js.native
+  def writeFileSync(file: String, data: Buffer | String, options: FileOutputOptions = js.native): Unit = js.native
 
   /**
     * Write buffer to the file specified by fd.

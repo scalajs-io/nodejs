@@ -1,6 +1,5 @@
 package io.scalajs.npm.mongoose
 
-import io.scalajs.RawOptions
 import io.scalajs.npm.mongodb.UpdateWriteResult
 import io.scalajs.util.ScalaJsHelper._
 
@@ -165,14 +164,14 @@ class MongooseModel[T](val doc: js.Any,
     * @param options the internal options
     * @return a promise of the completion
     */
-  def ensureIndexes(options: RawOptions): js.Promise[Unit] = js.native
+  def ensureIndexes(options: js.Any): js.Promise[Unit] = js.native
 
   /**
     * Sends ensureIndex commands to mongo for each index declared in the schema.
     * @param options the internal options
     * @param calback the  optional callback
     */
-  def ensureIndexes(options: RawOptions, calback: js.Function1[MongooseError, Any]): Unit = js.native
+  def ensureIndexes(options: js.Any, calback: js.Function1[MongooseError, Any]): Unit = js.native
 
   /**
     * Finds documents
@@ -196,7 +195,7 @@ class MongooseModel[T](val doc: js.Any,
     * @param projection the optional fields to return
     * @return the [[Query]]
     */
-  def findById(id: ObjectId | String | Int, projection: RawOptions = js.native): Query[Model[T]] = js.native
+  def findById(id: ObjectId | String | Int, projection: js.Any = js.native): Query[Model[T]] = js.native
 
   /**
     * Finds a single document by its _id field. findById(id) is almost*
@@ -207,7 +206,7 @@ class MongooseModel[T](val doc: js.Any,
     * @param callback   the optional callback
     */
   def findById(id: ObjectId | String | Int,
-               projection: RawOptions,
+               projection: js.Any,
                callback: MongooseModelCallback[T]): Unit = js.native
 
   /**
@@ -227,7 +226,7 @@ class MongooseModel[T](val doc: js.Any,
     * @return a promise of the results
     * @example findByIdAndRemove(id, [options], [callback])
     */
-  def findByIdAndRemove(id: ObjectId | String | Int, options: RawOptions = js.native): js.Promise[Model[T]] = js.native
+  def findByIdAndRemove(id: ObjectId | String | Int, options: js.Any = js.native): js.Promise[Model[T]] = js.native
 
   /**
     * Issue a mongodb findAndModify remove command by a document's _id field. findByIdAndRemove(id, ...)
@@ -238,7 +237,7 @@ class MongooseModel[T](val doc: js.Any,
     * @example findByIdAndRemove(id, [options], [callback])
     */
   def findByIdAndRemove(id: ObjectId | String | Int,
-                        options: RawOptions,
+                        options: js.Any,
                         callback: MongooseModelCallback[T]): Unit = js.native
 
   /**
@@ -261,7 +260,7 @@ class MongooseModel[T](val doc: js.Any,
     */
   def findByIdAndUpdate(id: ObjectId | String | Int,
                         update: js.Any,
-                        options: RawOptions = js.native): js.Promise[Model[T]] = js.native
+                        options: js.Any = js.native): js.Promise[Model[T]] = js.native
 
   /**
     * Issues a mongodb findAndModify update command by a document's _id field.
@@ -284,7 +283,7 @@ class MongooseModel[T](val doc: js.Any,
     */
   def findByIdAndUpdate(id: ObjectId | String | Int,
                         update: js.Any,
-                        options: RawOptions,
+                        options: js.Any,
                         callback: MongooseModelCallback[T]): Unit = js.native
 
   /**
@@ -319,7 +318,7 @@ class MongooseModel[T](val doc: js.Any,
     * @param options    the optional options
     * @return the promise of the removed document
     */
-  def findOneAndRemove(conditions: js.Any, options: RawOptions = js.native): js.Promise[Model[T]] = js.native
+  def findOneAndRemove(conditions: js.Any, options: js.Any = js.native): js.Promise[Model[T]] = js.native
 
   /**
     * Issue a mongodb findAndModify remove command.
@@ -328,7 +327,7 @@ class MongooseModel[T](val doc: js.Any,
     * @param callback   the option callback
     */
   def findOneAndRemove(conditions: js.Any,
-                       options: RawOptions,
+                       options: js.Any,
                        callback: MongooseModelCallback[T]): Unit = js.native
 
   /**
@@ -348,7 +347,7 @@ class MongooseModel[T](val doc: js.Any,
     */
   def findOneAndUpdate(conditions: js.Any,
                        update: js.Any,
-                       options: RawOptions = js.native): js.Promise[Model[T]] = js.native
+                       options: js.Any = js.native): js.Promise[Model[T]] = js.native
 
   /**
     * Issues a mongodb findAndModify update command.
@@ -359,7 +358,7 @@ class MongooseModel[T](val doc: js.Any,
     */
   def findOneAndUpdate(conditions: js.Any,
                        update: js.Any,
-                       options: RawOptions,
+                       options: js.Any,
                        callback: MongooseModelCallback[T]): Unit = js.native
 
   /**
@@ -380,7 +379,7 @@ class MongooseModel[T](val doc: js.Any,
     * @param options the optional options
     * @return a promise of the inserted documents
     */
-  def insertMany(docs: js.Array[T], options: RawOptions = js.native): js.Promise[js.Array[Model[T]]] = js.native
+  def insertMany(docs: js.Array[T], options: js.Any = js.native): js.Promise[js.Array[Model[T]]] = js.native
 
   /**
     * Shortcut for validating an array of documents and inserting them into
@@ -391,7 +390,7 @@ class MongooseModel[T](val doc: js.Any,
     * @param callback the option callback
     */
   def insertMany(docs: js.Array[T],
-                 options: RawOptions,
+                 options: js.Any,
                  callback: MongooseModelArrayCallback[T]): Unit = js.native
 
   /**
@@ -484,7 +483,7 @@ class MongooseModel[T](val doc: js.Any,
     */
   def update(conditions: js.Any,
              doc: js.Any,
-             options: RawOptions = js.native): js.Promise[js.Array[Model[T]]] = js.native
+             options: js.Any = js.native): js.Promise[js.Array[Model[T]]] = js.native
 
   /**
     * Updates documents in the database without returning them.
@@ -495,7 +494,7 @@ class MongooseModel[T](val doc: js.Any,
     */
   def update(conditions: js.Any,
              doc: js.Any,
-             options: RawOptions,
+             options: js.Any,
              callback: MongooseModelArrayCallback[T]): Unit = js.native
 
   /**
@@ -516,7 +515,7 @@ class MongooseModel[T](val doc: js.Any,
     * @param options the optional options
     * @return the promise of the updated document
     */
-  def updateMany(conditions: js.Any, doc: js.Any, options: RawOptions = js.native): js.Promise[js.Array[Model[T]]] = js.native
+  def updateMany(conditions: js.Any, doc: js.Any, options: js.Any = js.native): js.Promise[js.Array[Model[T]]] = js.native
 
   /**
     * Same as update(), except MongoDB will update all documents that match
@@ -529,7 +528,7 @@ class MongooseModel[T](val doc: js.Any,
     */
   def updateMany(conditions: js.Any,
                  doc: js.Any,
-                 options: RawOptions,
+                 options: js.Any,
                  callback: MongooseModelArrayCallback[T]): Unit = js.native
 
   /**
@@ -552,7 +551,7 @@ class MongooseModel[T](val doc: js.Any,
     * @param options    the optional options
     * @return the promise of the updated document
     */
-  def updateOne(conditions: js.Any, doc: js.Any, options: RawOptions = js.native): js.Promise[Model[T]] = js.native
+  def updateOne(conditions: js.Any, doc: js.Any, options: js.Any = js.native): js.Promise[Model[T]] = js.native
 
   /**
     * Same as update(), except MongoDB will update only the first document that
@@ -564,7 +563,7 @@ class MongooseModel[T](val doc: js.Any,
     */
   def updateOne(conditions: js.Any,
                 doc: js.Any,
-                options: RawOptions,
+                options: js.Any,
                 callback: MongooseModelCallback[T]): Unit = js.native
 
   /**
@@ -621,8 +620,8 @@ object MongooseModel {
       * @return the promise of the saved document.
       * @example save([options], [options.safe], [options.validateBeforeSave], [fn])
       */
-    def save(options: RawOptions = js.native,
-             optionsSafe: RawOptions = js.native,
+    def save(options: js.Any = js.native,
+             optionsSafe: js.Any = js.native,
              optionsValidateBeforeSave: Boolean = js.native): js.Promise[Model[T]] = js.native
 
     /**
@@ -633,8 +632,8 @@ object MongooseModel {
       * @param callback                  the callback
       * @example save([options], [options.safe], [options.validateBeforeSave], [fn])
       */
-    def save(options: RawOptions,
-             optionsSafe: RawOptions,
+    def save(options: js.Any,
+             optionsSafe: js.Any,
              optionsValidateBeforeSave: Boolean,
              callback: js.Function3[MongooseError, Model[T], Int, Any]): Unit = js.native
 

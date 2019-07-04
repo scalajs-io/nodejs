@@ -1,6 +1,5 @@
 package io.scalajs.dom.html.phaser
 
-import io.scalajs.RawOptions
 import io.scalajs.dom.html.pixijs.{DisplayObject, PIXI}
 
 import scala.scalajs.js
@@ -441,7 +440,7 @@ class Group[T](var game: Phaser.Game,
   /**
     * Aligns this Group to the side of another Game Object, or Rectangle, known as the
     * 'parent', in one of 11 possible positions.
-    * The parent must be a Game Object, or [[Phaser.Rectangle]] object. This can include properties
+    * The parent must be a Game Object, or [[Rectangle]] object. This can include properties
     * such as World.bounds or Camera.view, for aligning Groups within the world
     * and camera bounds. Or it can include other [[Sprite]]s, [[Image]]s, [[Text]] objects, [[BitmapText]],
     * [[TileSprite]]s or [[Button]]s.
@@ -696,9 +695,9 @@ class Group[T](var game: Phaser.Game,
     *                        to the callback, otherwise all children will be passed.
     * @param args            Additional arguments to pass to the callback function, after the child item.
     */
-  def forEach(callback: js.Function1[T, Any], callbackContext: RawOptions, checkExists: Boolean, args: js.Any*): Unit = js.native
+  def forEach(callback: js.Function1[T, Any], callbackContext: js.Any, checkExists: Boolean, args: js.Any*): Unit = js.native
 
-  def forEach(callback: js.Function1[T, Any], callbackContext: RawOptions = js.native): Unit = js.native
+  def forEach(callback: js.Function1[T, Any], callbackContext: js.Any = js.native): Unit = js.native
 
   /**
     * Call a function on each alive child in this group.
@@ -708,7 +707,7 @@ class Group[T](var game: Phaser.Game,
     * @param callbackContext The context in which the function should be called (usually 'this').
     * @param args            Additional arguments to pass to the callback function, after the child item.
     */
-  def forEachAlive(callback: js.Function1[T, Any], callbackContext: RawOptions, args: js.Any*): Unit = js.native
+  def forEachAlive(callback: js.Function1[T, Any], callbackContext: js.Any, args: js.Any*): Unit = js.native
 
   def forEachAlive(callback: js.Function1[T, Any]): Unit = js.native
 
@@ -720,7 +719,7 @@ class Group[T](var game: Phaser.Game,
     * @param callbackContext The context in which the function should be called (usually 'this').
     * @param args            Additional arguments to pass to the callback function, after the child item.
     */
-  def forEachDead(callback: js.Function1[T, Any], callbackContext: RawOptions, args: js.Any*): Unit = js.native
+  def forEachDead(callback: js.Function1[T, Any], callbackContext: js.Any, args: js.Any*): Unit = js.native
 
   def forEachDead(callback: js.Function1[T, Any]): Unit = js.native
 
@@ -732,7 +731,7 @@ class Group[T](var game: Phaser.Game,
     * @param callbackContext The context in which the function should be called (usually 'this').
     * @param args            Additional arguments to pass to the callback function, after the child item.
     */
-  def forEachExists(callback: js.Function1[T, Any], callbackContext: RawOptions, args: js.Any*): Unit = js.native
+  def forEachExists(callback: js.Function1[T, Any], callbackContext: js.Any, args: js.Any*): Unit = js.native
 
   def forEachExists(callback: js.Function1[T, Any]): Unit = js.native
 

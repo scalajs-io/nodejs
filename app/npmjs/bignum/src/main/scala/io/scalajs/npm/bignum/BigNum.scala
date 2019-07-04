@@ -1,11 +1,9 @@
 package io.scalajs.npm.bignum
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.buffer.Buffer
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * Arbitrary-precision integer arithmetic using OpenSSL
@@ -194,7 +192,7 @@ object BigNum extends js.Object {
     * @param options the [[BigNumOptions options]]
     * @return a new [[BigNum]] instance
     */
-  def fromBuffer(buf: Buffer, options: BigNumOptions | RawOptions = js.native): BigNum = js.native
+  def fromBuffer(buf: Buffer, options: BigNumOptions = js.native): BigNum = js.native
 
   /**
     * Return true if num is identified as a bignum instance. Otherwise, return false.
@@ -216,6 +214,6 @@ object BigNum extends js.Object {
     * @param options the [[BigNumOptions options]]
     * @return a new [[Buffer]] instance
     */
-  def toBuffer(options: BigNumOptions | RawOptions = js.native): Buffer = js.native
+  def toBuffer(options: BigNumOptions = js.native): Buffer = js.native
 
 }

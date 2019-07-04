@@ -1,10 +1,7 @@
 package io.scalajs.npm.redis
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * redis - This is a complete and feature rich Redis client for node.js.
@@ -15,13 +12,13 @@ trait Redis extends js.Object {
 
   def createClient(): RedisClient = js.native
 
-  def createClient(options: RedisClientOptions | RawOptions): RedisClient = js.native
+  def createClient(options: RedisClientOptions): RedisClient = js.native
 
   def createClient(redisUrl: String): RedisClient = js.native
 
-  def createClient(redisUrl: String, options: RedisClientOptions | RawOptions): RedisClient = js.native
+  def createClient(redisUrl: String, options: RedisClientOptions): RedisClient = js.native
 
-  def createClient(host: String, port: Int = js.native, options: RedisClientOptions | RawOptions = js.native): RedisClient = js.native
+  def createClient(host: String, port: Int = js.native, options: RedisClientOptions = js.native): RedisClient = js.native
 
   /**
     * A handy callback function for displaying return values when testing.

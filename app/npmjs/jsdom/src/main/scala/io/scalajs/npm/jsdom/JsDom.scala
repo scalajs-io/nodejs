@@ -1,6 +1,5 @@
 package io.scalajs.npm.jsdom
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.Error
 
 import scala.scalajs.js
@@ -40,7 +39,7 @@ object JsDom extends js.Object {
   }
 
   @js.native
-  class JSDOM(content: js.UndefOr[String] = js.native, options: JsDomOptions | RawOptions = js.native) extends js.Object {
+  class JSDOM(content: js.UndefOr[String] = js.native, options: JsDomOptions = js.native) extends js.Object {
 
     def blobToBuffer: js.Function = js.native
 

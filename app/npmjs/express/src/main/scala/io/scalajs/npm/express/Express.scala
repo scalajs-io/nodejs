@@ -26,7 +26,7 @@ trait Express extends IEventEmitter {
     * Creates a new router object.
     * @example {{{ express.Router([options]) }}}
     */
-  def Router(options: RouterOptions | RawOptions = js.native): Router = js.native
+  def Router(options: RouterOptions = js.native): Router = js.native
 
   /**
     * This is the only built-in middleware function in Express. It serves static files and is based on serve-static.
@@ -37,7 +37,7 @@ trait Express extends IEventEmitter {
     * <p/>The following table describes the properties of the options object.
     * @example express.static(root, [options])
     */
-  def static(root: String, options: StaticOptions | RawOptions = js.native): Router = js.native
+  def static(root: String, options: StaticOptions = js.native): Router = js.native
 
 }
 

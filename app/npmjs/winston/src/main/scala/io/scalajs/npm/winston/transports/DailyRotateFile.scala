@@ -7,7 +7,7 @@ package transports
   */
 @js.native
 @JSImport("winston", "transports.DailyRotateFile")
-class DailyRotateFile(options: DailyRotateFileOptions | RawOptions = js.native) extends Transport
+class DailyRotateFile(options: DailyRotateFileOptions = js.native) extends Transport
 
 /**
   * Daily Rotate Transport Options
@@ -26,6 +26,6 @@ class DailyRotateFileOptions(val filename: js.UndefOr[String] = js.undefined,
                              val datePattern: js.UndefOr[String] = js.undefined,
                              val prepend: js.UndefOr[Boolean] = js.undefined,
                              val level: js.UndefOr[String] = js.undefined,
-                             val formatter: js.UndefOr[js.Function1[DailyRotateFileOptions | RawOptions, String]] = js.undefined,
+                             val formatter: js.UndefOr[js.Function1[DailyRotateFileOptions, String]] = js.undefined,
                              val timestamp: js.UndefOr[js.Function1[Unit, Double]] = js.undefined)
   extends js.Object

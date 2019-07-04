@@ -1,7 +1,5 @@
 package io.scalajs.npm.mongodb
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
@@ -50,6 +48,6 @@ object MongoError extends js.Object {
     * @param options the error options
     * @return the [[MongoError]] instance
     */
-  def create(options: RawOptions): MongoError = js.native
+  def create(options: js.Any): MongoError = js.native
 
 }

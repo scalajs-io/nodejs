@@ -1,6 +1,5 @@
 package io.scalajs.npm.cookieparser
 
-import io.scalajs.RawOptions
 import io.scalajs.npm.cookie.DeserializationOptions
 import io.scalajs.npm.express.{Request, Response}
 
@@ -30,7 +29,7 @@ trait CookieParser extends js.Object {
     */
   def apply(
       secret: String | js.Array[String] = js.native,
-      options: DeserializationOptions | RawOptions = js.native): js.Function3[Request, Response, js.Function, Any] =
+      options: DeserializationOptions = js.native): js.Function3[Request, Response, js.Function, Any] =
     js.native
 
   /**

@@ -1,10 +1,10 @@
 package io.scalajs.dom.html.phaser
 
+import io.scalajs.JsNumber
 import io.scalajs.dom.html.HTMLElement
 import io.scalajs.dom.html.canvas.CanvasRenderingContext2D
 import io.scalajs.dom.html.phaser.Phaser.GameObjectFactory
 import io.scalajs.dom.html.phaser.utils.Debug
-import io.scalajs.{JsNumber, RawOptions}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
@@ -37,7 +37,7 @@ class Game(val width: JsNumber | String = js.native,
            val state: State = js.native,
            val transparent: Boolean = js.native,
            val antialias: Boolean = js.native,
-           val physicsConfig: RawOptions = js.native)
+           val physicsConfig: js.Any = js.native)
     extends js.Object {
 
   /**

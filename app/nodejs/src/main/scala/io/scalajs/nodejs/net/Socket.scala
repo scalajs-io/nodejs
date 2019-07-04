@@ -1,12 +1,10 @@
 package io.scalajs.nodejs
 package net
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.stream.IDuplex
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * net.Socket - This object is an abstraction of a TCP or local socket. net.Socket instances implement a duplex Stream
@@ -16,7 +14,7 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSImport("net", "Socket")
-class Socket(options: SocketOptions | RawOptions = js.native) extends IDuplex {
+class Socket(options: SocketOptions = js.native) extends IDuplex {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -120,7 +118,7 @@ class Socket(options: SocketOptions | RawOptions = js.native) extends IDuplex {
     * @param connectListener the optional connect listener
     * @example socket.connect(options[, connectListener])
     */
-  def connect(options: ConnectOptions | RawOptions, connectListener: js.Function = js.native): Unit = js.native
+  def connect(options: ConnectOptions, connectListener: js.Function = js.native): Unit = js.native
 
   /**
     * Opens the connection for a given socket.

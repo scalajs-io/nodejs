@@ -6,7 +6,7 @@ package io.scalajs.npm.winston
   */
 @js.native
 @JSImport("winston", "Logger")
-class Logger(options: ConfigurationOptions | RawOptions) extends js.Object {
+class Logger(options: ConfigurationOptions) extends js.Object {
 
   ///////////////////////////////////////////////////////////////////////////////////////////
   //        Constructor
@@ -32,11 +32,11 @@ class Logger(options: ConfigurationOptions | RawOptions) extends js.Object {
   //        Methods
   ///////////////////////////////////////////////////////////////////////////////////////////
 
-  def add(transport: Transport, options: FileTransportOptions | RawOptions = js.native): Unit = js.native
+  def add(transport: Transport, options: FileTransportOptions = js.native): Unit = js.native
 
   def cli(): Unit = js.native
 
-  def configure(options: ConfigurationOptions | RawOptions): Unit = js.native
+  def configure(options: ConfigurationOptions): Unit = js.native
 
   def debug(message: String): Unit = js.native
 
@@ -56,7 +56,7 @@ class Logger(options: ConfigurationOptions | RawOptions) extends js.Object {
 
   def profile(name: String): Unit = js.native
 
-  def query(options: QueryOptions | RawOptions, callback: js.Function2[WinstonError, js.Any, Any]): Unit = js.native
+  def query(options: QueryOptions, callback: js.Function2[WinstonError, js.Any, Any]): Unit = js.native
 
   def remove(name: String): Unit = js.native
 
@@ -66,7 +66,7 @@ class Logger(options: ConfigurationOptions | RawOptions) extends js.Object {
 
   def silly(level: String, message: String, args: js.Any*): Unit = js.native
 
-  def stream(options: StreamingOptions | RawOptions): Readable = js.native
+  def stream(options: StreamingOptions): Readable = js.native
 
   def warn(message: String): Unit = js.native
 

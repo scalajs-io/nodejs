@@ -1,11 +1,9 @@
 package io.scalajs.dom.html.pixijs
 
-import io.scalajs.RawOptions
 import io.scalajs.dom.html.canvas.CanvasRenderingContext2D
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
-import scala.scalajs.js.|
 
 /**
   * The CanvasRenderer draws the scene and all its content onto a 2d canvas. This renderer should be used for browsers
@@ -18,7 +16,7 @@ import scala.scalajs.js.|
 @JSGlobal("CanvasRenderer")
 class CanvasRenderer(var width: Double = js.native,
                      var height: Double = js.native,
-                     var options: CanvasRendererOptions | RawOptions = js.native)
+                     var options: CanvasRendererOptions = js.native)
     extends AbstractRenderer {
 
   /**

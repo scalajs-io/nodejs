@@ -1,7 +1,5 @@
 package io.scalajs.npm.githubapinode
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 
 /**
@@ -23,7 +21,7 @@ trait Users extends js.Object {
     * @param options  the optional settings
     * @param callback the callback
     */
-  def repos(options: RawOptions, callback: GitHubCallback1[js.Array[Repository]]): Unit = js.native
+  def repos(options: js.Any, callback: GitHubCallback1[js.Array[Repository]]): Unit = js.native
 
   /**
     * List authenticated user's gists.
@@ -36,7 +34,7 @@ trait Users extends js.Object {
     * @param options  the optional settings
     * @param callback the callback
     */
-  def notifications(options: RawOptions, callback: GitHubCallback1[js.Array[Notification]]): Unit = js.native
+  def notifications(options: js.Any, callback: GitHubCallback1[js.Array[Notification]]): Unit = js.native
 
   /**
     * Show user information for a particular username. Also works for organizations.

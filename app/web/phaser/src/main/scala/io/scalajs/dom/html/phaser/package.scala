@@ -1,7 +1,5 @@
 package io.scalajs.dom.html
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.Array
 
@@ -25,20 +23,20 @@ package object phaser {
       * @return the array of all living entities
       */
     @inline
-    def findAlive(context: RawOptions = group): Array[T] = {
+    def findAlive(context: js.Any = group): Array[T] = {
       val items = js.Array[T]()
       group.foreachAlive(items.append(_), context)
       items
     }
 
     @inline
-    def foreach(callback: T => Any, context: RawOptions = group): Unit = group.forEach(callback, context)
+    def foreach(callback: T => Any, context: js.Any = group): Unit = group.forEach(callback, context)
 
     @inline
-    def foreachAlive(callback: T => Any, context: RawOptions = group): Unit = group.forEachAlive(callback, context)
+    def foreachAlive(callback: T => Any, context: js.Any = group): Unit = group.forEachAlive(callback, context)
 
     @inline
-    def foreachDead(callback: T => Any, context: RawOptions = group): Unit = group.forEachDead(callback, context)
+    def foreachDead(callback: T => Any, context: js.Any = group): Unit = group.forEachDead(callback, context)
 
   }
 

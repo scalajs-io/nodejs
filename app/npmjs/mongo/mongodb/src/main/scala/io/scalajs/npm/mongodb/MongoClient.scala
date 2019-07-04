@@ -1,10 +1,7 @@
 package io.scalajs.npm.mongodb
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * Mongo Client Module
@@ -20,7 +17,7 @@ class MongoClient() extends js.Object {
     * @param server  the [[Server]]
     * @param options the [[MongoClientOptions options]]
     */
-  def this(server: Server, options: MongoClientOptions | RawOptions) = this()
+  def this(server: Server, options: MongoClientOptions) = this()
 
   /**
     * Close the current db connection, including all the child db instances.
@@ -36,7 +33,7 @@ class MongoClient() extends js.Object {
     * @param callback the callback function
     */
   def connect(url: String,
-              options: ConnectionOptions | RawOptions = js.native,
+              options: ConnectionOptions = js.native,
               callback: MongoCallback1[Db] = js.native): js.Promise[Db] = js.native
 
   /**

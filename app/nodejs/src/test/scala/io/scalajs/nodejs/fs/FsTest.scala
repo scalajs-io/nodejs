@@ -1,11 +1,6 @@
 package io.scalajs.nodejs.fs
 
-import io.scalajs.JSON
 import io.scalajs.nodejs.os.OS
-import io.scalajs.nodejs.path.Path
-import io.scalajs.nodejs.setImmediate
-import io.scalajs.nodejs.util.Util
-import io.scalajs.util.ScalaJsHelper._
 import org.scalatest.FunSpec
 
 /**

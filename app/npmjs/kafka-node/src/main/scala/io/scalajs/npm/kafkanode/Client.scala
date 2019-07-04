@@ -1,6 +1,5 @@
 package io.scalajs.npm.kafkanode
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.Error
 import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.npm.nzc
@@ -8,7 +7,6 @@ import io.scalajs.npm.nzc.ClientOptions
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * Kafka-Node Client
@@ -23,8 +21,8 @@ import scala.scalajs.js.|
 @JSImport("kafka-node", "Client")
 class Client(connectionString: String,
              clientId: String = js.native,
-             zkOptions: ClientOptions | RawOptions = js.native,
-             noAckBatchOptions: NoAckBatchOptions | RawOptions = js.native)
+             zkOptions: ClientOptions = js.native,
+             noAckBatchOptions: NoAckBatchOptions = js.native)
     extends IEventEmitter {
 
   def this() = this(null, null, null, null)

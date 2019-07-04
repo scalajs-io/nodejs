@@ -1,11 +1,9 @@
 package io.scalajs.npm.brake
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.stream.{Readable, Writable}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * brake - throttle a stream with backpressure
@@ -21,7 +19,7 @@ trait Brake extends js.Object {
     * @param options the throttle options
     * @return a [[Readable]] / [[Writable]] instance
     */
-  def apply(rate: Double, options: ThrottleOptions | RawOptions = js.native): Readable with Writable = js.native
+  def apply(rate: Double, options: ThrottleOptions = js.native): Readable with Writable = js.native
 
 }
 

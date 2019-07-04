@@ -1,6 +1,5 @@
 package io.scalajs.npm.redis
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.nodejs.fs.ReadStream
@@ -102,7 +101,7 @@ trait RedisClient extends IEventEmitter {
     * @param callback the optional callback
     * @return
     */
-  def duplicate(options: RawOptions = js.native, callback: RedisCallback[RedisResponse]): js.Any = js.native
+  def duplicate(options: js.Any = js.native, callback: RedisCallback[RedisResponse]): js.Any = js.native
 
   /**
     * Dumps a record by key

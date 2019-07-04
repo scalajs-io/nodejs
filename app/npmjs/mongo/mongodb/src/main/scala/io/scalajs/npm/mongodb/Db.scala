@@ -1,7 +1,5 @@
 package io.scalajs.npm.mongodb
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
@@ -58,7 +56,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     * @param options  the optional settings.
     * @return the promise of the result
     */
-  def addUser(username: String, password: String, options: RawOptions = js.native): js.Promise[CommandResult] = js.native
+  def addUser(username: String, password: String, options: js.Any = js.native): js.Promise[CommandResult] = js.native
 
   /**
     * Add a user to the database.
@@ -67,7 +65,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     * @param options  the optional settings.
     * @param callback the results callback
     */
-  def addUser(username: String, password: String, options: RawOptions, callback: MongoCallback1[CommandResult]): Unit = js.native
+  def addUser(username: String, password: String, options: js.Any, callback: MongoCallback1[CommandResult]): Unit = js.native
 
   /**
     * Add a user to the database.
@@ -92,7 +90,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     */
   def authenticate(username: String,
                    password: String,
-                   options: RawOptions = js.native): js.Promise[CommandResult] = js.native
+                   options: js.Any = js.native): js.Promise[CommandResult] = js.native
 
   /**
     * Authenticate a user against the server.
@@ -103,7 +101,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     */
   def authenticate(username: String,
                    password: String,
-                   options: RawOptions,
+                   options: js.Any,
                    callback: MongoCallback1[CommandResult]): Unit = js.native
 
   /**
@@ -141,7 +139,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     * @param name the collection name we wish to access.
     * @return the collection
     */
-  def collection(name: String, options: CollectionOptions | RawOptions = js.native): Collection = js.native
+  def collection(name: String, options: CollectionOptions = js.native): Collection = js.native
 
   /**
     * Fetch a specific collection (containing the actual collection information).
@@ -161,7 +159,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     * @param callback the collection result callback
     */
   def collection(name: String,
-                 options: CollectionOptions | RawOptions,
+                 options: CollectionOptions,
                  callback: MongoCallback1[Collection]): Unit = js.native
 
   /**
@@ -182,7 +180,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     * @param options the optional settings.
     * @return the promise of the result
     */
-  def command(command: js.Any, options: RawOptions = js.native): js.Promise[CommandResult] = js.native
+  def command(command: js.Any, options: js.Any = js.native): js.Promise[CommandResult] = js.native
 
   /**
     * Execute a command
@@ -190,7 +188,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     * @param options  the optional settings.
     * @param callback the results callback
     */
-  def command(command: js.Any, options: RawOptions, callback: MongoCallback1[CommandResult]): Unit = js.native
+  def command(command: js.Any, options: js.Any, callback: MongoCallback1[CommandResult]): Unit = js.native
 
   /**
     * Execute a command
@@ -207,7 +205,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     * @return a promise of the result
     */
   def createCollection(name: String,
-                       options: CollectionOptions | RawOptions = js.native): js.Promise[Collection] = js.native
+                       options: CollectionOptions = js.native): js.Promise[Collection] = js.native
 
   /**
     * Create a new collection on a server with the specified options. Use this to create capped collections.
@@ -217,7 +215,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     * @param callback the results callback
     */
   def createCollection(name: String,
-                       options: CollectionOptions | RawOptions,
+                       options: CollectionOptions,
                        callback: MongoCallback1[Collection]): Unit = js.native
 
   /**
@@ -237,7 +235,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     */
   def createIndex(name: String,
                   fieldOrSpec: String | js.Any,
-                  options: IndexOptions | RawOptions = js.native): js.Promise[CommandResult] = js.native
+                  options: IndexOptions = js.native): js.Promise[CommandResult] = js.native
 
   /**
     * Creates an index on the db and collection collection.
@@ -248,7 +246,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     */
   def createIndex(name: String,
                   fieldOrSpec: String | js.Any,
-                  options: IndexOptions | RawOptions,
+                  options: IndexOptions,
                   callback: MongoCallback1[CommandResult]): Unit = js.native
 
   /**
@@ -306,7 +304,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     */
   def ensureIndex(name: String,
                   fieldOrSpec: String | js.Any,
-                  options: IndexOptions | RawOptions = js.native): js.Promise[CommandResult] = js.native
+                  options: IndexOptions = js.native): js.Promise[CommandResult] = js.native
 
   /**
     * Ensures that an index exists, if it does not it creates it
@@ -317,7 +315,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     */
   def ensureIndex(name: String,
                   fieldOrSpec: String | js.Any,
-                  options: IndexOptions | RawOptions,
+                  options: IndexOptions,
                   callback: MongoCallback1[CommandResult]): Unit = js.native
 
   /**
@@ -339,7 +337,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     */
   def eval(code: Code,
            parameters: js.Array[String] | js.Any,
-           options: RawOptions = js.native): js.Promise[CommandResult] = js.native
+           options: js.Any = js.native): js.Promise[CommandResult] = js.native
 
   /**
     * Evaluate JavaScript on the server
@@ -350,7 +348,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     */
   def eval(code: Code,
            parameters: js.Array[String] | js.Any,
-           options: RawOptions,
+           options: js.Any,
            callback: MongoCallback1[CommandResult]): Unit = js.native
 
   /**
@@ -370,7 +368,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     * @return the promise of the result
     */
   def executeDbAdminCommand(command: js.Any,
-                            options: ReadPreferenceOptions | RawOptions = js.native): js.Promise[CommandResult] = js.native
+                            options: ReadPreferenceOptions = js.native): js.Promise[CommandResult] = js.native
 
   /**
     * Runs a command on the database as admin.
@@ -379,7 +377,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     * @param callback the results callback
     */
   def executeDbAdminCommand(command: js.Any,
-                            options: ReadPreferenceOptions | RawOptions,
+                            options: ReadPreferenceOptions,
                             callback: MongoCallback1[CommandResult]): Unit = js.native
 
   /**
@@ -397,7 +395,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     * @return a promise of the index information
     */
   def indexInformation(name: String,
-                       options: IndexInformationOptions | RawOptions = js.native): js.Promise[js.Any] = js.native
+                       options: IndexInformationOptions = js.native): js.Promise[js.Any] = js.native
 
   /**
     * Retrieves this collections index info.
@@ -406,7 +404,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     * @param callback the callback containing the index information
     */
   def indexInformation(name: String,
-                       options: IndexInformationOptions | RawOptions,
+                       options: IndexInformationOptions,
                        callback: js.Function2[MongoError, js.Any, Any]): Unit = js.native
 
   /**
@@ -423,7 +421,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     * @return a [[CommandCursor]] containing the results
     */
   def listCollections(filter: js.Any = js.native,
-                      options: ListCollectionsOptions | RawOptions = js.native): CommandCursor[CollectionInfo] = js.native
+                      options: ListCollectionsOptions = js.native): CommandCursor[CollectionInfo] = js.native
 
 
   /**
@@ -431,14 +429,14 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     * @param options the optional settings.
     * @return the promise of the result
     */
-  def logout(options: RawOptions): js.Promise[CommandResult] = js.native
+  def logout(options: js.Any): js.Promise[CommandResult] = js.native
 
   /**
     * Logout user from server, fire off on all connections and remove all auth info
     * @param options  the optional settings.
     * @param callback the command result callback
     */
-  def logout(options: RawOptions, callback: MongoCallback1[CommandResult]): Unit = js.native
+  def logout(options: js.Any, callback: MongoCallback1[CommandResult]): Unit = js.native
 
   /**
     * Logout user from server, fire off on all connections and remove all auth info
@@ -465,7 +463,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     * @return the promise of the result
     */
   def removeUser(username: String,
-                 options: RemoveUserOptions | RawOptions = js.native): js.Promise[CommandResult] = js.native
+                 options: RemoveUserOptions = js.native): js.Promise[CommandResult] = js.native
 
   /**
     * Remove a user from a database
@@ -474,7 +472,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     * @param callback the command result callback
     */
   def removeUser(username: String,
-                 options: RemoveUserOptions | RawOptions,
+                 options: RemoveUserOptions,
                  callback: MongoCallback1[CommandResult]): Unit = js.native
 
   /**
@@ -493,7 +491,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     */
   def renameCollection(fromCollection: String,
                        toCollection: String,
-                       options: RenameOptions | RawOptions = js.native): js.Promise[CommandResult] = js.native
+                       options: RenameOptions = js.native): js.Promise[CommandResult] = js.native
 
   /**
     * Rename a collection.
@@ -504,7 +502,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     */
   def renameCollection(fromCollection: String,
                        toCollection: String,
-                       options: RenameOptions | RawOptions,
+                       options: RenameOptions,
                        callback: MongoCallback1[CommandResult]): Unit = js.native
 
   /**
@@ -521,14 +519,14 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
     * Get all the db statistics.
     * @param options the optional settings.
     */
-  def stats(options: DbStatsOptions | RawOptions = js.native): MongoCallback1[DbStats] = js.native
+  def stats(options: DbStatsOptions = js.native): MongoCallback1[DbStats] = js.native
 
   /**
     * Get all the db statistics.
     * @param options  the optional settings.
     * @param callback the collection result callback
     */
-  def stats(options: DbStatsOptions | RawOptions, callback: MongoCallback1[DbStats]): Unit = js.native
+  def stats(options: DbStatsOptions, callback: MongoCallback1[DbStats]): Unit = js.native
 
   /**
     * Get all the db statistics.
@@ -553,7 +551,7 @@ class Db(val databaseName: String, val replicaSet: ReplSet, val options: DbOptio
 
 class CollectionInfo(val name: String,
                      val `type`: String,
-                     val options: RawOptions,
+                     val options: js.Any,
                      val info: CollectionInfo_Info,
                      val idIndex: CollectionInfo_IdIndex) extends js.Object
 

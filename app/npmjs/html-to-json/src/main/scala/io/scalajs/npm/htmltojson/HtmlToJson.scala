@@ -1,7 +1,6 @@
 package io.scalajs.npm
 package htmltojson
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.Error
 
 import scala.scalajs.js
@@ -58,7 +57,7 @@ trait HtmlToJson extends js.Object {
     * @example {{{ htmlToJson.parse(html, filter, [callback]) -> promise }}}
     */
   def parse[T <: js.Any](html: String,
-                         filter: FilterOptions | RawOptions,
+                         filter: FilterOptions,
                          callback: js.Function2[Error, T, Any] = js.native): js.Promise[T] = js.native
 
   /**
@@ -66,7 +65,7 @@ trait HtmlToJson extends js.Object {
     * @example {{{ htmlToJson.request(requestOptions, filter, [callback]) -> promise }}}
     */
   def request[T <: js.Any](request: String | RequestOptions,
-                           filter: FilterOptions | RawOptions,
+                           filter: FilterOptions,
                            callback: js.Function2[Error, T, Any] = js.native): js.Promise[T] = js.native
 
 }

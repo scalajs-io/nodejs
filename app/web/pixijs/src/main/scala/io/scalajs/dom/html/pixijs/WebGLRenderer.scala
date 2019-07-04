@@ -1,10 +1,7 @@
 package io.scalajs.dom.html.pixijs
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
-import scala.scalajs.js.|
 
 /**
   * The WebGLRenderer draws the scene and all its content onto a webGL enabled canvas. This renderer should be used
@@ -18,5 +15,5 @@ import scala.scalajs.js.|
 @JSGlobal("WebGLRenderer")
 class WebGLRenderer(width: Double = js.native,
                     height: Double = js.native,
-                    options: WebGLRendererOptions | RawOptions = js.native)
+                    options: WebGLRendererOptions = js.native)
     extends AbstractRenderer

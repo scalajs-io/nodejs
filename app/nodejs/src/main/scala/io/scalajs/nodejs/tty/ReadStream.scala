@@ -1,6 +1,5 @@
 package io.scalajs.nodejs.tty
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.FileDescriptor
 import io.scalajs.nodejs.net.Socket
 
@@ -16,7 +15,7 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 @JSImport("tty", "ReadStream")
-class ReadStream(fd: FileDescriptor, options: RawOptions = js.native) extends Socket {
+class ReadStream(fd: FileDescriptor, options: js.Any = js.native) extends Socket {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties

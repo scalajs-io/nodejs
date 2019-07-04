@@ -15,7 +15,7 @@ val supportedScalaVersions = List(scalaVersion_2_11_x, scalaVersion_2_12_x, scal
 
 ThisBuild / organization := "io.scalajs"
 ThisBuild / version := apiVersion
-ThisBuild / scalaVersion := scalaVersion_2_13_x
+ThisBuild / scalaVersion := scalaVersion_2_12_x
 
 val commonSettings = Seq(
   organization := "io.scalajs",
@@ -29,7 +29,7 @@ val commonSettings = Seq(
   scalaJSLinkerConfig ~= (_.withModuleKind(ModuleKind.CommonJSModule)),
   libraryDependencies ++= Seq(
     "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-    "org.scalatest" %%% "scalatest" % "3.0.8" % "test"
+    "org.scalatest" %%% "scalatest" % "3.1.0-SNAP13" % "test"
   )) ++ publishingSettings
 
 /////////////////////////////////////////////////////////////////////////////////

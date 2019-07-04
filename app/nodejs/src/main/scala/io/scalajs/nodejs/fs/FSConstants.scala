@@ -168,4 +168,14 @@ trait FSConstants extends js.Object {
     */
   val S_IFSOCK: FileType = js.native
 
+  /////////////////////////////////////////////////////////////////////////////////
+  //      File Copy Constants
+  /////////////////////////////////////////////////////////////////////////////////
+
+  val COPYFILE_EXCL: Int = js.native
+
+  val COPYFILE_FICLONE: Int = js.native
+
+  val COPYFILE_FICLONE_FORCE: Int = js.native
+
 }

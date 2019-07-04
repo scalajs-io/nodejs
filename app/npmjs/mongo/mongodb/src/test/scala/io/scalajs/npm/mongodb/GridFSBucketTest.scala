@@ -7,7 +7,6 @@ import org.scalatest.FunSpec
 
 import scala.concurrent.Promise
 import scala.concurrent.duration._
-import scala.language.existentials
 
 /**
   * GridFSBucket Test

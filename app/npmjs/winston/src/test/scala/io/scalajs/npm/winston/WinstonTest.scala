@@ -2,8 +2,6 @@ package io.scalajs.npm
 package winston
 
 import scala.concurrent.duration._
-import scala.language.existentials
-
 
 /**
   * Winston Tests

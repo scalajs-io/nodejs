@@ -7,7 +7,6 @@ import io.scalajs.npm.htmltojson.HtmlToJsonTest.Content
 import io.scalajs.util.PromiseHelper.Implicits._
 import org.scalatest.FunSpec
 
-import scala.language.existentials
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
 

@@ -21,16 +21,23 @@ import scala.scalajs.js.|
   *
   * When using the synchronous form any exceptions are immediately thrown. You can use try/catch to handle exceptions
   * or allow them to bubble up.
+  * @see [[https://nodejs.org/api/fs.html]]
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait Fs extends IEventEmitter with FSConstants {
+trait Fs extends js.Object with IEventEmitter with FSConstants {
 
   /**
     * Returns an object containing commonly used constants for file system operations
     * @return an [[FSConstants object]] containing commonly used constants for file system operations
     */
   def constants: FSConstants = js.native
+
+  /**
+    * Returns the fsPromises API instance
+    * @return the [[Promises]]
+    */
+  def promises: Promises = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -43,9 +50,9 @@ trait Fs extends IEventEmitter with FSConstants {
     * <ul>
     * <li>fs.F_OK - File is visible to the calling process. This is useful for determining if a file exists,
     * but says nothing about rwx permissions. Default if no mode is specified.</li>
-    * <li>[[FSConstants.R_OK]] - File can be read by the calling process.</li>
-    * <li>[[FSConstants.W_OK]] - File can be written by the calling process.</li>
-    * <li>[[FSConstants.X_OK]] - File can be executed by the calling process. This has no effect on Windows (will behave like [[F_OK]]).</li>
+    * <li>[[R_OK]] - File can be read by the calling process.</li>
+    * <li>[[W_OK]] - File can be written by the calling process.</li>
+    * <li>[[X_OK]] - File can be executed by the calling process. This has no effect on Windows (will behave like [[F_OK]]).</li>
     * </ul>
     * @param path     the path (Buffer | String)
     * @param mode     the optional mode
@@ -62,9 +69,9 @@ trait Fs extends IEventEmitter with FSConstants {
     * <ul>
     * <li>fs.F_OK - File is visible to the calling process. This is useful for determining if a file exists,
     * but says nothing about rwx permissions. Default if no mode is specified.</li>
-    * <li>[[FSConstants.R_OK]] - File can be read by the calling process.</li>
-    * <li>[[FSConstants.W_OK]] - File can be written by the calling process.</li>
-    * <li>[[FSConstants.X_OK]] - File can be executed by the calling process. This has no effect on Windows (will behave like [[F_OK]]).</li>
+    * <li>[[R_OK]] - File can be read by the calling process.</li>
+    * <li>[[W_OK]] - File can be written by the calling process.</li>
+    * <li>[[X_OK]] - File can be executed by the calling process. This has no effect on Windows (will behave like [[F_OK]]).</li>
     * </ul>
     * @param path     the path (Buffer | String)
     * @param callback is a callback function that is invoked with a possible error argument. If any of the accessibility
@@ -572,39 +579,42 @@ trait Fs extends IEventEmitter with FSConstants {
 
   /**
     * Asynchronous readdir(3). Reads the contents of a directory.
-    * @param path     the path (Buffer | String)
+    * @param path     the path (Buffer | String | URL)
     * @param options  the optional options argument can be a string specifying an encoding,
     *                 or an object with an encoding property specifying the character encoding
     *                 to use for the filenames passed to the callback. If the encoding is set
     *                 to 'buffer', the filenames returned will be passed as Buffer objects.
     * @param callback the callback gets two arguments (err, files) where files is an array
     *                 of the names of the files in the directory excluding '.' and '..'.
+    * @tparam T may be a [[String]], [[Buffer]] or [[Dirent]]
     * @example fs.readdir(path[, options], callback)
     */
-  def readdir(path: Buffer | String | URL,
-              options: String | FileEncodingOptions | RawOptions,
-              callback: FsCallback1[js.Array[String]]): Unit = js.native
+  def readdir[T](path: Buffer | String | URL,
+                 options: String | FileEncodingOptions | RawOptions,
+                 callback: FsCallback1[js.Array[T]]): Unit = js.native
 
   /**
     * Asynchronous readdir(3). Reads the contents of a directory.
-    * @param path     the path (Buffer | String)
+    * @param path     the path (Buffer | String | URL)
     * @param callback the callback gets two arguments (err, files) where files is an array
     *                 of the names of the files in the directory excluding '.' and '..'.
+    * @tparam T may be a [[String]], [[Buffer]] or [[Dirent]]
     * @example fs.readdir(path[, options], callback)
     */
-  def readdir(path: Buffer | String | URL, callback: FsCallback1[js.Array[String]]): Unit = js.native
+  def readdir[T](path: Buffer | String | URL, callback: FsCallback1[js.Array[T]]): Unit = js.native
 
   /**
     * Synchronous readdir(3).
-    * @param path    the path (Buffer | String)
+    * @param path    the path (Buffer | String | URL)
     * @param options the optional options argument can be a string specifying an encoding,
     *                or an object with an encoding property specifying the character encoding
     *                to use for the filenames passed to the callback. If the encoding is set
     *                to 'buffer', the filenames returned will be passed as Buffer objects.
+    * @tparam T may be a [[String]], [[Buffer]] or [[Dirent]]
     * @return an array of filenames excluding '.' and '..'.
     */
-  def readdirSync(path: Buffer | String | URL,
-                  options: String | FileEncodingOptions | RawOptions = js.native): js.Array[String] = js.native
+  def readdirSync[T](path: Buffer | String | URL,
+                  options: FileEncodingOptions | String | RawOptions = js.native): js.Array[T] = js.native
 
   /**
     * Asynchronously reads the entire contents of a file.
@@ -966,9 +976,9 @@ trait Fs extends IEventEmitter with FSConstants {
     **/
   def write(fd: FileDescriptor,
             buffer: Buffer | Uint8Array,
-            offset: Integer = js.native,
-            length: Integer = js.native,
-            position: Integer = js.native,
+            offset: Int = js.native,
+            length: Int = js.native,
+            position: Int = js.native,
             callback: FsCallback2[Int, Buffer]): Unit = js.native
 
   /**
@@ -1133,52 +1143,3 @@ trait Fs extends IEventEmitter with FSConstants {
 @JSImport("fs", JSImport.Namespace)
 object Fs extends Fs
 
-/**
-  * File Append Options
-  * @author lawrence.daniels@gmail.com
-  */
-class FileAppendOptions(val encoding: js.UndefOr[String] = js.undefined,
-                        val mode: js.UndefOr[FileMode] = js.undefined,
-                        val flag: js.UndefOr[String] = js.undefined)
-  extends js.Object
-
-/**
-  * File Encoding Options
-  * @author lawrence.daniels@gmail.com
-  */
-class FileEncodingOptions(val encoding: js.UndefOr[String] = js.undefined)
-  extends js.Object
-
-/**
-  * File Input Options
-  * @author lawrence.daniels@gmail.com
-  */
-class FileInputOptions(val flags: js.UndefOr[String] = js.undefined,
-                       val encoding: js.UndefOr[String] = js.undefined,
-                       val fd: js.UndefOr[FileDescriptor] = js.undefined,
-                       val mode: js.UndefOr[Int] = js.undefined,
-                       val autoClose: js.UndefOr[Boolean] = js.undefined,
-                       val start: js.UndefOr[Int] = js.undefined,
-                       val end: js.UndefOr[Int] = js.undefined)
-  extends js.Object
-
-/**
-  * File Input Options
-  * @author lawrence.daniels@gmail.com
-  */
-class FileOutputOptions(val flags: js.UndefOr[String] = js.undefined,
-                        val defaultEncoding: js.UndefOr[String] = js.undefined,
-                        val fd: js.UndefOr[FileDescriptor] = js.undefined,
-                        val mode: js.UndefOr[Int] = js.undefined,
-                        val autoClose: js.UndefOr[Boolean] = js.undefined,
-                        val start: js.UndefOr[Int] = js.undefined)
-  extends js.Object
-
-/**
-  * File Watcher Options
-  * @param persistent <Boolean>
-  * @param interval   <Integer>
-  */
-class FileWatcherOptions(val persistent: js.UndefOr[Boolean] = js.undefined,
-                         val interval: js.UndefOr[Int] = js.undefined)
-  extends js.Object

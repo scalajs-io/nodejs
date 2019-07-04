@@ -23,6 +23,9 @@ class FileTest extends FunSpec {
   def show(file: File): Unit = {
     info(s"getCanonicalPath : ${file.getCanonicalPath()}")
     info(s"getParent : ${file.getParent()}")
+    info(s"canExecute : ${file.canExecute()}")
+    info(s"canRead : ${file.canRead()}")
+    info(s"canWrite : ${file.canWrite()}")
     info(s"isDirectory : ${file.isDirectory()}")
     info(s"isFile : ${file.isFile()}")
     info(s"isHidden : ${file.isHidden()}")

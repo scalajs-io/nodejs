@@ -3,8 +3,6 @@ package io.scalajs.npm.bignum
 import io.scalajs.nodejs.Assert
 import org.scalatest.FunSpec
 
-import scala.language.existentials
-
 /**
   * BigNum Tests
   * @author lawrence.daniels@gmail.com

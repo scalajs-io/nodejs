@@ -11,19 +11,19 @@ case class ModuleMacro(c: blackbox.Context) {
 
   import c.universe._
 
-  val injectedType = typeOf[injected]
+  private val injectedType = typeOf[injected]
 
   //////////////////////////////////////////////////////////////////////////
   //    Controller Macro
   //////////////////////////////////////////////////////////////////////////
 
-  def controllerOf[T <: Controller: c.WeakTypeTag] = generateController(weakTypeOf[T], q"${weakTypeOf[T].toString}")
+  def controllerOf[T <: Controller : c.WeakTypeTag]: c.universe.Tree = generateController(weakTypeOf[T], q"${weakTypeOf[T].toString}")
 
-  def namedControllerOf[T <: Controller: c.WeakTypeTag](name: c.Expr[String]) =
+  def namedControllerOf[T <: Controller : c.WeakTypeTag](name: c.Expr[String]): c.universe.Tree =
     generateController(weakTypeOf[T], q"$name")
 
   private def generateController(classType: Type, name: Tree) = {
-    val module      = Select(c.prefix.tree, TermName("self"))
+    val module = Select(c.prefix.tree, TermName("self"))
     val constructor = makeConstructorArray(classType)
     q"""{
       import scala.scalajs.js
@@ -35,8 +35,8 @@ case class ModuleMacro(c: blackbox.Context) {
   //    Directive Macro
   //////////////////////////////////////////////////////////////////////////
 
-  def namedDirectiveOf[T: c.WeakTypeTag](name: c.Tree) = {
-    val module      = Select(c.prefix.tree, TermName("self"))
+  def namedDirectiveOf[T: c.WeakTypeTag](name: c.Tree): c.universe.Tree = {
+    val module = Select(c.prefix.tree, TermName("self"))
     val constructor = makeDirectiveConstructorArray(weakTypeOf[T])
     q"""{
       import scala.scalajs.js
@@ -45,17 +45,17 @@ case class ModuleMacro(c: blackbox.Context) {
     }"""
   }
 
-  private def makeDirectiveConstructorArray(classType: c.Type) = {
+  private def makeDirectiveConstructorArray(classType: c.Type): c.universe.Tree = {
     val methods = classType.decls.filter(m => m.isMethod && !m.isConstructor && !m.isPrivate) map (_.asMethod)
     val attributes = methods map (ms => ms.name.toString -> ms) map {
       case (id, symbol) if symbol.isGetter => q"$id->d1r3ctive.${symbol.name}"
-      case (id, symbol)                    => q"$id->(d1r3ctive.${symbol.name} _:js.Function)"
+      case (id, symbol) => q"$id->(d1r3ctive.${symbol.name} _:js.Function)"
     }
 
     // build directive constructor
-    val cons           = classType.members.filter(_.isConstructor).map(_.asMethod).head
+    val cons = classType.members.filter(_.isConstructor).map(_.asMethod).head
     val (params, args) = makeArgumentList(cons)
-    val dependencies   = getDependencyInjectedNames(cons)
+    val dependencies = getDependencyInjectedNames(cons)
     q"""js.Array(..$dependencies, ({(..$params) =>
           val d1r3ctive = new $classType(..$args)
           literal(..$attributes)
@@ -66,12 +66,12 @@ case class ModuleMacro(c: blackbox.Context) {
   //    Factory Macro
   //////////////////////////////////////////////////////////////////////////
 
-  def factoryOf[T: c.WeakTypeTag] = generateFactory(weakTypeOf[T], q"${getIdentifierName(weakTypeOf[T])}")
+  def factoryOf[T: c.WeakTypeTag]: c.universe.Tree = generateFactory(weakTypeOf[T], name = q"${getIdentifierName(weakTypeOf[T])}")
 
-  def namedFactoryOf[T: c.WeakTypeTag](name: c.Tree) = generateFactory(weakTypeOf[T], q"$name")
+  def namedFactoryOf[T: c.WeakTypeTag](name: c.Tree): c.universe.Tree = generateFactory(weakTypeOf[T], name = q"$name")
 
-  private def generateFactory(classType: c.Type, name: c.Tree) = {
-    val module      = Select(c.prefix.tree, TermName("self"))
+  private def generateFactory(classType: c.Type, name: c.Tree): c.universe.Tree = {
+    val module = Select(c.prefix.tree, TermName("self"))
     val constructor = makeConstructorArray(classType)
     q"""{
       import scala.scalajs.js
@@ -83,12 +83,12 @@ case class ModuleMacro(c: blackbox.Context) {
   //    Service Macro
   //////////////////////////////////////////////////////////////////////////
 
-  def serviceOf[T: c.WeakTypeTag] = generateService(weakTypeOf[T], q"${getIdentifierName(weakTypeOf[T])}")
+  def serviceOf[T: c.WeakTypeTag]: c.universe.Tree = generateService(weakTypeOf[T], name = q"${getIdentifierName(weakTypeOf[T])}")
 
-  def namedServiceOf[T: c.WeakTypeTag](name: c.Tree) = generateService(weakTypeOf[T], q"$name")
+  def namedServiceOf[T: c.WeakTypeTag](name: c.Tree): c.universe.Tree = generateService(weakTypeOf[T], name = q"$name")
 
-  private def generateService(classType: c.Type, name: c.Tree) = {
-    val module      = Select(c.prefix.tree, TermName("self"))
+  private def generateService(classType: c.Type, name: c.Tree): c.universe.Tree = {
+    val module = Select(c.prefix.tree, TermName("self"))
     val constructor = makeConstructorArray(classType)
     q"""{
       import scala.scalajs.js
@@ -100,11 +100,11 @@ case class ModuleMacro(c: blackbox.Context) {
   //    Internal/Shared Functions
   //////////////////////////////////////////////////////////////////////////
 
-  private def getDependencyInjectedNames(ms: MethodSymbol) = {
+  private def getDependencyInjectedNames(ms: MethodSymbol): List[String] = {
     ms.paramLists.head.map { symbol =>
       symbol.annotations.find(_.tree.tpe =:= injectedType) match {
         case Some(a) => a.tree.children.tail.head.toString().drop(1).dropRight(1)
-        case None    => symbol.name.toString
+        case None => symbol.name.toString
       }
     }
   }
@@ -113,7 +113,7 @@ case class ModuleMacro(c: blackbox.Context) {
 
   private def getIdentifierName(name: String): String = name.toLowerCase.take(1) + name.tail
 
-  private def makeArgumentList(ms: MethodSymbol) = {
+  private def makeArgumentList(ms: MethodSymbol): (List[c.universe.Tree], List[c.universe.Tree]) = {
     if (ms.paramLists.isEmpty) (Nil, Nil)
     else
       ms.paramLists.head.map { symbol =>
@@ -122,10 +122,10 @@ case class ModuleMacro(c: blackbox.Context) {
       } unzip
   }
 
-  private def makeConstructorArray(classType: c.Type) = {
-    val cons           = classType.members.filter(_.isConstructor).map(_.asMethod).head
+  private def makeConstructorArray(classType: c.Type): c.universe.Tree = {
+    val cons = classType.members.filter(_.isConstructor).map(_.asMethod).head
     val (params, args) = makeArgumentList(cons)
-    val dependencies   = getDependencyInjectedNames(cons)
+    val dependencies = getDependencyInjectedNames(cons)
 
     // AngularJS service construction array
     q"js.Array(..$dependencies, ((..$params) => new $classType(..$args)):js.Function)"

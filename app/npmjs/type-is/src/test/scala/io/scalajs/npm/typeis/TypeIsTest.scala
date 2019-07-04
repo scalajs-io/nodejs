@@ -36,7 +36,7 @@ class TypeIsTest extends FunSpec {
 
   }
 
-  def test(mediaType: String, types: js.Array[String], expected: js.Any) {
+  def test(mediaType: String, types: js.Array[String], expected: js.Any): Unit = {
     val actual = TypeIs.is(mediaType, types)
     info(s"""is("$mediaType", [${types.mkString(", ")}]) should be "$expected" ("$actual")""")
     Assert.equal(actual, expected)

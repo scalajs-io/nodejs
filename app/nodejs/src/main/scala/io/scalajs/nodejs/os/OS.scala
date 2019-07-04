@@ -9,7 +9,7 @@ import scala.scalajs.js.annotation.JSImport
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait OS extends js.Object {
+trait OS extends js.Object with OSConstants {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -90,10 +90,37 @@ trait OS extends js.Object {
   def loadavg(): js.Array[Int] = js.native
 
   /**
-    * Get a list of network interfaces
+    * The os.networkInterfaces() method returns an object containing only network interfaces that have been
+    * assigned a network address.
+    *
+    * Each key on the returned object identifies a network interface. The associated value is an array of objects
+    * that each describe an assigned network address.
     * @example os.networkInterfaces()
+    * @example {{{
+    * {
+    *   eth0: [
+    *     {
+    *       address: '192.168.1.108',
+    *       netmask: '255.255.255.0',
+    *       family: 'IPv4',
+    *       mac: '01:02:03:0a:0b:0c',
+    *       internal: false,
+    *       cidr: '192.168.1.108/24'
+    *     },
+    *     {
+    *       address: 'fe80::a00:27ff:fe4e:66a1',
+    *       netmask: 'ffff:ffff:ffff:ffff::',
+    *       family: 'IPv6',
+    *       mac: '01:02:03:0a:0b:0c',
+    *       scopeid: 1,
+    *       internal: false,
+    *       cidr: 'fe80::a00:27ff:fe4e:66a1/64'
+    *     }
+    *   ]
+    * }
+    * }}}
     */
-  def networkInterfaces(): js.Dictionary[NetworkInterface] = js.native
+  def networkInterfaces(): js.Dictionary[js.Array[NetworkInterface]] = js.native
 
   /**
     * Returns the operating system platform. Possible values are 'darwin', 'freebsd', 'linux', 'sunos' or 'win32'.
@@ -107,6 +134,24 @@ trait OS extends js.Object {
     * @example os.release()
     */
   def release(): String = js.native
+
+  /**
+    * The os.setPriority() method attempts to set the scheduling priority for the process specified by pid.
+    * If pid is not provided, or is 0, the priority of the current process is used.
+    *
+    * The priority input must be an integer between -20 (high priority) and 19 (low priority). Due to differences
+    * between Unix priority levels and Windows priority classes, priority is mapped to one of six priority constants
+    * in os.constants.priority. When retrieving a process priority level, this range mapping may cause the return
+    * value to be slightly different on Windows. To avoid confusion, it is recommended to set priority to one of
+    * the priority constants.
+    *
+    * On Windows setting priority to [[PRIORITY_HIGHEST]] requires elevated user, otherwise the set priority will be
+    * silently reduced to [[PRIORITY_HIGH]].
+    * @example os.setPriority([pid, ]priority)
+    * @param pid      The process ID to set scheduling priority for. Default 0.
+    * @param priority The scheduling priority to assign to the process.
+    */
+  def setPriority(pid: Int = js.native, priority: Priority): Unit = js.native
 
   /**
     * Returns the operating system's default directory for temporary files.
@@ -138,7 +183,7 @@ trait OS extends js.Object {
     * shell, and homedir. On Windows, the uid and gid fields are -1, and shell is null.
     *
     * The value of homedir returned by os.userInfo() is provided by the operating system. This differs from
-    * the result of os.homedir(), which queries several environment variables for the home directory before
+    * the result of os.[[homedir()]], which queries several environment variables for the home directory before
     * falling back to the operating system response.
     * @return a [[UserInfoObject user information object]]
     */

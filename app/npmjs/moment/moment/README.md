@@ -36,7 +36,7 @@ println(moment.toString) //=> Thu Sep 01 2016 06:17:00 GMT-0700
 To add the Moment binding to your project, add the following to your build.sbt:  
 
 ```sbt
-libraryDependencies += "io.scalajs.npm" %%% "moment" % "0.5.0"
+libraryDependencies += "io.scalajs.npm" %%% "moment" % "0.6.0"
 ```
 
 Optionally, you may add the Sonatype Repository resolver:

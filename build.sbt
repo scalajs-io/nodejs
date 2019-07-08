@@ -87,6 +87,16 @@ lazy val amcharts = (project in file("app/web/amcharts")).
     description := "AmCharts bindings for Scala.js"
   )
 
+lazy val facebook = (project in file("app/web/facebook-api")).
+  dependsOn(core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings ++ publishingSettings: _*).
+  settings(
+    name := "facebook-sdk",
+    organization := "io.scalajs.web",
+    description := "Facebook SDK bindings for Scala.js"
+  )
+
 lazy val jquery = (project in file("app/web/jquery")).
   dependsOn(core, dom_html).
   enablePlugins(ScalaJSPlugin).
@@ -95,6 +105,16 @@ lazy val jquery = (project in file("app/web/jquery")).
     name := "jquery",
     organization := "io.scalajs.web",
     description := "JQuery bindings for Scala.js"
+  )
+
+lazy val linkedin = (project in file("app/web/linkedin-api")).
+  dependsOn(core).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings ++ publishingSettings: _*).
+  settings(
+    name := "linkedin-sdk",
+    organization := "io.scalajs.web",
+    description := "LinkedIn SDK bindings for Scala.js"
   )
 
 lazy val phaser = (project in file("app/web/phaser")).
@@ -127,7 +147,7 @@ lazy val angular = (project in file("app/web/angularjs/angular")).
   settings(commonSettings ++ publishingSettings: _*).
   settings(
     name := "angular",
-    organization := "io.scalajs.npm",
+    organization := "io.scalajs.web",
     description := "AngularJS binding for Scala.js"
   )
 
@@ -137,7 +157,7 @@ lazy val angular_anchorScroll = (project in file("app/web/angularjs/angular-anch
   settings(commonSettings ++ publishingSettings: _*).
   settings(
     name := "angular-anchor-scroll",
-    organization := "io.scalajs.npm",
+    organization := "io.scalajs.web",
     description := "AngularJS/AnchorScroll binding for Scala.js"
   )
 
@@ -147,7 +167,7 @@ lazy val angular_animate = (project in file("app/web/angularjs/angular-animate")
   settings(commonSettings ++ publishingSettings: _*).
   settings(
     name := "angular-animate",
-    organization := "io.scalajs.npm",
+    organization := "io.scalajs.web",
     description := "AngularJS/Animate binding for Scala.js"
   )
 
@@ -157,7 +177,7 @@ lazy val angular_cookies = (project in file("app/web/angularjs/angular-cookies")
   settings(commonSettings ++ publishingSettings: _*).
   settings(
     name := "angular-cookies",
-    organization := "io.scalajs.npm",
+    organization := "io.scalajs.web",
     description := "AngularJS/Cookies binding for Scala.js"
   )
 
@@ -167,7 +187,7 @@ lazy val angular_facebook = (project in file("app/web/angularjs/angular-facebook
   settings(commonSettings ++ publishingSettings: _*).
   settings(
     name := "angular-facebook",
-    organization := "io.scalajs.npm",
+    organization := "io.scalajs.web",
     description := "AngularJS/Facebook binding for Scala.js"
   )
 
@@ -177,7 +197,7 @@ lazy val angular_md5 = (project in file("app/web/angularjs/angular-md5")).
   settings(commonSettings ++ publishingSettings: _*).
   settings(
     name := "angular-md5",
-    organization := "io.scalajs.npm",
+    organization := "io.scalajs.web",
     description := "AngularJS/MD5 binding for Scala.js"
   )
 
@@ -187,7 +207,7 @@ lazy val angular_file_upload = (project in file("app/web/angularjs/angular-file-
   settings(commonSettings ++ publishingSettings: _*).
   settings(
     name := "angular-file-upload",
-    organization := "io.scalajs.npm",
+    organization := "io.scalajs.web",
     description := "AngularJS/fileupload binding for Scala.js"
   )
 
@@ -197,7 +217,7 @@ lazy val angular_nvd3 = (project in file("app/web/angularjs/angular-nvd3")).
   settings(commonSettings ++ publishingSettings: _*).
   settings(
     name := "angular-nvd3",
-    organization := "io.scalajs.npm",
+    organization := "io.scalajs.web",
     description := "AngularJS/NVD3 binding for Scala.js"
   )
 
@@ -207,7 +227,7 @@ lazy val angular_sanitize = (project in file("app/web/angularjs/angular-sanitize
   settings(commonSettings ++ publishingSettings: _*).
   settings(
     name := "angular-sanitize",
-    organization := "io.scalajs.npm",
+    organization := "io.scalajs.web",
     description := "AngularJS/Sanitize binding for Scala.js"
   )
 
@@ -217,7 +237,7 @@ lazy val angular_ui_bootstrap = (project in file("app/web/angularjs/angular-ui-b
   settings(commonSettings ++ publishingSettings: _*).
   settings(
     name := "angular-ui-bootstrap",
-    organization := "io.scalajs.npm",
+    organization := "io.scalajs.web",
     description := "AngularJS/ui-bootstrap binding for Scala.js"
   )
 
@@ -227,7 +247,7 @@ lazy val angular_ui_router = (project in file("app/web/angularjs/angular-ui-rout
   settings(commonSettings ++ publishingSettings: _*).
   settings(
     name := "angular-ui-router",
-    organization := "io.scalajs.npm",
+    organization := "io.scalajs.web",
     description := "AngularJS/UI-router binding for Scala.js"
   )
 
@@ -237,7 +257,7 @@ lazy val angularjs_toaster = (project in file("app/web/angularjs/angularjs-toast
   settings(commonSettings ++ publishingSettings: _*).
   settings(
     name := "angularjs-toaster",
-    organization := "io.scalajs.npm",
+    organization := "io.scalajs.web",
     description := "AngularJS/Toaster binding for Scala.js"
   )
 
@@ -252,7 +272,7 @@ lazy val angular_platform = (project in file("app/bundles/angularjs-v1-bundle"))
   settings(commonSettings ++ publishingSettings: _*).
   settings(
     name := "angularjs-v1-bundle",
-    organization := "io.scalajs.npm",
+    organization := "io.scalajs.web",
     description := "AngularJS v1.7.x platform bundle",
     crossScalaVersions := Nil
   )
@@ -975,30 +995,6 @@ lazy val xml2js = (project in file("app/npmjs/xml2js")).
     name := "xml2js",
     organization := "io.scalajs.npm",
     description := "XML2js binding for Scala.js"
-  )
-
-/////////////////////////////////////////////////////////////////////////////////
-//      Social sub-projects
-/////////////////////////////////////////////////////////////////////////////////
-
-lazy val facebook = (project in file("app/npmjs/facebook-api")).
-  dependsOn(core).
-  enablePlugins(ScalaJSPlugin).
-  settings(commonSettings ++ publishingSettings: _*).
-  settings(
-    name := "facebook-api",
-    organization := "io.scalajs",
-    description := "Social/Facebook bindings for Scala.js"
-  )
-
-lazy val linkedin = (project in file("app/npmjs/linkedin-api")).
-  dependsOn(core).
-  enablePlugins(ScalaJSPlugin).
-  settings(commonSettings ++ publishingSettings: _*).
-  settings(
-    name := "linkedin-api",
-    organization := "io.scalajs",
-    description := "Social/LinkedIn bindings for Scala.js"
   )
 
 /////////////////////////////////////////////////////////////////////////////////

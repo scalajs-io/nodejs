@@ -1,4 +1,5 @@
-package io.scalajs.dom.html.phaser
+package io.scalajs.dom.html
+package phaser
 package component
 
 import scala.scalajs.js
@@ -31,7 +32,7 @@ trait PhysicsBody extends js.Object {
     * If you need a different result then adjust or re-create the Body shape offsets manually or reset the anchor
     * after enabling physics.
     */
-  var body: Phaser.Physics.Arcade.Body /*| Phaser.Physics.P2.Body | Phaser.Physics.Ninja.Body*/ = js.native
+  var body: phaser.physics.arcade.Body /*| Phaser.Physics.P2.Body | Phaser.Physics.Ninja.Body*/ = js.native
 
   /**
     * The position of the Game Object on the x axis relative to the local coordinates of the parent.

@@ -1,6 +1,5 @@
-package io.scalajs.dom.html.phaser
-
-import io.scalajs.dom.html.pixijs
+package io.scalajs.dom.html
+package phaser
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
@@ -37,17 +36,17 @@ class BitmapText(var game: Phaser.Game,
                  val size: Double = js.native,
                  val align: String = js.native)
   extends pixijs.DisplayObjectContainer
-    with Phaser.Component.Core
-    with Phaser.Component.Angle
-    with Phaser.Component.AutoCull
-    with Phaser.Component.Bounds
-    with Phaser.Component.Destroy
-    with Phaser.Component.FixedToCamera
-    with Phaser.Component.InputEnabled
-    with Phaser.Component.InWorld
-    with Phaser.Component.LifeSpan
-    with Phaser.Component.PhysicsBody
-    with Phaser.Component.Reset {
+    with phaser.component.Core
+    with phaser.component.Angle
+    with phaser.component.AutoCull
+    with phaser.component.Bounds
+    with phaser.component.Destroy
+    with phaser.component.FixedToCamera
+    with phaser.component.InputEnabled
+    with phaser.component.InWorld
+    with phaser.component.LifeSpan
+    with phaser.component.PhysicsBody
+    with phaser.component.Reset {
 
   /**
     * The angle property is the rotation of the Game Object in degrees from its original orientation.

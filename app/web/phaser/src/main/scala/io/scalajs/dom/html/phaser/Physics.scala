@@ -1,7 +1,8 @@
-package io.scalajs.dom.html.phaser
+package io.scalajs.dom.html
+package phaser
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSGlobal
+import scala.scalajs.js.annotation.{JSGlobal, JSName}
 import scala.scalajs.js.|
 
 /**
@@ -29,32 +30,32 @@ class Physics(var game: Phaser.Game, var config: PhysicsConfig) extends js.Objec
   /**
     * The Arcade Physics system.
     */
-  var arcade: Phaser.Physics.Arcade = js.native
+  var arcade: phaser.physics.Arcade = js.native
 
   /**
     * The Box2D Physics system.
     */
-  var box2d: Phaser.Physics.Box2D = js.native
+  var box2d: phaser.physics.Box2D = js.native
 
   /**
     * The Chipmunk Physics system (to be done).
     */
-  var chipmunk: Phaser.Physics.Chipmunk = js.native
+  var chipmunk: phaser.physics.Chipmunk = js.native
 
   /**
     * The MatterJS Physics system (coming soon).
     */
-  var matter: Phaser.Physics.Matter = js.native
+  var matter: phaser.physics.Matter = js.native
 
   /**
     * The N+ Ninja Physics system.
     */
-  var ninja: Phaser.Physics.Ninja = js.native
+  var ninja: phaser.physics.Ninja = js.native
 
   /**
     * The P2.JS Physics system.
     */
-  var p2: Phaser.Physics.P2 = js.native
+  var p2: phaser.physics.P2 = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -114,7 +115,7 @@ class Physics(var game: Phaser.Game, var config: PhysicsConfig) extends js.Objec
     * @param top      If true will set the material on the top bounds wall.
     * @param bottom   If true will set the material on the bottom bounds wall.
     */
-  def setWorldMaterial(material: Phaser.Physics.P2.Material,
+  def setWorldMaterial(material: phaser.physics.p2.Material,
                        left: Boolean = js.native,
                        right: Boolean = js.native,
                        top: Boolean = js.native,
@@ -142,23 +143,51 @@ class Physics(var game: Phaser.Game, var config: PhysicsConfig) extends js.Objec
 }
 
 /**
-  * Physics Singleton
+  * Phaser.Physics Singleton
+  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSGlobal("Phaser.Physics")
 object Physics extends js.Object {
 
+  type Arcade = phaser.physics.Arcade
+  type Box2D = phaser.physics.Box2D
+  type Chipmunk = phaser.physics.Chipmunk
+  type Matter = phaser.physics.Matter
+  type Ninja = phaser.physics.Ninja
+  type P2 = phaser.physics.P2
+
   val ARCADE: Int = js.native
-
   val BOX2D: Int = js.native
-
   val CHIPMUNK: Int = js.native
-
   val MATTERJS: Int = js.native
-
   val NINJA: Int = js.native
-
   val P2JS: Int = js.native
+
+  @js.native
+  @JSName("Arcade")
+  object Arcade extends js.Object {
+
+    type Body = phaser.physics.arcade.Body
+
+  }
+
+  @js.native
+  @JSName("Ninja")
+  object Ninja extends js.Object {
+
+    type AABB = phaser.physics.ninja.AABB
+    type Body = phaser.physics.ninja.Body
+
+  }
+
+  @js.native
+  @JSName("P2")
+  object P2 extends js.Object {
+
+    type Material = phaser.physics.p2.Material
+
+  }
 
 }
 
@@ -166,7 +195,6 @@ object Physics extends js.Object {
   * Physics Configuration Options
   * @see https://github.com/photonstorm/phaser/blob/v2.6.2/src/physics/Physics.js
   */
-
 class PhysicsConfig(var arcade: js.UndefOr[Boolean] = js.undefined,
                     var ninja: js.UndefOr[Boolean] = js.undefined,
                     var p2: js.UndefOr[Boolean] = js.undefined,

@@ -1,4 +1,5 @@
-package io.scalajs.dom.html.phaser
+package io.scalajs.dom.html
+package phaser
 package physics.ninja
 
 import scala.scalajs.js
@@ -15,7 +16,7 @@ import scala.scalajs.js.annotation.JSGlobal
   */
 @js.native
 @JSGlobal("Phaser.Physics.Ninja.AABB")
-class AABB(var body: Phaser.Physics.Ninja.Body,
+class AABB(var body: phaser.physics.ninja.Body,
            var x: Double,
            var y: Double,
            var width: Double,

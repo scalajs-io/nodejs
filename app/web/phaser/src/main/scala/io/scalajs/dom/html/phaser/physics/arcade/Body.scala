@@ -1,4 +1,5 @@
-package io.scalajs.dom.html.phaser
+package io.scalajs.dom.html
+package phaser
 package physics.arcade
 
 import scala.scalajs.js

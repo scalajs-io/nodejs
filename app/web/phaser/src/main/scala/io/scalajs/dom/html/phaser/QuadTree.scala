@@ -1,4 +1,5 @@
-package io.scalajs.dom.html.phaser
+package io.scalajs.dom.html
+package phaser
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
@@ -71,7 +72,7 @@ class QuadTree(var x: Double,
     * @param body The Body object to insert into the quadtree. Can be any object so long as it exposes x, y, right
     *             and bottom properties.
     */
-  def insert(body: Phaser.Physics.Arcade.Body): Unit = js.native
+  def insert(body: phaser.physics.arcade.Body): Unit = js.native
 
   /**
     * Populates this quadtree with the children of the given Group. In order to be added the child must exist

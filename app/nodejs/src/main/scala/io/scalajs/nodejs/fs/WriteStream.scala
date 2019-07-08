@@ -7,6 +7,7 @@ import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Future
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
 
 /**
@@ -14,7 +15,8 @@ import scala.scalajs.js.|
   * @see https://nodejs.org/api/fs.html#fs_class_fs_writestream
   */
 @js.native
-trait WriteStream extends Writable {
+@JSImport("fs", "WriteStream")
+class WriteStream() extends Writable {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -54,7 +56,7 @@ object WriteStream {
     * Write Stream Events
     * @author lawrence.daniels@gmail.com
     */
-  implicit class WriteStreamEvents(val stream: WriteStream) extends AnyVal {
+  final implicit class WriteStreamEvents(val stream: WriteStream) extends AnyVal {
 
     /**
       * Emitted when the WriteStream's underlying file descriptor has been closed using the fs.close() method.
@@ -81,7 +83,7 @@ object WriteStream {
     * Write Stream Extensions
     * @author lawrence.daniels@gmail.com
     */
-  implicit class WriteStreamExtensions(val stream: WriteStream) extends AnyVal {
+  final implicit class WriteStreamExtensions(val stream: WriteStream) extends AnyVal {
 
     @inline
     def closeFuture: Future[Unit] = promiseCallback1[Unit](stream.close)

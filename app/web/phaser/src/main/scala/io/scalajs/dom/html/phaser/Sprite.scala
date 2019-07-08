@@ -1,6 +1,5 @@
-package io.scalajs.dom.html.phaser
-
-import io.scalajs.dom.html.pixijs
+package io.scalajs.dom.html
+package phaser
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
@@ -22,27 +21,27 @@ class Sprite(var game: Phaser.Game,
              var key: String | Phaser.RenderTexture | Phaser.BitmapData | Phaser.Texture,
              var frame: String | Int)
   extends pixijs.Sprite
-    with Phaser.Component.Core
-    with Phaser.Component.Angle
-    with Phaser.Component.Animation
-    with Phaser.Component.AutoCull
-    with Phaser.Component.Bounds
-    with Phaser.Component.BringToTop
-    with Phaser.Component.Crop
-    with Phaser.Component.Delta
-    with Phaser.Component.Destroy
-    with Phaser.Component.FixedToCamera
-    with Phaser.Component.Health
-    with Phaser.Component.InCamera
-    with Phaser.Component.InputEnabled
-    with Phaser.Component.InWorld
-    with Phaser.Component.LifeSpan
-    with Phaser.Component.LoadTexture
-    with Phaser.Component.Overlap
-    with Phaser.Component.PhysicsBody
-    with Phaser.Component.Reset
-    with Phaser.Component.ScaleMinMax
-    with Phaser.Component.Smoothed {
+    with phaser.component.Core
+    with phaser.component.Angle
+    with phaser.component.Animation
+    with phaser.component.AutoCull
+    with phaser.component.Bounds
+    with phaser.component.BringToTop
+    with phaser.component.Crop
+    with phaser.component.Delta
+    with phaser.component.Destroy
+    with phaser.component.FixedToCamera
+    with phaser.component.Health
+    with phaser.component.InCamera
+    with phaser.component.InputEnabled
+    with phaser.component.InWorld
+    with phaser.component.LifeSpan
+    with phaser.component.LoadTexture
+    with phaser.component.Overlap
+    with phaser.component.PhysicsBody
+    with phaser.component.Reset
+    with phaser.component.ScaleMinMax
+    with phaser.component.Smoothed {
 
   /**
     * Protected constructor

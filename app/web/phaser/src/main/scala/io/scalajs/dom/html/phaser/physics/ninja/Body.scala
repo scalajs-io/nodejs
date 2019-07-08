@@ -1,6 +1,6 @@
-package io.scalajs.dom.html.phaser.physics.ninja
-
-import io.scalajs.dom.html.phaser.Phaser
+package io.scalajs.dom.html
+package phaser
+package physics.ninja
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
@@ -23,8 +23,8 @@ import scala.scalajs.js.annotation.JSGlobal
   */
 @js.native
 @JSGlobal("Phaser.Physics.Ninja.Body")
-class Body(var system: Phaser.Physics.Ninja,
-           var sprite: Phaser.Sprite,
+class Body(var system: phaser.physics.Ninja,
+           var sprite: phaser.Sprite,
            var `type`: Int = js.native,
            var id: Int = js.native,
            var radius: Double = js.native,
@@ -41,7 +41,7 @@ class Body(var system: Phaser.Physics.Ninja,
   /**
     * The AABB object this body is using for collision.
     */
-  var aabb: Phaser.Physics.Ninja.AABB = js.native
+  var aabb: phaser.physics.ninja.AABB = js.native
 
   /**
     * The angle of this Body

@@ -7,6 +7,7 @@ import io.scalajs.util.PromiseHelper.promiseCallback1
 
 import scala.concurrent.Future
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
 
 /**
@@ -14,7 +15,8 @@ import scala.scalajs.js.|
   * @see https://nodejs.org/api/stream.html#stream_class_stream_readable
   */
 @js.native
-trait ReadStream extends Readable {
+@JSImport("fs", "ReadStream")
+class ReadStream() extends Readable {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -54,7 +56,7 @@ object ReadStream {
     * Read Stream Events
     * @author lawrence.daniels@gmail.com
     */
-  implicit class ReadStreamEvents(val stream: ReadStream) extends AnyVal {
+  final implicit class ReadStreamEvents(val stream: ReadStream) extends AnyVal {
 
     /**
       * Emitted when the ReadStream's underlying file descriptor has been closed using the fs.close() method.
@@ -81,7 +83,7 @@ object ReadStream {
     * Read Stream Extensions
     * @author lawrence.daniels@gmail.com
     */
-  implicit class ReadStreamExtensions(val stream: ReadStream) extends AnyVal {
+  final implicit class ReadStreamExtensions(val stream: ReadStream) extends AnyVal {
 
     @inline
     def closeFuture: Future[Unit] = promiseCallback1[Unit](stream.close)

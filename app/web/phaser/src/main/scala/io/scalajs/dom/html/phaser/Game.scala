@@ -1,9 +1,8 @@
-package io.scalajs.dom.html.phaser
+package io.scalajs.dom.html
+package phaser
 
 import io.scalajs.JsNumber
-import io.scalajs.dom.html.HTMLElement
 import io.scalajs.dom.html.canvas.CanvasRenderingContext2D
-import io.scalajs.dom.html.phaser.Phaser.GameObjectFactory
 import io.scalajs.dom.html.phaser.utils.Debug
 
 import scala.scalajs.js

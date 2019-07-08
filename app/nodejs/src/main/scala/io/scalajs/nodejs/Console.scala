@@ -62,7 +62,7 @@ class Console(stdout: Writable, stderr: Writable = js.native, ignoreErrors: Bool
     * @param args the optional arguments
     * @example console.debug(data[, ...args])
     */
-  def debug(data: js.Any, args: js.Any*): Unit = js.native
+  def debug(data: js.Any, args: Any*): Unit = js.native
 
   /**
     * Uses util.inspect() on obj and prints the resulting string to stdout.
@@ -77,22 +77,23 @@ class Console(stdout: Writable, stderr: Writable = js.native, ignoreErrors: Bool
     * @param data the data/object
     * @example console.dirxml(...data)
     */
-  def dirxml(data: js.Any*): Unit = js.native
+  def dirxml(data: Any*): Unit = js.native
 
   /**
     * Prints to stderr with newline. Multiple arguments can be passed, with the first used as the primary message and
     * all additional used as substitution values similar to printf(3) (the arguments are all passed to util.format()).
+    * @param data the error message or data
     * @param args the given data and/or arguments
     * @example console.error([data][, ...])
     */
-  def error(args: js.Any*): Unit = js.native
+  def error(data: js.Any, args: Any*): Unit = js.native
 
   /**
     * Increases indentation of subsequent lines by two spaces.
     * If one or more labels are provided, those are printed first without the additional indentation.
     * @param label the labels
     */
-  def group(label: js.Any*): Unit = js.native
+  def group(label: Any*): Unit = js.native
 
   /**
     * An alias for console.group().
@@ -116,7 +117,7 @@ class Console(stdout: Writable, stderr: Writable = js.native, ignoreErrors: Bool
     * @param args the given data and/or arguments
     * @example console.log([data][, ...])
     */
-  def log(args: Any*): Unit = js.native
+  def log(data: js.Any, args: Any*): Unit = js.native
 
   /**
     * Try to construct a table with the columns of the properties of tabularData (or use properties) and rows of
@@ -172,14 +173,14 @@ class Console(stdout: Writable, stderr: Writable = js.native, ignoreErrors: Bool
     * @param args the label and/or data
     * @example console.timeLog([label][, ...data])
     */
-  def timeLog(args: js.Any*): Unit = js.native
+  def timeLog(args: Any*): Unit = js.native
 
   /**
     * Prints to stderr the string 'Trace :', followed by the util.format() formatted message and stack trace to the
     * current position in the code.
     * @example console.trace(message[, ...])
     */
-  def trace(message: String, args: Any*): Unit = js.native
+  def trace(message: js.Any, args: Any*): Unit = js.native
 
   /**
     * Prints to stdout with newline. Multiple arguments can be passed, with the first used as the primary message and
@@ -187,7 +188,7 @@ class Console(stdout: Writable, stderr: Writable = js.native, ignoreErrors: Bool
     * @param args the given data and/or arguments
     * @example console.log([data][, ...])
     */
-  def warn(args: Any*): Unit = js.native
+  def warn(data: js.Any, args: Any*): Unit = js.native
 
 }
 

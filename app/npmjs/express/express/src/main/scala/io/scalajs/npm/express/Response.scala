@@ -211,7 +211,7 @@ trait Response extends ServerResponse {
     * When an error occurs, the method invokes next(err) internally.</li>
     * </ul>
     */
-  def send(): Unit = js.native
+  override def send(data: js.Any = js.native): Unit = js.native
 
   /**
     * Transfers the file at the given path. Sets the Content-Type response HTTP header

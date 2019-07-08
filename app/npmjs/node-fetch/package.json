@@ -1,9 +1,0 @@
-{
-  "name": "node-fetch-sjs",
-  "version": "0.5.0",
-  "private": true,
-  "dependencies": {
-    "node-fetch": "^2.6.0",
-    "source-map-support": "^0.5.12"
-  }
-}

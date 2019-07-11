@@ -1,7 +1,7 @@
 package io.scalajs.nodejs.vm
 
 import io.scalajs.nodejs.vm.VMTest.{ExpectedData, Sandbox}
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -10,7 +10,7 @@ import scala.scalajs.js
   * VM Tests
   * @author lawrence.daniels@gmail.com
   */
-class VMTest extends FunSpec {
+class VMTest extends AnyFunSpec {
 
   describe("VM") {
 
@@ -29,7 +29,7 @@ class VMTest extends FunSpec {
         ExpectedData(animal = "cat", count = 12, name = "kitty12")
       )
 
-      val script  = VM.createScript("""count += 1; name = "kitty" + count""")
+      val script = VM.createScript("""count += 1; name = "kitty" + count""")
       val context = VM.createContext(sandbox)
       expectedSet foreach {
         case ExpectedData(animal, count, name) =>

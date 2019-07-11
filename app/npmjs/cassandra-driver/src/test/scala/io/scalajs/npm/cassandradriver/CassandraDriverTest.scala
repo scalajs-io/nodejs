@@ -1,7 +1,7 @@
 package io.scalajs.npm.cassandradriver
 
 import io.scalajs.JSON
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -10,7 +10,7 @@ import scala.scalajs.js
   * Cassandra Driver Tests
   * @author lawrence.daniels@gmail.com
   */
-class CassandraDriverTest extends FunSpec {
+class CassandraDriverTest extends AnyFunSpec {
 
   describe("CassandraDriver") {
 
@@ -138,8 +138,8 @@ object CassandraDriverTest {
 
   @js.native
   trait MyData extends js.Object {
-    var feedtype: String      = js.native
-    var createdby: String     = js.native
+    var feedtype: String = js.native
+    var createdby: String = js.native
     var creationtime: js.Date = js.native
   }
 

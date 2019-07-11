@@ -1,5 +1,7 @@
 package io.scalajs.npm.watch
 
+import io.scalajs.FlexibleOptions
+
 import scala.scalajs.js
 
 /**
@@ -15,10 +17,16 @@ import scala.scalajs.js
   *                               this file is silently skipped.
   * @param ignoreDirectoryPattern When a regex pattern is set, e.g. /node_modules/, these directories are silently skipped.
   */
-class WatchOptions(ignoreDotFiles: js.UndefOr[Boolean] = js.undefined,
-                   filter: js.UndefOr[js.Function] = js.undefined,
-                   interval: js.UndefOr[Int] = js.undefined,
-                   ignoreUnreadableDir: js.UndefOr[Boolean] = js.undefined,
-                   ignoreNotPermitted: js.UndefOr[Boolean] = js.undefined,
-                   ignoreDirectoryPattern: js.UndefOr[String] = js.undefined)
+class WatchOptions(var ignoreDotFiles: js.UndefOr[Boolean] = js.undefined,
+                   var filter: js.UndefOr[js.Function] = js.undefined,
+                   var interval: js.UndefOr[Int] = js.undefined,
+                   var ignoreUnreadableDir: js.UndefOr[Boolean] = js.undefined,
+                   var ignoreNotPermitted: js.UndefOr[Boolean] = js.undefined,
+                   var ignoreDirectoryPattern: js.UndefOr[String] = js.undefined)
   extends js.Object
+
+/**
+  * Watch Options
+  * @author lawrence.daniels@gmail.com
+  */
+object WatchOptions extends FlexibleOptions[WatchOptions]

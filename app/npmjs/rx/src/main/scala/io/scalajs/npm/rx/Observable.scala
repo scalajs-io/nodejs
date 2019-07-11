@@ -1081,7 +1081,7 @@ object Observable {
     @inline
     def drainFuture: Future[js.Array[A]] = {
       val promise = Promise[js.Array[A]]()
-      val list    = js.Array[A]()
+      val list = js.Array[A]()
       val subscription = observable.forEachWith(
         onNext = { value =>
           list.push(value)
@@ -1143,8 +1143,8 @@ object Observable {
     @inline
     def forEachWith(onNext: A => Any, onError: js.Error => Any = null, onCompleted: () => Any = null): Disposable = {
       observable.forEach(onNext = onNext: js.Function,
-                         onError = onError: js.Function,
-                         onCompleted = onCompleted: js.Function)
+        onError = onError: js.Function,
+        onCompleted = onCompleted: js.Function)
     }
 
     /**

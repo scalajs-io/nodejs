@@ -1,7 +1,5 @@
 package io.scalajs.dom.html.phaser.utils
 
-import io.scalajs.JsNumber
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
 import scala.scalajs.js.|
@@ -78,7 +76,7 @@ trait Utils extends js.Object {
     * @param dimension The window dimension to check.
     * @return The parsed dimension.
     */
-  def parseDimension(size: JsNumber | String, dimension: JsNumber): Int = js.native
+  def parseDimension(size: Double | String, dimension: Double): Int = js.native
 
   /**
     * Takes the given string and reverses it, returning the reversed string.
@@ -105,7 +103,7 @@ trait Utils extends js.Object {
     * @param chance The chance of receiving the value. A number between 0 and 100 (effectively 0% to 100%).
     * @return True if the roll passed, or false otherwise.
     */
-  def chanceRoll(chance: JsNumber): Boolean = js.native
+  def chanceRoll(chance: Int): Boolean = js.native
 
   /**
     * Choose between one of two values randomly.

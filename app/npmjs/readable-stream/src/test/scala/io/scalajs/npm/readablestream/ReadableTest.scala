@@ -2,13 +2,13 @@ package io.scalajs.npm.readablestream
 
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.process
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * Readable Test
   * @author lawrence.daniels@gmail.com
   */
-class ReadableTest extends FunSpec {
+class ReadableTest extends AnyFunSpec {
 
   describe("Readable") {
 

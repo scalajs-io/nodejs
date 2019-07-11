@@ -1,7 +1,5 @@
 package io.scalajs.dom.html.phaser
 
-import io.scalajs.JsNumber
-
 import scala.scalajs.js
 import scala.scalajs.js.|
 
@@ -31,7 +29,7 @@ class StyleOptions(var font: js.UndefOr[String] = js.undefined,
                    var fontStyle: js.UndefOr[String] = js.undefined,
                    var fontVariant: js.UndefOr[String] = js.undefined,
                    var fontWeight: js.UndefOr[String] = js.undefined,
-                   var fontSize: js.UndefOr[String | JsNumber] = js.undefined,
+                   var fontSize: js.UndefOr[String | Int] = js.undefined,
                    var backgroundColor: js.UndefOr[String] = js.undefined,
                    var fill: js.UndefOr[String] = js.undefined,
                    var align: js.UndefOr[String] = js.undefined,
@@ -40,6 +38,6 @@ class StyleOptions(var font: js.UndefOr[String] = js.undefined,
                    var stroke: js.UndefOr[String] = js.undefined,
                    var strokeThickness: js.UndefOr[String] = js.undefined,
                    var wordWrap: js.UndefOr[Boolean] = js.undefined,
-                   var wordWrapWidth: js.UndefOr[JsNumber] = js.undefined,
-                   var maxLines: js.UndefOr[JsNumber] = js.undefined,
-                   var tabs: js.UndefOr[JsNumber] = js.undefined) extends js.Object
+                   var wordWrapWidth: js.UndefOr[Int] = js.undefined,
+                   var maxLines: js.UndefOr[Int] = js.undefined,
+                   var tabs: js.UndefOr[Int] = js.undefined) extends js.Object

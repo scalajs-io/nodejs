@@ -2,7 +2,7 @@ package io.scalajs.npm.engineio
 
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.http.Http
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -10,7 +10,7 @@ import scala.scalajs.js
   * EngineIO Tests
   * @author lawrence.daniels@gmail.com
   */
-class EngineIOTest extends FunSpec {
+class EngineIOTest extends AnyFunSpec {
 
   describe("engine.io") {
 

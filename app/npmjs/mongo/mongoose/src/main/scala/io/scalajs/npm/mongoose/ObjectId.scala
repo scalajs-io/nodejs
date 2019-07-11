@@ -5,7 +5,7 @@ import scala.scalajs.js.annotation.JSImport
 
 /**
   * Schema ObjectId
-  *  @author lawrence.daniels@gmail.com
+  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSImport("mongoose", "Schema.ObjectId")

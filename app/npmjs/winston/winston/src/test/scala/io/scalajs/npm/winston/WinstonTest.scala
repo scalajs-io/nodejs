@@ -4,7 +4,7 @@ package winston
 import io.scalajs.nodejs.{console, setTimeout}
 import io.scalajs.npm.winston.WinstonTest.MetaData
 import io.scalajs.npm.winston.transports.{ConsoleTransportOptions, FileTransportOptions}
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.concurrent.duration._
 import scala.language.existentials
@@ -15,7 +15,7 @@ import scala.scalajs.js
   * Winston Tests
   * @author lawrence.daniels@gmail.com
   */
-class WinstonTest extends FunSpec {
+class WinstonTest extends AnyFunSpec {
 
   describe("Winston") {
 

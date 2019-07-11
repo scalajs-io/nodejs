@@ -1,7 +1,7 @@
 package io.scalajs.npm.gzipuncompressedsize
 
 import io.scalajs.nodejs.Assert
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.util.{Failure, Success}
@@ -10,7 +10,7 @@ import scala.util.{Failure, Success}
   * Gzip Uncompressed Size Test
   * @author lawrence.daniels@gmail.com
   */
-class GzipUncompressedSizeTest extends FunSpec {
+class GzipUncompressedSizeTest extends AnyFunSpec {
 
   describe("GzipUncompressedSize") {
 

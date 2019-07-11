@@ -2,13 +2,13 @@ package io.scalajs.npm.bodyparser
 
 import io.scalajs.JSON
 import io.scalajs.npm.express.{Express, Request, Response}
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * BodyParser Test
   * @author lawrence.daniels@gmail.com
   */
-class BodyParserTest extends FunSpec {
+class BodyParserTest extends AnyFunSpec {
 
   describe("BodyParserTest") {
 

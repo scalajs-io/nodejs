@@ -1,10 +1,12 @@
 package io.scalajs.npm.bodyparser
 
+import io.scalajs.FlexibleOptions
+
 import scala.scalajs.js
 
 
 /**
-  * Express Body Parser Options
+  * URL Encoded Body Options
   * @param extended       The extended option allows to choose between parsing the URL-encoded data with the querystring library
   *                       (when false) or the qs library (when true). The "extended" syntax allows for rich objects and arrays to
   *                       be encoded into the URL-encoded format, allowing for a JSON-like experience with URL-encoded. For more
@@ -33,4 +35,10 @@ class UrlEncodedBodyOptions(var extended: js.UndefOr[Boolean] = js.undefined,
                             var parameterLimit: js.UndefOr[Int] = js.undefined,
                             var `type`: js.UndefOr[String] = js.undefined,
                             var verify: js.UndefOr[String] = js.undefined)
-    extends js.Object
+  extends js.Object
+
+/**
+  * URL Encoded Body Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object UrlEncodedBodyOptions extends FlexibleOptions[UrlEncodedBodyOptions]

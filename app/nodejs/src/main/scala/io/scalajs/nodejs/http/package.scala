@@ -81,7 +81,7 @@ package object http {
       */
     @inline
     def onCheckContinue(callback: (ClientRequest, ServerResponse) => Any): server.type =
-    server.on("checkContinue", callback)
+      server.on("checkContinue", callback)
 
     /**
       * If a client connection emits an 'error' event, it will be forwarded here. Listener of this event is responsible

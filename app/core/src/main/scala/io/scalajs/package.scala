@@ -1,17 +1,12 @@
 package io
 
 import scala.scalajs.js
-import scala.scalajs.js.|
 
 /**
   * scalajs package object
   * @author lawrence.daniels@gmail.com
   */
 package object scalajs {
-
-  type JsAnything = js.Any // js.Any | js.Object | JsNumber | String | Boolean
-
-  type JsNumber = Byte | Double | Float | Int | Long | Short | java.lang.Number
 
   /**
     * JSON Enrichment

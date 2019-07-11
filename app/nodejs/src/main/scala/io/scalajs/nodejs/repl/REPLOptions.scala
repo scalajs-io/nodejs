@@ -1,9 +1,9 @@
 package io.scalajs.nodejs.repl
 
+import io.scalajs.FlexibleOptions
 import io.scalajs.nodejs.stream.{Readable, Writable}
 
 import scala.scalajs.js
-
 
 /**
   * REPL Options
@@ -33,7 +33,6 @@ import scala.scalajs.js
   *                        </ul>
   * @author lawrence.daniels@gmail.com
   */
-
 class REPLOptions(var prompt: js.UndefOr[String] = js.undefined,
                   var input: js.UndefOr[Readable] = js.undefined,
                   var output: js.UndefOr[Writable] = js.undefined,
@@ -43,5 +42,10 @@ class REPLOptions(var prompt: js.UndefOr[String] = js.undefined,
                   var useGlobal: js.UndefOr[Boolean] = js.undefined,
                   var ignoreUndefined: js.UndefOr[Boolean] = js.undefined,
                   var writer: js.UndefOr[js.Function] = js.undefined,
-                  var replMode: js.UndefOr[String] = js.undefined)
-    extends js.Object
+                  var replMode: js.UndefOr[String] = js.undefined) extends js.Object
+
+/**
+  * REPL Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object REPLOptions extends FlexibleOptions[REPLOptions]

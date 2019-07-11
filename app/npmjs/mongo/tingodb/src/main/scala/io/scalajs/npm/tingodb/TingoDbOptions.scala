@@ -1,7 +1,8 @@
 package io.scalajs.npm.tingodb
 
-import scala.scalajs.js
+import io.scalajs.FlexibleOptions
 
+import scala.scalajs.js
 
 /**
   * TingoDB Options
@@ -26,3 +27,9 @@ class TingoDbOptions(var memStore: js.UndefOr[Boolean] = js.undefined,
                      var cacheSize: js.UndefOr[Int] = js.undefined,
                      var cacheMaxObjSize: js.UndefOr[Int] = js.undefined,
                      var searchInArray: js.UndefOr[Boolean] = js.undefined) extends js.Object
+
+/**
+  * TingoDB Options
+  * @author lawrence.daniels@gmail.com
+  */
+object TingoDbOptions extends FlexibleOptions[TingoDbOptions]

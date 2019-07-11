@@ -1,5 +1,6 @@
 package io.scalajs.nodejs.fs
 
+import io.scalajs.FlexibleOptions
 import io.scalajs.nodejs.FileDescriptor
 
 import scala.scalajs.js
@@ -14,3 +15,9 @@ class FileOutputOptions(var flags: js.UndefOr[String] = js.undefined,
                         var mode: js.UndefOr[Int] = js.undefined,
                         var autoClose: js.UndefOr[Boolean] = js.undefined,
                         var start: js.UndefOr[Int] = js.undefined) extends js.Object
+
+/**
+  * File Output Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object FileOutputOptions extends FlexibleOptions[FileOutputOptions]

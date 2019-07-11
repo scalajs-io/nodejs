@@ -3,7 +3,7 @@ package io.scalajs.npm.memoryfs
 import io.scalajs.nodejs.FileIOError
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.fs.Stats
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
@@ -12,7 +12,7 @@ import scala.scalajs.js
   * Memory-Fs Tests
   * @author lawrence.daniels@gmail.com
   */
-class MemoryFsTest extends FunSpec {
+class MemoryFsTest extends AnyFunSpec {
 
   describe("MemoryFs") {
 

@@ -2,13 +2,13 @@ package io.scalajs.npm.cookieparser
 
 import io.scalajs.JSON
 import io.scalajs.npm.express.Express
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * Cookie-Parser Tests
   * @author lawrence.daniels@gmail.com
   */
-class CookieParserTest extends FunSpec {
+class CookieParserTest extends AnyFunSpec {
 
   describe("CookieParser") {
 

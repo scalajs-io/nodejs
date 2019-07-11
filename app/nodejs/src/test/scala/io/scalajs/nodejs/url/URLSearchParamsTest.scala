@@ -1,7 +1,7 @@
 package io.scalajs.nodejs.url
 
 import io.scalajs.nodejs.console
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -9,7 +9,7 @@ import scala.scalajs.js
   * URLSearchParams Tests
   * @author lawrence.daniels@gmail.com
   */
-class URLSearchParamsTest extends FunSpec {
+class URLSearchParamsTest extends AnyFunSpec {
 
   describe("URLSearchParams") {
 

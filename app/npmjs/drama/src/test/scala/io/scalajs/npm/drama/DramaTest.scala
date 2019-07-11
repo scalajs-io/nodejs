@@ -2,7 +2,7 @@ package io.scalajs.npm.drama
 
 import io.scalajs.nodejs.console
 import io.scalajs.npm.drama.DramaTest._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
@@ -11,7 +11,7 @@ import scala.scalajs.js
   * Drama Tests
   * @author lawrence.daniels@gmail.com
   */
-class DramaTest extends FunSpec {
+class DramaTest extends AnyFunSpec {
 
   describe("Drama") {
     val actorSystem = Drama("sys")

@@ -3,7 +3,7 @@ package io.scalajs.npm.mongodb
 import io.scalajs.nodejs._
 import io.scalajs.nodejs.fs.Fs
 import io.scalajs.npm.mongodb.gridfs.GridFSBucket
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.concurrent.Promise
 import scala.concurrent.duration._
@@ -12,7 +12,7 @@ import scala.concurrent.duration._
   * GridFSBucket Test
   * @author lawrence.daniels@gmail.com
   */
-class GridFSBucketTest extends FunSpec with MongoDBTestSupport {
+class GridFSBucketTest extends AnyFunSpec with MongoDBTestSupport {
   private val imagePath = Fs.realpathSync("./src/test/resources/kermit-yoda.jpeg")
 
   describe("GridFSBucket") {

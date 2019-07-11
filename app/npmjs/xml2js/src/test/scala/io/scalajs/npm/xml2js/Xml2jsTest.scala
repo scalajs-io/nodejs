@@ -3,7 +3,7 @@ package io.scalajs.npm.xml2js
 import io.scalajs.JSON
 import io.scalajs.npm.xml2js.Xml2jsTest.MyObject
 import io.scalajs.util.JSONHelper._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -11,7 +11,7 @@ import scala.scalajs.js
   * Xml2js Tests
   * @author lawrence.daniels@gmail.com
   */
-class Xml2jsTest extends FunSpec {
+class Xml2jsTest extends AnyFunSpec {
 
   describe("Xml2js") {
 

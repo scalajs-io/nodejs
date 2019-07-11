@@ -1,13 +1,13 @@
 package io.scalajs.npm.mongodb
 
 import io.scalajs.JSON
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * MongoDB DSL Tests
   * @author lawrence.daniels@gmail.com
   */
-class MongoDSLTest extends FunSpec {
+class MongoDSLTest extends AnyFunSpec {
 
   describe("MongoDB-DSL") {
 

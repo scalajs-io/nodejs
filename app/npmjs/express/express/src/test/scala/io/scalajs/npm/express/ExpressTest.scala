@@ -2,7 +2,7 @@ package io.scalajs.npm.express
 
 import io.scalajs.nodejs.http.{Http, RequestOptions, ServerResponse}
 import io.scalajs.nodejs.{setTimeout, _}
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.concurrent.duration._
 
@@ -10,7 +10,7 @@ import scala.concurrent.duration._
   * Express Tests
   * @author lawrence.daniels@gmail.com
   */
-class ExpressTest extends FunSpec {
+class ExpressTest extends AnyFunSpec {
   private val port = 4568
 
   describe("Express") {

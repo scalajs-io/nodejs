@@ -22,7 +22,7 @@ package object mysql {
       * Emitted once to detail the field packets for the rows to follow
       */
     @inline
-    def onFields(callback: js.Array[FieldPacket] => Any): readable.type = readable.on("fields", callback)
+    def onFields(callback: js.Array[MySQLFieldPacket] => Any): readable.type = readable.on("fields", callback)
 
     /**
       * Emitted for each row of the result set

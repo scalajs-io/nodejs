@@ -14,4 +14,4 @@ class FileUploadConfig(var data: js.Any = js.undefined,
                        var fileFormDataName: js.Any = js.undefined,
                        var method: js.UndefOr[String] = js.undefined,
                        var url: js.UndefOr[String] = js.undefined)
-    extends js.Object
+  extends js.Object

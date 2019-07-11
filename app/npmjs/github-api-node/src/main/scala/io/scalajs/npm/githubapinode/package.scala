@@ -145,10 +145,10 @@ package object githubapinode {
       */
     @inline
     def writeFuture(branch: String,
-                   pathToFile: String,
-                   contents: String,
-                   commitMessage: String,
-                   options: js.Any): Future[Unit] = {
+                    pathToFile: String,
+                    contents: String,
+                    commitMessage: String,
+                    options: js.Any): Future[Unit] = {
       promiseWithError0[GithubError](repo.write(branch, pathToFile, contents, commitMessage, options, _))
     }
 

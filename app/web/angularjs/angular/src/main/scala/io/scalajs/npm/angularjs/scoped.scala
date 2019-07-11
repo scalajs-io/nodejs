@@ -22,11 +22,11 @@ class scoped extends StaticAnnotation {
   */
 object scoped {
 
-  def impl(c: blackbox.Context)(annottees: c.Expr[Any]*) = {
+  def impl(c: blackbox.Context)(annottees: c.Expr[Any]*): c.universe.Tree = {
     import c.universe._
 
     annottees map (_.tree) match {
-      case (decl @ DefDef(mods, name, tparams, vparamss, tpt, rhs)) :: Nil =>
+      case (decl@DefDef(mods, name, tparams, vparamss, tpt, rhs)) :: Nil =>
         vparamss.headOption match {
           case Some(params) =>
             val args = params.map(_.name)

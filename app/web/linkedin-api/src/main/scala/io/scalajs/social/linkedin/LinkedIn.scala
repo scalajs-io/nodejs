@@ -11,12 +11,12 @@ import scala.scalajs.js
   */
 @js.native
 trait LinkedIn extends js.Object {
-  val API: LinkedInAPIService         = js.native
-  val AUTH: js.Dynamic                = js.native // TODO is AUTH a valid service?
-  val Event: LinkedInEventService     = js.native
+  val API: LinkedInAPIService = js.native
+  val AUTH: js.Dynamic = js.native // TODO is AUTH a valid service?
+  val Event: LinkedInEventService = js.native
   val ENV: LinkedInEnvironmentService = js.native
-  val UI: LinkedInUIService           = js.native
-  val User: LinkedInUserService       = js.native
+  val UI: LinkedInUIService = js.native
+  val User: LinkedInUserService = js.native
 
   /**
     * Initializes the LinkedIn JavaScript API
@@ -355,7 +355,7 @@ trait LinkedInUserService extends js.Object {
   /**
     * Requests Authorization
     * @param callbackFunction a function to call when the user is authorized. If the user is already logged in, callbackFunction will fire immediately.
-    * @param callbackScope an optional scope to run callbackFunction in. Defaults to the window scope.
+    * @param callbackScope    an optional scope to run callbackFunction in. Defaults to the window scope.
     */
   def authorize(callbackFunction: js.Function, callbackScope: js.Object): Unit = js.native
 
@@ -368,7 +368,7 @@ trait LinkedInUserService extends js.Object {
   /**
     * Logs the User Out
     * @param callbackFunction a function to call when the user is logged out.
-    * @param callbackScope an optional scope to run callbackFunction in. Defaults to the window scope.
+    * @param callbackScope    an optional scope to run callbackFunction in. Defaults to the window scope.
     */
   def logout(callbackFunction: js.Function, callbackScope: js.Object): Unit = js.native
 

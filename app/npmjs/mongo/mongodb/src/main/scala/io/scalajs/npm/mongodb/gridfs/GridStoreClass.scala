@@ -146,7 +146,7 @@ object GridStoreClass {
       */
     @inline
     def existFuture(db: Db, name: String): js.Promise[GridStore] =
-    promiseMongoCallback1[GridStore](`class`.exist(db, name, _))
+      promiseMongoCallback1[GridStore](`class`.exist(db, name, _))
 
     /**
       * Gets the list of files stored in the GridFS.
@@ -169,7 +169,7 @@ object GridStoreClass {
       */
     @inline
     def readFuture[T <: js.Any](db: Db, name: String): js.Promise[Array[T]] =
-    promiseMongoCallback1[js.Array[T]](`class`.read(db, name, _))
+      promiseMongoCallback1[js.Array[T]](`class`.read(db, name, _))
 
     /**
       * Reads the contents of a file.

@@ -29,16 +29,16 @@ import scala.scalajs.js.annotation.JSGlobal
   * @param drop               Boolean	false	Allows having drop-shaped balloons. Note, these balloons will not check for overlapping with other balloons, or if they go outside plot area. It also does not change pointer orientation automatically based on its vertical position like regular balloons do. You can use pointerOrientation property if you want it to point to different direction. Not supported by IE8.
   * @param enabled            Boolean	true	Use this property to disable balloons for certain value axes. I.e.:
   *                           {{{
-  *                            "valueAxes": [{
-  *                              // ...
-  *                              // value balloons are shown
-  *                            }, {
-  *                              // ...
-  *                              "balloon": {
-  *                                "enabled": false
-  *                              }
-  *                              // value balloons are not shown
-  *                            }]
+  *                                                       "valueAxes": [{
+  *                                                         // ...
+  *                                                         // value balloons are shown
+  *                                                       }, {
+  *                                                         // ...
+  *                                                         "balloon": {
+  *                                                           "enabled": false
+  *                                                         }
+  *                                                         // value balloons are not shown
+  *                                                       }]
   *                           }}}
   * @param fadeOutDuration    Number	0.3	Duration of a fade out animation, in seconds.
   * @param fillAlpha          Number	0.8	Balloon background opacity.

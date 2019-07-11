@@ -32,12 +32,12 @@ trait DNS extends js.Object {
     *
     * Alternatively, options can be an object containing these properties:
     * <ul>
-    * <li>family <Number> - The record family. If present, must be the integer 4 or 6. If not provided, both IP v4
+    * <li>family {{{<Number>}}} - The record family. If present, must be the integer 4 or 6. If not provided, both IP v4
     * and v6 addresses are accepted.</li>
-    * <li>hints: <Number> - If present, it should be one or more of the supported getaddrinfo flags. If hints is not
+    * <li>hints: {{{<Number>}}} - If present, it should be one or more of the supported getaddrinfo flags. If hints is not
     * provided, then no flags are passed to getaddrinfo. Multiple flags can be passed through hints by logically
     * ORing their values. See supported getaddrinfo flags for more information on supported flags.</li>
-    * <li>all: <Boolean> - When true, the callback returns all resolved addresses in an array, otherwise returns a
+    * <li>all: {{{<Boolean>}}} - When true, the callback returns all resolved addresses in an array, otherwise returns a
     * single address. Defaults to false.</li>
     * </ul>
     * All properties are optional.

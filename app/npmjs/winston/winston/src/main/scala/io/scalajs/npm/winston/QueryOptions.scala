@@ -1,5 +1,7 @@
 package io.scalajs.npm.winston
 
+import io.scalajs.FlexibleOptions
+
 import scala.scalajs.js
 import scala.scalajs.js.|
 
@@ -19,3 +21,9 @@ class QueryOptions(val from: js.UndefOr[Double | js.Date] = js.undefined,
                    val order: js.UndefOr[String] = js.undefined,
                    val fields: js.UndefOr[js.Array[String]] = js.undefined)
   extends js.Object
+
+/**
+  * Query Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object QueryOptions extends FlexibleOptions[QueryOptions]

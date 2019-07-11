@@ -1,5 +1,7 @@
 package io.scalajs.npm.kafkanode
 
+import io.scalajs.FlexibleOptions
+
 import scala.scalajs.js
 import scala.scalajs.js.|
 
@@ -21,7 +23,6 @@ import scala.scalajs.js.|
   * @param zk               put client zk settings if you need them (see Client)
   * @author lawrence.daniels@gmail.com
   */
-
 class ConsumerGroupOptions(var batch: js.UndefOr[String] = js.undefined,
                            var fromOffset: js.UndefOr[String] = js.undefined,
                            var host: js.UndefOr[String] = js.undefined,
@@ -33,4 +34,10 @@ class ConsumerGroupOptions(var batch: js.UndefOr[String] = js.undefined,
                            var sessionTimeout: js.UndefOr[Int] = js.undefined,
                            var ssl: js.UndefOr[Boolean] = js.undefined,
                            var zk: js.UndefOr[js.Any] = js.undefined)
-    extends js.Object
+  extends js.Object
+
+/**
+  * Consumer Group Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object ConsumerGroupOptions extends FlexibleOptions[ConsumerGroupOptions]

@@ -2,13 +2,13 @@ package io.scalajs.npm.moment.durationformat
 
 import io.scalajs.nodejs.Assert
 import io.scalajs.npm.moment.Moment
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * Moment Duration Format Test Suite
   * @author lawrence.daniels@gmail.com
   */
-class MomentDurationFormatTest extends FunSpec {
+class MomentDurationFormatTest extends AnyFunSpec {
 
   describe("MomentDurationFormat") {
 

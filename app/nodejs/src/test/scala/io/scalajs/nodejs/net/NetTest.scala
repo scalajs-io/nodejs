@@ -1,12 +1,12 @@
 package io.scalajs.nodejs.net
 
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * Network (Net) Tests
   * @author lawrence.daniels@gmail.com
   */
-class NetTest extends FunSpec {
+class NetTest extends AnyFunSpec {
 
   describe("Net") {
 

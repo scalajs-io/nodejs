@@ -4,7 +4,7 @@ import io.scalajs.nodejs.http.ServerResponse._
 import io.scalajs.nodejs.http.{Http, ServerResponse}
 import io.scalajs.nodejs.{setTimeout, _}
 import io.scalajs.npm.express.{Express, Request, Response}
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.concurrent.duration._
 import scala.scalajs.js
@@ -13,7 +13,7 @@ import scala.scalajs.js
   * Express-CSV Tests
   * @author lawrence.daniels@gmail.com
   */
-class ExpressCSVTest extends FunSpec {
+class ExpressCSVTest extends AnyFunSpec {
   private val port = 4567
 
   describe("ExpressCSV") {

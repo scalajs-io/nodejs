@@ -1,7 +1,8 @@
 package io.scalajs.npm.express
 
-import scala.scalajs.js
+import io.scalajs.FlexibleOptions
 
+import scala.scalajs.js
 
 /**
   * Cookie Options
@@ -23,4 +24,10 @@ class CookieOptions(var domain: js.UndefOr[String] = js.undefined,
                     var path: js.UndefOr[String] = js.undefined,
                     var secure: js.UndefOr[Boolean] = js.undefined,
                     var signed: js.UndefOr[Boolean] = js.undefined)
-    extends js.Object
+  extends js.Object
+
+/**
+  * Cookie Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object CookieOptions extends FlexibleOptions[CookieOptions]

@@ -11,4 +11,4 @@ import scala.scalajs.js
 class Caption(val html: String,
               val enable: Boolean = true,
               val css: js.UndefOr[js.Dictionary[_ <: Any]] = js.undefined)
-    extends js.Object
+  extends js.Object

@@ -3,7 +3,7 @@ package child_process
 
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.util.ScalaJsHelper._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js.|
 
@@ -11,7 +11,7 @@ import scala.scalajs.js.|
   * ChildProcess Test
   * @author lawrence.daniels@gmail.com
   */
-class ChildProcessTest extends FunSpec {
+class ChildProcessTest extends AnyFunSpec {
 
   describe("ChildProcess") {
 

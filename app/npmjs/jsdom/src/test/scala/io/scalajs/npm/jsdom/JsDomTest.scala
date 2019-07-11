@@ -1,13 +1,15 @@
 package io.scalajs.npm.jsdom
 
 import io.scalajs.dom.html.HTMLAnchorElement
-import org.scalatest._
+import org.scalatest.funspec.AnyFunSpec
+
+import scala.scalajs.js
 
 /**
   * JsDom Test
   * @author lawrence.daniels@gmail.com
   */
-class JsDomTest extends FunSpec {
+class JsDomTest extends AnyFunSpec {
 
   describe("JsDom") {
 
@@ -36,6 +38,18 @@ class JsDomTest extends FunSpec {
         includeNodeLocations = true,
         storageQuota = 10000000d
       ))
+      val doc = dom.window.document
+      assert(doc != null)
+    }
+
+    it("should extract a DOM instance from an URL") {
+      val dom = new JsDom.JSDOM(options = new js.Object {
+        val url = "https://github.com/scalajs-io/nodejs"
+        val referrer = "https://github.com/ldaniels528"
+        val contentType = "text/html"
+        val includeNodeLocations = true
+        val storageQuota = 10000000d
+      })
       val doc = dom.window.document
       assert(doc != null)
     }

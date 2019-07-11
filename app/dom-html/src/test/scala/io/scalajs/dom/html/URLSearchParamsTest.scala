@@ -2,7 +2,7 @@ package io.scalajs.dom.html
 
 import io.scalajs.dom.html.browser.console
 import io.scalajs.util.ScalaJsHelper._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -10,7 +10,7 @@ import scala.scalajs.js
   * URL Search Params Test
   * @author lawrence.daniels@gmail.com
   */
-class URLSearchParamsTest extends FunSpec {
+class URLSearchParamsTest extends AnyFunSpec {
 
   describe("URLSearchParams") {
 

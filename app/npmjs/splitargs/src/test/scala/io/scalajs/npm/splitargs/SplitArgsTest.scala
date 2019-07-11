@@ -1,7 +1,7 @@
 package io.scalajs.npm.splitargs
 
 import io.scalajs.nodejs.Assert
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -9,7 +9,7 @@ import scala.scalajs.js
   * SplitArgs Tests
   * @author lawrence.daniels@gmail.com
   */
-class SplitArgsTest extends FunSpec {
+class SplitArgsTest extends AnyFunSpec {
 
   describe("SplitArgs") {
 

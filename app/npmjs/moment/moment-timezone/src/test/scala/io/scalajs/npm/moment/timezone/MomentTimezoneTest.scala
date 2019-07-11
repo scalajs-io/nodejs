@@ -2,13 +2,13 @@ package io.scalajs.npm.moment
 package timezone
 
 import io.scalajs.nodejs.Assert
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * MomentTimezone Test Suite
   * @author lawrence.daniels@gmail.com
   */
-class MomentTimezoneTest extends FunSpec {
+class MomentTimezoneTest extends AnyFunSpec {
 
   describe("MomentTimezone") {
 

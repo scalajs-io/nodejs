@@ -1,6 +1,6 @@
 package io.scalajs.nodejs.child_process
 
-import io.scalajs.JsNumber
+import io.scalajs.FlexibleOptions
 
 import scala.scalajs.js
 import scala.scalajs.js.|
@@ -21,13 +21,18 @@ import scala.scalajs.js.|
   *                 The shell should understand the -c switch on UNIX, or /d /s /c on Windows. Defaults to false (no shell).
   * @author lawrence.daniels@gmail.com
   */
-
 class SpawnOptions(val cwd: js.UndefOr[String] = js.undefined,
                    val env: js.Any = js.undefined,
                    val argv0: js.UndefOr[String] = js.undefined,
                    val stdio: js.UndefOr[Array[String] | String] = js.undefined,
                    val detached: js.UndefOr[Boolean] = js.undefined,
-                   val uid: js.UndefOr[JsNumber] = js.undefined,
-                   val gid: js.UndefOr[JsNumber] = js.undefined,
+                   val uid: js.UndefOr[Int] = js.undefined,
+                   val gid: js.UndefOr[Int] = js.undefined,
                    val shell: js.UndefOr[Boolean | String] = js.undefined)
-    extends js.Object
+  extends js.Object
+
+/**
+  * Spawn Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object SpawnOptions extends FlexibleOptions[SpawnOptions]

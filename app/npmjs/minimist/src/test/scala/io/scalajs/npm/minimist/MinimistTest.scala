@@ -2,7 +2,7 @@ package io.scalajs.npm.minimist
 
 import io.scalajs.nodejs.Assert
 import io.scalajs.util.JSONHelper._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -10,7 +10,7 @@ import scala.scalajs.js
   * Minimist Tests
   * @author lawrence.danils@gmail.com
   */
-class MinimistTest extends FunSpec {
+class MinimistTest extends AnyFunSpec {
 
   describe("Minimist") {
 
@@ -27,7 +27,7 @@ class MinimistTest extends FunSpec {
       info(s"result: ${result.toJson}")
       //=> result: {"_":["foo","bar","baz"],"x":3,"y":4,"n":5,"a":true,"b":true,"c":true,"beep":"boop"}
 
-      Assert.deepEqual(result, js.Dictionary("_" -> js.Array("foo","bar","baz"), "x" -> 3, "y" -> 4, "n" -> 5, "a" -> true, "b" -> true, "c" -> true, "beep" -> "boop"))
+      Assert.deepEqual(result, js.Dictionary("_" -> js.Array("foo", "bar", "baz"), "x" -> 3, "y" -> 4, "n" -> 5, "a" -> true, "b" -> true, "c" -> true, "beep" -> "boop"))
     }
 
     it("supports parsing arguments with a grouping delimiter") {

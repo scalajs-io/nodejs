@@ -1,10 +1,9 @@
 package io.scalajs.nodejs
 package child_process
 
-import io.scalajs.JsNumber
+import io.scalajs.FlexibleOptions
 
 import scala.scalajs.js
-
 
 /**
   * Spawns a shell then executes the command within that shell, buffering any generated output.
@@ -24,14 +23,19 @@ import scala.scalajs.js
   * @param uid        <Number> Sets the user identity of the process. (See setuid(2).)
   * @param gid        <Number> Sets the group identity of the process. (See setgid(2).)
   */
-
 class ExecOptions(val cwd: js.UndefOr[String] = js.undefined,
                   val env: js.Any = js.undefined,
                   val encoding: js.UndefOr[String] = js.undefined,
                   val shell: js.UndefOr[String] = js.undefined,
-                  val timeout: js.UndefOr[JsNumber] = js.undefined,
-                  val maxBuffer: js.UndefOr[JsNumber] = js.undefined,
+                  val timeout: js.UndefOr[Int] = js.undefined,
+                  val maxBuffer: js.UndefOr[Int] = js.undefined,
                   val killSignal: js.UndefOr[String] = js.undefined,
-                  val uid: js.UndefOr[JsNumber] = js.undefined,
-                  val gid: js.UndefOr[JsNumber] = js.undefined)
-    extends js.Object
+                  val uid: js.UndefOr[Int] = js.undefined,
+                  val gid: js.UndefOr[Int] = js.undefined)
+  extends js.Object
+
+/**
+  * Exec Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object ExecOptions extends FlexibleOptions[ExecOptions]

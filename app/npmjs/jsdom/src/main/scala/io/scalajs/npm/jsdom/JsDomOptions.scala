@@ -1,5 +1,6 @@
 package io.scalajs.npm.jsdom
 
+import io.scalajs.FlexibleOptions
 import io.scalajs.nodejs.Error
 import io.scalajs.npm.jsdom.JsDom.{CookieJar, ResourceLoader, VirtualConsole}
 
@@ -45,7 +46,6 @@ import scala.scalajs.js
   * @param proxy                   a URL for a HTTP proxy to use for the requests.
   * @see [[https://www.npmjs.com/package/jsdom]]
   */
-
 class JsDomOptions(var html: js.UndefOr[String] = js.undefined,
                    var file: js.UndefOr[String] = js.undefined,
                    var url: js.UndefOr[String] = js.undefined,
@@ -72,3 +72,9 @@ class JsDomOptions(var html: js.UndefOr[String] = js.undefined,
                    var includeNodeLocations: js.UndefOr[Boolean] = js.undefined,
                    var storageQuota: js.UndefOr[Double] = js.undefined)
   extends js.Object
+
+/**
+  * JsDom Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object JsDomOptions extends FlexibleOptions[JsDomOptions]

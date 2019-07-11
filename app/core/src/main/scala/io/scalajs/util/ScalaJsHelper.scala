@@ -47,7 +47,7 @@ object ScalaJsHelper {
 
     @inline
     def getJSClassName: Option[String] = {
-      val keyword ="function "
+      val keyword = "function "
       val info = obj.dynamic.constructor.toString()
       (info.indexOf(keyword), info.indexOf('(')) match {
         case (a, b) if a == -1 | b == -1 | a > b => None

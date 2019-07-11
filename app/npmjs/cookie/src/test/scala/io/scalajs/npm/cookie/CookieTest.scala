@@ -2,7 +2,7 @@ package io.scalajs.npm.cookie
 
 import io.scalajs.JSON
 import io.scalajs.nodejs.Assert
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -10,7 +10,7 @@ import scala.scalajs.js
   * Cookie Test Suite
   * @author lawrence.daniels@gmail.com
   */
-class CookieTest extends FunSpec {
+class CookieTest extends AnyFunSpec {
 
   describe("Cookie") {
 

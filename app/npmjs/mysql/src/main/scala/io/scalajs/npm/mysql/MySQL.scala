@@ -15,13 +15,13 @@ import scala.scalajs.js.annotation.JSImport
 @js.native
 trait MySQL extends IEventEmitter {
 
-  def createPoolCluster(options: PoolClusterOptions): PoolCluster = js.native
+  def createPoolCluster(options: MySQLPoolClusterOptions): MySQLPoolCluster = js.native
 
-  def createConnection(connectionString: String): Connection = js.native
+  def createConnection(connectionString: String): MySQLConnection = js.native
 
-  def createConnection(options: ConnectionOptions): Connection = js.native
+  def createConnection(options: MySQLConnectionOptions): MySQLConnection = js.native
 
-  def createPool(options: PoolOptions): Pool = js.native
+  def createPool(options: MySQLPoolOptions): MySQLPool = js.native
 
 }
 

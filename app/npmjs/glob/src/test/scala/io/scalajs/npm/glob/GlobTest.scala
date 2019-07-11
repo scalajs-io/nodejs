@@ -3,7 +3,7 @@ package io.scalajs.npm.glob
 import io.scalajs.JSON
 import io.scalajs.nodejs.Assert
 import io.scalajs.util.ScalaJsHelper._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
@@ -13,7 +13,7 @@ import scala.util.{Failure, Success}
   * Glob Tests
   * @author lawrence.daniels@gmail.com
   */
-class GlobTest extends FunSpec {
+class GlobTest extends AnyFunSpec {
   private val expected = js.Array(
     "src/main/scala/io/scalajs/npm/glob/Glob.scala",
     "src/main/scala/io/scalajs/npm/glob/GlobOptions.scala",

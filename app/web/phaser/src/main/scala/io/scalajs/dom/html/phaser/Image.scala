@@ -1,8 +1,6 @@
 package io.scalajs.dom.html
 package phaser
 
-import io.scalajs.JsNumber
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
 import scala.scalajs.js.|
@@ -26,7 +24,7 @@ class Image(var game: Phaser.Game,
             override var x: Double,
             override var y: Double,
             var key: String | Phaser.RenderTexture | Phaser.BitmapData | pixijs.Texture,
-            var frame: String | JsNumber)
+            var frame: String | Int)
   extends pixijs.Sprite
     with phaser.component.Core
     with phaser.component.Angle

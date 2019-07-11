@@ -2,13 +2,13 @@ package io.scalajs.npm.combinedstream
 
 import io.scalajs.nodejs.fs.Fs
 import io.scalajs.nodejs.process
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * CombinedStream Tests
   * @author lawrence.daniels@gmail.com
   */
-class CombinedStreamTest extends FunSpec {
+class CombinedStreamTest extends AnyFunSpec {
 
   describe("CombinedStream") {
 

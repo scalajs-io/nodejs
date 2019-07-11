@@ -5,8 +5,10 @@ import io.scalajs.nodejs.console
 import io.scalajs.nodejs.fs.Fs
 import io.scalajs.nodejs.util.Util
 import io.scalajs.npm.tingodb.TingoDBTest.Actor
-import org.scalatest.FunSpec
+import io.scalajs.util.PromiseHelper.Implicits._
+import org.scalatest.funspec.AnyFunSpec
 
+import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSExportTopLevel
 
@@ -15,7 +17,7 @@ import scala.scalajs.js.annotation.JSExportTopLevel
   * @author lawrence.daniels@gmail.com
   */
 @JSExportTopLevel(name = "TingoDBTest")
-class TingoDBTest extends FunSpec {
+class TingoDBTest extends AnyFunSpec {
   val dbPath = "./temp"
   val collName = "actresses"
   val collPath = dbPath + "/" + collName
@@ -46,11 +48,11 @@ class TingoDBTest extends FunSpec {
         console.info(s"result => ${JSON.stringify(result)}")
 
         // Fetch the document
-        collection.findOne(new Actor(firstName = "Drew"), { (err, item) =>
+        collection.findOne(new Actor(firstName = "Drew")) map { item =>
           console.info(JSON.stringify(item))
           //assert.equal(null, err);
           //assert.equal('world_safe2', item.hello);
-        })
+        }
       })
     }
 

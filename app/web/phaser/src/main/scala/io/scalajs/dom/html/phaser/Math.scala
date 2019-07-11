@@ -1,7 +1,5 @@
 package io.scalajs.dom.html.phaser
 
-import io.scalajs.JsNumber
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
 
@@ -88,7 +86,7 @@ class Math extends js.Object {
     * @param k The percentage of interpolation, between 0 and 1.
     * @return The interpolated value
     */
-  def bezierInterpolation(v: js.Array[JsNumber], k: Double): Double = js.native
+  def bezierInterpolation(v: js.Array[Double], k: Double): Double = js.native
 
   /**
     * A Catmull Rom Interpolation Method, mostly used by [[Phaser.Tween]].
@@ -96,7 +94,7 @@ class Math extends js.Object {
     * @param k The percentage of interpolation, between 0 and 1.
     * @return The interpolated value
     */
-  def catmullRomInterpolation(v: js.Array[JsNumber], k: Double): Double = js.native
+  def catmullRomInterpolation(v: js.Array[Double], k: Double): Double = js.native
 
   /**
     * Ceils to some place comparative to a `base`, default is 10 for decimal place.
@@ -106,7 +104,7 @@ class Math extends js.Object {
     * @param base  The base to round in. Default is 10 for decimal.
     * @return The rounded value.
     */
-  def ceilTo(value: JsNumber, place: JsNumber = js.native, base: JsNumber = js.native): Double = js.native
+  def ceilTo(value: Double, place: Int = js.native, base: Int = js.native): Double = js.native
 
   /**
     * Force a value within the boundaries by clamping it to the range `min`, `max`.

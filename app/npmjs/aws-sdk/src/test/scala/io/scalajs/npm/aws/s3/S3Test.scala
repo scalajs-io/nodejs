@@ -3,13 +3,13 @@ package s3
 
 import io.scalajs.nodejs.{console, process}
 import io.scalajs.npm.aws.ses.SES
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * S3 Functional Specification
   * @author lawrence.daniels@gmail.com
   */
-class S3Test extends FunSpec {
+class S3Test extends AnyFunSpec {
 
   describe("S3") {
 

@@ -28,8 +28,8 @@ trait CookieParser extends js.Object {
     * @return a middleware function
     */
   def apply(
-      secret: String | js.Array[String] = js.native,
-      options: DeserializationOptions = js.native): js.Function3[Request, Response, js.Function, Any] =
+             secret: String | js.Array[String] = js.native,
+             options: DeserializationOptions = js.native): js.Function3[Request, Response, js.Function, Any] =
     js.native
 
   /**

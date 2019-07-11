@@ -7,6 +7,6 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 @js.native
-trait SHA  extends js.Object {
+trait SHA extends js.Object {
 
 }

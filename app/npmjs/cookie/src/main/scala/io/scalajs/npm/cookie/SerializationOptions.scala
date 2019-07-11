@@ -1,6 +1,6 @@
 package io.scalajs.npm.cookie
 
-import io.scalajs.JsNumber
+import io.scalajs.FlexibleOptions
 
 import scala.scalajs.js
 import scala.scalajs.js.|
@@ -57,13 +57,18 @@ import scala.scalajs.js.|
   *                 the server in the future if the browser does not have an HTTPS connection.
   * @author lawrence.daniels@gmail.com
   */
-
 class SerializationOptions(var domain: js.UndefOr[String] = js.undefined,
                            var encode: js.UndefOr[js.Function] = js.undefined,
                            var expires: js.UndefOr[String] = js.undefined,
                            var httpOnly: js.UndefOr[Boolean] = js.undefined,
-                           var maxAge: js.UndefOr[JsNumber] = js.undefined,
+                           var maxAge: js.UndefOr[Int] = js.undefined,
                            var path: js.UndefOr[String] = js.undefined,
                            var sameSite: js.UndefOr[Boolean | String] = js.undefined,
                            var secure: js.UndefOr[Boolean] = js.undefined)
-    extends js.Object
+  extends js.Object
+
+/**
+  * Serialization Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object SerializationOptions extends FlexibleOptions[SerializationOptions]

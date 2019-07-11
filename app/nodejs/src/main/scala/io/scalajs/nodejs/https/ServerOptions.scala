@@ -1,7 +1,8 @@
 package io.scalajs.nodejs.https
 
-import scala.scalajs.js
+import io.scalajs.FlexibleOptions
 
+import scala.scalajs.js
 
 /**
   * Server Options
@@ -27,7 +28,6 @@ import scala.scalajs.js
   *                     </ul>
   * @author lawrence.daniels@gmail.com
   */
-
 class ServerOptions(var host: js.UndefOr[String] = js.undefined,
                     var hostname: js.UndefOr[String] = js.undefined,
                     var family: js.UndefOr[String] = js.undefined,
@@ -38,5 +38,10 @@ class ServerOptions(var host: js.UndefOr[String] = js.undefined,
                     var path: js.UndefOr[String] = js.undefined,
                     var headers: js.UndefOr[js.Dictionary[String]] = js.undefined,
                     var auth: js.UndefOr[js.Dictionary[String]] = js.undefined,
-                    var agent: js.UndefOr[String] = js.undefined)
-    extends js.Object
+                    var agent: js.UndefOr[String] = js.undefined) extends js.Object
+
+/**
+  * Server Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object ServerOptions extends FlexibleOptions[ServerOptions]

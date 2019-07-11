@@ -1,5 +1,7 @@
 package io.scalajs.npm.xml2js
 
+import io.scalajs.FlexibleOptions
+
 import scala.scalajs.js
 
 /**
@@ -9,4 +11,10 @@ import scala.scalajs.js
 class RenderOptions(var pretty: js.UndefOr[Boolean] = js.undefined,
                     var indent: js.UndefOr[String] = js.undefined,
                     var newline: js.UndefOr[String] = js.undefined)
-    extends js.Object
+  extends js.Object
+
+/**
+  * Render Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object RenderOptions extends FlexibleOptions[RenderOptions]

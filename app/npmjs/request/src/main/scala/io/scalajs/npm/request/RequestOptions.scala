@@ -1,5 +1,6 @@
 package io.scalajs.npm.request
 
+import io.scalajs.FlexibleOptions
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.npm.toughcookie.CookieJar
 
@@ -8,7 +9,18 @@ import scala.scalajs.js.|
 
 /**
   * Request Options
-  * @author lawrence.daniels@gmail.com
+  * @param url
+  * @param uri
+  * @param json
+  * @param body
+  * @param form
+  * @param formData
+  * @param jar
+  * @param gzip
+  * @param method
+  * @param oauth
+  * @param proxy
+  * @param qs
   */
 class RequestOptions(var url: js.UndefOr[String] = js.undefined,
                      var uri: js.UndefOr[String] = js.undefined,
@@ -23,3 +35,9 @@ class RequestOptions(var url: js.UndefOr[String] = js.undefined,
                      var proxy: js.UndefOr[String] = js.undefined,
                      var qs: js.Any = js.undefined)
   extends js.Object
+
+/**
+  * Request Options
+  * @author lawrence.daniels@gmail.com
+  */
+object RequestOptions extends FlexibleOptions[RequestOptions]

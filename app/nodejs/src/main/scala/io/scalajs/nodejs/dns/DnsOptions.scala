@@ -1,7 +1,8 @@
 package io.scalajs.nodejs.dns
 
-import scala.scalajs.js
+import io.scalajs.FlexibleOptions
 
+import scala.scalajs.js
 
 /**
   * DNS Options
@@ -14,8 +15,12 @@ import scala.scalajs.js
   *               single address. Defaults to false.
   * @author lawrence.daniels@gmail.com
   */
-
 class DnsOptions(var family: js.UndefOr[Int] = js.undefined,
                  var hints: js.UndefOr[Int] = js.undefined,
-                 var all: js.UndefOr[Boolean] = js.undefined)
-    extends js.Object
+                 var all: js.UndefOr[Boolean] = js.undefined) extends js.Object
+
+/**
+  * DNS Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object DnsOptions extends FlexibleOptions[DnsOptions]

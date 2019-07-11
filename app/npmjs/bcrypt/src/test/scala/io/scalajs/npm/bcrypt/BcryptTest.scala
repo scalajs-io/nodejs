@@ -1,7 +1,7 @@
 package io.scalajs.npm.bcrypt
 
 import io.scalajs.util.PromiseHelper.Implicits._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 
@@ -9,7 +9,7 @@ import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
   * Bcrypt Tests
   * @author lawrence.daniels@gmail.com
   */
-class BcryptTest extends FunSpec {
+class BcryptTest extends AnyFunSpec {
 
   describe("Bcrypt") {
 

@@ -9,4 +9,4 @@ import scala.scalajs.js
   */
 
 class SingleSettings(predicate: js.Function = null, thisArg: js.Any = null, defaultValue: js.Any = null)
-    extends js.Object
+  extends js.Object

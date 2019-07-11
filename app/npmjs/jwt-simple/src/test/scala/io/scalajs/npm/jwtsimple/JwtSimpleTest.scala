@@ -3,7 +3,7 @@ package npm
 package jwtsimple
 
 import io.scalajs.nodejs.Assert
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -11,7 +11,7 @@ import scala.scalajs.js
   * Jwt-Simple Tests
   * @author lawrence.daniels@gmail.com
   */
-class JwtSimpleTest extends FunSpec {
+class JwtSimpleTest extends AnyFunSpec {
 
   describe("JwtSimple") {
 

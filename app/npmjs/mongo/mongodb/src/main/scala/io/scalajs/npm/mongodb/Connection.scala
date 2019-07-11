@@ -1,5 +1,7 @@
 package io.scalajs.npm.mongodb
 
+import io.scalajs.FlexibleOptions
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
@@ -16,7 +18,6 @@ class Connection extends js.Object
   * @author lawrence.daniels@gmail.com
   * @see [[https://mongodb.github.io/node-mongodb-native/api-generated/mongoclient.html#connect]]
   */
-
 class ConnectionOptions(var uri_decode_auth: js.UndefOr[Boolean] = js.undefined,
                         var db: js.UndefOr[js.Object] = js.undefined,
                         var server: js.UndefOr[js.Object] = js.undefined,
@@ -24,3 +25,8 @@ class ConnectionOptions(var uri_decode_auth: js.UndefOr[Boolean] = js.undefined,
                         var mongos: js.UndefOr[js.Object] = js.undefined)
   extends js.Object
 
+/**
+  * Connection Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object ConnectionOptions extends FlexibleOptions[ConnectionOptions]

@@ -2,7 +2,7 @@ package io.scalajs.nodejs
 package dns
 
 import io.scalajs.util.JSONHelper._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
@@ -11,7 +11,7 @@ import scala.scalajs.js
   * DNS Tests
   * @author lawrence.daniels@gmail.com
   */
-class DNSTest extends FunSpec {
+class DNSTest extends AnyFunSpec {
   private val domain = "yahoo.com"
 
   describe("DNS") {

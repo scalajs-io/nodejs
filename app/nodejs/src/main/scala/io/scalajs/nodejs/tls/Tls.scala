@@ -34,5 +34,4 @@ trait Tls extends js.Object {
 object Tls extends Tls
 
 
-
 class TlsConnectOptions() extends js.Object

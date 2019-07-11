@@ -1,13 +1,13 @@
 package io.scalajs.npm.md5
 
 import io.scalajs.nodejs.buffer.Buffer
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * MD5 Test
   * @author lawrence.daniels@gmail.com
   */
-class MD5Test extends FunSpec {
+class MD5Test extends AnyFunSpec {
 
   describe("MD5") {
 

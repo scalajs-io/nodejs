@@ -1,13 +1,13 @@
 package io.scalajs.npm.cassandradriver.types
 
 import io.scalajs.nodejs.buffer.Buffer
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * Long Tests
   * @author lawrence.daniels@gmail.com
   */
-class LongTest extends FunSpec {
+class LongTest extends AnyFunSpec {
 
   describe("Long") {
 

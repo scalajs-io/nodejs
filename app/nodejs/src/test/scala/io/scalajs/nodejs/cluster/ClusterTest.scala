@@ -3,7 +3,7 @@ package io.scalajs.nodejs.cluster
 import io.scalajs.JSON
 import io.scalajs.nodejs.setTimeout
 import io.scalajs.util.DurationHelper._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.concurrent.duration._
 import scala.scalajs.js
@@ -12,7 +12,7 @@ import scala.scalajs.js
   * Cluster Tests
   * @author lawrence.daniels@gmail.com
   */
-class ClusterTest extends FunSpec {
+class ClusterTest extends AnyFunSpec {
 
   describe("Cluster") {
 

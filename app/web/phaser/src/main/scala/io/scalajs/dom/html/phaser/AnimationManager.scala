@@ -1,7 +1,5 @@
 package io.scalajs.dom.html.phaser
 
-import io.scalajs.JsNumber
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
 import scala.scalajs.js.|
@@ -92,7 +90,7 @@ class AnimationManager(sprite: Phaser.Sprite) extends js.Object {
     * @return
     */
   def add(name: String,
-          frames: js.Array[JsNumber | String] = js.native,
+          frames: js.Array[Int | String] = js.native,
           frameRate: Double = js.native,
           loop: Boolean = js.native,
           useNumericIndex: Boolean = js.native): Animation = js.native
@@ -155,7 +153,7 @@ class AnimationManager(sprite: Phaser.Sprite) extends js.Object {
 
   /**
     *
-    * @param frames An array of frames to be validated.
+    * @param frames          An array of frames to be validated.
     * @param useNumericIndex Validate the frames based on their numeric index (true) or string index (false)
     * @return True if all given Frames are valid, otherwise false.
     */

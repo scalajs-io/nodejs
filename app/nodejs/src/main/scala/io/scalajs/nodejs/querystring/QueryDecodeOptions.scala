@@ -1,7 +1,8 @@
 package io.scalajs.nodejs.querystring
 
-import scala.scalajs.js
+import io.scalajs.FlexibleOptions
 
+import scala.scalajs.js
 
 /**
   * Query String Decode Options
@@ -13,6 +14,12 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   */
 
-class QueryDecodeOptions(val decodeURIComponent: js.UndefOr[js.Function] = js.undefined,
-                         val maxKeys: js.UndefOr[Int] = js.undefined)
-    extends js.Object
+class QueryDecodeOptions(var decodeURIComponent: js.UndefOr[js.Function] = js.undefined,
+                         var maxKeys: js.UndefOr[Int] = js.undefined)
+  extends js.Object
+
+/**
+  * Query Decode Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object QueryDecodeOptions extends FlexibleOptions[QueryDecodeOptions]

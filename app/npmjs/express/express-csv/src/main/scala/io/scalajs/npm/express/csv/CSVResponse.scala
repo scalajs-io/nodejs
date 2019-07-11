@@ -4,11 +4,11 @@ import scala.scalajs.js
 
 /**
   * CSV Response
-  *  @author lawrence.daniels@gmail.com
+  * @author lawrence.daniels@gmail.com
   */
 @js.native
 trait CSVResponse extends js.Object {
 
-  def csv(values: js.Array[_]): js.Any = js.native
+  def csv[A](values: js.Array[A]): js.Any = js.native
 
 }

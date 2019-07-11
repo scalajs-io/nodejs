@@ -2,13 +2,13 @@ package io.scalajs.npm.buffermaker
 
 import io.scalajs.nodejs.Assert
 import io.scalajs.npm.bignum.BigNum
-import org.scalatest._
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * BufferMaker Tests
   * @author lawrence.daniels@gmail.com
   */
-class BufferMakerTest extends FunSpec {
+class BufferMakerTest extends AnyFunSpec {
 
   describe("BufferMaker") {
 
@@ -23,7 +23,7 @@ class BufferMakerTest extends FunSpec {
 
       info(someBuffer.toString())
       Assert(someBuffer.toString(),
-             "<Buffer 01 00 02 00 00 00 03 00 00 00 00 00 00 00 04 74 68 69 73 20 69 73 20 61 20 74 65 73 74 21>")
+        "<Buffer 01 00 02 00 00 00 03 00 00 00 00 00 00 00 04 74 68 69 73 20 69 73 20 61 20 74 65 73 74 21>")
     }
 
     it("supports binary strings 2") {

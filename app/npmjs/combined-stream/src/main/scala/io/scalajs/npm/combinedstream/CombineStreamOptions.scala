@@ -1,5 +1,7 @@
 package io.scalajs.npm.combinedstream
 
+import io.scalajs.FlexibleOptions
+
 import scala.scalajs.js
 
 /**
@@ -14,3 +16,9 @@ import scala.scalajs.js
   */
 class CombineStreamOptions(var maxDataSize: js.UndefOr[Int] = js.undefined,
                            var pauseStreams: js.UndefOr[Boolean] = js.undefined) extends js.Object
+
+/**
+  * Combine Stream Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object CombineStreamOptions extends FlexibleOptions[CombineStreamOptions]

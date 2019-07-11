@@ -1,7 +1,7 @@
 package io.scalajs.nodejs.buffer
 
 import io.scalajs.collection.Iterator.Entry
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -9,7 +9,7 @@ import scala.scalajs.js
   * Buffer Tests
   * @author lawrence.daniels@gmail.com
   */
-class BufferTest extends FunSpec {
+class BufferTest extends AnyFunSpec {
 
   describe("Buffer") {
 
@@ -39,8 +39,8 @@ class BufferTest extends FunSpec {
     }
 
     it("should support iterating entries [classic]") {
-      val buf                   = Buffer.from("Hello!")
-      val it                    = buf.entries()
+      val buf = Buffer.from("Hello!")
+      val it = buf.entries()
       var result: Entry[js.Any] = null
       do {
         result = it.next()

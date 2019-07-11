@@ -1,7 +1,8 @@
 package io.scalajs.nodejs.util
 
-import scala.scalajs.js
+import io.scalajs.FlexibleOptions
 
+import scala.scalajs.js
 
 /**
   * Inspect Options
@@ -22,12 +23,16 @@ import scala.scalajs.js
   * @see [[https://nodejs.org/api/util.html#util_util_inspect_object_options]]
   * @author lawrence.daniels@gmail.com
   */
-
 class InspectOptions(var showHidden: js.UndefOr[Boolean] = js.undefined,
                      var depth: js.UndefOr[Int] = js.undefined,
                      var colors: js.UndefOr[Boolean] = js.undefined,
                      var customInspect: js.UndefOr[Boolean] = js.undefined,
                      var showProxy: js.UndefOr[Boolean] = js.undefined,
                      var maxArrayLength: js.UndefOr[Int] = js.undefined,
-                     var breakLength: js.UndefOr[Int] = js.undefined)
-    extends js.Object
+                     var breakLength: js.UndefOr[Int] = js.undefined) extends js.Object
+
+/**
+  * Inspect Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object InspectOptions extends FlexibleOptions[InspectOptions]

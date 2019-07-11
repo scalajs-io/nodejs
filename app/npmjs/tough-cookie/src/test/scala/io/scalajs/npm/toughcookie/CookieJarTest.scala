@@ -1,13 +1,13 @@
 package io.scalajs.npm.toughcookie
 
 import io.scalajs.JSON
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * CookieJar Tests
   * @author lawrence.daniels@gmail.com
   */
-class CookieJarTest extends FunSpec {
+class CookieJarTest extends AnyFunSpec {
 
   describe("CookieJar") {
 

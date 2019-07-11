@@ -1,13 +1,13 @@
 package io.scalajs.npm.bignum
 
 import io.scalajs.nodejs.Assert
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * BigNum Tests
   * @author lawrence.daniels@gmail.com
   */
-class BigNumTest extends FunSpec {
+class BigNumTest extends AnyFunSpec {
 
   describe("BigNum") {
     val v1 = "782910138827292261791972728324982"

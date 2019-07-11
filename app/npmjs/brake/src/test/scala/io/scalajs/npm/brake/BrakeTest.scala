@@ -3,13 +3,13 @@ package io.scalajs.npm.brake
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.process
 import io.scalajs.npm.readablestream.Readable
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * Brake Test
   * @author lawrence.daniels@gmail.com
   */
-class BrakeTest extends FunSpec {
+class BrakeTest extends AnyFunSpec {
 
   describe("Brake") {
 

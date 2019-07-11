@@ -1,13 +1,13 @@
 package io.scalajs.npm.cassandradriver.types
 
 import io.scalajs.nodejs.buffer.Buffer
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * Integer Tests
   * @author lawrence.daniels@gmail.com
   */
-class IntegerTest extends FunSpec {
+class IntegerTest extends AnyFunSpec {
 
   describe("Integer") {
 

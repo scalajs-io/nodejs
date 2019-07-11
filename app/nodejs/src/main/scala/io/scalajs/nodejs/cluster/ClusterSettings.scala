@@ -1,5 +1,7 @@
 package io.scalajs.nodejs.cluster
 
+import io.scalajs.FlexibleOptions
+
 import scala.scalajs.js
 import scala.scalajs.js.|
 
@@ -30,3 +32,9 @@ class ClusterSettings(var execArgv: js.UndefOr[js.Array[String]] = js.undefined,
                       var gid: js.UndefOr[Int] = js.undefined,
                       var inspectPort: js.UndefOr[Int | js.Function1[js.Any, Int]] = js.undefined,
                       var windowsHide: js.UndefOr[Boolean] = js.undefined) extends js.Object
+
+/**
+  * Cluster Settings Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object ClusterSettings extends FlexibleOptions[ClusterSettings]

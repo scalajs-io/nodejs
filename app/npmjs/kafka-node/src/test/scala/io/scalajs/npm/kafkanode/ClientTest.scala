@@ -1,7 +1,7 @@
 package io.scalajs.npm.kafkanode
 
 import io.scalajs.nodejs.{console, process}
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
@@ -10,7 +10,7 @@ import scala.scalajs.js
   * Client Test
   * @author lawrence.daniels@gmail.com
   */
-class ClientTest extends FunSpec {
+class ClientTest extends AnyFunSpec {
   private val topic = "testing"
 
   describe("Client") {

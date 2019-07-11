@@ -1,12 +1,12 @@
 package io.scalajs.npm.jvm
 
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * File Test Suite
   * @author lawrence.daniels@gmail.com
   */
-class FileTest extends FunSpec {
+class FileTest extends AnyFunSpec {
 
   describe(classOf[File].getSimpleName) {
 

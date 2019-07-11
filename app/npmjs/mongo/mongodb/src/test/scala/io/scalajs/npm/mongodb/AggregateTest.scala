@@ -1,7 +1,7 @@
 package io.scalajs.npm.mongodb
 
 import io.scalajs.nodejs._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.concurrent.duration._
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
@@ -11,7 +11,7 @@ import scala.scalajs.js
   * Aggregate Test
   * @author lawrence.daniels@gmail.com
   */
-class AggregateTest extends FunSpec with MongoDBTestSupport {
+class AggregateTest extends AnyFunSpec with MongoDBTestSupport {
   private val docs = js.Array(
     doc(
       "title" -> "this is my title",
@@ -41,7 +41,7 @@ class AggregateTest extends FunSpec with MongoDBTestSupport {
         val coll = db.collection("aggregate_test")
 
         for {
-        // remove any existing docs
+          // remove any existing docs
           _ <- {
             info("Aggregate: deleting old docs...")
             coll.deleteMany(doc()).toFuture
@@ -53,17 +53,17 @@ class AggregateTest extends FunSpec with MongoDBTestSupport {
             coll.insertMany(docs, new WriteOptions(w = 1)).toFuture
           }
 
-        // Execute aggregate, notice the pipeline is expressed as an Array
-        /*
-          result <- {
-            info("Aggregate: aggregating data...")
-            coll.aggregateFuture[Data](
-              js.Array(
-                doc("$project" -> doc("author" -> 1, "tags" -> 1)),
-                doc("$unwind" -> "$tags"),
-                doc("$group" -> doc("_id" -> doc("tags" -> "$tags"), "authors" $addToSet "$author"))
-              ))
-          }*/
+          // Execute aggregate, notice the pipeline is expressed as an Array
+          /*
+            result <- {
+              info("Aggregate: aggregating data...")
+              coll.aggregateFuture[Data](
+                js.Array(
+                  doc("$project" -> doc("author" -> 1, "tags" -> 1)),
+                  doc("$unwind" -> "$tags"),
+                  doc("$group" -> doc("_id" -> doc("tags" -> "$tags"), "authors" $addToSet "$author"))
+                ))
+            }*/
         } yield {
           /*
           info(s"Aggregate: result => ${result.toJson}")

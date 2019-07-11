@@ -12,7 +12,7 @@ import scala.scalajs.js.annotation.JSImport
 @js.native
 @JSImport("kafka-node", "Producer")
 class Consumer(client: Client, payloads: js.Array[FetchRequest], options: ConsumerOptions = js.native)
-    extends IEventEmitter {
+  extends IEventEmitter {
 
   /**
     * Add topics to current consumer, if any topic to be added not exists, return error

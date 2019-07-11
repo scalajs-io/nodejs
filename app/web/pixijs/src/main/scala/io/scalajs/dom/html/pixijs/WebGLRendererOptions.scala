@@ -1,9 +1,9 @@
 package io.scalajs.dom.html.pixijs
 
+import io.scalajs.FlexibleOptions
 import io.scalajs.dom.html.canvas.HTMLCanvasElement
 
 import scala.scalajs.js
-
 
 /**
   * WebGL Renderer Options
@@ -19,7 +19,6 @@ import scala.scalajs.js
   *                              on the webgl context.
   * @author lawrence.daniels@gmail.com
   */
-
 class WebGLRendererOptions(var view: js.UndefOr[HTMLCanvasElement] = js.undefined,
                            var transparent: js.UndefOr[Boolean] = js.undefined,
                            var autoResize: js.UndefOr[Boolean] = js.undefined,
@@ -28,4 +27,10 @@ class WebGLRendererOptions(var view: js.UndefOr[HTMLCanvasElement] = js.undefine
                            var resolution: js.UndefOr[Resolution] = js.undefined,
                            var clearBeforeRender: js.UndefOr[Boolean] = js.undefined,
                            var preserveDrawingBuffer: js.UndefOr[Boolean] = js.undefined)
-    extends js.Object
+  extends js.Object
+
+/**
+  * WebGL Renderer Options
+  * @author lawrence.daniels@gmail.com
+  */
+object WebGLRendererOptions extends FlexibleOptions[WebGLRendererOptions]

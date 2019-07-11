@@ -5,7 +5,7 @@ import io.scalajs.nodejs.fs.Fs
 import io.scalajs.nodejs.{Error, console}
 import io.scalajs.npm.async.AsyncTest._
 import io.scalajs.util.ScalaJsHelper._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
@@ -16,7 +16,7 @@ import scala.util.{Failure, Success, Try}
   * @author lawrence.daniels@gmail.com
   * @see [[https://github.com/caolan/async/blob/v1.5.2/README.md]]
   */
-class AsyncTest extends FunSpec {
+class AsyncTest extends AnyFunSpec {
 
   describe("Async") {
 

@@ -9,4 +9,4 @@ import scala.scalajs.js
   */
 
 class Margin(val top: Double = 0, val right: Double = 0, val bottom: Double = 0, val left: Double = 0)
-    extends js.Object
+  extends js.Object

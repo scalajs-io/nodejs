@@ -16,7 +16,7 @@ import scala.scalajs.js.|
 abstract class AbstractFilter(var vertexSrc: String | js.Array[String],
                               var fragmentSrc: String | js.Array[String],
                               var uniforms: js.Object)
-    extends js.Object {
+  extends js.Object {
 
   def this() = this(vertexSrc = js.native, fragmentSrc = js.native, uniforms = js.native)
 

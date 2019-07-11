@@ -1,28 +1,26 @@
 package io.scalajs.npm.mongodb
 
 import io.scalajs.nodejs.Assert
-import org.scalatest.FunSpec
+import io.scalajs.util.PromiseHelper.Implicits._
+import org.scalatest.funspec.AnyFunSpec
 
-import scala.concurrent.Future
+import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
 
 /**
   * Db Test Suites
   * @author lawrence.daniels@gmail.com
   */
-class DbTest extends FunSpec with MongoDBTestSupport {
+class DbTest extends AnyFunSpec with MongoDBTestSupport {
 
   describe("Db") {
 
     it("supports executing code on the server") {
 
-      withMongo("Code") { db =>
-
-        db.eval(new Code("i + 3;"), js.Dictionary("i" -> 2), (err, result) => {
+      withMongo("Code") { db: Db =>
+        db.eval(code = new Code("i + 3;"), parameters = js.Dictionary("i" -> 2), options = null) map { result =>
           Assert.equal(5, result)
-        })
-
-        Future.successful({})
+        }
       }
     }
   }

@@ -8,17 +8,17 @@ import io.scalajs.util.ScalaJsHelper._
   */
 package object timezone {
 
+  // preload the module
+  MomentTimezone
+
   /**
     * Moment Extensions
     * @param moment the given [[Moment moment]] instance
     */
-  implicit class MomentExtensions(val moment: Moment) extends AnyVal {
+  final implicit class MomentExtensions(val moment: Moment) extends AnyVal {
 
     @inline
-    def tz(timeZone: String): Moment = {
-      MomentTimezone
-      moment.dynamic.tz(timeZone).asInstanceOf[Moment]
-    }
+    def tz(timeZone: String): Moment = moment.dynamic.tz(timeZone).asInstanceOf[Moment]
 
   }
 

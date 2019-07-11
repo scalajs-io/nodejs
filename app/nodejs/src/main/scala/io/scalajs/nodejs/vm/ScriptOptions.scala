@@ -1,9 +1,9 @@
 package io.scalajs.nodejs.vm
 
+import io.scalajs.FlexibleOptions
 import io.scalajs.nodejs.buffer.Buffer
 
 import scala.scalajs.js
-
 
 /**
   * Script Options
@@ -28,5 +28,10 @@ class ScriptOptions(var filename: js.UndefOr[String] = js.undefined,
                     var displayErrors: js.UndefOr[Boolean] = js.undefined,
                     var timeout: js.UndefOr[Int] = js.undefined,
                     var cachedData: js.UndefOr[Buffer] = js.undefined,
-                    var produceCachedData: js.UndefOr[Boolean] = js.undefined)
-  extends js.Object
+                    var produceCachedData: js.UndefOr[Boolean] = js.undefined) extends js.Object
+
+/**
+  * Script Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object ScriptOptions extends FlexibleOptions[ScriptOptions]

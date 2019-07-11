@@ -2,7 +2,7 @@ package io.scalajs.npm.mongoose
 
 import io.scalajs.nodejs.process
 import io.scalajs.npm.mongodb.{Db, MongoClient}
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.concurrent.{ExecutionContext, Future}
 import scala.util.{Failure, Success}
@@ -12,7 +12,7 @@ import scala.util.{Failure, Success}
   * @author lawrence.daniels@gmail.com
   */
 trait MongoDBTestSupport {
-  self: FunSpec =>
+  self: AnyFunSpec =>
 
   def withMongoURL[S](block: String => S): Any = {
     process.env.get("MONGO_CONNECT") match {

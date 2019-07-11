@@ -17,7 +17,7 @@ trait Gists extends js.Object {
 
   /**
     * Updates the contents of a Gist.
-    * @param delta the given delta
+    * @param delta    the given delta
     * @param callback the callback
     */
   def update(delta: js.Any, callback: GitHubCallback1[Gist]): Unit = js.native

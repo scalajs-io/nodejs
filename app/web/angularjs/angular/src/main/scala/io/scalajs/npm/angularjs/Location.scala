@@ -65,10 +65,10 @@ trait Location extends js.Object {
   /**
     * This method is getter / setter. Return search part (as object) of current url when called without any parameter.
     * Change search part when called with parameter and return \$location.
-    * @param search New search params - string or hash object. When called with a single argument the method
-    *               acts as a setter, setting the search component of $location to the specified value.
-    *               If the argument is a hash object containing an array of values, these values will be
-    *               encoded as duplicate search parameters in the url.
+    * @param search     New search params - string or hash object. When called with a single argument the method
+    *                   acts as a setter, setting the search component of $location to the specified value.
+    *                   If the argument is a hash object containing an array of values, these values will be
+    *                   encoded as duplicate search parameters in the url.
     * @param paramValue If search is a string or number, then paramValue will override only a single search property.
     *                   If paramValue is an array, it will override the property of the search component of \$location
     *                   specified via the first argument.

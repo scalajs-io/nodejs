@@ -2,7 +2,7 @@ package io.scalajs.npm.request
 
 import io.scalajs.JSON
 import io.scalajs.nodejs.Assert
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js.JSConverters._
 
@@ -10,7 +10,7 @@ import scala.scalajs.js.JSConverters._
   * Request Tests
   * @author lawrence.daniels@gmail.com
   */
-class RequestTest extends FunSpec {
+class RequestTest extends AnyFunSpec {
 
   describe("Request") {
 

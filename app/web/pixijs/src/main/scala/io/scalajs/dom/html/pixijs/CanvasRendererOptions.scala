@@ -1,9 +1,9 @@
 package io.scalajs.dom.html.pixijs
 
+import io.scalajs.FlexibleOptions
 import io.scalajs.dom.html.canvas.HTMLCanvasElement
 
 import scala.scalajs.js
-
 
 /**
   * Canvas Renderer Options
@@ -17,7 +17,6 @@ import scala.scalajs.js
   * @param roundPixels       If true Pixi will Math.floor() x/y values when rendering, stopping pixel interpolation.
   * @author lawrence.daniels@gmail.com
   */
-
 class CanvasRendererOptions(var view: js.UndefOr[HTMLCanvasElement] = js.undefined,
                             var transparent: js.UndefOr[Boolean] = js.undefined,
                             var autoResize: js.UndefOr[Boolean] = js.undefined,
@@ -25,4 +24,10 @@ class CanvasRendererOptions(var view: js.UndefOr[HTMLCanvasElement] = js.undefin
                             var resolution: js.UndefOr[Resolution] = js.undefined,
                             var clearBeforeRender: js.UndefOr[Boolean] = js.undefined,
                             var roundPixels: js.UndefOr[Boolean] = js.undefined)
-    extends js.Object
+  extends js.Object
+
+/**
+  * Canvas Renderer Options
+  * @author lawrence.daniels@gmail.com
+  */
+object CanvasRendererOptions extends FlexibleOptions[CanvasRendererOptions]

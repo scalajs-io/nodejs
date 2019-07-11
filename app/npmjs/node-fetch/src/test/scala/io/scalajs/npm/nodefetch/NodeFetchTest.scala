@@ -2,7 +2,7 @@ package io.scalajs.npm.nodefetch
 
 import io.scalajs.JSON
 import io.scalajs.nodejs.fs.Fs
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.util.{Failure, Success}
@@ -11,7 +11,7 @@ import scala.util.{Failure, Success}
   * Node-Fetch Test Suite
   * @author lawrence.daniels@gmail.com
   */
-class NodeFetchTest extends FunSpec {
+class NodeFetchTest extends AnyFunSpec {
 
   describe("NodeFetch") {
 

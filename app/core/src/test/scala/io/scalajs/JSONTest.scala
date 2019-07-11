@@ -1,6 +1,6 @@
 package io.scalajs
 
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -9,7 +9,7 @@ import scala.scalajs.js
   * JSON Test
   * @author lawrence.daniels@gmail.com
   */
-class JSONTest extends FunSpec {
+class JSONTest extends AnyFunSpec {
 
   describe("JSON") {
 
@@ -36,9 +36,10 @@ class JSONTest extends FunSpec {
     }
 
     it("""should parse '{"x":5}' using a custom reviver""") {
-      val result = JSON.parseAs[js.Object]("""{"x":5}""", { (key: js.Any, value: js.Any) =>
-        value
-      }: js.Function)
+      val result = JSON.parseAs[js.Object](
+        """{"x":5}""", { (key: js.Any, value: js.Any) =>
+          value
+        }: js.Function)
       assert(JSON.stringify(result) == """{"x":5}""")
     }
 

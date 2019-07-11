@@ -58,14 +58,14 @@ trait Users extends js.Object {
 
   /**
     * Create a new repo for the authenticated user
-    * @param repo the given repo
+    * @param repo     the given repo
     * @param callback the callback
     */
   def createRepo(repo: Repository, callback: GitHubCallback1[js.Array[Resource]]): Unit = js.native
 
   /**
     * List repositories for a particular organization. Includes private repositories if you are authorized.
-    * @param orgName the organization name
+    * @param orgName  the organization name
     * @param callback the callback
     */
   def orgRepos(orgName: String, callback: GitHubCallback1[js.Array[Repository]]): Unit = js.native

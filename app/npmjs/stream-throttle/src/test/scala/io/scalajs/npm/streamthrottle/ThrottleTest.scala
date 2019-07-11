@@ -1,13 +1,13 @@
 package io.scalajs.npm.streamthrottle
 
 import io.scalajs.nodejs.process
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * Throttle Test
   * @author lawrence.daniels@gmail.com
   */
-class ThrottleTest extends FunSpec {
+class ThrottleTest extends AnyFunSpec {
 
   describe("Throttle") {
 

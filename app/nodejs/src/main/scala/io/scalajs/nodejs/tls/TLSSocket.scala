@@ -43,7 +43,7 @@ class TLSSocket(socket: Socket, options: TLSSocketOptions = js.native) extends n
     * Can be used to speed up handshake establishment when reconnecting to the server.
     * @return the ASN.1 encoded TLS session
     */
-  def getSession(): js.UndefOr[String] =  js.native
+  def getSession(): js.UndefOr[String] = js.native
 
 }
 

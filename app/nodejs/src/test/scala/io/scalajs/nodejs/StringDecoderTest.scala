@@ -1,13 +1,13 @@
 package io.scalajs.nodejs
 
 import io.scalajs.nodejs.buffer.Buffer
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * StringDecoder Tests
   * @author lawrence.daniels@gmail.com
   */
-class StringDecoderTest extends FunSpec {
+class StringDecoderTest extends AnyFunSpec {
 
   describe("StringDecoder") {
 

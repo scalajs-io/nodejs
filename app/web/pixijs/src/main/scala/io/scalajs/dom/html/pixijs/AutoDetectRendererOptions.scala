@@ -1,9 +1,9 @@
 package io.scalajs.dom.html.pixijs
 
+import io.scalajs.FlexibleOptions
 import io.scalajs.dom.html.canvas.HTMLCanvasElement
 
 import scala.scalajs.js
-
 
 /**
   * Auto-Detect Renderer Options
@@ -21,4 +21,10 @@ class AutoDetectRendererOptions(var view: js.UndefOr[HTMLCanvasElement] = js.und
                                 var antialias: js.UndefOr[Boolean] = js.undefined,
                                 var preserveDrawingBuffer: js.UndefOr[Boolean] = js.undefined,
                                 var resolution: js.UndefOr[Resolution] = js.undefined)
-    extends js.Object
+  extends js.Object
+
+/**
+  * Auto-Detect Renderer Options
+  * @author lawrence.daniels@gmail.com
+  */
+object AutoDetectRendererOptions extends FlexibleOptions[AutoDetectRendererOptions]

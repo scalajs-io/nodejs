@@ -3,7 +3,7 @@ package io.scalajs.npm.csvparse
 import io.scalajs.JSON
 import io.scalajs.nodejs.Assert
 import io.scalajs.npm.readablestream.Readable
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -11,7 +11,7 @@ import scala.scalajs.js
   * CsvParse Test
   * @author lawrence.daniels@gmail.com
   */
-class CsvParseTest extends FunSpec {
+class CsvParseTest extends AnyFunSpec {
 
   describe("CsvParse") {
 

@@ -1,7 +1,5 @@
 package io.scalajs.dom.html.phaser.utils
 
-import io.scalajs.JsNumber
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
 import scala.scalajs.js.|
@@ -20,7 +18,7 @@ trait ArrayUtils extends js.Object {
     * @param arr   The input array which must be sorted.
     * @return The nearest value found.
     */
-  def findClosest(value: JsNumber, arr: js.Array[JsNumber]): Int = js.native
+  def findClosest(value: Double, arr: js.Array[Double]): Int = js.native
 
   /**
     * Fetch a random entry from the given array.
@@ -40,7 +38,7 @@ trait ArrayUtils extends js.Object {
     * @param end   The maximum value the array contains.
     * @return The array of number values.
     */
-  def numberArray[T](start: JsNumber, end: JsNumber): js.Array[T] = js.native
+  def numberArray[T](start: Int, end: Int): js.Array[T] = js.native
 
   /**
     * Create an array of numbers (positive and/or negative) progressing from start
@@ -53,7 +51,7 @@ trait ArrayUtils extends js.Object {
     * @param step  The value to increment or decrement by.
     * @return Returns the new array of numbers.
     */
-  def numberArrayStep[T](start: JsNumber, end: JsNumber = js.native, step: Int = js.native): js.Array[T] = js.native
+  def numberArrayStep[T](start: Int, end: Int = js.native, step: Int = js.native): js.Array[T] = js.native
 
   /**
     * Removes a random object from the given array and returns it.
@@ -91,7 +89,7 @@ trait ArrayUtils extends js.Object {
     *                  or a string command ('rotateLeft', 'rotateRight' or 'rotate180').
     * @return The rotated matrix. The source matrix should be discarded for the returned matrix.
     */
-  def rotateMatrix[T](matrix: js.Array[T], direction: JsNumber | String): js.Array[T] = js.native
+  def rotateMatrix[T](matrix: js.Array[T], direction: Int | String): js.Array[T] = js.native
 
   /**
     * Moves the element from the end of the array to the start, shifting all items in the process.

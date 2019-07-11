@@ -70,7 +70,7 @@ trait FileItem extends js.Object {
   def index: Int = js.native
 
   /**
-    *  It's a request method. By default POST. HTML5 browsers only.
+    * It's a request method. By default POST. HTML5 browsers only.
     */
   var method: String = js.native
 

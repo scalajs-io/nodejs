@@ -1,7 +1,5 @@
 package io.scalajs.dom.html.phaser
 
-import io.scalajs.JsNumber
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
 import scala.scalajs.js.|
@@ -293,7 +291,7 @@ class Weapon(var game: Phaser.Game, val parent: Phaser.PluginManager) extends js
     * @param useNumericIndex Are the given frames using numeric indexes (default) or strings?
     * @return The Weapon Plugin.
     */
-  def addBulletAnimation(name: String, frames: js.Array[String | JsNumber] = js.native, frameRate: Double = js.native, loop: Boolean = js.native, useNumericIndex: Boolean = js.native): Phaser.Weapon = js.native
+  def addBulletAnimation(name: String, frames: js.Array[String | Int] = js.native, frameRate: Double = js.native, loop: Boolean = js.native, useNumericIndex: Boolean = js.native): Phaser.Weapon = js.native
 
   /**
     * This method performs two actions: First it will check to see if the Weapon.bullets Group exists or not,
@@ -317,7 +315,7 @@ class Weapon(var game: Phaser.Game, val parent: Phaser.PluginManager) extends js
     * @param group    Optional Group to add the object to. If not specified it will be added to the World group.
     * @return This Weapon instance.
     */
-  def createBullets[T](quantity: Int = js.native, key: String = js.native, frame: JsNumber | String = js.native, group: Phaser.Group[T] = js.native): Phaser.Weapon = js.native
+  def createBullets[T](quantity: Int = js.native, key: String = js.native, frame: Int | String = js.native, group: Phaser.Group[T] = js.native): Phaser.Weapon = js.native
 
   /**
     * Uses Game.Debug to draw some useful information about this Weapon, including the number of bullets

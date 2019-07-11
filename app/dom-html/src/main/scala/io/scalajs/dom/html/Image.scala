@@ -10,8 +10,8 @@ import scala.scalajs.js.annotation.JSGlobal
 @js.native
 @JSGlobal
 class Image extends js.Object {
-  var src: String         = js.native
-  var width: Double       = js.native
-  var height: Double      = js.native
+  var src: String = js.native
+  var width: Double = js.native
+  var height: Double = js.native
   var onload: js.Function = js.native
 }

@@ -1,5 +1,7 @@
 package io.scalajs.npm.express
 
+import io.scalajs.FlexibleOptions
+
 import scala.scalajs.js
 
 /**
@@ -17,4 +19,10 @@ class FileTransferOptions(var maxAge: js.UndefOr[Int] = js.undefined,
                           var lastModified: js.UndefOr[js.Date] = js.undefined,
                           var headers: js.UndefOr[js.Any] = js.undefined,
                           var dotfiles: js.UndefOr[js.Array[String]] = js.undefined)
-    extends js.Object
+  extends js.Object
+
+/**
+  * File Transfer Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object FileTransferOptions extends FlexibleOptions[FileTransferOptions]

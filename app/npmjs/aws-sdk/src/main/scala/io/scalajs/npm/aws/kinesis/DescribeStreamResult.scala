@@ -112,4 +112,5 @@ object DescribeStreamResult {
     def StreamStatus: String
 
   }
+
 }

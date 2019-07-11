@@ -6,6 +6,6 @@ import scala.scalajs.js
   * Chipmunk
   */
 @js.native
-trait Chipmunk extends js.Object  {
+trait Chipmunk extends js.Object {
 
 }

@@ -1,13 +1,13 @@
 package io.scalajs.npm.mongoose
 
 import io.scalajs.JSON
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * Exports Test Suite
   * @author lawrence.daniels@gmail.com
   */
-class ExportsTest extends FunSpec {
+class ExportsTest extends AnyFunSpec {
 
   describe("exports") {
 

@@ -3,7 +3,7 @@ package io.scalajs.npm.oppressor
 import io.scalajs.nodejs.fs.Fs
 import io.scalajs.nodejs.http.{ClientRequest, Http, ServerResponse}
 import io.scalajs.nodejs.{setTimeout, _}
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.concurrent.duration._
 
@@ -11,7 +11,7 @@ import scala.concurrent.duration._
   * Oppressor Tests
   * @author lawrence.daniels@gmail.com
   */
-class OppressorTest extends FunSpec {
+class OppressorTest extends AnyFunSpec {
 
   describe("Oppressor") {
 

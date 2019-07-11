@@ -11,5 +11,5 @@ import scala.scalajs.js
   */
 @js.native
 trait JsDomWindowWithJQuery extends Window {
-  val $ : JQuery = js.native
+  val $: JQuery = js.native
 }

@@ -41,32 +41,38 @@ object Directive {
   //      Attribute, Class, Element, and Comment Restriction Support
   /////////////////////////////////////////////////////////////////////////////////
 
-  trait AttributeRestriction extends RestrictionSupport { self: Directive =>
+  trait AttributeRestriction extends RestrictionSupport {
+    self: Directive =>
 
     override val restrict = "A"
   }
 
-  trait AttributeElementRestriction extends RestrictionSupport { self: Directive =>
+  trait AttributeElementRestriction extends RestrictionSupport {
+    self: Directive =>
 
     override val restrict = "AE"
   }
 
-  trait ClassRestriction extends RestrictionSupport { self: Directive =>
+  trait ClassRestriction extends RestrictionSupport {
+    self: Directive =>
 
     override val restrict = "C"
   }
 
-  trait CommentRestriction extends RestrictionSupport { self: Directive =>
+  trait CommentRestriction extends RestrictionSupport {
+    self: Directive =>
 
     override val restrict = "M"
   }
 
-  trait ElementRestriction extends RestrictionSupport { self: Directive =>
+  trait ElementRestriction extends RestrictionSupport {
+    self: Directive =>
 
     override val restrict = "E"
   }
 
-  trait RestrictionSupport { self: Directive =>
+  trait RestrictionSupport {
+    self: Directive =>
 
     def restrict: String
 
@@ -76,19 +82,22 @@ object Directive {
   //      Controller Support
   /////////////////////////////////////////////////////////////////////////////////
 
-  trait ControllerSupport[A] extends LinkWithController[A] { self: Directive =>
+  trait ControllerSupport[A] extends LinkWithController[A] {
+    self: Directive =>
 
     def controller: String
 
   }
 
-  trait RequireController[A] extends LinkWithController[A] { self: Directive =>
+  trait RequireController[A] extends LinkWithController[A] {
+    self: Directive =>
 
     def require: String
 
   }
 
-  trait RequireControllers[A] { self: Directive =>
+  trait RequireControllers[A] {
+    self: Directive =>
 
     def require: js.Array[String]
 
@@ -108,7 +117,8 @@ object Directive {
   //      Pre-Link and Link Support
   /////////////////////////////////////////////////////////////////////////////////
 
-  trait LinkSupport[A] { self: Directive =>
+  trait LinkSupport[A] {
+    self: Directive =>
 
     /**
       * Directives that want to modify the DOM typically use the link option to register DOM listeners as well as update
@@ -121,7 +131,8 @@ object Directive {
 
   }
 
-  trait LinkWithController[A] { self: Directive =>
+  trait LinkWithController[A] {
+    self: Directive =>
 
     /**
       * Directives that want to modify the DOM typically use the link option to register DOM listeners as well as update
@@ -135,7 +146,8 @@ object Directive {
 
   }
 
-  trait PreLinkSupport { self: Directive =>
+  trait PreLinkSupport {
+    self: Directive =>
 
     /**
       * The compile function is used to perform any DOM transformation before the link function runs.
@@ -150,7 +162,8 @@ object Directive {
   //      Template Support
   /////////////////////////////////////////////////////////////////////////////////
 
-  trait TemplateSupport { self: Directive =>
+  trait TemplateSupport {
+    self: Directive =>
 
     def template: String
 
@@ -159,7 +172,8 @@ object Directive {
   /**
     * @example { templateUrl: function(elem, attr) { return 'customer-' + attr.type + '.html' } }
     */
-  trait TemplateURLFunction { self: Directive =>
+  trait TemplateURLFunction {
+    self: Directive =>
 
     def templateUrl: js.Function2[JQLite, Attributes, String]
 
@@ -168,7 +182,8 @@ object Directive {
   /**
     * @example { templateUrl: 'my-customer.html' }
     */
-  trait TemplateURLSupport { self: Directive =>
+  trait TemplateURLSupport {
+    self: Directive =>
 
     def templateUrl: String
 

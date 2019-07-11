@@ -1,7 +1,8 @@
 package io.scalajs.npm.express
 
-import scala.scalajs.js
+import io.scalajs.FlexibleOptions
 
+import scala.scalajs.js
 
 /**
   * Static Options
@@ -17,3 +18,9 @@ class StaticOptions(var dotfiles: js.UndefOr[String] = js.undefined,
                     var redirect: js.UndefOr[Boolean] = js.undefined,
                     var setHeaders: js.UndefOr[js.Function] = js.undefined)
   extends js.Object
+
+/**
+  * Static Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object StaticOptions extends FlexibleOptions[StaticOptions]

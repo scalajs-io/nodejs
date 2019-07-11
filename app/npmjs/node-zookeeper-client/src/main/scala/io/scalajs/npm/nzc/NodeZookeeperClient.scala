@@ -34,7 +34,7 @@ trait NodeZookeeperClient extends IEventEmitter {
     * @return a new client
     * @example client.createClient(connectionString, [options])
     */
-  def createClient(connectionString: String, options: ClientOptions = js.native): Client = js.native
+  def createClient(connectionString: String, options: ZookeeperClientOptions = js.native): Client = js.native
 
 }
 

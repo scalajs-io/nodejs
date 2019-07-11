@@ -1,12 +1,12 @@
 package io.scalajs.nodejs.path
 
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * Path Tests
   * @author lawrence.daniels@gmail.com
   */
-class PathTest extends FunSpec {
+class PathTest extends AnyFunSpec {
 
   describe("Path") {
 

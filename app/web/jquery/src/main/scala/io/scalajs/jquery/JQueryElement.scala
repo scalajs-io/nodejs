@@ -1,6 +1,5 @@
 package io.scalajs.jquery
 
-import io.scalajs.JsNumber
 import io.scalajs.dom.html.HTMLElement
 import io.scalajs.dom.html.css.CSSSelector
 import io.scalajs.dom.{Element, Event, Node, Text}
@@ -89,7 +88,7 @@ trait JQueryElement extends HTMLElement {
     * @param speed    The optional speed parameter can take the following values: "slow", "fast", or milliseconds.
     * @param callback The optional callback parameter is a function to be executed after toggle() completes.
     */
-  def animate(params: AnimateOptions | js.Any, speed: String | JsNumber = js.native, callback: js.Function): this.type = js.native
+  def animate(params: AnimateOptions | js.Any, speed: String | Int = js.native, callback: js.Function): this.type = js.native
 
   /**
     * Insert content, specified by the parameter, to the end of each element in the set of matched elements.
@@ -128,7 +127,7 @@ trait JQueryElement extends HTMLElement {
     * The jQuery attr() method is also used to set/change attribute values.
     * @param name the name of the attribute to set
     */
-  def attr(name: String, value: String | JsNumber): this.type = js.native
+  def attr(name: String, value: String | Double): this.type = js.native
 
   /**
     * The jQuery attr() method is also used to set/change attribute values.
@@ -860,7 +859,7 @@ trait JQueryElement extends HTMLElement {
     * Sets the width of an element (excludes padding, border and margin).
     * @param value the desired width of an element
     */
-  def width(value: String | JsNumber): this.type = js.native
+  def width(value: String | Double): this.type = js.native
 
   /**
     * Wrap an HTML structure around each element in the set of matched elements.

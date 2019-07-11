@@ -1,6 +1,6 @@
 package io.scalajs.npm.cassandradriver.types
 
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -8,7 +8,7 @@ import scala.scalajs.js
   * TimeUuid Tests
   * @author lawrence.daniels@gmail.com
   */
-class TimeUuidTest extends FunSpec {
+class TimeUuidTest extends AnyFunSpec {
 
   describe("TimeUuid") {
 

@@ -2,7 +2,7 @@ package io.scalajs.npm.watch
 
 import io.scalajs.nodejs._
 import io.scalajs.nodejs.fs.Stats
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.concurrent.duration._
 import scala.scalajs.js
@@ -11,7 +11,7 @@ import scala.scalajs.js
   * Watch Tests
   * @author lawrence.daniels@gmail.com
   */
-class WatchTest extends FunSpec {
+class WatchTest extends AnyFunSpec {
 
   describe("Watch") {
 

@@ -1,5 +1,7 @@
 package io.scalajs.npm.angularjs.uibootstrap
 
+import io.scalajs.FlexibleOptions
+
 import scala.scalajs.js
 
 /**
@@ -19,4 +21,10 @@ class ModalOptions(var template: js.UndefOr[String] = js.undefined,
                    var backdropClass: js.UndefOr[String] = js.undefined,
                    var keyboard: js.UndefOr[Boolean] = js.undefined,
                    var resolve: js.Any = js.undefined)
-    extends js.Object
+  extends js.Object
+
+/**
+  * Modal Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object ModalOptions extends FlexibleOptions[ModalOptions]

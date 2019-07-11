@@ -1,7 +1,8 @@
 package io.scalajs.npm.bodyparser
 
-import scala.scalajs.js
+import io.scalajs.FlexibleOptions
 
+import scala.scalajs.js
 
 /**
   * Text Body Options
@@ -20,10 +21,15 @@ import scala.scalajs.js
   *                       request body and encoding is the encoding of the request. The parsing can be aborted by throwing an error.
   * @author lawrence.daniels@gmail.com
   */
-
 class TextBodyOptions(var defaultCharset: js.UndefOr[String] = js.undefined,
                       var inflate: js.UndefOr[Boolean] = js.undefined,
                       var limit: js.UndefOr[Int] = js.undefined,
                       var `type`: js.UndefOr[String] = js.undefined,
                       var verify: js.UndefOr[String] = js.undefined)
-    extends js.Object
+  extends js.Object
+
+/**
+  * Text Body Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object TextBodyOptions extends FlexibleOptions[TextBodyOptions]

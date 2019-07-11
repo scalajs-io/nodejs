@@ -1,7 +1,5 @@
 package io.scalajs.dom.html.phaser
 
-import io.scalajs.JsNumber
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
 import scala.scalajs.js.|
@@ -38,10 +36,10 @@ class Button(game: Phaser.Game,
              key: String,
              var callback: js.Function,
              var callbackContext: js.Any,
-             var overFrame: String | JsNumber,
-             var outFrame: String | JsNumber,
-             var downFrame: String | JsNumber,
-             var upFrame: String | JsNumber) extends Phaser.Image {
+             var overFrame: String | Int,
+             var outFrame: String | Int,
+             var downFrame: String | Int,
+             var upFrame: String | Int) extends Phaser.Image {
 
   /**
     * When the Button is touched / clicked and then released you can force it to enter a state of "out" instead of "up".
@@ -150,7 +148,6 @@ class Button(game: Phaser.Game,
     * This property is mostly used internally by the renderers, but is exposed for the use of plugins.
     */
   def renderOrderID: Int = js.native
-
 
 
 }

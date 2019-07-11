@@ -1,7 +1,7 @@
 package io.scalajs.nodejs.events
 
 import io.scalajs.JSON
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -9,7 +9,7 @@ import scala.scalajs.js
   * EventEmitter Tests
   * @author lawrence.daniels@gmail.com
   */
-class EventEmitterTest extends FunSpec {
+class EventEmitterTest extends AnyFunSpec {
 
   describe("EventEmitter") {
 
@@ -23,7 +23,7 @@ class EventEmitterTest extends FunSpec {
 
     it("should handle one-time events") {
       val myEmitter = new EventEmitter()
-      var n         = 0
+      var n = 0
       myEmitter.once("event", () => {
         n += 1
         info(s"n = $n")
@@ -36,7 +36,7 @@ class EventEmitterTest extends FunSpec {
 
     it("should handle repeated events") {
       val myEmitter = new EventEmitter()
-      var n         = 0
+      var n = 0
       myEmitter.on("event", () => {
         n += 1
         info(s"n = $n")

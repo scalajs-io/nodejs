@@ -2,7 +2,7 @@ package io.scalajs.npm.kafkanode
 
 import io.scalajs.JSON
 import io.scalajs.nodejs.process
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -10,7 +10,7 @@ import scala.scalajs.js
   * Offset Tests
   * @author lawrence.daniels@gmail.com
   */
-class OffsetTest extends FunSpec {
+class OffsetTest extends AnyFunSpec {
 
   describe("Offset") {
 

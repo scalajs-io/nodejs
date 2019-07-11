@@ -2,19 +2,19 @@ package io.scalajs.nodejs.readline
 
 import io.scalajs.nodejs.fs.Fs
 import io.scalajs.nodejs.{console, process}
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * Readline Tests
   * @author lawrence.daniels@gmail.com
   */
-class ReadlineTest extends FunSpec {
+class ReadlineTest extends AnyFunSpec {
 
   describe("Readline") {
 
     it("should read/stream files from disk") {
       var lineNo = 0
-      val file   = "./package.json"
+      val file = "./package.json"
       val reader = Readline.createInterface(
         new ReadlineOptions(
           input = Fs.createReadStream(file),
@@ -48,7 +48,7 @@ class ReadlineTest extends FunSpec {
 
       } onClose { () =>
         console.log("Have a great day!")
-      //process.exit(0)
+        //process.exit(0)
       }
     }
 

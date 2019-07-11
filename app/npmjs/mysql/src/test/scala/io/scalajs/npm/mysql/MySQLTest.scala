@@ -3,7 +3,7 @@ package io.scalajs.npm.mysql
 import io.scalajs.JSON
 import io.scalajs.nodejs._
 import io.scalajs.npm.mysql.MySQLTest._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.concurrent.duration._
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
@@ -13,7 +13,7 @@ import scala.scalajs.js
   * MySQL Test Suite
   * @author lawrence.daniels@gmail.com
   */
-class MySQLTest extends FunSpec {
+class MySQLTest extends AnyFunSpec {
 
   describe("MySQL") {
 
@@ -39,7 +39,7 @@ class MySQLTest extends FunSpec {
     it("can execute queries via callbacks") {
       getConnection foreach { conn =>
         conn.query(
-          "SELECT * FROM activity LIMIT 1", (err: js.Error, rows: js.Array[Activity], fields: js.Array[FieldPacket]) => {
+          "SELECT * FROM activity LIMIT 1", (err: js.Error, rows: js.Array[Activity], fields: js.Array[MySQLFieldPacket]) => {
             info(s"fields => ${JSON.stringify(fields.head)}")
             info(s"rows => ${JSON.stringify(rows.head)}")
           })
@@ -48,7 +48,7 @@ class MySQLTest extends FunSpec {
 
   }
 
-  private def getConnection: Option[Connection] = {
+  private def getConnection: Option[MySQLConnection] = {
     val conn_? = for {
       host <- process.env.get("MYSQL_HOST")
       database <- process.env.get("MYSQL_DB")
@@ -57,7 +57,7 @@ class MySQLTest extends FunSpec {
     } yield {
       // establish a connection
       val conn = MySQL.createConnection(
-        new ConnectionOptions(
+        new MySQLConnectionOptions(
           host = host,
           database = database,
           user = user,

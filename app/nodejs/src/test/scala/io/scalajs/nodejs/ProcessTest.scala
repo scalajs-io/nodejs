@@ -2,7 +2,7 @@ package io.scalajs.nodejs
 
 import io.scalajs.JSON
 import io.scalajs.nodejs.Process.ProcessEnvExtensions
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -10,7 +10,7 @@ import scala.scalajs.js
   * Process Tests
   * @author lawrence.daniels@gmail.com
   */
-class ProcessTest extends FunSpec {
+class ProcessTest extends AnyFunSpec {
 
   describe("Process") {
 

@@ -1,7 +1,7 @@
 package io.scalajs.nodejs.zlib
 
 import io.scalajs.nodejs.buffer.Buffer
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 
@@ -9,7 +9,7 @@ import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
   * Zlib Tests
   * @author lawrence.daniels@gmail.com
   */
-class ZlibTest extends FunSpec {
+class ZlibTest extends AnyFunSpec {
 
   describe("Zlib") {
 
@@ -17,7 +17,7 @@ class ZlibTest extends FunSpec {
       val original = Buffer.from("This is a compression example")
 
       for {
-        compressed   <- Zlib.deflateFuture(original)
+        compressed <- Zlib.deflateFuture(original)
         uncompressed <- Zlib.unzipFuture(compressed, new CompressionOptions(finishFlush = Zlib.Z_SYNC_FLUSH))
       } {
         info(s"compressed => ${compressed.toString()}")

@@ -3,13 +3,13 @@ package url
 
 import io.scalajs.util.JSONHelper._
 import io.scalajs.util.JsUnderOrHelper._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * URLObject Tests
   * @author lawrence.daniels@gmail.com
   */
-class URLObjectTest extends FunSpec {
+class URLObjectTest extends AnyFunSpec {
 
   describe("URLObject") {
 

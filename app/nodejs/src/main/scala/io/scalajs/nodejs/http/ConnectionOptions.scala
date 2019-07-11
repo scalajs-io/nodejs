@@ -1,5 +1,7 @@
 package io.scalajs.nodejs.http
 
+import io.scalajs.FlexibleOptions
+
 import scala.scalajs.js
 
 /**
@@ -12,9 +14,13 @@ import scala.scalajs.js
   *                       true (default: 256).
   * @author lawrence.daniels@gmail.com
   */
-
 class ConnectionOptions(var keepAlive: js.UndefOr[Boolean] = js.undefined,
                         var keepAliveMsecs: js.UndefOr[Int] = js.undefined,
                         var maxSockets: js.UndefOr[Double] = js.undefined,
-                        var maxFreeSockets: js.UndefOr[Int] = js.undefined)
-    extends js.Object
+                        var maxFreeSockets: js.UndefOr[Int] = js.undefined) extends js.Object
+
+/**
+  * Connection Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object ConnectionOptions extends FlexibleOptions[ConnectionOptions]

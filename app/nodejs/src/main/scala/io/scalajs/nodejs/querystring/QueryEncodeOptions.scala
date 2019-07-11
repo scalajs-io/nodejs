@@ -1,7 +1,8 @@
 package io.scalajs.nodejs.querystring
 
-import scala.scalajs.js
+import io.scalajs.FlexibleOptions
 
+import scala.scalajs.js
 
 /**
   * Query String Encode Options
@@ -9,5 +10,10 @@ import scala.scalajs.js
   *                           the query string. Defaults to querystring.escape().
   * @author lawrence.daniels@gmail.com
   */
+class QueryEncodeOptions(var encodeURIComponent: js.UndefOr[js.Function] = js.undefined) extends js.Object
 
-class QueryEncodeOptions(val encodeURIComponent: js.UndefOr[js.Function] = js.undefined) extends js.Object
+/**
+  * Query Encode Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object QueryEncodeOptions extends FlexibleOptions[QueryEncodeOptions]

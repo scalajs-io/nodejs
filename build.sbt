@@ -402,6 +402,16 @@ lazy val moment = (project in file("app/npmjs/moment/moment")).
     description := "Moment.js binding for Scala.js"
   )
 
+lazy val moment_business = (project in file("app/npmjs/moment/moment-business")).
+  dependsOn(moment).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings ++ publishingSettings: _*).
+  settings(
+    name := "moment-business",
+    organization := "io.scalajs.npm",
+    description := "Utilities for working with week days and weekend days in Moment. It assumes a Western workweek, in which weekends are Saturday and Sunday."
+  )
+
 lazy val moment_duration_format = (project in file("app/npmjs/moment/moment-duration-format")).
   dependsOn(moment).
   enablePlugins(ScalaJSPlugin).

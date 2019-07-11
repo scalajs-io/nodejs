@@ -1,10 +1,9 @@
 package io.scalajs.nodejs
 package child_process
 
-import io.scalajs.JsNumber
+import io.scalajs.FlexibleOptions
 
 import scala.scalajs.js
-
 
 /**
   * Fork Options
@@ -22,13 +21,18 @@ import scala.scalajs.js
   * @param gid      <Number> Sets the group identity of the process. (See setgid(2).)
   * @author lawrence.daniels@gmail.com
   */
-
 class ForkOptions(val cwd: js.UndefOr[String] = js.undefined,
                   val env: js.Any = js.undefined,
                   val execPath: js.UndefOr[String] = js.undefined,
                   val execArgv: js.UndefOr[Array[String]] = js.undefined,
                   val silent: js.UndefOr[Boolean] = js.undefined,
                   val stdio: js.UndefOr[Array[String]] = js.undefined,
-                  val uid: js.UndefOr[JsNumber] = js.undefined,
-                  val gid: js.UndefOr[JsNumber] = js.undefined)
-    extends js.Object
+                  val uid: js.UndefOr[Int] = js.undefined,
+                  val gid: js.UndefOr[Int] = js.undefined)
+  extends js.Object
+
+/**
+  * Fork Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object ForkOptions extends FlexibleOptions[ForkOptions]

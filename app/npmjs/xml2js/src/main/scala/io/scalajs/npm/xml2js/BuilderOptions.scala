@@ -1,5 +1,7 @@
 package io.scalajs.npm.xml2js
 
+import io.scalajs.FlexibleOptions
+
 import scala.scalajs.js
 
 /**
@@ -30,4 +32,10 @@ class BuilderOptions(var rootName: js.UndefOr[String] = js.undefined,
                      var headless: js.UndefOr[Boolean] = js.undefined,
                      var allowSurrogateChars: js.UndefOr[Boolean] = js.undefined,
                      var cdata: js.UndefOr[Boolean] = js.undefined)
-    extends js.Object
+  extends js.Object
+
+/**
+  * Builder Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object BuilderOptions extends FlexibleOptions[BuilderOptions]

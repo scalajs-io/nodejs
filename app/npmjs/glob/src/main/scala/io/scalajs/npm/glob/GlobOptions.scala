@@ -1,5 +1,7 @@
 package io.scalajs.npm.glob
 
+import io.scalajs.FlexibleOptions
+
 import scala.scalajs.js
 import scala.scalajs.js.|
 
@@ -82,3 +84,9 @@ class GlobOptions(val cwd: js.UndefOr[String] = js.undefined,
                   val follow: js.UndefOr[Boolean] = js.undefined,
                   val realpath: js.UndefOr[Boolean] = js.undefined,
                   val absolute: js.UndefOr[Boolean] = js.undefined) extends js.Object
+
+/**
+  * Glob Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object GlobOptions extends FlexibleOptions[GlobOptions]

@@ -1,7 +1,8 @@
 package io.scalajs.npm.kafkanode
 
-import scala.scalajs.js
+import io.scalajs.FlexibleOptions
 
+import scala.scalajs.js
 
 /**
   * Consumer Options
@@ -16,7 +17,6 @@ import scala.scalajs.js
   * @param encoding             If set to 'buffer', values will be returned as raw buffer objects.
   * @author lawrence.daniels@gmail.com
   */
-
 class ConsumerOptions(var groupId: js.UndefOr[String] = js.undefined,
                       var autoCommit: js.UndefOr[Boolean] = js.undefined,
                       var autoCommitIntervalMs: js.UndefOr[Int] = js.undefined,
@@ -25,4 +25,10 @@ class ConsumerOptions(var groupId: js.UndefOr[String] = js.undefined,
                       var fetchMaxBytes: js.UndefOr[Int] = js.undefined,
                       var fromOffset: js.UndefOr[Long] = js.undefined,
                       var encoding: js.UndefOr[String] = js.undefined)
-    extends js.Object
+  extends js.Object
+
+/**
+  * Resource Loader Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object ConsumerOptions extends FlexibleOptions[ConsumerOptions]

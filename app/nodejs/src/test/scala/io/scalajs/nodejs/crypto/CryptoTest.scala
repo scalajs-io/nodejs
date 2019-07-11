@@ -1,12 +1,13 @@
 package io.scalajs.nodejs.crypto
 
-import org.scalatest.{FunSpec, MustMatchers}
+import org.scalatest.MustMatchers
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * Crypto Test
   * @author lawrence.daniels@gmail.com
   */
-class CryptoTest extends FunSpec with MustMatchers {
+class CryptoTest extends AnyFunSpec with MustMatchers {
 
   describe("Crypto") {
 
@@ -36,16 +37,16 @@ class CryptoTest extends FunSpec with MustMatchers {
     }
 
     it("should be able to encrypt and decrypt text from a private key (AES-256-ctr)") {
-      val alg             = "aes-256-ctr"
-      val key             = "this-is-a-private-key"
+      val alg = "aes-256-ctr"
+      val key = "this-is-a-private-key"
       val stringToEncrypt = "text-to-encrypt"
 
-      val cipher              = Crypto.createCipher(alg, key)
-      val encrypted           = cipher.update(stringToEncrypt, "utf8", "base64")
+      val cipher = Crypto.createCipher(alg, key)
+      val encrypted = cipher.update(stringToEncrypt, "utf8", "base64")
       val finalEncryptedValue = encrypted + cipher.`final`("base64")
 
-      val decipher            = Crypto.createDecipher(alg, key)
-      val decrypted           = decipher.update(finalEncryptedValue, "base64", "utf8")
+      val decipher = Crypto.createDecipher(alg, key)
+      val decrypted = decipher.update(finalEncryptedValue, "base64", "utf8")
       val finalDecryptedValue = decrypted + decipher.`final`("utf8")
 
       finalEncryptedValue mustNot equal(stringToEncrypt)

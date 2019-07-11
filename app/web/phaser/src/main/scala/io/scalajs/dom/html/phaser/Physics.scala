@@ -1,6 +1,8 @@
 package io.scalajs.dom.html
 package phaser
 
+import io.scalajs.FlexibleOptions
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSGlobal, JSName}
 import scala.scalajs.js.|
@@ -200,3 +202,9 @@ class PhysicsConfig(var arcade: js.UndefOr[Boolean] = js.undefined,
                     var p2: js.UndefOr[Boolean] = js.undefined,
                     var box2d: js.UndefOr[Boolean] = js.undefined,
                     var matter: js.UndefOr[Boolean] = js.undefined) extends js.Object
+
+/**
+  * Physics Configuration Options
+  * @author lawrence.daniels@gmail.com
+  */
+object PhysicsConfig extends FlexibleOptions[PhysicsConfig]

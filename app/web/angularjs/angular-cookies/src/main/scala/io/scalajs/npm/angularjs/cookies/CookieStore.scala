@@ -20,7 +20,7 @@ trait CookieStore extends js.Object {
 
   /**
     * Sets a value for given cookie key
-    * @param key the given cookie key
+    * @param key   the given cookie key
     * @param value the value of given cookie key
     * @tparam T the cookie value's type
     */

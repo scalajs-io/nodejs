@@ -1,5 +1,7 @@
 package io.scalajs.npm.aws
 
+import io.scalajs.FlexibleOptions
+
 import scala.scalajs.js
 import scala.scalajs.js.|
 
@@ -133,3 +135,9 @@ class ConfigurationOptions() extends js.Object {
     */
   var useAccelerateEndpoint: js.UndefOr[Boolean] = js.undefined
 }
+
+/**
+  * Configuration Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object ConfigurationOptions extends FlexibleOptions[ConfigurationOptions]

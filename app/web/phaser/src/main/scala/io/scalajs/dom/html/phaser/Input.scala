@@ -43,8 +43,8 @@ class Input(var game: Phaser.Game) extends js.Object {
 
   /**
     *
-     */
-  var gamepad : Phaser.Gamepad = js.native
+    */
+  var gamepad: Phaser.Gamepad = js.native
 
   /**
     *

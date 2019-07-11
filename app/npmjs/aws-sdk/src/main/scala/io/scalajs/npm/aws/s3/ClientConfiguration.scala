@@ -8,7 +8,6 @@ import scala.scalajs.js
 /**
   * AWS.S3.ClientConfiguration
   */
-
 class ClientConfiguration() extends ConfigBase {
 
   /**

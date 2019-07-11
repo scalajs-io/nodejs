@@ -1,7 +1,7 @@
 package io.scalajs.npm.express.multer
 
 import io.scalajs.npm.express._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -9,7 +9,7 @@ import scala.scalajs.js
   * Multer Tests
   * @author lawrence.daniels@gmail.com
   */
-class MulterTest extends FunSpec {
+class MulterTest extends AnyFunSpec {
 
   describe("MulterTest") {
 

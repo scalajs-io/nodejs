@@ -2,7 +2,7 @@ package io.scalajs.npm.nock
 
 import io.scalajs.nodejs.console
 import io.scalajs.npm.nock.NockTest.{AppBody, Item, Items, Person}
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 import scala.scalajs.js.RegExp
@@ -11,7 +11,7 @@ import scala.scalajs.js.RegExp
   * Nock Tests
   * @author lawrence.daniels@gmail.com
   */
-class NockTest extends FunSpec {
+class NockTest extends AnyFunSpec {
 
   describe("Nock") {
 

@@ -1,5 +1,6 @@
 package io.scalajs.npm.csvtojson
 
+import io.scalajs.FlexibleOptions
 import io.scalajs.nodejs.stream.Writable
 
 import scala.scalajs.js
@@ -18,7 +19,12 @@ class Converter(options: ConverterOptions) extends Writable
   * @param constructResult ???
   * @param delimiter       the field separator
   */
-
 class ConverterOptions(var constructResult: js.UndefOr[Boolean] = js.undefined,
                        var delimiter: js.UndefOr[String] = js.undefined)
   extends js.Object
+
+/**
+  * Converter Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object ConverterOptions extends FlexibleOptions[ConverterOptions]

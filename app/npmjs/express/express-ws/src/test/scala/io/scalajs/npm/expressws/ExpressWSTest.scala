@@ -4,7 +4,7 @@ import io.scalajs.nodejs._
 import io.scalajs.npm.express._
 import io.scalajs.util.JSONHelper._
 import io.scalajs.util.ScalaJsHelper._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.concurrent.duration._
 import scala.scalajs.js
@@ -13,7 +13,7 @@ import scala.scalajs.js
   * ExpressWS Tests
   * @author lawrence.daniels@gmail.com
   */
-class ExpressWSTest extends FunSpec {
+class ExpressWSTest extends AnyFunSpec {
 
   describe("ExpressWS") {
 
@@ -48,7 +48,7 @@ class ExpressWSTest extends FunSpec {
           val server = app.listen(port)
 
           // setup shutdown
-          val shutdownInterval = (process.env.get("HTTP_KEEP_ALIVE") map(_.toInt) getOrElse 3).seconds
+          val shutdownInterval = (process.env.get("HTTP_KEEP_ALIVE") map (_.toInt) getOrElse 3).seconds
           info(s"Shutting down in $shutdownInterval")
           setTimeout(() => server.close(), shutdownInterval)
       }

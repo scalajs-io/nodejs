@@ -3,7 +3,7 @@ package io.scalajs.npm.mongoose
 import io.scalajs.JSON
 import io.scalajs.nodejs.{Assert, buffer, process}
 import io.scalajs.npm.mongodb.doc
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
@@ -13,7 +13,7 @@ import scala.util.{Failure, Success}
   * Mongoose Tests
   * @author lawrence.daniels@gmail.com
   */
-class MongooseTest extends FunSpec with MongoDBTestSupport {
+class MongooseTest extends AnyFunSpec with MongoDBTestSupport {
 
   describe("Mongoose") {
 
@@ -49,7 +49,7 @@ class MongooseTest extends FunSpec with MongoDBTestSupport {
         val conn = Mongoose.connect(url, "contacts")
         Mongoose.connectFuture(url) foreach { conn =>
           val outcome = for {
-          // save the employee
+            // save the employee
             saved <- newEmployee.save().toFuture
             _ = info(s"saved employee: ${JSON.stringify(saved)}")
 
@@ -120,7 +120,7 @@ class MongooseTest extends FunSpec with MongoDBTestSupport {
         info(s"Connecting to '$url'...")
         Mongoose.connectFuture(url) foreach { conn =>
           val outcome = for {
-          // save the contact
+            // save the contact
             saved <- newContact.save().toFuture
             _ = info(s"saved contact: ${JSON.stringify(saved)}")
 

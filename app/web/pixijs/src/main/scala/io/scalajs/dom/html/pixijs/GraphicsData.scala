@@ -22,7 +22,7 @@ class GraphicsData(lineWidth: LineWidth,
                    fillAlpha: Alpha,
                    fill: Boolean,
                    shape: GraphicalShape)
-    extends js.Object {
+  extends js.Object {
 
   /**
     * Creates a new GraphicsData object with the same values as this one.

@@ -18,7 +18,7 @@ import scala.scalajs.js
   */
 @js.native
 trait Document
-    extends ParentNode
+  extends ParentNode
     with AnimationEvents
     with ClipboardEvents
     with DragEvents

@@ -613,7 +613,7 @@ trait Fs extends js.Object with IEventEmitter with FSConstants {
     * @return an array of filenames excluding '.' and '..'.
     */
   def readdirSync[T](path: Buffer | String | URL,
-                  options: FileEncodingOptions | String = js.native): js.Array[T] = js.native
+                     options: FileEncodingOptions | String = js.native): js.Array[T] = js.native
 
   /**
     * Asynchronously reads the entire contents of a file.

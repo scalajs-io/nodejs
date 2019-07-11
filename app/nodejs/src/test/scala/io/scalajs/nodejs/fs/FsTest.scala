@@ -1,13 +1,13 @@
 package io.scalajs.nodejs.fs
 
 import io.scalajs.nodejs.os.OS
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * File System (Fs) Tests
   * @author lawrence.daniels@gmail.com
   */
-class FsTest extends FunSpec {
+class FsTest extends AnyFunSpec {
 
   describe("Fs") {
 

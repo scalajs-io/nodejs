@@ -1,7 +1,7 @@
 package io.scalajs.nodejs
 package http
 
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -9,7 +9,7 @@ import scala.scalajs.js
   * Http Tests
   * @author lawrence.daniels@gmail.com
   */
-class HttpTest extends FunSpec {
+class HttpTest extends AnyFunSpec {
 
   describe("Http") {
 

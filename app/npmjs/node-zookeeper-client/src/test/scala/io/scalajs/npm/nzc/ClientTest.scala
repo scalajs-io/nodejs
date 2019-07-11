@@ -3,7 +3,7 @@ package io.scalajs.npm.nzc
 import io.scalajs.JSON
 import io.scalajs.nodejs._
 import io.scalajs.util.ScalaJsHelper._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.concurrent.Future
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
@@ -13,7 +13,7 @@ import scala.scalajs.js
   * Client Test
   * @author lawrence.daniels@gmail.com
   */
-class ClientTest extends FunSpec {
+class ClientTest extends AnyFunSpec {
 
   describe("Client") {
 

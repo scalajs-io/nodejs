@@ -3,7 +3,7 @@ package io.scalajs.npm.rx
 import io.scalajs.npm.rx.ObservableTest._
 import io.scalajs.npm.transducers.TransducersJs
 import io.scalajs.util.JSONHelper._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
@@ -13,7 +13,7 @@ import scala.scalajs.js
   * Observable Tests
   * @author lawrence.daniels@gmail.com
   */
-class ObservableTest extends FunSpec {
+class ObservableTest extends AnyFunSpec {
 
   describe("Rx") {
 
@@ -66,7 +66,7 @@ class ObservableTest extends FunSpec {
 
     it("supports Rx.Observable.transduce") {
       val isEven: js.Function = (x: Int) => x % 2 == 0
-      val mul10: js.Function  = (x: Int) => x * 10
+      val mul10: js.Function = (x: Int) => x * 10
       Rx.Observable
         .range(1, 5)
         .transduce(TransducersJs.comp(TransducersJs.filter(isEven), TransducersJs.map(mul10)))

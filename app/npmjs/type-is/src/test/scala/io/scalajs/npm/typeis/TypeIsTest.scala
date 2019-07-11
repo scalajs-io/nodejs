@@ -1,7 +1,7 @@
 package io.scalajs.npm.typeis
 
 import io.scalajs.nodejs.Assert
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -9,7 +9,7 @@ import scala.scalajs.js
   * TypeIs Test Suite
   * @author lawrence.daniels@gmail.com
   */
-class TypeIsTest extends FunSpec {
+class TypeIsTest extends AnyFunSpec {
 
   describe("TypeIs") {
     val mediaType = "application/json"

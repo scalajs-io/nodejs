@@ -87,7 +87,7 @@ package object fs {
 
     @inline
     def readdirFuture[T](path: Buffer | String,
-                      options: String | FileEncodingOptions = null): Future[js.Array[T]] = {
+                         options: String | FileEncodingOptions = null): Future[js.Array[T]] = {
       promiseWithError1[FileIOError, js.Array[T]](fs.readdir[T](path, options, _))
     }
 

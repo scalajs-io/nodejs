@@ -3,7 +3,7 @@ package io.scalajs.nodejs.querystring
 import io.scalajs.JSON
 import io.scalajs.nodejs.Assert
 import io.scalajs.nodejs.querystring.QueryStringTest.MyParams
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -12,7 +12,7 @@ import scala.scalajs.js
   * Query String Test
   * @author lawrence.daniels@gmail.com
   */
-class QueryStringTest extends FunSpec {
+class QueryStringTest extends AnyFunSpec {
 
   describe("QueryString") {
 
@@ -39,7 +39,8 @@ class QueryStringTest extends FunSpec {
       val result = QueryString.unescape("https%3A%2F%2Fwww.google.com%2F%23q%3Dnode%3Fkey%3D1234")
       info(s"result: ${JSON.stringify(result)}")
       assert(QueryString
-        .unescape("https%3A%2F%2Fwww.google.com%2F%23q%3Dnode%3Fkey%3D1234") == """https://www.google.com/#q=node?key=1234""")
+        .unescape("https%3A%2F%2Fwww.google.com%2F%23q%3Dnode%3Fkey%3D1234") ==
+        """https://www.google.com/#q=node?key=1234""")
     }
 
   }

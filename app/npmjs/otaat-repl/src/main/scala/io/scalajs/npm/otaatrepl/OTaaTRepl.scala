@@ -1,5 +1,6 @@
 package io.scalajs.npm.otaatrepl
 
+import io.scalajs.FlexibleOptions
 import io.scalajs.nodejs.repl.REPLServer
 import io.scalajs.nodejs.stream.{Readable, Writable}
 
@@ -66,3 +67,9 @@ class OTaaTReplOptions(var timeout: js.UndefOr[Int] = js.undefined,
                        var writer: js.UndefOr[js.Function] = js.undefined,
                        var replMode: js.UndefOr[String] = js.undefined)
   extends js.Object
+
+/**
+  * Otaat REPL Options
+  * @author lawrence.daniels@gmail.com
+  */
+object OTaaTReplOptions extends FlexibleOptions[OTaaTReplOptions]

@@ -242,7 +242,7 @@ object FileUploader {
   */
 
 class FileUploadFilter extends js.Object {
-  var name: String    = _
+  var name: String = _
   var fn: js.Function = _
 }
 

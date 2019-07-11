@@ -108,7 +108,7 @@ package object kafkanode {
       */
     @inline
     def addTopicsFuture(topics: String): Future[js.Any] =
-    promiseWithError1[Error, js.Any](consumer.addTopics(topics, _))
+      promiseWithError1[Error, js.Any](consumer.addTopics(topics, _))
 
     /**
       * @see [[HighLevelConsumer.close()]]

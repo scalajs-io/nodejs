@@ -1,5 +1,7 @@
 package io.scalajs.npm.bodyparser
 
+import io.scalajs.FlexibleOptions
+
 import scala.scalajs.js
 
 
@@ -18,9 +20,14 @@ import scala.scalajs.js
   *                request body and encoding is the encoding of the request. The parsing can be aborted by throwing an error.
   * @author lawrence.daniels@gmail.com
   */
-
 class RawBodyOptions(var inflate: js.UndefOr[Boolean] = js.undefined,
                      var limit: js.UndefOr[Int] = js.undefined,
                      var `type`: js.UndefOr[String] = js.undefined,
                      var verify: js.UndefOr[String] = js.undefined)
-    extends js.Object
+  extends js.Object
+
+/**
+  * Raw Body Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object RawBodyOptions extends FlexibleOptions[RawBodyOptions]

@@ -1,7 +1,6 @@
 package io.scalajs.dom.html
 package phaser
 
-import io.scalajs.JsNumber
 import io.scalajs.dom.html.canvas.CanvasRenderingContext2D
 import io.scalajs.dom.html.phaser.utils.Debug
 
@@ -29,15 +28,15 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSGlobal("Phaser.Game")
-class Game(val width: JsNumber | String = js.native,
-           val height: JsNumber | String = js.native,
+class Game(val width: Double | String = js.native,
+           val height: Double | String = js.native,
            val renderer: Int = js.native,
            val parent: String | HTMLElement = js.native,
            val state: State = js.native,
            val transparent: Boolean = js.native,
            val antialias: Boolean = js.native,
            val physicsConfig: js.Any = js.native)
-    extends js.Object {
+  extends js.Object {
 
   /**
     * Reference to the Phaser.GameObjectFactory.

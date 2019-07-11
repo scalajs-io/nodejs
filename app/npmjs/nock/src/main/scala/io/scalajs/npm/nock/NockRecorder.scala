@@ -1,7 +1,6 @@
 package io.scalajs.npm.nock
 
 import scala.scalajs.js
-import scala.scalajs.js.|
 
 /**
   * Nock Recorder
@@ -12,7 +11,7 @@ trait NockRecorder extends js.Object {
 
   def play(): js.Array[NockPlayBack] = js.native
 
-  def rec(options: NockRecorderOptions | js.Any = js.native): Unit = js.native
+  def rec(options: NockRecorderOptions = js.native): Unit = js.native
 
 }
 
@@ -65,13 +64,3 @@ trait NockPlayBack extends js.Object {
   def reqheader: js.Dictionary[js.Any] = js.native
 
 }
-
-/**
-  * Nock Recorder Options
-  * @author lawrence.daniels@gmail.com
-  */
-class NockRecorderOptions(val dont_print: js.UndefOr[Boolean] = js.undefined,
-                          val enable_reqheaders_recording: js.UndefOr[Boolean] = js.undefined,
-                          val logging: js.UndefOr[String] = js.undefined,
-                          val output_objects: js.UndefOr[Boolean] = js.undefined,
-                          val use_separator: js.UndefOr[Boolean] = js.undefined) extends js.Object

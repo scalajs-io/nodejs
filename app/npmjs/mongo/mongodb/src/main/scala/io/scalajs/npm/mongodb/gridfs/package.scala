@@ -73,14 +73,14 @@ package object gridfs {
       */
     @inline
     def readFuture[T <: js.Any](length: Int, buffer: Buffer): js.Promise[Array[T]] =
-    promiseMongoCallback1[js.Array[T]](gridStore.read(length, buffer, _))
+      promiseMongoCallback1[js.Array[T]](gridStore.read(length, buffer, _))
 
     /**
       * Retrieves the contents of this file and advances the read/write head. Works with Buffers only.
       */
     @inline
     def readFuture[T <: js.Any](buffer: Buffer): js.Promise[Array[T]] =
-    promiseMongoCallback1[js.Array[T]](gridStore.read(buffer, _))
+      promiseMongoCallback1[js.Array[T]](gridStore.read(buffer, _))
 
     /**
       * Retrieves the contents of this file and advances the read/write head. Works with Buffers only.
@@ -93,7 +93,7 @@ package object gridfs {
       */
     @inline
     def readlinesFuture(separator: String): js.Promise[Array[String]] =
-    promiseMongoCallback1[js.Array[String]](gridStore.readlines(separator, _))
+      promiseMongoCallback1[js.Array[String]](gridStore.readlines(separator, _))
 
     /**
       * Reads the data of this file.
@@ -113,14 +113,14 @@ package object gridfs {
       */
     @inline
     def seekFuture(position: Int, seekLocation: Int): js.Promise[GridStore] =
-    promiseMongoCallback1[GridStore](gridStore.seek(position, seekLocation, _))
+      promiseMongoCallback1[GridStore](gridStore.seek(position, seekLocation, _))
 
     /**
       * Moves the read/write head to a new location.
       */
     @inline
     def seekFuture(seekLocation: Int): js.Promise[GridStore] =
-    promiseMongoCallback1[GridStore](gridStore.seek(seekLocation, _))
+      promiseMongoCallback1[GridStore](gridStore.seek(seekLocation, _))
 
     /**
       * Moves the read/write head to a new location.
@@ -139,28 +139,28 @@ package object gridfs {
       */
     @inline
     def writeFuture(data: Buffer, close: Boolean): js.Promise[GridStore] =
-    promiseMongoCallback1[GridStore](gridStore.write(data, close, _))
+      promiseMongoCallback1[GridStore](gridStore.write(data, close, _))
 
     /**
       * Writes some data. This method will work properly only if initialized with mode “w” or “w+”.
       */
     @inline
     def writeFuture(data: String, close: Boolean): js.Promise[GridStore] =
-    promiseMongoCallback1[GridStore](gridStore.write(data, close, _))
+      promiseMongoCallback1[GridStore](gridStore.write(data, close, _))
 
     /**
       * Writes some data. This method will work properly only if initialized with mode “w” or “w+”.
       */
     @inline
     def writeFuture(data: Buffer): js.Promise[GridStore] =
-    promiseMongoCallback1[GridStore](gridStore.write(data, _))
+      promiseMongoCallback1[GridStore](gridStore.write(data, _))
 
     /**
       * Writes some data. This method will work properly only if initialized with mode “w” or “w+”.
       */
     @inline
     def writeFuture(data: String): js.Promise[GridStore] =
-    promiseMongoCallback1[GridStore](gridStore.write(data, _))
+      promiseMongoCallback1[GridStore](gridStore.write(data, _))
 
     /**
       * Stores a file from the file system to the GridFS database.

@@ -15,4 +15,4 @@ import scala.scalajs.js
   */
 
 class BlobPropertyBag(var `type`: js.UndefOr[String] = js.undefined, var endings: js.UndefOr[String] = js.undefined)
-    extends js.Object
+  extends js.Object

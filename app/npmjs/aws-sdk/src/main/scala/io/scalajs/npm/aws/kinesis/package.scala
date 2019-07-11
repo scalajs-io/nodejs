@@ -19,7 +19,7 @@ package object kinesis {
   type DeregisterStreamConsumerResult = js.Any
 
   type DescribeLimitsResult = js.Any
-  
+
   type WaitForResult = js.Any
 
 }

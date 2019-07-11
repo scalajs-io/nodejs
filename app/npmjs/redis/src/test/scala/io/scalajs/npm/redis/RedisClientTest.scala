@@ -1,12 +1,12 @@
 package io.scalajs.npm.redis
 
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * Redis Client Test Suite
   * @author lawrence.daniels@gmail.com
   */
-class RedisClientTest extends FunSpec {
+class RedisClientTest extends AnyFunSpec {
   // TODO fix test issues
 
   describe("RedisClient") {

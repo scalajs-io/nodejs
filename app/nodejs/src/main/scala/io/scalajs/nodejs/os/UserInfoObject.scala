@@ -9,4 +9,4 @@ import scala.scalajs.js
   */
 
 class UserInfoObject(val uid: Int, val gid: Int, val username: String, val homedir: String, val shell: String)
-    extends js.Object
+  extends js.Object

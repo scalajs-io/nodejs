@@ -13,4 +13,4 @@ import scala.scalajs.js.annotation.JSGlobal
 @js.native
 @JSGlobal("Phaser.Sound")
 class Sound(var game: Phaser.Game, val key: String, val volume: Int = js.native, val loop: Boolean = js.native)
-    extends js.Object
+  extends js.Object

@@ -1,13 +1,13 @@
 package io.scalajs.npm.csvtojson
 
 import io.scalajs.util.JSONHelper._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * CsvToJson Test Suite
   * @author lawrence.daniels@gmail.com
   */
-class CsvToJsonTest extends FunSpec {
+class CsvToJsonTest extends AnyFunSpec {
 
   describe("CsvToJson") {
 

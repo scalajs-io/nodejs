@@ -16,7 +16,7 @@ trait NodeFetch extends js.Object {
     * @param options the optional settings
     * @return the promise of a [[FetchResponse response]]
     */
-  def apply(url: String, options: RequestOptions = js.native): js.Promise[FetchResponse] = js.native
+  def apply(url: String, options: NodeFetchRequestOptions = js.native): js.Promise[FetchResponse] = js.native
 
 }
 

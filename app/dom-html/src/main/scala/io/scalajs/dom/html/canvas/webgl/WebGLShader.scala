@@ -7,7 +7,7 @@ import scala.scalajs.js.annotation.JSGlobal
   * The WebGLShader is part of the WebGL API and can either be a vertex or a fragment shader.
   * A WebGLProgram requires both types of shaders.
   * @see https://developer.mozilla.org/en-US/docs/Web/API/WebGLShader
-  *      @author lawrence.daniels@gmail.com
+  * @author lawrence.daniels@gmail.com
   */
 @js.native
 @JSGlobal("WebGLShader")

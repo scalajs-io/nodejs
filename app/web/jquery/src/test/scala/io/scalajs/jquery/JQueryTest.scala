@@ -1,12 +1,12 @@
 package io.scalajs.jquery
 
-import org.scalatest._
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * JQuery Tests
   * @author lawrence.daniels@gmail.com
   */
-class JQueryTest extends FunSpec {
+class JQueryTest extends AnyFunSpec {
 
 
   describe("JQuery") {

@@ -1,6 +1,8 @@
 package io.scalajs.npm.winston
 package transports
 
+import io.scalajs.FlexibleOptions
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
@@ -24,7 +26,6 @@ class DailyRotateFile(options: DailyRotateFileOptions = js.native) extends Trans
   *                    of the filename (default 'false').
   * @param level       the logging level
   */
-
 class DailyRotateFileOptions(val filename: js.UndefOr[String] = js.undefined,
                              val datePattern: js.UndefOr[String] = js.undefined,
                              val prepend: js.UndefOr[Boolean] = js.undefined,
@@ -32,3 +33,9 @@ class DailyRotateFileOptions(val filename: js.UndefOr[String] = js.undefined,
                              val formatter: js.UndefOr[js.Function1[DailyRotateFileOptions, String]] = js.undefined,
                              val timestamp: js.UndefOr[js.Function1[Unit, Double]] = js.undefined)
   extends js.Object
+
+/**
+  * Daily Rotate File Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object DailyRotateFileOptions extends FlexibleOptions[DailyRotateFileOptions]

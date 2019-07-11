@@ -1,5 +1,6 @@
 package io.scalajs.npm.brake
 
+import io.scalajs.FlexibleOptions
 import io.scalajs.nodejs.stream.{Readable, Writable}
 
 import scala.scalajs.js
@@ -36,6 +37,11 @@ object Brake extends Brake
   * @param rate   How many bytes to emit for each interval of length period
   * @param period How often to check the output length in milliseconds. Default value: 1000.
   */
-
 class ThrottleOptions(var rate: js.UndefOr[Double] = js.undefined,
                       var period: js.UndefOr[Int] = js.undefined) extends js.Object
+
+/**
+  * Throttle Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object ThrottleOptions extends FlexibleOptions[ThrottleOptions]

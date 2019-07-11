@@ -1,7 +1,8 @@
 package io.scalajs.nodejs.http
 
-import scala.scalajs.js
+import io.scalajs.FlexibleOptions
 
+import scala.scalajs.js
 
 /**
   * Client Request Options
@@ -38,5 +39,10 @@ class RequestOptions(var protocol: js.UndefOr[String] = js.undefined,
                      var headers: js.UndefOr[js.Object] = js.undefined,
                      var auth: js.UndefOr[String] = js.undefined,
                      var agent: js.UndefOr[String] = js.undefined,
-                     var createConnection: js.UndefOr[js.Function] = js.undefined)
-    extends js.Object
+                     var createConnection: js.UndefOr[js.Function] = js.undefined) extends js.Object
+
+/**
+  * Request Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object RequestOptions extends FlexibleOptions[RequestOptions]

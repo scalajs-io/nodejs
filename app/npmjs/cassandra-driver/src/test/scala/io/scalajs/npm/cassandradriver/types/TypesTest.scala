@@ -3,7 +3,7 @@ package io.scalajs.npm.cassandradriver.types
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.console
 import io.scalajs.npm.cassandradriver.types
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -11,7 +11,7 @@ import scala.scalajs.js
   * Types Tests
   * @author lawrence.daniels@gmail.com
   */
-class TypesTest extends FunSpec {
+class TypesTest extends AnyFunSpec {
 
   describe("Types") {
 
@@ -33,7 +33,7 @@ class TypesTest extends FunSpec {
 
       // Inet Address
       val ipAddressBuf = Buffer.from(js.Array(192, 168, 1, 5))
-      val value4       = new types.InetAddress(ipAddressBuf)
+      val value4 = new types.InetAddress(ipAddressBuf)
       console.log("value4 =", value4, ", buffer =", ipAddressBuf, "\n")
 
       // Local Date

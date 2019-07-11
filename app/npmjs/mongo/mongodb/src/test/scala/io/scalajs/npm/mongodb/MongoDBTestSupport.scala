@@ -1,7 +1,7 @@
 package io.scalajs.npm.mongodb
 
 import io.scalajs.nodejs.process
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.concurrent.Future
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
@@ -12,7 +12,7 @@ import scala.util.{Failure, Success}
   * @author lawrence.daniels@gmail.com
   */
 trait MongoDBTestSupport {
-  self: FunSpec =>
+  self: AnyFunSpec =>
 
   def withMongo[S](label: String)(block: Db => Future[S]): Any = {
     process.env.get("MONGO_CONNECT") match {

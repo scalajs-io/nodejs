@@ -1,5 +1,7 @@
 package io.scalajs.npm.bignum
 
+import io.scalajs.FlexibleOptions
+
 import scala.scalajs.js
 import scala.scalajs.js.|
 
@@ -10,7 +12,12 @@ import scala.scalajs.js.|
   * @param size   the size of the buffer or 'auto'
   * @author lawrence.daniels@gmail.com
   */
-
 class BigNumOptions(var endian: js.UndefOr[String] = js.undefined,
                     var size: js.UndefOr[String | Int] = js.undefined)
   extends js.Object
+
+/**
+  * BigNum Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object BigNumOptions extends FlexibleOptions[BigNumOptions]

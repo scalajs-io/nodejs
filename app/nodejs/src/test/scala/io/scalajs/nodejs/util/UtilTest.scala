@@ -1,6 +1,6 @@
 package io.scalajs.nodejs.util
 
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -8,7 +8,7 @@ import scala.scalajs.js
   * Util Tests
   * @author lawrence.daniels@gmail.com
   */
-class UtilTest extends FunSpec {
+class UtilTest extends AnyFunSpec {
 
   describe("Util") {
 

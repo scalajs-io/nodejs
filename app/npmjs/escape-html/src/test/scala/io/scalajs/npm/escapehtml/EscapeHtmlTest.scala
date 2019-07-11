@@ -1,13 +1,13 @@
 package io.scalajs.npm.escapehtml
 
 import io.scalajs.nodejs.Assert
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * Escape-Html Test
   * @author lawrence.daniels@gmail.com
   */
-class EscapeHtmlTest extends FunSpec {
+class EscapeHtmlTest extends AnyFunSpec {
 
   describe("EscapeHtml") {
 

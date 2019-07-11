@@ -4,7 +4,7 @@ import io.scalajs.nodejs.fs.Fs
 import io.scalajs.nodejs.readline.{Readline, ReadlineOptions}
 import io.scalajs.nodejs.{Error, console, process}
 import io.scalajs.util.ScalaJsHelper._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
@@ -13,7 +13,7 @@ import scala.scalajs.js
   * Producer Test
   * @author lawrence.daniels@gmail.com
   */
-class ProducerTest extends FunSpec {
+class ProducerTest extends AnyFunSpec {
   private val topic = "testing"
 
   describe("Producer") {

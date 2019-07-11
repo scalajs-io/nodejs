@@ -1,13 +1,13 @@
 package io.scalajs.npm.numeral
 
 import io.scalajs.nodejs.Assert
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * Numeral Tests
   * @author lawrence.daniels@gmail.com
   */
-class NumeralTest extends FunSpec {
+class NumeralTest extends AnyFunSpec {
 
   describe("Numeral") {
 

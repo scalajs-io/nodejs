@@ -11,7 +11,7 @@ package object durationformat {
   // load the module
   MomentDurationFormat
 
-  implicit class MomentDurationEnrichment(val moment: Moment) extends AnyVal {
+  final implicit class MomentDurationEnrichment(val moment: Moment) extends AnyVal {
 
     @inline
     def duration(duration: Double, durationUnit: String): moment.type = {

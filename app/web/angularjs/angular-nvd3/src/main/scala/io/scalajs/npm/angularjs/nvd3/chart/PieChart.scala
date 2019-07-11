@@ -23,7 +23,7 @@ class PieChart(val id: js.UndefOr[String] = js.undefined,
                val showLegend: js.UndefOr[Boolean] = js.undefined,
                val showLabels: js.UndefOr[Boolean] = js.undefined,
                val legend: js.UndefOr[Legend] = js.undefined)
-    extends Chart {
+  extends Chart {
 
   override val `type` = "pieChart"
 

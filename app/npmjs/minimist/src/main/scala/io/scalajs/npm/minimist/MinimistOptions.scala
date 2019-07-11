@@ -1,5 +1,7 @@
 package io.scalajs.npm.minimist
 
+import io.scalajs.FlexibleOptions
+
 import scala.scalajs.js
 import scala.scalajs.js.|
 
@@ -16,24 +18,24 @@ import scala.scalajs.js.|
   *                  If the function returns false, the unknown option is not added to argv.
   */
 
-class MinimistOptions(val string: js.UndefOr[String | js.Array[String]] = js.undefined,
-                      val boolean: js.UndefOr[Boolean | String | js.Array[String]] = js.undefined,
-                      val alias: js.UndefOr[js.Object | js.Dictionary[String | js.Array[String]]] = js.undefined,
-                      val default: js.UndefOr[js.Object | js.Dictionary[String | js.Array[String]]] = js.undefined,
-                      val stopEarly: js.UndefOr[Boolean] = js.undefined,
-                      val unknown: js.UndefOr[js.Function] = js.undefined) extends js.Object
+class MinimistOptions(var string: js.UndefOr[String | js.Array[String]] = js.undefined,
+                      var boolean: js.UndefOr[Boolean | String | js.Array[String]] = js.undefined,
+                      var alias: js.UndefOr[js.Object | js.Dictionary[String | js.Array[String]]] = js.undefined,
+                      var default: js.UndefOr[js.Object | js.Dictionary[String | js.Array[String]]] = js.undefined,
+                      var stopEarly: js.UndefOr[Boolean] = js.undefined,
+                      var unknown: js.UndefOr[js.Function] = js.undefined) extends js.Object
 
 /**
   * Minimist Options Companion
   * @author lawrence.danils@gmail.com
   */
-object MinimistOptions {
+object MinimistOptions extends FlexibleOptions[MinimistOptions] {
 
   /**
     * Minimist Options Enrichment
     * @param options the given [[MinimistOptions options]]
     */
-  implicit class MinimistOptionsEnrichment(val options: MinimistOptions) extends AnyVal {
+  final implicit class MinimistOptionsEnrichment(val options: MinimistOptions) extends AnyVal {
 
     /**
       * when true, populate argv._ with everything before the -- and argv["--"]

@@ -1,13 +1,13 @@
 package io.scalajs.npm.moment
 
 import io.scalajs.nodejs.Assert
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * Moment Tests
   * @author lawrence.daniels@gmail.com
   */
-class MomentTest extends FunSpec {
+class MomentTest extends AnyFunSpec {
 
   describe("Moment") {
 

@@ -2,7 +2,7 @@ package io.scalajs.npm.ip
 
 import io.scalajs.JSON
 import io.scalajs.nodejs.buffer.Buffer
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -10,8 +10,8 @@ import scala.scalajs.js
   * IP Test
   * @author lawrence.daniels@gmail.com
   */
-class IPTest extends FunSpec {
-  
+class IPTest extends AnyFunSpec {
+
   describe("IP") {
 
     it("provides a range of IP-based functionality") {
@@ -28,18 +28,19 @@ class IPTest extends FunSpec {
       IP.isV4Format("127.0.0.1") // true
       IP.isV6Format("::ffff:127.0.0.1") // true
     }
-    
+
     it("can operate on buffers in-place") {
       val buf = new Buffer(128)
       val offset = 64
-      IP.toBuffer("127.0.0.1", buf, offset)  // [127, 0, 0, 1] at offset 64
-      IP.toString(buf, offset, 4)            // "127.0.0.1"
+      IP.toBuffer("127.0.0.1", buf, offset) // [127, 0, 0, 1] at offset 64
+      IP.toString(buf, offset, 4) // "127.0.0.1"
     }
-    
+
     it("provide subnet information") {
-      info(s"""IP.subnet("192.168.1.134", "255.255.255.192") => ${
-        JSON.stringify(IP.subnet("192.168.1.134", "255.255.255.192"), null, 4)
-      }""")
+      info(
+        s"""IP.subnet("192.168.1.134", "255.255.255.192") => ${
+          JSON.stringify(IP.subnet("192.168.1.134", "255.255.255.192"), null, 4)
+        }""")
       // { networkAddress: "192.168.1.128", 
       //   firstAddress: "192.168.1.129", 
       //   lastAddress: "192.168.1.190", 
@@ -56,12 +57,12 @@ class IPTest extends FunSpec {
       // range checking 
       IP.cidrSubnet("192.168.1.134/26").contains("192.168.1.190") // true
     }
-    
+
     it("supports ipv4 long conversion") {
       IP.toLong("127.0.0.1"); // 2130706433 
       IP.fromLong(2130706433); // "127.0.0.1"
     }
-    
+
   }
 
 }

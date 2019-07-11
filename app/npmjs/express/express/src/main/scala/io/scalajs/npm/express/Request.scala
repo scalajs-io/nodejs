@@ -1,7 +1,6 @@
 package io.scalajs.npm.express
 
 import io.scalajs.nodejs.http.ClientRequest
-import io.scalajs.npm.express
 
 import scala.scalajs.js
 
@@ -92,7 +91,7 @@ trait Request extends ClientRequest {
   /**
     * This property is much like req.url; however, it retains the original request URL,
     * allowing you to rewrite req.url freely for internal routing purposes. For example,
-    * the “mounting” feature of [[express.Application.use app.use()]]
+    * the “mounting” feature of [[Application.use app.use()]]
     * will rewrite req.url to strip the mount point.
     */
   def originalUrl: String = js.native

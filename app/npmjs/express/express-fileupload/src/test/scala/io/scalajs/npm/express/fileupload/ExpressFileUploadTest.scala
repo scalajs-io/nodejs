@@ -2,13 +2,13 @@ package io.scalajs.npm.express.fileupload
 
 import io.scalajs.nodejs.os.OS
 import io.scalajs.npm.express._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * Express File Upload Test
   * @author lawrence.daniels@gmail.com
   */
-class ExpressFileUploadTest extends FunSpec {
+class ExpressFileUploadTest extends AnyFunSpec {
 
   describe("ExpressFileUpload") {
 

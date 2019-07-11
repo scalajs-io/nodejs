@@ -169,34 +169,3 @@ object Nock extends Nock {
   def apply(url: js.Any, options: NockOptions | js.Any = js.native): Nock = js.native
 
 }
-
-/**
-  * Nock Options
-  * @author lawrence.daniels@gmail.com
-  */
-class NockOptions(val allowUnmocked: js.UndefOr[Boolean] = js.undefined) extends js.Object
-
-/**
-  * Nock Basic Authentication
-  * @param user the given user
-  * @param pass the given password
-  */
-class NockBasicAuth(val user: String, val pass: String) extends js.Object
-
-/**
-  * Nock Delay Body
-  * @param body the delay (in milliseconds)
-  */
-class NockDelayBody(val body: Int) extends js.Object
-
-/**
-  * Nock Interceptor Options
-  * @param hostname the host name
-  * @param path     the path
-  * @param method   the method
-  * @param proto    the proto
-  */
-class NockInterceptorOptions(val hostname: js.UndefOr[String] = js.undefined,
-                             val path: js.UndefOr[String] = js.undefined,
-                             val method: js.UndefOr[String] = js.undefined,
-                             val proto: js.UndefOr[String] = js.undefined) extends js.Object

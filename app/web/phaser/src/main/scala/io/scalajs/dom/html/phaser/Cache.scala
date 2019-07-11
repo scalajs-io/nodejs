@@ -35,9 +35,9 @@ class Cache(var game: Phaser.Game) extends js.Object
 @js.native
 @JSGlobal("Phaser.Cache")
 object Cache extends js.Object {
-  val BINARY: Int     = js.native
+  val BINARY: Int = js.native
   val BITMAPDATA: Int = js.native
   val BITMAPFONT: Int = js.native
-  val CANVAS: Int     = js.native
+  val CANVAS: Int = js.native
 
 }

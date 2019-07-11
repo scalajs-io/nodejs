@@ -27,9 +27,9 @@ class URL(urlString: String, baseURLString: String) extends js.Object {
     *
     * When using a user agent where no constructor has been implemented yet, it is possible to access such an object
     * using the Window.URL properties (prefixed with Webkit-based browser as Window.webkitURL).
-    * @param urlString     Is a DOMString representing an absolute or relative URL. If urlString is a relative URL,
-    *                      baseURLString or baseURLObject, whichever is present, will be used as the base URL.
-    *                      If urlString is an absolute URL, baseURLstring and baseURLobject are ignored.
+    * @param urlString Is a DOMString representing an absolute or relative URL. If urlString is a relative URL,
+    *                  baseURLString or baseURLObject, whichever is present, will be used as the base URL.
+    *                  If urlString is an absolute URL, baseURLstring and baseURLobject are ignored.
     */
   def this(urlString: String) = this(urlString, null: String)
 

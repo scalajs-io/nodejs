@@ -1,7 +1,8 @@
 package io.scalajs.npm.cookie
 
-import scala.scalajs.js
+import io.scalajs.FlexibleOptions
 
+import scala.scalajs.js
 
 /**
   * Cookie Deserialization Options
@@ -16,5 +17,10 @@ import scala.scalajs.js
   *               be returned as the cookie's value.
   * @author lawrence.daniels@gmail.com
   */
-
 class DeserializationOptions(var decode: js.UndefOr[js.Function] = js.undefined) extends js.Object
+
+/**
+  * Deserialization Options Companion
+  * @author lawrence.daniels@gmail.com
+  */
+object DeserializationOptions extends FlexibleOptions[DeserializationOptions]

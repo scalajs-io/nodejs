@@ -2,13 +2,13 @@ package io.scalajs.nodejs.os
 
 import io.scalajs.JSON
 import io.scalajs.util.ScalaJsHelper._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * OS Tests
   * @author lawrence.daniels@gmail.com
   */
-class OSTest extends FunSpec {
+class OSTest extends AnyFunSpec {
 
   describe("OS") {
 

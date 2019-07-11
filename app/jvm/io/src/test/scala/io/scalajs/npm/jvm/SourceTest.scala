@@ -1,8 +1,8 @@
 package io.scalajs.npm.jvm
 
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
-class SourceTest extends FunSpec {
+class SourceTest extends AnyFunSpec {
 
   describe(classOf[Source].getSimpleName) {
 

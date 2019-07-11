@@ -1,7 +1,7 @@
 package io.scalajs.npm.mkdirp
 
 import io.scalajs.nodejs.fs.Fs
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.util.{Failure, Success}
@@ -10,7 +10,7 @@ import scala.util.{Failure, Success}
   * Mkdirp Test Suite
   * @author lawrence.daniels@gmail.com
   */
-class MkdirpTest extends FunSpec {
+class MkdirpTest extends AnyFunSpec {
 
   describe("Mkdirp") {
 

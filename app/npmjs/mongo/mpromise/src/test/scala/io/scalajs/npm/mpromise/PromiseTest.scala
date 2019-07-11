@@ -1,7 +1,7 @@
 package io.scalajs.npm.mpromise
 
 import io.scalajs.nodejs._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 
@@ -9,7 +9,7 @@ import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
   * Promise Test Suite
   * @author lawrence.daniels@gmail.com
   */
-class PromiseTest extends FunSpec {
+class PromiseTest extends AnyFunSpec {
 
   describe("Promise") {
 

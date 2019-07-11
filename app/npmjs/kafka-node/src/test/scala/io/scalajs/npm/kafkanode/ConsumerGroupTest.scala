@@ -1,7 +1,7 @@
 package io.scalajs.npm.kafkanode
 
 import io.scalajs.nodejs.process
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -9,7 +9,7 @@ import scala.scalajs.js
   * Consumer Group Test
   * @author lawrence.daniels@gmail.com
   */
-class ConsumerGroupTest extends FunSpec {
+class ConsumerGroupTest extends AnyFunSpec {
 
   describe("ConsumerGroup") {
 

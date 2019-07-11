@@ -29,6 +29,7 @@ object AWS {
       type ListObjectsOutput = aws.s3.ListObjectsOutput
       type ListObjectsV2Output = aws.s3.ListObjectsV2Output
     }
+
   }
 
   type SES = aws.ses.SES

@@ -11,4 +11,4 @@ import scala.scalajs.js
 class FetchRequest(val topic: String,
                    val offset: js.UndefOr[Int] = js.undefined,
                    val partition: js.UndefOr[Int] = js.undefined)
-    extends js.Object
+  extends js.Object

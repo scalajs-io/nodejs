@@ -29,4 +29,4 @@ class ParserOptions(var decodeEntities: js.UndefOr[Boolean] = js.undefined,
                     var recognizeSelfClosing: js.UndefOr[Boolean] = js.undefined,
                     var withDomLvl1: js.UndefOr[Boolean] = js.undefined,
                     var xmlMode: js.UndefOr[Boolean] = js.undefined)
-    extends js.Object
+  extends js.Object

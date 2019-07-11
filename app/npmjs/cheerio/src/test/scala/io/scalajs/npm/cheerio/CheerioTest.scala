@@ -2,13 +2,13 @@ package io.scalajs.npm.cheerio
 
 import io.scalajs.JSON
 import io.scalajs.nodejs.Assert
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * Cheerio Test
   * @author lawrence.daniels@gmail.com
   */
-class CheerioTest extends FunSpec {
+class CheerioTest extends AnyFunSpec {
 
   describe("Cheerio") {
 

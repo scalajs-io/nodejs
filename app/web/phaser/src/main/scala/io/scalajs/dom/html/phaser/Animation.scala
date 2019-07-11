@@ -1,7 +1,5 @@
 package io.scalajs.dom.html.phaser
 
-import io.scalajs.JsNumber
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
 import scala.scalajs.js.|
@@ -26,7 +24,7 @@ class Animation(var game: Phaser.Game,
                 var parent: Phaser.Sprite,
                 var name: String,
                 var frameData: Phaser.FrameData,
-                var frames: js.Array[JsNumber | String],
+                var frames: js.Array[Int | String],
                 var frameRate: Double = js.native,
                 var loop: Boolean = js.native)
   extends js.Object {
@@ -202,7 +200,7 @@ class Animation(var game: Phaser.Game,
     * @param useLocalFrameIndex If you provide a number for frameId, should it use the numeric indexes of the frameData,
     *                           or the 0-indexed frame index local to the animation.
     */
-  def setFrame(frameId: JsNumber | String = js.native, useLocalFrameIndex: Boolean = js.native): Unit = js.native
+  def setFrame(frameId: Int | String = js.native, useLocalFrameIndex: Boolean = js.native): Unit = js.native
 
   /**
     * Stops playback of this animation and set it to a finished state. If a resetFrame is provided it will

@@ -16,4 +16,4 @@ import scala.scalajs.js.annotation.JSGlobal
 class WebGLRenderer(width: Double = js.native,
                     height: Double = js.native,
                     options: WebGLRendererOptions = js.native)
-    extends AbstractRenderer
+  extends AbstractRenderer

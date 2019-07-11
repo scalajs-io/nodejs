@@ -47,7 +47,7 @@ package object zlib {
       */
     @inline
     def flushFuture(kind: CompressionFlush = null): Future[Buffer] =
-    promiseWithError1[Error, Buffer](zlib.flush(kind, _))
+      promiseWithError1[Error, Buffer](zlib.flush(kind, _))
 
     /**
       * Compress a Buffer or string with Gzip.

@@ -2,7 +2,7 @@ package io.scalajs.npm.mongodb
 
 import io.scalajs.nodejs._
 import io.scalajs.npm.mongodb.CursorTest.Sample
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.concurrent.Promise
 import scala.concurrent.duration._
@@ -14,7 +14,7 @@ import scala.scalajs.js
   * Cursor Tests
   * @author lawrence.daniels@gmail.com
   */
-class CursorTest extends FunSpec with MongoDBTestSupport {
+class CursorTest extends AnyFunSpec with MongoDBTestSupport {
 
   describe("Cursor") {
 
@@ -22,7 +22,7 @@ class CursorTest extends FunSpec with MongoDBTestSupport {
 
       withMongo("Cursor") { db =>
 
-        val  coll = db.collection("cursor_test")
+        val coll = db.collection("cursor_test")
         for {
           // remove any existing docs
           _ <- coll.deleteMany(doc()).toFuture

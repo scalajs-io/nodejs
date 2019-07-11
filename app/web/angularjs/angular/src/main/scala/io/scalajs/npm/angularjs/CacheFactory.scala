@@ -15,7 +15,7 @@ trait CacheFactory extends js.Object {
     * @param options Options object that specifies the cache behavior.
     * @return the newly created [[Cache cache]]
     */
-  def apply(cacheId: String, options: js.Dictionary[Any] = js.native): Cache = js.native
+  def apply(cacheId: String, options: js.Any = js.native): Cache = js.native
 
   /**
     * Get access to a cache object by the cacheId used when it was created.

@@ -1,12 +1,12 @@
 package io.scalajs.npm.cassandradriver.types
 
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * Uuid Tests
   * @author lawrence.daniels@gmail.com
   */
-class UuidTest extends FunSpec {
+class UuidTest extends AnyFunSpec {
 
   describe("Uuid") {
 

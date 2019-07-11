@@ -1,5 +1,6 @@
 package io.scalajs.nodejs
 
+import io.scalajs.FlexibleOptions
 import io.scalajs.nodejs.stream.Writable
 
 import scala.scalajs.js
@@ -210,6 +211,12 @@ class ConsoleOptions(var stdout: js.UndefOr[Writable] = js.undefined,
                      var inspectOptions: js.Any = js.undefined) extends js.Object
 
 /**
+  * Console Options
+  * @author lawrence.daniels@gmail.com
+  */
+object ConsoleOptions extends FlexibleOptions[ConsoleOptions]
+
+/**
   * Console Dir Options
   * @param showHidden if true then the object's non-enumerable and symbol properties will be shown too. Defaults to false.
   * @param depth      tells util.inspect() how many times to recurse while formatting the object. This is useful for
@@ -220,3 +227,9 @@ class ConsoleOptions(var stdout: js.UndefOr[Writable] = js.undefined,
 class ConsoleDirOptions(var showHidden: js.UndefOr[Boolean] = js.undefined,
                         var depth: js.UndefOr[Int] = js.undefined,
                         var colors: js.UndefOr[Boolean] = js.undefined) extends js.Object
+
+/**
+  * Console Dir Options
+  * @author lawrence.daniels@gmail.com
+  */
+object ConsoleDirOptions extends FlexibleOptions[ConsoleDirOptions]

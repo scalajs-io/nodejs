@@ -1,13 +1,13 @@
 package io.scalajs.nodejs
 package url
 
-import org.scalatest._
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * URL Tests
   * @author lawrence.daniels@gmail.com
   */
-class URLTest extends FunSpec {
+class URLTest extends AnyFunSpec {
 
   describe("URL") {
 

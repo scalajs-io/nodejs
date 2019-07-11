@@ -1,12 +1,12 @@
 package io.scalajs.npm.chalk
 
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * Chalk Tests
   * @author lawrence.daniels@gmail.com
   */
-class ChalkTest extends FunSpec {
+class ChalkTest extends AnyFunSpec {
 
   describe("Chalk") {
 

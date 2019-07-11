@@ -1,7 +1,7 @@
 package io.scalajs.npm.htmlparser2
 
 import io.scalajs.nodejs.console
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
 
@@ -9,7 +9,7 @@ import scala.scalajs.js
   * htmlparser2 Parser Test
   * @author lawrence.daniels@gmail.com
   */
-class ParserTest extends FunSpec {
+class ParserTest extends AnyFunSpec {
 
   describe("Parser") {
 

@@ -5,7 +5,7 @@ import io.scalajs.JSON
 import io.scalajs.jquery.JQueryElement
 import io.scalajs.npm.htmltojson.HtmlToJsonTest.Content
 import io.scalajs.util.PromiseHelper.Implicits._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
@@ -14,7 +14,7 @@ import scala.scalajs.js
   * Html-to-Json Tests
   * @author lawrence.daniels@gmail.com
   */
-class HtmlToJsonTest extends FunSpec {
+class HtmlToJsonTest extends AnyFunSpec {
   private val content =
     """<div>
       |<img src="http://some/server/image.jpg">

@@ -1,6 +1,5 @@
 package io.scalajs.dom.html.phaser
 
-import io.scalajs.JsNumber
 import io.scalajs.dom.html.pixijs
 
 import scala.scalajs.js
@@ -25,8 +24,7 @@ class Bullet(game: Phaser.Game,
              x: Double,
              y: Double,
              key: String | Phaser.RenderTexture | Phaser.BitmapData | pixijs.Texture,
-             frame: JsNumber | String) extends Phaser.Sprite {
-
+             frame: Int | String) extends Phaser.Sprite {
 
 
 }

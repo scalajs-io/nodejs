@@ -16,7 +16,7 @@ import scala.scalajs.js.annotation.JSGlobal
 @js.native
 @JSGlobal("Phaser.Camera")
 class Camera(var game: Phaser.Game, val id: Int = 0, var x: Double, var y: Double, var width: Double, var height: Double)
-    extends js.Object {
+  extends js.Object {
 
   /**
     * Camera view.

@@ -1,7 +1,7 @@
 package io.scalajs.npm.githubapinode
 
 import io.scalajs.util.JSONHelper._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 
@@ -9,7 +9,7 @@ import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
   * User API Test Suite
   * @author lawrence.daniels@gmail.com
   */
-class UsersTest extends FunSpec {
+class UsersTest extends AnyFunSpec {
 
   describe("Users") {
     val gitHub = new GitHub(new GithubOptions())

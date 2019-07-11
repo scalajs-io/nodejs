@@ -41,4 +41,4 @@ class RouteTo(val controller: UndefOr[String] = js.undefined,
               val redirectToFn: UndefOr[js.Function] = js.undefined,
               val reloadOnSearch: UndefOr[Boolean] = js.undefined,
               val caseInsensitiveMatch: UndefOr[Boolean] = js.undefined)
-    extends js.Object
+  extends js.Object

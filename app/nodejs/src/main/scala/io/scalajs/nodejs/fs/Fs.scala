@@ -424,6 +424,9 @@ trait Fs extends js.Object with IEventEmitter with FSConstants {
   /**
     * Asynchronous mkdir(2). No arguments other than a possible exception are given to the completion callback.
     * mode defaults to 0o777.
+    * @param path     the path
+    * @param mode     the [[FileMode mode]]
+    * @param callback the [[FsCallback0 callback]]
     * @example fs.mkdir(path[, mode], callback)
     */
   def mkdir(path: Buffer | String | URL, mode: FileMode, callback: FsCallback0): Unit = js.native
@@ -431,6 +434,18 @@ trait Fs extends js.Object with IEventEmitter with FSConstants {
   /**
     * Asynchronous mkdir(2). No arguments other than a possible exception are given to the completion callback.
     * mode defaults to 0o777.
+    * @param path     the path
+    * @param options  the [[DirectoryCreationOptions options]]
+    * @param callback the [[FsCallback0 callback]]
+    * @example fs.mkdir(path[, options], callback)
+    */
+  def mkdir(path: Buffer | String | URL, options: DirectoryCreationOptions, callback: FsCallback0): Unit = js.native
+
+  /**
+    * Asynchronous mkdir(2). No arguments other than a possible exception are given to the completion callback.
+    * mode defaults to 0o777.
+    * @param path     the path
+    * @param callback the [[FsCallback0 callback]]
     * @example fs.mkdir(path[, mode], callback)
     */
   def mkdir(path: Buffer | String | URL, callback: FsCallback0): Unit = js.native
@@ -441,6 +456,13 @@ trait Fs extends js.Object with IEventEmitter with FSConstants {
     * @param mode the mode
     */
   def mkdirSync(path: Buffer | String, mode: FileMode = js.native): Unit = js.native
+
+  /**
+    * Synchronous mkdir(2).
+    * @param path    the path
+    * @param options the [[DirectoryCreationOptions options]]
+    */
+  def mkdirSync(path: Buffer | String, options: DirectoryCreationOptions): Unit = js.native
 
   /**
     * Creates a unique temporary directory.

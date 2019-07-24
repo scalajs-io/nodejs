@@ -1,5 +1,6 @@
 package io.scalajs.nodejs.util
 
+import io.scalajs.nodejs.fs.Fs
 import org.scalatest.funspec.AnyFunSpec
 
 import scala.scalajs.js
@@ -11,6 +12,16 @@ import scala.scalajs.js
 class UtilTest extends AnyFunSpec {
 
   describe("Util") {
+
+    it("supports callbackify(promise)") {
+      val callback = Util.callbackify(Fs.promises.stat("."))
+      Util.inspect(callback)
+    }
+
+    it("supports promisify(function)") {
+      val promise = Util.promisify(Fs.stat _)
+      Util.inspect(promise("."))
+    }
 
     it("supports isPrimitive(5)") {
       assert(Util.isPrimitive(5)) // Returns: true

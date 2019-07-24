@@ -4,7 +4,7 @@ import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.nodejs.stream
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.annotation.{JSImport, JSName}
 import scala.scalajs.js.|
 
 /**
@@ -19,6 +19,18 @@ import scala.scalajs.js.|
   */
 @js.native
 trait Util extends IEventEmitter {
+
+  /**
+    * Takes an async function (or a function that returns a Promise) and returns a function following the
+    * error-first callback style, i.e. taking an (err, value) => ... callback as the last argument. In the
+    * callback, the first argument will be the rejection reason (or null if the Promise resolved), and the
+    * second argument will be the resolved value.
+    * @example util.callbackify(original)
+    * @param original An async function
+    * @return a callback style function
+    */
+  @JSName("callbackify")
+  def callbackifyJS[E <: js.Error, Z](original: js.Promise[Z]): js.Function2[E, Z, Any] = js.native
 
   /**
     * Deprecated predecessor of console.error.
@@ -100,6 +112,15 @@ trait Util extends IEventEmitter {
     */
   @deprecated("Alternative not specified", "4.0.0")
   def isDate(`object`: js.Any): Boolean = js.native
+
+  /**
+    * Returns true if there is deep strict equality between val1 and val2. Otherwise, returns false.
+    * @example util.isDeepStrictEqual(val1, val2)
+    * @return true if there is deep strict equality between val1 and val2.
+    * @see [[io.scalajs.nodejs.Assert#deepStrictEqual()]]
+    * @since 9.0.0
+    */
+  def isDeepStrictEqual(val1: js.Any, val2: js.Any): Boolean = js.native
 
   /**
     * Returns true if the given "object" is an Error. Otherwise, returns false.
@@ -191,6 +212,204 @@ trait Util extends IEventEmitter {
     */
   @deprecated("Use console.log() instead", "0.11.3")
   def print(args: js.Array[js.Any]): Unit = js.native
+
+  /**
+    * Takes a function following the common error-first callback style, i.e. taking an (err, value) => ... callback
+    * as the last argument, and returns a version that returns promises.
+    * @example util.promisify(original)
+    * @param f the function
+    * @return the promise of the callback value
+    */
+  def promisify[Y, Z](f: js.Function1[CBF[Y, Z], Any]): js.Function0[js.Promise[Z]] = js.native
+
+  /**
+    * Takes a function following the common error-first callback style, i.e. taking an (err, value) => ... callback
+    * as the last argument, and returns a version that returns promises.
+    * @example util.promisify(original)
+    * @param f the function
+    * @return the promise of the callback value
+    */
+  def promisify[A, Y, Z](f: js.Function2[A, CBF[Y, Z], Any]): js.Function1[A, js.Promise[Z]] = js.native
+
+  /**
+    * Takes a function following the common error-first callback style, i.e. taking an (err, value) => ... callback
+    * as the last argument, and returns a version that returns promises.
+    * @example util.promisify(original)
+    * @param f the function
+    * @return the promise of the callback value
+    */
+  def promisify[A, B, Y, Z](f: js.Function3[A, B, CBF[Y, Z], Any]): js.Function2[A, B, js.Promise[Z]] = js.native
+
+  /**
+    * Takes a function following the common error-first callback style, i.e. taking an (err, value) => ... callback
+    * as the last argument, and returns a version that returns promises.
+    * @example util.promisify(original)
+    * @param f the function
+    * @return the promise of the callback value
+    */
+  def promisify[A, B, C, Y, Z](f: js.Function4[A, B, C, CBF[Y, Z], Any]): js.Function3[A, B, C, js.Promise[Z]] = js.native
+
+  /**
+    * Takes a function following the common error-first callback style, i.e. taking an (err, value) => ... callback
+    * as the last argument, and returns a version that returns promises.
+    * @example util.promisify(original)
+    * @param f the function
+    * @return the promise of the callback value
+    */
+  def promisify[A, B, C, D, Y, Z](f: js.Function5[A, B, C, D, CBF[Y, Z], Any]): js.Function4[A, B, C, D, js.Promise[Z]] = js.native
+
+  /**
+    * Takes a function following the common error-first callback style, i.e. taking an (err, value) => ... callback
+    * as the last argument, and returns a version that returns promises.
+    * @example util.promisify(original)
+    * @param f the function
+    * @return the promise of the callback value
+    */
+  def promisify[A, B, C, D, E, Y, Z](f: js.Function6[A, B, C, D, E, CBF[Y, Z], Any]): js.Function5[A, B, C, D, E, js.Promise[Z]] = js.native
+
+  /**
+    * Takes a function following the common error-first callback style, i.e. taking an (err, value) => ... callback
+    * as the last argument, and returns a version that returns promises.
+    * @example util.promisify(original)
+    * @param f the function
+    * @return the promise of the callback value
+    */
+  def promisify[A, B, C, D, E, F, Y, Z](f: js.Function7[A, B, C, D, E, F, CBF[Y, Z], Any]): js.Function6[A, B, C, D, E, F, js.Promise[Z]] = js.native
+
+  /**
+    * Takes a function following the common error-first callback style, i.e. taking an (err, value) => ... callback
+    * as the last argument, and returns a version that returns promises.
+    * @example util.promisify(original)
+    * @param f the function
+    * @return the promise of the callback value
+    */
+  def promisify[A, B, C, D, E, F, G, Y, Z](f: js.Function8[A, B, C, D, E, F, G, CBF[Y, Z], Any]): js.Function7[A, B, C, D, E, F, G, js.Promise[Z]] = js.native
+
+  /**
+    * Takes a function following the common error-first callback style, i.e. taking an (err, value) => ... callback
+    * as the last argument, and returns a version that returns promises.
+    * @example util.promisify(original)
+    * @param f the function
+    * @return the promise of the callback value
+    */
+  def promisify[A, B, C, D, E, F, G, H, Y, Z](f: js.Function9[A, B, C, D, E, F, G, H, CBF[Y, Z], Any]): js.Function8[A, B, C, D, E, F, G, H, js.Promise[Z]] = js.native
+
+  /**
+    * Takes a function following the common error-first callback style, i.e. taking an (err, value) => ... callback
+    * as the last argument, and returns a version that returns promises.
+    * @example util.promisify(original)
+    * @param f the function
+    * @return the promise of the callback value
+    */
+  def promisify[A, B, C, D, E, F, G, H, I, Y, Z](f: js.Function10[A, B, C, D, E, F, G, H, I, CBF[Y, Z], Any]): js.Function9[A, B, C, D, E, F, G, H, I, js.Promise[Z]] = js.native
+
+  /**
+    * Takes a function following the common error-first callback style, i.e. taking an (err, value) => ... callback
+    * as the last argument, and returns a version that returns promises.
+    * @example util.promisify(original)
+    * @param f the function
+    * @return the promise of the callback value
+    */
+  def promisify[A, B, C, D, E, F, G, H, I, J, Y, Z](f: js.Function11[A, B, C, D, E, F, G, H, I, J, CBF[Y, Z], Any]): js.Function10[A, B, C, D, E, F, G, H, I, J, js.Promise[Z]] = js.native
+
+  /**
+    * Takes a function following the common error-first callback style, i.e. taking an (err, value) => ... callback
+    * as the last argument, and returns a version that returns promises.
+    * @example util.promisify(original)
+    * @param f the function
+    * @return the promise of the callback value
+    */
+  def promisify[A, B, C, D, E, F, G, H, I, J, K, Y, Z](f: js.Function12[A, B, C, D, E, F, G, H, I, J, K, CBF[Y, Z], Any]): js.Function11[A, B, C, D, E, F, G, H, I, J, K, js.Promise[Z]] = js.native
+
+  /**
+    * Takes a function following the common error-first callback style, i.e. taking an (err, value) => ... callback
+    * as the last argument, and returns a version that returns promises.
+    * @example util.promisify(original)
+    * @param f the function
+    * @return the promise of the callback value
+    */
+  def promisify[A, B, C, D, E, F, G, H, I, J, K, L, Y, Z](f: js.Function13[A, B, C, D, E, F, G, H, I, J, K, L, CBF[Y, Z], Any]): js.Function12[A, B, C, D, E, F, G, H, I, J, K, L, js.Promise[Z]] = js.native
+
+  /**
+    * Takes a function following the common error-first callback style, i.e. taking an (err, value) => ... callback
+    * as the last argument, and returns a version that returns promises.
+    * @example util.promisify(original)
+    * @param f the function
+    * @return the promise of the callback value
+    */
+  def promisify[A, B, C, D, E, F, G, H, I, J, K, L, M, Y, Z](f: js.Function14[A, B, C, D, E, F, G, H, I, J, K, L, M, CBF[Y, Z], Any]): js.Function13[A, B, C, D, E, F, G, H, I, J, K, L, M, js.Promise[Z]] = js.native
+
+  /**
+    * Takes a function following the common error-first callback style, i.e. taking an (err, value) => ... callback
+    * as the last argument, and returns a version that returns promises.
+    * @example util.promisify(original)
+    * @param f the function
+    * @return the promise of the callback value
+    */
+  def promisify[A, B, C, D, E, F, G, H, I, J, K, L, M, N, Y, Z](f: js.Function15[A, B, C, D, E, F, G, H, I, J, K, L, M, N, CBF[Y, Z], Any]): js.Function14[A, B, C, D, E, F, G, H, I, J, K, L, M, N, js.Promise[Z]] = js.native
+
+  /**
+    * Takes a function following the common error-first callback style, i.e. taking an (err, value) => ... callback
+    * as the last argument, and returns a version that returns promises.
+    * @example util.promisify(original)
+    * @param f the function
+    * @return the promise of the callback value
+    */
+  def promisify[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, Y, Z](f: js.Function16[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, CBF[Y, Z], Any]): js.Function15[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, js.Promise[Z]] = js.native
+
+  /**
+    * Takes a function following the common error-first callback style, i.e. taking an (err, value) => ... callback
+    * as the last argument, and returns a version that returns promises.
+    * @example util.promisify(original)
+    * @param f the function
+    * @return the promise of the callback value
+    */
+  def promisify[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Y, Z](f: js.Function17[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, CBF[Y, Z], Any]): js.Function16[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, js.Promise[Z]] = js.native
+
+  /**
+    * Takes a function following the common error-first callback style, i.e. taking an (err, value) => ... callback
+    * as the last argument, and returns a version that returns promises.
+    * @example util.promisify(original)
+    * @param f the function
+    * @return the promise of the callback value
+    */
+  def promisify[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, Y, Z](f: js.Function18[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, CBF[Y, Z], Any]): js.Function17[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, js.Promise[Z]] = js.native
+
+  /**
+    * Takes a function following the common error-first callback style, i.e. taking an (err, value) => ... callback
+    * as the last argument, and returns a version that returns promises.
+    * @example util.promisify(original)
+    * @param f the function
+    * @return the promise of the callback value
+    */
+  def promisify[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, Y, Z](f: js.Function19[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, CBF[Y, Z], Any]): js.Function18[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, js.Promise[Z]] = js.native
+
+  /**
+    * Takes a function following the common error-first callback style, i.e. taking an (err, value) => ... callback
+    * as the last argument, and returns a version that returns promises.
+    * @example util.promisify(original)
+    * @param f the function
+    * @return the promise of the callback value
+    */
+  def promisify[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, Y, Z](f: js.Function20[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, CBF[Y, Z], Any]): js.Function19[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, js.Promise[Z]] = js.native
+
+  /**
+    * Takes a function following the common error-first callback style, i.e. taking an (err, value) => ... callback
+    * as the last argument, and returns a version that returns promises.
+    * @example util.promisify(original)
+    * @param f the function
+    * @return the promise of the callback value
+    */
+  def promisify[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, Y, Z](f: js.Function21[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, CBF[Y, Z], Any]): js.Function20[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, js.Promise[Z]] = js.native
+
+  /**
+    * Takes a function following the common error-first callback style, i.e. taking an (err, value) => ... callback
+    * as the last argument, and returns a version that returns promises.
+    * @example util.promisify(original)
+    * @param f the function
+    * @return the promise of the callback value
+    */
+  def promisify[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, Y, Z](f: js.Function22[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U,CBF[Y, Z], Any]): js.Function21[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T,U, js.Promise[Z]] = js.native
 
   /**
     * Deprecated predecessor of stream.pipe().

@@ -39,7 +39,7 @@ object Source {
 
     override def getLines: Iterator[String] = mkString.split('\n').iterator
 
-    override def mkString: String = Fs.readFileSync(path).toString("utf8")
+    override def mkString: String = Fs.readFileSync(path).toString(encoding = "utf8")
 
     override def toString: String = mkString
   }

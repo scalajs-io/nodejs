@@ -1,5 +1,6 @@
 package io.scalajs.nodejs.buffer
 
+import com.thoughtworks.enableIf
 import io.scalajs.collection.Iterator
 
 import scala.scalajs.js
@@ -841,11 +842,36 @@ class Buffer protected () extends Uint8Array( /* dummy to trick constructor */ -
     */
   def writeUIntLE(value: Int, offset: Int, byteLength: Int, noAssert: Boolean = js.native): Int = js.native
 
+  /**
+    *   @see https://nodejs.org/api/buffer.html#buffer_buf_readbiguint64be_offset
+    */
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def readBigInt64BE(offset: Int = js.native): Buffer.UnsafeBigInt = js.native
+
+  /**
+    *   @see https://nodejs.org/api/buffer.html#buffer_buf_readbiguint64le_offset
+    */
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def readBigUInt64LE(offset: Int = js.native): Buffer.UnsafeBigInt = js.native
+
+  /**
+    *   @see https://nodejs.org/api/buffer.html#buffer_buf_writebigint64be_value_offset
+    */
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def writeBigInt64BE(value: Buffer.UnsafeBigInt, offset: Int = js.native): Int = js.native
+
+  /**
+    *   @see https://nodejs.org/api/buffer.html#buffer_buf_writebigint64le_value_offset
+    */
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def writeBigInt64LE(value: Buffer.UnsafeBigInt, offset: Int = js.native): Int = js.native
 }
 
 @js.native
 @JSGlobal
 object Buffer extends js.Object {
+  // TODO: Node.js added BigInt-related things (e.g. readBigInt64BE). Should support when Scala.js support it
+  type UnsafeBigInt = js.Dynamic
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -984,5 +1010,4 @@ object Buffer extends js.Object {
     * @see [[https://nodejs.org/api/buffer.html#buffer_class_method_buffer_isencoding_encoding]]
     */
   def isEncoding(encoding: String): Boolean = js.native
-
 }

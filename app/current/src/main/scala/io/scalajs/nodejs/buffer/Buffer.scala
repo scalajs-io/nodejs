@@ -1,99 +1,101 @@
 package io.scalajs.nodejs.buffer
 
+import com.thoughtworks.enableIf
 import io.scalajs.collection.Iterator
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSBracketAccess, JSGlobal, JSImport}
-import scala.scalajs.js.typedarray.ArrayBuffer
+import scala.scalajs.js.typedarray.{ArrayBuffer, DataView, TypedArray, Uint8Array}
 import scala.scalajs.js.|
 
 /**
-  * Prior to the introduction of TypedArray in ECMAScript 2015 (ES6), the JavaScript language had no mechanism for
-  * reading or manipulating streams of binary data. The Buffer class was introduced as part of the Node.js API to
-  * make it possible to interact with octet streams in the context of things like TCP streams and file system operations.
-  *
-  * Now that TypedArray has been added in ES6, the Buffer class implements the Uint8Array API in a manner that is more
-  * optimized and suitable for Node.js' use cases.
-  *
-  * Instances of the Buffer class are similar to arrays of integers but correspond to fixed-sized, raw memory
-  * allocations outside the V8 heap. The size of the Buffer is established when it is created and cannot be resized.
-  *
-  * The Buffer class is a global within Node.js, making it unlikely that one would need to ever use require('buffer').
-  * @see https://nodejs.org/api/buffer.html
+  * @see [[https://nodejs.org/api/buffer.html]]
   */
 @js.native
 @JSImport("buffer", "Buffer")
-class Buffer() extends js.Object {
+class Buffer protected () extends Uint8Array( /* dummy to trick constructor */ -1) {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Constructors
   /////////////////////////////////////////////////////////////////////////////////
 
   /**
-    * @example new Buffer(size)
+    * Use [[Buffer.alloc()]] instead.
+    *
+    * @see [[https://nodejs.org/api/buffer.html#buffer_new_buffer_size]]
     */
   @inline
+  @deprecated("Use Buffer.alloc(size) instead.", since = "Node.js v6.0.0")
   def this(size: Int) = this()
 
   /**
-    * @example new Buffer(str, [encoding])
+    * Use [[Buffer.from(str,encoding)]] instead.
+    *
+    * @see [[https://nodejs.org/api/buffer.html#buffer_new_buffer_string_encoding]]
     */
   @inline
-  @deprecated("Use Buffer.from(str[, encoding]) instead.", since = "6.0.0")
-  def this(str: String, encoding: String = js.native) = this()
+  @deprecated("Use Buffer.from(str[, encoding]) instead.", since = "Node.js v6.0.0")
+  def this(str: String) = this()
 
   /**
-    * @example new Buffer(array)
+    * Use [[Buffer.from(str,encoding)]] instead.
+    *
+    * @see [[https://nodejs.org/api/buffer.html#buffer_new_buffer_string_encoding]]
     */
   @inline
-  @deprecated("Use Buffer.from(array) instead.", since = "6.0.0")
+  @deprecated("Use Buffer.from(str[, encoding]) instead.", since = "Node.js v6.0.0")
+  def this(str: String, encoding: String) = this()
+
+  /**
+    * Use [[Buffer.from(array)]] instead.
+    * @see [[https://nodejs.org/api/buffer.html#buffer_new_buffer_array]]
+    */
+  @inline
+  @deprecated("Use Buffer.from(array) instead.", since = "Node.js v6.0.0")
   def this(array: js.Array[Int]) = this()
 
   /**
-    * @example new Buffer(buffer)
+    * Use [[Buffer.from(buffer)]] instead.
+    *
+    * @see [[https://nodejs.org/api/buffer.html#buffer_new_buffer_buffer]]
     */
   @inline
-  @deprecated("Use Buffer.from(buffer) instead.", since = "6.0.0")
+  @deprecated("Use Buffer.from(buffer) instead.", since = "Node.js v6.0.0")
   def this(buffer: Buffer) = this()
 
   /**
-    * @example {{{ new Buffer(arrayBuffer[, byteOffset[, length]]) }}}
+    * Use [[Buffer.from(arrayBuffer,byteOffset,length)]] instead.
+    *
+    * @see [[https://nodejs.org/api/buffer.html#buffer_new_buffer_arraybuffer_byteoffset_length]]
     */
   @inline
-  @deprecated("Use Buffer.from(arrayBuffer[, byteOffset [, length]]) instead.", since = "6.0.0")
-  def this(arrayBuffer: ArrayBuffer, byteOffset: Int, length: Int) = this()
-
-  /**
-    * @example {{{ new Buffer(arrayBuffer[, byteOffset[, length]]) }}}
-    */
-  @inline
-  @deprecated("Use Buffer.from(arrayBuffer[, byteOffset [, length]]) instead.", since = "6.0.0")
-  def this(arrayBuffer: ArrayBuffer, byteOffset: Int) = this()
-
-  /**
-    * @example {{{ new Buffer(arrayBuffer[, byteOffset[, length]]) }}}
-    */
-  @inline
-  @deprecated("Use Buffer.from(arrayBuffer[, byteOffset [, length]]) instead.", since = "6.0.0")
-  def this(arrayBuffer: ArrayBuffer) = this()
+  @deprecated("Use Buffer.from(arrayBuffer[, byteOffset [, length]]) instead.", since = "Node.js v6.0.0")
+  def this(arrayBuffer: ArrayBuffer, byteOffset: Int = js.native, length: Int = js.native) = this()
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Accessors and Mutators
   /////////////////////////////////////////////////////////////////////////////////
 
   /**
-    * The index operator [index] can be used to get and set the octet at position index in buf. The values refer
-    * to individual bytes, so the legal value range is between 0x00 and 0xFF (hex) or 0 and 255 (decimal).
+    * The index operator `[index]` can be used to get and set the octet at position `index` in `buf`.
+    * The values refer to individual bytes, so the legal value range is between `0x00` and `0xFF` (hex) or
+    * `0` and `255` (decimal).
+    *
+    * This operator is inherited from [[Uint8Array]], so its behavior on out-of-bounds access is the same as
+    * [[Uint8Array]] - that is, getting returns `undefined` and setting does nothing.
+    *
+    * Note) In Scala.js, getting on out-of-bounds access will throw, since `undefined` can not be casted to `Short`.
+    *
     * @param index the given index
     * @return the value at the given index
     */
   @JSBracketAccess
-  def apply(index: Int): Int = js.native
+  override def apply(index: Int): Short = js.native
 
   /**
-    * The index operator [index] can be used to get and set the octet at position index in buf. The values refer
-    * to individual bytes, so the legal value range is between 0x00 and 0xFF (hex) or 0 and 255 (decimal).
+    * @see [[apply()]]
     * @param index the given index
+    * @param value the value to replace the existing value at the given index
     */
   @JSBracketAccess
   def update(index: Int, value: Int): Unit = js.native
@@ -103,9 +105,10 @@ class Buffer() extends js.Object {
   /////////////////////////////////////////////////////////////////////////////////
 
   /**
-    * Compares buf with target and returns a number indicating whether buf comes before, after, or is the same
-    * as target in sort order. Comparison is based on the actual sequence of bytes in each Buffer.
-    * @param target      A Buffer to compare to
+    * Compares `buf` with `target` and returns a number indicating whether `buf` comes before, after, or is the same
+    * as `target` in sort order. Comparison is based on the actual sequence of bytes in each `Buffer`.
+    *
+    * @param target      A Buffer with which to compare `buf`
     * @param targetStart The offset within target at which to begin comparison. Default: 0
     * @param targetEnd   The offset with target at which to end comparison (not inclusive). Ignored when targetStart
     *                    is undefined. Default: target.length
@@ -115,16 +118,17 @@ class Buffer() extends js.Object {
     * @return 0 is returned if target is the same as buf
     *         1 is returned if target should come before buf when sorted.
     *         -1 is returned if target should come after buf when sorted.
-    * @example {{{ buf.compare(target[, targetStart[, targetEnd[, sourceStart[, sourceEnd]]]]) }}}
+    * @see [[https://nodejs.org/api/buffer.html#buffer_buf_compare_target_targetstart_targetend_sourcestart_sourceend]]
     */
-  def compare(target: Buffer,
+  def compare(target: Uint8Array,
               targetStart: Int = js.native,
               targetEnd: Int = js.native,
               sourceStart: Int = js.native,
               sourceEnd: Int = js.native): Int = js.native
 
   /**
-    * Copies data from a region of buf to a region in target even if the target memory region overlaps with buf.
+    * Copies data from a region of `buf` to a region in `target` even if the `target` memory region overlaps with `buf`.
+    *
     * @param target      A Buffer to copy into.
     * @param targetStart The offset within target at which to begin copying to. Default: 0
     * @param sourceStart The offset within buf at which to begin copying from.
@@ -132,7 +136,7 @@ class Buffer() extends js.Object {
     * @param sourceEnd   The offset within buf at which to stop copying (not inclusive).
     *                    Ignored when sourceStart is undefined. Default: buf.length
     * @return The number of bytes copied.
-    * @example {{{ buf.copy(target[, targetStart[, sourceStart[, sourceEnd]]]) }}}
+    * @see [[https://nodejs.org/api/buffer.html#buffer_buf_copy_target_targetstart_sourcestart_sourceend]]
     */
   def copy(target: Buffer,
            targetStart: Int = js.native,
@@ -140,30 +144,33 @@ class Buffer() extends js.Object {
            sourceEnd: Int = js.native): Int = js.native
 
   /**
-    * Creates and returns an iterator of [index, byte] pairs from the Buffer contents.
-    * @return an [[Iterator]]
+    * Creates and returns an [[Iterator]] of `[index, byte]` pairs from the contents of `buf`.
+    *
+    * @see [[https://nodejs.org/api/buffer.html#buffer_buf_entries]]
     */
   def entries(): Iterator[js.Array[Int]] = js.native
 
   /**
     * Returns true if both buf and otherBuffer have exactly the same bytes, false otherwise.
-    * @param otherBuffer A Buffer to compare to
+    *
+    * @param otherBuffer A `Buffer` or `Uint8Array` with which to compare `buf`.
     * @return true if both buf and otherBuffer have exactly the same bytes, false otherwise.
-    * @example buf.equals(otherBuffer)
+    * @see [[https://nodejs.org/api/buffer.html#buffer_buf_equals_otherbuffer]]
     */
-  def equals(otherBuffer: Buffer): Boolean = js.native
+  def equals(otherBuffer: Uint8Array): Boolean = js.native
 
   /**
     * Fills buf with the specified value. If the offset and end are not given, the entire buf will be filled.
     * This is meant to be a small simplification to allow the creation and filling of a Buffer to be done on a single line.
+    *
     * @param value    The value to fill buf with
     * @param offset   Where to start filling buf. Default: 0
     * @param end      Where to stop filling buf (not inclusive). Default: buf.length
     * @param encoding If value is a string, this is its encoding. Default: 'utf8'
     * @return A reference to buf
-    * @example {{{ buf.fill(value[, offset[, end]][, encoding]) }}}
+    * @see https://nodejs.org/api/buffer.html#buffer_buf_fill_value_offset_end_encoding
     */
-  def fill(value: Buffer | Int | String,
+  def fill(value: Uint8Array | Int | String,
            offset: Int = js.native,
            end: Int = js.native,
            encoding: String = js.native): this.type = js.native
@@ -222,7 +229,7 @@ class Buffer() extends js.Object {
     * @return the amount of memory allocated for buf in bytes.
     * @example buf.length
     */
-  def length: Int = js.native
+  override val length: Int = js.native
 
   /**
     * Reads a 64-bit double from buf at the specified offset with specified endian format (readDoubleBE()
@@ -835,30 +842,40 @@ class Buffer() extends js.Object {
     */
   def writeUIntLE(value: Int, offset: Int, byteLength: Int, noAssert: Boolean = js.native): Int = js.native
 
+  /**
+    *   @see https://nodejs.org/api/buffer.html#buffer_buf_readbiguint64be_offset
+    */
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def readBigInt64BE(offset: Int = js.native): Buffer.UnsafeBigInt = js.native
+
+  /**
+    *   @see https://nodejs.org/api/buffer.html#buffer_buf_readbiguint64le_offset
+    */
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def readBigUInt64LE(offset: Int = js.native): Buffer.UnsafeBigInt = js.native
+
+  /**
+    *   @see https://nodejs.org/api/buffer.html#buffer_buf_writebigint64be_value_offset
+    */
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def writeBigInt64BE(value: Buffer.UnsafeBigInt, offset: Int = js.native): Int = js.native
+
+  /**
+    *   @see https://nodejs.org/api/buffer.html#buffer_buf_writebigint64le_value_offset
+    */
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def writeBigInt64LE(value: Buffer.UnsafeBigInt, offset: Int = js.native): Int = js.native
 }
 
 @js.native
 @JSGlobal
 object Buffer extends js.Object {
+  // TODO: Node.js added BigInt-related things (e.g. readBigInt64BE). Should support when Scala.js support it
+  type UnsafeBigInt = js.Dynamic
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
   /////////////////////////////////////////////////////////////////////////////////
-
-  /**
-    * Returns the maximum number of bytes that will be returned when buf.inspect() is called.
-    * This can be overridden by user modules. See util.inspect() for more details on buf.inspect() behavior.
-    *
-    * Note that this is a property on the buffer module returned by require('buffer'), not on the
-    * Buffer global or a Buffer instance.
-    */
-  val INSPECT_MAX_BYTES: Int = js.native
-
-  /**
-    * On 32-bit architectures, this value is (2^30)-1 (~1GB). On 64-bit architectures, this value is (2^31)-1 (~2GB).F
-    * Note that this is a property on the buffer module returned by require('buffer'), not on the Buffer global or a Buffer instance.
-    */
-  val kMaxLength: Int = js.native
 
   /**
     * This is the number of bytes used to determine the size of pre-allocated, internal Buffer instances used for pooling.
@@ -871,143 +888,126 @@ object Buffer extends js.Object {
   /////////////////////////////////////////////////////////////////////////////////
 
   /**
-    * Allocates a new Buffer of size bytes. If fill is undefined, the Buffer will be zero-filled.
-    * @param size     The desired length of the new Buffer
-    * @param fill     A value to pre-fill the new Buffer with. Default: 0
-    * @param encoding If fill is a string, this is its encoding. Default: 'utf8'
-    * @return a new [[Buffer]]
-    * @example {{{ Buffer.alloc(size[, fill[, encoding]]) }}}
+    * Allocates a new `Buffer` of `size` bytes.
+    * If `fill` is `undefined`, the `Buffer` will be zero-filled.
+    *
+    * @param size     The desired length of the new `Buffer`
+    * @param fill     A value to pre-fill the new `Buffer` with. Default: `0`
+    * @param encoding If fill` is a string, this is its encoding. Default: `'utf8'`
+    *
+    * @see [[https://nodejs.org/api/buffer.html#buffer_class_method_buffer_alloc_size_fill_encoding]]
     */
-  def alloc(size: Int, fill: Buffer | Int | String = js.native, encoding: String = js.native): Buffer = js.native
+  def alloc(size: Int, fill: Uint8Array | Int | String = js.native, encoding: String = js.native): Buffer = js.native
 
   /**
-    * Calling Buffer.alloc(size) can be significantly slower than the alternative Buffer.allocUnsafe(size) but ensures
-    * that the newly created Buffer instance contents will never contain sensitive data.
-    * @param size the allocated size.
-    * @example Buffer.allocUnsafe(size)
+    * Allocates a new `Buffer` of `size` bytes.
+    * If `size` is larger than [[constants.MAX_LENGTH]] or smaller than `0`, `ERR_INVALID_OPT_VALUE` is thrown.
+    * A zero-length `Buffer` is created if size is `0`.
+    *
+    * @param size The desired length of the new `Buffer`.
+    *
+    * @see [[https://nodejs.org/api/buffer.html#buffer_class_method_buffer_allocunsafe_size]]
     */
   def allocUnsafe(size: Int): Buffer = js.native
 
   /**
-    * Allocates a new non-zero-filled and non-pooled Buffer of size bytes. The size must be less than or equal to the
-    * value of require('buffer').kMaxLength (on 64-bit architectures, kMaxLength is {{{ (2^31)-1). }}} Otherwise, a RangeError
-    * is thrown. A zero-length Buffer will be created if a size less than or equal to 0 is specified.
+    * Allocates a new `Buffer` of `size` bytes.
+    * If `size` is larger than [[constants.MAX_LENGTH]] or smaller than `0`, `ERR_INVALID_OPT_VALUE` is thrown.
+    * A zero-length `Buffer` is created if size is `0`.
     *
-    * The underlying memory for Buffer instances created in this way is not initialized. The contents of the newly
-    * created Buffer are unknown and may contain sensitive data. Use buf.fill(0) to initialize such Buffer instances to zeroes.
+    * @param size The desired length of the new `Buffer`.
     *
-    * When using Buffer.allocUnsafe() to allocate new Buffer instances, allocations under 4KB are, by default, sliced
-    * from a single pre-allocated Buffer. This allows applications to avoid the garbage collection overhead of creating
-    * many individually allocated Buffers. This approach improves both performance and memory usage by eliminating the
-    * need to track and cleanup as many Persistent objects.
-    *
-    * However, in the case where a developer may need to retain a small chunk of memory from a pool for an indeterminate
-    * amount of time, it may be appropriate to create an un-pooled Buffer instance using Buffer.allocUnsafeSlow() then
-    * copy out the relevant bits.
-    * @param size the allocated size.
-    * @example Buffer.allocUnsafeSlow(size)
+    * @see [[https://nodejs.org/api/buffer.html#buffer_class_method_buffer_allocunsafeslow_size]]
     */
   def allocUnsafeSlow(size: Int): Buffer = js.native
 
   /**
-    * Returns the actual byte length of a string. This is not the same as String.prototype.length since that returns
-    * the number of characters in a string.
-    * @param string   <String> | <Buffer> | <TypedArray> | <DataView> | <ArrayBuffer>
-    * @param encoding the optional encoding (default "utf8")
-    * @example Buffer.byteLength(string[, encoding])
+    * Returns the actual byte length of a string.
+    * This is not the same as `String.prototype.length` since that returns the number of characters in a string.
+    *
+    * @param string   A value to calculate the length of.
+    * @param encoding If string` is a string, this is its encoding. Default: `'utf8'`.
+    *
+    * @see [[https://nodejs.org/api/buffer.html#buffer_class_method_buffer_bytelength_string_encoding]]
     */
-  def byteLength(string: js.Any, encoding: String = "utf8"): Int = js.native
+  def byteLength(string: String | TypedArray[_, _] | DataView | ArrayBuffer, encoding: String = "utf8"): Int =
+    js.native
 
   /**
-    * Compares buf1 to buf2 typically for the purpose of sorting arrays of Buffers.
-    * This is equivalent is calling buf1.compare(buf2).
+    * Compares `buf1` to `buf2` typically for the purpose of sorting arrays of `Buffer` instances.
+    * This is equivalent to calling `buf1.compare(buf2)`.
+    *
+    * @see [[https://nodejs.org/api/buffer.html#buffer_class_method_buffer_compare_buf1_buf2]]
     */
-  def compare(buf1: Buffer, buf2: Buffer): Int = js.native
+  def compare(buf1: Uint8Array, buf2: Uint8Array): Int = js.native
 
   /**
-    * Returns a new Buffer which is the result of concatenating all the Buffers in the list together.
-    * If the list has no items, or if the totalLength is 0, then a new zero-length Buffer is returned.
-    * If totalLength is not provided, it is calculated from the Buffers in the list. This, however, adds an additional
-    * loop to the function, so it is faster to provide the length explicitly.
-    * @param list        the list of Buffer objects to concat
-    * @param totalLength the optional total length
-    * @example Buffer.concat(list[, totalLength])
-    */
-  def concat(list: js.Array[Buffer], totalLength: Int): Buffer = js.native
+    * Returns a new `Buffer` which is the result of concatenating all the `Buffer`s in the `list` together.
 
-  /**
-    * Returns a new Buffer which is the result of concatenating all the Buffers in the list together.
-    * If the list has no items, or if the totalLength is 0, then a new zero-length Buffer is returned.
-    * If totalLength is not provided, it is calculated from the Buffers in the list. This, however, adds an additional
-    * loop to the function, so it is faster to provide the length explicitly.
-    * @param list the list of Buffer objects to concat
-    * @example Buffer.concat(list[, totalLength])
+    * @param list        List of [[Buffer]] or [[Uint8Array]] instances to concat.
+    * @param totalLength  Total length of the `Buffer` instances in `list` when concatenated.
+    *
+    * @see [[https://nodejs.org/api/buffer.html#buffer_class_method_buffer_concat_list_totallength]]
+    *
     */
-  def concat(list: js.Array[Buffer]): Buffer = js.native
+  def concat(list: js.Array[Buffer] | js.Array[Uint8Array], totalLength: Int = js.native): Buffer = js.native
 
   /**
     * When passed a reference to the .buffer property of a TypedArray instance, the newly created Buffer
     * will share the same allocated memory as the TypedArray.
-    * @example {{{ Buffer.from(arrayBuffer[, byteOffset[, length]]) }}}
-    **/
-  def from(arrayBuffer: ArrayBuffer, byteOffset: Int, length: Int): Buffer = js.native
+    *
+    * @see [[https://nodejs.org/api/buffer.html#buffer_class_method_buffer_from_arraybuffer_byteoffset_length]]
+    */
+  def from(arrayBuffer: ArrayBuffer, byteOffset: Int = js.native, length: Int = js.native): Buffer = js.native
 
   /**
-    * When passed a reference to the .buffer property of a TypedArray instance, the newly created Buffer
-    * will share the same allocated memory as the TypedArray.
-    * @example {{{ Buffer.from(arrayBuffer[, byteOffset[, length]]) }}}
-    **/
-  def from(arrayBuffer: ArrayBuffer, byteOffset: Int): Buffer = js.native
+    * Copies the passed `buffer` data onto a new `Buffer` instance.
+    *
+    * @param buffer An existing [[Buffer]] or [[Uint8Array]] from which to copy data.
+    *
+    * @see [[https://nodejs.org/api/buffer.html#buffer_class_method_buffer_from_buffer]]
+    */
+  def from(buffer: Uint8Array): Buffer = js.native
 
   /**
-    * When passed a reference to the .buffer property of a TypedArray instance, the newly created Buffer
-    * will share the same allocated memory as the TypedArray.
-    * @example {{{ Buffer.from(arrayBuffer[, byteOffset[, length]]) }}}
-    **/
-  def from(arrayBuffer: ArrayBuffer): Buffer = js.native
-
-  /**
-    * Allocates a new Buffer using an array of octets.
-    * @example Buffer.from(array)
+    * Allocates a new `Buffer` using an `array` of octets.
+    *
+    * @see [[https://nodejs.org/api/buffer.html#buffer_class_method_buffer_from_array]]
     */
   def from(array: js.Array[Int]): Buffer = js.native
 
   /**
-    * Creates a new Buffer containing the given JavaScript string str. If provided, the encoding parameter identifies
-    * the strings character encoding.
-    * @param str      the source string
-    * @param encoding the given encoding
-    * @return a new Buffer
+    * Creates a new `Buffer` containing `string`.
+    * The `encoding` parameter identifies the character encoding of `string`.
+    * @param str      A string to encode.
+    * @param encoding The encoding of string. Default: 'utf8'.
+    *
+    * @see [[https://nodejs.org/api/buffer.html#buffer_class_method_buffer_from_string_encoding]]
     */
-  def from(str: String, encoding: String = js.native): Buffer = js.native
+  def from(str: String, encoding: String): Buffer = js.native
 
   /**
-    * Returns true if obj is a Buffer, false otherwise.
+    * Creates a new `Buffer` containing `string`.
+    * UTF-8 encoding is used.
+    *
+    * @param str      A string to encode.
+    *
+    * @see [[https://nodejs.org/api/buffer.html#buffer_class_method_buffer_from_string_encoding]]
+    */
+  def from(str: String): Buffer = js.native
+
+  /**
+    * Returns `true` if `obj` is a `Buffer`, `false` otherwise.
     * @param obj the given object
-    * @return true if obj is a Buffer, false otherwise.
+    *
+    * @see [[https://nodejs.org/api/buffer.html#buffer_class_method_buffer_isbuffer_obj]]
     */
-  def isBuffer(obj: js.Any): Boolean = js.native
+  def isBuffer(obj: js.Object): Boolean = js.native
 
   /**
-    * Returns true if encoding contains a supported character encoding, or false otherwise.
-    * @param encoding A character encoding name to check
-    * @return true if encoding contains a supported character encoding, or false otherwise.
+    * Returns true if `encoding` contains a supported character encoding, or false otherwise.
+    *
+    * @see [[https://nodejs.org/api/buffer.html#buffer_class_method_buffer_isencoding_encoding]]
     */
   def isEncoding(encoding: String): Boolean = js.native
-
-  /**
-    * Re-encodes the given Buffer instance from one character encoding to another. Returns a new Buffer instance.
-    *
-    * Throws if the fromEnc or toEnc specify invalid character encodings or if conversion from fromEnc to toEnc
-    * is not permitted.
-    *
-    * The transcoding process will use substitution characters if a given byte sequence cannot be adequately
-    * represented in the target encoding.
-    * @param source  A Buffer instance
-    * @param fromEnc The current encoding
-    * @param toEnc   To target encoding
-    * @return a new Buffer instance.
-    */
-  def transcode(source: Buffer, fromEnc: String, toEnc: String): Buffer = js.native
-
 }

@@ -1,10 +1,6 @@
 import sbt.url
 import sbtrelease.ReleaseStateTransformations._
 
-val scala212Version       = "2.12.8"
-val scala213Version       = "2.13.0"
-val supportedScalaVersion = Seq(scala212Version, scala213Version)
-
 val scalatestVersion = "3.0.8"
 val scalacticVersion = "3.0.8"
 val enableIfVersion  = "1.1.7"
@@ -13,7 +9,6 @@ organization in ThisBuild := "net.exoego"
 
 lazy val commonSettings = Seq(
   autoCompilerPlugins := true,
-  crossScalaVersions := supportedScalaVersion,
   scalacOptions ++= Seq(
     "-deprecation",
     "-unchecked",

@@ -2,6 +2,7 @@ package io.scalajs.nodejs.buffer
 
 import io.scalajs.collection.Iterator.Entry
 import io.scalajs.nodejs.buffer
+import nodejs.TestEnvironment
 import org.scalatest.FunSpec
 
 import scala.scalajs.js
@@ -115,7 +116,11 @@ class BufferTest extends FunSpec {
 
       it("should support isEncoding") {
         assert(!Buffer.isEncoding(null))
-        assert(!Buffer.isEncoding(""))
+        if (TestEnvironment.isExecutedInExactNode8) {
+          assert(Buffer.isEncoding(""))
+        } else {
+          assert(!Buffer.isEncoding(""))
+        }
         assert(Buffer.isEncoding("utf8"))
         assert(Buffer.isEncoding("UTF-8"))
       }

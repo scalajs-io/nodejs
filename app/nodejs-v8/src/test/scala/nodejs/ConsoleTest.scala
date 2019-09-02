@@ -1,10 +1,9 @@
 package nodejs
 
-import io.scalajs.nodejs.console_module.{Console, ConsoleOptions}
+import io.scalajs.nodejs.console_module.Console
 import io.scalajs.nodejs.fs.Fs
 import org.scalatest.{BeforeAndAfterEach, FunSpec}
 
-import scala.scalajs.js
 import scala.scalajs.js.JavaScriptException
 
 class ConsoleTest extends FunSpec with BeforeAndAfterEach {
@@ -35,29 +34,6 @@ class ConsoleTest extends FunSpec with BeforeAndAfterEach {
         strictConsole.log("ok")
       }
       assert(ex.getMessage().contains("write after end"))
-    }
-
-    it("have table added in v10.0.0") {
-      Console.table(js.Array("x", "y"))
-    }
-
-    it("have timeLog added in v10.7.0") {
-      val label = "yay"
-      Console.time(label)
-      Console.timeLog(label)
-      Console.timeEnd(label)
-    }
-
-    it("have constructor(options) added in v10.0.0") {
-      val console = new Console(
-        new ConsoleOptions(
-          stdout = io.scalajs.nodejs.process.stdout
-        )
-      )
-
-      val label = "yay"
-      console.time(label)
-      console.timeEnd(label)
     }
   }
 }

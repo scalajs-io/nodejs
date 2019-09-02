@@ -6,7 +6,7 @@ lazy val root = (project in file("."))
   .settings(MySettings.publishingSettings)
   .settings(MySettings.nonPublishingSetting)
   .settings(
-    name := "scala-js-nodejs-all"
+    name := "scala-js-nodejs"
   )
 
 lazy val core = (project in file("./core"))

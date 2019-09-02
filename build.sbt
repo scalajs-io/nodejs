@@ -172,6 +172,3 @@ lazy val publishingSettings = Seq(
     releaseStepCommand("sonatypeReleaseAll")
   )
 )
-
-// loads the Scalajs-io root project at sbt startup
-onLoad in Global := (Command.process("project root", _: State)) compose (onLoad in Global).value

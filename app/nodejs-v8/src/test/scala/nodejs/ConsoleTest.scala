@@ -14,9 +14,10 @@ class ConsoleTest extends FunSpec with BeforeAndAfterEach {
     if (Fs.existsSync(logFileName)) Fs.unlinkSync(logFileName)
   }
 
+  private val failingWritable = Fs.createWriteStream(logFileName)
+  failingWritable.close(_ => {})
+
   it("have constructor(stdout, stderr, ignoreErrors) added in v8.0.0") {
-    val failingWritable = Fs.createWriteStream(logFileName)
-    failingWritable.close(_ => {})
     val looseConsole = new Console(
       stdout = failingWritable,
       stderr = failingWritable,
@@ -25,7 +26,7 @@ class ConsoleTest extends FunSpec with BeforeAndAfterEach {
     looseConsole.log("ok")
   }
 
-  it("should suppor ignoreErrors") {
+  it("should support ignoreErrors") {
     assume(TestEnvironment.isExecutedInNode10OrNewer)
     val strictConsole = new Console(
       stdout = failingWritable,

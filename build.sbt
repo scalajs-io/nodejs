@@ -1,10 +1,6 @@
 import sbt.url
 import sbtrelease.ReleaseStateTransformations._
 
-val scalatestVersion = "3.0.8"
-val scalacticVersion = "3.0.8"
-val enableIfVersion  = "1.1.7"
-
 organization in ThisBuild := "net.exoego"
 
 lazy val commonSettings = Seq(
@@ -67,19 +63,14 @@ lazy val core = (project in file("./core"))
   .settings(publishingSettings)
   .settings(
     name := "scala-js-nodejs-core",
-    libraryDependencies ++= Seq(
-      "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-      "org.scalatest"  %%% "scalatest"   % scalatestVersion % "test"
-    )
+    libraryDependencies ++= Dependencies.core.value
   )
 
 lazy val compilerSwitches = (project in file("./compiler-switches"))
   .settings(commonSettings)
   .settings(nonPublishingSetting)
   .settings(
-    libraryDependencies ++= Seq(
-      "org.scala-lang" % "scala-reflect" % scalaVersion.value
-    )
+    libraryDependencies += Dependencies.scalaReflect.value
   )
 
 lazy val current = (project in file("./app/current"))
@@ -93,12 +84,7 @@ lazy val current = (project in file("./app/current"))
       "-Xmacro-settings:nodeJs12.5.0"
     ),
     name := "scala-js-nodejs-v12",
-    libraryDependencies ++= Seq(
-      "org.scala-lang"            % "scala-reflect" % scalaVersion.value,
-      "org.scalactic"             %% "scalactic"    % scalacticVersion,
-      "org.scalatest"             %%% "scalatest"   % scalatestVersion % "test",
-      "com.thoughtworks.enableIf" %% "enableif"     % enableIfVersion
-    )
+    libraryDependencies ++= Dependencies.app.value
   )
   .dependsOn(core, compilerSwitches)
 
@@ -116,12 +102,7 @@ lazy val nodejs_v10 = (project in file("./app/nodejs-v10"))
     name := "scala-js-nodejs-v10",
     description := "NodeJS v10.16.0 API for Scala.js",
     homepage := Some(url("https://github.com/exoego/scala-js-nodejs")),
-    libraryDependencies ++= Seq(
-      "org.scala-lang"            % "scala-reflect" % scalaVersion.value,
-      "org.scalactic"             %% "scalactic"    % scalacticVersion,
-      "org.scalatest"             %%% "scalatest"   % scalatestVersion % "test",
-      "com.thoughtworks.enableIf" %% "enableif"     % enableIfVersion
-    )
+    libraryDependencies ++= Dependencies.app.value
   )
   .dependsOn(core, compilerSwitches)
 
@@ -139,12 +120,7 @@ lazy val nodejs_v8 = (project in file("./app/nodejs-v8"))
     name := "scala-js-nodejs-v8",
     description := "NodeJS v8.16.0 API for Scala.js",
     homepage := Some(url("https://github.com/exoego/scala-js-nodejs")),
-    libraryDependencies ++= Seq(
-      "org.scala-lang"            % "scala-reflect" % scalaVersion.value,
-      "org.scalactic"             %% "scalactic"    % scalacticVersion,
-      "org.scalatest"             %%% "scalatest"   % scalatestVersion % "test",
-      "com.thoughtworks.enableIf" %% "enableif"     % enableIfVersion
-    )
+    libraryDependencies ++= Dependencies.app.value
   )
   .dependsOn(core, compilerSwitches)
 

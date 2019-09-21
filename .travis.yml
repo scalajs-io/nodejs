@@ -2,8 +2,8 @@ dist: xenial
 language: scala
 
 scala:
-  - 2.12.9
-  - 2.13.0
+  - 2.12.10
+  - 2.13.1
 
 jdk:
   - openjdk8
@@ -17,15 +17,15 @@ script:
 
 matrix:
   include:
-    - scala: 2.13.0
+    - scala: 2.13.1
       jdk: openjdk11
       env: TRAVIS_NODE_VERSION="12.9.1" JOB_NAME="format and doc"
       script: sbt ++$TRAVIS_SCALA_VERSION scalafmtSbtCheck scalafmtCheck test:scalafmtCheck current/doc core/doc
-    - scala: 2.13.0
+    - scala: 2.13.1
       jdk: openjdk11
       env: TRAVIS_NODE_VERSION="8.16.1" JOB_NAME="test"
       script: sbt ++$TRAVIS_SCALA_VERSION nodejs_v8/test
-    - scala: 2.13.0
+    - scala: 2.13.1
       jdk: openjdk11
       env: TRAVIS_NODE_VERSION="10.16.3" JOB_NAME="test"
       script: sbt ++$TRAVIS_SCALA_VERSION nodejs_v8/test nodejs_v10/test

@@ -10,7 +10,7 @@ jdk:
   - openjdk11
 
 env:
-  - TRAVIS_NODE_VERSION="12.9.1" JOB_NAME="test"
+  - TRAVIS_NODE_VERSION="12.10.0" JOB_NAME="test"
 
 script:
   - sbt ++$TRAVIS_SCALA_VERSION nodejs_v8/test nodejs_v10/test current/test
@@ -19,7 +19,7 @@ matrix:
   include:
     - scala: 2.13.1
       jdk: openjdk11
-      env: TRAVIS_NODE_VERSION="12.9.1" JOB_NAME="format and doc"
+      env: TRAVIS_NODE_VERSION="12.10.0" JOB_NAME="format and doc"
       script: sbt ++$TRAVIS_SCALA_VERSION scalafmtSbtCheck scalafmtCheck test:scalafmtCheck current/doc core/doc
     - scala: 2.13.1
       jdk: openjdk11

@@ -1,9 +1,11 @@
 package io.scalajs.nodejs
 
+import com.thoughtworks.enableIf
 import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.|
 
 /**
   * The assert module provides a simple set of assertion tests that can be used to test invariants. The module is
@@ -23,13 +25,7 @@ trait Assert extends IEventEmitter {
     */
   def apply(expression: js.Any, message: String = js.native): Unit = js.native
 
-  /**
-    * Tests for deep equality between the actual and expected parameters. Primitive values are compared with the equal
-    * comparison operator ( == ). Only enumerable "own" properties are considered. The deepEqual() implementation does
-    * not test object prototypes, attached symbols, or non-enumerable properties. This can lead to some potentially
-    * surprising results.
-    * @example assert.deepEqual(actual, expected[, message])
-    */
+  @deprecated("Use assert.deepStrictEqual() instead.", "stability 0")
   def deepEqual(actual: js.Any, expected: js.Any, message: String = js.native): Unit = js.native
 
   /**
@@ -39,14 +35,10 @@ trait Assert extends IEventEmitter {
     */
   def deepStrictEqual(actual: js.Any, expected: js.Any, message: String): Unit = js.native
 
-  /**
-    * Asserts that the function block does not throw an error. See assert.throws() for more details.
-    * When assert.doesNotThrow() is called, it will immediately call the block function. If an error is thrown
-    * and it is the same type as that specified by the error parameter, then an AssertionError is thrown. If the
-    * error is of a different type, or if the error parameter is undefined, the error is propagated back to the caller.
-    * @example assert.doesNotThrow(block[, error][, message])
-    */
-  def doesNotThrow(block: js.Function, error: js.Any, message: String): Unit = js.native
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  def doesNotReject(asyncFn: js.Function | js.Promise[_],
+                    error: js.RegExp | js.Function = js.native,
+                    message: String = js.native): Unit = js.native
 
   /**
     * Asserts that the function block does not throw an error. See assert.throws() for more details.
@@ -55,28 +47,26 @@ trait Assert extends IEventEmitter {
     * error is of a different type, or if the error parameter is undefined, the error is propagated back to the caller.
     * @example assert.doesNotThrow(block[, error][, message])
     */
-  def doesNotThrow(block: js.Function, message: String): Unit = js.native
+  def doesNotThrow(block: js.Function, error: js.RegExp | js.Function = js.native, message: String = js.native): Unit =
+    js.native
 
   /**
-    * Asserts that the function block does not throw an error. See assert.throws() for more details.
-    * When assert.doesNotThrow() is called, it will immediately call the block function. If an error is thrown
-    * and it is the same type as that specified by the error parameter, then an AssertionError is thrown. If the
-    * error is of a different type, or if the error parameter is undefined, the error is propagated back to the caller.
-    * @example assert.doesNotThrow(block[, error][, message])
+    * @see https://nodejs.org/api/assert.html#assert_assert_equal_actual_expected_message
     */
-  def doesNotThrow(block: js.Function, error: js.Any = js.native): Unit = js.native
-
-  /**
-    * Tests shallow, coercive equality between the actual and expected parameters using the equal comparison operator ( == ).
-    * @example assert.equal(actual, expected[, message])
-    */
+  @deprecated("Use assert.strictEqual() instead.", "stability 0")
   def equal(actual: js.Any, expected: js.Any, message: String = js.native): Unit = js.native
 
   /**
-    * Throws an AssertionError. If message is falsy, the error message is set as the values of actual and expected
-    * separated by the provided operator. Otherwise, the error message is the value of message.
-    * @example assert.fail(actual, expected, message, operator)
+    * @see https://nodejs.org/api/assert.html#assert_assert_fail_message
     */
+  def fail(message: String): Unit = js.native
+
+  /**
+    * @see https://nodejs.org/api/assert.html#assert_assert_fail_message
+    */
+  def fail(message: js.Error): Unit = js.native
+
+  @deprecated("Use assert.fail([message]) or other assert functions instead.", "Node.js v10.0.0")
   def fail(actual: js.Any, expected: js.Any, message: String, operator: String): Unit = js.native
 
   /**
@@ -85,10 +75,7 @@ trait Assert extends IEventEmitter {
     */
   def ifError(value: js.Any): Unit = js.native
 
-  /**
-    * Tests for any deep inequality. Opposite of assert.deepEqual().
-    * @example assert.notDeepEqual(actual, expected[, message])
-    */
+  @deprecated("Use assert.notDeepStrictEqual() instead.", "stability 0")
   def notDeepEqual(actual: js.Any, expected: js.Any, message: String = js.native): Unit = js.native
 
   /**
@@ -97,10 +84,7 @@ trait Assert extends IEventEmitter {
     */
   def notDeepStrictEqual(actual: js.Any, expected: js.Any, message: String = js.native): Unit = js.native
 
-  /**
-    * Tests shallow, coercive inequality with the not equal comparison operator ( != ).
-    * @example assert.notEqual(actual, expected[, message])
-    */
+  @deprecated("Use assert.notStrictEqual() instead.", "stability 0")
   def notEqual(actual: js.Any, expected: js.Any, message: String = js.native): Unit = js.native
 
   /**
@@ -127,8 +111,14 @@ trait Assert extends IEventEmitter {
     * of the message parameter. If the message parameter is undefined, a default error message is assigned.
     * @example assert.throws(block[, error][, message])
     */
-  def throws(block: js.Function, error: js.Any, message: String = js.native): Unit = js.native
+  def throws(block: js.Function,
+             error: js.RegExp | js.Function | js.Object | Error,
+             message: String = js.native): Unit = js.native
 
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  def rejects(asyncFn: js.Function | js.Promise[_],
+              error: js.RegExp | js.Function | js.Object | Error = js.native,
+              message: String = js.native): Unit = js.native
 }
 
 /**
@@ -136,4 +126,7 @@ trait Assert extends IEventEmitter {
   */
 @js.native
 @JSImport("assert", JSImport.Namespace)
-object Assert extends Assert
+object Assert extends Assert {
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  val strict: Assert = js.native
+}

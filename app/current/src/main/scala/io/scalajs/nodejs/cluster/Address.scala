@@ -1,16 +1,14 @@
 package io.scalajs.nodejs.cluster
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
-/**
-  * Address
-  */
 @js.native
 trait Address extends js.Object {
 
   def address: String = js.native
 
-  def port: Integer = js.native
+  def port: Int = js.native
 
   /**
     * The addressType is one of:
@@ -19,6 +17,6 @@ trait Address extends js.Object {
     * -1 (unix domain socket)
     * "udp4" or "udp6" (UDP v4 or v6)
     */
-  def addressType: js.Any = js.native
+  def addressType: String | Int = js.native
 
 }

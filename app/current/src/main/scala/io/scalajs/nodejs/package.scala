@@ -45,6 +45,9 @@ package object nodejs {
 
   type UID = Int
 
+  // The handle object can be either a server, a socket (anything with an underlying _handle member), or an object with an fd member that is a valid file descriptor.
+  type Handle = js.Function | HasHandle | HasFileDescriptor
+
   /////////////////////////////////////////////////////////////////////////////////
   //      Built-in Properties
   /////////////////////////////////////////////////////////////////////////////////

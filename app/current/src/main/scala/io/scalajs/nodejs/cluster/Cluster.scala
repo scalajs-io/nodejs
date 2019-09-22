@@ -85,7 +85,7 @@ trait Cluster extends IEventEmitter {
     * This can only be called from the master process.
     * @example cluster.disconnect([callback])
     */
-  def disconnect(callback: js.Function = null): Unit = js.native
+  def disconnect(callback: js.Function = js.native): Unit = js.native
 
   /**
     * Spawn a new worker process.
@@ -93,7 +93,7 @@ trait Cluster extends IEventEmitter {
     * @return a new worker
     * @example cluster.fork([env])
     */
-  def fork(env: js.Any = null): Worker = js.native
+  def fork(env: js.Any = js.native): Worker = js.native
 
   /**
     * setupMaster is used to change the default 'fork' behavior. Once called, the settings will be present in cluster.settings.

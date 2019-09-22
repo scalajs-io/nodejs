@@ -1,6 +1,7 @@
 package io.scalajs.nodejs.cluster
 
-import io.scalajs.nodejs.Process
+import io.scalajs.nodejs.Handle
+import io.scalajs.nodejs.child_process.ChildProcess
 import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
@@ -22,13 +23,13 @@ trait Worker extends IEventEmitter {
     * The boolean worker.exitedAfterDisconnect lets you distinguish between voluntary and accidental exit, the master
     * may choose not to respawn a worker based on this value.
     */
-  def exitedAfterDisconnect: Boolean = js.native
+  def exitedAfterDisconnect: js.UndefOr[Boolean] = js.native
 
   /**
     * Each new worker is given its own unique id, this id is stored in the id.
     * While a worker is alive, this is the key that indexes it in cluster.workers
     */
-  def id: Integer = js.native
+  def id: Int = js.native
 
   /**
     * All workers are created using child_process.fork(), the returned object from this function is stored as .process.
@@ -37,7 +38,7 @@ trait Worker extends IEventEmitter {
     * Note that workers will call process.exit(0) if the 'disconnect' event occurs on process and .exitedAfterDisconnect
     * is not true. This protects against accidental disconnection.
     */
-  def process: Process = js.native
+  def process: ChildProcess = js.native
 
   /**
     * An alias to worker.exitedAfterDisconnect.
@@ -100,7 +101,7 @@ trait Worker extends IEventEmitter {
     * @param signal the name of the kill signal to send to the worker process.
     * @example kill([signal='SIGTERM'])
     */
-  def kill(signal: String = null): Unit = js.native
+  def kill(signal: String = js.native): Unit = js.native
 
   /**
     * Send a message to a worker or master, optionally with a handle.
@@ -108,22 +109,6 @@ trait Worker extends IEventEmitter {
     * In a worker this sends a message to the master. It is identical to process.send().
     * @example worker.send(message[, sendHandle][, callback])
     */
-  def send(message: Message, sendHandle: js.Function, callback: js.Function): Unit = js.native
-
-  /**
-    * Send a message to a worker or master, optionally with a handle.
-    * In the master this sends a message to a specific worker. It is identical to ChildProcess.send().
-    * In a worker this sends a message to the master. It is identical to process.send().
-    * @example worker.send(message[, sendHandle][, callback])
-    */
-  def send(message: Message, callback: js.Function): Unit = js.native
-
-  /**
-    * Send a message to a worker or master, optionally with a handle.
-    * In the master this sends a message to a specific worker. It is identical to ChildProcess.send().
-    * In a worker this sends a message to the master. It is identical to process.send().
-    * @example worker.send(message[, sendHandle][, callback])
-    */
-  def send(message: Message): Unit = js.native
+  def send(message: Message, sendHandle: Handle = js.native, callback: js.Function = js.native): Unit = js.native
 
 }

@@ -21,7 +21,7 @@ The following core Node.js modules (v8.7.0+) have been implemented:
 | Node Module                                                  | v10 & v12 support  |
 | ------------------------------------------------------------ | ------------------ |
 | [assert](https://nodejs.org/api/assert.html)                 |                    |
-| [buffer](https://nodejs.org/api/buffer.html)                 |                    |
+| [buffer](https://nodejs.org/api/buffer.html)                 | :heavy_check_mark: |
 | [child_process](https://nodejs.org/api/child_process.html)   |                    |
 | [cluster](https://nodejs.org/api/cluster.html)               |                    |
 | [console](https://nodejs.org/api/console.html)               | :heavy_check_mark: |

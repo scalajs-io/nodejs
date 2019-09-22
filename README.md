@@ -22,7 +22,7 @@ The following core Node.js modules (v8.7.0+) have been implemented:
 | ------------------------------------------------------------ | ------------------ |
 | [assert](https://nodejs.org/api/assert.html)                 |                    |
 | [buffer](https://nodejs.org/api/buffer.html)                 | :heavy_check_mark: |
-| [child_process](https://nodejs.org/api/child_process.html)   |                    |
+| [child_process](https://nodejs.org/api/child_process.html)   | :heavy_check_mark: |
 | [cluster](https://nodejs.org/api/cluster.html)               |                    |
 | [console](https://nodejs.org/api/console.html)               | :heavy_check_mark: |
 | [crypto](https://nodejs.org/api/crypto.html)                 |                    |

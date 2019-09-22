@@ -44,7 +44,7 @@ The following core Node.js modules (v8.7.0+) have been implemented:
 | [string-decoder](https://nodejs.org/api/string_decoder.html) |                    |
 | [timers](https://nodejs.org/api/timers.html)                 |                    |
 | [tty](https://nodejs.org/api/tty.html)                       |                    |
-| [url](https://nodejs.org/api/url.html)                       |                    |
+| [url](https://nodejs.org/api/url.html)                       | :heavy_check_mark: |
 | [util](https://nodejs.org/api/util.html)                     |                    |
 | [vm](https://nodejs.org/api/vm.html)                         |                    |
 | [zlib](https://nodejs.org/api/zlib.html)                     |                    |

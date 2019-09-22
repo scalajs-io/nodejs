@@ -1,7 +1,7 @@
 package io.scalajs.nodejs.util
 
+import com.thoughtworks.{enableIf, enableMembersIf}
 import io.scalajs.RawOptions
-import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.nodejs.stream
 
 import scala.scalajs.js
@@ -18,7 +18,7 @@ import scala.scalajs.js.|
   * @see https://nodejs.org/api/util.html
   */
 @js.native
-trait Util extends IEventEmitter {
+trait Util extends js.Object {
 
   /**
     * Deprecated predecessor of console.error.
@@ -37,9 +37,9 @@ trait Util extends IEventEmitter {
 
   /**
     * Marks that a method should not be used any more.
-    * @example util.deprecate(function, string)
+    * @example util.deprecate(function, message)
     */
-  def deprecate(function: js.Function, string: String): js.Any = js.native
+  def deprecate(function: js.Function, message: String, code: String = js.native): js.Any = js.native
 
   /**
     * Deprecated predecessor of console.error.
@@ -52,7 +52,13 @@ trait Util extends IEventEmitter {
     * Returns a formatted string using the first argument as a printf-like format.
     * @example util.format(format[, ...])
     */
-  def format(format: js.Any*): String = js.native
+  def format(format: String, args: js.Any*): String = js.native
+
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  def formatWithOptions(inspectOptions: InspectOptions | RawOptions, format: String, args: js.Any*): String = js.native
+
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  def getSystemErrorName(err: Int): String = js.native
 
   /**
     * Inherit the prototype methods from one constructor into another. The prototype of constructor will be set to a
@@ -71,6 +77,8 @@ trait Util extends IEventEmitter {
     * @example util.inspect(object[, options])
     */
   def inspect(`object`: js.Any, options: InspectOptions | RawOptions = js.native): String = js.native
+
+  val inspect: InspectObject = js.native
 
   /**
     * Returns true if the given "object" is an Array. Otherwise, returns false.
@@ -215,6 +223,16 @@ trait Util extends IEventEmitter {
   @deprecated("Use Object.assign() instead.", "6.0.0")
   def _extend[A <: js.Any, B <: js.Any, C <: js.Any](target: A, source: B): C = js.native
 
+  def callbackify[T](original: js.Function): js.Function2[js.Any, T, Any] = js.native
+
+  def promisify(original: js.Function): js.Function = js.native
+  val promisify: PromisifyObject                    = js.native
+
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  val types: UtilTypes = js.native
+
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  def isDeepStrictEqual(val1: js.Any, val2: js.Any): Boolean = js.native
 }
 
 /**
@@ -223,3 +241,61 @@ trait Util extends IEventEmitter {
 @js.native
 @JSImport("util", JSImport.Namespace)
 object Util extends Util
+
+@js.native
+trait InspectObject extends js.Object {
+  var defaultOptions: InspectOptions = js.native
+  var styles: js.Dictionary[String]  = js.native
+
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  val custom: js.Symbol = js.native
+}
+
+@js.native
+trait PromisifyObject extends js.Object {
+  val custom: js.Symbol = js.native
+}
+
+@enableMembersIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+@js.native
+trait UtilTypes extends js.Object {
+  def isAnyArrayBuffer(value: js.Any): Boolean            = js.native
+  def isArgumentsObject(value: js.Any): Boolean           = js.native
+  def isArrayBuffer(value: js.Any): Boolean               = js.native
+  def isAsyncFunction(value: js.Any): Boolean             = js.native
+  def isBigInt64Array(value: js.Any): Boolean             = js.native
+  def isBigUint64Array(value: js.Any): Boolean            = js.native
+  def isBooleanObject(value: js.Any): Boolean             = js.native
+  def isBoxedPrimitive(value: js.Any): Boolean            = js.native
+  def isDataView(value: js.Any): Boolean                  = js.native
+  def isDate(value: js.Any): Boolean                      = js.native
+  def isExternal(value: js.Any): Boolean                  = js.native
+  def isFloat32Array(value: js.Any): Boolean              = js.native
+  def isFloat64Array(value: js.Any): Boolean              = js.native
+  def isGeneratorFunction(value: js.Any): Boolean         = js.native
+  def isGeneratorObject(value: js.Any): Boolean           = js.native
+  def isInt8Array(value: js.Any): Boolean                 = js.native
+  def isInt16Array(value: js.Any): Boolean                = js.native
+  def isInt32Array(value: js.Any): Boolean                = js.native
+  def isMap(value: js.Any): Boolean                       = js.native
+  def isMapIterator(value: js.Any): Boolean               = js.native
+  def isModuleNamespaceObject(value: js.Any): Boolean     = js.native
+  def isNativeError(value: js.Any): Boolean               = js.native
+  def isNumberObject(value: js.Any): Boolean              = js.native
+  def isPromise(value: js.Any): Boolean                   = js.native
+  def isProxy(value: js.Any): Boolean                     = js.native
+  def isRegExp(value: js.Any): Boolean                    = js.native
+  def isSet(value: js.Any): Boolean                       = js.native
+  def isSetIterator(value: js.Any): Boolean               = js.native
+  def isSharedArrayBuffer(value: js.Any): Boolean         = js.native
+  def isStringObject(value: js.Any): Boolean              = js.native
+  def isSymbolObject(value: js.Any): Boolean              = js.native
+  def isTypedArray(value: js.Any): Boolean                = js.native
+  def isUint8Array(value: js.Any): Boolean                = js.native
+  def isUint8ClampedArray(value: js.Any): Boolean         = js.native
+  def isUint16Array(value: js.Any): Boolean               = js.native
+  def isUint32Array(value: js.Any): Boolean               = js.native
+  def isWeakMap(value: js.Any): Boolean                   = js.native
+  def isWeakSet(value: js.Any): Boolean                   = js.native
+  def isWebAssemblyCompiledModule(value: js.Any): Boolean = js.native
+}

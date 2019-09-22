@@ -22,9 +22,6 @@ object ScalaJsHelper {
   @inline
   def isDefined(obj: js.Any): Boolean = obj != null && !js.isUndefined(obj)
 
-  @inline
-  def New[T <: js.Any]: T = new js.Object().asInstanceOf[T]
-
   ////////////////////////////////////////////////////////////////////////
   //    Implicit Definitions and Classes
   ////////////////////////////////////////////////////////////////////////

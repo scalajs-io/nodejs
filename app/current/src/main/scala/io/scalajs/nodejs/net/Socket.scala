@@ -15,7 +15,7 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSImport("net", "Socket")
-class Socket(options: SocketOptions | RawOptions = js.native) extends IDuplex {
+class Socket(options: SocketOptions | RawOptions = js.native) extends IDuplex with HasHandle {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -218,6 +218,8 @@ class Socket(options: SocketOptions | RawOptions = js.native) extends IDuplex {
     */
   def unref(): this.type = js.native
 
+  // TODO: test me
+  override def _handle: js.Any = js.native
 }
 
 /**

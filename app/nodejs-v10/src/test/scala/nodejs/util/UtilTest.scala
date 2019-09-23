@@ -7,7 +7,7 @@ import scala.scalajs.js
 class UtilTest extends FunSpec {
 
   it("have formatWithOptions added in v10.0.0") {
-    assert(Util.formatWithOptions(new InspectOptions(), "See object %O", new js.Object {
+    assert(Util.formatWithOptions(new InspectOptions(compact = true), "See object %O", new js.Object {
       val foo: Int = 42
     }) === "See object { foo: 42 }")
   }

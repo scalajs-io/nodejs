@@ -1,6 +1,7 @@
 package io.scalajs.nodejs.util
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * Inspect Options
@@ -18,6 +19,10 @@ import scala.scalajs.js
   *                       Defaults to 100. Set to null to show all array elements. Set to 0 or negative to show no array elements.
   * @param breakLength    The length at which an object's keys are split across multiple lines. Set to Infinity to
   *                       format an object as a single line. Defaults to 60 for legacy compatibility.
+  * @param compact        For Node.js v9.9.0+
+  * @param sorted         For Node.js v10.12.0+
+  * @param getters        For Node.js v11.5.0+
+  *
   * @see [[https://nodejs.org/api/util.html#util_util_inspect_object_options]]
   */
 class InspectOptions(var showHidden: js.UndefOr[Boolean] = js.undefined,
@@ -26,5 +31,8 @@ class InspectOptions(var showHidden: js.UndefOr[Boolean] = js.undefined,
                      var customInspect: js.UndefOr[Boolean] = js.undefined,
                      var showProxy: js.UndefOr[Boolean] = js.undefined,
                      var maxArrayLength: js.UndefOr[Int] = js.undefined,
-                     var breakLength: js.UndefOr[Int] = js.undefined)
+                     var breakLength: js.UndefOr[Int] = js.undefined,
+                     var compact: js.UndefOr[Boolean | Int] = js.undefined,
+                     var sorted: js.UndefOr[Boolean | js.Function2[String, String, Int]] = js.undefined,
+                     var getters: js.UndefOr[Boolean | String] = js.undefined)
     extends js.Object

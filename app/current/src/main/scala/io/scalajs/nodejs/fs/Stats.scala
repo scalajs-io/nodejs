@@ -31,6 +31,7 @@ import scala.scalajs.js
   * }}}
   * @since 0.1.21
   */
+// TODO: BigIntStats if Scala.js added BigInt support
 @js.native
 trait Stats extends js.Object {
 

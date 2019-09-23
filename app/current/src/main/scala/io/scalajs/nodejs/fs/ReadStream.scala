@@ -1,12 +1,14 @@
 package io.scalajs.nodejs
 package fs
 
+import com.thoughtworks.enableIf
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.stream.Readable
 import io.scalajs.util.PromiseHelper.promiseCallback1
 
 import scala.concurrent.Future
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
 
 /**
@@ -14,7 +16,8 @@ import scala.scalajs.js.|
   * @see https://nodejs.org/api/stream.html#stream_class_stream_readable
   */
 @js.native
-trait ReadStream extends Readable {
+@JSImport("fs", "ReadStream")
+class ReadStream(path: Path) extends Readable {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -42,6 +45,8 @@ trait ReadStream extends Readable {
     */
   def close(callback: js.Function1[Unit, Any]): Unit = js.native
 
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  val pending: Boolean = js.native
 }
 
 /**

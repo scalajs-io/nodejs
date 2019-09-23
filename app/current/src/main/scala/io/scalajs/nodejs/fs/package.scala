@@ -1,18 +1,27 @@
 package io.scalajs.nodejs
 
-import io.scalajs.RawOptions
+import com.thoughtworks.enableIf
 import io.scalajs.nodejs.buffer.Buffer
+import io.scalajs.nodejs.url.URL
 import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Future
 import scala.scalajs.js
-import scala.scalajs.js.typedarray.Uint8Array
+import scala.scalajs.js.typedarray.{DataView, TypedArray, Uint8Array}
 import scala.scalajs.js.|
 
 /**
   * fs package object
   */
 package object fs {
+
+  type Path       = Uint8Array | String | URL
+  type Time       = Int | String | js.Date
+  type BufferLike = TypedArray[_, _] | DataView
+  type Output     = String | Buffer
+
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  type Dirent = Fs.Dirent
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Implicit conversions and classes
@@ -22,10 +31,14 @@ package object fs {
     * File System Extensions
     * @param fs the given [[Fs file system]] instance
     */
-  final implicit class FsExtensions(val fs: Fs) extends AnyVal {
+  final implicit class FsExtensions(private val fs: Fs) extends AnyVal {
+    @inline
+    def accessFuture(path: Buffer | String): Future[Unit] = {
+      promiseWithError0[FileIOError](fs.access(path, _))
+    }
 
     @inline
-    def accessFuture(path: Buffer | String, mode: FileMode = null): Future[Unit] = {
+    def accessFuture(path: Buffer | String, mode: FileMode): Future[Unit] = {
       promiseWithError0[FileIOError](fs.access(path, mode, _))
     }
 
@@ -51,7 +64,7 @@ package object fs {
     def fdatasyncFuture(fd: FileDescriptor): Future[Unit] = promiseWithError0[FileIOError](fs.fdatasync(fd, _))
 
     @inline
-    def futimesFuture(fd: FileDescriptor, atime: Integer, mtime: Integer): Future[Unit] = {
+    def futimesFuture(fd: FileDescriptor, atime: Time, mtime: Time): Future[Unit] = {
       promiseWithError0[FileIOError](fs.futimes(fd, atime, mtime, _))
     }
 
@@ -71,13 +84,22 @@ package object fs {
     }
 
     @inline
-    def mkdirFuture(path: Buffer | String, mode: FileMode = null): Future[Unit] = {
+    def mkdirFuture(path: Buffer | String, mode: FileMode): Future[Unit] = {
       promiseWithError0[FileIOError](fs.mkdir(path, mode, _))
     }
 
     @inline
-    def openFuture(path: Buffer | String, flags: Flags, mode: FileMode = null): Future[FileDescriptor] = {
+    def mkdirFuture(path: Buffer | String): Future[Unit] = {
+      promiseWithError0[FileIOError](fs.mkdir(path, _))
+    }
+
+    @inline
+    def openFuture(path: Buffer | String, flags: Flags, mode: FileMode): Future[FileDescriptor] = {
       promiseWithError1[FileIOError, FileDescriptor](fs.open(path, flags, mode, _))
+    }
+    @inline
+    def openFuture(path: Buffer | String, flags: Flags): Future[FileDescriptor] = {
+      promiseWithError1[FileIOError, FileDescriptor](fs.open(path, flags, _))
     }
 
     @inline
@@ -90,14 +112,37 @@ package object fs {
     }
 
     @inline
-    def readdirFuture(path: Buffer | String,
-                      options: String | FileEncodingOptions | RawOptions = null): Future[js.Array[String]] = {
-      promiseWithError1[FileIOError, js.Array[String]](fs.readdir(path, options, _))
+    def readdirFuture(path: Buffer | String, options: String = "utf8"): Future[js.Array[String]] = {
+      val callback: FsCallback1[js.Array[String]] => Unit = { callback =>
+        fs.readdir(path, options, callback.asInstanceOf[FsCallback1[ReaddirArrays]])
+      }
+      promiseWithError1[FileIOError, js.Array[String]](callback)
     }
 
     @inline
-    def readFileFuture(file: String, options: FileInputOptions = null): Future[js.Any] = {
-      promiseWithError1[FileIOError, js.Any](fs.readFile(file, options, _))
+    def readdirBufferFuture(path: Buffer | String): Future[js.Array[Buffer]] = {
+      val callback: FsCallback1[js.Array[Buffer]] => Unit = { callback =>
+        fs.readdir(
+          path,
+          new FileEncodingOptions(encoding = "buffer"),
+          callback.asInstanceOf[FsCallback1[ReaddirArrays]]
+        )
+      }
+      promiseWithError1[FileIOError, js.Array[Buffer]](callback)
+    }
+
+    @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+    @inline
+    def readdirDirentFuture(path: Buffer | String): Future[js.Array[Dirent]] = {
+      val callback: FsCallback1[js.Array[Dirent]] => Unit = { callback =>
+        fs.readdir(path, new ReaddirOptions(withFileTypes = true), callback.asInstanceOf[FsCallback1[ReaddirArrays]])
+      }
+      promiseWithError1[FileIOError, js.Array[Dirent]](callback)
+    }
+
+    @inline
+    def readFileFuture(file: String, options: ReadFileOptions = null): Future[Output] = {
+      promiseWithError1[FileIOError, Output](fs.readFile(file, options, _))
     }
 
     @inline
@@ -106,8 +151,13 @@ package object fs {
     }
 
     @inline
-    def realpathFuture(path: String, options: FileEncodingOptions = null): Future[String] = {
-      promiseWithError1[FileIOError, String](fs.realpath(path, options, _))
+    def realpathFuture(path: String): Future[String] = {
+      promiseWithError1[FileIOError, String](fs.realpath(path, _))
+    }
+
+    @inline
+    def realpathFuture(path: String, options: FileEncodingOptions): Future[Output] = {
+      promiseWithError1[FileIOError, Output](fs.realpath(path, options, _))
     }
 
     @inline
@@ -139,10 +189,10 @@ package object fs {
 
     @inline
     def writeFuture(fd: FileDescriptor,
-                    buffer: Buffer | Uint8Array,
-                    offset: Integer = null,
-                    length: Integer = null,
-                    position: Integer = null): Future[(FileType, Buffer)] = {
+                    buffer: Uint8Array,
+                    offset: Int | Null = null,
+                    length: Int | Null = null,
+                    position: Int | Null = null): Future[(FileType, Buffer)] = {
       promiseWithError2[FileIOError, Int, Buffer](fs.write(fd, buffer, offset, length, position, _))
     }
 
@@ -162,10 +212,19 @@ package object fs {
     }
 
     @inline
-    def writeFileFuture(file: String, data: Buffer | String, options: FileOutputOptions = null): Future[Unit] = {
+    def writeFileFuture(file: String, data: Buffer, options: FileOutputOptions = null): Future[Unit] = {
       promiseWithError0[FileIOError](fs.writeFile(file, data, options, _))
     }
 
+    @inline
+    def writeFileFuture(file: String, data: String, options: FileOutputOptions): Future[Unit] = {
+      promiseWithError0[FileIOError](fs.writeFile(file, data, options, _))
+    }
+
+    @inline
+    def writeFileFuture(file: String, data: String): Future[Unit] = {
+      promiseWithError0[FileIOError](fs.writeFile(file, data, _))
+    }
   }
 
 }

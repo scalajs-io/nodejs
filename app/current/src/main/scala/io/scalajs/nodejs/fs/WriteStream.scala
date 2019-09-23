@@ -7,6 +7,7 @@ import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Future
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
 
 /**
@@ -14,7 +15,8 @@ import scala.scalajs.js.|
   * @see https://nodejs.org/api/fs.html#fs_class_fs_writestream
   */
 @js.native
-trait WriteStream extends Writable {
+@JSImport("fs", "ReadStream")
+class WriteStream(path: Path) extends Writable {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties

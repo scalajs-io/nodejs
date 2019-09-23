@@ -1,5 +1,7 @@
 package io.scalajs
 
+import com.thoughtworks.enableIf
+import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.timers._
 
 import scala.concurrent.duration.FiniteDuration
@@ -27,7 +29,7 @@ package object nodejs {
 
   type FileIOError = SystemError
 
-  type FileMode = Integer
+  type FileMode = Int
 
   type FileType = Int
 
@@ -47,6 +49,10 @@ package object nodejs {
 
   // The handle object can be either a server, a socket (anything with an underlying _handle member), or an object with an fd member that is a valid file descriptor.
   type Handle = js.Function | HasHandle | HasFileDescriptor
+
+  type ReaddirArrays = js.Array[String] | js.Array[Buffer]
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  type ReaddirArrays2 = ReaddirArrays | js.Array[fs.Dirent]
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Built-in Properties

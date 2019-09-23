@@ -74,6 +74,12 @@ class FsTest extends FunSpec {
       }
     }
 
+    it("support access") {
+      Fs.access("./package.json", err => {
+        assert(err == null)
+      })
+    }
+
   }
 
 }

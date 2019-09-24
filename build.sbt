@@ -48,7 +48,11 @@ lazy val nodejs_v10 = (project in file("./app/nodejs-v10"))
   .settings(MySettings.commonMacroParadiseSetting)
   .settings(MySettings.publishingSettings)
   .settings(
-    unmanagedSourceDirectories in Compile += (baseDirectory in current).value / "src" / "main" / "scala",
+    unmanagedSourceDirectories in Compile ++= {
+      val symlinkDir = baseDirectory.value / "src" / "main"
+      val hasSymlink = symlinkDir.exists && symlinkDir.isDirectory
+      Seq((baseDirectory in current).value / "src" / "main" / "scala").filter(_ => !hasSymlink)
+    },
     scalacOptions ++= Seq(
       "-Xmacro-settings:nodeJs10.16.0"
     ),
@@ -66,7 +70,11 @@ lazy val nodejs_v8 = (project in file("./app/nodejs-v8"))
   .settings(MySettings.commonMacroParadiseSetting)
   .settings(MySettings.publishingSettings)
   .settings(
-    unmanagedSourceDirectories in Compile += (baseDirectory in current).value / "src" / "main" / "scala",
+    unmanagedSourceDirectories in Compile ++= {
+      val symlinkDir = baseDirectory.value / "src" / "main"
+      val hasSymlink = symlinkDir.exists && symlinkDir.isDirectory
+      Seq((baseDirectory in current).value / "src" / "main" / "scala").filter(_ => !hasSymlink)
+    },
     scalacOptions ++= Seq(
       "-Xmacro-settings:nodeJs8.16.0"
     ),

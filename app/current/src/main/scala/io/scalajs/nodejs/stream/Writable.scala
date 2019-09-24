@@ -7,9 +7,17 @@ import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Future
 import scala.scalajs.js
-
+import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
 
+/**
+  * The Writable stream interface is an abstraction for a destination that you are writing data to.
+  */
+@js.native
+@JSImport("stream", "Writable")
+class WritableClass(options: WritableOptions = js.native) extends Writable
+
+// TODO: Merge WritableClass and trait?
 /**
   * The Writable stream interface is an abstraction for a destination that you are writing data to.
   */
@@ -231,3 +239,15 @@ object Writable {
   * @param encoding the data's optional encoding
   */
 class Chunk(val chunk: Buffer | String, val encoding: js.UndefOr[String] = js.undefined) extends js.Object
+
+class WritableOptions(val highWaterMark: js.UndefOr[Int] = js.undefined,
+                      val decodeStrings: js.UndefOr[Boolean] = js.undefined,
+                      val defaultEncoding: js.UndefOr[String] = js.undefined,
+                      val objectMode: js.UndefOr[Boolean] = js.undefined,
+                      val emitClose: js.UndefOr[Boolean] = js.undefined,
+                      val write: js.UndefOr[js.Function] = js.undefined,
+                      val writev: js.UndefOr[js.Function] = js.undefined,
+                      val destroy: js.UndefOr[js.Function] = js.undefined,
+                      val `final`: js.UndefOr[js.Function] = js.undefined,
+                      val autoDestroy: js.UndefOr[Boolean] = js.undefined)
+    extends js.Object

@@ -1,7 +1,7 @@
 package io.scalajs.nodejs.crypto
 
 import io.scalajs.nodejs.buffer.Buffer
-import io.scalajs.nodejs.stream.IDuplex
+import io.scalajs.nodejs.stream.Transform
 
 import scala.scalajs.js
 
@@ -16,7 +16,7 @@ import scala.scalajs.js
   * the new keyword.
   */
 @js.native
-trait Hmac extends IDuplex {
+sealed trait Hmac extends Transform {
 
   /**
     * Calculates the HMAC digest of all of the data passed using hmac.update(). The encoding can be 'hex', 'binary'
@@ -56,9 +56,9 @@ trait Hmac extends IDuplex {
     *
     * This can be called many times with new data as it is streamed.
     * @param data           the given [[String data]]
-    * @param input_encoding the given encoding (e.g. 'utf8', 'ascii' or 'binary'
+    * @param inputEncoding the given encoding (e.g. 'utf8', 'ascii' or 'binary'
     */
-  def update(data: String, input_encoding: String): Unit = js.native
+  def update(data: String, inputEncoding: String): Hmac = js.native
 
   /**
     * Updates the Hmac content with the given data, the encoding of which is given in input_encoding and can be 'utf8',
@@ -68,6 +68,6 @@ trait Hmac extends IDuplex {
     * This can be called many times with new data as it is streamed.
     * @param data the given [[Buffer data]]
     */
-  def update(data: Buffer): Unit = js.native
+  def update(data: BufferLike): Hmac = js.native
 
 }

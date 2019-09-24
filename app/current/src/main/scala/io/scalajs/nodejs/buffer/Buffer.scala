@@ -529,7 +529,7 @@ class Buffer protected () extends Uint8Array( /* dummy to trick constructor */ -
     * @return a string according to the specified character encoding in encoding.
     * @example {{{ buf.toString([encoding[, start[, end]]]) }}}
     */
-  def toString(encoding: String = js.native, start: Int = js.native, end: Int = js.native): String = js.native
+  def toString(encoding: String, start: Int = js.native, end: Int = js.native): String = js.native
 
   /**
     * Re-encodes the given Buffer instance from one character encoding to another. Returns a new Buffer instance.

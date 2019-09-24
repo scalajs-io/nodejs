@@ -9,10 +9,10 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 @JSImport("stream", "Transform")
-class Transform extends IDuplex
+class Transform(options: TransformOptions = js.native) extends IDuplex {
+  def destroy(error: io.scalajs.nodejs.Error = js.native): Unit = js.native
+}
 
-/**
-  * Transform Interface
-  */
-@js.native
-trait ITransform extends IDuplex
+class TransformOptions(val transform: js.UndefOr[js.Function] = js.undefined,
+                       val flush: js.UndefOr[js.Function] = js.undefined)
+    extends js.Object

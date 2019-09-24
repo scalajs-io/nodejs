@@ -1,7 +1,7 @@
 package io.scalajs.nodejs.crypto
 
 import io.scalajs.nodejs.buffer.Buffer
-import io.scalajs.nodejs.stream.IDuplex
+import io.scalajs.nodejs.stream.{Transform, TransformOptions}
 
 import scala.scalajs.js
 
@@ -16,7 +16,7 @@ import scala.scalajs.js
   * are not to be created directly using the new keyword.
   */
 @js.native
-trait Cipher extends IDuplex {
+sealed trait Cipher extends Transform {
 
   /**
     * Returns any remaining enciphered contents. If output_encoding parameter is one of 'binary', 'base64' or 'hex',
@@ -26,7 +26,7 @@ trait Cipher extends IDuplex {
     * Attempts to call cipher.final() more than once will result in an error being thrown.
     * @example cipher.final([output_encoding])
     */
-  def `final`(output_encoding: String): String = js.native
+  def `final`(outputEncoding: String): String = js.native
 
   /**
     * Returns any remaining enciphered contents. If output_encoding parameter is one of 'binary', 'base64' or 'hex',
@@ -43,7 +43,7 @@ trait Cipher extends IDuplex {
     * the value used for the additional authenticated data (AAD) input parameter.
     * @example cipher.setAAD(buffer)
     */
-  def setAAD(buffer: Buffer): Unit = js.native
+  def setAAD(buffer: Buffer, options: SetAADOptions = js.native): Cipher = js.native
 
   /**
     * When using an authenticated encryption mode (only GCM is currently supported), the cipher.getAuthTag() method
@@ -52,7 +52,7 @@ trait Cipher extends IDuplex {
     * The cipher.getAuthTag() method should only be called after encryption has been completed using the cipher.final() method.
     * @example cipher.getAuthTag()
     */
-  def getAuthTag(): js.Any = js.native
+  def getAuthTag(): Buffer = js.native
 
   /**
     * When using block encryption algorithms, the Cipher class will automatically add padding to the input data to the
@@ -65,7 +65,7 @@ trait Cipher extends IDuplex {
     * The cipher.setAutoPadding() method must be called before cipher.final().
     * @example cipher.setAutoPadding(auto_padding=true)
     */
-  def setAutoPadding(auto_padding: Boolean = js.native): Unit = js.native
+  def setAutoPadding(auto_padding: Boolean = js.native): Cipher = js.native
 
   /**
     * Updates the cipher with data. If the input_encoding argument is given, it's value must be one of 'utf8', 'ascii',
@@ -80,21 +80,13 @@ trait Cipher extends IDuplex {
     * cipher.update() after cipher.final() will result in an error being thrown.
     * @example cipher.update(data[, input_encoding][, output_encoding])
     */
-  def update(data: String, input_encoding: String, output_encoding: String = js.native): String = js.native
-
-  /**
-    * Updates the cipher with data. If the input_encoding argument is given, it's value must be one of 'utf8', 'ascii',
-    * or 'binary' and the data argument is a string using the specified encoding. If the input_encoding argument is not
-    * given, data must be a Buffer. If data is a Buffer then input_encoding is ignored.
-    *
-    * The output_encoding specifies the output format of the enciphered data, and can be 'binary', 'base64' or 'hex'.
-    * If the output_encoding is specified, a string using the specified encoding is returned. If no output_encoding is
-    * provided, a Buffer is returned.
-    *
-    * The cipher.update() method can be called multiple times with new data until cipher.final() is called. Calling
-    * cipher.update() after cipher.final() will result in an error being thrown.
-    * @example cipher.update(data[, input_encoding][, output_encoding])
-    */
-  def update(data: Buffer): Buffer = js.native
+  def update(data: String, inputEncoding: String, outputEncoding: String): String = js.native
+  def update(data: String, inputEncoding: String): Buffer                         = js.native
+  def update(data: BufferLike): Buffer                                            = js.native
 
 }
+
+class SetAADOptions(override val transform: js.UndefOr[js.Function] = js.undefined,
+                    override val flush: js.UndefOr[js.Function] = js.undefined,
+                    val plaintextLength: js.UndefOr[Int] = js.undefined)
+    extends TransformOptions(transform, flush) {}

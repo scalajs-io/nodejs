@@ -41,7 +41,7 @@ The following core Node.js modules (v8.7.0+) have been implemented:
 | [readline](https://nodejs.org/api/readline.html)             |                    |
 | [repl](https://nodejs.org/api/repl.html)                     |                    |
 | [stream](https://nodejs.org/api/stream.html)                 |                    |
-| [string-decoder](https://nodejs.org/api/string_decoder.html) |                    |
+| [string-decoder](https://nodejs.org/api/string_decoder.html) | :heavy_check_mark: |
 | [timers](https://nodejs.org/api/timers.html)                 | :heavy_check_mark: |
 | [tty](https://nodejs.org/api/tty.html)                       |                    |
 | [url](https://nodejs.org/api/url.html)                       | :heavy_check_mark: |

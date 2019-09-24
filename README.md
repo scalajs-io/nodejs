@@ -29,23 +29,23 @@ The following core Node.js modules (v8.7.0+) have been implemented:
 | [dgram](https://nodejs.org/api/dgram.html)                   |                    |
 | [dns](https://nodejs.org/api/dns.html)                       |                    |
 | [events](https://nodejs.org/api/events.html)                 |                    |
-| [fs](https://nodejs.org/api/fs.html)                         |                    |
+| [fs](https://nodejs.org/api/fs.html)                         | :heavy_check_mark: |
 | [http](https://nodejs.org/api/http.html)                     |                    |
 | [http2](https://nodejs.org/api/http2.html)                   |                    |
 | [https](https://nodejs.org/api/https.html)                   |                    |
 | [net](https://nodejs.org/api/net.html)                       |                    |
-| [os](https://nodejs.org/api/os.html)                         |                    |
+| [os](https://nodejs.org/api/os.html)                         | :heavy_check_mark: |
 | [path](https://nodejs.org/api/path.html)                     |                    |
 | [process](https://nodejs.org/api/process.html)               |                    |
-| [querystring](https://nodejs.org/api/querystring.html)       |                    |
+| [querystring](https://nodejs.org/api/querystring.html)       | :heavy_check_mark: |
 | [readline](https://nodejs.org/api/readline.html)             |                    |
 | [repl](https://nodejs.org/api/repl.html)                     |                    |
 | [stream](https://nodejs.org/api/stream.html)                 |                    |
 | [string-decoder](https://nodejs.org/api/string_decoder.html) |                    |
-| [timers](https://nodejs.org/api/timers.html)                 |                    |
+| [timers](https://nodejs.org/api/timers.html)                 | :heavy_check_mark: |
 | [tty](https://nodejs.org/api/tty.html)                       |                    |
 | [url](https://nodejs.org/api/url.html)                       | :heavy_check_mark: |
-| [util](https://nodejs.org/api/util.html)                     |                    |
+| [util](https://nodejs.org/api/util.html)                     | :heavy_check_mark: |
 | [vm](https://nodejs.org/api/vm.html)                         |                    |
 | [zlib](https://nodejs.org/api/zlib.html)                     |                    |
 

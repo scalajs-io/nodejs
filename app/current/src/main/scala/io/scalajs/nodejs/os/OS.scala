@@ -1,5 +1,7 @@
 package io.scalajs.nodejs.os
 
+import com.thoughtworks.enableIf
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
@@ -20,6 +22,7 @@ trait OS extends js.Object {
     * are described in OS Constants.
     * @see https://nodejs.org/api/os.html#os_os_constants_1
     */
+  // TODO: Implement as object
   def constants: js.Dictionary[js.Any] = js.native
 
   /**
@@ -63,6 +66,9 @@ trait OS extends js.Object {
     */
   def freemem(): Double = js.native
 
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  def getPriority(pid: Int = js.native): Int = js.native
+
   /**
     * Returns the home directory of the current user.
     * @example os.homedir()
@@ -92,7 +98,7 @@ trait OS extends js.Object {
     * Get a list of network interfaces
     * @example os.networkInterfaces()
     */
-  def networkInterfaces(): js.Dictionary[NetworkInterface] = js.native
+  def networkInterfaces(): js.Dictionary[js.Array[NetworkInterface]] = js.native
 
   /**
     * Returns the operating system platform. Possible values are 'darwin', 'freebsd', 'linux', 'sunos' or 'win32'.
@@ -106,6 +112,11 @@ trait OS extends js.Object {
     * @example os.release()
     */
   def release(): String = js.native
+
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  def setPriority(pid: Int, priority: Int): Unit = js.native
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  def setPriority(priority: Int): Unit = js.native
 
   /**
     * Returns the operating system's default directory for temporary files.
@@ -129,6 +140,7 @@ trait OS extends js.Object {
     * Returns the system uptime in seconds.
     * @example os.uptime()
     */
+  // TODO: Return type should be Int after dropping Node.js 8 (Windows returns decimal until Node.js 10))
   def uptime(): Double = js.native
 
   /**

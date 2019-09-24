@@ -6,7 +6,6 @@ import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * The child_process module provides the ability to spawn child processes in a manner that is similar,
@@ -41,7 +40,7 @@ trait ChildProcess extends IEventEmitter {
 object ChildProcess extends scala.scalajs.js.Object {
   def exec(
       args: String,
-      options: ExecOptions | io.scalajs.RawOptions = js.native,
+      options: ExecOptions = js.native,
       callback: js.Function3[
         nodejs.Error,
         Output,
@@ -53,7 +52,7 @@ object ChildProcess extends scala.scalajs.js.Object {
   def execFile(
       file: String,
       args: js.Array[String] = js.native,
-      options: ExecOptions | io.scalajs.RawOptions = js.native,
+      options: ExecOptions = js.native,
       callback: js.Function3[
         nodejs.Error,
         Output,
@@ -64,31 +63,31 @@ object ChildProcess extends scala.scalajs.js.Object {
 
   def execSync(
       command: String,
-      options: ExecOptions | io.scalajs.RawOptions = js.native
+      options: ExecOptions = js.native
   ): Output = js.native
 
   def execFileSync(
       file: String,
       args: js.Array[String] = js.native,
-      options: ExecFileSyncOptions | io.scalajs.RawOptions = js.native
+      options: ExecFileSyncOptions = js.native
   ): Output = js.native
 
   def fork(
       modulePath: String,
       args: js.Array[String] = js.native,
-      options: ForkOptions | io.scalajs.RawOptions = js.native
+      options: ForkOptions = js.native
   ): ChildProcess = js.native
 
   def spawn(
       command: String,
       args: js.Array[String] = js.native,
-      options: SpawnOptions | io.scalajs.RawOptions = js.native
+      options: SpawnOptions = js.native
   ): ChildProcess = js.native
 
   def spawnSync(
       command: String,
       args: js.Array[String] = js.native,
-      options: SpawnSyncOptions | io.scalajs.RawOptions = js.native
+      options: SpawnSyncOptions = js.native
   ): SpawnSyncResult = js.native
 
 }

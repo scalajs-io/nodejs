@@ -20,7 +20,7 @@ package object child_process {
     @inline
     def execFuture(
         command: String,
-        options: js.UndefOr[ExecOptions | io.scalajs.RawOptions] = js.undefined
+        options: js.UndefOr[ExecOptions] = js.undefined
     ): Future[(Output, Output)] = {
       promiseWithError2[nodejs.Error, Output, Output](cp.exec(command, options.orNull, _))
     }
@@ -29,7 +29,7 @@ package object child_process {
     def execFileFuture(
         file: String,
         args: js.UndefOr[js.Array[String]] = js.undefined,
-        options: js.UndefOr[ExecOptions | io.scalajs.RawOptions] = js.undefined
+        options: js.UndefOr[ExecOptions] = js.undefined
     ): Future[(Output, Output)] = {
       promiseWithError2[nodejs.Error, Output, Output](cp.execFile(file, args.orNull, options.orNull, _))
     }

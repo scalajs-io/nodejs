@@ -25,7 +25,7 @@ The following core Node.js modules (v8.7.0+) have been implemented:
 | [child_process](https://nodejs.org/api/child_process.html)   | :heavy_check_mark: |
 | [cluster](https://nodejs.org/api/cluster.html)               | :heavy_check_mark: |
 | [console](https://nodejs.org/api/console.html)               | :heavy_check_mark: |
-| [crypto](https://nodejs.org/api/crypto.html)                 |                    |
+| [crypto](https://nodejs.org/api/crypto.html)                 | :heavy_check_mark: |
 | [dgram](https://nodejs.org/api/dgram.html)                   |                    |
 | [dns](https://nodejs.org/api/dns.html)                       |                    |
 | [events](https://nodejs.org/api/events.html)                 |                    |

@@ -1,9 +1,11 @@
 package io.scalajs.nodejs.crypto
 
+import com.thoughtworks.enableIf
 import io.scalajs.nodejs.buffer.Buffer
-import io.scalajs.nodejs.stream.IDuplex
+import io.scalajs.nodejs.stream.WritableClass
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * The Sign Class is a utility for generating signatures. It can be used in one of two ways:
@@ -16,16 +18,14 @@ import scala.scalajs.js
   * the new keyword.
   */
 @js.native
-trait Sign extends IDuplex {
+sealed trait Sign extends WritableClass {
+  def sign(privateKey: String | Buffer): Buffer                         = js.native
+  def sign(privateKey: String | Buffer, outputEncoding: String): String = js.native
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def sign(privateKey: KeyObject): Buffer = js.native
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def sign(privateKey: KeyObject, outputEncoding: String): String = js.native
 
-  def sign(private_key: String): String = js.native
-
-  def sign(private_key: String, output_format: String): String = js.native
-
-  def update(data: String, input_encoding: String): Unit = js.native
-
-  def update(data: String): Unit = js.native
-
-  def update(data: Buffer): Unit = js.native
-
+  def update(data: String, inputEncoding: String = js.native): Unit = js.native
+  def update(data: BufferLike): Unit                                = js.native
 }

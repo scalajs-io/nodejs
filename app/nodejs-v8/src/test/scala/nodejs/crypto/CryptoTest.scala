@@ -53,4 +53,9 @@ class CryptoTest extends FunSpec with MustMatchers {
 
   }
 
+  describe("Crypto module") {
+    it("has constants") {
+      assert(Crypto.constants.ENGINE_METHOD_DSA === 2)
+    }
+  }
 }

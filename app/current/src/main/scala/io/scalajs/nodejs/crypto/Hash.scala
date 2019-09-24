@@ -1,7 +1,7 @@
 package io.scalajs.nodejs.crypto
 
 import io.scalajs.nodejs.buffer.Buffer
-import io.scalajs.nodejs.stream.IDuplex
+import io.scalajs.nodejs.stream.{Transform, TransformOptions}
 
 import scala.scalajs.js
 
@@ -15,7 +15,7 @@ import scala.scalajs.js
   * the new keyword.
   */
 @js.native
-trait Hash extends IDuplex {
+sealed trait Hash extends Transform {
 
   /**
     * Calculates the digest of all of the data passed to be hashed (using the hash.update() method). The encoding can
@@ -45,18 +45,15 @@ trait Hash extends IDuplex {
     *
     * This can be called many times with new data as it is streamed.
     * @param data           the given [[String data]]
-    * @param input_encoding the given encoding (e.g. 'utf8', 'ascii' or 'binary')
+    * @param inputEncoding the given encoding (e.g. 'utf8', 'ascii' or 'binary')
     */
-  def update(data: String, input_encoding: String = null): Unit = js.native
-
-  /**
-    * Updates the hash content with the given data, the encoding of which is given in input_encoding and can be 'utf8',
-    * 'ascii' or 'binary'. If encoding is not provided, and the data is a string, an encoding of 'utf8' is enforced.
-    * If data is a Buffer then input_encoding is ignored.
-    *
-    * This can be called many times with new data as it is streamed.
-    * @param data the given [[Buffer data]]
-    */
-  def update(data: Buffer): Unit = js.native
+  def update(data: String, inputEncoding: String): Hash = js.native
+  def update(data: String): Hash                        = js.native
+  def update(data: BufferLike): Hash                    = js.native
 
 }
+
+class CreateHashOptions(override val transform: js.UndefOr[js.Function] = js.undefined,
+                        override val flush: js.UndefOr[js.Function] = js.undefined,
+                        val outputLength: js.UndefOr[Int] = js.undefined)
+    extends TransformOptions(transform, flush)

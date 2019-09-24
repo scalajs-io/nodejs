@@ -1,11 +1,8 @@
 package io.scalajs.nodejs
 package tls
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * The tls module provides an implementation of the Transport Layer Security (TLS) and Secure Socket Layer (SSL)
@@ -23,7 +20,7 @@ trait Tls extends js.Object {
     * @param callback See tls.connect().
     * @example connect(port[, host][, options][, callback])
     */
-  def connect(port: Int, host: String, options: TlsConnectOptions | RawOptions, callback: js.Function): Unit = js.native
+  def connect(port: Int, host: String, options: TlsConnectOptions, callback: js.Function): Unit = js.native
 
 }
 

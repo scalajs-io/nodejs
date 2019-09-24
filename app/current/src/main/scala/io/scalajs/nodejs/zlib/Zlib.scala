@@ -1,6 +1,5 @@
 package io.scalajs.nodejs.zlib
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.events.IEventEmitter
 
@@ -73,43 +72,43 @@ trait Zlib extends IEventEmitter {
     * Returns a new Deflate object with an options.
     * @example zlib.createDeflate(options)
     */
-  def createDeflate(options: CompressionOptions | RawOptions): Deflate = js.native
+  def createDeflate(options: CompressionOptions): Deflate = js.native
 
   /**
     * Returns a new DeflateRaw object with an options.
     * @example zlib.createDeflateRaw(options)
     */
-  def createDeflateRaw(options: CompressionOptions | RawOptions = js.native): DeflateRaw = js.native
+  def createDeflateRaw(options: CompressionOptions = js.native): DeflateRaw = js.native
 
   /**
     * Returns a new Gunzip object with an options.
     * @example zlib.createGunzip(options)
     */
-  def createGunzip(options: CompressionOptions | RawOptions = js.native): Gunzip = js.native
+  def createGunzip(options: CompressionOptions = js.native): Gunzip = js.native
 
   /**
     * Returns a new Gzip object with an options.
     * @example zlib.createGzip(options)
     */
-  def createGzip(options: CompressionOptions | RawOptions = js.native): Gzip = js.native
+  def createGzip(options: CompressionOptions = js.native): Gzip = js.native
 
   /**
     * Returns a new Inflate object with an options.
     * @example zlib.createInflate(options)
     */
-  def createInflate(options: CompressionOptions | RawOptions = js.native): Inflate = js.native
+  def createInflate(options: CompressionOptions = js.native): Inflate = js.native
 
   /**
     * Returns a new InflateRaw object with an options.
     * @example zlib.createInflateRaw(options)
     */
-  def createInflateRaw(options: CompressionOptions | RawOptions = js.native): InflateRaw = js.native
+  def createInflateRaw(options: CompressionOptions = js.native): InflateRaw = js.native
 
   /**
     * Returns a new Unzip object with an options.
     * @example zlib.createUnzip(options)
     */
-  def createUnzip(options: CompressionOptions | RawOptions = js.native): Unzip = js.native
+  def createUnzip(options: CompressionOptions = js.native): Unzip = js.native
 
   /**
     * Flush pending data. Don't call this frivolously, premature flushes negatively impact the effectiveness of the compression algorithm.
@@ -143,7 +142,7 @@ trait Zlib extends IEventEmitter {
     * Compress a Buffer or string with Deflate.
     * @example zlib.deflate(buf[, options], callback)
     */
-  def deflate(buf: Buffer | String, options: CompressionOptions | RawOptions, callback: js.Function): Unit = js.native
+  def deflate(buf: Buffer | String, options: CompressionOptions, callback: js.Function): Unit = js.native
 
   /**
     * Compress a Buffer or string with Deflate.
@@ -155,13 +154,13 @@ trait Zlib extends IEventEmitter {
     * Compress a Buffer or string with Deflate.
     * @example zlib.deflateSync(buf[, options])
     */
-  def deflateSync(buf: Buffer | String, options: CompressionOptions | RawOptions = js.native): Unit = js.native
+  def deflateSync(buf: Buffer | String, options: CompressionOptions = js.native): Unit = js.native
 
   /**
     * Compress a Buffer or string with DeflateRaw.
     * @example zlib.deflateRaw(buf[, options], callback)
     */
-  def deflateRaw(buf: Buffer | String, options: CompressionOptions | RawOptions, callback: js.Function): Unit =
+  def deflateRaw(buf: Buffer | String, options: CompressionOptions, callback: js.Function): Unit =
     js.native
 
   /**
@@ -174,7 +173,7 @@ trait Zlib extends IEventEmitter {
     * Decompress a Buffer or string with Gunzip.
     * @example zlib.gunzip(buf[, options], callback)
     */
-  def gunzip(buf: Buffer | String, options: CompressionOptions | RawOptions, callback: js.Function): Unit = js.native
+  def gunzip(buf: Buffer | String, options: CompressionOptions, callback: js.Function): Unit = js.native
 
   /**
     * Decompress a Buffer or string with Gunzip.
@@ -186,13 +185,13 @@ trait Zlib extends IEventEmitter {
     * Decompress a Buffer or string with Gunzip.
     * @example zlib.gunzipSync(buf[, options])
     */
-  def gunzipSync(buf: Buffer | String, options: CompressionOptions | RawOptions = js.native): Unit = js.native
+  def gunzipSync(buf: Buffer | String, options: CompressionOptions = js.native): Unit = js.native
 
   /**
     * Compress a Buffer or string with Gzip.
     * @example zlib.gzip(buf[, options], callback)
     */
-  def gzip(buf: Buffer | String, options: CompressionOptions | RawOptions, callback: js.Function): Unit = js.native
+  def gzip(buf: Buffer | String, options: CompressionOptions, callback: js.Function): Unit = js.native
 
   /**
     * Compress a Buffer or string with Gzip.
@@ -204,13 +203,13 @@ trait Zlib extends IEventEmitter {
     * Compress a Buffer or string with Gzip.
     * @example zlib.gzipSync(buf[, options])
     */
-  def gzipSync(buf: Buffer | String, options: CompressionOptions | RawOptions = js.native): Unit = js.native
+  def gzipSync(buf: Buffer | String, options: CompressionOptions = js.native): Unit = js.native
 
   /**
     * Decompress a Buffer or string with Inflate.
     * @example zlib.inflate(buf[, options], callback)
     */
-  def inflate(buf: Buffer | String, options: CompressionOptions | RawOptions, callback: js.Function): Unit = js.native
+  def inflate(buf: Buffer | String, options: CompressionOptions, callback: js.Function): Unit = js.native
 
   /**
     * Decompress a Buffer or string with Inflate.
@@ -222,13 +221,13 @@ trait Zlib extends IEventEmitter {
     * Decompress a Buffer or string with Inflate.
     * @example zlib.inflateSync(buf[, options])
     */
-  def inflateSync(buf: Buffer | String, options: CompressionOptions | RawOptions = js.native): Unit = js.native
+  def inflateSync(buf: Buffer | String, options: CompressionOptions = js.native): Unit = js.native
 
   /**
     * Decompress a Buffer or string with InflateRaw.
     * @example zlib.inflateRaw(buf[, options], callback)
     */
-  def inflateRaw(buf: Buffer | String, options: CompressionOptions | RawOptions, callback: js.Function): Unit =
+  def inflateRaw(buf: Buffer | String, options: CompressionOptions, callback: js.Function): Unit =
     js.native
 
   /**
@@ -241,13 +240,13 @@ trait Zlib extends IEventEmitter {
     * Decompress a Buffer or string with InflateRaw.
     * @example zlib.inflateRawSync(buf[, options])
     */
-  def inflateRawSync(buf: Buffer | String, options: CompressionOptions | RawOptions = js.native): Unit = js.native
+  def inflateRawSync(buf: Buffer | String, options: CompressionOptions = js.native): Unit = js.native
 
   /**
     * Decompress a Buffer or string with Unzip.
     * @example zlib.unzip(buf[, options], callback)
     */
-  def unzip(buf: Buffer | String, options: CompressionOptions | RawOptions, callback: js.Function): Unit = js.native
+  def unzip(buf: Buffer | String, options: CompressionOptions, callback: js.Function): Unit = js.native
 
   /**
     * Decompress a Buffer or string with Unzip.
@@ -259,7 +258,7 @@ trait Zlib extends IEventEmitter {
     * Decompress a Buffer or string with Unzip.
     * @example zlib.unzipSync(buf[, options])
     */
-  def unzipSync(buf: Buffer | String, options: CompressionOptions | RawOptions = js.native): Unit = js.native
+  def unzipSync(buf: Buffer | String, options: CompressionOptions = js.native): Unit = js.native
 
 }
 

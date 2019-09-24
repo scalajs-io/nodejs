@@ -1,13 +1,10 @@
 package io.scalajs.nodejs
 package stream
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
-
-import scala.scalajs.js.|
 
 /**
   * The Readable stream interface is the abstraction for a source of data that you are reading from.
@@ -75,7 +72,7 @@ trait Readable extends IEventEmitter {
     * Multiple destinations can be piped to safely.
     * @example readable.pipe(destination[, options])
     */
-  def pipe(destination: Writable, options: ReadablePipeOptions | RawOptions = js.native): this.type = js.native
+  def pipe(destination: Writable, options: ReadablePipeOptions = js.native): this.type = js.native
 
   /**
     * When chunk is a Buffer or string, the chunk of data will be added to the internal queue for users

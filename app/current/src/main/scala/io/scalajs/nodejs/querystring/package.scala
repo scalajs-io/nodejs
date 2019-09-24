@@ -1,9 +1,6 @@
 package io.scalajs.nodejs
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
-import scala.scalajs.js.|
 
 /**
   * query string package object
@@ -19,7 +16,7 @@ package object querystring {
     def parseAs[T <: js.Object](str: String,
                                 sep: String = null,
                                 eq: String = null,
-                                options: QueryDecodeOptions | RawOptions = null): T = {
+                                options: QueryDecodeOptions = null): T = {
       qs.parse(str, sep, eq, options).asInstanceOf[T]
     }
 

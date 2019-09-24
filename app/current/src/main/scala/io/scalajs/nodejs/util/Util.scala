@@ -1,7 +1,6 @@
 package io.scalajs.nodejs.util
 
 import com.thoughtworks.{enableIf, enableMembersIf}
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.stream
 
 import scala.scalajs.js
@@ -55,7 +54,7 @@ trait Util extends js.Object {
   def format(format: String, args: js.Any*): String = js.native
 
   @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
-  def formatWithOptions(inspectOptions: InspectOptions | RawOptions, format: String, args: js.Any*): String = js.native
+  def formatWithOptions(inspectOptions: InspectOptions, format: String, args: js.Any*): String = js.native
 
   @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
   def getSystemErrorName(err: Int): String = js.native
@@ -76,7 +75,7 @@ trait Util extends js.Object {
     * @param options  the given [[InspectOptions inspect options]]
     * @example util.inspect(object[, options])
     */
-  def inspect(`object`: js.Any, options: InspectOptions | RawOptions = js.native): String = js.native
+  def inspect(`object`: js.Any, options: InspectOptions = js.native): String = js.native
 
   val inspect: InspectObject = js.native
 

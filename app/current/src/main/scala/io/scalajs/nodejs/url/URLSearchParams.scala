@@ -1,10 +1,7 @@
 package io.scalajs.nodejs.url
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * The URLSearchParams API provides read and write access to the query of a URL. The URLSearchParams
@@ -143,10 +140,10 @@ class URLSearchParams extends js.Object {
   /**
     * Returns a customizable serialization of a URL String representation of a WHATWG URL object.
     * @param url     the given [[URL]]
-    * @param options the given [[RawOptions options]]
+    * @param options the given [[UrlFormatOptions options]]
     * @return a customizable serialization of a URL String representation of a WHATWG URL object.
     */
-  def format(url: URL, options: UrlFormatOptions | RawOptions = js.native): String = js.native
+  def format(url: URL, options: UrlFormatOptions = js.native): String = js.native
 
 }
 

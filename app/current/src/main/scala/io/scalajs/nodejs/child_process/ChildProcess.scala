@@ -21,7 +21,7 @@ trait ChildProcess extends IEventEmitter {
   def unref(): Unit                                          = js.native
   // TODO: Are those available in limited scenario?
   //def disconnect(): Unit = js.native
-  //def send(message: js.Any, sendHandle: Handle = js.native, options: SendOptions | RawOptions = js.native, callback: js.Function1[nodejs.Error, Any] = js.native): Boolean = js.native
+  //def send(message: js.Any, sendHandle: Handle = js.native, options: SendOptions  = js.native, callback: js.Function1[nodejs.Error, Any] = js.native): Boolean = js.native
 
   val channel: js.UndefOr[js.Object] = js.native
   val connected: Boolean             = js.native

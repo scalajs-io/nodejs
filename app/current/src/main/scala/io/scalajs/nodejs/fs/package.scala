@@ -15,10 +15,11 @@ import scala.scalajs.js.|
   */
 package object fs {
 
-  type Path       = Uint8Array | String | URL
-  type Time       = Int | String | js.Date
-  type BufferLike = TypedArray[_, _] | DataView
-  type Output     = String | Buffer
+  type Path             = Uint8Array | String | URL
+  type Time             = Int | String | js.Date
+  type BufferLike       = TypedArray[_, _] | DataView
+  type Output           = String | Buffer
+  type FileWriteOptions = FileAppendOptions
 
   @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
   type Dirent = Fs.Dirent
@@ -135,7 +136,7 @@ package object fs {
     @inline
     def readdirDirentFuture(path: Buffer | String): Future[js.Array[Dirent]] = {
       val callback: FsCallback1[js.Array[Dirent]] => Unit = { callback =>
-        fs.readdir(path, new ReaddirOptions(withFileTypes = true), callback.asInstanceOf[FsCallback1[ReaddirArrays]])
+        fs.readdir(path, new ReaddirOptions(withFileTypes = true), callback.asInstanceOf[FsCallback1[ReaddirArrays2]])
       }
       promiseWithError1[FileIOError, js.Array[Dirent]](callback)
     }
@@ -212,12 +213,12 @@ package object fs {
     }
 
     @inline
-    def writeFileFuture(file: String, data: Buffer, options: FileOutputOptions = null): Future[Unit] = {
+    def writeFileFuture(file: String, data: Buffer, options: FileWriteOptions = null): Future[Unit] = {
       promiseWithError0[FileIOError](fs.writeFile(file, data, options, _))
     }
 
     @inline
-    def writeFileFuture(file: String, data: String, options: FileOutputOptions): Future[Unit] = {
+    def writeFileFuture(file: String, data: String, options: FileWriteOptions): Future[Unit] = {
       promiseWithError0[FileIOError](fs.writeFile(file, data, options, _))
     }
 

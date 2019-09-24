@@ -1,10 +1,7 @@
 package io.scalajs.nodejs.querystring
 
-import io.scalajs.RawOptions
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 /**
   * Query String
@@ -43,7 +40,7 @@ trait QueryString extends js.Object {
   def parse(str: String,
             sep: String = js.native,
             eq: String = js.native,
-            options: QueryDecodeOptions | RawOptions = js.native): js.Dictionary[String] = js.native
+            options: QueryDecodeOptions = js.native): js.Dictionary[String] = js.native
 
   /**
     * The querystring.stringify() method produces a URL query string from a given obj by iterating through the
@@ -56,7 +53,7 @@ trait QueryString extends js.Object {
   def stringify(obj: js.Any,
                 sep: String = js.native,
                 eq: String = js.native,
-                options: QueryEncodeOptions | RawOptions = js.native): String = js.native
+                options: QueryEncodeOptions = js.native): String = js.native
 
   /**
     * The querystring.unescape() method performs decoding of URL percent-encoded characters on the given str.

@@ -2,6 +2,7 @@ package io.scalajs.nodejs
 
 import io.scalajs.RawOptions
 
+import scala.scalajs.js
 import scala.scalajs.js.|
 
 /**
@@ -13,21 +14,12 @@ package object querystring {
     * Query String Enrichment
     * @param qs the given [[QueryString]]
     */
-  implicit class QueryStringEnrichment(val qs: QueryString) extends AnyVal {
-
-    /**
-      * The querystring.parse() method parses a URL query string (str) into a collection of key and value pairs.
-      * @param str     The URL query string to parse
-      * @param sep     The substring used to delimit key and value pairs in the query string. Defaults to '&'.
-      * @param eq      The substring used to delimit keys and values in the query string. Defaults to '='.
-      * @param options The given [[QueryDecodeOptions options]]
-      * @return
-      */
+  implicit final class QueryStringEnrichment(private val qs: QueryString) extends AnyVal {
     @inline
-    def parseAs[T](str: String,
-                   sep: String = null,
-                   eq: String = null,
-                   options: QueryDecodeOptions | RawOptions = null): T = {
+    def parseAs[T <: js.Object](str: String,
+                                sep: String = null,
+                                eq: String = null,
+                                options: QueryDecodeOptions | RawOptions = null): T = {
       qs.parse(str, sep, eq, options).asInstanceOf[T]
     }
 

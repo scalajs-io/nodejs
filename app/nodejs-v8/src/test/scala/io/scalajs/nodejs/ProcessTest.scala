@@ -1,7 +1,7 @@
 package io.scalajs.nodejs
 
-import io.scalajs.JSON
 import io.scalajs.nodejs.Process.ProcessEnvExtensions
+import io.scalajs.nodejs.os.OS
 import org.scalatest.FunSpec
 
 import scala.scalajs.js
@@ -12,30 +12,34 @@ import scala.scalajs.js
 class ProcessTest extends FunSpec {
 
   describe("Process") {
+    val versionPrefix =
+      if (TestEnvironment.isExecutedInExactNode8) "v8."
+      else if (TestEnvironment.isExecutedInExactNode10) "v10."
+      else if (TestEnvironment.isExecutedInExactNode12) "v12."
+      else "Unknown node.js version"
 
     it("contains the following properties") {
-      show("process.arch", process.arch)
-      show("process.argv", process.argv)
-      show("process.config", process.config)
-      show("process.connected", process.connected)
-      show("process.cwd()", process.cwd())
-      show("process.domain", process.domain)
-      show("process.env", process.env)
-      show("process.env.NODE_ENV", process.env.NODE_ENV)
-      show("process.env.PATH", process.env.PATH)
-      show("process.execArgv", process.execArgv)
-      show("process.execPath", process.execPath)
-      show("process.features", process.features)
-      show("process.moduleLoadList", process.moduleLoadList)
-      show("process.title", process.title)
-      show("process.version", process.version)
-      show("process.versions", JSON.stringify(process.versions))
-      //show("process.stdout.isTTY", process.stdout.isTTY)
-      //show("process.stderr.isTTY", process.stderr.isTTY)
+      assert(process.arch.isInstanceOf[String])
+      assert(process.argv.length === 1)
+      assert(process.argv(0).endsWith("node"))
+      assert(process.config("variables").asInstanceOf[js.Dictionary[String]]("host_arch") === OS.arch())
+      assert(process.connected.isEmpty)
+      assert(process.cwd().nonEmpty)
+      assert(process.env("PATH").nonEmpty)
+      assert(process.env.PATH === process.env("PATH"))
+      assert(process.execArgv.length === 0)
+      assert(process.execPath.endsWith("node"))
+      assert(process.features.contains("debug"))
+      assert(process.moduleLoadList.length > 0)
+      assert(process.title.isInstanceOf[String])
+      assert(process.version.startsWith(versionPrefix))
+      assert(process.versions.node.map(v => s"v${v}").getOrElse("").startsWith(versionPrefix))
+
+      // TODO: actually undefined in test
+      // assert(process.stdout.isTTY)
+      // assert(process.stderr.isTTY)
     }
 
   }
-
-  private def show(label: String, value: js.Any) = info(s"$label: $value")
 
 }

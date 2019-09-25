@@ -5,9 +5,6 @@ import org.scalatest.FunSpec
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 
-/**
-  * Zlib Tests
-  */
 class ZlibTest extends FunSpec {
 
   describe("Zlib") {
@@ -19,8 +16,6 @@ class ZlibTest extends FunSpec {
         compressed   <- Zlib.deflateFuture(original)
         uncompressed <- Zlib.unzipFuture(compressed, new CompressionOptions(finishFlush = Zlib.Z_SYNC_FLUSH))
       } {
-        info(s"compressed => ${compressed.toString()}")
-        info(s"uncompressed => ${uncompressed.toString()}")
         assert(original.compare(uncompressed) === 0)
       }
     }

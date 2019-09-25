@@ -1,15 +1,11 @@
 package io.scalajs.nodejs.buffer
 
-import io.scalajs.collection.Iterator.Entry
 import io.scalajs.nodejs.{TestEnvironment, buffer}
 import org.scalatest.FunSpec
 
 import scala.scalajs.js
 import scala.scalajs.js.typedarray.{ArrayBuffer, DataView, Uint8Array}
 
-/**
-  * Buffer Tests
-  */
 class BufferTest extends FunSpec {
 
   describe("Buffer") {
@@ -26,19 +22,19 @@ class BufferTest extends FunSpec {
         assert(buf2.compare(buf3) === 1)
       }
 
-      it("should support iterating entries [classic]") {
-        val buf                   = Buffer.from("Hello!")
-        val it                    = buf.entries()
-        var result: Entry[js.Any] = null
-        do {
-          result = it.next()
-          if (!result.done) info(s"value: ${result.value}")
-        } while (!result.done)
-      }
-
-      it("should support iterating entries [Scala]") {
+      it("should support iterating entries") {
         val buf = Buffer.from("Hello!")
-        for (value <- buf.entries()) info(s"value: $value")
+        val it  = buf.entries()
+        assert(
+          it.toSeq.map(_.toSeq) === Seq(
+            Seq(0, 72),
+            Seq(1, 101),
+            Seq(2, 108),
+            Seq(3, 108),
+            Seq(4, 111),
+            Seq(5, 33)
+          )
+        )
       }
 
       it("should support buffer property") {
@@ -76,24 +72,20 @@ class BufferTest extends FunSpec {
 
       it("should create buffers from strings") {
         val bufA = Buffer.from("Hello ")
-        info(s"bufA => ${bufA.toString()}")
         val bufB = Buffer.from("World")
-        info(s"bufB => ${bufB.toString()}")
         val bufC = bufA + bufB
-        info(s"bufC => ${bufC.toString()}, length = ${bufC.byteLength()}")
 
         assert(bufA.toString() === "Hello ")
         assert(bufB.toString() === "World")
-        assert(bufC.byteLength() === 11)
+        assert(bufC.byteLength === 11)
       }
 
       it("should create buffers from buffers") {
         val buffer = Buffer.from("hello")
         assert(Buffer.from(buffer).toString() === "hello")
 
-        // TODO: when Scala.js added TypedArray.from
-        // val uints = Uint8Array.from(???)
-        // assert(Buffer.from(uints).toString() ==="worlds")
+        val uints = Uint8Array.from(js.Array(72, 101, 108, 108, 111))
+        assert(Buffer.from(uints).toString() === "Hello")
       }
 
       it("should support concat") {

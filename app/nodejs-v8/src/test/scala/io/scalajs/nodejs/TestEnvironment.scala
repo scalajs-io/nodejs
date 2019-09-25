@@ -8,6 +8,8 @@ object TestEnvironment {
   private lazy val nodeMajorVersion: Int =
     ChildProcess.execSync("node -v").asInstanceOf[Buffer].toString().drop(1).takeWhile(_.isDigit).toInt
 
+  def isWindows: Boolean = os.OS.platform().startsWith("win")
+
   def isExecutedInExactNode12: Boolean = nodeMajorVersion == 12
   def isExecutedInExactNode10: Boolean = nodeMajorVersion == 10
   def isExecutedInExactNode8: Boolean  = nodeMajorVersion == 8

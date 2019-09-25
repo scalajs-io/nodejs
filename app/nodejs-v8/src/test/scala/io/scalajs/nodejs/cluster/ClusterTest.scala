@@ -8,30 +8,23 @@ import org.scalatest.FunSpec
 import scala.concurrent.duration._
 import scala.scalajs.js
 
-/**
-  * Cluster Tests
-  */
 class ClusterTest extends FunSpec {
 
   describe("Cluster") {
 
     it("cluster should be master") {
-      info(s"cluster.isMaster => ${Cluster.isMaster}")
       assert(Cluster.isMaster)
     }
 
     it("cluster should not be a worker") {
-      info(s"cluster.isWorker => ${Cluster.isWorker}")
       assert(!Cluster.isWorker)
     }
 
     it("cluster.schedulingPolicy must be defined") {
-      info(s"cluster.schedulingPolicy => ${Cluster.schedulingPolicy}")
       assert(!js.isUndefined(Cluster.schedulingPolicy))
     }
 
     it("cluster.settings  must be defined") {
-      info(s"cluster.settings => ${JSON.stringify(Cluster.settings)}")
       assert(!js.isUndefined(Cluster.settings))
     }
 

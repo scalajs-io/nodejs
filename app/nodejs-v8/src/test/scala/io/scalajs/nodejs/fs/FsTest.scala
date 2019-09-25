@@ -1,60 +1,80 @@
 package io.scalajs.nodejs.fs
 
-import io.scalajs.JSON
 import io.scalajs.nodejs.setImmediate
-import io.scalajs.nodejs.util.Util
 import io.scalajs.util.ScalaJsHelper._
-import org.scalatest.FunSpec
+import org.scalatest.AsyncFunSpec
+
+import scala.concurrent.{ExecutionContext, Promise}
 
 /**
   * File System (Fs) Tests
   *
   */
-class FsTest extends FunSpec {
+class FsTest extends AsyncFunSpec {
+  override implicit val executionContext = ExecutionContext.Implicits.global
 
   final val testResources = "./app/current/src/test/resources/"
 
   describe("Fs") {
 
     it("supports watching files") {
+      val promise = Promise[(String, String)]()
       val watcher = Fs.watch(s"${testResources}", (eventType, file) => {
-        info(s"watcher: eventType = '$eventType' file = '$file'")
+        if (!promise.isCompleted) {
+          promise.success((eventType, file))
+        }
       })
-      info(s"watcher: ${Util.inspect(watcher)}")
+      assert(watcher !== null)
 
       setImmediate(
         () =>
           Fs.writeFile(s"${testResources}1.txt", "Hello", error => {
             if (isDefined(error)) {
-              alert(s"error: ${JSON.stringify(error)}")
+              promise.failure(error)
             }
           })
       )
+
+      promise.future.map {
+        case (eventType, file) =>
+          assert(eventType === "change")
+          assert(file === "1.txt")
+      }
     }
 
     it("should stream data") {
+      val promise1 = Promise[(Stats, Stats)]()
+      val promise2 = Promise[Stats]()
+      val promise3 = Promise[Boolean]()
+
       val file1 = s"${testResources}fileA1.txt"
       val file2 = s"${testResources}fileA2.txt"
       val file3 = s"${testResources}fileC2.txt"
 
-      val readable = Fs.createReadStream(file1)
+      val readable = Fs.createReadStream(file1, new FileInputOptions(encoding = "utf8"))
       val writable = Fs.createWriteStream(file2)
-      readable.setEncoding("utf8")
-      readable.onData[String](chunk => writable.write(chunk))
+      readable.onData[String](chunk => {
+        writable.end(chunk)
+      })
+      Fs.writeFileSync(file1, "Hello World")
+
       writable.onFinish { () =>
-        info("Comparing file sizes:")
-        info(s"$file1 is ${Fs.statSync(file1).size} bytes")
-        info(s"$file2 is ${Fs.statSync(file2).size} bytes")
-        assert(Fs.statSync(file1).size === Fs.statSync(file2).size)
+        promise1.success((Fs.statSync(file1), Fs.statSync(file2)))
 
-        info("should rename the file")
         Fs.renameSync(file2, file3)
-        assert(Fs.statSync(file2).isFile())
+        promise2.success(Fs.statSync(file3))
 
-        info("should delete the file")
         Fs.unlinkSync(file3)
-        val deleted = !Fs.existsSync(file3)
-        info(s"deleted? $deleted")
+        promise3.success(!Fs.existsSync(file3))
+      }
+
+      for {
+        (stat1, stat2) <- promise1.future
+        stat3          <- promise2.future
+        deleted        <- promise3.future
+      } yield {
+        assert(stat1.size === stat2.size)
+        assert(stat3.isFile())
         assert(deleted)
       }
     }
@@ -66,18 +86,30 @@ class FsTest extends FunSpec {
       val readable = Fs.createReadStream(file1)
       val writable = Fs.createWriteStream(file2)
       readable.pipe(writable)
+
+      val promise = Promise[(Stats, Stats)]()
       writable.onFinish { () =>
-        info("Comparing file sizes:")
-        info(s"$file1 is ${Fs.statSync(file1).size} bytes")
-        info(s"$file2 is ${Fs.statSync(file2).size} bytes")
-        assert(Fs.statSync(file1).size === Fs.statSync(file2).size)
+        promise.success((Fs.statSync(file1), Fs.statSync(file2)))
+      }
+
+      promise.future.map {
+        case (stat1, stat2) =>
+          assert(stat1.size === stat2.size)
       }
     }
 
     it("support access") {
+      val promise = Promise[Unit]()
       Fs.access("./package.json", err => {
-        assert(err === null)
+        if (isDefined(err)) {
+          promise.failure(err)
+        } else {
+          promise.success(())
+        }
       })
+      promise.future.map { _ =>
+        succeed
+      }
     }
 
   }

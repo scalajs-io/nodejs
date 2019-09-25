@@ -3,17 +3,57 @@ package dns
 
 import org.scalatest.AsyncFunSpec
 
-import scala.concurrent.ExecutionContext
+import scala.concurrent.{ExecutionContext, Promise}
 import scala.scalajs.js
 
-/**
-  * DNS Tests
-  */
 class DNSAsyncTest extends AsyncFunSpec {
-  private val domain                     = "google.com"
   override implicit val executionContext = ExecutionContext.Implicits.global
 
+  private val domain = "google.com"
+
   describe("DNS") {
+
+    it("supports lookup") {
+      val promise = Promise[String]()
+      DNS.lookup(domain, (err, ipAddress) => {
+        assert(err === null)
+        promise.success(ipAddress)
+      })
+      promise.future.map { ipAddress =>
+        assert(ipAddress.nonEmpty)
+      }
+    }
+
+    it("supports lookupService:SSH") {
+      val promise = Promise[(String, String)]()
+      DNS.lookupService("127.0.0.1", 22, (err, hostname, service) => {
+        assert(err === null)
+        promise.success((hostname, service))
+      })
+      promise.future.map {
+        case (host, service) =>
+          assert(host === "localhost")
+          assert(service === "ssh")
+      }
+    }
+
+    it("supports resolve:NS") {
+      val promise = Promise[js.Array[String]]()
+      DNS.resolve(
+        domain,
+        "NS",
+        (err: DnsError, addresses: ResolveResult) => {
+          assert(err === null)
+          promise.success(addresses.asInstanceOf[js.Array[String]])
+        }
+      )
+      promise.future.map { addresses =>
+        assert(addresses.nonEmpty)
+      }
+    }
+  }
+
+  describe("DNS future extension") {
     it("supports lookupFuture") {
       DNS.lookupFuture(domain) map {
         case (ipAddress, ttl) =>

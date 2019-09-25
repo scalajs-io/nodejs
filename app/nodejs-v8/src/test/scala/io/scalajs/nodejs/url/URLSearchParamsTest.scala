@@ -1,23 +1,16 @@
 package io.scalajs.nodejs.url
 
-import io.scalajs.nodejs.console
 import org.scalatest.FunSpec
 
 import scala.scalajs.js
 
-/**
-  * URLSearchParams Tests
-  */
 class URLSearchParamsTest extends FunSpec {
 
   describe("URLSearchParams") {
 
     it("should parse the string as a query string") {
       val params = new URLSearchParams("user=abc&query=xyz")
-      info(params.get("user")) // Prints "abc"
       assert(params.get("user") === "abc")
-
-      info(params.toString) // Prints "user=abc&query=xyz"
       assert(params.toString === "user=abc&query=xyz")
     }
 
@@ -28,15 +21,18 @@ class URLSearchParamsTest extends FunSpec {
           "query" -> js.Array("first", "second")
         )
       )
-      info(params.getAll("query").mkString(", ")) // Prints [ "first,second" ]
       assert(params.getAll("query").toSeq === Seq("first,second"))
     }
 
     it("should iterates over each name-value pair in the query and invokes the given function") {
       val myURL = new URL("https://example.org/?a=b&c=d")
+      val array = js.Array[String]()
       myURL.searchParams.forEach((value, name, searchParams) => {
-        console.log(name, value, myURL.searchParams === searchParams)
+        array.push(s"${name}=${value}")
+        assert(myURL.searchParams === searchParams)
       })
+      assert(array(0) === "a=b")
+      assert(array(1) === "c=d")
     }
 
   }

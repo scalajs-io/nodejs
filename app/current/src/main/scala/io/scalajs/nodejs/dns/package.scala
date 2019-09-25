@@ -23,6 +23,8 @@ package object dns {
 
   type RRType = String
 
+  type ResolveResult = js.Array[String | ResolveObject] | SOA
+
   /////////////////////////////////////////////////////////////////////////////////
   //      Constants
   /////////////////////////////////////////////////////////////////////////////////
@@ -61,7 +63,7 @@ package object dns {
     * DNS Extensions
     * @param dns the DNS instance
     */
-  implicit class DNSExtensions(val dns: DNS) extends AnyVal {
+  implicit final class DNSExtensions(private val dns: DNS) extends AnyVal {
 
     /**
       * Resolves a hostname (e.g. 'nodejs.org') into the first found A (IPv4) or AAAA (IPv6) record. options can be an
@@ -69,8 +71,8 @@ package object dns {
       * integer, then it must be 4 or 6.
       */
     @inline
-    def lookupFuture(hostname: String, options: DnsOptions | Int = null): Future[String] = {
-      promiseWithError1[DnsError, String](dns.lookup(hostname, options, _))
+    def lookupFuture(hostname: String, options: DnsOptions | Int = null): Future[(String, Int)] = {
+      promiseWithError2[DnsError, String, Int](dns.lookup(hostname, options, _))
     }
 
     /**
@@ -96,8 +98,8 @@ package object dns {
       * @param hostname the hostname
       */
     @inline
-    def resolveFuture[T](hostname: String, rrtype: RRType = null): Future[T] = {
-      promiseWithError1[DnsError, T](dns.resolve[T](hostname, rrtype, _))
+    def resolveFuture(hostname: String, rrtype: RRType = null): Future[ResolveResult] = {
+      promiseWithError1[DnsError, ResolveResult](dns.resolve(hostname, rrtype, _))
     }
 
     /**

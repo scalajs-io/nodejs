@@ -1,5 +1,7 @@
 package io.scalajs.nodejs.path
 
+import com.thoughtworks.enableIf
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
@@ -18,22 +20,22 @@ trait Path extends js.Object {
   /**
     * The platform-specific path delimiter, ';' or ':'.
     */
-  def delimiter: String = js.native
+  val delimiter: String = js.native
 
   /**
     * Provide access to aforementioned path methods but always interact in a posix compatible way.
     */
-  def posix: Path = js.native
+  val posix: Path = js.native
 
   /**
     * The platform-specific file separator, '\\' or '/'.
     */
-  def sep: String = js.native
+  val sep: String = js.native
 
   /**
     * Provide access to aforementioned path methods but always interact in a win32 compatible way.
     */
-  def win32: Path = js.native
+  val win32: Path = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -133,6 +135,8 @@ trait Path extends js.Object {
     */
   def resolve(args: String*): String = js.native
 
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  def toNamespacedPath(path: String): String = js.native
 }
 
 /**

@@ -36,7 +36,7 @@ class PathTest extends FunSpec {
     }
 
     it("supports join()") {
-      Path.join("/foo", "bar", "baz/asdf", "quux", "..") == "/foo/bar/baz/asdf"
+      assert(Path.join("/foo", "bar", "baz/asdf", "quux", "..") == "/foo/bar/baz/asdf")
     }
 
   }

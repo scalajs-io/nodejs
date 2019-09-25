@@ -1,11 +1,11 @@
 package io.scalajs.nodejs.buffer
 
 import io.scalajs.collection.Iterator.Entry
-import io.scalajs.nodejs.{ TestEnvironment, buffer }
+import io.scalajs.nodejs.{TestEnvironment, buffer}
 import org.scalatest.FunSpec
 
 import scala.scalajs.js
-import scala.scalajs.js.typedarray.{ ArrayBuffer, DataView, Uint8Array }
+import scala.scalajs.js.typedarray.{ArrayBuffer, DataView, Uint8Array}
 
 /**
   * Buffer Tests
@@ -19,11 +19,11 @@ class BufferTest extends FunSpec {
         val buf2 = Buffer.from("BCD")
         val buf3 = Buffer.from("ABCD")
 
-        assert(buf1.compare(buf1) == 0)
-        assert(buf1.compare(buf2) == -1)
-        assert(buf1.compare(buf3) == -1)
-        assert(buf2.compare(buf1) == 1)
-        assert(buf2.compare(buf3) == 1)
+        assert(buf1.compare(buf1) === 0)
+        assert(buf1.compare(buf2) === -1)
+        assert(buf1.compare(buf3) === -1)
+        assert(buf2.compare(buf1) === 1)
+        assert(buf2.compare(buf3) === 1)
       }
 
       it("should support iterating entries [classic]") {
@@ -51,21 +51,21 @@ class BufferTest extends FunSpec {
         import scala.scalajs.js.typedarray.Int8Array
         val nodeBuffer = Buffer.from(js.Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9))
         val typedarray = new Int8Array(nodeBuffer.buffer, nodeBuffer.byteOffset, nodeBuffer.length)
-        assert(typedarray.mkString == new Int8Array(js.Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)).mkString)
+        assert(typedarray.mkString === new Int8Array(js.Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)).mkString)
       }
 
       it("should support byteLength for specific types") {
-        assert(Buffer.byteLength("\u00bd + \u00bc = \u00be") == 12)
-        assert(Buffer.byteLength("\u00bd + \u00bc = \u00be", "utf8") == 12)
-        assert(Buffer.byteLength(Buffer.alloc(12)) == 12)
-        assert(Buffer.byteLength(new Uint8Array(12)) == 12)
-        assert(Buffer.byteLength(new DataView(new ArrayBuffer(12))) == 12)
-        assert(Buffer.byteLength(new ArrayBuffer(12)) == 12)
+        assert(Buffer.byteLength("\u00bd + \u00bc = \u00be") === 12)
+        assert(Buffer.byteLength("\u00bd + \u00bc = \u00be", "utf8") === 12)
+        assert(Buffer.byteLength(Buffer.alloc(12)) === 12)
+        assert(Buffer.byteLength(new Uint8Array(12)) === 12)
+        assert(Buffer.byteLength(new DataView(new ArrayBuffer(12))) === 12)
+        assert(Buffer.byteLength(new ArrayBuffer(12)) === 12)
       }
 
       it("should support fill") {
         val otherBuf = Buffer.from("abcdef")
-        assert(Buffer.alloc(10).fill(otherBuf).toString() == "abcdefabcd")
+        assert(Buffer.alloc(10).fill(otherBuf).toString() === "abcdefabcd")
       }
     }
 
@@ -82,28 +82,28 @@ class BufferTest extends FunSpec {
         val bufC = bufA + bufB
         info(s"bufC => ${bufC.toString()}, length = ${bufC.byteLength()}")
 
-        assert(bufA.toString() == "Hello ")
-        assert(bufB.toString() == "World")
-        assert(bufC.byteLength() == 11)
+        assert(bufA.toString() === "Hello ")
+        assert(bufB.toString() === "World")
+        assert(bufC.byteLength() === 11)
       }
 
       it("should create buffers from buffers") {
         val buffer = Buffer.from("hello")
-        assert(Buffer.from(buffer).toString() == "hello")
+        assert(Buffer.from(buffer).toString() === "hello")
 
         // TODO: when Scala.js added TypedArray.from
         // val uints = Uint8Array.from(???)
-        // assert(Buffer.from(uints).toString() == "worlds")
+        // assert(Buffer.from(uints).toString() ==="worlds")
       }
 
       it("should support concat") {
         val buffers = js.Array(Buffer.from("abc"), Buffer.from("def"), Buffer.from("ghijk"))
-        assert(Buffer.compare(Buffer.concat(buffers), Buffer.from("abcdefghijk")) == 0)
-        assert(Buffer.compare(Buffer.concat(buffers, 5), Buffer.from("abcde")) == 0)
+        assert(Buffer.compare(Buffer.concat(buffers), Buffer.from("abcdefghijk")) === 0)
+        assert(Buffer.compare(Buffer.concat(buffers, 5), Buffer.from("abcde")) === 0)
 
         val uints: js.Array[Uint8Array] = js.Array(Buffer.from("abc"), Buffer.from("def"), Buffer.from("ghijk"))
-        assert(Buffer.compare(Buffer.concat(uints), Buffer.from("abcdefghijk")) == 0)
-        assert(Buffer.compare(Buffer.concat(uints, 5), Buffer.from("abcde")) == 0)
+        assert(Buffer.compare(Buffer.concat(uints), Buffer.from("abcdefghijk")) === 0)
+        assert(Buffer.compare(Buffer.concat(uints, 5), Buffer.from("abcde")) === 0)
       }
 
       it("should support isBufrer") {
@@ -129,12 +129,12 @@ class BufferTest extends FunSpec {
     describe("module members") {
       it("should support transcode") {
         // package object method
-        assert(buffer.transcode(Buffer.from("hello"), "utf8", "ascii").toString("ascii") == "hello")
-        assert(buffer.transcode(Buffer.from("€"), "utf8", "ascii").toString("ascii") == "?")
+        assert(buffer.transcode(Buffer.from("hello"), "utf8", "ascii").toString("ascii") === "hello")
+        assert(buffer.transcode(Buffer.from("€"), "utf8", "ascii").toString("ascii") === "?")
 
         // extension method
-        assert(Buffer.transcode(Buffer.from("hello"), "utf8", "ascii").toString("ascii") == "hello")
-        assert(Buffer.transcode(Buffer.from("€"), "utf8", "ascii").toString("ascii") == "?")
+        assert(Buffer.transcode(Buffer.from("hello"), "utf8", "ascii").toString("ascii") === "hello")
+        assert(Buffer.transcode(Buffer.from("€"), "utf8", "ascii").toString("ascii") === "?")
       }
 
       it("should support fields") {

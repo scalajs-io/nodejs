@@ -12,17 +12,17 @@ class FsClassesTest extends FunSpec {
 
   describe("ReadStream") {
     it("supports constructor(") {
-      assert(new ReadStream("package.json") != null)
-      assert(new ReadStream(Buffer.from("package.json")) != null)
-      assert(new ReadStream(new URL(s"file:///${dirname}/package.json")) != null)
+      assert(new ReadStream("package.json") !== null)
+      assert(new ReadStream(Buffer.from("package.json")) !== null)
+      assert(new ReadStream(new URL(s"file:///${dirname}/package.json")) !== null)
     }
   }
 
   describe("WriteStream") {
     it("supports constructor") {
-      assert(new WriteStream("package.json") != null)
-      assert(new WriteStream(Buffer.from("package.json")) != null)
-      assert(new WriteStream(new URL(s"file:///${dirname}/package.json")) != null)
+      assert(new WriteStream("package.json") !== null)
+      assert(new WriteStream(Buffer.from("package.json")) !== null)
+      assert(new WriteStream(new URL(s"file:///${dirname}/package.json")) !== null)
     }
   }
 

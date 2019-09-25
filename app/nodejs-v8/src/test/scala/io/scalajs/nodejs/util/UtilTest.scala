@@ -5,13 +5,13 @@ import org.scalatest.FunSpec
 class UtilTest extends FunSpec {
 
   it("have inspect object") {
-    assert(Util.inspect != null)
-    assert(Util.inspect.defaultOptions != null)
-    assert(Util.inspect.styles != null)
+    assert(Util.inspect !== null)
+    assert(Util.inspect.defaultOptions !== null)
+    assert(Util.inspect.styles !== null)
   }
 
   it("have promisify") {
-    assert(Util.promisify.custom != null)
+    assert(Util.promisify.custom !== null)
   }
 
   it("have TextEncoder/TextDecoder") {

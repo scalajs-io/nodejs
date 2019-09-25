@@ -26,7 +26,7 @@ class FsAsyncTest extends AsyncFunSpec with BeforeAndAfterEach {
         existsAfterUnlink <- Fs.existsFuture(file)
       } yield {
         assert(exists)
-        assert(readBuffer.asInstanceOf[Buffer].toString() == "content")
+        assert(readBuffer.asInstanceOf[Buffer].toString() === "content")
         assert(!existsAfterUnlink)
       }
     }

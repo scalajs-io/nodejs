@@ -50,7 +50,7 @@ class EventEmitterTest extends FunSpec {
       val myEmitter = new EventEmitter()
       myEmitter.on("event", () => {})
       myEmitter.on("event", () => {})
-      assert(myEmitter.listenerCount("event") == 2)
+      assert(myEmitter.listenerCount("event") === 2)
     }
 
   }

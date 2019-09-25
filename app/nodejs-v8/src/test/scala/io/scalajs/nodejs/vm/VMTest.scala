@@ -32,14 +32,14 @@ class VMTest extends FunSpec {
       expectedSet foreach {
         case ExpectedData(animal, count, name) =>
           script.runInContext(context)
-          assert(sandbox.animal == animal && sandbox.count == count && sandbox.name == name)
+          assert(sandbox.animal === animal && sandbox.count === count && sandbox.name === name)
       }
     }
 
     it("should compile and execute JavaScript code in a custom context") {
       val sandbox = new Sandbox(animal = "cat", count = 2, name = "kitty")
       VM.runInNewContext("""count += 1; name = "kitty"""", sandbox)
-      assert(sandbox.animal == "cat" && sandbox.count == 3 && sandbox.name == "kitty")
+      assert(sandbox.animal === "cat" && sandbox.count === 3 && sandbox.name === "kitty")
     }
 
   }

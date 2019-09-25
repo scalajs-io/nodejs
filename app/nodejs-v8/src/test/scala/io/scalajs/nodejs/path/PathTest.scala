@@ -10,22 +10,22 @@ class PathTest extends FunSpec {
   describe("Path") {
 
     it("supports basename()") {
-      assert(Path.basename("/foo/bar/baz/asdf/quux.html") == "quux.html")
-      assert(Path.basename("/foo/bar/baz/asdf/quux.html", ".html") == "quux")
+      assert(Path.basename("/foo/bar/baz/asdf/quux.html") === "quux.html")
+      assert(Path.basename("/foo/bar/baz/asdf/quux.html", ".html") === "quux")
     }
 
     it("supports posix.basename()") {
-      assert(Path.posix.basename("C:\\temp\\data.txt") == "C:\\temp\\data.txt")
-      assert(Path.posix.basename("/temp/data.txt") == "data.txt")
+      assert(Path.posix.basename("C:\\temp\\data.txt") === "C:\\temp\\data.txt")
+      assert(Path.posix.basename("/temp/data.txt") === "data.txt")
     }
 
     it("supports win32.basename()") {
-      assert(Path.win32.basename("C:\\temp\\data.txt") == "data.txt")
-      assert(Path.win32.basename("/temp/data.txt") == "data.txt")
+      assert(Path.win32.basename("C:\\temp\\data.txt") === "data.txt")
+      assert(Path.win32.basename("/temp/data.txt") === "data.txt")
     }
 
     it("supports format()") {
-      assert(Path.format(new PathObject(root = "/", base = "file.txt")) == "/file.txt")
+      assert(Path.format(new PathObject(root = "/", base = "file.txt")) === "/file.txt")
     }
 
     it("supports isAbsolute()") {
@@ -36,7 +36,7 @@ class PathTest extends FunSpec {
     }
 
     it("supports join()") {
-      assert(Path.join("/foo", "bar", "baz/asdf", "quux", "..") == "/foo/bar/baz/asdf")
+      assert(Path.join("/foo", "bar", "baz/asdf", "quux", "..") === "/foo/bar/baz/asdf")
     }
 
   }

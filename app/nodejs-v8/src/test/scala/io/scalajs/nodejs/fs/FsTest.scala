@@ -45,7 +45,7 @@ class FsTest extends FunSpec {
         info("Comparing file sizes:")
         info(s"$file1 is ${Fs.statSync(file1).size} bytes")
         info(s"$file2 is ${Fs.statSync(file2).size} bytes")
-        assert(Fs.statSync(file1).size == Fs.statSync(file2).size)
+        assert(Fs.statSync(file1).size === Fs.statSync(file2).size)
 
         info("should rename the file")
         Fs.renameSync(file2, file3)
@@ -70,13 +70,13 @@ class FsTest extends FunSpec {
         info("Comparing file sizes:")
         info(s"$file1 is ${Fs.statSync(file1).size} bytes")
         info(s"$file2 is ${Fs.statSync(file2).size} bytes")
-        assert(Fs.statSync(file1).size == Fs.statSync(file2).size)
+        assert(Fs.statSync(file1).size === Fs.statSync(file2).size)
       }
     }
 
     it("support access") {
       Fs.access("./package.json", err => {
-        assert(err == null)
+        assert(err === null)
       })
     }
 

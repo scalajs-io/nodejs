@@ -21,7 +21,7 @@ class UtilTest extends FunSpec {
   }
 
   it("have inspect.custom added in v10.12.0") {
-    assert(Util.inspect.custom != null)
+    assert(Util.inspect.custom !== null)
   }
 
 }

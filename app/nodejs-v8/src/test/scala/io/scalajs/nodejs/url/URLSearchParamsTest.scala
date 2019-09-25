@@ -15,10 +15,10 @@ class URLSearchParamsTest extends FunSpec {
     it("should parse the string as a query string") {
       val params = new URLSearchParams("user=abc&query=xyz")
       info(params.get("user")) // Prints "abc"
-      assert(params.get("user") == "abc")
+      assert(params.get("user") === "abc")
 
       info(params.toString) // Prints "user=abc&query=xyz"
-      assert(params.toString == "user=abc&query=xyz")
+      assert(params.toString === "user=abc&query=xyz")
     }
 
     it("should parse the dictionary/object as a query string") {
@@ -29,7 +29,7 @@ class URLSearchParamsTest extends FunSpec {
         )
       )
       info(params.getAll("query").mkString(", ")) // Prints [ "first,second" ]
-      assert(params.getAll("query").toSeq == Seq("first,second"))
+      assert(params.getAll("query").toSeq === Seq("first,second"))
     }
 
     it("should iterates over each name-value pair in the query and invokes the given function") {

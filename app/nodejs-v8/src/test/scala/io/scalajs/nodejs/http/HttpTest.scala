@@ -19,7 +19,7 @@ class HttpTest extends FunSpec {
         response.write("Hello World")
         response.end()
       })
-      assert(server != null)
+      assert(server !== null)
 
       // don't listen on a port
       //server.listen(58888)

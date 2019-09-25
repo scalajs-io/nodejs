@@ -21,7 +21,7 @@ class ZlibTest extends FunSpec {
       } {
         info(s"compressed => ${compressed.toString()}")
         info(s"uncompressed => ${uncompressed.toString()}")
-        assert(original.compare(uncompressed) == 0)
+        assert(original.compare(uncompressed) === 0)
       }
     }
   }

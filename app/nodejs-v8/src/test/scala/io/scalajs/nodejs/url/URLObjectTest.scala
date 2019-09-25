@@ -17,7 +17,7 @@ class URLObjectTest extends FunSpec {
 
     it("should break down URLs into components") {
       assert(
-        urlObject.toJson == """{"protocol":"https:","slashes":true,"auth":null,"host":"www.google.com","port":null,"hostname":"www.google.com","hash":"#q=node","search":"?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8","query":"sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8","pathname":"/webhp","path":"/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8","href":"https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=node"}"""
+        urlObject.toJson === """{"protocol":"https:","slashes":true,"auth":null,"host":"www.google.com","port":null,"hostname":"www.google.com","hash":"#q=node","search":"?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8","query":"sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8","pathname":"/webhp","path":"/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8","href":"https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=node"}"""
       )
     }
 
@@ -30,7 +30,7 @@ class URLObjectTest extends FunSpec {
     }
 
     it("should reconstituted the URL to match the original") {
-      assert(URL.format(urlObject) == originalUrl)
+      assert(URL.format(urlObject) === originalUrl)
     }
 
   }

@@ -1,4 +1,4 @@
-package nodejs.buffer
+package io.scalajs.nodejs.buffer
 
 import io.scalajs.nodejs.buffer.Buffer
 import org.scalatest.FunSpec

@@ -144,7 +144,7 @@ trait Process extends IEventEmitter {
     * v0.8 allowed for longer process title strings by also overwriting the environ memory but that was
     * potentially insecure/confusing in some (rather obscure) cases.
     */
-  var title: js.Any = js.native
+  var title: String = js.native
 
   /**
     * A compiled-in property that exposes NODE_VERSION.

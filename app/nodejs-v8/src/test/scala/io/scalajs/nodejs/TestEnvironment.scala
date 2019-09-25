@@ -1,4 +1,5 @@
-package nodejs
+package io.scalajs.nodejs
+
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.child_process.ChildProcess
 

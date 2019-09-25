@@ -1,12 +1,11 @@
 package io.scalajs.nodejs.buffer
 
 import io.scalajs.collection.Iterator.Entry
-import io.scalajs.nodejs.buffer
-import nodejs.TestEnvironment
+import io.scalajs.nodejs.{ TestEnvironment, buffer }
 import org.scalatest.FunSpec
 
 import scala.scalajs.js
-import scala.scalajs.js.typedarray.{ArrayBuffer, DataView, Uint8Array}
+import scala.scalajs.js.typedarray.{ ArrayBuffer, DataView, Uint8Array }
 
 /**
   * Buffer Tests

@@ -1,4 +1,4 @@
-package nodejs
+package io.scalajs.nodejs
 
 import io.scalajs.nodejs.console_module.Console
 import io.scalajs.nodejs.fs.Fs

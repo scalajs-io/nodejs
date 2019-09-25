@@ -13,16 +13,7 @@ import scala.scalajs.js.|
   * @see https://nodejs.org/api/dns.html
   */
 @js.native
-trait DNS extends js.Object {
-
-  /////////////////////////////////////////////////////////////////////////////////
-  //      Methods
-  /////////////////////////////////////////////////////////////////////////////////
-
-  /**
-    * Returns an array of IP address strings that are being used for name resolution.
-    */
-  def getServers(): js.Array[String] = js.native
+trait DNS extends IResolver {
 
   /**
     * Resolves a hostname (e.g. 'nodejs.org') into the first found A (IPv4) or AAAA (IPv6) record. options can be an
@@ -42,7 +33,7 @@ trait DNS extends js.Object {
     * All properties are optional.
     * @example dns.lookup(hostname[, options], callback)
     */
-  def lookup(hostname: String, options: DnsOptions | Int, callback: DnsCallback1[String]): Unit = js.native
+  def lookup(hostname: String, options: DnsOptions | Int, callback: DnsCallback2[String, Int]): Unit = js.native
 
   /**
     * Resolves a hostname (e.g. 'nodejs.org') into the first found A (IPv4) or AAAA (IPv6) record. options can be an
@@ -79,156 +70,6 @@ trait DNS extends js.Object {
     * @example dns.lookupService('127.0.0.1', 22, (err, hostname, service) => { ... })
     */
   def lookupService(address: String, port: Int, callback: DnsCallback2[String, String]): Unit = js.native
-
-  /**
-    * Uses the DNS protocol to resolve a hostname (e.g. 'nodejs.org') into an array of the record types specified by rrtype.
-    * On error, err is an Error object, where err.code is one of the error codes listed here.
-    * @param hostname the hostname
-    * @param rrtype   the given rrtype
-    *                 Valid values for rrtype are:
-    *                 'A' - IPV4 addresses, default
-    *                 'AAAA' - IPV6 addresses
-    *                 'MX' - mail exchange records
-    *                 'TXT' - text records
-    *                 'SRV' - SRV records
-    *                 'PTR' - PTR records
-    *                 'NS' - name server records
-    *                 'CNAME' - canonical name records
-    *                 'SOA' - start of authority record
-    *                 'NAPTR' - name authority pointer record
-    * @param callback the callback function has arguments (err, addresses). When successful, addresses will be an array.
-    *                 The type of each item in addresses is determined by the record type, and described in the
-    *                 documentation for the corresponding lookup methods.
-    * @example dns.resolve(hostname[, rrtype], callback)
-    */
-  def resolve[A](hostname: String, rrtype: RRType, callback: DnsCallback1[A]): Unit = js.native
-
-  /**
-    * Uses the DNS protocol to resolve a hostname (e.g. 'nodejs.org') into an array of the record types specified by rrtype.
-    * On error, err is an Error object, where err.code is one of the error codes listed here.
-    * @param hostname the hostname
-    * @param callback the callback function has arguments (err, addresses). When successful, addresses will be an array. The type of
-    *                 each item in addresses is determined by the record type, and described in the documentation for the corresponding
-    *                 lookup methods.
-    * @example dns.resolve(hostname[, rrtype], callback)
-    */
-  def resolve(hostname: String, callback: DnsCallback1[js.Array[String]]): Unit = js.native
-
-  /**
-    * Uses the DNS protocol to resolve a IPv4 addresses (A records) for the hostname. The addresses argument passed to
-    * the callback function will contain an array of IPv4 addresses (e.g. ['74.125.79.104', '74.125.79.105', '74.125.79.106']).
-    * @example dns.resolve4(hostname, callback)
-    */
-  def resolve4(hostname: String, callback: DnsCallback1[js.Array[String]]): Unit = js.native
-
-  /**
-    * Uses the DNS protocol to resolve a IPv6 addresses (AAAA records) for the hostname. The addresses argument passed
-    * to the callback function will contain an array of IPv6 addresses.
-    * @example dns.resolve6(hostname, callback)
-    */
-  def resolve6(hostname: String, callback: DnsCallback1[js.Array[String]]): Unit = js.native
-
-  /**
-    * Uses the DNS protocol to resolve CNAME records for the hostname. The addresses argument passed to the callback
-    * function will contain an array of canonical name records available for the hostname (e.g. ['bar.example.com']).
-    * @example dns.resolveCname(hostname, callback)
-    */
-  def resolveCname(hostname: String, callback: DnsCallback1[js.Array[String]]): Unit = js.native
-
-  /**
-    * Uses the DNS protocol to resolve mail exchange records (MX records) for the hostname. The addresses argument
-    * passed to the callback function will contain an array of objects containing both a priority and exchange property
-    * (e.g. [{priority: 10, exchange: 'mx.example.com'}, ...]).
-    * @example dns.resolveMx(hostname, callback)
-    */
-  def resolveMx(hostname: String, callback: DnsCallback1[MX]): Unit = js.native
-
-  /**
-    * Uses the DNS protocol to resolve regular expression based records (NAPTR records) for the hostname. The callback
-    * function has arguments (err, addresses). The addresses argument passed to the callback function will contain an
-    * array of objects with the following properties:
-    * <ul>
-    * <li>flags</li>
-    * <li>service</li>
-    * <li>regexp</li>
-    * <li>replacement</li>
-    * <li>order</li>
-    * <li>preference</li>
-    * </ul>
-    * @example dns.resolveNaptr(hostname, callback)
-    */
-  def resolveNaptr(hostname: String, callback: DnsCallback1[NAPTR]): Unit = js.native
-
-  /**
-    * Uses the DNS protocol to resolve name server records (NS records) for the hostname. The addresses argument passed
-    * to the callback function will contain an array of name server records available for hostname
-    * (e.g., ['ns1.example.com', 'ns2.example.com']).
-    * @example dns.resolveNs(hostname, callback)
-    */
-  def resolveNs(hostname: String, callback: DnsCallback1[js.Array[String]]): Unit = js.native
-
-  /**
-    * Uses the DNS protocol to resolve a start of authority record (SOA record) for the hostname. The addresses argument
-    * passed to the callback function will be an object with the following properties:
-    * <ul>
-    * <li>nsname</li>
-    * <li>hostmaster</li>
-    * <li>serial</li>
-    * <li>refresh</li>
-    * <li>retry</li>
-    * <li>expire</li>
-    * <li>minttl</li>
-    * </ul>
-    * @example dns.resolveSoa(hostname, callback)
-    */
-  def resolveSoa(hostname: String, callback: DnsCallback1[SOA]): Unit = js.native
-
-  /**
-    * Uses the DNS protocol to resolve service records (SRV records) for the hostname. The addresses argument passed to
-    * the callback function will be an array of objects with the following properties:
-    * <ul>
-    * <li>priority</li>
-    * <li>weight</li>
-    * <li>port</li>
-    * <li>name</li>
-    * </ul>
-    * @example dns.resolveSrv(hostname, callback)
-    */
-  def resolveSrv(hostname: String, callback: DnsCallback1[SRV]): Unit = js.native
-
-  /**
-    * Uses the DNS protocol to resolve pointer records (PTR records) for the hostname. The addresses argument passed to
-    * the callback function will be an array of strings containing the reply records.
-    * @example dns.resolvePtr(hostname, callback)
-    */
-  def resolvePtr(hostname: String, callback: DnsCallback1[js.Array[String]]): Unit = js.native
-
-  /**
-    * Uses the DNS protocol to resolve text queries (TXT records) for the hostname. The addresses argument passed to the
-    * callback function is is a two-dimentional array of the text records available for hostname
-    * (e.g., [ ['v=spf1 ip4:0.0.0.0 ', '~all' ] ]). Each sub-array contains TXT chunks of one record. Depending on the
-    * use case, these could be either joined together or treated separately.
-    * @example dns.resolveTxt(hostname, callback)
-    */
-  def resolveTxt(hostname: String, callback: DnsCallback1[js.Array[js.Array[String]]]): Unit = js.native
-
-  /**
-    * Performs a reverse DNS query that resolves an IPv4 or IPv6 address to an array of hostnames.
-    * The callback function has arguments (err, hostnames), where hostnames is an array of resolved hostnames for the given ip.
-    * On error, err is an Error object, where err.code is one of the DNS error codes.
-    * @example dns.reverse(ip, callback)
-    */
-  def reverse(ipAddress: String, callback: DnsCallback1[js.Array[String]]): Unit = js.native
-
-  /**
-    * Sets the IP addresses of the servers to be used when resolving. The servers argument is an array of IPv4 or IPv6 addresses.
-    * If a port specified on the address it will be removed.
-    * An error will be thrown if an invalid address is provided.
-    * The dns.setServers() method must not be called while a DNS query is in progress.
-    * @example dns.setServers(servers)
-    */
-  def setServers(servers: js.Array[String]): Unit = js.native
-
 }
 
 /**
@@ -237,6 +78,11 @@ trait DNS extends js.Object {
 @js.native
 @JSImport("dns", JSImport.Namespace)
 object DNS extends DNS {
+
+  @js.native
+  object promises extends js.Object {
+    type Resolver = PromisesResolver
+  }
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Error Codes

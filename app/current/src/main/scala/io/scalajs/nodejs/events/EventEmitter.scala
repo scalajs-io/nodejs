@@ -1,5 +1,7 @@
 package io.scalajs.nodejs.events
 
+import com.thoughtworks.enableIf
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
@@ -48,7 +50,9 @@ trait IEventEmitter extends js.Object {
     * @param args the event arguments
     * @example emitter.emit(name[, arg1][, arg2][, ...])
     */
-  def emit(name: String, args: js.Any*): Any = js.native
+  def emit(name: String, args: js.Any*): Boolean = js.native
+
+  def eventNames(): js.Array[String] = js.native
 
   /**
     * Returns the current max listener value for the EventEmitter which is either set by
@@ -70,6 +74,9 @@ trait IEventEmitter extends js.Object {
     */
   def listeners(eventName: String): js.Array[js.Function] = js.native
 
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  def off(eventName: String, listner: js.Function): this.type = js.native
+
   /**
     * Adds the listener function to the end of the listeners array for the event named eventName.
     * No checks are made to see if the listener has already been added. Multiple calls passing
@@ -87,15 +94,9 @@ trait IEventEmitter extends js.Object {
     */
   def once(eventName: String, listener: js.Function): this.type = js.native
 
-  /**
-    * Removes all listeners, or those of the specified eventName.
-    * <p/><b>Note</b> that it is bad practice to remove listeners added elsewhere in the code,
-    * particularly when the EventEmitter instance was created by some other component or
-    * module (e.g. sockets or file streams).
-    * <p/>Returns a reference to the EventEmitter so calls can be chained.
-    * @example emitter.removeAllListeners([eventName])
-    */
-  def removeAllListeners(eventName: String): this.type = js.native
+  def prependListener(eventName: String, listener: js.Function): this.type = js.native
+
+  def prependOnceListener(eventName: String, listener: js.Function): this.type = js.native
 
   /**
     * Removes all listeners, or those of the specified eventName.
@@ -105,7 +106,7 @@ trait IEventEmitter extends js.Object {
     * <p/>Returns a reference to the EventEmitter so calls can be chained.
     * @example emitter.removeAllListeners([eventName])
     */
-  def removeAllListeners(): this.type = js.native
+  def removeAllListeners(eventName: String = js.native): this.type = js.native
 
   /**
     * Removes the specified listener from the listener array for the event named eventName.
@@ -131,6 +132,8 @@ trait IEventEmitter extends js.Object {
     */
   def setMaxListeners(n: Int): this.type = js.native
 
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  def rawListeners(eventName: String): js.Array[js.Function] = js.native
 }
 
 /**
@@ -155,4 +158,6 @@ object EventEmitter extends IEventEmitter {
   @deprecated("Use emitter.listenerCount() instead.", since = "4.0.0")
   def listenerCount(emitter: IEventEmitter, eventName: String): Unit = js.native
 
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def once(emitter: IEventEmitter, eventName: String): js.Promise[js.Array[js.Any]] = js.native
 }

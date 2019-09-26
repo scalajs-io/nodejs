@@ -1,7 +1,7 @@
 package io.scalajs.nodejs.readline
 
 import io.scalajs.nodejs.fs.Fs
-import io.scalajs.nodejs.process
+import io.scalajs.nodejs.process.Process
 import org.scalatest.AsyncFunSpec
 
 import scala.concurrent.{ExecutionContext, Promise}
@@ -21,7 +21,7 @@ class ReadlineTest extends AsyncFunSpec {
       val reader = Readline.createInterface(
         new ReadlineOptions(
           input = Fs.createReadStream(file),
-          output = process.stdout,
+          output = Process.stdout,
           terminal = false
         )
       )
@@ -38,7 +38,7 @@ class ReadlineTest extends AsyncFunSpec {
 
     it("has REPL-like functionality") {
       val promise = Promise[Unit]()
-      val rl      = Readline.createInterface(new ReadlineOptions(input = process.stdin, output = process.stdout))
+      val rl      = Readline.createInterface(new ReadlineOptions(input = Process.stdin, output = Process.stdout))
       rl.setPrompt("OHAI> ")
       rl.prompt()
 

@@ -36,7 +36,7 @@ The following core Node.js modules (v8.7.0+) have been implemented:
 | [net](https://nodejs.org/api/net.html)                       |                    |
 | [os](https://nodejs.org/api/os.html)                         | :heavy_check_mark: |
 | [path](https://nodejs.org/api/path.html)                     | :heavy_check_mark: |
-| [process](https://nodejs.org/api/process.html)               |                    |
+| [process](https://nodejs.org/api/process.html)               | :heavy_check_mark: |
 | [querystring](https://nodejs.org/api/querystring.html)       | :heavy_check_mark: |
 | [readline](https://nodejs.org/api/readline.html)             |                    |
 | [repl](https://nodejs.org/api/repl.html)                     |                    |

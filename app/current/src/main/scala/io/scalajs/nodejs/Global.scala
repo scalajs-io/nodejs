@@ -72,7 +72,7 @@ trait Global extends js.Object {
 
   def console: console_module.Console = js.native
 
-  def process: Process = js.native
+  def process: io.scalajs.nodejs.process.Process = js.native
 
   def ref: Ref = js.native
 

@@ -47,7 +47,7 @@ package object repl {
     * <li>NODE_REPL_MODE</li>
     * </ul>
     */
-  final implicit class EnvironmentVariableOptions(val env: Environment) extends AnyVal {
+  final implicit class EnvironmentVariableOptions(val env: process.Environment) extends AnyVal {
 
     /**
       * When a valid path is given, persistent REPL history will be saved to the specified file rather

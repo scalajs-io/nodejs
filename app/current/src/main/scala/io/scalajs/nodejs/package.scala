@@ -18,7 +18,11 @@ package object nodejs {
   //      Type Definitions
   /////////////////////////////////////////////////////////////////////////////////
 
-  type Environment = js.Dictionary[String]
+  @deprecated("use process.Process instead", "0.9.0")
+  type Process = process.Process
+
+  @deprecated("use process.Environment instead", "0.9.0")
+  type Environment = process.Environment
 
   type EventType = String
 
@@ -86,13 +90,6 @@ package object nodejs {
   @js.native
   @JSGlobal("global")
   object global extends Global
-
-  /**
-    * The process object. See the process object section.
-    */
-  @js.native
-  @JSGlobal("process")
-  object process extends Process
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Timers

@@ -28,7 +28,7 @@ class ConsoleTest extends FunSpec with BeforeAndAfterEach {
   it("have constructor(options) added in v10.0.0") {
     val console = new Console(
       new ConsoleOptions(
-        stdout = io.scalajs.nodejs.process.stdout
+        stdout = io.scalajs.nodejs.process.Process.stdout
       )
     )
 

@@ -1,12 +1,13 @@
 package io.scalajs.nodejs.readline
 
 import io.scalajs.nodejs.events.IEventEmitter
+import io.scalajs.nodejs.stream.{Readable, Writable}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
-/**
-  * Readline allows reading of a stream (such as process.stdin) on a line-by-line basis.
+/**reading
+  * Readline allows  of a stream (such as process.stdin) on a line-by-line basis.
   * To use this module, do require('readline').
   * Note that once you've invoked this module, your Node.js program will not terminate until you've closed the interface.
   * @see https://nodejs.org/api/readline.html
@@ -23,13 +24,13 @@ trait Readline extends IEventEmitter {
     * </ul>
     * @example readline.clearLine(stream, dir)
     */
-  def clearLine(stream: js.Any, dir: Int): Unit = js.native
+  def clearLine(stream: Writable, dir: Int, callback: js.Function = js.native): Boolean = js.native
 
   /**
     * Clears the screen from the current position of the cursor down.
     * @example readline.clearScreenDown(stream)
     */
-  def clearScreenDown(stream: js.Any): Unit = js.native
+  def clearScreenDown(stream: Writable, callback: js.Function = js.native): Boolean = js.native
 
   /**
     * Creates a readline Interface instance.
@@ -41,13 +42,17 @@ trait Readline extends IEventEmitter {
     * Move cursor to the specified position in a given TTY stream.
     * @example readline.cursorTo(stream, x, y)
     */
-  def cursorTo(stream: js.Any, x: Int, y: Int): Unit = js.native
+  def cursorTo(stream: Writable, x: Int, y: Int, callback: js.Function = js.native): Unit = js.native
+  def cursorTo(stream: Writable, x: Int, callback: js.Function): Unit                     = js.native
+  def cursorTo(stream: Writable, x: Int): Unit                                            = js.native
+
+  def emitKeypressEvents(stream: Readable, interface: Interface = js.native): Unit = js.native
 
   /**
     * Move cursor relative to it's current position in a given TTY stream.
     * @example readline.moveCursor(stream, dx, dy)
     */
-  def moveCursor(stream: js.Any, dx: Int, dy: Int): Unit = js.native
+  def moveCursor(stream: Writable, dx: Int, dy: Int, callback: js.Function = js.native): Unit = js.native
 
 }
 

@@ -51,7 +51,7 @@ trait Interface extends IEventEmitter {
     * If output is set to null or undefined when calling createInterface, nothing is displayed.
     * @example rl.question(query, callback)
     */
-  def question(query: String, callback: js.Function): Unit = js.native
+  def question(query: String, callback: js.Function1[String, Any]): Unit = js.native
 
   /**
     * Resumes the readline input stream.
@@ -71,7 +71,7 @@ trait Interface extends IEventEmitter {
     * This will also resume the input stream if it has been paused.
     * @example rl.write(data[, key])
     */
-  def write(data: String, key: js.Any): Unit = js.native
+  def write(data: String, key: Key): Unit = js.native
 
   /**
     * Writes data to output stream, unless output is set to null or undefined when calling createInterface.
@@ -81,7 +81,15 @@ trait Interface extends IEventEmitter {
     */
   def write(data: String): Unit = js.native
 
+  // TODO: [Symbol.asyncIterator]()
 }
+
+class Key(
+    var ctrl: js.UndefOr[Boolean] = js.undefined,
+    var meta: js.UndefOr[Boolean] = js.undefined,
+    var shift: js.UndefOr[Boolean] = js.undefined,
+    var name: js.UndefOr[String] = js.undefined
+) extends js.Object
 
 /**
   * Readline Interface Companion

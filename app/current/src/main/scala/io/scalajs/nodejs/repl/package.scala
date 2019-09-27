@@ -25,7 +25,7 @@ package object repl {
       * @param listener The listener callback
       */
     @inline
-    def onExit(listener: () => Any): server.type = server.on("exit", listener)
+    def onExit(listener: () => Any): REPLServer = server.on("exit", listener)
 
     /**
       * The 'reset' event is emitted when the REPL's context is reset. This occurs whenever the .clear command
@@ -35,7 +35,7 @@ package object repl {
       * @param listener The listener callback
       */
     @inline
-    def onReset(listener: REPLContext => Any): server.type = server.on("reset", listener)
+    def onReset(listener: REPLContext => Any): REPLServer = server.on("reset", listener)
 
   }
 
@@ -47,7 +47,7 @@ package object repl {
     * <li>NODE_REPL_MODE</li>
     * </ul>
     */
-  final implicit class EnvironmentVariableOptions(val env: process.Environment) extends AnyVal {
+  final implicit class EnvironmentVariableOptions(private val env: process.Environment) extends AnyVal {
 
     /**
       * When a valid path is given, persistent REPL history will be saved to the specified file rather

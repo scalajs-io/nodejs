@@ -39,7 +39,7 @@ The following core Node.js modules (v8.7.0+) have been implemented:
 | [process](https://nodejs.org/api/process.html)               | :heavy_check_mark: |
 | [querystring](https://nodejs.org/api/querystring.html)       | :heavy_check_mark: |
 | [readline](https://nodejs.org/api/readline.html)             |                    |
-| [repl](https://nodejs.org/api/repl.html)                     |                    |
+| [repl](https://nodejs.org/api/repl.html)                     | :heavy_check_mark: |
 | [stream](https://nodejs.org/api/stream.html)                 |                    |
 | [string-decoder](https://nodejs.org/api/string_decoder.html) | :heavy_check_mark: |
 | [timers](https://nodejs.org/api/timers.html)                 | :heavy_check_mark: |

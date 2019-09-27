@@ -1,9 +1,11 @@
 package io.scalajs.nodejs.repl
 
+import com.thoughtworks.enableIf
 import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.nodejs.readline.Interface
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * REPL Server
@@ -16,6 +18,9 @@ trait REPLServer extends IEventEmitter with Interface {
     */
   val context: REPLContext = js.native
 
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  def clearBufferedCommand(): Unit = js.native
+
   /**
     * The replServer.defineCommand() method is used to add new .-prefixed commands to the REPL instance.
     * Such commands are invoked by typing a period (.) followed by the keyword. The cmd is either a Function
@@ -27,7 +32,7 @@ trait REPLServer extends IEventEmitter with Interface {
     * @param keyword The command keyword (without a leading . character).
     * @param cmd     The function to invoke when the command is processed.
     */
-  def defineCommand(keyword: String, cmd: js.Function0[Any]): Unit = js.native
+  def defineCommand(keyword: String, cmd: DefinedCommand | js.Function1[String, Any]): Unit = js.native
 
   /**
     * The replServer.displayPrompt() method readies the REPL instance for input from the user, printing the
@@ -52,7 +57,15 @@ trait REPLServer extends IEventEmitter with Interface {
     */
   def displayPrompt(): Unit = js.native
 
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def setupHistory(historyPath: String, callback: js.Function2[io.scalajs.nodejs.Error, REPLServer, Any]): Unit =
+    js.native
 }
+
+class DefinedCommand(
+    var action: js.Function1[String, Any],
+    var help: js.UndefOr[String] = js.undefined
+) extends js.Object
 
 /**
   * REPL Server Companion

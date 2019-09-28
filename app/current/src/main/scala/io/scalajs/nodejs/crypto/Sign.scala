@@ -2,7 +2,7 @@ package io.scalajs.nodejs.crypto
 
 import com.thoughtworks.enableIf
 import io.scalajs.nodejs.buffer.Buffer
-import io.scalajs.nodejs.stream.WritableClass
+import io.scalajs.nodejs.stream.Writable
 
 import scala.scalajs.js
 import scala.scalajs.js.|
@@ -18,7 +18,7 @@ import scala.scalajs.js.|
   * the new keyword.
   */
 @js.native
-sealed trait Sign extends WritableClass {
+sealed trait Sign extends Writable {
   def sign(privateKey: String | Buffer): Buffer                         = js.native
   def sign(privateKey: String | Buffer, outputEncoding: String): String = js.native
   @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)

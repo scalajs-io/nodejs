@@ -2,7 +2,7 @@ package io.scalajs.nodejs.crypto
 
 import com.thoughtworks.enableIf
 import io.scalajs.nodejs.buffer.Buffer
-import io.scalajs.nodejs.stream.WritableClass
+import io.scalajs.nodejs.stream.Writable
 
 import scala.scalajs.js
 import scala.scalajs.js.|
@@ -17,7 +17,7 @@ import scala.scalajs.js.|
   * the new keyword.
   */
 @js.native
-trait Verify extends WritableClass {
+trait Verify extends Writable {
 
   /**
     * Updates the Verify content with the given data.

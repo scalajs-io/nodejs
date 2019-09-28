@@ -1,7 +1,7 @@
 package io.scalajs.nodejs.console_module
 
 import com.thoughtworks.enableIf
-import io.scalajs.nodejs.stream.Writable
+import io.scalajs.nodejs.stream.IWritable
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSGlobal, JSImport}
@@ -28,7 +28,7 @@ import scala.scalajs.js.annotation.{JSGlobal, JSImport}
 @JSImport("console", "Console")
 class Console protected () extends js.Object {
 
-  def this(stdout: Writable, stderr: Writable = js.native, ignoreErrors: Boolean = true) = this()
+  def this(stdout: IWritable, stderr: IWritable = js.native, ignoreErrors: Boolean = true) = this()
 
   def this(options: ConsoleOptions) = this()
 

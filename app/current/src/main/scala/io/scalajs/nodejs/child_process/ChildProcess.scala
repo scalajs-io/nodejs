@@ -26,10 +26,10 @@ trait ChildProcess extends IEventEmitter {
   val connected: Boolean             = js.native
   val killed: Boolean                = js.native
   val pid: Int                       = js.native
-  val stderr: stream.Readable        = js.native
-  val stdin: stream.Writable         = js.native
+  val stderr: stream.IReadable       = js.native
+  val stdin: stream.IWritable        = js.native
   val stdio: js.Array[IEventEmitter] = js.native
-  val stdout: stream.Readable        = js.native
+  val stdout: stream.IReadable       = js.native
 }
 
 /**

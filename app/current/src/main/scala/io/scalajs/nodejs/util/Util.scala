@@ -204,7 +204,7 @@ trait Util extends js.Object {
     * @example util.pump(readableStream, Writable[, callback])
     */
   @deprecated("Use ReadableStream.pipe(Writable)", "4.0.0")
-  def pump(readableStream: stream.Readable, Writable: stream.Writable, callback: js.Function): Unit = js.native
+  def pump(readableStream: stream.IReadable, Writable: stream.IWritable, callback: js.Function): Unit = js.native
 
   /**
     * Deprecated predecessor of console.log.

@@ -261,7 +261,7 @@ object PromiseHelper {
       case Success(_) =>
         val elapsedTime = System.currentTimeMillis - startTime
         println(f"$action took $elapsedTime msecs")
-      case Failure(e) =>
+      case Failure(_) =>
         val elapsedTime = System.currentTimeMillis - startTime
         println(f"$action took $elapsedTime msecs")
     }

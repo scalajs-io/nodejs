@@ -1,14 +1,16 @@
 package io.scalajs.nodejs
 package http
 
+import com.thoughtworks.enableIf
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.net.Socket
-import io.scalajs.nodejs.stream.Readable
 import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Future
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.typedarray.Uint8Array
+import scala.scalajs.js.{Any, |}
 
 /**
   * http.ClientRequest - This object is created internally and returned from http.request(). It represents an in-progress
@@ -31,11 +33,25 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 @JSImport("http", "ClientRequest")
-class ClientRequest extends Readable {
+class ClientRequest extends stream.Writable {
 
-  def headers: js.Dictionary[String] = js.native
+  def aborted: Int | Boolean = js.native
 
-  def socket: Socket = js.native
+  def connection: net.Socket = js.native
+
+  def finished: Boolean = js.native
+
+  var maxHeadersCount: Int | Null = js.native
+
+  def path: String = js.native
+
+  def socket: net.Socket = js.native
+
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def writableEnded: Boolean = js.native
+
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def writableFinished: Boolean = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -47,34 +63,6 @@ class ClientRequest extends Readable {
     * @see [[https://nodejs.org/api/http.html#http_request_abort]]
     */
   def abort(): Unit = js.native
-
-  /**
-    * Finishes sending the request. If any parts of the body are unsent, it will flush them to the stream.
-    * If the request is chunked, this will send the terminating '0\r\n\r\n'.
-    * @see [[https://nodejs.org/api/http.html#http_request_end_data_encoding_callback]]
-    */
-  def end(data: js.Any, encoding: String, callback: js.Function): Unit = js.native
-
-  /**
-    * Finishes sending the request. If any parts of the body are unsent, it will flush them to the stream.
-    * If the request is chunked, this will send the terminating '0\r\n\r\n'.
-    * @see [[https://nodejs.org/api/http.html#http_request_end_data_encoding_callback]]
-    */
-  def end(data: js.Any, encoding: String): Unit = js.native
-
-  /**
-    * Finishes sending the request. If any parts of the body are unsent, it will flush them to the stream.
-    * If the request is chunked, this will send the terminating '0\r\n\r\n'.
-    * @see [[https://nodejs.org/api/http.html#http_request_end_data_encoding_callback]]
-    */
-  def end(data: js.Any): Unit = js.native
-
-  /**
-    * Finishes sending the request. If any parts of the body are unsent, it will flush them to the stream.
-    * If the request is chunked, this will send the terminating '0\r\n\r\n'.
-    * @see [[https://nodejs.org/api/http.html#http_request_end_data_encoding_callback]]
-    */
-  def end(): Unit = js.native
 
   /**
     * Flush the request headers.
@@ -90,6 +78,12 @@ class ClientRequest extends Readable {
     */
   def flushHeaders(): Unit = js.native
 
+  def getHeader[T <: js.Any](name: String): T = js.native
+
+  def removeHeader(name: String): Unit = js.native
+
+  def setHeader(name: String, value: js.Any): Unit = js.native
+
   /**
     * Once a socket is assigned to this request and is connected socket.setNoDelay() will be called.
     */
@@ -98,31 +92,13 @@ class ClientRequest extends Readable {
   /**
     * Once a socket is assigned to this request and is connected socket.setNoDelay() will be called.
     */
-  def setNoDelay(): Unit = js.native
+  def setNoDelay(noDelay: Boolean = js.native): Unit = js.native
 
   /**
     * Once a socket is assigned to this request and is connected socket.setKeepAlive() will be called.
     * @see [[https://nodejs.org/api/http.html#http_request_setsocketkeepalive_enable_initialdelay]]
     */
-  def setSocketKeepAlive(enable: Boolean, initialDelay: Int): Unit = js.native
-
-  /**
-    * Once a socket is assigned to this request and is connected socket.setKeepAlive() will be called.
-    * @see [[https://nodejs.org/api/http.html#http_request_setsocketkeepalive_enable_initialdelay]]
-    */
-  def setSocketKeepAlive(enable: Boolean): Unit = js.native
-
-  /**
-    * Once a socket is assigned to this request and is connected socket.setKeepAlive() will be called.
-    * @see [[https://nodejs.org/api/http.html#http_request_setsocketkeepalive_enable_initialdelay]]
-    */
-  def setSocketKeepAlive(initialDelay: Int): Unit = js.native
-
-  /**
-    * Once a socket is assigned to this request and is connected socket.setKeepAlive() will be called.
-    * @see [[https://nodejs.org/api/http.html#http_request_setsocketkeepalive_enable_initialdelay]]
-    */
-  def setSocketKeepAlive(): Unit = js.native
+  def setSocketKeepAlive(enable: Boolean = js.native, initialDelay: Int = js.native): Unit = js.native
 
   /**
     * Once a socket is assigned to this request and is connected socket.setTimeout() will be called.
@@ -132,53 +108,7 @@ class ClientRequest extends Readable {
     * Same as binding to the timeout event.</li>
     * </ul>
     */
-  def setTimeout(timeout: Int, callback: js.Function): Unit = js.native
-
-  /**
-    * Once a socket is assigned to this request and is connected socket.setTimeout() will be called.
-    * <ul>
-    * <li>timeout {Number} Milliseconds before a request is considered to be timed out.</li>
-    * <li>callback {Function} Optional function to be called when a timeout occurs.
-    * Same as binding to the timeout event.</li>
-    * </ul>
-    */
-  def setTimeout(timeout: Int): Unit = js.native
-
-  /**
-    * Sends a chunk of the body. By calling this method many times, the user can stream a
-    * request body to a server--in that case it is suggested to use the ['Transfer-Encoding', 'chunked']
-    * header line when creating the request.
-    *
-    * The chunk argument should be a Buffer or a string.
-    * The encoding argument is optional and only applies when chunk is a string. Defaults to 'utf8'.
-    * The callback argument is optional and will be called when this chunk of data is flushed.
-    * Returns request.
-    */
-  def write(chunk: js.Any, encoding: String, callback: js.Function): Unit = js.native
-
-  /**
-    * Sends a chunk of the body. By calling this method many times, the user can stream a
-    * request body to a server--in that case it is suggested to use the ['Transfer-Encoding', 'chunked']
-    * header line when creating the request.
-    *
-    * The chunk argument should be a Buffer or a string.
-    * The encoding argument is optional and only applies when chunk is a string. Defaults to 'utf8'.
-    * The callback argument is optional and will be called when this chunk of data is flushed.
-    * Returns request.
-    */
-  def write(chunk: js.Any, encoding: String): Unit = js.native
-
-  /**
-    * Sends a chunk of the body. By calling this method many times, the user can stream a
-    * request body to a server--in that case it is suggested to use the ['Transfer-Encoding', 'chunked']
-    * header line when creating the request.
-    *
-    * The chunk argument should be a Buffer or a string.
-    * The encoding argument is optional and only applies when chunk is a string. Defaults to 'utf8'.
-    * The callback argument is optional and will be called when this chunk of data is flushed.
-    * Returns request.
-    */
-  def write(chunk: js.Any): Unit = js.native
+  def setTimeout(timeout: Int, callback: js.Function = js.native): Unit = js.native
 
 }
 
@@ -187,10 +117,7 @@ class ClientRequest extends Readable {
   */
 object ClientRequest {
 
-  /**
-    * Client Request Events
-    */
-  implicit class ClientRequestEvents(val client: ClientRequest) extends AnyVal {
+  implicit final class ClientRequestExtensions(val client: ClientRequest) extends AnyVal {
 
     /**
       * Emitted when the request has been aborted by the client. This event is only emitted on the first call to abort().
@@ -246,23 +173,25 @@ object ClientRequest {
     @inline
     def onUpgrade(callback: (IncomingMessage, Socket, Buffer) => Any): client.type = client.on("upgrade", callback)
 
-  }
-
-  /**
-    * Client Request Extensions
-    */
-  implicit class ClientRequestEnrichment(val client: ClientRequest) extends AnyVal {
-
     @inline
-    def endFuture(data: js.Any, encoding: String): Future[js.Any] = {
-      promiseWithError1[SystemError, js.Any](client.end(data, encoding, _))
+    def endFuture(data: Uint8Array): Future[Unit] = {
+      promiseWithError0[Error](client.end(data, _))
     }
 
     @inline
-    def writeFuture(chunk: js.Any, encoding: String): Future[js.Any] = {
-      promiseWithError1[SystemError, js.Any](client.write(chunk, encoding, _))
+    def endFuture(data: String, encoding: String): Future[Unit] = {
+      promiseWithError0[Error](client.end(data, encoding, _))
     }
 
+    @inline
+    def writeFuture(chunk: Uint8Array): Future[Unit] = {
+      promiseWithError0[Error](client.write(chunk, _))
+    }
+
+    @inline
+    def writeFuture(chunk: String, encoding: String): Future[Unit] = {
+      promiseWithError0[Error](client.write(chunk, encoding, _))
+    }
   }
 
 }

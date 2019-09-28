@@ -35,23 +35,7 @@ class Server() extends IEventEmitter {
     * It is not recommended to use this option once a socket has been sent to a child with child_process.fork().
     * @example server.maxConnections
     */
-  var maxConnections: Int = js.native
-
-  /**
-    * Limits maximum incoming headers count, equal to 1000 by default. If set to 0 - no limit will be applied.
-    * @example server.maxHeadersCount
-    */
-  var maxHeadersCount: Int = js.native
-
-  /**
-    * The number of milliseconds of inactivity before a socket is presumed to have timed out.
-    * Note that the socket timeout logic is set up on connection, so changing this value only affects
-    * new connections to the server, not any existing connections.
-    * Set to 0 to disable any kind of automatic timeout behavior on incoming connections.
-    * Default = 120000 (2 minutes)
-    * @example server.timeout
-    */
-  var timeout: Int = js.native
+  var maxConnections: js.UndefOr[Int] = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods

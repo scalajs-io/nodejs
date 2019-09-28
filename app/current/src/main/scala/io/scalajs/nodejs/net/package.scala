@@ -11,6 +11,8 @@ import scala.scalajs.js
   */
 package object net {
 
+  type ConnectOptions = http.ConnectionOptions
+
   /**
     * net.Server Events
     * @param server the given [[Server server]]

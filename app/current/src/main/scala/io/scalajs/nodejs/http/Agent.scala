@@ -5,6 +5,7 @@ import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Future
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSImport
 
 /**
   * The HTTP Agent is used for pooling sockets used in HTTP client requests.
@@ -14,7 +15,8 @@ import scala.scalajs.js
   * require developers to manually close the HTTP clients using KeepAlive.
   */
 @js.native
-trait Agent extends js.Object {
+@JSImport("http", "Agent")
+class Agent(options: AgentOptions = js.native) extends js.Object {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -56,7 +58,7 @@ trait Agent extends js.Object {
     * @example agent.sockets
     */
   // TODO what is the underlying object?
-  def sockets: js.Array[js.Any] = js.native
+  def sockets: js.Object = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -75,6 +77,10 @@ trait Agent extends js.Object {
     */
   def createConnection(options: ConnectionOptions, callback: js.Function): Unit = js.native
 
+  def keepSocketAlive(socket: net.Socket): Unit = js.native
+
+  def reuseSocket(socket: net.Socket, request: ClientRequest): Unit = js.native
+
   /**
     * Destroy any sockets that are currently in use by the agent.
     *
@@ -85,6 +91,7 @@ trait Agent extends js.Object {
     */
   def destroy(): Unit = js.native
 
+  def getName(options: GetNameOptions): String = js.native
 }
 
 /**
@@ -95,7 +102,7 @@ object Agent {
   /**
     * Agent Extensions
     */
-  implicit class AgentExtensions(val agent: Agent) extends AnyVal {
+  implicit final class AgentExtensions(val agent: Agent) extends AnyVal {
 
     /**
       * Produces a socket/stream to be used for HTTP requests. By default, this function is the same

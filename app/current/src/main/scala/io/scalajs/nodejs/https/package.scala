@@ -1,10 +1,12 @@
 package io.scalajs.nodejs
 
+import com.thoughtworks.enableIf
 import io.scalajs.nodejs.http.{RequestOptions, ServerResponse}
 import io.scalajs.util.PromiseHelper._
-import io.scalajs.nodejs
+import io.scalajs.nodejs.url.URL
 
 import scala.concurrent.Future
+import scala.scalajs.js.|
 
 /**
   * https package object
@@ -37,15 +39,21 @@ package object https {
       */
     @inline
     def requestFuture(options: RequestOptions): Future[ServerResponse] = {
-      promiseWithError1[nodejs.Error, ServerResponse](https.request(options, _))
+      promiseCallback1[ServerResponse](https.request(options, _))
     }
 
     /**
       * Makes a request to a secure web server.
       */
     @inline
-    def requestFuture(url: String): Future[ServerResponse] = {
-      promiseWithError1[nodejs.Error, ServerResponse](https.request(url, _))
+    def requestFuture(url: String | URL): Future[ServerResponse] = {
+      promiseCallback1[ServerResponse](https.request(url, _))
+    }
+
+    @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+    @inline
+    def requestFuture(url: String | URL, options: RequestOptions): Future[ServerResponse] = {
+      promiseCallback1[ServerResponse](https.request(url, options, _))
     }
 
   }

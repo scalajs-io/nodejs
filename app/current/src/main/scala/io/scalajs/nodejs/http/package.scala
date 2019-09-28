@@ -48,7 +48,7 @@ package object http {
       */
     @inline
     def requestFuture(options: RequestOptions): Future[ServerResponse] = {
-      promiseWithError1[SystemError, ServerResponse](http.request(options, _))
+      promiseCallback1[ServerResponse](http.request(options, _))
     }
 
     /**
@@ -56,7 +56,7 @@ package object http {
       */
     @inline
     def requestFuture(url: String): Future[ServerResponse] = {
-      promiseWithError1[SystemError, ServerResponse](http.request(url, _))
+      promiseCallback1[ServerResponse](http.request(url, _))
     }
   }
 

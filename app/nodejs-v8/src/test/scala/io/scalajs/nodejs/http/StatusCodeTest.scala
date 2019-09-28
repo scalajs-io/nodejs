@@ -1,5 +1,4 @@
-package io.scalajs.nodejs
-package http
+package io.scalajs.nodejs.http
 
 import org.scalatest.FunSpec
 
@@ -8,7 +7,7 @@ import scala.scalajs.js
 /**
   * Http Tests
   */
-class HttpTest extends FunSpec {
+class StatusCodeTest extends FunSpec {
 
   describe("Http") {
 
@@ -25,11 +24,6 @@ class HttpTest extends FunSpec {
       //server.listen(58888)
       //setTimeout(() => server.close(), 100.millis)
 
-    }
-
-    it("should provide statusCode") {
-      assert(Http.STATUS_CODES.`403` === "Forbidden")
-      assert(Http.STATUS_CODES.`500` === "Internal Server Error")
     }
   }
 

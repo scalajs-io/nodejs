@@ -2,7 +2,6 @@ package io.scalajs.nodejs
 package stream
 
 import io.scalajs.nodejs.buffer.Buffer
-import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
 
@@ -12,7 +11,7 @@ import scala.scalajs.js
   * @see https://nodejs.org/api/stream.html#stream_readable_streams
   */
 @js.native
-trait Readable extends IEventEmitter {
+trait Readable extends LegacyStream {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties

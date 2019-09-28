@@ -75,5 +75,5 @@ class TLSSocketOptions(val isServer: js.UndefOr[Boolean] = js.undefined,
                        val SNICallback: js.UndefOr[Boolean] = js.undefined,
                        val session: js.UndefOr[Buffer] = js.undefined,
                        val requestOCSP: js.UndefOr[Boolean] = js.undefined,
-                       val secureContext: js.UndefOr[js.Any] = js.undefined)
+                       val secureContext: js.UndefOr[SecureContext] = js.undefined)
     extends js.Object

@@ -6,15 +6,46 @@ import sbtrelease.ReleaseStateTransformations._
 
 object MySettings {
 
+  private val lintSettings = Def.setting({
+    val isScala212 = scalaVersion.value.startsWith("2.12")
+    val lints = (Seq(
+      "adapted-args",
+      "nullary-unit",
+      "inaccessible",
+      "nullary-override",
+      "infer-any",
+      "missing-interpolator",
+      "doc-detached",
+      "private-shadow",
+      "type-parameter-shadow",
+      "poly-implicit-overload",
+      "option-implicit",
+      "delayedinit-select",
+      "package-object-classes",
+      "stars-align",
+      "constant"
+    ) ++ Seq(
+      "nonlocal-return",
+      "implicit-not-found",
+      "serial",
+      "valpattern",
+      "eta-zero",
+      "eta-sam",
+      "deprecation"
+    ).filter(_ => !isScala212)).map(s => s"-Xlint:${s}")
+    // no privates to allow private constructor
+    val unused = Seq("imports", "implicits", "locals", "patvars").filter(_ => !isScala212).map(s => s"-Wunused:${s}")
+    lints ++ unused
+  })
+
   lazy val commonSettings = Seq(
     autoCompilerPlugins := true,
     scalacOptions ++= Seq(
       "-deprecation",
       "-unchecked",
       "-feature",
-      "-language:implicitConversions",
-      "-Xlint"
-    ),
+      "-language:implicitConversions"
+    ) ++ lintSettings.value,
     scalacOptions in Compile in compile ++= Seq(
       "-Xfatal-warnings"
     ),

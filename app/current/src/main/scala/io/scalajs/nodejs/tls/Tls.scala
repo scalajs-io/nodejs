@@ -22,6 +22,8 @@ trait Tls extends js.Object {
     */
   def connect(port: Int, host: String, options: TlsConnectOptions, callback: js.Function): Unit = js.native
 
+  def createSecureContext(options: SecureContextOptions = js.native): SecureContext = js.native
+
 }
 
 /**

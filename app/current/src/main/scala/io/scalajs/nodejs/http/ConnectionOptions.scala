@@ -1,18 +1,27 @@
 package io.scalajs.nodejs.http
 
 import scala.scalajs.js
+import scala.scalajs.js.typedarray.Uint8Array
+import scala.scalajs.js.|
 
-/**
-  * Connection Options
-  * @param keepAlive      Keep sockets around in a pool to be used by other requests in the future. Default = false
-  * @param keepAliveMsecs When using HTTP KeepAlive, how often to send TCP KeepAlive packets over sockets being kept alive.
-  *                       Default = 1000. Only relevant if keepAlive is set to true.
-  * @param maxSockets     Maximum number of sockets to allow per host. Default = Infinity.
-  * @param maxFreeSockets Maximum number of sockets to leave open in a free state. Only relevant if keepAlive is set to
-  *                       true (default: 256).
-  */
-class ConnectionOptions(var keepAlive: js.UndefOr[Boolean] = js.undefined,
-                        var keepAliveMsecs: js.UndefOr[Int] = js.undefined,
-                        var maxSockets: js.UndefOr[Double] = js.undefined,
-                        var maxFreeSockets: js.UndefOr[Int] = js.undefined)
-    extends js.Object
+class ConnectionOptions(
+    // for socket.connect(option)
+    var port: Int,
+    var host: js.UndefOr[String] = js.undefined,
+    var localAddress: js.UndefOr[String] = js.undefined,
+    var localPort: js.UndefOr[Int] = js.undefined,
+    var family: js.UndefOr[Int] = js.undefined,
+    var hints: js.UndefOr[Int] = js.undefined,
+    var lookup: js.UndefOr[js.Function1[String, Any]] = js.undefined,
+    var onread: js.UndefOr[OnreadObject] = js.undefined,
+// for new Socket(option)
+    var fd: js.UndefOr[Int] = js.undefined,
+    var allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
+    var readable: js.UndefOr[Boolean] = js.undefined,
+    var writable: js.UndefOr[Int] = js.undefined
+) extends js.Object
+
+class OnreadObject(
+    var buffer: Uint8Array | js.Function0[Uint8Array],
+    var calback: js.Function2[Int, Uint8Array, Boolean]
+) extends js.Object

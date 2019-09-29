@@ -1,9 +1,11 @@
 package io.scalajs.nodejs.http
 
-import io.scalajs.nodejs.events.IEventEmitter
+import com.thoughtworks.enableIf
+import io.scalajs.nodejs.url.URL
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.|
 
 /**
   * To use the HTTP server and client one must require('http').
@@ -14,7 +16,7 @@ import scala.scalajs.js.annotation.JSImport
   * @see https://nodejs.org/api/http.html
   */
 @js.native
-trait Http extends IEventEmitter {
+trait Http extends js.Object {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -35,94 +37,36 @@ trait Http extends IEventEmitter {
     * A collection of all the standard HTTP response status codes, and the short description of each.
     * @example http.STATUS_CODES[404] === 'Not Found'.
     */
-  val STATUS_CODES: js.Dictionary[String] = js.native
+  val STATUS_CODES: StatusCodes = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
   /////////////////////////////////////////////////////////////////////////////////
 
-  /**
-    * Constructs a new HTTP client. port and host refer to the server to be connected to.
-    * @example http.createClient([port][, host])
-    */
-  @deprecated("Use request() instead", "4.x")
-  def createClient(port: Int, host: String): Client = js.native
+  def createServer(options: ServerOptions, requestListener: js.Function2[ClientRequest, ServerResponse, Any]): Server =
+    js.native
+  def createServer(requestListener: js.Function2[ClientRequest, ServerResponse, Any] = js.native): Server = js.native
 
-  /**
-    * Constructs a new HTTP client. port and host refer to the server to be connected to.
-    * @example http.createClient([port][, host])
-    */
-  @deprecated("Use request() instead", "4.x")
-  def createClient(port: Int): Client = js.native
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  def get(url: String | URL,
+          options: RequestOptions,
+          callback: js.Function1[ServerResponse, Any] = js.native): ClientRequest        = js.native
+  def get(url: String | URL, callback: js.Function1[ServerResponse, Any]): ClientRequest = js.native
+  def get(url: String | URL): ClientRequest                                              = js.native
+  def get(options: RequestOptions): ClientRequest                                        = js.native
+  def get(options: RequestOptions, callback: js.Function): ClientRequest                 = js.native
 
-  /**
-    * Constructs a new HTTP client. port and host refer to the server to be connected to.
-    * @example http.createClient([port][, host])
-    */
-  @deprecated("Use request() instead", "4.x")
-  def createClient(host: String): Client = js.native
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def maxHeaderSize: Int = js.native
 
-  /**
-    * Constructs a new HTTP client. port and host refer to the server to be connected to.
-    * @example http.createClient([port][, host])
-    */
-  @deprecated("Use request() instead", "4.x")
-  def createClient(): Client = js.native
-
-  /**
-    * Returns a new instance of http.Server.
-    * @example http.createServer([requestListener])
-    */
-  def createServer[A <: ClientRequest, B <: ServerResponse](callback: js.Function2[A, B, Any]): Server = js.native
-
-  /**
-    * Returns a new instance of http.Server.
-    * @example http.createServer([requestListener])
-    */
-  def createServer(): Server = js.native
-
-  /**
-    * Since most requests are GET requests without bodies, Node.js provides this convenience method. The only difference
-    * between this method and http.request() is that it sets the method to GET and calls req.end() automatically.
-    * @example http.get('https://encrypted.google.com/', (res) => { ... })
-    */
-  def get(url: String, callback: js.Function1[ServerResponse, Any]): Unit = js.native
-
-  /**
-    * Since most requests are GET requests without bodies, Node.js provides this convenience method. The only difference
-    * between this method and http.request() is that it sets the method to GET and calls req.end() automatically.
-    * @example http.get(options, (res) => { ... })
-    */
-  def get(options: RequestOptions, callback: js.Function): Unit = js.native
-
-  /**
-    * Node.js maintains several connections per server to make HTTP requests.
-    * This function allows one to transparently issue requests.
-    * @example http.request(options[, callback])
-    */
-  def request(options: RequestOptions, callback: js.Function): Unit = js.native
-
-  /**
-    * Node.js maintains several connections per server to make HTTP requests.
-    * This function allows one to transparently issue requests.
-    * @example http.request(options[, callback])
-    */
-  def request(options: RequestOptions): Unit = js.native
-
-  /**
-    * Node.js maintains several connections per server to make HTTP requests.
-    * This function allows one to transparently issue requests.
-    * @example http.request(options[, callback])
-    */
-  def request(url: String, callback: js.Function): Unit = js.native
-
-  /**
-    * Node.js maintains several connections per server to make HTTP requests.
-    * This function allows one to transparently issue requests.
-    * @example http.request(options[, callback])
-    */
-  def request(url: String): Unit = js.native
-
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  def request(url: String | URL,
+              options: RequestOptions,
+              callback: js.Function1[ServerResponse, Any] = js.native): Unit              = js.native
+  def request(url: String | URL, callback: js.Function1[ServerResponse, Any]): Unit       = js.native
+  def request(url: String | URL): Unit                                                    = js.native
+  def request(options: RequestOptions): Unit                                              = js.native
+  def request(options: RequestOptions, callback: js.Function1[ServerResponse, Any]): Unit = js.native
 }
 
 /**

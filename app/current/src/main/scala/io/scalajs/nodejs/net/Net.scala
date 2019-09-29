@@ -77,15 +77,7 @@ trait Net extends IEventEmitter {
     * parameter will be added as a listener for the 'connect' event once.
     * @example net.createConnection(options[, connectListener])
     */
-  def createConnection(options: ConnectOptions, connectListener: js.Function): Socket = js.native
-
-  /**
-    * A factory function, which returns a new net.Socket and automatically connects with the supplied options.
-    * The options are passed to both the net.Socket constructor and the socket.connect method. The connectListener
-    * parameter will be added as a listener for the 'connect' event once.
-    * @example net.createConnection(options[, connectListener])
-    */
-  def createConnection(options: ConnectOptions): Socket = js.native
+  def createConnection(options: ConnectOptions, connectListener: js.Function = js.native): Socket = js.native
 
   /**
     * @example net.createConnection(path[, connectListener])

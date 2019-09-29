@@ -1,7 +1,6 @@
-package io.scalajs.nodejs.https
+package io.scalajs.nodejs.tls
 
 import io.scalajs.nodejs.buffer.Buffer
-import io.scalajs.nodejs.tls.{SecureContext, SecureData, SecureDataObjectForm}
 
 import scala.scalajs.js
 import scala.scalajs.js.typedarray.{DataView, TypedArray}
@@ -21,7 +20,7 @@ class ServerOptions(
     // Options for net.createServers
     val allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
     val pauseOnConnect: js.UndefOr[Boolean] = js.undefined,
-    // Options for tls.createSecureContext
+// Options for tls.createSecureContext
     var ca: js.UndefOr[SecureData] = js.undefined,
     var cert: js.UndefOr[SecureData] = js.undefined,
     var sigalgs: js.UndefOr[String] = js.undefined,
@@ -38,7 +37,5 @@ class ServerOptions(
     var pfx: js.UndefOr[SecureData | js.Array[SecureDataObjectForm]] = js.undefined,
     var secureOptions: js.UndefOr[Int] = js.undefined,
     var secureProtocol: js.UndefOr[String] = js.undefined,
-    var sessionIdContext: js.UndefOr[String] = js.undefined,
-    var IncomingMessage: js.UndefOr[js.Function] = js.undefined,
-    var ServerResponse: js.UndefOr[js.Function] = js.undefined
+    var sessionIdContext: js.UndefOr[String] = js.undefined
 ) extends js.Object

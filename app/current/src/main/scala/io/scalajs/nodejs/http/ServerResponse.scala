@@ -1,18 +1,18 @@
 package io.scalajs.nodejs
 package http
 
+import com.thoughtworks.enableIf
 import io.scalajs.nodejs.buffer.Buffer
-import io.scalajs.nodejs.events.IEventEmitter
-import io.scalajs.nodejs.stream.IDuplex
 
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * Node.js http.ServerResponse
   * @see [[https://nodejs.org/api/http.html#http_class_http_serverresponse]]
   */
 @js.native
-trait ServerResponse extends IEventEmitter with IDuplex {
+trait ServerResponse extends stream.Writable {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -54,6 +54,14 @@ trait ServerResponse extends IEventEmitter with IDuplex {
     */
   var statusMessage: js.UndefOr[String] = js.native
 
+  def socket: net.Socket = js.native
+
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def writableEnded: Boolean = js.native
+
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def writableFinished: Boolean = js.native
+
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
   /////////////////////////////////////////////////////////////////////////////////
@@ -67,12 +75,20 @@ trait ServerResponse extends IEventEmitter with IDuplex {
     */
   def addTrailers(headers: js.Any): Unit = js.native
 
+  def flushHeaders(): Unit = js.native
+
   /**
     * Reads out a header that's already been queued but not sent to the client.
     * Note that the name is case insensitive. This can only be called before
     * headers get implicitly flushed.
     */
-  def getHeader(name: String): js.UndefOr[String] = js.native
+  def getHeader[T <: js.Any](name: String): js.UndefOr[T] = js.native
+
+  def getHeaderNames(): js.Array[String] = js.native
+
+  def getHeaders(): js.Dictionary[js.Any] = js.native
+
+  def hasHeader(name: String): Boolean = js.native
 
   /**
     * Removes a header that's queued for implicit sending.
@@ -93,7 +109,7 @@ trait ServerResponse extends IEventEmitter with IDuplex {
     * Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers,
     * its value will be replaced. Use an array of strings here if you need to send multiple headers with the same name.
     */
-  def setHeader(name: String, value: String): Unit = js.native
+  def setHeader(name: String, value: js.Any): Unit = js.native
 
   /**
     * Sets the Socket's timeout value to msecs. If a callback is provided, then
@@ -106,7 +122,7 @@ trait ServerResponse extends IEventEmitter with IDuplex {
     *
     * Returns response.
     */
-  def setTimeout(msecs: Int, callback: js.Function): Unit = js.native
+  def setTimeout(msecs: Int, callback: js.Function = js.native): Unit = js.native
 
   def status(statusCode: Int): this.type = js.native
 
@@ -118,18 +134,14 @@ trait ServerResponse extends IEventEmitter with IDuplex {
     */
   def writeContinue(): Unit = js.native
 
-  /**
-    * Sends a response header to the request. The status code is a 3-digit HTTP status code, like 404.
-    * The last argument, headers, are the response headers. Optionally one can give a human-readable
-    * statusMessage as the second argument.
-    * @example response.writeHead(statusCode[, statusMessage][, headers])
-    */
-  def writeHead(statusCode: Int, statusMessage: String, headers: js.Any): Unit = js.native
+  // Todo: Return this.type when Node.js v10 dropped
+  def writeHead(statusCode: Int, statusMessage: String, headers: js.Object | js.Dictionary[_] = js.native): Unit =
+    js.native
+  def writeHead(statusCode: Int, headers: js.Object | js.Dictionary[_]): Unit = js.native
+  def writeHead(statusCode: Int): Unit                                        = js.native
 
-  def writeHead(statusCode: Int, statusMessage: String): Unit = js.native
-
-  def writeHead(statusCode: Int, headers: js.Any = null): Unit = js.native
-
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  def writeProcessing(): Unit = js.native
 }
 
 /**
@@ -140,20 +152,13 @@ object ServerResponse {
   /**
     * Server Response Events
     */
-  implicit class ServerResponseEvents(val response: ServerResponse) extends AnyVal {
+  implicit final class ServerResponseExtensions(val response: ServerResponse) extends AnyVal {
 
     @inline
     def onData(handler: Buffer => Any): response.type = response.on("data", handler)
 
     @inline
     def onFinish(handler: js.Function): response.type = response.on("finish", handler)
-
-  }
-
-  /**
-    * Server Response Extensions
-    */
-  implicit class ServerResponseExtensions(val response: ServerResponse) extends AnyVal {
 
     /**
       * Sets the content-type for the response

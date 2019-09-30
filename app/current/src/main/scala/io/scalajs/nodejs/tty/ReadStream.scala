@@ -1,8 +1,7 @@
 package io.scalajs.nodejs.tty
 
-import io.scalajs.RawOptions
 import io.scalajs.nodejs.FileDescriptor
-import io.scalajs.nodejs.net.Socket
+import io.scalajs.nodejs.net
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
@@ -15,7 +14,7 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 @JSImport("tty", "ReadStream")
-class ReadStream(fd: FileDescriptor, options: RawOptions = js.native) extends Socket {
+class ReadStream(fd: FileDescriptor) extends net.Socket {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
@@ -25,7 +24,7 @@ class ReadStream(fd: FileDescriptor, options: RawOptions = js.native) extends So
     * A boolean that is true if the TTY is currently configured to operate as a raw device. Defaults to false.
     * @since 0.7.7
     */
-  var isRaw: Boolean = js.native
+  def isRaw: Boolean = js.native
 
   /**
     * Indicates whether the stream is a TTY

@@ -1,7 +1,8 @@
 package io.scalajs.nodejs.tty
 
+import com.thoughtworks.enableIf
 import io.scalajs.nodejs.FileDescriptor
-import io.scalajs.nodejs.net.Socket
+import io.scalajs.nodejs.net
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
@@ -15,11 +16,7 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 @JSImport("tty", "WriteStream")
-class WriteStream(fd: FileDescriptor) extends Socket {
-
-  /////////////////////////////////////////////////////////////////////////////////
-  //      Properties
-  /////////////////////////////////////////////////////////////////////////////////
+class WriteStream(fd: FileDescriptor) extends net.Socket {
 
   /**
     * A number specifying the number of columns the TTY currently has. This property is updated whenever
@@ -28,6 +25,31 @@ class WriteStream(fd: FileDescriptor) extends Socket {
     * @since 0.7.7
     */
   def columns: Int = js.native
+
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def clearLine(dir: Int, callback: js.Function): Boolean = js.native
+  // TODO: Return value should be boolean when dropping Node.js v10
+  def clearLine(dir: Int): Unit = js.native
+
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def clearScreenDown(callback: js.Function): Boolean = js.native
+  // TODO: Return value should be boolean when dropping Node.js v10
+  def clearScreenDown(): Unit = js.native
+
+  // TODO: Return value should be boolean when dropping Node.js v10
+  def cursorTo(x: Int): Unit = js.native
+  // TODO: Return value should be boolean when dropping Node.js v10
+  def cursorTo(x: Int, y: Int): Unit = js.native
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def cursorTo(x: Int, y: Int, callback: js.Function): Boolean = js.native
+
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  def getColorDepth(env: io.scalajs.nodejs.process.Environment = js.native): Int = js.native
+
+  def getWindowSize(): js.Tuple2[Int, Int] = js.native
+
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def hasColors(count: Int = js.native, env: io.scalajs.nodejs.process.Environment = js.native): Boolean = js.native
 
   /**
     * Indicates whether the stream is a TTY
@@ -41,5 +63,10 @@ class WriteStream(fd: FileDescriptor) extends Socket {
     * @since 0.7.7
     */
   def rows: Int = js.native
+
+  // TODO: Return value should be boolean when dropping Node.js v10
+  def moveCursor(dx: Int, dy: Int): Unit = js.native
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def moveCursor(dx: Int, dy: Int, callback: js.Function): Boolean = js.native
 
 }

@@ -27,7 +27,7 @@ class VMTest extends FunSpec {
         ExpectedData(animal = "cat", count = 12, name = "kitty12")
       )
 
-      val script  = VM.createScript("""count += 1; name = "kitty" + count""")
+      val script  = new Script("""count += 1; name = "kitty" + count""")
       val context = VM.createContext(sandbox)
       expectedSet foreach {
         case ExpectedData(animal, count, name) =>

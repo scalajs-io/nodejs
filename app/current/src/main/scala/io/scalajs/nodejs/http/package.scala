@@ -14,7 +14,7 @@ package object http {
   /**
     * Http Extensions
     */
-  implicit class HttpExtensions(val http: Http) extends AnyVal {
+  implicit final class HttpExtensions(val http: Http) extends AnyVal {
 
     /**
       * @see [[Http.createServer()]]
@@ -63,7 +63,7 @@ package object http {
   /**
     * Server Events
     */
-  implicit class ServerEvents(val server: Server) extends AnyVal {
+  implicit final class ServerEvents(val server: Server) extends AnyVal {
 
     /**
       * Emitted each time a request with an http Expect: 100-continue is received. If this event isn't listened for,

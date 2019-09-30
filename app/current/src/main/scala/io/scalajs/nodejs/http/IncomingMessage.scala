@@ -2,7 +2,7 @@ package io.scalajs.nodejs.http
 
 import com.thoughtworks.enableIf
 import io.scalajs.nodejs.net.Socket
-import io.scalajs.nodejs.stream.Readable
+import io.scalajs.nodejs.stream
 
 import scala.concurrent.duration.FiniteDuration
 import scala.scalajs.js
@@ -16,7 +16,7 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 @JSImport("http", "IncomingMessage")
-class IncomingMessage extends Readable {
+class IncomingMessage extends stream.Readable {
 
   @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
   def aborted: Boolean = js.native

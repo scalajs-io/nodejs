@@ -25,8 +25,8 @@ trait REPL extends IEventEmitter {
 
 class StartOptions(
     var prompt: js.UndefOr[String] = js.undefined,
-    var input: js.UndefOr[stream.Readable] = js.undefined,
-    var output: js.UndefOr[stream.Writable] = js.undefined,
+    var input: js.UndefOr[stream.IReadable] = js.undefined,
+    var output: js.UndefOr[stream.IWritable] = js.undefined,
     var terminal: js.UndefOr[Boolean] = js.undefined,
     var eval: js.UndefOr[js.Function4[String, js.Object, String, js.Function, Any]] = js.undefined,
     var useColors: js.UndefOr[Boolean] = js.undefined,

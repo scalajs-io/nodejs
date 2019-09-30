@@ -3,7 +3,7 @@ package fs
 
 import com.thoughtworks.enableIf
 import io.scalajs.nodejs.buffer.Buffer
-import io.scalajs.nodejs.stream.Readable
+import io.scalajs.nodejs.stream
 import io.scalajs.util.PromiseHelper.promiseCallback1
 
 import scala.concurrent.Future
@@ -17,7 +17,7 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSImport("fs", "ReadStream")
-class ReadStream(path: Path) extends Readable {
+class ReadStream(path: Path) extends stream.Readable {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties

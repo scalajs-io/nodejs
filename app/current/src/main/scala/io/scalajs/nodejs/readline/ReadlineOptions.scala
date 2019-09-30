@@ -1,6 +1,6 @@
 package io.scalajs.nodejs.readline
 
-import io.scalajs.nodejs.stream.{Readable, Writable}
+import io.scalajs.nodejs.stream.{IReadable, IWritable}
 
 import scala.scalajs.js
 
@@ -8,8 +8,8 @@ import scala.scalajs.js
   * Readline Options
   */
 class ReadlineOptions(
-    var input: js.UndefOr[Readable] = js.undefined,
-    var output: js.UndefOr[Writable] = js.undefined,
+    var input: js.UndefOr[IReadable] = js.undefined,
+    var output: js.UndefOr[IWritable] = js.undefined,
     var completer: js.UndefOr[js.Function] = js.undefined,
     var terminal: js.UndefOr[Boolean] = js.undefined,
     var historySize: js.UndefOr[Int] = js.undefined,

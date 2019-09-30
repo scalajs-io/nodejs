@@ -1,6 +1,6 @@
 package io.scalajs.nodejs.repl
 
-import io.scalajs.nodejs.stream.{Readable, Writable}
+import io.scalajs.nodejs.stream.{IReadable, IWritable}
 
 import scala.scalajs.js
 
@@ -32,8 +32,8 @@ import scala.scalajs.js
   *                        </ul>
   */
 class REPLOptions(var prompt: js.UndefOr[String] = js.undefined,
-                  var input: js.UndefOr[Readable] = js.undefined,
-                  var output: js.UndefOr[Writable] = js.undefined,
+                  var input: js.UndefOr[IReadable] = js.undefined,
+                  var output: js.UndefOr[IWritable] = js.undefined,
                   var terminal: js.UndefOr[Boolean] = js.undefined,
                   var eval: js.UndefOr[js.Function] = js.undefined,
                   var useColors: js.UndefOr[Boolean] = js.undefined,

@@ -1,6 +1,6 @@
 package io.scalajs.nodejs.console_module
 
-import io.scalajs.nodejs.stream.Writable
+import io.scalajs.nodejs.stream.IWritable
 import io.scalajs.nodejs.util.InspectOptions
 
 import scala.scalajs.js
@@ -20,8 +20,8 @@ import scala.scalajs.js.|
   *                       **Node:** This is available after Node.js v11.7.0.
   */
 class ConsoleOptions(
-    var stdout: Writable,
-    var stderr: js.UndefOr[Writable] = js.undefined,
+    var stdout: IWritable,
+    var stderr: js.UndefOr[IWritable] = js.undefined,
     var ignoreErrors: Boolean = true,
     var colorMode: Boolean | String = "auto",
     var inspectOptions: js.UndefOr[InspectOptions] = js.undefined

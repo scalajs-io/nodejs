@@ -8,4 +8,4 @@ import scala.scalajs.js
   * Compression Algorithm
   */
 @js.native
-trait CompressionAlgorithm extends stream.Readable with stream.Writable
+trait CompressionAlgorithm extends stream.Transform

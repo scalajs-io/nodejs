@@ -2,7 +2,7 @@ package io.scalajs.nodejs
 package fs
 
 import io.scalajs.nodejs.buffer.Buffer
-import io.scalajs.nodejs.stream.Writable
+import io.scalajs.nodejs.stream
 import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Future
@@ -16,7 +16,7 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSImport("fs", "ReadStream")
-class WriteStream(path: Path) extends Writable {
+class WriteStream(path: Path) extends stream.Writable {
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties

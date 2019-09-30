@@ -1,7 +1,7 @@
 package io.scalajs.nodejs
 package net
 
-import io.scalajs.nodejs.stream
+import com.thoughtworks.enableIf
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
@@ -14,10 +14,6 @@ import scala.scalajs.js.annotation.JSImport
 @js.native
 @JSImport("net", "Socket")
 class Socket(options: SocketOptions = js.native) extends stream.Duplex with HasHandle {
-
-  /////////////////////////////////////////////////////////////////////////////////
-  //      Properties
-  /////////////////////////////////////////////////////////////////////////////////
 
   /**
     * net.Socket has the property that socket.write() always works. This is to help users get up and running quickly.
@@ -61,6 +57,9 @@ class Socket(options: SocketOptions = js.native) extends stream.Duplex with HasH
     */
   def localPort: Int = js.native
 
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def pending: Boolean = js.native
+
   /**
     * The string representation of the remote IP address. For example, '74.125.127.100' or '2001:4860:a005::68'.
     * Value may be undefined if the socket is destroyed (for example, if the client disconnected).
@@ -76,10 +75,6 @@ class Socket(options: SocketOptions = js.native) extends stream.Duplex with HasH
     * The numeric representation of the remote port. For example, 80 or 21.
     */
   def remotePort: Int = js.native
-
-  /////////////////////////////////////////////////////////////////////////////////
-  //      Methods
-  /////////////////////////////////////////////////////////////////////////////////
 
   /**
     * Returns the bound address, the address family name and port of the socket as reported by the operating system.
@@ -119,57 +114,13 @@ class Socket(options: SocketOptions = js.native) extends stream.Duplex with HasH
     */
   def connect(options: ConnectOptions, connectListener: js.Function = js.native): Unit = js.native
 
-  /**
-    * Opens the connection for a given socket.
-    * @param port            the port number
-    * @param host            the host name or IP
-    * @param connectListener the optional connect listener
-    * @example socket.connect(port[, host][, connectListener])
-    */
   def connect(port: Int, host: String, connectListener: js.Function): Unit = js.native
+  def connect(port: Int, connectListener: js.Function): Unit               = js.native
+  def connect(port: Int, host: String): Unit                               = js.native
+  def connect(port: Int): Unit                                             = js.native
 
-  /**
-    * Opens the connection for a given socket.
-    * @param port            the port number
-    * @param connectListener the optional connect listener
-    * @example socket.connect(port[, host][, connectListener])
-    */
-  def connect(port: Int, connectListener: js.Function): Unit = js.native
-
-  /**
-    * Opens the connection for a given socket.
-    * @param port the port number
-    * @param host the host name or IP
-    * @example socket.connect(port[, host][, connectListener])
-    */
-  def connect(port: Int, host: String): Unit = js.native
-
-  /**
-    * Opens the connection for a given socket.
-    * @param port the port number
-    * @example socket.connect(port[, host][, connectListener])
-    */
-  def connect(port: Int): Unit = js.native
-
-  /**
-    * Opens the connection for a given socket.
-    * @param path            the given connection path
-    * @param connectListener the optional connect listener
-    * @example socket.connect(path[, connectListener])
-    */
   def connect(path: String, connectListener: js.Function): Unit = js.native
-
-  /**
-    * Opens the connection for a given socket.
-    * @param path the given connection path
-    * @example socket.connect(path[, connectListener])
-    */
-  def connect(path: String): Unit = js.native
-
-  /**
-    * Ensures that no more I/O activity happens on this socket. Only necessary in case of errors (parse error or so).
-    */
-  def destroy(): Unit = js.native
+  def connect(path: String): Unit                               = js.native
 
   /**
     * Opposite of unref, calling ref on a previously unrefd socket will not let the program exit if it's the only socket
@@ -196,7 +147,7 @@ class Socket(options: SocketOptions = js.native) extends stream.Duplex with HasH
     * @return socket
     * @example socket.setNoDelay([noDelay])
     */
-  def setNoDelay(noDelay: Boolean = true): this.type = js.native
+  def setNoDelay(noDelay: Boolean = js.native): this.type = js.native
 
   /**
     * Sets the socket to timeout after timeout milliseconds of inactivity on the socket. By default net.Socket do not have a timeout.
@@ -219,23 +170,3 @@ class Socket(options: SocketOptions = js.native) extends stream.Duplex with HasH
   // TODO: test me
   override def _handle: js.Any = js.native
 }
-
-/**
-  * Socket Singleton
-  */
-object Socket extends {}
-
-/**
-  * Socket Options
-  * @param fd fd allows you to specify the existing file descriptor of socket. Set readable and/or writable to true to allow
-  *           reads and/or writes on this socket (NOTE: Works only when fd is passed). About allowHalfOpen, refer to createServer()
-  *           and 'end' event.
-  * @param allowHalfOpen
-  * @param readable
-  * @param writable
-  */
-class SocketOptions(val fd: js.UndefOr[FileDescriptor] = js.undefined,
-                    val allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
-                    val readable: js.UndefOr[Boolean] = js.undefined,
-                    val writable: js.UndefOr[Boolean] = js.undefined)
-    extends js.Object

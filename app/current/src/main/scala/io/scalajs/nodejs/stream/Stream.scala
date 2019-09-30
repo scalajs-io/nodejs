@@ -416,12 +416,13 @@ sealed trait IWritable extends LegacyStream {
 
   def destroyed: Boolean = js.native
 
-  def end(chunk: String | Uint8Array, callback: js.Function1[Error, Any]): Unit = js.native
-  def end(chunk: String | Uint8Array): Unit                                     = js.native
+  // TODO: Return type should be this.type if node.js v8 dropped
+  def end(chunk: String | Uint8Array, callback: js.Function1[Error, Any]): js.UndefOr[this.type] = js.native
+  def end(chunk: String | Uint8Array): js.UndefOr[this.type]                                     = js.native
 
-  def end(chunk: String, encoding: String, callback: js.Function1[Error, Any]): Unit = js.native
-  def end(chunk: String, encoding: String): Unit                                     = js.native
-  def end(callback: js.Function1[Error, Any] = js.native): Unit                      = js.native
+  def end(chunk: String, encoding: String, callback: js.Function1[Error, Any]): js.UndefOr[this.type] = js.native
+  def end(chunk: String, encoding: String): js.UndefOr[this.type]                                     = js.native
+  def end(callback: js.Function1[Error, Any] = js.native): js.UndefOr[this.type]                      = js.native
 
   /**
     * Sets the default encoding for a writable stream.
@@ -519,7 +520,7 @@ object IWritable {
     }
 
     @inline
-    def endFuture(): Future[Unit] = promiseWithError0[Error](writable.end)
+    def endFuture(): Future[Unit] = promiseWithError0[Error](writable.end(_))
 
     @inline
     def writeFuture(chunk: Uint8Array): Future[Unit] = {

@@ -5,6 +5,7 @@ import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.|
 
 /**
   * net.Server - This class is used to create a TCP or local server.
@@ -12,11 +13,10 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 @JSImport("net", "Server")
-class Server() extends IEventEmitter {
+class Server(options: ServerOptions = js.native) extends IEventEmitter {
 
-  /////////////////////////////////////////////////////////////////////////////////
-  //      Properties
-  /////////////////////////////////////////////////////////////////////////////////
+  def this(options: ServerOptions, connectionListener: js.Function) = this()
+  def this(connectionListener: js.Function) = this()
 
   /**
     * Returns the current number of concurrent connections on the server.
@@ -37,17 +37,13 @@ class Server() extends IEventEmitter {
     */
   var maxConnections: js.UndefOr[Int] = js.native
 
-  /////////////////////////////////////////////////////////////////////////////////
-  //      Methods
-  /////////////////////////////////////////////////////////////////////////////////
-
   /**
     * Returns the bound address, the address family name and port of the server as reported by the operating system.
     * Useful to find which port was assigned when giving getting an OS-assigned address. Returns an object with
     * three properties, e.g. { port: 12346, family: 'IPv4', address: '127.0.0.1' }
     * @example server.address()
     */
-  def address(): Address = js.native
+  def address(): Address | String = js.native
 
   /**
     * Stops the server from accepting new connections and keeps existing connections. This function is asynchronous,
@@ -56,7 +52,7 @@ class Server() extends IEventEmitter {
     * its only argument if the server was not open when it was closed.
     * @example server.close([callback])
     */
-  def close(callback: js.Function = js.native): Unit = js.native
+  def close(callback: js.Function1[io.scalajs.nodejs.SystemError, Any] = js.native): Unit = js.native
 
   /**
     * Asynchronously get the number of concurrent connections on the server. Works when sockets were sent to forks.
@@ -72,34 +68,21 @@ class Server() extends IEventEmitter {
     * @example server.listen(options[, callback])
     */
   def listen(options: ListenerOptions, callback: js.Function): Unit = js.native
+  def listen(options: ListenerOptions): Unit                        = js.native
 
-  /**
-    * The port, host, and backlog properties of options, as well as the optional callback function, behave as
-    * they do on a call to server.listen(port[, hostname][, backlog][, callback]). Alternatively, the path
-    * option can be used to specify a UNIX socket.
-    * @example server.listen(options[, callback])
-    */
-  def listen(options: ListenerOptions): Unit = js.native
+  def listen(handle: Handle, backlog: Int, callback: js.Function): Unit = js.native
+  def listen(handle: Handle, callback: js.Function): Unit               = js.native
+  def listen(handle: Handle, backlog: Int): Unit                        = js.native
+  def listen(handle: Handle): Unit                                      = js.native
 
-  /**
-    * @example server.listen(port[, hostname][, backlog][, callback])
-    */
   def listen(port: Int, hostname: String, backlog: Int, callback: js.Function): Unit = js.native
-
-  /**
-    * @example server.listen(port[, hostname][, backlog][, callback])
-    */
-  def listen(port: Int, hostname: String, backlog: Int): Unit = js.native
-
-  /**
-    * @example server.listen(port[, hostname][, backlog][, callback])
-    */
-  def listen(port: Int, hostname: String): Unit = js.native
-
-  /**
-    * @example server.listen(port[, hostname][, backlog][, callback])
-    */
-  def listen(port: Int): Unit = js.native
+  def listen(port: Int, hostname: String, backlog: Int): Unit                        = js.native
+  def listen(port: Int, hostname: String, callback: js.Function): Unit               = js.native
+  def listen(port: Int, hostname: String): Unit                                      = js.native
+  def listen(port: Int, callback: js.Function): Unit                                 = js.native
+  def listen(port: Int): Unit                                                        = js.native
+  def listen(callback: js.Function): Unit                                            = js.native
+  def listen(): Unit                                                                 = js.native
 
   /**
     * Opposite of unref, calling ref on a previously unrefd server will not let the program exit if it's
@@ -116,23 +99,6 @@ class Server() extends IEventEmitter {
     * @example server.unref()
     */
   def unref(): this.type = js.native
-
-  /**
-    * Sets the timeout value for sockets, and emits a 'timeout' event on the Server object, passing the socket as
-    * an argument, if a timeout occurs.
-    *
-    * If there is a 'timeout' event listener on the Server object, then it will be called with the timed-out socket
-    * as an argument.
-    *
-    * By default, the Server's timeout value is 2 minutes, and sockets are destroyed automatically if they time out.
-    * However, if you assign a callback to the Server's 'timeout' event, then you are responsible for handling socket
-    * timeouts.
-    * @param msecs    the timeout in milliseconds
-    * @param callback the callback
-    * @return [[Server]]
-    */
-  def setTimeout(msecs: Double, callback: js.Function): this.type = js.native
-
 }
 
 /**
@@ -144,7 +110,7 @@ object Server extends {
     * Server Events
     * @param server the given [[Server]]
     */
-  implicit class ServerEvents(val server: Server) extends AnyVal {
+  implicit final class ServerEvents(val server: Server) extends AnyVal {
 
     /**
       * Emitted when the server closes. Note that if connections exist, this event is not emitted until all
@@ -177,10 +143,3 @@ object Server extends {
   }
 
 }
-
-/**
-  * Server Options
-  */
-class ServerOptions(val allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
-                    val pauseOnConnect: js.UndefOr[Boolean] = js.undefined)
-    extends js.Object

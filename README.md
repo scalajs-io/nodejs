@@ -32,7 +32,7 @@ The following core Node.js modules (v8.7.0+) have been implemented:
 | [fs](https://nodejs.org/api/fs.html)                         | :heavy_check_mark: |
 | [http](https://nodejs.org/api/http.html)                     | :heavy_check_mark: |
 | [https](https://nodejs.org/api/https.html)                   | :heavy_check_mark: |
-| [net](https://nodejs.org/api/net.html)                       |                    |
+| [net](https://nodejs.org/api/net.html)                       | :heavy_check_mark: |
 | [os](https://nodejs.org/api/os.html)                         | :heavy_check_mark: |
 | [path](https://nodejs.org/api/path.html)                     | :heavy_check_mark: |
 | [process](https://nodejs.org/api/process.html)               | :heavy_check_mark: |

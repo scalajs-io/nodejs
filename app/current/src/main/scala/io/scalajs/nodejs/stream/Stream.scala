@@ -258,7 +258,7 @@ object IReadable {
   /**
     * Readable Events
     */
-  implicit class ReadableEvents(val readable: IReadable) extends AnyVal {
+  implicit final class ReadableExtesions(val readable: IReadable) extends AnyVal {
 
     /**
       * Emitted when the stream and any of its underlying resources (a file descriptor, for example) have been closed.
@@ -296,14 +296,6 @@ object IReadable {
     @inline
     def onReadable(listener: () => Any): readable.type = readable.on("readable", listener)
 
-  }
-
-  /**
-    * Reader Extensions
-    *
-    * @param readable the given [[IReadable]]
-    */
-  implicit final class ReaderExtensions(val readable: IReadable) extends AnyVal {
     @inline
     def iteratorAsString: scala.Iterator[String] = new scala.Iterator[String] {
       private var result: String = readable.readAsString()
@@ -416,12 +408,13 @@ sealed trait IWritable extends LegacyStream {
 
   def destroyed: Boolean = js.native
 
-  def end(chunk: String | Uint8Array, callback: js.Function1[Error, Any]): Unit = js.native
-  def end(chunk: String | Uint8Array): Unit                                     = js.native
+  // TODO: Return type should be this.type if node.js v8 dropped
+  def end(chunk: String | Uint8Array, callback: js.Function1[Error, Any]): js.UndefOr[this.type] = js.native
+  def end(chunk: String | Uint8Array): js.UndefOr[this.type]                                     = js.native
 
-  def end(chunk: String, encoding: String, callback: js.Function1[Error, Any]): Unit = js.native
-  def end(chunk: String, encoding: String): Unit                                     = js.native
-  def end(callback: js.Function1[Error, Any] = js.native): Unit                      = js.native
+  def end(chunk: String, encoding: String, callback: js.Function1[Error, Any]): js.UndefOr[this.type] = js.native
+  def end(chunk: String, encoding: String): js.UndefOr[this.type]                                     = js.native
+  def end(callback: js.Function1[Error, Any] = js.native): js.UndefOr[this.type]                      = js.native
 
   /**
     * Sets the default encoding for a writable stream.
@@ -460,7 +453,7 @@ object IWritable {
   /**
     * Writable Events
     */
-  implicit final class WritableEvents[T <: IWritable](val writable: T) extends AnyVal {
+  implicit final class WritableExtension(val writable: IWritable) extends AnyVal {
 
     /**
       * Emitted when the stream and any of its underlying resources (a file descriptor, for example) have been closed.
@@ -503,13 +496,6 @@ object IWritable {
     @inline
     def onUnpipe(listener: IReadable => Any): writable.type = writable.on("unpipe", listener)
 
-  }
-
-  /**
-    * Writable Extensions
-    */
-  implicit final class WritableExtensions[T <: IWritable](val writable: T) extends AnyVal {
-
     @inline
     def endFuture(chunk: Buffer): Future[Unit] = promiseWithError0[Error](writable.end(chunk, _))
 
@@ -519,7 +505,7 @@ object IWritable {
     }
 
     @inline
-    def endFuture(): Future[Unit] = promiseWithError0[Error](writable.end)
+    def endFuture(): Future[Unit] = promiseWithError0[Error](writable.end(_))
 
     @inline
     def writeFuture(chunk: Uint8Array): Future[Unit] = {

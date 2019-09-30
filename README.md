@@ -31,9 +31,8 @@ The following core Node.js modules (v8.7.0+) have been implemented:
 | [events](https://nodejs.org/api/events.html)                 | :heavy_check_mark: |
 | [fs](https://nodejs.org/api/fs.html)                         | :heavy_check_mark: |
 | [http](https://nodejs.org/api/http.html)                     | :heavy_check_mark: |
-| [http2](https://nodejs.org/api/http2.html)                   |                    |
 | [https](https://nodejs.org/api/https.html)                   | :heavy_check_mark: |
-| [net](https://nodejs.org/api/net.html)                       |                    |
+| [net](https://nodejs.org/api/net.html)                       | :heavy_check_mark: |
 | [os](https://nodejs.org/api/os.html)                         | :heavy_check_mark: |
 | [path](https://nodejs.org/api/path.html)                     | :heavy_check_mark: |
 | [process](https://nodejs.org/api/process.html)               | :heavy_check_mark: |
@@ -43,6 +42,7 @@ The following core Node.js modules (v8.7.0+) have been implemented:
 | [stream](https://nodejs.org/api/stream.html)                 | :heavy_check_mark: |
 | [string-decoder](https://nodejs.org/api/string_decoder.html) | :heavy_check_mark: |
 | [timers](https://nodejs.org/api/timers.html)                 | :heavy_check_mark: |
+| [tls](https://nodejs.org/api/tls.html)                       |                    |
 | [tty](https://nodejs.org/api/tty.html)                       | :heavy_check_mark: |
 | [url](https://nodejs.org/api/url.html)                       | :heavy_check_mark: |
 | [util](https://nodejs.org/api/util.html)                     | :heavy_check_mark: |

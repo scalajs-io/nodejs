@@ -24,52 +24,15 @@ trait Net extends IEventEmitter {
     * @example net.connect(options[, connectListener])
     */
   def connect(options: ConnectOptions, callback: js.Function): Socket = js.native
+  def connect(options: ConnectOptions): Socket                        = js.native
 
-  /**
-    * A factory function, which returns a new net.Socket and automatically connects with the supplied options.
-    * The options are passed to both the net.Socket constructor and the socket.connect method.
-    * The connectListener parameter will be added as a listener for the 'connect' event once.
-    * @example net.connect(options[, connectListener])
-    */
-  def connect(options: ConnectOptions): Socket = js.native
-
-  /**
-    * A factory function, which returns a new unix net.Socket and automatically connects to the supplied path.
-    * The connectListener parameter will be added as a listener for the 'connect' event once.
-    * @example net.connect(path[, connectListener])
-    */
   def connect(path: String, connectListener: js.Function): Socket = js.native
+  def connect(path: String): Socket                               = js.native
 
-  /**
-    * A factory function, which returns a new unix net.Socket and automatically connects to the supplied path.
-    * The connectListener parameter will be added as a listener for the 'connect' event once.
-    * @example net.connect(path[, connectListener])
-    */
-  def connect(path: String): Socket = js.native
-
-  /**
-    * A factory function, which returns a new net.Socket and automatically connects to the supplied port and host.
-    * If host is omitted, 'localhost' will be assumed.
-    * The connectListener parameter will be added as a listener for the 'connect' event once.
-    * @example net.connect(port[, host][, connectListener])
-    */
   def connect(port: Int, host: String, connectListener: js.Function): Socket = js.native
-
-  /**
-    * A factory function, which returns a new net.Socket and automatically connects to the supplied port and host.
-    * If host is omitted, 'localhost' will be assumed.
-    * The connectListener parameter will be added as a listener for the 'connect' event once.
-    * @example net.connect(port[, host][, connectListener])
-    */
-  def connect(port: Int, host: String): Socket = js.native
-
-  /**
-    * A factory function, which returns a new net.Socket and automatically connects to the supplied port and host.
-    * If host is omitted, 'localhost' will be assumed.
-    * The connectListener parameter will be added as a listener for the 'connect' event once.
-    * @example net.connect(port[, host][, connectListener])
-    */
-  def connect(port: Int): Socket = js.native
+  def connect(port: Int, connectListener: js.Function): Socket               = js.native
+  def connect(port: Int, host: String): Socket                               = js.native
+  def connect(port: Int): Socket                                             = js.native
 
   /**
     * A factory function, which returns a new net.Socket and automatically connects with the supplied options.
@@ -78,58 +41,23 @@ trait Net extends IEventEmitter {
     * @example net.createConnection(options[, connectListener])
     */
   def createConnection(options: ConnectOptions, connectListener: js.Function = js.native): Socket = js.native
+  def createConnection(path: String, connectListener: js.Function): Socket                        = js.native
+  def createConnection(path: String): Socket                                                      = js.native
+  def createConnection(port: Int, host: String, connectListener: js.Function): Socket             = js.native
+  def createConnection(port: Int, connectListener: js.Function): Socket                           = js.native
+  def createConnection(port: Int, host: String): Socket                                           = js.native
+  def createConnection(port: Int): Socket                                                         = js.native
 
-  /**
-    * @example net.createConnection(path[, connectListener])
-    */
-  def createConnection(path: String, connectListener: js.Function): Socket = js.native
-
-  /**
-    * @example net.createConnection(path[, connectListener])
-    */
-  def createConnection(path: String): Socket = js.native
-
-  /**
-    * @example net.createConnection(port[, host][, connectListener])
-    */
-  def createConnection(port: Int, host: String, connectListener: js.Function): Socket = js.native
-
-  /**
-    * @example net.createConnection(port[, host][, connectListener])
-    */
-  def createConnection(port: Int, host: String): Socket = js.native
-
-  /**
-    * @example net.createConnection(port[, host][, connectListener])
-    */
-  def createConnection(port: Int): Socket = js.native
-
-  /**
-    * @example net.createServer([options][, connectionListener])
-    */
-  def createServer(options: ServerOptions, connectionListener: js.Function): Server = js.native
-
-  /**
-    * @example net.createServer([options][, connectionListener])
-    */
-  def createServer(options: ServerOptions): Server = js.native
-
-  /**
-    * @example net.createServer([options][, connectionListener])
-    */
-  def createServer(connectionListener: js.Function): Server = js.native
-
-  /**
-    * @example net.createServer([options][, connectionListener])
-    */
-  def createServer(): Server = js.native
+  def createServer(options: ServerOptions, connectionListener: js.Function = js.native): Server = js.native
+  def createServer(connectionListener: js.Function): Server                                     = js.native
+  def createServer(): Server                                                                    = js.native
 
   /**
     * Tests if input is an IP address. Returns 0 for invalid strings, returns 4 for IP version 4 addresses,
     * and returns 6 for IP version 6 addresses.
     * @example net.isIP(input)
     */
-  def isIP(input: String): Boolean = js.native
+  def isIP(input: String): Int = js.native
 
   /**
     * Returns true if input is a version 4 IP address, otherwise returns false.

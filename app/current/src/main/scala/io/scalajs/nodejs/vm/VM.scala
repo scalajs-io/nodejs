@@ -1,7 +1,11 @@
 package io.scalajs.nodejs.vm
 
+import com.thoughtworks.enableIf
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.typedarray.{DataView, Uint8Array}
+import scala.scalajs.js.|
 
 /**
   * The vm module provides APIs for compiling and running code within V8 Virtual Machine contexts.
@@ -10,9 +14,13 @@ import scala.scalajs.js.annotation.JSImport
 @js.native
 trait VM extends js.Object {
 
-  /////////////////////////////////////////////////////////////////////////////////
-  //      Methods
-  /////////////////////////////////////////////////////////////////////////////////
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  def compileFunction(code: String,
+                      params: js.Array[String],
+                      options: CompileFunctionOptions = js.native): js.Function = js.native
+
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  def compileFunction(code: String): js.Function = js.native
 
   /**
     * If given a sandbox object, the vm.createContext() method will
@@ -30,22 +38,15 @@ trait VM extends js.Object {
     * @example vm.createContext([sandbox])
     * @since 0.11.7
     */
-  def createContext(sandbox: js.Any): ScriptContext = js.native
+  def createContext(sandbox: js.Object, options: CreateContextOptions = js.native): ScriptContext = js.native
+  def createContext(): ScriptContext                                                              = js.native
 
   /**
-    * Creates a new script
-    * @param code    The JavaScript code to compile.
-    * @param options the optional options
-    * @example vm.createScript(code[, options])
+    * Returns true if the given sandbox object has been contextified using vm.createContext().
+    * @param sandbox the sandbox
+    * @return true if the given sandbox object has been contextified using vm.createContext().
     */
-  def createScript(code: String, options: ScriptOptions = js.native): ContextifyScript = js.native
-
-  /**
-    * The vm.runInDebugContext() method compiles and executes code inside the V8 debug context.
-    * @param code The JavaScript code to compile and run.
-    * @example vm.runInDebugContext(code)
-    */
-  def runInDebugContext(code: String): js.Any = js.native
+  def isContext(sandbox: js.Object): Boolean = js.native
 
   /**
     * Runs the compiled code contained by the vm.Script object within the given contextifiedSandbox and returns the
@@ -55,8 +56,9 @@ trait VM extends js.Object {
     * @param options             the optional options
     * @example script.runInContext(contextifiedSandbox[, options])
     */
-  def runInContext(code: String, contextifiedSandbox: ScriptContext, options: ContextOptions = js.native): js.Any =
-    js.native
+  def runInContext(code: String,
+                   contextifiedSandbox: ScriptContext,
+                   options: VMRunInContextOptions = js.native): js.Any = js.native
 
   /**
     * First contextifies the given sandbox, runs the compiled code contained by the vm.Script object within the created
@@ -66,7 +68,7 @@ trait VM extends js.Object {
     * @param options the optional options
     * @example vm.runInNewContext(code[, sandbox][, options])
     */
-  def runInNewContext(code: String, sandbox: js.Any, options: ContextOptions = js.native): js.Any =
+  def runInNewContext(code: String, sandbox: js.Any, options: VMRunInNewContextOptions = js.native): js.Any =
     js.native
 
   /**
@@ -76,14 +78,7 @@ trait VM extends js.Object {
     * @param options the optional options
     * @example script.runInThisContext([options])
     */
-  def runInThisContext(code: String, options: ContextOptions = js.native): ContextifyScript = js.native
-
-  /**
-    * Returns true if the given sandbox object has been contextified using vm.createContext().
-    * @param sandbox the sandbox
-    * @return true if the given sandbox object has been contextified using vm.createContext().
-    */
-  def isContext(sandbox: js.Any): Boolean = js.native
+  def runInThisContext(code: String, options: VMRunInContextOptions = js.native): Script = js.native
 
 }
 
@@ -93,3 +88,46 @@ trait VM extends js.Object {
 @js.native
 @JSImport("vm", JSImport.Namespace)
 object VM extends VM
+
+class CompileFunctionOptions(
+    var filename: js.UndefOr[String] = js.undefined,
+    var lineOffset: js.UndefOr[Int] = js.undefined,
+    var columnOffset: js.UndefOr[Int] = js.undefined,
+    var cachedData: js.UndefOr[Uint8Array | DataView] = js.undefined,
+    @deprecated("Use script.createCachedData", "Node.js v10")
+    var produceCachedData: js.UndefOr[Boolean] = js.undefined,
+    var parsingContext: js.UndefOr[js.Object] = js.undefined,
+    var contextExtensions: js.UndefOr[js.Array[js.Object]] = js.undefined
+) extends js.Object
+
+class CreateContextOptions(
+    var name: js.UndefOr[String] = js.undefined,
+    var origin: js.UndefOr[String] = js.undefined,
+    var codeGeneration: js.UndefOr[CodeGeneration] = js.undefined
+) extends js.Object
+
+class VMRunInNewContextOptions(
+    var filename: js.UndefOr[String] = js.undefined,
+    var lineOffset: js.UndefOr[Int] = js.undefined,
+    var columnOffset: js.UndefOr[Int] = js.undefined,
+    var displayErrors: js.UndefOr[Boolean] = js.undefined,
+    var timeout: js.UndefOr[Int] = js.undefined,
+    var breakOnSigint: js.UndefOr[Boolean] = js.undefined,
+    var contextName: js.UndefOr[String] = js.undefined,
+    var contextOrigin: js.UndefOr[String] = js.undefined,
+    var contextCodeGeneration: js.UndefOr[CodeGeneration] = js.undefined,
+    var cachedData: js.UndefOr[Uint8Array | DataView] = js.undefined,
+    var produceCachedData: js.UndefOr[Boolean] = js.undefined,
+    var importModuleDynamically: js.UndefOr[js.Function] = js.undefined
+) extends js.Object
+
+class VMRunInContextOptions(var filename: js.UndefOr[String] = js.undefined,
+                            var lineOffset: js.UndefOr[Int] = js.undefined,
+                            var columnOffset: js.UndefOr[Int] = js.undefined,
+                            var displayErrors: js.UndefOr[Boolean] = js.undefined,
+                            var timeout: js.UndefOr[Int] = js.undefined,
+                            var breakOnSigint: js.UndefOr[Boolean] = js.undefined,
+                            var cachedData: js.UndefOr[Uint8Array | DataView] = js.undefined,
+                            var produceCachedData: js.UndefOr[Boolean] = js.undefined,
+                            var importModuleDynamically: js.UndefOr[js.Function] = js.undefined)
+    extends js.Object

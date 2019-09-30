@@ -46,7 +46,7 @@ The following core Node.js modules (v8.7.0+) have been implemented:
 | [tty](https://nodejs.org/api/tty.html)                       | :heavy_check_mark: |
 | [url](https://nodejs.org/api/url.html)                       | :heavy_check_mark: |
 | [util](https://nodejs.org/api/util.html)                     | :heavy_check_mark: |
-| [vm](https://nodejs.org/api/vm.html)                         |                    |
+| [vm](https://nodejs.org/api/vm.html)                         | :heavy_check_mark: |
 | [zlib](https://nodejs.org/api/zlib.html)                     |                    |
 
 ## How to use

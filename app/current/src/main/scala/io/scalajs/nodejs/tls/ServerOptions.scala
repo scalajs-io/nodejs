@@ -20,7 +20,7 @@ class ServerOptions(
     // Options for net.createServers
     val allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
     val pauseOnConnect: js.UndefOr[Boolean] = js.undefined,
-// Options for tls.createSecureContext
+    // Options for tls.createSecureContext
     var ca: js.UndefOr[SecureData] = js.undefined,
     var cert: js.UndefOr[SecureData] = js.undefined,
     var sigalgs: js.UndefOr[String] = js.undefined,
@@ -29,7 +29,7 @@ class ServerOptions(
     var crl: js.UndefOr[SecureData] = js.undefined,
     var dphram: js.UndefOr[String | Buffer] = js.undefined,
     var ecdhCurve: js.UndefOr[String] = js.undefined,
-    var honorCihperOrder: js.UndefOr[Boolean] = js.undefined,
+    var honorCipherOrder: js.UndefOr[Boolean] = js.undefined,
     var key: js.UndefOr[SecureData] = js.undefined,
     var maxVersion: js.UndefOr[String] = js.undefined,
     var minVersion: js.UndefOr[String] = js.undefined,

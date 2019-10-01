@@ -42,7 +42,7 @@ The following core Node.js modules (v8.7.0+) have been implemented:
 | [stream](https://nodejs.org/api/stream.html)                 | :heavy_check_mark: |
 | [string-decoder](https://nodejs.org/api/string_decoder.html) | :heavy_check_mark: |
 | [timers](https://nodejs.org/api/timers.html)                 | :heavy_check_mark: |
-| [tls](https://nodejs.org/api/tls.html)                       |                    |
+| [tls](https://nodejs.org/api/tls.html)                       | :heavy_check_mark: |
 | [tty](https://nodejs.org/api/tty.html)                       | :heavy_check_mark: |
 | [url](https://nodejs.org/api/url.html)                       | :heavy_check_mark: |
 | [util](https://nodejs.org/api/util.html)                     | :heavy_check_mark: |

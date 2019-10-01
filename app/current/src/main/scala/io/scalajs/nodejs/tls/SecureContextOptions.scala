@@ -14,7 +14,7 @@ class SecureContextOptions(
     var crl: js.UndefOr[SecureData] = js.undefined,
     var dphram: js.UndefOr[String | Buffer] = js.undefined,
     var ecdhCurve: js.UndefOr[String] = js.undefined,
-    var honorCihperOrder: js.UndefOr[Boolean] = js.undefined,
+    var honorCipherOrder: js.UndefOr[Boolean] = js.undefined,
     var key: js.UndefOr[SecureData] = js.undefined,
     var maxVersion: js.UndefOr[String] = js.undefined,
     var minVersion: js.UndefOr[String] = js.undefined,

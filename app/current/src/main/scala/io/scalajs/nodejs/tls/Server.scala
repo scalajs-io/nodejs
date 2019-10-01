@@ -1,6 +1,7 @@
 package io.scalajs.nodejs
 package tls
 
+import com.thoughtworks.enableIf
 import io.scalajs.nodejs.buffer.Buffer
 
 import scala.scalajs.js
@@ -21,7 +22,10 @@ class Server extends net.Server {
     * @param context  <Object> An object containing any of the possible properties from the tls.createSecureContext()
     *                 options arguments (e.g. key, cert, ca, etc).
     */
-  def addContext(hostname: String, context: js.Any): Unit = js.native
+  def addContext(hostname: String, context: SecureContextOptions): Unit = js.native
+
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def setSecureContext(context: SecureContextOptions): Unit = js.native
 
   /**
     * Returns a Buffer instance holding the keys currently used for encryption/decryption of the TLS Session Tickets

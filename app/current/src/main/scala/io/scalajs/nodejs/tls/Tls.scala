@@ -1,6 +1,8 @@
 package io.scalajs.nodejs
 package tls
 
+import com.thoughtworks.enableIf
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
@@ -12,18 +14,20 @@ import scala.scalajs.js.annotation.JSImport
 @js.native
 trait Tls extends js.Object {
 
-  /**
-    * Same as tls.connect() except that port and host can be provided as arguments instead of options.
-    * @param port     Default value for options.port.
-    * @param host     Optional default value for options.host.
-    * @param options  See tls.connect().
-    * @param callback See tls.connect().
-    * @example connect(port[, host][, options][, callback])
-    */
-  def connect(port: Int, host: String, options: TlsConnectOptions, callback: js.Function): Unit = js.native
+  def checkServerIdentity(hostname: String, cert: TLSCertificate): js.UndefOr[io.scalajs.nodejs.Error] = js.native
+
+  def connect(options: ConnectOptions, callback: js.Function = js.native): Unit = js.native
 
   def createSecureContext(options: SecureContextOptions = js.native): SecureContext = js.native
 
+  def createServer(options: ServerOptions, secureConnectionListener: js.Function = js.native): Server = js.native
+  def createServer(secureConnectionListener: js.Function): Server                                     = js.native
+  def createServer(): Server                                                                          = js.native
+
+  def getCiphers(): js.Array[String] = js.native
+
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def rootCertificates: js.Array[String] = js.native
 }
 
 /**
@@ -31,6 +35,12 @@ trait Tls extends js.Object {
   */
 @js.native
 @JSImport("tls", JSImport.Namespace)
-object Tls extends Tls
+object Tls extends Tls {
+  def DEFAULT_ECDH_CURVE: String = js.native
 
-class TlsConnectOptions() extends js.Object
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def DEFAULT_MAX_VERSION: String = js.native
+
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def DEFAULT_MIN_VERSION: String = js.native
+}

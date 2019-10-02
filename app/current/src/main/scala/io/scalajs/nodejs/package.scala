@@ -1,7 +1,6 @@
 package io.scalajs
 
 import com.thoughtworks.enableIf
-import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.timers._
 
 import scala.concurrent.duration.FiniteDuration
@@ -54,10 +53,6 @@ package object nodejs {
   // The handle object can be either a server, a socket (anything with an underlying _handle member), or an object with an fd member that is a valid file descriptor.
   type Handle = js.Function | HasHandle | HasFileDescriptor
 
-  type ReaddirArrays = js.Array[String] | js.Array[Buffer]
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
-  type ReaddirArrays2 = ReaddirArrays | js.Array[fs.Dirent]
-
   /////////////////////////////////////////////////////////////////////////////////
   //      Built-in Properties
   /////////////////////////////////////////////////////////////////////////////////
@@ -82,14 +77,17 @@ package object nodejs {
     */
   def __filename: String = js.Dynamic.global.__filename.asInstanceOf[String]
 
-  /**
-    * In browsers, the top-level scope is the global scope. That means that in browsers if you're in the global scope
-    * var something will define a global variable. In Node.js this is different. The top-level scope is not the global
-    * scope; var something inside a Node.js module will be local to that module.
-    */
   @js.native
   @JSGlobal("global")
+  @deprecated("Use objects in io.scalajs.nodejs", "0.9.0")
   object global extends Global
+
+  @js.native
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @JSGlobal("queueMicrotask")
+  object queueMicrotask extends js.Function1[js.Function, Unit] {
+    override def apply(arg1: js.Function): Unit = js.native
+  }
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Timers
@@ -108,10 +106,6 @@ package object nodejs {
   object clearTimeout extends ClearTimeout
 
   @js.native
-  @JSGlobal("ref")
-  object ref extends Ref
-
-  @js.native
   @JSGlobal("setImmediate")
   object setImmediate extends SetImmediate
 
@@ -123,10 +117,6 @@ package object nodejs {
   @JSGlobal("setTimeout")
   object setTimeout extends SetTimeout
 
-  @js.native
-  @JSGlobal("unref")
-  object unref extends UnRef
-
   /////////////////////////////////////////////////////////////////////////////////
   //      Implicit Conversions
   /////////////////////////////////////////////////////////////////////////////////
@@ -136,6 +126,7 @@ package object nodejs {
     * @param duration the given [[FiniteDuration duration]]
     * @return the time in milliseconds as an integer
     */
+  @deprecated("Use io.scalajs.util.DurationHelper", "0.9.0")
   implicit def duration2Int(duration: FiniteDuration): Int = duration.toMillis.toInt
 
   /**
@@ -143,6 +134,7 @@ package object nodejs {
     * @param duration the given [[FiniteDuration duration]]
     * @return the time in milliseconds as a double
     */
+  @deprecated("Use io.scalajs.util.DurationHelper", "0.9.0")
   implicit def duration2Double(duration: FiniteDuration): Double = duration.toMillis.toDouble
 
   /**
@@ -150,72 +142,7 @@ package object nodejs {
     * @param error the given [[Error]]
     * @return the resulting [[Exception]]
     */
-  implicit def error2Exception(error: Error): Exception = js.JavaScriptException(error.message)
-
-  /////////////////////////////////////////////////////////////////////////////////
-  //      Exit Codes -  Node.js will normally exit with a 0 status code when no more
-  //                    async operations are pending. The following status codes are
-  //                    used in other cases:
-  /////////////////////////////////////////////////////////////////////////////////
-
-  type ExitCode = Int
-
-  /**
-    * There was an uncaught exception, and it was not handled by a domain or an 'uncaughtException' event handler.
-    */
-  val UncaughtFatalException: ExitCode = 1
-
-  /**
-    * The JavaScript source code internal in Node.js's bootstrapping process caused a parse error. This is extremely
-    * rare, and generally can only happen during development of Node.js itself.
-    */
-  val InternalJavaScriptParseError: ExitCode = 3
-
-  /**
-    * The JavaScript source code internal in Node.js's bootstrapping process failed to return a function value when
-    * evaluated. This is extremely rare, and generally can only happen during development of Node.js itself.
-    */
-  val InternalJavaScriptEvaluationFailure: ExitCode = 4
-
-  /**
-    * There was a fatal unrecoverable error in V8. Typically a message will be printed to stderr with the prefix FATAL ERROR.
-    */
-  val FatalError: ExitCode = 5
-
-  /**
-    * There was an uncaught exception, but the internal fatal exception handler function was somehow set to a non-function,
-    * and could not be called.
-    */
-  val NonFunctionInternalExceptionHandler: ExitCode = 6
-
-  /**
-    * There was an uncaught exception, and the internal fatal exception handler function itself threw an error while
-    * attempting to handle it. This can happen, for example, if a 'uncaughtException' or domain.on('error') handler
-    * throws an error.
-    */
-  val InternalExceptionHandlerRunTimeFailure: ExitCode = 7
-
-  /**
-    * Either an unknown option was specified, or an option requiring a value was provided without a value.
-    */
-  val InvalidArgument: ExitCode = 8
-
-  /**
-    * The JavaScript source code internal in Node.js's bootstrapping process threw an error when the bootstrapping
-    * function was called. This is extremely rare, and generally can only happen during development of Node.js itself.
-    */
-  val InternalJavaScriptRunTimeFailure: ExitCode = 10
-
-  /**
-    * The --debug and/or --debug-brk options were set, but an invalid port number was chosen.
-    */
-  val InvalidDebugArgument: ExitCode = 12
-
-  /**
-    * If Node.js receives a fatal signal such as SIGKILL or SIGHUP, then its exit code will be 128 plus the value of
-    * the signal code. This is a standard Unix practice, since exit codes are defined to be 7-bit integers, and signal
-    * exits set the high-order bit, and then contain the value of the signal code.
-    */
-  val SignalExits: ExitCode = 128
-
+  @deprecated("Use toException extension method from io.scalajs.util.NodeJSConverters._", "0.9.0")
+  implicit def error2Exception(error: Error): Exception =
+    io.scalajs.util.NodeJSConverters.ErrorExtension(error).toException()
 }

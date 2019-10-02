@@ -1,6 +1,6 @@
 package io.scalajs.nodejs
 
-import io.scalajs.nodejs.timers.{SetInterval, SetTimeout, UnRef, _}
+import io.scalajs.nodejs.timers._
 
 import scala.scalajs.js
 
@@ -10,47 +10,10 @@ import scala.scalajs.js
   * var something inside an Node.js module will be local to that module.
   */
 @js.native
+@deprecated("Use io.scalajs.nodejs package object", "0.9.0")
 trait Global extends js.Object {
-
-  /////////////////////////////////////////////////////////////////////////////////
-  //      Global Classes
-  /////////////////////////////////////////////////////////////////////////////////
-
-  def DTRACE_NET_SERVER_CONNECTION: js.Function = js.native
-
-  def DTRACE_NET_STREAM_END: js.Function = js.native
-
-  def DTRACE_HTTP_SERVER_REQUEST: js.Function = js.native
-
-  def DTRACE_HTTP_SERVER_RESPONSE: js.Function = js.native
-
-  def DTRACE_HTTP_CLIENT_REQUEST: js.Function = js.native
-
-  def DTRACE_HTTP_CLIENT_RESPONSE: js.Function = js.native
-
-  /////////////////////////////////////////////////////////////////////////////////
-  //      Global Constants
-  /////////////////////////////////////////////////////////////////////////////////
-
-  /**
-    * The name of the directory that the currently executing script resides in.
-    */
-  def __dirname: String = js.native
-
-  /**
-    * The filename of the code being executed. This is the resolved absolute path of this code file. For a main program
-    * this is not necessarily the same filename used in the command line. The value inside a module is the path to that
-    * module file.
-    */
-  def __filename: String = js.native
-
-  /**
-    * A reference to the module.exports that is shorter to type. See module system documentation for details on when
-    * to use exports and when to use module.exports.
-    *
-    * exports isn't actually a global but rather local to each module.
-    */
-  val exports: js.Object = js.native
+  @deprecated("Use io.scalajs.nodejs.exports", "0.9.0")
+  def exports: js.UndefOr[js.Object] = js.native
 
   /**
     * A reference to the current module. In particular module.exports is used for defining what a module exports and
@@ -58,30 +21,31 @@ trait Global extends js.Object {
     *
     * module isn't actually a global but rather local to each module.
     */
-  val module: Module = js.native
+  @deprecated("Use io.scalajs.nodejs.module", "0.9.0")
+  def module: Module = js.native
 
-  /////////////////////////////////////////////////////////////////////////////////
-  //      Global Objects
-  /////////////////////////////////////////////////////////////////////////////////
-
+  @deprecated("Use io.scalajs.nodejs.clearImmediate", "0.9.0")
   def clearImmediate: ClearImmediate = js.native
 
+  @deprecated("Use io.scalajs.nodejs.clearInterval", "0.9.0")
   def clearInterval: ClearInterval = js.native
 
+  @deprecated("Use io.scalajs.nodejs.clearTimeout", "0.9.0")
   def clearTimeout: ClearTimeout = js.native
 
+  @deprecated("Use io.scalajs.nodejs.console", "0.9.0")
   def console: console_module.Console = js.native
 
+  @deprecated("Use io.scalajs.nodejs.process", "0.9.0")
   def process: io.scalajs.nodejs.process.Process = js.native
 
-  def ref: Ref = js.native
-
+  @deprecated("Use io.scalajs.nodejs.setImmediate", "0.9.0")
   def setImmediate: SetImmediate = js.native
 
+  @deprecated("Use io.scalajs.nodejs.setInterval", "0.9.0")
   def setInterval: SetInterval = js.native
 
+  @deprecated("Use io.scalajs.nodejs.setTimeout", "0.9.0")
   def setTimeout: SetTimeout = js.native
-
-  def unref: UnRef = js.native
 
 }

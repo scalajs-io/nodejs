@@ -13,8 +13,8 @@ package object process {
   type Environment = js.Dictionary[String]
   // TODO: js.Set
   type EnvironmentFlags = js.Any
-
-  type SendHandle = net.Socket | net.Server
+  type ExitCode         = Int
+  type SendHandle       = net.Socket | net.Server
 
   @deprecated("use Process object instead", "0.9.0")
   def allowedNodeEnvironmentFlags: EnvironmentFlags = Process.allowedNodeEnvironmentFlags

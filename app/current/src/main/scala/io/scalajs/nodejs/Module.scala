@@ -1,7 +1,9 @@
 package io.scalajs.nodejs
 
+import com.thoughtworks.enableIf
+
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSGlobal
+import scala.scalajs.js.annotation.JSImport
 
 /**
   * In each module, the module free variable is a reference to the object representing the current module.
@@ -51,23 +53,31 @@ trait Module extends js.Object {
     */
   var parent: js.Any = js.native
 
+  var paths: js.Array[String] = js.native
+
   /**
     * The module.require method provides a way to load a module as if require() was called from the original module.
     * <p/><b>Note</b> that in order to do this, you must get a reference to the module object. Since require() returns the
     * module.exports, and the module is typically only available within a specific module's code, it must be
     * explicitly exported in order to be used.
     */
-  def require[T](id: String): T = js.native
+  def require[T <: js.Any](id: String): T = js.native
 
 }
 
 /**
   * Module Companion
   */
-object Module {
+@js.native
+@JSImport("module", JSImport.Namespace)
+object Module extends Module {
 
-  @js.native
-  @JSGlobal("module")
-  implicit object module extends Module
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  var builtinModules: js.Array[String] = js.native
 
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def createRequire(filename: String): Require = js.native
+
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  def createRequire(filename: io.scalajs.nodejs.url.URL): Require = js.native
 }

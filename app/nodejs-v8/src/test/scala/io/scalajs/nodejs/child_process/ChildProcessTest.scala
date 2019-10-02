@@ -3,6 +3,7 @@ package child_process
 
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.util.ScalaJsHelper._
+import io.scalajs.util.NodeJSConverters._
 import org.scalatest.AsyncFunSpec
 
 import scala.concurrent.{ExecutionContext, Promise}
@@ -33,7 +34,7 @@ class ChildProcessTest extends AsyncFunSpec {
         "cat ./package.json | wc -l",
         callback = (error: Error, stdout: Output, stderr: Output) => {
           if (isDefined(error)) {
-            promise.failure(error)
+            promise.failure(error.toException)
           } else {
             promise.success((stdout, stderr))
           }
@@ -53,7 +54,7 @@ class ChildProcessTest extends AsyncFunSpec {
         js.Array("-l"),
         callback = (error: Error, stdout: Output, stderr: Output) => {
           if (isDefined(error)) {
-            promise.failure(error)
+            promise.failure(error.toException)
           } else {
             promise.success((stdout, stderr))
           }

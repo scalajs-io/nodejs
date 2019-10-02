@@ -10,6 +10,7 @@ import scala.scalajs.js.|
   */
 package object url {
 
+  @deprecated("", "")
   type Iterable[A] = js.Array[A] | Iterator[A]
 
 }

@@ -21,6 +21,10 @@ package object fs {
   type Output           = String | Buffer
   type FileWriteOptions = FileAppendOptions
 
+  type ReaddirArrays = js.Array[String] | js.Array[Buffer]
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  type ReaddirArrays2 = ReaddirArrays | js.Array[fs.Dirent]
+
   @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
   type Dirent = Fs.Dirent
 

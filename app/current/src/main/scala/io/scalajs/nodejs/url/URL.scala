@@ -1,6 +1,7 @@
 package io.scalajs.nodejs
 package url
 
+import com.thoughtworks.enableIf
 import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
@@ -114,20 +115,16 @@ object URL extends IEventEmitter {
     * Take a parsed URL object, and return a formatted URL string.
     * @example url.format(urlObj)
     */
+  @deprecated("Use URL instead", "Node.js v11.0.0")
   def format(urlObj: URLObject): String = js.native
 
   /**
-    * Take a URL string, and return an object.
-    *
-    * Pass true as the second argument to also parse the query string using the querystring module. If true then the
-    * query property will always be assigned an object, and the search property will always be a (possibly empty)
-    * string. If false then the query property will not be parsed or decoded. Defaults to false.
-    *
-    * Pass true as the third argument to treat //foo/bar as { host: 'foo', pathname: '/bar' } rather
-    * than { pathname: '//foo/bar' }. Defaults to false.
-    * @example url.parse(urlStr[, parseQueryString][, slashesDenoteHost])
+    * Returns a customizable serialization of a URL String representation of a WHATWG URL object.
+    * @param url     the given [[URL]]
+    * @param options the given [[UrlFormatOptions options]]
+    * @return a customizable serialization of a URL String representation of a WHATWG URL object.
     */
-  def parse(urlStr: String, parseQueryString: String, slashesDenoteHost: Boolean): URLObject = js.native
+  def format(url: URL, options: UrlFormatOptions = js.native): String = js.native
 
   /**
     * Take a URL string, and return an object.
@@ -140,32 +137,13 @@ object URL extends IEventEmitter {
     * than { pathname: '//foo/bar' }. Defaults to false.
     * @example url.parse(urlStr[, parseQueryString][, slashesDenoteHost])
     */
-  def parse(urlStr: String, parseQueryString: String): URLObject = js.native
+  @deprecated("Use URL instead", "Node.js v11.0.0")
+  def parse(urlStr: String, parseQueryString: Boolean, slashesDenoteHost: Boolean): URLObject = js.native
 
-  /**
-    * Take a URL string, and return an object.
-    *
-    * Pass true as the second argument to also parse the query string using the querystring module. If true then the
-    * query property will always be assigned an object, and the search property will always be a (possibly empty)
-    * string. If false then the query property will not be parsed or decoded. Defaults to false.
-    *
-    * Pass true as the third argument to treat //foo/bar as { host: 'foo', pathname: '/bar' } rather
-    * than { pathname: '//foo/bar' }. Defaults to false.
-    * @example url.parse(urlStr[, parseQueryString][, slashesDenoteHost])
-    */
-  def parse(urlStr: String, slashesDenoteHost: Boolean): URLObject = js.native
+  @deprecated("Use URL instead", "Node.js v11.0.0")
+  def parse(urlStr: String, parseQueryString: Boolean): URLObject = js.native
 
-  /**
-    * Take a URL string, and return an object.
-    *
-    * Pass true as the second argument to also parse the query string using the querystring module. If true then the
-    * query property will always be assigned an object, and the search property will always be a (possibly empty)
-    * string. If false then the query property will not be parsed or decoded. Defaults to false.
-    *
-    * Pass true as the third argument to treat //foo/bar as { host: 'foo', pathname: '/bar' } rather
-    * than { pathname: '//foo/bar' }. Defaults to false.
-    * @example url.parse(urlStr[, parseQueryString][, slashesDenoteHost])
-    */
+  @deprecated("Use URL instead", "Node.js v11.0.0")
   def parse(urlStr: String): URLObject = js.native
 
   /**
@@ -176,6 +154,27 @@ object URL extends IEventEmitter {
     * url.resolve('http://example.com/one', '/two') // 'http://example.com/two'
     * @example url.resolve(from, to)
     */
+  @deprecated("Use URL instead", "Node.js v11.0.0")
   def resolve(from: String, to: String): String = js.native
+
+  /**
+    * Returns the Punycode ASCII serialization of the domain. If domain is an invalid domain, the empty string is returned.
+    * @param domain the domain
+    * @return the Punycode ASCII serialization of the domain
+    */
+  def domainToASCII(domain: String): String = js.native
+
+  /**
+    * Returns the Unicode serialization of the domain. If domain is an invalid domain, the empty string is returned.
+    * @param domain the domain
+    * @return the Unicode serialization of the domain
+    */
+  def domainToUnicode(domain: String): String = js.native
+
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  def fileURLToPath(url: URL | String): String = js.native
+
+  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  def pathToFileURL(url: String): URL = js.native
 
 }

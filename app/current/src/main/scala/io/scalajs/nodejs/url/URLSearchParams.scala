@@ -13,7 +13,7 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 @JSImport("url", "URLSearchParams")
-class URLSearchParams extends js.Object {
+class URLSearchParams() extends js.Object {
 
   /**
     * Parse the string as a query string, and use it to instantiate a new URLSearchParams object.
@@ -43,7 +43,7 @@ class URLSearchParams extends js.Object {
     * iterable are key-value pairs, and can themselves be any iterable object.
     * @param it An iterable object whose elements are key-value pairs
     */
-  def this(it: Iterator[_]) = this()
+  def this(it: js.Iterable[js.Tuple2[String, String]]) = this()
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -67,7 +67,7 @@ class URLSearchParams extends js.Object {
     * a JavaScript Array. The first item of the Array is the name, the second item of the Array is the value.
     * @return an iterable of an array of results
     */
-  def entries(): Iterable[js.Array[String]] = js.native
+  def entries(): js.Iterator[js.Tuple2[String, String]] = js.native
 
   /**
     * Iterates over each name-value pair in the query and invokes the given function.
@@ -98,9 +98,9 @@ class URLSearchParams extends js.Object {
 
   /**
     * Returns an ES6 Iterator over the names of each name-value pair.
-    * @return an [[Iterable Iterator]] over the names of each name-value pair.
+    * @return an [[js.Iterator Iterator]] over the names of each name-value pair.
     */
-  def keys(): Iterable[String] = js.native
+  def keys(): js.Iterator[String] = js.native
 
   /**
     * Sets the value in the URLSearchParams object associated with name to value. If there are any pre-existing
@@ -119,44 +119,8 @@ class URLSearchParams extends js.Object {
 
   /**
     * Returns an ES6 Iterator over the values of each name-value pair.
-    * @return an [[Iterable Iterator]] over the values of each name-value pair.
+    * @return an [[js.Iterator Iterator]] over the values of each name-value pair.
     */
-  def values(): Iterable[String] = js.native
-
-  /**
-    * Returns the Punycode ASCII serialization of the domain. If domain is an invalid domain, the empty string is returned.
-    * @param domain the domain
-    * @return the Punycode ASCII serialization of the domain
-    */
-  def domainToASCII(domain: String): String = js.native
-
-  /**
-    * Returns the Unicode serialization of the domain. If domain is an invalid domain, the empty string is returned.
-    * @param domain the domain
-    * @return the Unicode serialization of the domain
-    */
-  def domainToUnicode(domain: String): String = js.native
-
-  /**
-    * Returns a customizable serialization of a URL String representation of a WHATWG URL object.
-    * @param url     the given [[URL]]
-    * @param options the given [[UrlFormatOptions options]]
-    * @return a customizable serialization of a URL String representation of a WHATWG URL object.
-    */
-  def format(url: URL, options: UrlFormatOptions = js.native): String = js.native
+  def values(): js.Iterator[String] = js.native
 
 }
-
-/**
-  * URL Format Options
-  * @param auth     true if the serialized URL string should include the username and password, false otherwise. Defaults to true.
-  * @param fragment true if the serialized URL string should include the fragment, false otherwise. Defaults to true.
-  * @param search   true if the serialized URL string should include the search query, false otherwise. Defaults to true.
-  * @param unicode  true if Unicode characters appearing in the host component of the URL string should be encoded
-  *                 directly as opposed to being Punycode encoded. Defaults to false.
-  */
-class UrlFormatOptions(val auth: js.UndefOr[Boolean] = js.undefined,
-                       val fragment: js.UndefOr[Boolean] = js.undefined,
-                       val search: js.UndefOr[Boolean] = js.undefined,
-                       val unicode: js.UndefOr[Boolean] = js.undefined)
-    extends js.Object

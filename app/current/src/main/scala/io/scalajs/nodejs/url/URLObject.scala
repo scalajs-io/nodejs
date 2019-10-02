@@ -6,6 +6,7 @@ import scala.scalajs.js
   * Parsed URL Object
   */
 @js.native
+@deprecated("Use URL instead", "Node.js v11.0.0")
 trait URLObject extends js.Object {
 
   /**

@@ -32,7 +32,7 @@ object Server {
     * Server Events
     * @param server the given [[Server]]
     */
-  final implicit class ServerEvents(val server: Server) extends AnyVal {
+  implicit final class ServerEvents(val server: Server) extends AnyVal {
 
     /**
       * Emitted each time a request with an HTTP Expect: 100-continue is received. If this event is not listened for,

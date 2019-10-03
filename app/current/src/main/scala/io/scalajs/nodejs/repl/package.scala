@@ -13,7 +13,7 @@ package object repl {
     * REPL Server events
     * @param server the given [[REPLServer instance]]
     */
-  final implicit class REPLServerEvents(val server: REPLServer) extends AnyVal {
+  implicit final class REPLServerEvents(val server: REPLServer) extends AnyVal {
 
     @inline
     def contextAs[T]: T = server.context.asInstanceOf[T]
@@ -47,7 +47,7 @@ package object repl {
     * <li>NODE_REPL_MODE</li>
     * </ul>
     */
-  final implicit class EnvironmentVariableOptions(private val env: process.Environment) extends AnyVal {
+  implicit final class EnvironmentVariableOptions(private val env: process.Environment) extends AnyVal {
 
     /**
       * When a valid path is given, persistent REPL history will be saved to the specified file rather

@@ -36,7 +36,7 @@ package object fs {
     * File System Extensions
     * @param fs the given [[Fs file system]] instance
     */
-  final implicit class FsExtensions(private val fs: Fs) extends AnyVal {
+  implicit final class FsExtensions(private val fs: Fs) extends AnyVal {
     @inline
     def accessFuture(path: Buffer | String): Future[Unit] = {
       promiseWithError0[FileIOError](fs.access(path, _))

@@ -12,7 +12,7 @@ object JsUnderOrHelper {
     * UndefOr Extensions
     * @param valueA the given [[js.UndefOr value]]
     */
-  implicit class UndefOrExtensions[T](val valueA: js.UndefOr[T]) extends AnyVal {
+  implicit final class UndefOrExtensions[T](private val valueA: js.UndefOr[T]) extends AnyVal {
 
     @inline def ?==(valueB: js.UndefOr[T]): Boolean = valueA.exists(valueB.contains)
 
@@ -40,7 +40,7 @@ object JsUnderOrHelper {
     * UndefOr Boolean Extensions
     * @param value the given [[js.UndefOr value]]
     */
-  implicit class UndefOrBoolExtensions(val value: js.UndefOr[Boolean]) extends AnyVal {
+  implicit final class UndefOrBoolExtensions(private val value: js.UndefOr[Boolean]) extends AnyVal {
 
     @inline
     def isTrue: Boolean = value.flat.contains(true)

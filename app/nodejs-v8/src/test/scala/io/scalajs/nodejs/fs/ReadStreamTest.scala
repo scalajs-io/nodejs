@@ -5,10 +5,8 @@ import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.url.URL
 import org.scalatest.FunSpec
 
-import scala.scalajs.js
-
 class FsClassesTest extends FunSpec {
-  val dirname = process.cwd()
+  val dirname = process.Process.cwd()
 
   describe("ReadStream") {
     it("supports constructor(") {

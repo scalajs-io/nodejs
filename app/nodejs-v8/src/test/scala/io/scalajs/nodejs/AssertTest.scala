@@ -12,7 +12,7 @@ class AssertTest extends FunSpec {
   describe("Assert") {
 
     it("should handle deep comparisons") {
-      Assert.deepEqual(js.Array(1, 2, 3), js.Array(1, 2, 3))
+      Assert.deepStrictEqual(js.Array(1, 2, 3), js.Array(1, 2, 3))
     }
   }
 

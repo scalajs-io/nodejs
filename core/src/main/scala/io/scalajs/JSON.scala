@@ -20,6 +20,7 @@ trait JSON extends js.Object {
     *                before being returned.
     * @return The Object corresponding to the given JSON text.
     */
+  @deprecated("Use scala.scalajs.js.JSON instead", "0.9.0")
   def parse(text: String, reviver: js.Function = js.native): js.Any = js.native
 
   /**
@@ -39,6 +40,7 @@ trait JSON extends js.Object {
     *                 (or is null), no white space is used.
     * @return A JSON string representing the given value.
     */
+  @deprecated("Use scala.scalajs.js.JSON instead", "0.9.0")
   def stringify(value: js.Any, replacer: js.Function = js.native, space: String | Int = js.native): String = js.native
 
 }
@@ -46,6 +48,7 @@ trait JSON extends js.Object {
 /**
   * JSON Singleton Object
   */
+@deprecated("Use scala.scalajs.js.JSON instead", "0.9.0")
 @js.native
 @JSGlobal("JSON")
-object JSON extends JSON
+object JSON extends JSON {}

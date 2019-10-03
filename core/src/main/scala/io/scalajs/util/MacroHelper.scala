@@ -5,6 +5,7 @@ import scala.reflect.macros.blackbox
 /**
   * Macro Helper
   */
+@deprecated("Don't be part of library, should be internal", "0.9.0")
 object MacroHelper {
 
   def showDeclAndParams(c: blackbox.Context)(decl: c.universe.DefDef): Unit = {

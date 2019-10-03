@@ -1,7 +1,6 @@
 package io.scalajs.nodejs.cluster
 
 import io.scalajs.nodejs.setTimeout
-import io.scalajs.util.DurationHelper._
 import org.scalatest.FunSpec
 
 import scala.concurrent.duration._
@@ -51,7 +50,7 @@ class ClusterTest extends FunSpec {
           setTimeout(() => {
             info(s"Shutting down worker ${worker.id}...")
             worker.disconnect()
-          }, 0.5.seconds)
+          }, 0.5.seconds.toMillis.toInt)
         }
 
         Cluster.onExit((worker, code, signal) => info(s"worker ${worker.process.pid} died"))

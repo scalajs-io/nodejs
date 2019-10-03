@@ -5,6 +5,7 @@ import scala.concurrent.duration._
 /**
   * Duration Helper
   */
+@deprecated("Use scala.concurrent.duration.DurationConversions._ instead.", "0.9.0")
 object DurationHelper {
 
   /////////////////////////////////////////////////////////////////////////

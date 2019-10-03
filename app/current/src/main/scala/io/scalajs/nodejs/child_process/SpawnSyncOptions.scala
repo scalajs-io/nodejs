@@ -1,6 +1,6 @@
 package io.scalajs.nodejs.child_process
 
-import io.scalajs.JsNumber
+import io.scalajs.nodejs.{GID, UID}
 
 import scala.scalajs.js
 import scala.scalajs.js.|
@@ -40,11 +40,11 @@ class SpawnSyncOptions(val cwd: js.UndefOr[String] = js.undefined,
                        val env: js.UndefOr[js.Object] = js.undefined,
                        val encoding: js.UndefOr[String] = js.undefined,
                        val shell: js.UndefOr[Boolean | String] = js.undefined,
-                       val timeout: js.UndefOr[JsNumber] = js.undefined,
-                       val maxBuffer: js.UndefOr[JsNumber] = js.undefined,
+                       val timeout: js.UndefOr[Int] = js.undefined,
+                       val maxBuffer: js.UndefOr[Int] = js.undefined,
                        val killSignal: js.UndefOr[KillSignal] = js.undefined,
-                       val uid: js.UndefOr[JsNumber] = js.undefined,
-                       val gid: js.UndefOr[JsNumber] = js.undefined,
+                       val uid: js.UndefOr[UID] = js.undefined,
+                       val gid: js.UndefOr[GID] = js.undefined,
                        val windowsHide: js.UndefOr[Boolean] = js.undefined,
                        val windowsVerbatimArguments: js.UndefOr[Boolean] = js.undefined)
     extends js.Object

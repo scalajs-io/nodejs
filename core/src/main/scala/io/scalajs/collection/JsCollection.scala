@@ -8,6 +8,7 @@ import scala.scalajs.js.annotation.JSBracketAccess
   * JavaScript Collection
   */
 @js.native
+@deprecated("Use methods in js.Array or other js collections", "0.9.0")
 trait JsCollection[A] extends js.Object {
 
   /**
@@ -29,17 +30,20 @@ trait JsCollection[A] extends js.Object {
 /**
   * JsCollection Companion
   */
+@deprecated("Use methods in js.Array or other js collections", "0.9.0")
 object JsCollection {
 
   /**
     * Implicit conversion for a js.Iterator to Scala Iterator
     */
+  @deprecated("Use promise.future", "0.9.0")
   implicit def toIterator[T](collection: JsCollection[T]): scala.Iterator[T] = new JsCollectionWrapper[T](collection)
 
   /**
     * JavaScript Collection Enrichment
     * @param collection the given [[JsCollection collection]]
     */
+  @deprecated("Use methods in js.Array or other js collections", "0.9.0")
   implicit final class JsCollectionEnrichment[T](val collection: JsCollection[T]) extends AnyVal {
 
     @inline
@@ -66,6 +70,7 @@ object JsCollection {
     * JsCollection Iterator Wrapper
     * @param collection the given [[JsCollection]]
     */
+  @deprecated("Use methods in js.Array or other js collections", "0.9.0")
   class JsCollectionWrapper[T](collection: JsCollection[T]) extends scala.Iterator[T] {
     private var pos = 0
 

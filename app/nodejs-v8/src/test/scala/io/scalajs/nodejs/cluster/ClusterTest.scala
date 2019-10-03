@@ -1,6 +1,5 @@
 package io.scalajs.nodejs.cluster
 
-import io.scalajs.JSON
 import io.scalajs.nodejs.setTimeout
 import io.scalajs.util.DurationHelper._
 import org.scalatest.FunSpec

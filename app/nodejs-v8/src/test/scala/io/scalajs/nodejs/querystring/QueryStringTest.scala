@@ -1,6 +1,5 @@
 package io.scalajs.nodejs.querystring
 
-import io.scalajs.nodejs.Assert
 import io.scalajs.nodejs.querystring.QueryStringTest.MyParams
 import org.scalatest.FunSpec
 
@@ -20,7 +19,8 @@ class QueryStringTest extends FunSpec {
 
     it("should parse(...)") {
       val result = QueryString.parse("""https://www.google.com/#q=node?key=1234""")
-      Assert.deepEqual(result, js.Dictionary("https://www.google.com/#q" -> "node?key=1234"))
+      assert(result("https://www.google.com/#q") === "node?key=1234")
+      assert(result.size === 1)
     }
 
     it("should stringify(...)") {

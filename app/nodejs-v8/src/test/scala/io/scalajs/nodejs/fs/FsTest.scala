@@ -1,6 +1,7 @@
 package io.scalajs.nodejs.fs
 
 import io.scalajs.nodejs.setImmediate
+import io.scalajs.util.NodeJSConverters._
 import io.scalajs.util.ScalaJsHelper._
 import org.scalatest.AsyncFunSpec
 
@@ -30,7 +31,7 @@ class FsTest extends AsyncFunSpec {
         () =>
           Fs.writeFile(s"${testResources}1.txt", "Hello", error => {
             if (isDefined(error)) {
-              promise.failure(error)
+              promise.failure(error.toException)
             }
           })
       )
@@ -102,7 +103,7 @@ class FsTest extends AsyncFunSpec {
       val promise = Promise[Unit]()
       Fs.access("./package.json", err => {
         if (isDefined(err)) {
-          promise.failure(err)
+          promise.failure(err.toException())
         } else {
           promise.success(())
         }

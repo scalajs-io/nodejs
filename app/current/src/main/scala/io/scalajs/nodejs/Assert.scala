@@ -33,7 +33,7 @@ trait Assert extends IEventEmitter {
     * strict equality operator ( === ). Second, object comparisons include a strict equality check of their prototypes.
     * @example assert.deepStrictEqual(actual, expected[, message])
     */
-  def deepStrictEqual(actual: js.Any, expected: js.Any, message: String): Unit = js.native
+  def deepStrictEqual(actual: js.Any, expected: js.Any, message: String = js.native): Unit = js.native
 
   @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
   def doesNotReject(asyncFn: js.Function | js.Promise[_],

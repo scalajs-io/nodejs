@@ -51,7 +51,7 @@ object JsUnderOrHelper {
     * UndefOr Double Extensions
     * @param value the given [[js.UndefOr value]]
     */
-  implicit class UndefOrDoubleExtensions(val value: js.UndefOr[Double]) extends AnyVal {
+  implicit final class UndefOrDoubleExtensions(val value: js.UndefOr[Double]) extends AnyVal {
 
     @inline
     def orZero: Double = value.flat getOrElse 0.0
@@ -62,7 +62,7 @@ object JsUnderOrHelper {
     * UndefOr Integer Extensions
     * @param value the given [[js.UndefOr value]]
     */
-  implicit class UndefOrIntExtensions(val value: js.UndefOr[Int]) extends AnyVal {
+  implicit final class UndefOrIntExtensions(val value: js.UndefOr[Int]) extends AnyVal {
 
     @inline
     def orZero: Int = value.flat getOrElse 0

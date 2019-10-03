@@ -40,7 +40,7 @@ object JsCollection {
     * JavaScript Collection Enrichment
     * @param collection the given [[JsCollection collection]]
     */
-  implicit class JsCollectionEnrichment[T](val collection: JsCollection[T]) extends AnyVal {
+  implicit final class JsCollectionEnrichment[T](val collection: JsCollection[T]) extends AnyVal {
 
     @inline
     def get(index: Int): Option[T] = Option(collection(index))

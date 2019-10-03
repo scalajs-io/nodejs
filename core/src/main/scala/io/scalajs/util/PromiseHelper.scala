@@ -273,7 +273,7 @@ object PromiseHelper {
     * @param task the given [[Future task]]
     * @tparam T the return type of the task
     */
-  implicit class TimeExtensions[T](val task: Future[T]) extends AnyVal {
+  implicit final class TimeExtensions[T](val task: Future[T]) extends AnyVal {
 
     @inline
     def withTimer(action: String, showHeader: Boolean = false)(implicit ec: ExecutionContext): Future[T] = {

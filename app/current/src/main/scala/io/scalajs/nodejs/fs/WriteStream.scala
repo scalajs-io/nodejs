@@ -54,7 +54,7 @@ object WriteStream {
   /**
     * Write Stream Events
     */
-  implicit class WriteStreamEvents(val stream: WriteStream) extends AnyVal {
+  implicit final class WriteStreamEvents(val stream: WriteStream) extends AnyVal {
 
     /**
       * Emitted when the WriteStream's underlying file descriptor has been closed using the fs.close() method.
@@ -80,7 +80,7 @@ object WriteStream {
   /**
     * Write Stream Extensions
     */
-  implicit class WriteStreamExtensions(val stream: WriteStream) extends AnyVal {
+  implicit final class WriteStreamExtensions(val stream: WriteStream) extends AnyVal {
 
     @inline
     def closeFuture: Future[Unit] = promiseCallback1[Unit](stream.close)

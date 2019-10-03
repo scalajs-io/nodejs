@@ -27,7 +27,7 @@ object Interval {
     * Interval Enrichment
     * @param handle the given [[Interval interval]] handle
     */
-  implicit class IntervalEnrichment(val handle: Interval) extends AnyVal {
+  implicit final class IntervalEnrichment(val handle: Interval) extends AnyVal {
 
     @inline
     def clear(): Unit = clearInterval(handle)

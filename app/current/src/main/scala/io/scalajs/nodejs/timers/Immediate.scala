@@ -32,7 +32,7 @@ object Immediate {
     * Immediate Enrichment
     * @param immediate the given [[Immediate immediate]] handle
     */
-  implicit class ImmediateEnrichment(val immediate: Immediate) extends AnyVal {
+  implicit final class ImmediateEnrichment(val immediate: Immediate) extends AnyVal {
 
     @inline
     def clear(): Unit = clearImmediate(immediate)

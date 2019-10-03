@@ -15,7 +15,7 @@ class ConnectionOptions(
     var lookup: js.UndefOr[js.Function1[String, Any]] = js.undefined,
     var onread: js.UndefOr[OnreadObject] = js.undefined,
     // for IPC connections
-    var path: js.UndefOr[String],
+    var path: js.UndefOr[String] = js.undefined,
     // for new Socket(option)
     var fd: js.UndefOr[Int] = js.undefined,
     var allowHalfOpen: js.UndefOr[Boolean] = js.undefined,

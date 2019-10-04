@@ -55,7 +55,7 @@ package object repl {
       * REPL history. Whitespace will be trimmed from the value.
       */
     @inline
-    def NODE_REPL_HISTORY: Option[String] = env.get("NODE_REPL_HISTORY")
+    def NODE_REPL_HISTORY: Option[String] = env("NODE_REPL_HISTORY").toOption
 
     /**
       * Previously in Node.js/io.js v2.x, REPL history was controlled by using a NODE_REPL_HISTORY_FILE environment
@@ -66,21 +66,21 @@ package object repl {
       */
     @inline
     @deprecated("Use NODE_REPL_HISTORY instead.", since = "3.0.0")
-    def NODE_REPL_HISTORY_FILE: Option[String] = env.get("NODE_REPL_HISTORY_FILE")
+    def NODE_REPL_HISTORY_FILE: Option[String] = env("NODE_REPL_HISTORY_FILE").toOption
 
     /**
       * Defaults to 1000. Controls how many lines of history will be persisted if history is available.
       * Must be a positive number.
       */
     @inline
-    def NODE_REPL_HISTORY_SIZE: Option[Int] = env.get("NODE_REPL_HISTORY_SIZE").map(_.toInt)
+    def NODE_REPL_HISTORY_SIZE: Option[Int] = env("NODE_REPL_HISTORY_SIZE").map(_.toInt).toOption
 
     /**
       * May be any of sloppy, strict, or magic. Defaults to magic, which will automatically run "strict mode only"
       * statements in strict mode.
       */
     @inline
-    def NODE_REPL_MODE: Option[String] = env.get("NODE_REPL_MODE")
+    def NODE_REPL_MODE: Option[String] = env("NODE_REPL_MODE").toOption
 
   }
 

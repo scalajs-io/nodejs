@@ -7,10 +7,8 @@ import io.scalajs.util.PromiseHelper.promiseWithError1
 import scala.concurrent.Future
 import scala.scalajs.js
 import scala.scalajs.js.|
-import scala.scalajs.js.JSConverters._
 
 package object process {
-  type Environment = js.Dictionary[String]
   // TODO: js.Set
   type EnvironmentFlags = js.Any
   type ExitCode         = Int
@@ -129,97 +127,6 @@ package object process {
   def umask(): Int = Process.umask()
   @deprecated("use Process object instead", "0.9.0")
   def uptime(): Int = Process.uptime()
-
-  /**
-    * Process Environment Extensions
-    * @param env the given environment dictionary
-    */
-  implicit final class ProcessEnvExtensions(val env: Environment) extends AnyVal {
-    def `_` : String                           = env("_")
-    def __avn_active_file: String              = env("__avn_active_file")
-    def __INTELLIJ_COMMAND_HISTFILE__ : String = env("__INTELLIJ_COMMAND_HISTFILE__")
-    def CLUTTER_BACKEND: String                = env("CLUTTER_BACKEND")
-    def CLUTTER_IM_MODULE: String              = env("CLUTTER_IM_MODULE")
-    def DBUS_SESSION_BUS_ADDRESS: String       = env("DBUS_SESSION_BUS_ADDRESS")
-    def DEFAULTS_PATH: String                  = env("DEFAULTS_PATH")
-    def DESKTOP_SESSION: String                = env("DESKTOP_SESSION")
-    def DISPLAY: String                        = env("DISPLAY")
-    def EDITOR: String                         = env("EDITOR")
-    def GDM_LANG: String                       = env("GDM_LANG")
-    def GDMSESSION: String                     = env("GDMSESSION")
-    def GLADE_CATALOG_PATH: String             = env("GLADE_CATALOG_PATH")
-    def GLADE_MODULE_PATH: String              = env("GLADE_MODULE_PATH")
-    def GLADE_PIXMAP_PATH: String              = env("GLADE_PIXMAP_PATH")
-    def GOROOT: String                         = env("GOROOT")
-    def GPG_AGENT_INFO: String                 = env("GPG_AGENT_INFO")
-    def GREP_COLOR: String                     = env("GREP_COLOR")
-    def GREP_COLORS: String                    = env("GREP_COLORS")
-    def GTK_IM_MODULE: String                  = env("GTK_IM_MODULE")
-    def GTK_OVERLAY_SCROLLING: String          = env("GTK_OVERLAY_SCROLLING")
-    def HOME: String                           = env("HOME")
-    def LANG: String                           = env("LANG")
-    def LANGUAGE: String                       = env("LANGUAGE")
-    def LC_ADDRESS: String                     = env("LC_ADDRESS")
-    def LC_IDENTIFICATION: String              = env("LC_IDENTIFICATION")
-    def LC_MEASUREMENT: String                 = env("LC_MEASUREMENT")
-    def LC_MONETARY: String                    = env("LC_MONETARY")
-    def LC_NAME: String                        = env("LC_NAME")
-    def LC_NUMERIC: String                     = env("LC_NUMERIC")
-    def LC_PAPER: String                       = env("LC_PAPER")
-    def LC_TELEPHONE: String                   = env("LC_TELEPHONE")
-    def LC_TIME: String                        = env("LC_TIME")
-    def LESS: String                           = env("LESS")
-    def LESS_TERMCAP_mb: String                = env("LESS_TERMCAP_mb")
-    def LESS_TERMCAP_md: String                = env("LESS_TERMCAP_md")
-    def LESS_TERMCAP_me: String                = env("LESS_TERMCAP_me")
-    def LESS_TERMCAP_se: String                = env("LESS_TERMCAP_se")
-    def LESS_TERMCAP_so: String                = env("LESS_TERMCAP_so")
-    def LESS_TERMCAP_ue: String                = env("LESS_TERMCAP_ue")
-    def LESS_TERMCAP_us: String                = env("LESS_TERMCAP_us")
-    def LESSOPEN: String                       = env("LESSOPEN")
-    def LOGNAME: String                        = env("LOGNAME")
-    def LS_COLORS: String                      = env("LS_COLORS")
-    def M2: String                             = env("M2")
-    def M2_HOME: String                        = env("M2_HOME")
-    def MANDATORY_PATH: String                 = env("MANDATORY_PATH")
-    def NODE_DEBUG: js.UndefOr[String]         = env.get("NODE_DEBUG").orUndefined
-    def NODE_ENV: js.UndefOr[String]           = env.get("NODE_ENV").orUndefined
-    def OLDPWD: String                         = env("OLDPWD")
-    def PAGER: String                          = env("PAGER")
-    def PAPERSIZE: String                      = env("PAPERSIZE")
-    def PATH: String                           = env("PATH")
-    def PWD: String                            = env("PWD")
-    def QT4_IM_MODULE: String                  = env("QT4_IM_MODULE")
-    def QT_ACCESSIBILITY: String               = env("QT_ACCESSIBILITY")
-    def QT_IM_MODULE: String                   = env("QT_IM_MODULE")
-    def QT_QPA_PLATFORMTHEME: String           = env("QT_QPA_PLATFORMTHEME")
-    def SESSION_MANAGER: String                = env("SESSION_MANAGER")
-    def SHELL: String                          = env("SHELL")
-    def SHLVL: String                          = env("SHLVL")
-    def SSH_AGENT_PID: String                  = env("SSH_AGENT_PID")
-    def SSH_AUTH_SOCK: String                  = env("SSH_AUTH_SOCK")
-    def TERM: String                           = env("TERM")
-    def TERMINAL_EMULATOR: String              = env("TERMINAL_EMULATOR")
-    def TMPDIR: js.UndefOr[String]             = env.get("TMPDIR").orUndefined
-    def USER: String                           = env("USER")
-    def VISUAL: String                         = env("VISUAL")
-    def XAUTHORITY: String                     = env("XAUTHORITY")
-    def XDG_CONFIG_DIRS: String                = env("XDG_CONFIG_DIRS")
-    def XDG_CURRENT_DESKTOP: String            = env("XDG_CURRENT_DESKTOP")
-    def XDG_DATA_DIRS: String                  = env("XDG_DATA_DIRS")
-    def XDG_GREETER_DATA_DIR: String           = env("XDG_GREETER_DATA_DIR")
-    def XDG_MENU_PREFIX: String                = env("XDG_MENU_PREFIX")
-    def XDG_RUNTIME_DIR: String                = env("XDG_RUNTIME_DIR")
-    def XDG_SEAT: String                       = env("XDG_SEAT")
-    def XDG_SEAT_PATH: String                  = env("XDG_SEAT_PATH")
-    def XDG_SESSION_DESKTOP: String            = env("XDG_SESSION_DESKTOP")
-    def XDG_SESSION_ID: String                 = env("XDG_SESSION_ID")
-    def XDG_SESSION_PATH: String               = env("XDG_SESSION_PATH")
-    def XDG_SESSION_TYPE: String               = env("XDG_SESSION_TYPE")
-    def XDG_VTNR: String                       = env("XDG_VTNR")
-    def XMODIFIERS: String                     = env("XMODIFIERS")
-    def ZDOTDIR: String                        = env("ZDOTDIR")
-  }
 
   /**
     * Process Object Extensions

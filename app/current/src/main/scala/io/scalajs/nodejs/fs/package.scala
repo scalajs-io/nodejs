@@ -98,6 +98,12 @@ package object fs {
       promiseWithError0[FileIOError](fs.mkdir(path, _))
     }
 
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
+    @inline
+    def mkdirFuture(path: Buffer | String, options: MkdirOptions): Future[Unit] = {
+      promiseWithError0[FileIOError](fs.mkdir(path, options, _))
+    }
+
     @inline
     def openFuture(path: Buffer | String, flags: Flags, mode: FileMode): Future[FileDescriptor] = {
       promiseWithError1[FileIOError, FileDescriptor](fs.open(path, flags, mode, _))
@@ -167,6 +173,11 @@ package object fs {
 
     @inline
     def rmdirFuture(path: Buffer | String): Future[Unit] = promiseWithError0[FileIOError](fs.rmdir(path, _))
+
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+    @inline
+    def rmdirFuture(path: Buffer | String, options: RmdirOptions): Future[Unit] =
+      promiseWithError0[FileIOError](fs.rmdir(path, options, _))
 
     @inline
     def statFuture(path: String): Future[Stats] = promiseWithError1[FileIOError, Stats](fs.stat(path, _))

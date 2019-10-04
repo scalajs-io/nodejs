@@ -62,7 +62,7 @@ class ChildProcessTest extends AsyncFunSpec {
       )
       promise.future.map {
         case (stdout, stderr) =>
-          assert(stdout.toString.trim.linesIterator.length > 10)
+          assert(stdout.toString.trim.linesIterator.length > 1)
           assert(stderr.toString.trim === "")
       }
     }

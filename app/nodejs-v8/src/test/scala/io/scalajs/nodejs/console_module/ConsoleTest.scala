@@ -1,7 +1,7 @@
-package io.scalajs.nodejs
+package io.scalajs.nodejs.console_module
 
-import io.scalajs.nodejs.console_module.Console
-import io.scalajs.nodejs.fs.Fs
+import io.scalajs.nodejs.TestEnvironment
+import io.scalajs.nodejs.fs.{Fs, WriteStream}
 import org.scalatest.{BeforeAndAfterEach, FunSpec}
 
 import scala.scalajs.js.JavaScriptException

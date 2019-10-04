@@ -2,9 +2,6 @@ package io.scalajs.nodejs.fs
 
 import org.scalatest.FunSpec
 
-import scala.scalajs.js
-import scala.scalajs.js.typedarray.Uint8Array
-
 /**
   * File System (Fs) Tests
   *

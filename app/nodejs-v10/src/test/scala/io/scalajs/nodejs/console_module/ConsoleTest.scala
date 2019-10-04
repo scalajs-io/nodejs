@@ -1,8 +1,7 @@
-package io.scalajs.nodejs
+package io.scalajs.nodejs.console_module
 
-import io.scalajs.nodejs.console_module.{Console, ConsoleOptions}
 import io.scalajs.nodejs.fs.Fs
-import org.scalatest.{BeforeAndAfterEach, FunSpec}
+import org.scalatest.{ BeforeAndAfterEach, FunSpec }
 
 import scala.scalajs.js
 

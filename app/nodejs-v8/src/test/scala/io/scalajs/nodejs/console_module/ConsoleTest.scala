@@ -1,21 +1,24 @@
-package io.scalajs.nodejs
+package io.scalajs.nodejs.console_module
 
-import io.scalajs.nodejs.console_module.Console
-import io.scalajs.nodejs.fs.Fs
+import io.scalajs.nodejs.TestEnvironment
+import io.scalajs.nodejs.fs.{Fs, WriteStream}
 import org.scalatest.{BeforeAndAfterEach, FunSpec}
 
 import scala.scalajs.js.JavaScriptException
 
 class ConsoleTest extends FunSpec with BeforeAndAfterEach {
 
-  private val logFileName = "x.nodejs8.ConsoleTest"
+  private val logFileName                  = "x.nodejs8.ConsoleTest"
+  private var failingWritable: WriteStream = null
 
   override def afterEach(): Unit = {
     if (Fs.existsSync(logFileName)) Fs.unlinkSync(logFileName)
   }
 
-  private val failingWritable = Fs.createWriteStream(logFileName)
-  failingWritable.close(_ => {})
+  override def beforeEach(): Unit = {
+    failingWritable = Fs.createWriteStream(logFileName)
+    failingWritable.close(_ => {})
+  }
 
   it("have constructor(stdout, stderr, ignoreErrors) added in v8.0.0") {
     val looseConsole = new Console(

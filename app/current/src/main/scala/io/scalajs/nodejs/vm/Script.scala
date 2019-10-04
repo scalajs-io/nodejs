@@ -17,7 +17,7 @@ class Script private[this] () extends js.Object {
   def this(code: String, options: ScriptOptions = js.native) = this()
   def this(code: String, filename: String) = this()
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def createCachedData(): io.scalajs.nodejs.buffer.Buffer = js.native
 
   /**

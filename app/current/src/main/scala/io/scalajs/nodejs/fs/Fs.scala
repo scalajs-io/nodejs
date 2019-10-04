@@ -407,7 +407,7 @@ trait Fs extends IEventEmitter with FSConstants {
     */
   def linkSync(existingPath: Path, newPath: Path): Unit = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def lstat(path: Path, options: StatOptions, callback: FsCallback1[Stats]): Unit = js.native
 
   /**
@@ -426,7 +426,7 @@ trait Fs extends IEventEmitter with FSConstants {
     */
   def lstatSync(path: Path): Stats = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def lstatSync(path: Path, options: StatOptions): Stats = js.native
 
   /**
@@ -441,7 +441,7 @@ trait Fs extends IEventEmitter with FSConstants {
     * mode defaults to 0o777.
     * @example fs.mkdir(path[, mode], callback)
     */
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def mkdir(path: Path, mode: MkdirOptions, callback: FsCallback0): Unit = js.native
 
   /**
@@ -458,7 +458,7 @@ trait Fs extends IEventEmitter with FSConstants {
     */
   def mkdirSync(path: Buffer | String, mode: FileMode = js.native): Unit = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def mkdirSync(path: Buffer | String, mode: MkdirOptions): Unit = js.native
 
   /**
@@ -555,7 +555,7 @@ trait Fs extends IEventEmitter with FSConstants {
     */
   def open(path: Path, flags: Flags, callback: FsCallback1[FileDescriptor]): Unit = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def open(path: Path, callback: FsCallback1[FileDescriptor]): Unit = js.native
 
   /**
@@ -568,7 +568,7 @@ trait Fs extends IEventEmitter with FSConstants {
     */
   def openSync(path: Path, flags: Flags, mode: FileMode = js.native): FileDescriptor = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def openSync(path: Path): FileDescriptor = js.native
 
   /**
@@ -588,7 +588,7 @@ trait Fs extends IEventEmitter with FSConstants {
            position: Int | Null,
            callback: FsCallback2[Int, Buffer]): Unit = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def read(fd: FileDescriptor,
            buffer: BufferLike,
            offset: Int | Null,
@@ -608,7 +608,7 @@ trait Fs extends IEventEmitter with FSConstants {
     */
   def readSync(fd: FileDescriptor, buffer: Buffer, offset: Int, length: Int, position: Int): Int = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def readSync(fd: FileDescriptor, buffer: BufferLike, offset: Int, length: Int, position: Int): Int = js.native
 
   /**
@@ -623,7 +623,7 @@ trait Fs extends IEventEmitter with FSConstants {
     * @example fs.readdir(path[, options], callback)
     */
   def readdir(path: Path, options: String | FileEncodingOptions, callback: FsCallback1[ReaddirArrays]): Unit = js.native
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def readdir(path: Path, options: ReaddirOptions, callback: FsCallback1[ReaddirArrays2]): Unit = js.native
 
   /**
@@ -768,7 +768,7 @@ trait Fs extends IEventEmitter with FSConstants {
   def realpathSync(path: Path, options: FileEncodingOptions = js.native): Output = js.native
   def realpathSync(path: Path): String                                           = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   val realpath: RealpathObject = js.native
 
   /**
@@ -794,7 +794,7 @@ trait Fs extends IEventEmitter with FSConstants {
     * Asynchronous rmdir(2). No arguments other than a possible exception are given to the completion callback.
     * @example fs.rmdir(path, callback)
     */
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def rmdir(path: Path, options: RmdirOptions, callback: FsCallback0): Unit = js.native
 
   /**
@@ -804,7 +804,7 @@ trait Fs extends IEventEmitter with FSConstants {
     */
   def rmdirSync(path: Path): Unit = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def rmdirSync(path: Path, options: RmdirOptions): Unit = js.native
 
   /**
@@ -814,7 +814,7 @@ trait Fs extends IEventEmitter with FSConstants {
     */
   def stat(path: Path, callback: FsCallback1[Stats]): Stats = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def stat(path: Path, options: StatOptions, callback: FsCallback1[Stats]): Stats = js.native
 
   /**
@@ -823,7 +823,7 @@ trait Fs extends IEventEmitter with FSConstants {
     */
   def statSync(path: Path): Stats = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def statSync(path: Path, options: StatOptions): Stats = js.native
 
   /**
@@ -1019,7 +1019,7 @@ trait Fs extends IEventEmitter with FSConstants {
             position: Int | Null,
             callback: FsCallback2[Int, Buffer]): Unit = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def write(fd: FileDescriptor,
             buffer: BufferLike,
             offset: Int | Null,
@@ -1065,10 +1065,10 @@ trait Fs extends IEventEmitter with FSConstants {
   def writeFile(file: String, data: String, options: FileWriteOptions, callback: FsCallback0): Unit =
     js.native
   def writeFile(file: String, data: String, callback: FsCallback0): Unit = js.native
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def writeFile(file: String, data: BufferLike, options: FileWriteOptions, callback: FsCallback0): Unit =
     js.native
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def writeFile(file: String, data: BufferLike, callback: FsCallback0): Unit = js.native
 
   /**
@@ -1081,10 +1081,10 @@ trait Fs extends IEventEmitter with FSConstants {
   def writeFileSync(file: Path | FileDescriptor, data: String, options: FileWriteOptions): Unit =
     js.native
   def writeFileSync(file: Path | FileDescriptor, data: String): Unit = js.native
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def writeFileSync(file: Path | FileDescriptor, data: BufferLike, options: FileWriteOptions): Unit =
     js.native
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def writeFileSync(file: Path | FileDescriptor, data: BufferLike): Unit = js.native
 
   /**
@@ -1133,7 +1133,7 @@ trait Fs extends IEventEmitter with FSConstants {
 @JSImport("fs", JSImport.Namespace)
 object Fs extends Fs {
 
-  @enableMembersIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableMembersIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   @js.native
   trait FsPromises extends js.Object {
     def access(path: Path, mode: FileMode): js.Promise[Unit] = js.native
@@ -1154,7 +1154,7 @@ object Fs extends Fs {
     def mkdtemp(prefix: String, options: FileEncodingOptions): js.Promise[String]          = js.native
     def mkdtemp(prefix: String, encoding: String = js.native): js.Promise[String]          = js.native
     def open(path: Path, flags: Flags, mode: FileMode = js.native): js.Promise[FileHandle] = js.native
-    @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
     def open(path: Path): js.Promise[FileHandle]                                                             = js.native
     def readdir(path: Path, options: ReaddirOptions): js.Promise[js.Array[String] | js.Array[Dirent]]        = js.native
     def readdir(path: Path, options: String | FileEncodingOptions = js.native): js.Promise[js.Array[String]] = js.native
@@ -1162,7 +1162,7 @@ object Fs extends Fs {
     def readlink(path: Path, options: String | FileEncodingOptions): js.Promise[Output]                      = js.native
     def rename(oldPath: Path, newPath: Path): js.Promise[Unit]                                               = js.native
     def rmdir(path: Path): js.Promise[Unit]                                                                  = js.native
-    @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
     def rmdir(path: Path, options: RmdirOptions): js.Promise[Unit]                      = js.native
     def stat(path: Path, options: StatOptions = js.native): js.Promise[Stats]           = js.native
     def symlink(target: Path, path: Path, `type`: String = js.native): js.Promise[Unit] = js.native
@@ -1173,7 +1173,7 @@ object Fs extends Fs {
       js.native
   }
 
-  @enableMembersIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableMembersIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   @js.native
   trait FileHandle extends js.Object {
     val fd: FileDescriptor = js.native
@@ -1207,14 +1207,14 @@ object Fs extends Fs {
     def write(string: String, position: Int | Null, encoding: String): js.Promise[BufferIOResult[String]] = js.native
     def writeFile(data: String | BufferLike, options: FileWriteOptions): js.Promise[Unit]                 = js.native
     def writeFile(data: String | BufferLike): js.Promise[Unit]                                            = js.native
-    @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
     def writev(buffers: js.Array[js.typedarray.ArrayBufferView], position: Int | Null): js.Promise[Unit] = js.native
   }
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   val promises: FsPromises = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   @js.native
   class Dirent() extends js.Object {
     def isBlockDevice(): Boolean     = js.native

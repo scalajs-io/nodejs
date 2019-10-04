@@ -6,7 +6,7 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
 @js.native
-@enableMembersIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+@enableMembersIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
 @JSImport("dns", "promises.Resolver")
 class PromisesResolver extends js.Object {
   def getServers(): js.Array[String]              = js.native

@@ -13,7 +13,7 @@ package object stream {
   type Wait          = js.Function0[js.Promise[Unit]]
 
   implicit final class StreamModuleExtension(private val stream: Stream.type) extends AnyVal {
-    @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
     def pipelineFromSeq(streams: Seq[Stream], errorCallback: ErrorCallback): Wait = {
       streams match {
         case Seq(a, b)             => stream.pipeline(a, b, errorCallback)

@@ -53,10 +53,10 @@ trait Util extends js.Object {
     */
   def format(format: String, args: js.Any*): String = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def formatWithOptions(inspectOptions: InspectOptions, format: String, args: js.Any*): String = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def getSystemErrorName(err: Int): String = js.native
 
   /**
@@ -227,10 +227,10 @@ trait Util extends js.Object {
   def promisify(original: js.Function): js.Function = js.native
   val promisify: PromisifyObject                    = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   val types: UtilTypes = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def isDeepStrictEqual(val1: js.Any, val2: js.Any): Boolean = js.native
 }
 
@@ -246,7 +246,7 @@ trait InspectObject extends js.Object {
   var defaultOptions: InspectOptions = js.native
   var styles: js.Dictionary[String]  = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   val custom: js.Symbol = js.native
 }
 
@@ -255,7 +255,7 @@ trait PromisifyObject extends js.Object {
   val custom: js.Symbol = js.native
 }
 
-@enableMembersIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+@enableMembersIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
 @js.native
 trait UtilTypes extends js.Object {
   def isAnyArrayBuffer(value: js.Any): Boolean            = js.native

@@ -13,17 +13,17 @@ trait V8 extends js.Object {
 
   def getHeapSpaceStatistics(): js.Array[HeapSpaceStatistics] = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def getHeapSnapshot(): io.scalajs.nodejs.stream.Readable = js.native
 
   def getHeapStatistics(): HeapStatistics = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def getHeapCodeStatistics(): HeapCodeStatistics = js.native
 
   def setFlagsFromString(flags: String): Unit = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def writeHeapSnapshot(filename: String = js.native): String = js.native
 
   def serialize(value: js.Any): Buffer = js.native

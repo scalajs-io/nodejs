@@ -47,7 +47,7 @@ trait Http extends js.Object {
     js.native
   def createServer(requestListener: js.Function2[ClientRequest, ServerResponse, Any] = js.native): Server = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def get(url: String | URL,
           options: RequestOptions,
           callback: js.Function1[ServerResponse, Any] = js.native): ClientRequest        = js.native
@@ -56,10 +56,10 @@ trait Http extends js.Object {
   def get(options: RequestOptions): ClientRequest                                        = js.native
   def get(options: RequestOptions, callback: js.Function): ClientRequest                 = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def maxHeaderSize: Int = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def request(url: String | URL,
               options: RequestOptions,
               callback: js.Function1[ServerResponse, Any] = js.native): Unit              = js.native

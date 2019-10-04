@@ -18,12 +18,12 @@ class Certificate extends js.Object {
 @js.native
 @JSImport("crypto", "Certificate")
 object Certificate extends js.Object {
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def exportChallenge(spkac: String | BufferLike): Buffer = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def exportPublicKey(spkac: String | BufferLike, encoding: String = js.native): Buffer = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def verifySpkac(spkac: BufferLike): Boolean = js.native
 }

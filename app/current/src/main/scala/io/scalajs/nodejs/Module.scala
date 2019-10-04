@@ -72,12 +72,12 @@ trait Module extends js.Object {
 @JSImport("module", JSImport.Namespace)
 object Module extends Module {
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   var builtinModules: js.Array[String] = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def createRequire(filename: String): Require = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def createRequire(filename: io.scalajs.nodejs.url.URL): Require = js.native
 }

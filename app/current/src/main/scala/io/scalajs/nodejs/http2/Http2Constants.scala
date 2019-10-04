@@ -86,7 +86,7 @@ trait Http2Constants extends js.Object {
   val HTTP2_HEADER_WWW_AUTHENTICATE: String                 = js.native
   val HTTP2_HEADER_X_CONTENT_TYPE_OPTIONS: String           = js.native
   val HTTP2_HEADER_X_FRAME_OPTIONS: String                  = js.native
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   val HTTP2_HEADER_PROTOCOL: String = js.native
 
   val HTTP2_METHOD_ACL: String               = js.native
@@ -234,7 +234,7 @@ trait Http2Constants extends js.Object {
   val NGHTTP2_STREAM_STATE_OPEN: Int               = js.native
   val NGHTTP2_STREAM_STATE_RESERVED_LOCAL: Int     = js.native
   val NGHTTP2_STREAM_STATE_RESERVED_REMOTE: Int    = js.native
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   val NGHTTP2_SETTINGS_ENABLE_CONNECT_PROTOCOL: Int = js.native
 
   val PADDING_STRATEGY_ALIGNED: Int  = js.native

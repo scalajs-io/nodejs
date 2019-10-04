@@ -15,21 +15,21 @@ import scala.scalajs.js.typedarray.Uint8Array
 @js.native
 @JSImport("stream", JSImport.Namespace)
 object Stream extends js.Object {
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def finished(stream: Stream, options: FinishedOptions, callback: ErrorCallback): Wait = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def finished(stream: Stream, callback: ErrorCallback): Wait = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def pipeline(a: Stream, b: Stream, callback: ErrorCallback): Wait = js.native
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def pipeline(a: Stream, b: Stream, c: Stream, callback: ErrorCallback): Wait = js.native
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def pipeline(a: Stream, b: Stream, c: Stream, d: Stream, callback: ErrorCallback): Wait = js.native
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def pipeline(a: Stream, b: Stream, c: Stream, d: Stream, e: Stream, callback: ErrorCallback): Wait = js.native
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def pipeline(a: Stream, b: Stream, c: Stream, d: Stream, e: Stream, f: Stream, callback: ErrorCallback): Wait =
     js.native
 }
@@ -45,7 +45,7 @@ class Readable(options: ReadableOptions = js.native) extends IReadable
 @js.native
 @JSImport("stream", "Readable")
 object Readable extends js.Object {
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def from(iterable: js.Iterable[_], options: ReadableOptions = js.native): Readable = js.native
 }
 
@@ -172,25 +172,25 @@ sealed trait IReadable extends LegacyStream {
   @JSName("read")
   def readAsObject(size: Int = js.native): js.Any = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def readable: Boolean = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def setReadableEncoding: String = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def readableEnded: Boolean = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def readableFlowing: Boolean = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def readableHighWaterMark: Double = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def readableLength: Int = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def readableObjectMode: Boolean = js.native
 
   /**
@@ -428,16 +428,16 @@ sealed trait IWritable extends LegacyStream {
     */
   def uncork(): Unit = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def writable: Boolean = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def writableHighWaterMark: Double = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def writableLength: Int = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def writableObjectMode: Boolean = js.native
 
   def write(chunk: Uint8Array | String, callback: js.Function1[Error, Any] = js.native): Boolean = js.native

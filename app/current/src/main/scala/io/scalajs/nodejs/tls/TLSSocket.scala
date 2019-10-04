@@ -26,12 +26,12 @@ class TLSSocket(socket: stream.IDuplex, options: TLSSocketOptions = js.native) e
 
   def disableRenegotiation(): Unit = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def enableTrace(): Unit = js.native
 
   def encrypted: Boolean = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def getCertificate(): TLSCertificate = js.native
 
   /**
@@ -45,7 +45,7 @@ class TLSSocket(socket: stream.IDuplex, options: TLSSocketOptions = js.native) e
     */
   def getPeerCertificate(detailed: String): TLSCertificate = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def getPeerFinished(): js.UndefOr[Buffer] = js.native
 
   /**

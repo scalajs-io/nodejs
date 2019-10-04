@@ -47,10 +47,10 @@ class ClientRequest extends stream.Writable {
 
   def socket: net.Socket = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def writableEnded: Boolean = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def writableFinished: Boolean = js.native
 
   /////////////////////////////////////////////////////////////////////////////////

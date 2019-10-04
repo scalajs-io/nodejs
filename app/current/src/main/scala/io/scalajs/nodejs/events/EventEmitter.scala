@@ -74,7 +74,7 @@ trait IEventEmitter extends js.Object {
     */
   def listeners(eventName: String): js.Array[js.Function] = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def off(eventName: String, listner: js.Function): this.type = js.native
 
   /**
@@ -132,7 +132,7 @@ trait IEventEmitter extends js.Object {
     */
   def setMaxListeners(n: Int): this.type = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def rawListeners(eventName: String): js.Array[js.Function] = js.native
 }
 
@@ -158,6 +158,6 @@ object EventEmitter extends IEventEmitter {
   @deprecated("Use emitter.listenerCount() instead.", since = "4.0.0")
   def listenerCount(emitter: IEventEmitter, eventName: String): Unit = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def once(emitter: IEventEmitter, eventName: String): js.Promise[js.Array[js.Any]] = js.native
 }

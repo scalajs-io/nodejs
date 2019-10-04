@@ -13,7 +13,7 @@ import scala.scalajs.js.annotation.JSImport
 @JSImport("https", "Server")
 class Server extends tls.Server {
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def headersTimeout: Int = js.native
 
   def maxHeaderCount: Int   = js.native

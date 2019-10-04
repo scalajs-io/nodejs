@@ -14,12 +14,12 @@ import scala.scalajs.js.|
 @js.native
 trait VM extends js.Object {
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def compileFunction(code: String,
                       params: js.Array[String],
                       options: CompileFunctionOptions = js.native): js.Function = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def compileFunction(code: String): js.Function = js.native
 
   /**

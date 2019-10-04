@@ -22,10 +22,10 @@ package object fs {
   type FileWriteOptions = FileAppendOptions
 
   type ReaddirArrays = js.Array[String] | js.Array[Buffer]
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   type ReaddirArrays2 = ReaddirArrays | js.Array[fs.Dirent]
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   type Dirent = Fs.Dirent
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -136,7 +136,7 @@ package object fs {
       promiseWithError1[FileIOError, js.Array[Buffer]](callback)
     }
 
-    @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
     @inline
     def readdirDirentFuture(path: Buffer | String): Future[js.Array[Dirent]] = {
       val callback: FsCallback1[js.Array[Dirent]] => Unit = { callback =>

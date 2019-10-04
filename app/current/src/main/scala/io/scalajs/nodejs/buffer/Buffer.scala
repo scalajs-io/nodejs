@@ -844,25 +844,25 @@ class Buffer protected () extends Uint8Array( /* dummy to trick constructor */ -
   /**
     *   @see https://nodejs.org/api/buffer.html#buffer_buf_readbiguint64be_offset
     */
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def readBigInt64BE(offset: Int = js.native): Buffer.UnsafeBigInt = js.native
 
   /**
     *   @see https://nodejs.org/api/buffer.html#buffer_buf_readbiguint64le_offset
     */
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def readBigUInt64LE(offset: Int = js.native): Buffer.UnsafeBigInt = js.native
 
   /**
     *   @see https://nodejs.org/api/buffer.html#buffer_buf_writebigint64be_value_offset
     */
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def writeBigInt64BE(value: Buffer.UnsafeBigInt, offset: Int = js.native): Int = js.native
 
   /**
     *   @see https://nodejs.org/api/buffer.html#buffer_buf_writebigint64le_value_offset
     */
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def writeBigInt64LE(value: Buffer.UnsafeBigInt, offset: Int = js.native): Int = js.native
 }
 

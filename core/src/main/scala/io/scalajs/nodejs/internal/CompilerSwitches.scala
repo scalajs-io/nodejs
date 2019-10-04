@@ -1,4 +1,4 @@
-package io.scalajs.nodejs
+package io.scalajs.nodejs.internal
 
 import scala.reflect.macros.whitebox
 

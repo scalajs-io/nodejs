@@ -45,9 +45,9 @@ trait Verify extends Writable {
     */
   def verify(obj: String | Buffer, signature: String, signatureEncoding: String): Boolean = js.native
   def verify(obj: String | Buffer, signature: BufferLike): Boolean                        = js.native
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def verify(obj: KeyObject, signature: String, signatureEncoding: String): Boolean = js.native
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def verify(obj: KeyObject, signature: BufferLike): Boolean = js.native
 
 }

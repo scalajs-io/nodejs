@@ -5,7 +5,7 @@ import com.thoughtworks.enableMembersIf
 import scala.scalajs.js
 import scala.scalajs.js.|
 
-@enableMembersIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+@enableMembersIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
 @js.native
 trait Reporter extends js.Object {
   def getReport(err: io.scalajs.nodejs.Error = js.native): Reporter = js.native

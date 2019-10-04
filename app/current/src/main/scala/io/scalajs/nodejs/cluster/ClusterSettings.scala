@@ -34,10 +34,10 @@ trait ClusterSettings extends js.Object {
 
   var inspectPort: Int | js.Function = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   var cwd: String = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   var windowsHide: Boolean = js.native
 }
 

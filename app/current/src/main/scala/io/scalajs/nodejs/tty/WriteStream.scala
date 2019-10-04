@@ -26,12 +26,12 @@ class WriteStream(fd: FileDescriptor) extends net.Socket {
     */
   def columns: Int = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def clearLine(dir: Int, callback: js.Function): Boolean = js.native
   // TODO: Return value should be boolean when dropping Node.js v10
   def clearLine(dir: Int): Unit = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def clearScreenDown(callback: js.Function): Boolean = js.native
   // TODO: Return value should be boolean when dropping Node.js v10
   def clearScreenDown(): Unit = js.native
@@ -40,15 +40,15 @@ class WriteStream(fd: FileDescriptor) extends net.Socket {
   def cursorTo(x: Int): Unit = js.native
   // TODO: Return value should be boolean when dropping Node.js v10
   def cursorTo(x: Int, y: Int): Unit = js.native
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def cursorTo(x: Int, y: Int, callback: js.Function): Boolean = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def getColorDepth(env: io.scalajs.nodejs.process.Environment = js.native): Int = js.native
 
   def getWindowSize(): js.Tuple2[Int, Int] = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def hasColors(count: Int = js.native, env: io.scalajs.nodejs.process.Environment = js.native): Boolean = js.native
 
   /**
@@ -66,7 +66,7 @@ class WriteStream(fd: FileDescriptor) extends net.Socket {
 
   // TODO: Return value should be boolean when dropping Node.js v10
   def moveCursor(dx: Int, dy: Int): Unit = js.native
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def moveCursor(dx: Int, dy: Int, callback: js.Function): Boolean = js.native
 
 }

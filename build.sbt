@@ -19,13 +19,6 @@ lazy val core = (project in file("./core"))
     libraryDependencies ++= Dependencies.core.value
   )
 
-lazy val compilerSwitches = (project in file("./compiler-switches"))
-  .settings(MySettings.commonSettings)
-  .settings(MySettings.nonPublishingSetting)
-  .settings(
-    libraryDependencies += Dependencies.scalaReflect.value
-  )
-
 lazy val current = (project in file("./app/current"))
   .enablePlugins(ScalaJSPlugin)
   .settings(MySettings.commonSettings)
@@ -39,7 +32,7 @@ lazy val current = (project in file("./app/current"))
     name := "scala-js-nodejs-v12",
     libraryDependencies ++= Dependencies.app.value
   )
-  .dependsOn(core, compilerSwitches)
+  .dependsOn(core)
 
 lazy val nodejs_v10 = (project in file("./app/nodejs-v10"))
   .enablePlugins(ScalaJSPlugin)
@@ -61,7 +54,7 @@ lazy val nodejs_v10 = (project in file("./app/nodejs-v10"))
     homepage := Some(url("https://github.com/exoego/scala-js-nodejs")),
     libraryDependencies ++= Dependencies.app.value
   )
-  .dependsOn(core, compilerSwitches)
+  .dependsOn(core)
 
 lazy val nodejs_v8 = (project in file("./app/nodejs-v8"))
   .enablePlugins(ScalaJSPlugin)
@@ -83,4 +76,4 @@ lazy val nodejs_v8 = (project in file("./app/nodejs-v8"))
     homepage := Some(url("https://github.com/exoego/scala-js-nodejs")),
     libraryDependencies ++= Dependencies.app.value
   )
-  .dependsOn(core, compilerSwitches)
+  .dependsOn(core)

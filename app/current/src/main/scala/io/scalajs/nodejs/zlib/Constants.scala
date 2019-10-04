@@ -82,7 +82,7 @@ trait ZlibConstants extends js.Object {
   val Z_NULL: AllocationType = js.native
 }
 
-@enableMembersIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+@enableMembersIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
 @js.native
 trait BlotriConstants extends js.Object {
   val BROTLI_DECODE: Int                                         = js.native

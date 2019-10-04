@@ -1288,9 +1288,9 @@ class StatOptions(val bigint: js.UndefOr[Boolean] = js.undefined) extends js.Obj
 class MkdirOptions(val recursive: js.UndefOr[Boolean] = js.undefined, val mode: js.UndefOr[FileMode] = js.undefined)
     extends js.Object
 
-class RmdirOptions(val emfileWait: js.UndefOr[Int] = js.undefined,
-                   val maxBusyTries: js.UndefOr[Int] = js.undefined,
-                   val recursive: js.UndefOr[Boolean] = js.undefined)
+class RmdirOptions(var emfileWait: js.UndefOr[Int] = 1000,
+                   var maxBusyTries: js.UndefOr[Int] = 3,
+                   var recursive: js.UndefOr[Boolean] = js.undefined)
     extends js.Object
 
 @js.native

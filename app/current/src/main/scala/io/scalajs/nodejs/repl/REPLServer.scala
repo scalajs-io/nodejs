@@ -76,7 +76,7 @@ object REPLServer {
     * REPL Server Extensions
     * @param server the given [[REPLServer REPL Server]]
     */
-  final implicit class REPLServerExtensions[T <: REPLServer](val server: T) extends AnyVal {
+  implicit final class REPLServerExtensions[T <: REPLServer](val server: T) extends AnyVal {
 
     /**
       * Emitted when the user exits the REPL in any of the defined ways. Namely, typing .exit at the repl,

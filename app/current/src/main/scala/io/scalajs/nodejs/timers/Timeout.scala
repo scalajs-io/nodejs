@@ -35,7 +35,7 @@ object Timeout {
     * Timeout Enrichment
     * @param handle the given [[Timeout timeout]] handle
     */
-  implicit class TimeoutEnrichment(val handle: Timeout) extends AnyVal {
+  implicit final class TimeoutEnrichment(val handle: Timeout) extends AnyVal {
 
     @inline
     def clear(): Unit = clearTimeout(handle)

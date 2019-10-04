@@ -18,7 +18,7 @@ package object scalajs {
     * JSON Enrichment
     * @param json the given [[JSON]] object
     */
-  implicit class JSONEnrichment(val json: JSON) extends AnyVal {
+  implicit final class JSONEnrichment(val json: JSON) extends AnyVal {
 
     @inline
     def parseAs[T](text: String): T = json.parse(text).asInstanceOf[T]

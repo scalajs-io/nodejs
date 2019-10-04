@@ -17,7 +17,7 @@ package object net {
     * net.Server Events
     * @param server the given [[Server server]]
     */
-  implicit class ServerEvents(val server: Server) extends AnyVal {
+  implicit final class ServerEvents(val server: Server) extends AnyVal {
 
     /**
       * Emitted when a new connection is made. socket is an instance of net.Socket.
@@ -46,7 +46,7 @@ package object net {
     * net.Socket Extensions
     * @param socket the given [[Socket socket]]
     */
-  implicit class SocketExtensions(val socket: Socket) extends AnyVal {
+  implicit final class SocketExtensions(val socket: Socket) extends AnyVal {
 
     /////////////////////////////////////////////////////////////////////////////////
     //      Futures

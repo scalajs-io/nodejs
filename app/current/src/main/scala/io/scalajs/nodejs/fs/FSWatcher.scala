@@ -28,7 +28,7 @@ object FSWatcher {
   /**
     * File System Watcher Extensions
     */
-  implicit class FSWatcherExtensions(val watcher: FSWatcher) extends AnyVal {
+  implicit final class FSWatcherExtensions(val watcher: FSWatcher) extends AnyVal {
 
     /**
       * Emitted when something changes in a watched directory or file. See more details in fs.watch().

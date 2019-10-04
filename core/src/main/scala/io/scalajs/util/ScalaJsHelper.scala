@@ -30,7 +30,7 @@ object ScalaJsHelper {
     * js.Dynamic to Value Extensions
     * @param obj the given [[js.Dynamic object]]
     */
-  implicit class JsAnyExtensions(val obj: js.Any) extends AnyVal {
+  implicit final class JsAnyExtensions(val obj: js.Any) extends AnyVal {
 
     @inline
     def asUndefOr[T]: js.UndefOr[T] = obj.asInstanceOf[js.UndefOr[T]].flat
@@ -61,7 +61,7 @@ object ScalaJsHelper {
     * js.Array Extensions
     * @param array the given [[js.Array array]]
     */
-  implicit class JsArrayExtensions[A](val array: js.Array[A]) extends AnyVal {
+  implicit final class JsArrayExtensions[A](val array: js.Array[A]) extends AnyVal {
 
     @inline
     def indexWhereOpt(f: A => Boolean): Option[Int] = array.indexWhere(f) match {
@@ -83,7 +83,7 @@ object ScalaJsHelper {
     * js.Dictionary Extensions
     * @param dict the given [[js.Dictionary dictionary]]
     */
-  implicit class JsDictionaryExtensions[A](val dict: js.Dictionary[A]) extends AnyVal {
+  implicit final class JsDictionaryExtensions[A](val dict: js.Dictionary[A]) extends AnyVal {
 
     @inline
     def replaceWith(items: (String, A)*): Unit = {

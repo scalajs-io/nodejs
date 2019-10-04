@@ -57,7 +57,7 @@ object ReadStream {
   /**
     * Read Stream Events
     */
-  implicit class ReadStreamEvents(val stream: ReadStream) extends AnyVal {
+  implicit final class ReadStreamEvents(val stream: ReadStream) extends AnyVal {
 
     /**
       * Emitted when the ReadStream's underlying file descriptor has been closed using the fs.close() method.
@@ -83,7 +83,7 @@ object ReadStream {
   /**
     * Read Stream Extensions
     */
-  implicit class ReadStreamExtensions(val stream: ReadStream) extends AnyVal {
+  implicit final class ReadStreamExtensions(val stream: ReadStream) extends AnyVal {
 
     @inline
     def closeFuture: Future[Unit] = promiseCallback1[Unit](stream.close)

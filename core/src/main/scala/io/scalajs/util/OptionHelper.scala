@@ -13,7 +13,7 @@ object OptionHelper {
     * Option Extensions
     * @param valueA the given [[Option optional value]]
     */
-  implicit class OptionExtensions[T](val valueA: Option[T]) extends AnyVal {
+  implicit final class OptionExtensions[T](val valueA: Option[T]) extends AnyVal {
 
     @inline def ?==(valueB: js.UndefOr[T]): Boolean = valueA.exists(v => valueB.exists(_ == v))
 
@@ -39,7 +39,7 @@ object OptionHelper {
     * Option Boolean Extensions
     * @param value the given [[Option value]]
     */
-  implicit class OptionBoolExtensions(val value: Option[Boolean]) extends AnyVal {
+  implicit final class OptionBoolExtensions(val value: Option[Boolean]) extends AnyVal {
 
     @inline def isTrue: Boolean = value.contains(true)
 
@@ -49,7 +49,7 @@ object OptionHelper {
     * Option Double Extensions
     * @param value the given [[Option value]]
     */
-  implicit class OptionDoubleExtensions(val value: Option[Double]) extends AnyVal {
+  implicit final class OptionDoubleExtensions(val value: Option[Double]) extends AnyVal {
 
     @inline def orZero: Double = value getOrElse 0.0
 
@@ -59,7 +59,7 @@ object OptionHelper {
     * Option Integer Extensions
     * @param value the given [[Option value]]
     */
-  implicit class OptionIntExtensions(val value: Option[Int]) extends AnyVal {
+  implicit final class OptionIntExtensions(val value: Option[Int]) extends AnyVal {
 
     @inline def orZero: Int = value getOrElse 0
 

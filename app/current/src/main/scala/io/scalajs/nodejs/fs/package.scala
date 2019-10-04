@@ -7,7 +7,7 @@ import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Future
 import scala.scalajs.js
-import scala.scalajs.js.typedarray.{DataView, TypedArray, Uint8Array}
+import scala.scalajs.js.typedarray.{ DataView, TypedArray, Uint8Array }
 import scala.scalajs.js.|
 
 /**
@@ -96,6 +96,12 @@ package object fs {
     @inline
     def mkdirFuture(path: Buffer | String): Future[Unit] = {
       promiseWithError0[FileIOError](fs.mkdir(path, _))
+    }
+
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
+    @inline
+    def mkdirFuture(path: Buffer | String, options: MkdirOptions): Future[Unit] = {
+      promiseWithError0[FileIOError](fs.mkdir(path, options, _))
     }
 
     @inline

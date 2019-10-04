@@ -1,7 +1,5 @@
 package io.scalajs.util
 
-import io.scalajs.util.JsUnderOrHelper._
-
 import scala.scalajs.js
 
 /**
@@ -16,6 +14,7 @@ object ScalaJsHelper {
   @inline
   def die[T](message: String): T = throw new IllegalStateException(message)
 
+  @deprecated("Use js.Array[T]()", "0.9.0")
   @inline
   def emptyArray[T]: js.Array[T] = js.Array[T]()
 
@@ -33,14 +32,19 @@ object ScalaJsHelper {
   implicit final class JsAnyExtensions(val obj: js.Any) extends AnyVal {
 
     @inline
-    def asUndefOr[T]: js.UndefOr[T] = obj.asInstanceOf[js.UndefOr[T]].flat
+    def asUndefOr[T]: js.UndefOr[T] = obj.asInstanceOf[js.UndefOr[T]]
 
     @inline
     def asOpt[T]: Option[T] = obj.asInstanceOf[js.UndefOr[T]].toOption
 
     @inline
-    def dynamic: js.Dynamic = obj.asInstanceOf[js.Dynamic]
+    def asDynamic: js.Dynamic = obj.asInstanceOf[js.Dynamic]
 
+    @deprecated("Use asDynamic", "0.9.0")
+    @inline
+    def dynamic: js.Dynamic = asDynamic
+
+    @deprecated("Use isInstanceOf or pattern matching instead", "0.9.0")
     @inline
     def getJSClassName: Option[String] = {
       val keyword = "function "
@@ -51,6 +55,7 @@ object ScalaJsHelper {
       }
     }
 
+    @deprecated("No longer provided since danger operation", "0.9.0")
     @inline
     def New[T <: js.Any](args: js.Any*): T =
       js.Dynamic.newInstance(obj.asInstanceOf[js.Dynamic])(args: _*).asInstanceOf[T]
@@ -61,17 +66,21 @@ object ScalaJsHelper {
     * js.Array Extensions
     * @param array the given [[js.Array array]]
     */
+  @deprecated("All methods are deprecated", "0.9.0")
   implicit final class JsArrayExtensions[A](val array: js.Array[A]) extends AnyVal {
 
+    @deprecated("Use indexWhere", "0.9.0")
     @inline
     def indexWhereOpt(f: A => Boolean): Option[Int] = array.indexWhere(f) match {
       case -1    => None
       case index => Some(index)
     }
 
+    @deprecated("Use clear", "0.9.0")
     @inline
     def removeAll(): Unit = array.remove(0, array.length)
 
+    @deprecated("Use new instance instead of mutating", "0.9.0")
     @inline
     def replaceWith(items: A*): Int = {
       array.remove(0, array.length)
@@ -83,9 +92,11 @@ object ScalaJsHelper {
     * js.Dictionary Extensions
     * @param dict the given [[js.Dictionary dictionary]]
     */
+  @deprecated("All methods are deprecated", "0.9.0")
   implicit final class JsDictionaryExtensions[A](val dict: js.Dictionary[A]) extends AnyVal {
 
     @inline
+    @deprecated("Use new instance instead of mutating", "0.9.0")
     def replaceWith(items: (String, A)*): Unit = {
       dict.clear()
       items foreach { case (key, value) => dict(key) = value }

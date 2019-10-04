@@ -1,7 +1,6 @@
 package io.scalajs.nodejs.cluster
 
 import com.thoughtworks.enableIf
-import io.scalajs.JsNumber
 import io.scalajs.nodejs.{GID, UID}
 
 import scala.scalajs.js
@@ -33,7 +32,7 @@ trait ClusterSettings extends js.Object {
 
   var stdio: js.Array[js.Any] = js.native
 
-  var inspectPort: JsNumber | js.Function = js.native
+  var inspectPort: Int | js.Function = js.native
 
   @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
   var cwd: String = js.native
@@ -51,7 +50,7 @@ object ClusterSettings {
             args: js.Array[String] = null,
             silent: Boolean = false,
             stdio: js.Array[js.Any] = null,
-            inspectPort: JsNumber | js.Function = null,
+            inspectPort: Int | js.Function = null,
             cwd: String = null,
             windowsHide: Boolean = false): ClusterSettings = {
     val settings = js.Dynamic.literal()

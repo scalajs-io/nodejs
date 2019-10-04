@@ -8,6 +8,7 @@ import scala.scalajs.js
   * with a default iteration behavior, such as Array or Map, while other types (such as Object) are not.
   * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols
   */
+@deprecated("Use scala.scalajs.js.Iterator", "0.9.0")
 @js.native
 trait Iterator[+A] extends js.Object {
 
@@ -26,17 +27,20 @@ trait Iterator[+A] extends js.Object {
 /**
   * Iterator Companion
   */
+@deprecated("Use scala.scalajs.js.Iterator", "0.9.0")
 object Iterator {
 
   /**
     * Implicit conversion for a js.Iterator to Scala Iterator
     * @param jsIt the given JavaScript [[Iterator]]
     */
+  @deprecated("Use scala.scalajs.js.Iterator", "0.9.0")
   implicit def toIterator[T](jsIt: Iterator[T]): scala.Iterator[T] = new IteratorWrapper[T](jsIt)
 
   /**
     * Iterator Entry
     */
+  @deprecated("Use scala.scalajs.js.Iterator", "0.9.0")
   @js.native
   trait Entry[+A] extends js.Object {
 
@@ -59,6 +63,7 @@ object Iterator {
   /**
     * Iterator Wrapper
     */
+  @deprecated("Use scala.scalajs.js.Iterator", "0.9.0")
   class IteratorWrapper[T](it: Iterator[T]) extends scala.Iterator[T] {
     private var result = it.next()
 

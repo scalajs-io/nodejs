@@ -1,7 +1,5 @@
 package io.scalajs.util
 
-import io.scalajs.JSON
-
 import scala.scalajs.js
 
 /**
@@ -16,10 +14,10 @@ object JSONHelper {
   implicit final class JSONConversionsToJson[T <: js.Any](val value: T) extends AnyVal {
 
     @inline
-    def toJson: String = JSON.stringify(value)
+    def toJson: String = js.JSON.stringify(value)
 
     @inline
-    def toPrettyJson: String = JSON.stringify(value, null, 4)
+    def toPrettyJson: String = js.JSON.stringify(value, null.asInstanceOf[js.Array[js.Any]], 4)
 
   }
 
@@ -30,8 +28,17 @@ object JSONHelper {
   implicit final class JSONConversionFromJson(val text: String) extends AnyVal {
 
     @inline
-    def fromJson[T <: js.Any]: T = JSON.parse(text).asInstanceOf[T]
+    def fromJson[T <: js.Any]: T = js.JSON.parse(text).asInstanceOf[T]
 
   }
 
+  implicit final class ScalaJsJSONEnrichment(val json: js.JSON.type) extends AnyVal {
+    @inline
+    def parseAs[T](text: String): T =
+      js.JSON.parse(text).asInstanceOf[T]
+
+    @inline
+    def parseAs[T](text: String, reviver: js.Function2[js.Any, js.Any, js.Any]): T =
+      js.JSON.parse(text, reviver).asInstanceOf[T]
+  }
 }

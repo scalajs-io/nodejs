@@ -1,8 +1,6 @@
 package io.scalajs.nodejs
 package child_process
 
-import io.scalajs.JsNumber
-
 import scala.scalajs.js
 import scala.scalajs.js.|
 
@@ -30,6 +28,6 @@ class ForkOptions(val cwd: js.UndefOr[String] = js.undefined,
                   val execArgv: js.UndefOr[Array[String]] = js.undefined,
                   val silent: js.UndefOr[Boolean] = js.undefined,
                   val stdio: js.UndefOr[String | Array[String]] = js.undefined,
-                  val uid: js.UndefOr[JsNumber] = js.undefined,
-                  val gid: js.UndefOr[JsNumber] = js.undefined)
+                  val uid: js.UndefOr[UID] = js.undefined,
+                  val gid: js.UndefOr[GID] = js.undefined)
     extends js.Object

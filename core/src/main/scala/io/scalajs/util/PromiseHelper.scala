@@ -252,6 +252,7 @@ object PromiseHelper {
   //    Monitoring Functions
   ////////////////////////////////////////////////////////////////////////
 
+  @deprecated("Define own helper with Console.time/timeEnd or such.", "0.9.0")
   def time[T](action: String, task: => Future[T], showHeader: Boolean = false)(
       implicit ec: ExecutionContext
   ): Future[T] = {
@@ -273,13 +274,23 @@ object PromiseHelper {
     * @param task the given [[Future task]]
     * @tparam T the return type of the task
     */
+  @deprecated("Define own helper with Console.time/timeEnd or such.", "0.9.0")
   implicit final class TimeExtensions[T](val task: Future[T]) extends AnyVal {
 
     @inline
     def withTimer(action: String, showHeader: Boolean = false)(implicit ec: ExecutionContext): Future[T] = {
-      time(action, task, showHeader)
+      if (showHeader) println(s"$action...")
+      val startTime = System.currentTimeMillis()
+      task onComplete {
+        case Success(_) =>
+          val elapsedTime = System.currentTimeMillis - startTime
+          println(f"$action took $elapsedTime msecs")
+        case Failure(_) =>
+          val elapsedTime = System.currentTimeMillis - startTime
+          println(f"$action took $elapsedTime msecs")
+      }
+      task
     }
-
   }
 
   /**
@@ -287,8 +298,10 @@ object PromiseHelper {
     */
   object Implicits {
 
+    @deprecated("Use jsPromise.toFuture", "0.9.0")
     implicit def promise2Future[T](task: js.Promise[T]): Future[T] = task.toFuture
 
+    @deprecated("Use promise.future", "0.9.0")
     implicit def promise2Future[T](task: Promise[T]): Future[T] = task.future
 
   }

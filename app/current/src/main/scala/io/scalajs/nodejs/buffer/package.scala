@@ -42,7 +42,7 @@ package object buffer {
       * @return the hex-formatted string
       */
     @inline
-    def toHexString: String = buffer.entries().flatMap(_.lastOption).map(n => f"$n%02x").mkString
+    def toHexString: String = buffer.entries().toIterator.flatMap(_.lastOption).map(n => f"$n%02x").mkString
   }
 
   /**

@@ -4,6 +4,7 @@ import io.scalajs.nodejs.buffer.Buffer
 import org.scalatest.{AsyncFunSpec, BeforeAndAfterEach}
 
 import scala.concurrent.{ExecutionContext, Future}
+import scala.util.{Failure, Success}
 
 class FsAsyncTest extends AsyncFunSpec with BeforeAndAfterEach {
 
@@ -37,6 +38,50 @@ class FsAsyncTest extends AsyncFunSpec with BeforeAndAfterEach {
           exists <- Fs.existsFuture(file)
         } yield {
           assert(!exists)
+        }
+      }
+    }
+
+    describe("accessFuture") {
+      it("should succeed") {
+        for {
+          _ <- Fs.accessFuture("package.json")
+          _ <- Fs.accessFuture("package.json", Fs.constants.R_OK)
+        } yield {
+          succeed
+        }
+      }
+
+      it("should fail: no such file") {
+        Fs.accessFuture("package.json111").transformWith {
+          case Failure(_) => succeed
+          case Success(_) => fail("expected failure")
+        }
+      }
+
+      it("should fail: invalid file mode") {
+        Fs.accessFuture("package.json", Fs.constants.X_OK).transformWith {
+          case Failure(_) => succeed
+          case Success(_) => fail("expected failure")
+        }
+      }
+    }
+
+    describe("appendFileFuture") {
+      it("should support option") {
+        for {
+          _              <- Fs.appendFileFuture("x.AppendFile.txt", "yay")
+          _              <- Fs.appendFileFuture("x.AppendFile.sh", "echo 0", new FileAppendOptions(mode = Fs.constants.X_OK))
+          defaultStat    <- Fs.statFuture("x.AppendFile.txt")
+          executableStat <- Fs.statFuture("x.AppendFile.sh")
+          _              <- Fs.unlinkFuture("x.AppendFile.txt")
+          _              <- Fs.unlinkFuture("x.AppendFile.sh")
+        } yield {
+          assert((defaultStat.mode & Fs.constants.R_OK) > 0)
+          assert((defaultStat.mode & Fs.constants.X_OK) === 0)
+          assert((executableStat.mode & Fs.constants.R_OK) === 0)
+          assert((executableStat.mode & Fs.constants.X_OK) > 0)
+          succeed
         }
       }
     }

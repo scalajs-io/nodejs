@@ -135,7 +135,7 @@ trait Path extends js.Object {
     */
   def resolve(args: String*): String = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def toNamespacedPath(path: String): String = js.native
 }
 

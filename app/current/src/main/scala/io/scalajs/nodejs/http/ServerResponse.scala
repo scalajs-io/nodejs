@@ -56,10 +56,10 @@ trait ServerResponse extends stream.Writable {
 
   def socket: net.Socket = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def writableEnded: Boolean = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def writableFinished: Boolean = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -140,7 +140,7 @@ trait ServerResponse extends stream.Writable {
   def writeHead(statusCode: Int, headers: js.Object | js.Dictionary[_]): Unit = js.native
   def writeHead(statusCode: Int): Unit                                        = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def writeProcessing(): Unit = js.native
 }
 

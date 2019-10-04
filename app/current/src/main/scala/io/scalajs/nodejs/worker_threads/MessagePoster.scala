@@ -4,7 +4,7 @@ import com.thoughtworks.enableMembersIf
 
 import scala.scalajs.js
 
-@enableMembersIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+@enableMembersIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
 @js.native
 trait MessagePoster extends js.Object {
 

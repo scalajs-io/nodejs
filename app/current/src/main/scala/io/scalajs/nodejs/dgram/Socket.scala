@@ -67,10 +67,10 @@ class Socket private[this] () extends IEventEmitter {
 
   def close(callback: js.Function = js.native): Unit = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def connect(port: Int, address: String = js.native, callback: js.Function0[Any] = js.native): Unit = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def disconnect(): Unit = js.native
 
   def dropMembership(multicastAddress: String, multicastInterface: String = js.native): Unit = js.native
@@ -80,7 +80,7 @@ class Socket private[this] () extends IEventEmitter {
 
   def ref(): this.type = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def remoteAddress(): RemoteAddress = js.native
 
   def send(msg: BufferMessage, offset: Int, length: Int, port: Int, address: String, callback: js.Function): Unit =

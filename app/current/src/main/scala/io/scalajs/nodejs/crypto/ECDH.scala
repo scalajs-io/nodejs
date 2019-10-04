@@ -31,7 +31,7 @@ trait ECDH extends js.Object {
 }
 
 @js.native
-@enableMembersIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+@enableMembersIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
 @JSImport("crypto", "ECDH")
 object ECDH extends js.Object {
   def convertKey(key: String, curve: String, inputEncoding: String, outputEncoding: String, format: String): String =

@@ -57,7 +57,7 @@ class Socket(options: SocketOptions = js.native) extends stream.Duplex with HasH
     */
   def localPort: Int = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def pending: Boolean = js.native
 
   /**

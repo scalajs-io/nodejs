@@ -26,7 +26,7 @@ trait Tls extends js.Object {
 
   def getCiphers(): js.Array[String] = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def rootCertificates: js.Array[String] = js.native
 }
 
@@ -38,9 +38,9 @@ trait Tls extends js.Object {
 object Tls extends Tls {
   def DEFAULT_ECDH_CURVE: String = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def DEFAULT_MAX_VERSION: String = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def DEFAULT_MIN_VERSION: String = js.native
 }

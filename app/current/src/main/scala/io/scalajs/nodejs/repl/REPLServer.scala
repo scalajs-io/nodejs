@@ -18,7 +18,7 @@ trait REPLServer extends IEventEmitter with Interface {
     */
   val context: REPLContext = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def clearBufferedCommand(): Unit = js.native
 
   /**
@@ -57,7 +57,7 @@ trait REPLServer extends IEventEmitter with Interface {
     */
   def displayPrompt(): Unit = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def setupHistory(historyPath: String, callback: js.Function2[io.scalajs.nodejs.Error, REPLServer, Any]): Unit =
     js.native
 }

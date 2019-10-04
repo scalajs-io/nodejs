@@ -50,7 +50,7 @@ package object https {
       promiseCallback1[ServerResponse](https.request(url, _))
     }
 
-    @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
     @inline
     def requestFuture(url: String | URL, options: RequestOptions): Future[ServerResponse] = {
       promiseCallback1[ServerResponse](https.request(url, options, _))

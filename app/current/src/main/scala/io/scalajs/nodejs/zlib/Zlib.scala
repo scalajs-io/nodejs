@@ -14,10 +14,10 @@ import scala.scalajs.js.annotation.JSImport
 @js.native
 trait Zlib extends IEventEmitter with UncategorizedConstants with ZlibConstants {
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def createBrotliCompress(options: BrotliOptions = js.native): BrotliCompress = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def createBrotliDecompress(options: BrotliOptions = js.native): BrotliDecompress = js.native
 
   /**
@@ -66,18 +66,18 @@ trait Zlib extends IEventEmitter with UncategorizedConstants with ZlibConstants 
   //      Convenience Methods
   /////////////////////////////////////////////////////////////////////////////////
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def brotliCompress(buffer: Data, options: BrotliOptions, callback: js.Function): Unit = js.native
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def brotliCompress(buffer: Data, callback: js.Function): Unit = js.native
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def brotliCompressSync(buffer: Data, options: BrotliOptions = js.native): Unit = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def brotliDecompress(buffer: Data, options: BrotliOptions, callback: js.Function): Unit = js.native
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def brotliDecompress(buffer: Data, callback: js.Function): Unit = js.native
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def brotliDecompressSync(buffer: Data, options: BrotliOptions = js.native): Unit = js.native
 
   /**

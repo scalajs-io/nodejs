@@ -196,7 +196,7 @@ package object process {
     def onMessage(listener: (js.Any, js.UndefOr[net.Server | net.Socket]) => Any): Process =
       process.on("message", listener)
 
-    @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
     def onMultipleResolves[T](listener: (String, js.Promise[T], js.Any) => Any): Process =
       process.on("multipleResolves", listener)
 
@@ -215,7 +215,7 @@ package object process {
       */
     def onUncaughtException(listener: Error => Any): Process = process.on("uncaughtException", listener)
 
-    @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
     def onUncaughtException(listener: (Error, String) => Any): Process = process.on("uncaughtException", listener)
 
     /**

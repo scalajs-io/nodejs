@@ -171,10 +171,10 @@ object URL extends IEventEmitter {
     */
   def domainToUnicode(domain: String): String = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def fileURLToPath(url: URL | String): String = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def pathToFileURL(url: String): URL = js.native
 
 }

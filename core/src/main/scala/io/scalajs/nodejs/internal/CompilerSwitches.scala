@@ -1,4 +1,4 @@
-package io.scalajs.nodejs
+package io.scalajs.nodejs.internal
 
 import scala.reflect.macros.whitebox
 
@@ -11,8 +11,8 @@ object CompilerSwitches {
     predicate(major.toInt, minor.toInt, patch.toInt)
   }
 
-  final val isNodeJs8   = (c: whitebox.Context) => c.settings.exists(compare((major, _, _) => major == 8))
-  final val gteNodeJs8  = (c: whitebox.Context) => c.settings.exists(compare((major, _, _) => major >= 8))
+  final val isNodeJs8  = (c: whitebox.Context) => c.settings.exists(compare((major, _, _) => major == 8))
+  final val gteNodeJs8 = (c: whitebox.Context) => c.settings.exists(compare((major, _, _) => major >= 8))
 
   final val isNodeJs10  = (c: whitebox.Context) => c.settings.exists(compare((major, _, _) => major == 10))
   final val gteNodeJs10 = (c: whitebox.Context) => c.settings.exists(compare((major, _, _) => major >= 10))

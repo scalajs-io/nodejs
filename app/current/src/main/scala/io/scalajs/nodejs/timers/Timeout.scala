@@ -16,10 +16,10 @@ trait Timeout extends js.Object {
     * @return true, if the timeout has already been called
     */
   def _called: Boolean = js.native
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def hasRef(): Boolean = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def refresh(): Timeout = js.native
 
   def ref(): Timeout   = js.native

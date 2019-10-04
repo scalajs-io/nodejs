@@ -66,7 +66,7 @@ trait OS extends js.Object {
     */
   def freemem(): Double = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def getPriority(pid: Int = js.native): Int = js.native
 
   /**
@@ -113,9 +113,9 @@ trait OS extends js.Object {
     */
   def release(): String = js.native
 
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def setPriority(pid: Int, priority: Int): Unit = js.native
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs10)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def setPriority(priority: Int): Unit = js.native
 
   /**

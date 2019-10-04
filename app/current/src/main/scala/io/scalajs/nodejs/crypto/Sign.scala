@@ -21,9 +21,9 @@ import scala.scalajs.js.|
 sealed trait Sign extends Writable {
   def sign(privateKey: String | Buffer): Buffer                         = js.native
   def sign(privateKey: String | Buffer, outputEncoding: String): String = js.native
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def sign(privateKey: KeyObject): Buffer = js.native
-  @enableIf(io.scalajs.nodejs.CompilerSwitches.gteNodeJs12)
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def sign(privateKey: KeyObject, outputEncoding: String): String = js.native
 
   def update(data: String, inputEncoding: String = js.native): Unit = js.native

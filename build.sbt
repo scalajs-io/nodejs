@@ -1,7 +1,7 @@
 organization in ThisBuild := "net.exoego"
 
 lazy val root = (project in file("."))
-  .aggregate(core, current, nodejs_v8)
+  .aggregate(core, current, nodejs_v10, nodejs_v8)
   .settings(MySettings.commonSettings)
   .settings(MySettings.publishingSettings)
   .settings(MySettings.nonPublishingSetting)

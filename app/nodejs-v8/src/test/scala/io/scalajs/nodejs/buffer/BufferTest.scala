@@ -26,7 +26,8 @@ class BufferTest extends FunSpec {
         val buf = Buffer.from("Hello!")
         val it  = buf.entries()
         assert(
-          it.toIterator.toSeq.map(_.toSeq) === Seq(
+          // TODO: Use it.toIterator once io.scalajs.colletion.Iterator removed.
+          js.Iterator.IteratorOps(it).toIterator.toSeq.map(_.toSeq) === Seq(
             Seq(0, 72),
             Seq(1, 101),
             Seq(2, 108),

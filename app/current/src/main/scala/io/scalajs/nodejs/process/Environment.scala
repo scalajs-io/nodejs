@@ -33,3 +33,13 @@ trait Environment extends js.Object {
   @JSBracketAccess
   def update(key: String, value: String): Unit = js.native
 }
+
+object Environment {
+  implicit final class EnvironmentExtension(private val env: Environment) extends AnyVal {
+    @deprecated("Use env(key)", "0.9.0")
+    @inline def get(key: String): Option[String] = env(key).toOption
+
+    @deprecated("Use env(key)", "0.9.0")
+    @inline def contains(key: String): Boolean = env(key).isDefined
+  }
+}

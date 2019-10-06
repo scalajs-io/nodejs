@@ -10,7 +10,7 @@ import scala.scalajs.js
   * DNS Tests
   */
 class DNSAsyncTest extends AsyncFunSpec {
-  private val domain                     = "google.com"
+  private val domain   = "google.com"
   private val resolver = new DNS.promises.Resolver()
 
   override implicit val executionContext = ExecutionContext.Implicits.global

@@ -54,7 +54,12 @@ The following core Node.js modules (v8.7.0+) have been implemented:
 Add below line to your SBT project.
 
 ```sbt
-libraryDependencies += "net.exoego" %%% "scala-js-nodejs-v8" % "0.8.0"
+// For Node.js v8 LTS
+libraryDependencies += "net.exoego" %%% "scala-js-nodejs-v8" % "0.9.0"
+// For Node.js v10 LTS
+libraryDependencies += "net.exoego" %%% "scala-js-nodejs-v10" % "0.9.0"
+// For Node.js v12 (supposed to be next LTS)
+libraryDependencies += "net.exoego" %%% "scala-js-nodejs-v2" % "0.9.0"
 ```
 
 ## Example of code

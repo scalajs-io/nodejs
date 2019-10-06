@@ -2,7 +2,7 @@ package io.scalajs.nodejs.process
 
 import org.scalatest.FunSpec
 
-class ProcessTest extends FunSpec{
+class ProcessTest extends FunSpec {
 
   describe("Process") {
     it("hrtime.bigint") {

@@ -1,6 +1,6 @@
 package io.scalajs.nodejs.fs
 
-import org.scalatest.{ AsyncFunSpec, BeforeAndAfterEach }
+import org.scalatest.{AsyncFunSpec, BeforeAndAfterEach}
 
 import scala.concurrent.ExecutionContext
 

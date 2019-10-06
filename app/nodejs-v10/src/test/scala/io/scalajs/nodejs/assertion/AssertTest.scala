@@ -1,7 +1,7 @@
 package io.scalajs.nodejs.assertion
 
 import org.scalatest.FunSpec
-import io.scalajs.nodejs.{ Assert => NodeAssert }
+import io.scalajs.nodejs.{Assert => NodeAssert}
 
 import scala.scalajs.js
 

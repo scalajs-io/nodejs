@@ -32,7 +32,7 @@ package object nodejs {
 
   type FileIOError = SystemError
 
-  type FileMode = Int | Null
+  type FileMode = Int
 
   type FileType = Int
 

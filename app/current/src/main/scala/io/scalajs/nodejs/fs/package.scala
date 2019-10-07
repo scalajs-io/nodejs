@@ -109,12 +109,24 @@ package object fs {
     }
 
     @inline
+    def mkdtempFuture(prefix: String, options: FileEncodingOptions = ???): Future[String] = {
+      promiseWithError1[FileIOError, String](instance.mkdtemp(prefix, options, _))
+    }
+
+    @inline
     def openFuture(path: Buffer | String, flags: Flags, mode: FileMode): Future[FileDescriptor] = {
       promiseWithError1[FileIOError, FileDescriptor](instance.open(path, flags, mode, _))
     }
+
     @inline
     def openFuture(path: Buffer | String, flags: Flags): Future[FileDescriptor] = {
       promiseWithError1[FileIOError, FileDescriptor](instance.open(path, flags, _))
+    }
+
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+    @inline
+    def openFuture(path: Buffer | String): Future[FileDescriptor] = {
+      promiseWithError1[FileIOError, FileDescriptor](instance.open(path, _))
     }
 
     @inline

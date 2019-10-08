@@ -1,6 +1,8 @@
 package io.scalajs.nodejs
 package fs
 
+import com.thoughtworks.enableIf
+
 import scala.scalajs.js
 
 /**
@@ -35,6 +37,24 @@ trait FSConstants extends js.Object {
     * File can be executed by the calling process. This has no effect on Windows (will behave like [[F_OK]]).
     */
   val X_OK: FileMode = js.native
+
+  /////////////////////////////////////////////////////////////////////////////////
+  //      File Mode  Constants
+  //
+  //      The following constants are meant for use with fs.Stats.
+  /////////////////////////////////////////////////////////////////////////////////                         `
+  val S_IRGRP: FileMode = js.native
+  val S_IROTH: FileMode = js.native
+  val S_IRUSR: FileMode = js.native
+  val S_IRWXG: FileMode = js.native
+  val S_IRWXO: FileMode = js.native
+  val S_IRWXU: FileMode = js.native
+  val S_IWGRP: FileMode = js.native
+  val S_IWOTH: FileMode = js.native
+  val S_IWUSR: FileMode = js.native
+  val S_IXGRP: FileMode = js.native
+  val S_IXOTH: FileMode = js.native
+  val S_IXUSR: FileMode = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      File Open Constants
@@ -120,6 +140,11 @@ trait FSConstants extends js.Object {
     */
   val O_NONBLOCK: Int = js.native
 
+  /**
+    * Flag indicating that the file is opened for synchronized I/O with write operations waiting for data integrity.
+    */
+  val O_DSYNC: Int = js.native
+
   /////////////////////////////////////////////////////////////////////////////////
   //      File Type Constants
   //
@@ -167,4 +192,12 @@ trait FSConstants extends js.Object {
     */
   val S_IFSOCK: FileType = js.native
 
+  /////////////////////////////////////////////////////////////////////////////////
+  //      File Copy Constants
+  /////////////////////////////////////////////////////////////////////////////////
+  val COPYFILE_EXCL: Int = js.native
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
+  val COPYFILE_FICLONE: Int = js.native
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
+  val COPYFILE_FICLONE_FORCE: Int = js.native
 }

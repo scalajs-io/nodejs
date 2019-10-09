@@ -86,7 +86,7 @@ class Buffer private[this] () extends Uint8Array( /* dummy to trick constructor 
     *
     * @see [[https://nodejs.org/api/buffer.html#buffer_buf_entries]]
     */
-  def entries(): io.scalajs.collection.Iterator[js.Array[Int]] = js.native
+  def entries(): js.Iterator[js.Array[Int]] = js.native
 
   /**
     * Returns true if both buf and otherBuffer have exactly the same bytes, false otherwise.
@@ -139,7 +139,7 @@ class Buffer private[this] () extends Uint8Array( /* dummy to trick constructor 
     * @return an [[Iterator]]
     * @example buf.keys()
     */
-  def keys(): io.scalajs.collection.Iterator[Int] = js.native
+  def keys(): js.Iterator[Int] = js.native
 
   /**
     * The largest size allowed for a single Buffer instance.
@@ -486,7 +486,7 @@ class Buffer private[this] () extends Uint8Array( /* dummy to trick constructor 
     * @return an iterator for buf values (bytes)
     * @example buf.values()
     */
-  def values(): io.scalajs.collection.Iterator[Int] = js.native
+  def values(): js.Iterator[Int] = js.native
 
   /**
     * Writes string to buf at offset according to the character encoding in encoding. The length parameter is

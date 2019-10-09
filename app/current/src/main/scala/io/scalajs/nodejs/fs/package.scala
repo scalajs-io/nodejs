@@ -38,10 +38,6 @@ package object fs {
     * @param instance the given [[Fs file system]] instance
     */
   implicit final class FsExtensions(private val instance: Fs) extends AnyVal {
-    @deprecated("Use Fs directly instead of Fs.fs", "0.9.0")
-    @inline
-    def fs: Fs = instance
-
     @inline
     def accessFuture(path: Buffer | String): Future[Unit] = {
       promiseWithError0[FileIOError](instance.access(path, _))

@@ -21,9 +21,6 @@ package object zlib {
   type DataType              = Int
   type DeflateCompressMethod = Int
 
-  @deprecated("Use ZlibBase instead", "0.9.0")
-  type CompressionAlgorithm = ZlibBase
-
   /**
     * Zlib Extensions
     */

@@ -152,19 +152,6 @@ sealed trait IReadable extends LegacyStream {
     */
   def push(chunk: Uint8Array): Boolean = js.native
 
-  /**
-    * The read() method pulls some data out of the internal buffer and returns it. If there is no data available,
-    * then it will return null.
-    * <p/>If you pass in a size argument, then it will return that many bytes. If size bytes are not available,
-    * then it will return null, unless we've ended, in which case it will return the data remaining in the buffer.
-    * <p/>If you do not specify a size argument, then it will return all the data in the internal buffer.
-    * <p/>This method should only be called in paused mode. In flowing mode, this method is called automatically
-    * until the internal buffer is drained.
-    * @example readable.read([size])
-    */
-  @deprecated("Use readAsXXXX instead", "0.9.0")
-  def read[T](size: Int = js.native): T = js.native
-
   @JSName("read")
   def readAsString(size: Int = js.native): String = js.native
   @JSName("read")
@@ -334,24 +321,6 @@ object IReadable {
         value
       }
     }
-
-    @inline
-    @deprecated("Use iteratorAsXXXX instead", "0.9")
-    def iterator[T]: scala.Iterator[T] = new scala.Iterator[T] {
-      var result: T = readable.read[T]()
-
-      override def hasNext: Boolean = result != null
-
-      override def next(): T = {
-        val value = result
-        result = readable.read[T]()
-        value
-      }
-    }
-
-    @inline
-    @deprecated("Use readAsXXXXOption instead", "0.9")
-    def readOption[A](): Option[A] = Option(readable.read[A]())
 
     @inline
     def readAsObjectOption(): Option[js.Any] = Option(readable.readAsObject())

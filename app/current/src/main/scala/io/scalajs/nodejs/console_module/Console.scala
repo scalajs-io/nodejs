@@ -226,7 +226,7 @@ class Console protected () extends js.Object {
 }
 
 /**
-  * A global `Console` instance configured to write to [[io.scalajs.nodejs.process.stdout]] and [[io.scalajs.nodejs.process.stderr]].
+  * A global `Console` instance configured to write to [[io.scalajs.nodejs.process.Process.stdout]] and [[io.scalajs.nodejs.process.Process.stderr]].
   */
 @js.native
 @JSGlobal("console")

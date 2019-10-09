@@ -67,7 +67,7 @@ class URLSearchParams() extends js.Object {
     * a JavaScript Array. The first item of the Array is the name, the second item of the Array is the value.
     * @return an iterable of an array of results
     */
-  def entries(): io.scalajs.collection.Iterator[js.Tuple2[String, String]] = js.native
+  def entries(): js.Iterator[js.Tuple2[String, String]] = js.native
 
   /**
     * Iterates over each name-value pair in the query and invokes the given function.
@@ -96,7 +96,7 @@ class URLSearchParams() extends js.Object {
     */
   def has(name: String): Boolean = js.native
 
-  def keys(): io.scalajs.collection.Iterator[String] = js.native
+  def keys(): js.Iterator[String] = js.native
 
   /**
     * Sets the value in the URLSearchParams object associated with name to value. If there are any pre-existing
@@ -116,6 +116,6 @@ class URLSearchParams() extends js.Object {
   /**
     * Returns an ES6 Iterator over the values of each name-value pair.
     */
-  def values(): io.scalajs.collection.Iterator[String] = js.native
+  def values(): js.Iterator[String] = js.native
 
 }

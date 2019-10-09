@@ -1,7 +1,6 @@
 package io.scalajs.nodejs
 
 import com.thoughtworks.enableIf
-import io.scalajs.nodejs.tty.{ReadStream, WriteStream}
 import io.scalajs.util.PromiseHelper.promiseWithError1
 
 import scala.concurrent.Future
@@ -13,120 +12,6 @@ package object process {
   type EnvironmentFlags = js.Any
   type ExitCode         = Int
   type SendHandle       = net.Socket | net.Server
-
-  @deprecated("use Process object instead", "0.9.0")
-  def allowedNodeEnvironmentFlags: EnvironmentFlags = Process.allowedNodeEnvironmentFlags
-  @deprecated("use Process object instead", "0.9.0")
-  def arch: String = Process.arch
-  @deprecated("use Process object instead", "0.9.0")
-  def argv: js.Array[String] = Process.argv
-  @deprecated("use Process object instead", "0.9.0")
-  def argv0: String = Process.argv0
-  @deprecated("use Process object instead", "0.9.0")
-  def channel: js.UndefOr[js.Object] = Process.channel
-  @deprecated("use Process object instead", "0.9.0")
-  def config: ProcessConfig = Process.config
-  @deprecated("use Process object instead", "0.9.0")
-  def connected: js.UndefOr[Boolean] = Process.connected
-  @deprecated("use Process object instead", "0.9.0")
-  def debugPort: Integer = Process.debugPort
-  @deprecated("use Process object instead", "0.9.0")
-  def env: Environment = Process.env
-  @deprecated("use Process object instead", "0.9.0")
-  def execArgv: js.Array[String] = Process.execArgv
-  @deprecated("use Process object instead", "0.9.0")
-  def execPath: String = Process.execPath
-  @deprecated("use Process object instead", "0.9.0")
-  def exitCode: Int = Process.exitCode
-  @deprecated("use Process object instead", "0.9.0")
-  def features: js.Dictionary[Boolean] = Process.features
-  @deprecated("use Process object instead", "0.9.0")
-  def mainModule: js.UndefOr[js.Any] = Process.mainModule
-  @deprecated("use Process object instead", "0.9.0")
-  def moduleLoadList: js.Array[String] = Process.moduleLoadList
-  @deprecated("use Process object instead", "0.9.0")
-  def pid: Int = Process.pid
-  @deprecated("use Process object instead", "0.9.0")
-  def platform: String = Process.platform
-  @deprecated("use Process object instead", "0.9.0")
-  def release: ReleaseInfo = Process.release
-  @deprecated("use Process object instead", "0.9.0")
-  def stderr: WriteStream = Process.stderr
-  @deprecated("use Process object instead", "0.9.0")
-  def stdin: ReadStream = Process.stdin
-  @deprecated("use Process object instead", "0.9.0")
-  def stdout: WriteStream = Process.stdout
-  @deprecated("use Process object instead", "0.9.0")
-  def title: String = Process.title
-  @deprecated("use Process object instead", "0.9.0")
-  def version: String = Process.version
-  @deprecated("use Process object instead", "0.9.0")
-  def versions: ComponentVersion = Process.versions
-
-  @deprecated("use Process object instead", "0.9.0")
-  def abort(): Unit = Process.abort()
-  @deprecated("use Process object instead", "0.9.0")
-  def chdir(directory: String): Unit = Process.chdir(directory)
-  @deprecated("use Process object instead", "0.9.0")
-  def cwd(): String = Process.cwd()
-  @deprecated("use Process object instead", "0.9.0")
-  def disconnect(): js.Any = Process.disconnect()
-  @deprecated("use Process object instead", "0.9.0")
-  def emitWarning(warning: String, name: String = null, code: String = null, ctor: js.Function = null): Unit =
-    Process.emitWarning(warning, name, code, ctor)
-  @deprecated("use Process object instead", "0.9.0")
-  def exit(code: Int = 0): Unit = Process.exit(code)
-  @deprecated("use Process object instead", "0.9.0")
-  def getegid(): Int = Process.getegid()
-  @deprecated("use Process object instead", "0.9.0")
-  def geteuid(): Int = Process.geteuid()
-  @deprecated("use Process object instead", "0.9.0")
-  def getgid(): Int = Process.getgid()
-  @deprecated("use Process object instead", "0.9.0")
-  def getgroups(): js.Array[Int] = Process.getgroups()
-  @deprecated("use Process object instead", "0.9.0")
-  def getuid(): Int = Process.getuid()
-  @deprecated("use Process object instead", "0.9.0")
-  def hrtime(time: js.Array[Int] = null): js.Array[Int] = Process.hrtime(time)
-  @deprecated("use Process object instead", "0.9.0")
-  def initgroups(user: String, extra_group: String): js.Array[Int] = Process.initgroups(user, extra_group)
-  @deprecated("use Process object instead", "0.9.0")
-  def kill(pid: Int, signal: String = null): Unit = Process.kill(pid, signal)
-  @deprecated("use Process object instead", "0.9.0")
-  def memoryUsage(): MemoryUsage = Process.memoryUsage()
-  @deprecated("use Process object instead", "0.9.0")
-  def nextTick(callback: js.Function0[Any], args: js.Any*): Unit = Process.nextTick(callback, args)
-  @deprecated("use Process object instead", "0.9.0")
-  def openStdin(): ReadStream = Process.openStdin()
-  @deprecated("use Process object instead", "0.9.0")
-  def send(message: js.Any, sendHandle: SendHandle, options: TransferOptions, callback: js.Function): Boolean =
-    Process.send(message, sendHandle, options, callback)
-  @deprecated("use Process object instead", "0.9.0")
-  def send(message: js.Any, sendHandle: SendHandle, options: TransferOptions): Boolean =
-    Process.send(message, sendHandle, options)
-  @deprecated("use Process object instead", "0.9.0")
-  def send(message: js.Any, sendHandle: SendHandle, callback: js.Function): Boolean =
-    Process.send(message, sendHandle, callback)
-  @deprecated("use Process object instead", "0.9.0")
-  def send(message: js.Any, callback: js.Function): Boolean = Process.send(message, callback)
-  @deprecated("use Process object instead", "0.9.0")
-  def send(message: js.Any): Boolean = Process.send(message)
-  @deprecated("use Process object instead", "0.9.0")
-  def setegid(id: Int): Unit = Process.setegid(id)
-  @deprecated("use Process object instead", "0.9.0")
-  def seteuid(id: Int): Unit = Process.seteuid(id)
-  @deprecated("use Process object instead", "0.9.0")
-  def setgid(id: Int): Unit = Process.setgid(id)
-  @deprecated("use Process object instead", "0.9.0")
-  def setgroups(groups: js.Array[Int] | js.Array[String] | js.Array[String | Int]): Unit = Process.setgroups(groups)
-  @deprecated("use Process object instead", "0.9.0")
-  def setuid(id: Int): Unit = Process.setuid(id)
-  @deprecated("use Process object instead", "0.9.0")
-  def umask(mask: Int): Int = Process.umask(mask)
-  @deprecated("use Process object instead", "0.9.0")
-  def umask(): Int = Process.umask()
-  @deprecated("use Process object instead", "0.9.0")
-  def uptime(): Int = Process.uptime()
 
   /**
     * Process Object Extensions

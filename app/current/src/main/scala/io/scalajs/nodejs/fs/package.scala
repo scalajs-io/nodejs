@@ -7,17 +7,16 @@ import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Future
 import scala.scalajs.js
-import scala.scalajs.js.typedarray.{DataView, TypedArray, Uint8Array}
-import scala.scalajs.js.|
+import scala.scalajs.js.{typedarray, |}
 
 /**
   * fs package object
   */
 package object fs {
 
-  type Path             = Uint8Array | String | URL
+  type Path             = typedarray.Uint8Array | String | URL
   type Time             = Int | String | js.Date
-  type BufferLike       = TypedArray[_, _] | DataView
+  type BufferLike       = typedarray.TypedArray[_, _] | typedarray.DataView
   type Output           = String | Buffer
   type FileWriteOptions = FileAppendOptions
 
@@ -31,6 +30,8 @@ package object fs {
   /////////////////////////////////////////////////////////////////////////////////
   //      Implicit conversions and classes
   /////////////////////////////////////////////////////////////////////////////////
+
+  private val isWindows = process.Process.platform == "win32"
 
   /**
     * File System Extensions
@@ -59,18 +60,60 @@ package object fs {
     }
 
     @inline
-    def chmodFuture(path: Buffer | String, mode: FileMode, callback: js.Function1[FileIOError, Any]): Future[Unit] = {
+    def chmodFuture(path: Buffer | String, mode: FileMode): Future[Unit] = {
       promiseWithError0[FileIOError](instance.chmod(path, mode, _))
     }
 
     @inline
-    def closeFuture(fd: FileDescriptor): Future[Unit] = promiseWithError0[FileIOError](instance.close(fd, _))
+    def chownFuture(path: Path, uid: UID, gid: GID): Future[Unit] = {
+      promiseWithError0[FileIOError](instance.chown(path, uid, gid, _))
+    }
 
     @inline
-    def existsFuture(path: String): Future[Boolean] = promiseWithErrorAsBoolean[FileIOError](instance.access(path, _))
+    def copyFileFuture(src: Path, dest: Path, flags: Flags): Future[Unit] = {
+      promiseWithError0[FileIOError](instance.copyFile(src, dest, flags, _))
+    }
+
+    @inline
+    def copyFileFuture(src: Path, dest: Path): Future[Unit] = {
+      promiseWithError0[FileIOError](instance.copyFile(src, dest, _))
+    }
+
+    @inline
+    def existsFuture(path: Path): Future[Boolean] = promiseWithErrorAsBoolean[FileIOError](instance.access(path, _))
+
+    @inline
+    def fchmodFuture(fd: FileDescriptor, mode: FileMode): Future[Unit] = {
+      promiseWithError0[FileIOError](instance.fchmod(fd, mode, _))
+    }
+
+    @inline
+    def fchownFuture(fd: FileDescriptor, uid: UID, gid: GID): Future[Unit] = {
+      promiseWithError0[FileIOError](instance.fchown(fd, uid, gid, _))
+    }
 
     @inline
     def fdatasyncFuture(fd: FileDescriptor): Future[Unit] = promiseWithError0[FileIOError](instance.fdatasync(fd, _))
+
+    @inline
+    def fstatFuture(fd: FileDescriptor, options: StatOptions): Future[Stats] = {
+      promiseWithError1[FileIOError, Stats](instance.fstat(fd, options, _))
+    }
+
+    @inline
+    def fstatFuture(fd: FileDescriptor): Future[Stats] = {
+      promiseWithError1[FileIOError, Stats](instance.fstat(fd, _))
+    }
+
+    @inline
+    def fsyncFuture(fd: FileDescriptor): Future[Unit] = {
+      promiseWithError0[FileIOError](instance.fsync(fd, _))
+    }
+
+    @inline
+    def ftruncateFuture(fd: FileDescriptor): Future[Unit] = {
+      promiseWithError0[FileIOError](instance.ftruncate(fd, _))
+    }
 
     @inline
     def futimesFuture(fd: FileDescriptor, atime: Time, mtime: Time): Future[Unit] = {
@@ -78,68 +121,109 @@ package object fs {
     }
 
     @inline
-    def lchmodFuture(path: Buffer | String, mode: FileMode): Future[Unit] = {
+    def lchmodFuture(path: Path, mode: FileMode): Future[Unit] = {
       promiseWithError0[FileIOError](instance.lchmod(path, mode, _))
     }
 
     @inline
-    def lchownFuture(path: Buffer | String, uid: UID, gid: GID): Future[Unit] = {
+    def lchownFuture(path: Path, uid: UID, gid: GID): Future[Unit] = {
       promiseWithError0[FileIOError](instance.lchown(path, uid, gid, _))
     }
 
     @inline
-    def linkFuture(srcpath: Buffer | String, dstpath: Buffer | String): Future[Unit] = {
+    def linkFuture(srcpath: Path, dstpath: Path): Future[Unit] = {
       promiseWithError0[FileIOError](instance.link(srcpath, dstpath, _))
     }
 
     @inline
-    def mkdirFuture(path: Buffer | String, mode: FileMode): Future[Unit] = {
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
+    def lstatFuture(path: Path, options: StatOptions): Future[Stats] = {
+      promiseWithError1[FileIOError, Stats](instance.lstat(path, options, _))
+    }
+
+    @inline
+    def lstatFuture(path: Path): Future[Stats] = {
+      promiseWithError1[FileIOError, Stats](instance.lstat(path, _))
+    }
+
+    @inline
+    def mkdirFuture(path: Path, mode: FileMode): Future[Unit] = {
       promiseWithError0[FileIOError](instance.mkdir(path, mode, _))
     }
 
     @inline
-    def mkdirFuture(path: Buffer | String): Future[Unit] = {
+    def mkdirFuture(path: Path): Future[Unit] = {
       promiseWithError0[FileIOError](instance.mkdir(path, _))
     }
 
     @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
     @inline
-    def mkdirFuture(path: Buffer | String, options: MkdirOptions): Future[Unit] = {
+    def mkdirFuture(path: Path, options: MkdirOptions): Future[Unit] = {
       promiseWithError0[FileIOError](instance.mkdir(path, options, _))
     }
 
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
     @inline
-    def mkdtempFuture(prefix: String, options: FileEncodingOptions = ???): Future[String] = {
+    def mkdirRecursiveFuture(path: Path): Future[Unit] = {
+      val recursiveEnabled = new MkdirOptions(recursive = true)
+      promiseWithError0[FileIOError](instance.mkdir(path, recursiveEnabled, _))
+    }
+
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
+    @inline
+    def mkdirRecursiveFuture(path: Path, options: MkdirOptions): Future[Unit] = {
+      val recursiveEnabled = new MkdirOptions(
+        recursive = true,
+        mode = options.mode
+      )
+      promiseWithError0[FileIOError](instance.mkdir(path, recursiveEnabled, _))
+    }
+
+    @inline
+    def mkdtempFuture(prefix: String, options: FileEncodingOptions): Future[String] = {
       promiseWithError1[FileIOError, String](instance.mkdtemp(prefix, options, _))
     }
 
     @inline
-    def openFuture(path: Buffer | String, flags: Flags, mode: FileMode): Future[FileDescriptor] = {
+    def mkdtempFuture(prefix: String): Future[String] = {
+      promiseWithError1[FileIOError, String](instance.mkdtemp(prefix, _))
+    }
+
+    @inline
+    def openFuture(path: Path, flags: Flags, mode: FileMode): Future[FileDescriptor] = {
       promiseWithError1[FileIOError, FileDescriptor](instance.open(path, flags, mode, _))
     }
 
     @inline
-    def openFuture(path: Buffer | String, flags: Flags): Future[FileDescriptor] = {
+    def openFuture(path: Path, flags: Flags): Future[FileDescriptor] = {
       promiseWithError1[FileIOError, FileDescriptor](instance.open(path, flags, _))
     }
 
     @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
     @inline
-    def openFuture(path: Buffer | String): Future[FileDescriptor] = {
+    def openFuture(path: Path): Future[FileDescriptor] = {
       promiseWithError1[FileIOError, FileDescriptor](instance.open(path, _))
     }
 
     @inline
     def readFuture(fd: FileDescriptor,
                    buffer: Buffer,
-                   offset: Int,
-                   length: Int,
-                   position: Int): Future[(Int, Buffer)] = {
+                   offset: Int | Null,
+                   length: Int | Null,
+                   position: Int | Null): Future[(Int, Buffer)] = {
       promiseWithError2[FileIOError, Int, Buffer](Fs.read(fd, buffer, offset, length, position, _))
     }
 
     @inline
-    def readdirFuture(path: Buffer | String, options: String = "utf8"): Future[js.Array[String]] = {
+    def readdirFuture(path: Path, encoding: String = "utf8"): Future[js.Array[String]] = {
+      val callback: FsCallback1[js.Array[String]] => Unit = { callback =>
+        instance.readdir(path, encoding, callback.asInstanceOf[FsCallback1[ReaddirArrays]])
+      }
+      promiseWithError1[FileIOError, js.Array[String]](callback)
+    }
+
+    @inline
+    def readdirFuture(path: Path, options: FileEncodingOptions): Future[js.Array[String]] = {
       val callback: FsCallback1[js.Array[String]] => Unit = { callback =>
         instance.readdir(path, options, callback.asInstanceOf[FsCallback1[ReaddirArrays]])
       }
@@ -147,7 +231,7 @@ package object fs {
     }
 
     @inline
-    def readdirBufferFuture(path: Buffer | String): Future[js.Array[Buffer]] = {
+    def readdirBufferFuture(path: Path): Future[js.Array[Buffer]] = {
       val callback: FsCallback1[js.Array[Buffer]] => Unit = { callback =>
         instance.readdir(
           path,
@@ -172,63 +256,161 @@ package object fs {
     }
 
     @inline
-    def readFileFuture(file: String, options: ReadFileOptions = null): Future[Output] = {
+    def readFileFuture(file: Path | FileDescriptor, options: ReadFileOptions): Future[Output] = {
       promiseWithError1[FileIOError, Output](instance.readFile(file, options, _))
     }
 
     @inline
-    def renameFuture(oldPath: String, newPath: String): Future[Unit] = {
+    def readFileFuture(file: Path | FileDescriptor, encoding: String): Future[String] = {
+      promiseWithError1[FileIOError, String](instance.readFile(file, encoding, _))
+    }
+
+    @inline
+    def readFileFuture(file: Path | FileDescriptor): Future[Buffer] = {
+      promiseWithError1[FileIOError, Buffer](instance.readFile(file, _))
+    }
+
+    @inline
+    def readlinkFuture(file: Path, options: String | FileEncodingOptions): Future[Output] = {
+      promiseWithError1[FileIOError, Output](instance.readlink(file, options, _))
+    }
+
+    @inline
+    def renameFuture(oldPath: Path, newPath: Path): Future[Unit] = {
       promiseWithError0[FileIOError](instance.rename(oldPath, newPath, _))
     }
 
     @inline
-    def realpathFuture(path: String): Future[String] = {
-      promiseWithError1[FileIOError, String](instance.realpath(path, _))
+    def readlinkFuture(file: Path): Future[String] = {
+      promiseWithError1[FileIOError, String](instance.readlink(file, _))
     }
 
     @inline
-    def realpathFuture(path: String, options: FileEncodingOptions): Future[Output] = {
-      promiseWithError1[FileIOError, Output](instance.realpath(path, options, _))
+    def realpathFuture(file: Path, options: String | FileEncodingOptions): Future[Output] = {
+      promiseWithError1[FileIOError, Output](instance.realpath(file, options, _))
+    }
+
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
+    @inline
+    def realpathNativeFuture(file: Path, options: FileEncodingOptions): Future[Output] = {
+      promiseWithError1[FileIOError, Output](instance.realpath.native(file, options, _))
+    }
+
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
+    @inline
+    def realpathNativeFuture(file: Path, encoding: String): Future[Output] = {
+      promiseWithError1[FileIOError, Output](instance.realpath.native(file, encoding, _))
+    }
+
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
+    @inline
+    def realpathNativeFuture(file: Path): Future[String] = {
+      promiseWithError1[FileIOError, String](instance.realpath.native(file, _))
     }
 
     @inline
-    def rmdirFuture(path: Buffer | String): Future[Unit] = promiseWithError0[FileIOError](instance.rmdir(path, _))
+    def realpathFuture(file: Path): Future[String] = {
+      promiseWithError1[FileIOError, String](instance.realpath(file, _))
+    }
+
+    @inline
+    def rmdirFuture(path: Path): Future[Unit] = promiseWithError0[FileIOError](instance.rmdir(path, _))
 
     @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
     @inline
-    def rmdirFuture(path: Buffer | String, options: RmdirOptions): Future[Unit] =
+    def rmdirFuture(path: Path, options: RmdirOptions): Future[Unit] =
       promiseWithError0[FileIOError](instance.rmdir(path, options, _))
 
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
     @inline
-    def statFuture(path: String): Future[Stats] = promiseWithError1[FileIOError, Stats](instance.stat(path, _))
+    def rmdirRecursiveFuture(path: Path, options: RmdirOptions): Future[Unit] = {
+      val recursiveEnabled =
+        new RmdirOptions(recursive = true, maxBusyTries = options.maxBusyTries, emfileWait = options.emfileWait)
+      promiseWithError0[FileIOError](instance.rmdir(path, recursiveEnabled, _))
+    }
+
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+    @inline
+    def rmdirRecursiveFuture(path: Path): Future[Unit] = {
+      promiseWithError0[FileIOError](instance.rmdir(path, new RmdirOptions(recursive = true), _))
+    }
 
     @inline
-    def symlinkFuture(target: Buffer | String, path: Buffer | String, `type`: String = null): Future[Unit] = {
+    def statFuture(path: Path): Future[Stats] = promiseWithError1[FileIOError, Stats](instance.stat(path, _))
+
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
+    @inline
+    def statFuture(path: Path, options: StatOptions): Future[Stats] = {
+      promiseWithError1[FileIOError, Stats](instance.stat(path, options, _))
+    }
+
+    @inline
+    def symlinkFuture(target: Path, path: Path, `type`: String): Future[Unit] = {
       promiseWithError0[FileIOError](instance.symlink(target, path, `type`, _))
     }
 
     @inline
-    def unlinkFuture(path: Buffer | String): Future[Unit] = promiseWithError0[FileIOError](instance.unlink(path, _))
+    def symlinkFuture(target: Path, path: Path): Future[Unit] = {
+      promiseWithError0[FileIOError](instance.symlink(target, path, _))
+    }
 
     @inline
-    def unwatchFileFuture(filename: Buffer | String): Future[Unit] =
+    def truncateFuture(target: Path): Future[Unit] = {
+      promiseWithError0[FileIOError](instance.truncate(target, _))
+    }
+
+    @inline
+    def truncateFuture(target: Path, length: Int): Future[Unit] = {
+      promiseWithError0[FileIOError](instance.truncate(target, length, _))
+    }
+
+    @inline
+    def unlinkFuture(path: Path): Future[Unit] = promiseWithError0[FileIOError](instance.unlink(path, _))
+
+    @inline
+    def unwatchFileFuture(filename: Path): Future[Unit] =
       promiseWithError0[FileIOError](instance.unwatchFile(filename, _))
 
     @inline
-    def utimesFuture(path: Buffer | String, atime: Int, mtime: Int): Future[Unit] =
+    def utimesFuture(path: Path, atime: Time, mtime: Time): Future[Unit] =
       promiseWithError0[FileIOError](instance.utimes(path, atime, mtime, _))
 
     @inline
-    def watchFuture(filename: String, options: FSWatcherOptions = null): Future[(String, String)] = {
-      promiseCallback2[String, String](instance.watch(filename, options, _))
+    def watchFuture(filename: Path): Future[(EventType, String)] = {
+      promiseCallback2[EventType, String](instance.watch(filename, _))
+    }
+
+    @inline
+    def watchFuture(filename: Path, options: FSWatcherOptions): Future[(EventType, String)] = {
+      promiseCallback2[EventType, String](instance.watch(filename, options, _))
+    }
+
+    @inline
+    def watchFileFuture(filename: Path): Future[(Stats, Stats)] = {
+      promiseCallback2[Stats, Stats](instance.watchFile(filename, _))
+    }
+
+    @inline
+    def watchFileFuture(filename: Path, options: FileWatcherOptions): Future[(Stats, Stats)] = {
+      promiseCallback2[Stats, Stats](instance.watchFile(filename, options, _))
     }
 
     @inline
     def writeFuture(fd: FileDescriptor,
-                    buffer: Uint8Array,
+                    buffer: typedarray.Uint8Array,
                     offset: Int | Null = null,
                     length: Int | Null = null,
                     position: Int | Null = null): Future[(FileType, Buffer)] = {
+      promiseWithError2[FileIOError, Int, Buffer](instance.write(fd, buffer, offset, length, position, _))
+    }
+
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
+    @inline
+    def writeFuture(fd: FileDescriptor,
+                    buffer: BufferLike,
+                    offset: Int | Null,
+                    length: Int | Null,
+                    position: Int | Null): Future[(FileType, Buffer)] = {
       promiseWithError2[FileIOError, Int, Buffer](instance.write(fd, buffer, offset, length, position, _))
     }
 
@@ -239,7 +421,7 @@ package object fs {
 
     @inline
     def writeFuture(fd: FileDescriptor, string: String, position: Int): Future[(FileType, String)] = {
-      promiseWithError2[FileIOError, Int, String](instance.write(fd, string, position, null, _))
+      promiseWithError2[FileIOError, Int, String](instance.write(fd, string, position, _))
     }
 
     @inline
@@ -248,7 +430,19 @@ package object fs {
     }
 
     @inline
-    def writeFileFuture(file: String, data: Buffer, options: FileWriteOptions = null): Future[Unit] = {
+    def writeFileFuture(file: String, data: typedarray.Uint8Array, options: FileWriteOptions = null): Future[Unit] = {
+      promiseWithError0[FileIOError](instance.writeFile(file, data, options, _))
+    }
+
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
+    @inline
+    def writeFileFuture(file: String, data: BufferLike): Future[Unit] = {
+      promiseWithError0[FileIOError](instance.writeFile(file, data, _))
+    }
+
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
+    @inline
+    def writeFileFuture(file: String, data: BufferLike, options: FileWriteOptions): Future[Unit] = {
       promiseWithError0[FileIOError](instance.writeFile(file, data, options, _))
     }
 
@@ -261,6 +455,15 @@ package object fs {
     def writeFileFuture(file: String, data: String): Future[Unit] = {
       promiseWithError0[FileIOError](instance.writeFile(file, data, _))
     }
-  }
 
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+    @inline
+    def writevFuture(fd: FileDescriptor,
+                     buffers: js.Array[typedarray.ArrayBufferView],
+                     position: Int): Future[(Int, js.Array[typedarray.ArrayBufferView])] = {
+      promiseWithError2[FileIOError, Int, js.Array[typedarray.ArrayBufferView]](
+        instance.writev(fd, buffers, position, _)
+      )
+    }
+  }
 }

@@ -67,23 +67,36 @@ class FsAsyncTest extends AsyncFunSpec with BeforeAndAfterEach {
       }
     }
 
-    describe("appendFileFuture") {
-      it("should support option") {
-        for {
-          _              <- Fs.appendFileFuture("x.AppendFile.txt", "yay")
-          _              <- Fs.appendFileFuture("x.AppendFile.sh", "echo 0", new FileAppendOptions(mode = Fs.constants.X_OK))
-          defaultStat    <- Fs.statFuture("x.AppendFile.txt")
-          executableStat <- Fs.statFuture("x.AppendFile.sh")
-          _              <- Fs.unlinkFuture("x.AppendFile.txt")
-          _              <- Fs.unlinkFuture("x.AppendFile.sh")
-        } yield {
-          assert((defaultStat.mode & Fs.constants.R_OK) > 0)
-          assert((defaultStat.mode & Fs.constants.X_OK) === 0)
-          assert((executableStat.mode & Fs.constants.R_OK) === 0)
-          assert((executableStat.mode & Fs.constants.X_OK) > 0)
-          succeed
-        }
+    it("should support appendFileFuture") {
+      for {
+        _              <- Fs.appendFileFuture("x.AppendFile.txt", "yay")
+        _              <- Fs.appendFileFuture("x.AppendFile.sh", "echo 0", new FileAppendOptions(mode = Fs.constants.X_OK))
+        defaultStat    <- Fs.statFuture("x.AppendFile.txt")
+        executableStat <- Fs.statFuture("x.AppendFile.sh")
+        _              <- Fs.unlinkFuture("x.AppendFile.txt")
+        _              <- Fs.unlinkFuture("x.AppendFile.sh")
+      } yield {
+        assert((defaultStat.mode & Fs.constants.R_OK) > 0)
+        assert((defaultStat.mode & Fs.constants.X_OK) === 0)
+        assert((executableStat.mode & Fs.constants.R_OK) === 0)
+        assert((executableStat.mode & Fs.constants.X_OK) > 0)
+        succeed
       }
     }
+
+    it("should support copyFileFuture") {
+      for {
+        _    <- Fs.appendFileFuture("x.CopyFile.txt", "yay")
+        _    <- Fs.copyFileFuture("x.CopyFile.txt", "x.CopyFile_2.txt")
+        _    <- Fs.copyFileFuture("x.CopyFile.txt", "x.CopyFile_2.txt") // succeed
+        _    <- Fs.copyFileFuture("x.CopyFile.txt", "x.CopyFile_2.txt", Fs.constants.COPYFILE_EXCL).failed
+        stat <- Fs.statFuture("x.CopyFile_2.txt")
+        _    <- Fs.unlinkFuture("x.CopyFile.txt")
+        _    <- Fs.unlinkFuture("x.CopyFile_2.txt")
+      } yield {
+        assert(stat.isFile())
+      }
+    }
+
   }
 }

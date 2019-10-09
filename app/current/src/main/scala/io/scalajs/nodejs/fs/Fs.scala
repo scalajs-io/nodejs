@@ -7,7 +7,7 @@ import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.typedarray.{ArrayBufferView, Uint8Array}
+import scala.scalajs.js.typedarray
 import scala.scalajs.js.|
 
 /**
@@ -456,10 +456,10 @@ trait Fs extends IEventEmitter with FSConstants {
     * @param path the path
     * @param mode the mode
     */
-  def mkdirSync(path: Buffer | String, mode: FileMode = js.native): Unit = js.native
+  def mkdirSync(path: Path, mode: FileMode = js.native): Unit = js.native
 
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
-  def mkdirSync(path: Buffer | String, mode: MkdirOptions): Unit = js.native
+  def mkdirSync(path: Path, mode: MkdirOptions): Unit = js.native
 
   /**
     * Creates a unique temporary directory.
@@ -729,7 +729,7 @@ trait Fs extends IEventEmitter with FSConstants {
     * @return the symbolic link's string value.
     */
   def readlinkSync(path: Path, options: String | FileEncodingOptions): Output = js.native
-  def readlinkSync(path: Path): Output                                        = js.native
+  def readlinkSync(path: Path): String                                        = js.native
 
   /**
     * Asynchronous realpath(2).
@@ -980,7 +980,7 @@ trait Fs extends IEventEmitter with FSConstants {
     * @param options  the [[FSWatcherOptions optional settings]]
     * @param listener the callback
     */
-  def watchFile(filename: Path, options: FileWatcherOptions, listener: FsCallback2[Stats, Stats]): Unit =
+  def watchFile(filename: Path, options: FileWatcherOptions, listener: js.Function2[Stats, Stats, Any]): Unit =
     js.native
 
   /**
@@ -993,7 +993,7 @@ trait Fs extends IEventEmitter with FSConstants {
     * @param filename the filename (Buffer | String)
     * @param listener the callback
     */
-  def watchFile(filename: Buffer | String, listener: FsCallback2[Stats, Stats]): Unit = js.native
+  def watchFile(filename: Path, listener: js.Function2[Stats, Stats, Any]): Unit = js.native
 
   /**
     * Write buffer to the file specified by fd.
@@ -1013,7 +1013,7 @@ trait Fs extends IEventEmitter with FSConstants {
     * @example {{{ fs.write(fd, buffer[, offset[, length[, position]]], callback) }}}
     **/
   def write(fd: FileDescriptor,
-            buffer: Uint8Array,
+            buffer: typedarray.Uint8Array,
             offset: Int | Null,
             length: Int | Null,
             position: Int | Null,
@@ -1049,19 +1049,18 @@ trait Fs extends IEventEmitter with FSConstants {
             string: String,
             position: Int,
             encoding: String,
-            callback: FsCallback2[Int, String]): Unit                                                       = js.native
-  def write(fd: FileDescriptor, string: String, position: Int, callback: FsCallback2[Int, String]): Unit    = js.native
-  def write(fd: FileDescriptor, string: String, encoding: String, callback: FsCallback2[Int, String]): Unit = js.native
-  def write(fd: FileDescriptor, string: String, callback: FsCallback2[Int, String]): Unit                   = js.native
+            callback: FsCallback2[Int, String]): Unit                                                    = js.native
+  def write(fd: FileDescriptor, string: String, position: Int, callback: FsCallback2[Int, String]): Unit = js.native
+  def write(fd: FileDescriptor, string: String, callback: FsCallback2[Int, String]): Unit                = js.native
 
   /**
     * Asynchronously writes data to a file, replacing the file if it already exists. data can be a string or a buffer.
     * The encoding option is ignored if data is a buffer. It defaults to 'utf8'
     * @example fs.writeFile(file, data[, options], callback)
     */
-  def writeFile(file: String, data: Uint8Array, options: FileWriteOptions, callback: FsCallback0): Unit =
+  def writeFile(file: String, data: typedarray.Uint8Array, options: FileWriteOptions, callback: FsCallback0): Unit =
     js.native
-  def writeFile(file: String, data: Uint8Array, callback: FsCallback0): Unit = js.native
+  def writeFile(file: String, data: typedarray.Uint8Array, callback: FsCallback0): Unit = js.native
   def writeFile(file: String, data: String, options: FileWriteOptions, callback: FsCallback0): Unit =
     js.native
   def writeFile(file: String, data: String, callback: FsCallback0): Unit = js.native
@@ -1076,7 +1075,9 @@ trait Fs extends IEventEmitter with FSConstants {
     * @return undefined.
     * @example fs.writeFileSync(file, data[, options])
     */
-  def writeFileSync(file: Path | FileDescriptor, data: Uint8Array, options: FileWriteOptions = js.native): Unit =
+  def writeFileSync(file: Path | FileDescriptor,
+                    data: typedarray.Uint8Array,
+                    options: FileWriteOptions = js.native): Unit =
     js.native
   def writeFileSync(file: Path | FileDescriptor, data: String, options: FileWriteOptions): Unit =
     js.native
@@ -1097,10 +1098,14 @@ trait Fs extends IEventEmitter with FSConstants {
     * @param position refers to the offset from the beginning of the file where this data should be written.
     * @example {{{ fs.writeSync(fd, buffer[, offset[, length[, position]]]) }}}
     */
-  def writeSync(fd: FileDescriptor, buffer: Uint8Array, offset: Int, length: Int, position: Int = js.native): Unit =
+  def writeSync(fd: FileDescriptor,
+                buffer: typedarray.Uint8Array,
+                offset: Int,
+                length: Int,
+                position: Int = js.native): Unit =
     js.native
-  def writeSync(fd: FileDescriptor, buffer: Uint8Array, offset: Int): Unit                             = js.native
-  def writeSync(fd: FileDescriptor, buffer: Uint8Array): Unit                                          = js.native
+  def writeSync(fd: FileDescriptor, buffer: typedarray.Uint8Array, offset: Int): Unit                  = js.native
+  def writeSync(fd: FileDescriptor, buffer: typedarray.Uint8Array): Unit                               = js.native
   def writeSync(fd: FileDescriptor, buffer: BufferLike, offset: Int, length: Int, position: Int): Unit = js.native
   def writeSync(fd: FileDescriptor, buffer: BufferLike, offset: Int, length: Int): Unit                = js.native
   def writeSync(fd: FileDescriptor, buffer: BufferLike, offset: Int): Unit                             = js.native
@@ -1119,11 +1124,14 @@ trait Fs extends IEventEmitter with FSConstants {
   def writeSync(fd: FileDescriptor, data: String, encoding: String): Unit                = js.native
   def writeSync(fd: FileDescriptor, data: String): Unit                                  = js.native
 
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def writev(fd: FileDescriptor,
-             buffers: js.Array[ArrayBufferView],
+             buffers: js.Array[typedarray.ArrayBufferView],
              position: Int,
-             fsCallback2: FsCallback2[Int, js.Array[ArrayBufferView]]): Unit                              = js.native
-  def writevSync(fd: FileDescriptor, buffers: js.Array[ArrayBufferView], position: Int = js.native): Unit = js.native
+             fsCallback2: FsCallback2[Int, js.Array[typedarray.ArrayBufferView]]): Unit = js.native
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+  def writevSync(fd: FileDescriptor, buffers: js.Array[typedarray.ArrayBufferView], position: Int = js.native): Unit =
+    js.native
 }
 
 /**
@@ -1295,6 +1303,7 @@ class RmdirOptions(var emfileWait: js.UndefOr[Int] = 1000,
 
 @js.native
 trait RealpathObject extends js.Object {
-  def native(path: Path, options: FileEncodingOptions = js.native): Output = js.native
-  def native(path: Path, encoding: String): String                         = js.native
+  def native(path: Path, options: FileEncodingOptions, callback: FsCallback1[Output]): Unit = js.native
+  def native(path: Path, encoding: String, callback: FsCallback1[Output]): Unit             = js.native
+  def native(path: Path, callback: FsCallback1[String]): Unit                               = js.native
 }

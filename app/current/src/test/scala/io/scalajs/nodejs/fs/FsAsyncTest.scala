@@ -39,5 +39,19 @@ class FsAsyncTest extends AsyncFunSpec with BeforeAndAfterEach {
         assert(!dirExistsAfterRmdir)
       }
     }
+
+    it("should have alias for recursive-rmdir") {
+      for {
+        dirExistsBeforeMkdir <- Fs.existsFuture(dir)
+        _                    <- Fs.mkdirRecursiveFuture(dir)
+        dirExistsAfterMkdir  <- Fs.existsFuture(dir)
+        _                    <- Fs.rmdirRecursiveFuture("x.v12")
+        dirExistsAfterRmdir  <- Fs.existsFuture("x.v12")
+      } yield {
+        assert(!dirExistsBeforeMkdir)
+        assert(dirExistsAfterMkdir)
+        assert(!dirExistsAfterRmdir)
+      }
+    }
   }
 }

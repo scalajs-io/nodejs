@@ -226,14 +226,6 @@ trait Fs extends IEventEmitter with FSConstants {
     js.native
 
   /**
-    * Test whether or not the given path exists by checking with the file system. Then call the callback argument with
-    * either true or false.
-    * @example fs.exists('/etc/passwd', (exists) => { ... })
-    */
-  @deprecated("Use fs.stat() or fs.access() instead.", since = "1.0.0")
-  def exists(path: Path, callback: js.Function1[Boolean, Any]): Unit = js.native
-
-  /**
     * fs.exists() should not be used to check if a file exists before calling fs.open(). Doing so introduces a race
     * condition since other processes may change the file's state between the two calls. Instead, user code should
     * call fs.open() directly and handle the error raised if the file is non-existent.

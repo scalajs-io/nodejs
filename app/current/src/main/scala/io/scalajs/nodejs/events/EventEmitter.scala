@@ -151,13 +151,6 @@ object EventEmitter extends IEventEmitter {
     */
   var defaultMaxListeners: Int = js.native
 
-  /**
-    * A class method that returns the number of listeners for the given eventName registered on the given emitter.
-    * @example EventEmitter.listenerCount(emitter, eventName)
-    */
-  @deprecated("Use emitter.listenerCount() instead.", since = "4.0.0")
-  def listenerCount(emitter: IEventEmitter, eventName: String): Unit = js.native
-
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def once(emitter: IEventEmitter, eventName: String): js.Promise[js.Array[js.Any]] = js.native
 }

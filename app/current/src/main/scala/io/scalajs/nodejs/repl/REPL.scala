@@ -16,9 +16,6 @@ trait REPL extends IEventEmitter {
   var REPL_MODE_SLOPPY: js.Symbol = js.native
   var REPL_MODE_STRICT: js.Symbol = js.native
 
-  @deprecated("Use REPL_MODE_SLOPPY instead", "Node.js v6.0.0")
-  var REPL_MODE_MAGIC: js.UndefOr[js.Symbol] = js.native
-
   def start(options: StartOptions = js.native): REPLServer = js.native
   def start(prompt: String): REPLServer                    = js.native
 }

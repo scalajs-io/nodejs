@@ -25,9 +25,6 @@ trait Assert extends IEventEmitter {
     */
   def apply(expression: js.Any, message: String = js.native): Unit = js.native
 
-  @deprecated("Use assert.deepStrictEqual() instead.", "stability 0")
-  def deepEqual(actual: js.Any, expected: js.Any, message: String = js.native): Unit = js.native
-
   /**
     * Generally identical to assert.deepEqual() with two exceptions. First, primitive values are compared using the
     * strict equality operator ( === ). Second, object comparisons include a strict equality check of their prototypes.
@@ -51,12 +48,6 @@ trait Assert extends IEventEmitter {
     js.native
 
   /**
-    * @see https://nodejs.org/api/assert.html#assert_assert_equal_actual_expected_message
-    */
-  @deprecated("Use assert.strictEqual() instead.", "stability 0")
-  def equal(actual: js.Any, expected: js.Any, message: String = js.native): Unit = js.native
-
-  /**
     * @see https://nodejs.org/api/assert.html#assert_assert_fail_message
     */
   def fail(message: String): Unit = js.native
@@ -75,17 +66,11 @@ trait Assert extends IEventEmitter {
     */
   def ifError(value: js.Any): Unit = js.native
 
-  @deprecated("Use assert.notDeepStrictEqual() instead.", "stability 0")
-  def notDeepEqual(actual: js.Any, expected: js.Any, message: String = js.native): Unit = js.native
-
   /**
     * Tests for deep strict inequality. Opposite of assert.deepStrictEqual().
     * @example assert.notDeepStrictEqual(actual, expected[, message])
     */
   def notDeepStrictEqual(actual: js.Any, expected: js.Any, message: String = js.native): Unit = js.native
-
-  @deprecated("Use assert.notStrictEqual() instead.", "stability 0")
-  def notEqual(actual: js.Any, expected: js.Any, message: String = js.native): Unit = js.native
 
   /**
     * Tests strict inequality as determined by the strict not equal operator ( !== ).

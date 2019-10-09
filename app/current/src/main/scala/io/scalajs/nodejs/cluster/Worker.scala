@@ -40,18 +40,6 @@ trait Worker extends IEventEmitter {
     */
   def process: ChildProcess = js.native
 
-  /**
-    * An alias to worker.exitedAfterDisconnect.
-    *
-    * Set by calling .kill() or .disconnect(). Until then, it is undefined.
-    *
-    * The boolean worker.suicide lets you distinguish between voluntary and accidental exit, the master may choose not
-    * to respawn a worker based on this value.
-    * @return
-    */
-  @deprecated("Deprecated: Use worker.exitedAfterDisconnect instead.", since = "6.0.0")
-  def suicide: Boolean = js.native
-
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
   /////////////////////////////////////////////////////////////////////////////////

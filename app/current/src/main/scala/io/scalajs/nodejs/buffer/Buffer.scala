@@ -12,68 +12,7 @@ import scala.scalajs.js.|
   */
 @js.native
 @JSImport("buffer", "Buffer")
-class Buffer protected () extends Uint8Array( /* dummy to trick constructor */ -1) {
-
-  /////////////////////////////////////////////////////////////////////////////////
-  //      Constructors
-  /////////////////////////////////////////////////////////////////////////////////
-
-  /**
-    * Use [[Buffer.alloc()]] instead.
-    *
-    * @see [[https://nodejs.org/api/buffer.html#buffer_new_buffer_size]]
-    */
-  @inline
-  @deprecated("Use Buffer.alloc(size) instead.", since = "Node.js v6.0.0")
-  def this(size: Int) = this()
-
-  /**
-    * Use [[Buffer.from(str,encoding)]] instead.
-    *
-    * @see [[https://nodejs.org/api/buffer.html#buffer_new_buffer_string_encoding]]
-    */
-  @inline
-  @deprecated("Use Buffer.from(str[, encoding]) instead.", since = "Node.js v6.0.0")
-  def this(str: String) = this()
-
-  /**
-    * Use [[Buffer.from(str,encoding)]] instead.
-    *
-    * @see [[https://nodejs.org/api/buffer.html#buffer_new_buffer_string_encoding]]
-    */
-  @inline
-  @deprecated("Use Buffer.from(str[, encoding]) instead.", since = "Node.js v6.0.0")
-  def this(str: String, encoding: String) = this()
-
-  /**
-    * Use [[Buffer.from(array)]] instead.
-    * @see [[https://nodejs.org/api/buffer.html#buffer_new_buffer_array]]
-    */
-  @inline
-  @deprecated("Use Buffer.from(array) instead.", since = "Node.js v6.0.0")
-  def this(array: js.Array[Int]) = this()
-
-  /**
-    * Use [[Buffer.from(buffer)]] instead.
-    *
-    * @see [[https://nodejs.org/api/buffer.html#buffer_new_buffer_buffer]]
-    */
-  @inline
-  @deprecated("Use Buffer.from(buffer) instead.", since = "Node.js v6.0.0")
-  def this(buffer: Buffer) = this()
-
-  /**
-    * Use [[Buffer.from(arrayBuffer,byteOffset,length)]] instead.
-    *
-    * @see [[https://nodejs.org/api/buffer.html#buffer_new_buffer_arraybuffer_byteoffset_length]]
-    */
-  @inline
-  @deprecated("Use Buffer.from(arrayBuffer[, byteOffset [, length]]) instead.", since = "Node.js v6.0.0")
-  def this(arrayBuffer: ArrayBuffer, byteOffset: Int = js.native, length: Int = js.native) = this()
-
-  /////////////////////////////////////////////////////////////////////////////////
-  //      Accessors and Mutators
-  /////////////////////////////////////////////////////////////////////////////////
+class Buffer private[this] () extends Uint8Array( /* dummy to trick constructor */ -1) {
 
   /**
     * The index operator `[index]` can be used to get and set the octet at position `index` in `buf`.

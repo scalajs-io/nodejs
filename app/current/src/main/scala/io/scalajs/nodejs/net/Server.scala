@@ -19,12 +19,6 @@ class Server(options: ServerOptions = js.native) extends IEventEmitter {
   def this(connectionListener: js.Function) = this()
 
   /**
-    * Returns the current number of concurrent connections on the server.
-    */
-  @deprecated("Use server.getConnections() instead.", since = "0.9.7")
-  def connections: Int = js.native
-
-  /**
     * A Boolean indicating whether or not the server is listening for connections.
     * @example server.listening
     */

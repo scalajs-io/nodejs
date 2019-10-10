@@ -25,14 +25,14 @@ import scala.scalajs.js.|
   *
   * @see [[https://nodejs.org/api/util.html#util_util_inspect_object_options]]
   */
-class InspectOptions(var showHidden: js.UndefOr[Boolean] = js.undefined,
-                     var depth: js.UndefOr[Int] = js.undefined,
-                     var colors: js.UndefOr[Boolean] = js.undefined,
-                     var customInspect: js.UndefOr[Boolean] = js.undefined,
-                     var showProxy: js.UndefOr[Boolean] = js.undefined,
-                     var maxArrayLength: js.UndefOr[Int] = js.undefined,
-                     var breakLength: js.UndefOr[Int] = js.undefined,
-                     var compact: js.UndefOr[Boolean | Int] = js.undefined,
+class InspectOptions(var showHidden: js.UndefOr[Boolean] = false,
+                     var depth: Int = 2,
+                     var colors: Boolean = false,
+                     var customInspect: Boolean = true,
+                     var showProxy: Boolean = false,
+                     var maxArrayLength: js.UndefOr[Int] = 100,
+                     var breakLength: Int = 80,
+                     var compact: js.UndefOr[Boolean | Int] = 3,
                      var sorted: js.UndefOr[Boolean | js.Function2[String, String, Int]] = js.undefined,
-                     var getters: js.UndefOr[Boolean | String] = js.undefined)
+                     var getters: js.UndefOr[Boolean | String] = false)
     extends js.Object

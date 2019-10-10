@@ -25,15 +25,15 @@ import scala.scalajs.js.|
   * @param windowsVerbatimArguments No quoting or escaping of arguments is done on Windows.
   *                                 Ignored on Unix. This is set to true automatically when shell is specified and is CMD. Default: false.
   */
-class ExecOptions(val cwd: js.UndefOr[String] = js.undefined,
-                  val env: js.UndefOr[js.Object] = js.undefined,
-                  val encoding: js.UndefOr[String] = js.undefined,
-                  val shell: js.UndefOr[Boolean | String] = js.undefined,
-                  val timeout: js.UndefOr[Int] = js.undefined,
-                  val maxBuffer: js.UndefOr[Int] = js.undefined,
-                  val killSignal: js.UndefOr[KillSignal] = js.undefined,
-                  val uid: js.UndefOr[UID] = js.undefined,
-                  val gid: js.UndefOr[GID] = js.undefined,
-                  val windowsHide: js.UndefOr[Boolean] = js.undefined,
-                  val windowsVerbatimArguments: js.UndefOr[Boolean] = js.undefined)
+class ExecOptions(var cwd: js.UndefOr[String] = js.undefined,
+                  var env: js.UndefOr[js.Object] = js.undefined,
+                  var encoding: js.UndefOr[String] = js.undefined,
+                  var shell: js.UndefOr[Boolean | String] = js.undefined,
+                  var timeout: js.UndefOr[Int] = js.undefined,
+                  var maxBuffer: js.UndefOr[Int] = js.undefined,
+                  var killSignal: js.UndefOr[KillSignal] = js.undefined,
+                  var uid: js.UndefOr[UID] = js.undefined,
+                  var gid: js.UndefOr[GID] = js.undefined,
+                  var windowsHide: js.UndefOr[Boolean] = js.undefined,
+                  var windowsVerbatimArguments: js.UndefOr[Boolean] = js.undefined)
     extends js.Object

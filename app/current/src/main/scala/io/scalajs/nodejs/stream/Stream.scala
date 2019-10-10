@@ -347,7 +347,7 @@ class ReadableOptions(
   * Readable Pipe Options
   * @param end End the writer when the reader ends. Defaults to true.
   */
-class ReadablePipeOptions(val end: js.UndefOr[Boolean] = js.undefined) extends js.Object
+class ReadablePipeOptions(var end: js.UndefOr[Boolean] = js.undefined) extends js.Object
 
 /**
   * Readable State
@@ -494,18 +494,18 @@ object IWritable {
   * @param chunk    the chunk of data
   * @param encoding the data's optional encoding
   */
-class Chunk(val chunk: Buffer | String, val encoding: js.UndefOr[String] = js.undefined) extends js.Object
+class Chunk(var encoding: js.UndefOr[String] = js.undefined) extends js.Object
 
-class WritableOptions(val highWaterMark: js.UndefOr[Int] = js.undefined,
-                      val decodeStrings: js.UndefOr[Boolean] = js.undefined,
-                      val defaultEncoding: js.UndefOr[String] = js.undefined,
-                      val objectMode: js.UndefOr[Boolean] = js.undefined,
-                      val emitClose: js.UndefOr[Boolean] = js.undefined,
-                      val write: js.UndefOr[js.Function] = js.undefined,
-                      val writev: js.UndefOr[js.Function] = js.undefined,
-                      val destroy: js.UndefOr[js.Function] = js.undefined,
-                      val `final`: js.UndefOr[js.Function] = js.undefined,
-                      val autoDestroy: js.UndefOr[Boolean] = js.undefined)
+class WritableOptions(var highWaterMark: js.UndefOr[Int] = js.undefined,
+                      var decodeStrings: js.UndefOr[Boolean] = js.undefined,
+                      var defaultEncoding: js.UndefOr[String] = js.undefined,
+                      var objectMode: js.UndefOr[Boolean] = js.undefined,
+                      var emitClose: js.UndefOr[Boolean] = js.undefined,
+                      var write: js.UndefOr[js.Function] = js.undefined,
+                      var writev: js.UndefOr[js.Function] = js.undefined,
+                      var destroy: js.UndefOr[js.Function] = js.undefined,
+                      var `final`: js.UndefOr[js.Function] = js.undefined,
+                      var autoDestroy: js.UndefOr[Boolean] = js.undefined)
     extends js.Object
 
 /**
@@ -533,6 +533,6 @@ class DuplexOptions(var allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
                     var writableObjectMode: js.UndefOr[Boolean] = js.undefined)
     extends js.Object
 
-class TransformOptions(val transform: js.UndefOr[js.Function] = js.undefined,
-                       val flush: js.UndefOr[js.Function] = js.undefined)
+class TransformOptions(var transform: js.UndefOr[js.Function] = js.undefined,
+                       var flush: js.UndefOr[js.Function] = js.undefined)
     extends js.Object

@@ -20,14 +20,14 @@ import scala.scalajs.js.|
   *                 The shell should understand the -c switch on UNIX, or /d /s /c on Windows. Defaults to false (no shell).
   */
 class SpawnOptions(
-    val cwd: js.UndefOr[String] = js.undefined,
-    val env: js.Any = js.undefined,
-    val argv0: js.UndefOr[String] = js.undefined,
-    val stdio: js.UndefOr[StdIo] = js.undefined,
-    val detached: js.UndefOr[Boolean] = js.undefined,
-    val uid: js.UndefOr[Int] = js.undefined,
-    val gid: js.UndefOr[Int] = js.undefined,
-    val shell: js.UndefOr[Boolean | String] = js.undefined,
-    val windowsVerbatimArguments: js.UndefOr[Boolean] = js.undefined,
-    val windowsHide: js.UndefOr[Boolean] = js.undefined
+    var cwd: js.UndefOr[String] = js.undefined,
+    var env: js.Any = js.undefined,
+    var argv0: js.UndefOr[String] = js.undefined,
+    var stdio: js.UndefOr[StdIo] = js.undefined,
+    var detached: js.UndefOr[Boolean] = js.undefined,
+    var uid: js.UndefOr[Int] = js.undefined,
+    var gid: js.UndefOr[Int] = js.undefined,
+    var shell: js.UndefOr[Boolean | String] = js.undefined,
+    var windowsVerbatimArguments: js.UndefOr[Boolean] = js.undefined,
+    var windowsHide: js.UndefOr[Boolean] = js.undefined
 ) extends js.Object

@@ -11,8 +11,8 @@ import scala.scalajs.js
   * @param unicode  true if Unicode characters appearing in the host component of the URL string should be encoded
   *                 directly as opposed to being Punycode encoded. Defaults to false.
   */
-class UrlFormatOptions(val auth: js.UndefOr[Boolean] = js.undefined,
-                       val fragment: js.UndefOr[Boolean] = js.undefined,
-                       val search: js.UndefOr[Boolean] = js.undefined,
-                       val unicode: js.UndefOr[Boolean] = js.undefined)
+class UrlFormatOptions(var auth: js.UndefOr[Boolean] = js.undefined,
+                       var fragment: js.UndefOr[Boolean] = js.undefined,
+                       var search: js.UndefOr[Boolean] = js.undefined,
+                       var unicode: js.UndefOr[Boolean] = js.undefined)
     extends js.Object

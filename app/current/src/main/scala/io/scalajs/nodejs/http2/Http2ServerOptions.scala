@@ -18,6 +18,6 @@ class Http2ServerOptions(
     var Http1ServerResponse: js.UndefOr[js.ConstructorTag[http.ServerResponse]] = js.undefined,
     var Http2ServerRequest: js.UndefOr[js.ConstructorTag[Http2ServerRequest]] = js.undefined,
     var Http2ServerResponse: js.UndefOr[js.ConstructorTag[Http2ServerResponse]] = js.undefined,
-    val allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
-    val pauseOnConnect: js.UndefOr[Boolean] = js.undefined
+    var allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
+    var pauseOnConnect: js.UndefOr[Boolean] = js.undefined
 ) extends js.Object

@@ -30,8 +30,8 @@ class Http2SecureServerOptions(
     var SNICallback: js.UndefOr[js.Function2[String, js.Function2[io.scalajs.nodejs.Error, SecureContext, Any], Any]],
     var ticketKeys: js.UndefOr[Buffer] = js.undefined,
 // Options for net.createServers
-    val allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
-    val pauseOnConnect: js.UndefOr[Boolean] = js.undefined,
+    var allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
+    var pauseOnConnect: js.UndefOr[Boolean] = js.undefined,
 // Options for tls.createSecureContext
     var ca: js.UndefOr[SecureData] = js.undefined,
     var cert: js.UndefOr[SecureData] = js.undefined,

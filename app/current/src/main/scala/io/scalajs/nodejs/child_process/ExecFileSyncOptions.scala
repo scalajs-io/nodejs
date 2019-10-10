@@ -30,7 +30,7 @@ import scala.scalajs.js.|
   * @param windowsHide Hide the subprocess console window that would normally be created on Windows systems. Default: `false`.
   */
 class ExecFileSyncOptions(var cwd: js.UndefOr[String] = js.undefined,
-                          val input: js.UndefOr[Input],
+                          var input: js.UndefOr[Input] = js.undefined,
                           var stdio: js.UndefOr[StdIo] = js.undefined,
                           var env: js.UndefOr[js.Object] = js.undefined,
                           var encoding: js.UndefOr[String] = js.undefined,

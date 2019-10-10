@@ -52,15 +52,6 @@ trait Util extends js.Object {
     */
   def inherits(constructor: js.Any, superConstructor: js.Any): js.Any = js.native
 
-  /**
-    * The util.inspect() method returns a string representation of object that is primarily useful for debugging.
-    * Additional options may be passed that alter certain aspects of the formatted string.
-    * @param `object` any JavaScript primitive or Object.
-    * @param options  the given [[InspectOptions inspect options]]
-    * @example util.inspect(object[, options])
-    */
-  def inspect(`object`: js.Any, options: InspectOptions = js.native): String = js.native
-
   val inspect: InspectObject = js.native
 
   def callbackify[T](original: js.Function): js.Function2[js.Any, T, Any] = js.native
@@ -83,7 +74,7 @@ trait Util extends js.Object {
 object Util extends Util
 
 @js.native
-trait InspectObject extends js.Object {
+trait InspectObject extends js.Function2[js.Any, InspectOptions, String] with js.Function1[js.Any, String] {
   var defaultOptions: InspectOptions = js.native
   var styles: js.Dictionary[String]  = js.native
 

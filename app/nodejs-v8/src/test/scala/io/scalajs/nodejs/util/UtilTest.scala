@@ -16,7 +16,8 @@ class UtilTest extends FunSpec {
   }
 
   it("have promisify") {
-    assert(Util.promisify.custom !== null)
+    assert(js.typeOf(Util.promisify(() => "")) === "function")
+    assert(js.typeOf(Util.promisify.custom) === "symbol")
   }
 
   it("have TextEncoder/TextDecoder") {

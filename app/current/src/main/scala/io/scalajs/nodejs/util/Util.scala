@@ -56,8 +56,7 @@ trait Util extends js.Object {
 
   def callbackify[T](original: js.Function): js.Function2[js.Any, T, Any] = js.native
 
-  def promisify(original: js.Function): js.Function = js.native
-  val promisify: PromisifyObject                    = js.native
+  val promisify: PromisifyObject = js.native
 
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   val types: UtilTypes = js.native
@@ -83,7 +82,7 @@ trait InspectObject extends js.Function2[js.Any, InspectOptions, String] with js
 }
 
 @js.native
-trait PromisifyObject extends js.Object {
+trait PromisifyObject extends js.Function1[js.Function, js.Function] {
   val custom: js.Symbol = js.native
 }
 

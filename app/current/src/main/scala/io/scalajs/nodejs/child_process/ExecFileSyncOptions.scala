@@ -29,16 +29,16 @@ import scala.scalajs.js.|
   * @param gid        Sets the group identity of the process. (See setgid(2).)
   * @param windowsHide Hide the subprocess console window that would normally be created on Windows systems. Default: `false`.
   */
-class ExecFileSyncOptions(val cwd: js.UndefOr[String] = js.undefined,
-                          val input: js.UndefOr[Input],
-                          val stdio: js.UndefOr[StdIo] = js.undefined,
-                          val env: js.UndefOr[js.Object] = js.undefined,
-                          val encoding: js.UndefOr[String] = js.undefined,
-                          val shell: js.UndefOr[Boolean | String] = js.undefined,
-                          val timeout: js.UndefOr[Int] = js.undefined,
-                          val maxBuffer: js.UndefOr[Int] = js.undefined,
-                          val killSignal: js.UndefOr[KillSignal] = js.undefined,
-                          val uid: js.UndefOr[UID] = js.undefined,
-                          val gid: js.UndefOr[GID] = js.undefined,
-                          val windowsHide: js.UndefOr[Boolean] = js.undefined)
+class ExecFileSyncOptions(var cwd: js.UndefOr[String] = js.undefined,
+                          var input: js.UndefOr[Input] = js.undefined,
+                          var stdio: js.UndefOr[StdIo] = js.undefined,
+                          var env: js.UndefOr[js.Object] = js.undefined,
+                          var encoding: js.UndefOr[String] = js.undefined,
+                          var shell: js.UndefOr[Boolean | String] = js.undefined,
+                          var timeout: js.UndefOr[Int] = js.undefined,
+                          var maxBuffer: js.UndefOr[Int] = js.undefined,
+                          var killSignal: js.UndefOr[KillSignal] = js.undefined,
+                          var uid: js.UndefOr[UID] = js.undefined,
+                          var gid: js.UndefOr[GID] = js.undefined,
+                          var windowsHide: js.UndefOr[Boolean] = js.undefined)
     extends js.Object

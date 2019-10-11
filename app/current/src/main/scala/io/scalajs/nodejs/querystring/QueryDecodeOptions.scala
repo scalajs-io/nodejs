@@ -10,6 +10,6 @@ import scala.scalajs.js
   *                           key counting limitations. The querystring.parse() method parses a URL query string (str)
   *                           into a collection of key and value pairs.
   */
-class QueryDecodeOptions(val decodeURIComponent: js.UndefOr[js.Function] = js.undefined,
-                         val maxKeys: js.UndefOr[Int] = js.undefined)
+class QueryDecodeOptions(var decodeURIComponent: js.UndefOr[js.Function] = js.undefined,
+                         var maxKeys: js.UndefOr[Int] = js.undefined)
     extends js.Object

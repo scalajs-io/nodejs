@@ -1237,41 +1237,40 @@ trait BufferIOResult[T] extends js.Object {
 /**
   * File Append Options
   */
-class FileAppendOptions(val encoding: js.UndefOr[String] = js.undefined,
-                        val mode: js.UndefOr[FileMode] = js.undefined,
-                        val flag: js.UndefOr[String] = js.undefined)
+class FileAppendOptions(var encoding: js.UndefOr[String] = js.undefined,
+                        var mode: js.UndefOr[FileMode] = js.undefined,
+                        var flag: js.UndefOr[String] = js.undefined)
     extends js.Object
 
 /**
   * File Encoding Options
   */
-class FileEncodingOptions(val encoding: js.UndefOr[String] = js.undefined) extends js.Object
+class FileEncodingOptions(var encoding: js.UndefOr[String] = js.undefined) extends js.Object
 
-class ReaddirOptions(val encoding: js.UndefOr[String] = js.undefined,
-                     val withFileTypes: js.UndefOr[Boolean] = js.undefined)
+class ReaddirOptions(var encoding: js.UndefOr[String] = js.undefined,
+                     var withFileTypes: js.UndefOr[Boolean] = js.undefined)
     extends js.Object
 
-class ReadFileOptions(val encoding: js.UndefOr[String] = js.undefined, val flag: js.UndefOr[String] = js.undefined)
+class ReadFileOptions(var flag: js.UndefOr[String] = js.undefined) extends js.Object
+
+class FileInputOptions(var flags: js.UndefOr[String] = js.undefined,
+                       var encoding: js.UndefOr[String] = js.undefined,
+                       var fd: js.UndefOr[FileDescriptor] = js.undefined,
+                       var mode: js.UndefOr[FileMode] = js.undefined,
+                       var autoClose: js.UndefOr[Boolean] = js.undefined,
+                       var emitClose: js.UndefOr[Boolean] = js.undefined,
+                       var start: js.UndefOr[Int] = js.undefined,
+                       var end: js.UndefOr[Int] = js.undefined,
+                       var highWaterMark: js.UndefOr[Int] = js.undefined)
     extends js.Object
 
-class FileInputOptions(val flags: js.UndefOr[String] = js.undefined,
-                       val encoding: js.UndefOr[String] = js.undefined,
-                       val fd: js.UndefOr[FileDescriptor] = js.undefined,
-                       val mode: js.UndefOr[FileMode] = js.undefined,
-                       val autoClose: js.UndefOr[Boolean] = js.undefined,
-                       val emitClose: js.UndefOr[Boolean] = js.undefined,
-                       val start: js.UndefOr[Int] = js.undefined,
-                       val end: js.UndefOr[Int] = js.undefined,
-                       val highWaterMark: js.UndefOr[Int] = js.undefined)
-    extends js.Object
-
-class FileOutputOptions(val flags: js.UndefOr[String] = js.undefined,
-                        val defaultEncoding: js.UndefOr[String] = js.undefined,
-                        val fd: js.UndefOr[FileDescriptor] = js.undefined,
-                        val mode: js.UndefOr[FileMode] = js.undefined,
-                        val autoClose: js.UndefOr[Boolean] = js.undefined,
-                        val emitClose: js.UndefOr[Boolean] = js.undefined,
-                        val start: js.UndefOr[Int] = js.undefined)
+class FileOutputOptions(var flags: js.UndefOr[String] = js.undefined,
+                        var defaultEncoding: js.UndefOr[String] = js.undefined,
+                        var fd: js.UndefOr[FileDescriptor] = js.undefined,
+                        var mode: js.UndefOr[FileMode] = js.undefined,
+                        var autoClose: js.UndefOr[Boolean] = js.undefined,
+                        var emitClose: js.UndefOr[Boolean] = js.undefined,
+                        var start: js.UndefOr[Int] = js.undefined)
     extends js.Object
 
 /**
@@ -1279,13 +1278,13 @@ class FileOutputOptions(val flags: js.UndefOr[String] = js.undefined,
   * @param persistent <Boolean>
   * @param interval   <Integer>
   */
-class FileWatcherOptions(val persistent: js.UndefOr[Boolean] = js.undefined,
-                         val interval: js.UndefOr[Int] = js.undefined)
+class FileWatcherOptions(var persistent: js.UndefOr[Boolean] = js.undefined,
+                         var interval: js.UndefOr[Int] = js.undefined)
     extends js.Object
 
-class StatOptions(val bigint: js.UndefOr[Boolean] = js.undefined) extends js.Object
+class StatOptions(var bigint: js.UndefOr[Boolean] = js.undefined) extends js.Object
 
-class MkdirOptions(val recursive: js.UndefOr[Boolean] = js.undefined, val mode: js.UndefOr[FileMode] = js.undefined)
+class MkdirOptions(var recursive: js.UndefOr[Boolean] = js.undefined, var mode: js.UndefOr[FileMode] = js.undefined)
     extends js.Object
 
 class RmdirOptions(var emfileWait: js.UndefOr[Int] = 1000,

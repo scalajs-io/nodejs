@@ -53,7 +53,7 @@ sealed trait Hash extends Transform {
 
 }
 
-class CreateHashOptions(override val transform: js.UndefOr[js.Function] = js.undefined,
-                        override val flush: js.UndefOr[js.Function] = js.undefined,
-                        val outputLength: js.UndefOr[Int] = js.undefined)
+class CreateHashOptions(transform: js.UndefOr[js.Function] = js.undefined,
+                        flush: js.UndefOr[js.Function] = js.undefined,
+                        var outputLength: js.UndefOr[Int] = js.undefined)
     extends TransformOptions(transform, flush)

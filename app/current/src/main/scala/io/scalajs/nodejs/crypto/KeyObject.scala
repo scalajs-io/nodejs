@@ -15,8 +15,8 @@ sealed trait KeyObject extends js.Object {
 }
 
 class KeyObjectExportOptions(
-    val `type`: js.UndefOr[String] = js.undefined,
-    val format: js.UndefOr[String] = js.undefined,
-    val cipher: js.UndefOr[String] = js.undefined,
-    val passphrase: js.UndefOr[String | Buffer] = js.undefined
+    var `type`: js.UndefOr[String] = js.undefined,
+    var format: js.UndefOr[String] = js.undefined,
+    var cipher: js.UndefOr[String] = js.undefined,
+    var passphrase: js.UndefOr[String | Buffer] = js.undefined
 ) extends js.Object

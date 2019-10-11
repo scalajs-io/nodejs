@@ -483,10 +483,10 @@ trait CpuUsage extends js.Object {
 }
 
 class WarningOptions(
-    val `type`: js.UndefOr[String] = js.undefined,
-    val code: js.UndefOr[String] = js.undefined,
-    val detail: js.UndefOr[String] = js.undefined,
-    val ctor: js.UndefOr[js.Function] = js.undefined
+    var `type`: js.UndefOr[String] = js.undefined,
+    var code: js.UndefOr[String] = js.undefined,
+    var detail: js.UndefOr[String] = js.undefined,
+    var ctor: js.UndefOr[js.Function] = js.undefined
 ) extends js.Object {}
 
 @js.native

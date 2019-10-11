@@ -65,7 +65,7 @@ object FSWatcher {
   * @param recursive  Indicates whether all subdirectories should be watched, or only the current directory.
   *                   The applies when a directory is specified, and only on supported platforms (See Caveats) (default: false)
   */
-class FSWatcherOptions(val encoding: js.UndefOr[String] = js.undefined,
-                       val persistent: js.UndefOr[Boolean] = js.undefined,
-                       val recursive: js.UndefOr[Boolean] = js.undefined)
+class FSWatcherOptions(var encoding: js.UndefOr[String] = js.undefined,
+                       var persistent: js.UndefOr[Boolean] = js.undefined,
+                       var recursive: js.UndefOr[Boolean] = js.undefined)
     extends js.Object

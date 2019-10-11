@@ -7,4 +7,4 @@ import scala.scalajs.js
   * @param encodeURIComponent The function to use when converting URL-unsafe characters to percent-encoding in
   *                           the query string. Defaults to querystring.escape().
   */
-class QueryEncodeOptions(val encodeURIComponent: js.UndefOr[js.Function] = js.undefined) extends js.Object
+class QueryEncodeOptions(var encodeURIComponent: js.UndefOr[js.Function] = js.undefined) extends js.Object

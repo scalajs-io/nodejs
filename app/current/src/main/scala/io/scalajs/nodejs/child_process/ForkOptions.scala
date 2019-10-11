@@ -21,13 +21,13 @@ import scala.scalajs.js.|
   * @param uid      Sets the user identity of the process. (See setuid(2).)
   * @param gid      Sets the group identity of the process. (See setgid(2).)
   */
-class ForkOptions(val cwd: js.UndefOr[String] = js.undefined,
-                  val detached: js.UndefOr[Boolean] = js.undefined,
-                  val env: js.UndefOr[js.Object] = js.undefined,
-                  val execPath: js.UndefOr[String] = js.undefined,
-                  val execArgv: js.UndefOr[Array[String]] = js.undefined,
-                  val silent: js.UndefOr[Boolean] = js.undefined,
-                  val stdio: js.UndefOr[String | Array[String]] = js.undefined,
-                  val uid: js.UndefOr[UID] = js.undefined,
-                  val gid: js.UndefOr[GID] = js.undefined)
+class ForkOptions(var cwd: js.UndefOr[String] = js.undefined,
+                  var detached: js.UndefOr[Boolean] = js.undefined,
+                  var env: js.UndefOr[js.Object] = js.undefined,
+                  var execPath: js.UndefOr[String] = js.undefined,
+                  var execArgv: js.UndefOr[Array[String]] = js.undefined,
+                  var silent: js.UndefOr[Boolean] = js.undefined,
+                  var stdio: js.UndefOr[String | Array[String]] = js.undefined,
+                  var uid: js.UndefOr[UID] = js.undefined,
+                  var gid: js.UndefOr[GID] = js.undefined)
     extends js.Object

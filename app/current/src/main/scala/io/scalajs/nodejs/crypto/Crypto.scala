@@ -390,34 +390,34 @@ object Constants extends js.Object {
 
 class CreatePrivateKeyOptions(
     val key: String | Buffer,
-    val format: js.UndefOr[String] = js.undefined,
-    val `type`: js.UndefOr[String] = js.undefined,
-    val passphrase: js.UndefOr[String | Buffer] = js.undefined
+    var format: js.UndefOr[String] = js.undefined,
+    var `type`: js.UndefOr[String] = js.undefined,
+    var passphrase: js.UndefOr[String | Buffer] = js.undefined
 ) extends js.Object
 
 class CreatePublicKeyOptions(
     val key: String | Buffer,
-    val format: js.UndefOr[String] = js.undefined,
-    val `type`: js.UndefOr[String] = js.undefined
+    var format: js.UndefOr[String] = js.undefined,
+    var `type`: js.UndefOr[String] = js.undefined
 ) extends js.Object
 
 class GenerateKeyPairOptions(
     val modulusLength: Int,
-    val publicExponent: js.UndefOr[Int] = js.undefined,
-    val divisorLength: js.UndefOr[Int] = js.undefined,
-    val namedCurve: js.UndefOr[String] = js.undefined,
-    val publicKeyEncoding: js.UndefOr[KeyObjectExportOptions] = js.undefined,
-    val privateKeyEncoding: js.UndefOr[KeyObjectExportOptions] = js.undefined
+    var publicExponent: js.UndefOr[Int] = js.undefined,
+    var divisorLength: js.UndefOr[Int] = js.undefined,
+    var namedCurve: js.UndefOr[String] = js.undefined,
+    var publicKeyEncoding: js.UndefOr[KeyObjectExportOptions] = js.undefined,
+    var privateKeyEncoding: js.UndefOr[KeyObjectExportOptions] = js.undefined
 ) extends js.Object
 
 class ScryptOptions(
-    val cost: js.UndefOr[Int] = js.undefined,
-    val blockSize: js.UndefOr[Int] = js.undefined,
-    val parallelization: js.UndefOr[Int] = js.undefined,
-    val N: js.UndefOr[Int] = js.undefined,
-    val r: js.UndefOr[Int] = js.undefined,
-    val p: js.UndefOr[Int] = js.undefined,
-    val maxmem: js.UndefOr[Int] = js.undefined
+    var cost: js.UndefOr[Int] = js.undefined,
+    var blockSize: js.UndefOr[Int] = js.undefined,
+    var parallelization: js.UndefOr[Int] = js.undefined,
+    var N: js.UndefOr[Int] = js.undefined,
+    var r: js.UndefOr[Int] = js.undefined,
+    var p: js.UndefOr[Int] = js.undefined,
+    var maxmem: js.UndefOr[Int] = js.undefined
 ) extends js.Object
 
 @js.native

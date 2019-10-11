@@ -14,8 +14,8 @@ import scala.scalajs.js
   * @param readable
   * @param writable
   */
-class SocketOptions(val fd: js.UndefOr[FileDescriptor] = js.undefined,
-                    val allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
-                    val readable: js.UndefOr[Boolean] = js.undefined,
-                    val writable: js.UndefOr[Boolean] = js.undefined)
+class SocketOptions(var fd: js.UndefOr[FileDescriptor] = js.undefined,
+                    var allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
+                    var readable: js.UndefOr[Boolean] = js.undefined,
+                    var writable: js.UndefOr[Boolean] = js.undefined)
     extends js.Object

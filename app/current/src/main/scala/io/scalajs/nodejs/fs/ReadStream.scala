@@ -18,7 +18,6 @@ import scala.scalajs.js.|
 @js.native
 @JSImport("fs", "ReadStream")
 class ReadStream(path: Path) extends stream.Readable {
-
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
   /////////////////////////////////////////////////////////////////////////////////
@@ -53,12 +52,10 @@ class ReadStream(path: Path) extends stream.Readable {
   * Read Stream Companion
   */
 object ReadStream {
-
   /**
     * Read Stream Events
     */
   implicit final class ReadStreamEvents(val stream: ReadStream) extends AnyVal {
-
     /**
       * Emitted when the ReadStream's underlying file descriptor has been closed using the fs.close() method.
       * @param listener the event handler
@@ -77,17 +74,13 @@ object ReadStream {
       */
     @inline
     def onOpen(listener: FileDescriptor => Any): stream.type = stream.on("open", listener)
-
   }
 
   /**
     * Read Stream Extensions
     */
   implicit final class ReadStreamExtensions(val stream: ReadStream) extends AnyVal {
-
     @inline
     def closeFuture: Future[Unit] = promiseCallback1[Unit](stream.close)
-
   }
-
 }

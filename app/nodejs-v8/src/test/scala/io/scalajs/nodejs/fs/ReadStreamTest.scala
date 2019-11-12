@@ -23,5 +23,4 @@ class FsClassesTest extends FunSpec {
       assert(new WriteStream(new URL(s"file:///${dirname}/package.json")) !== null)
     }
   }
-
 }

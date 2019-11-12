@@ -241,5 +241,4 @@ trait Http2Constants extends js.Object {
   val PADDING_STRATEGY_CALLBACK: Int = js.native
   val PADDING_STRATEGY_MAX: Int      = js.native
   val PADDING_STRATEGY_NONE: Int     = js.native
-
 }

@@ -23,7 +23,6 @@ import scala.scalajs.js.|
   */
 @js.native
 trait Fs extends IEventEmitter with FSConstants {
-
   /**
     * Returns an object containing commonly used constants for file system operations
     * @return an [[FSConstants object]] containing commonly used constants for file system operations
@@ -1132,7 +1131,6 @@ trait Fs extends IEventEmitter with FSConstants {
 @js.native
 @JSImport("fs", JSImport.Namespace)
 object Fs extends Fs {
-
   @enableMembersIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   @js.native
   trait FsPromises extends js.Object {

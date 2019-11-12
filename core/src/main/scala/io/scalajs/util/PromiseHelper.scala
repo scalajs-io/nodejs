@@ -8,7 +8,6 @@ import scala.scalajs.runtime.wrapJavaScriptException
   * Promise Helper
   */
 object PromiseHelper {
-
   /**
     * Converts a JavaScript-style callback to a Scala.js promise
     * @param f the given callback function
@@ -246,5 +245,4 @@ object PromiseHelper {
     )
     task.future
   }
-
 }

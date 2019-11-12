@@ -17,7 +17,6 @@ import scala.scalajs.js
   */
 @js.native
 sealed trait Decipher extends Transform {
-
   /**
     * Returns any remaining deciphered contents. If output_encoding parameter is one of 'binary', 'base64' or 'hex',
     * a string is returned. If an output_encoding is not provided, a Buffer is returned.
@@ -79,5 +78,4 @@ sealed trait Decipher extends Transform {
   def update(data: String, inputEncoding: String, outputEncoding: String): String = js.native
   def update(data: String, inputEncoding: String): Buffer                         = js.native
   def update(data: BufferLike): Buffer                                            = js.native
-
 }

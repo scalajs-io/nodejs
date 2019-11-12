@@ -13,7 +13,6 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 trait Tls extends js.Object {
-
   def checkServerIdentity(hostname: String, cert: TLSCertificate): js.UndefOr[io.scalajs.nodejs.Error] = js.native
 
   def connect(options: ConnectOptions, callback: js.Function = js.native): Unit = js.native

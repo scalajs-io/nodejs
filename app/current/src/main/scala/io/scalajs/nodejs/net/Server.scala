@@ -14,7 +14,6 @@ import scala.scalajs.js.|
 @js.native
 @JSImport("net", "Server")
 class Server(options: ServerOptions = js.native) extends IEventEmitter {
-
   def this(options: ServerOptions, connectionListener: js.Function) = this()
   def this(connectionListener: js.Function) = this()
 
@@ -99,13 +98,11 @@ class Server(options: ServerOptions = js.native) extends IEventEmitter {
   * Server Companion
   */
 object Server extends {
-
   /**
     * Server Events
     * @param server the given [[Server]]
     */
   implicit final class ServerEvents(val server: Server) extends AnyVal {
-
     /**
       * Emitted when the server closes. Note that if connections exist, this event is not emitted until all
       * connections are ended.
@@ -133,7 +130,5 @@ object Server extends {
       */
     @inline
     def onListening(handler: () => Any): server.type = server.on("listening", handler)
-
   }
-
 }

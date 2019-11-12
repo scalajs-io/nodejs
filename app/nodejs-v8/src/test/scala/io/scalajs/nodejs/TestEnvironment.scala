@@ -4,7 +4,6 @@ import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.child_process.ChildProcess
 
 object TestEnvironment {
-
   private lazy val nodeMajorVersion: Int =
     ChildProcess.execSync("node -v").asInstanceOf[Buffer].toString().drop(1).takeWhile(_.isDigit).toInt
 

@@ -7,9 +7,7 @@ import scala.concurrent.duration._
 import scala.scalajs.js
 
 class ClusterTest extends FunSpec {
-
   describe("Cluster") {
-
     it("cluster should be master") {
       assert(Cluster.isMaster)
     }
@@ -56,7 +54,5 @@ class ClusterTest extends FunSpec {
         Cluster.onExit((worker, code, signal) => info(s"worker ${worker.process.pid} died"))
       }
     }
-
   }
-
 }

@@ -11,7 +11,6 @@ import scala.scalajs.js.|
   * zlib package object
   */
 package object zlib {
-
   type Data                  = String | TypedArray[_, _] | DataView | ArrayBuffer
   type AllocationType        = Int
   type CompressionFlush      = Int
@@ -25,7 +24,6 @@ package object zlib {
     * Zlib Extensions
     */
   implicit final class ZlibExtensions(val zlib: Zlib) extends AnyVal {
-
     /**
       * Asynchronously compresses a Buffer or string with Deflate.
       */
@@ -80,7 +78,5 @@ package object zlib {
     def unzipFuture(buffer: Data, options: CompressionOptions = null): Future[Buffer] = {
       promiseWithError1[Error, Buffer](zlib.unzip(buffer, options, _))
     }
-
   }
-
 }

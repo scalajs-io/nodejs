@@ -7,7 +7,6 @@ import scala.scalajs.js
   */
 @js.native
 trait Client extends js.Object {
-
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
   /////////////////////////////////////////////////////////////////////////////////
@@ -31,5 +30,4 @@ trait Client extends js.Object {
     * The client's agent
     */
   def agent: Agent = js.native
-
 }

@@ -10,7 +10,6 @@ import scala.scalajs.js.|
 @js.native
 @JSImport("http2", "Http2ServerResponse")
 class Http2ServerResponse extends Http2TimeoutOps {
-
   def addTrailers(headers: Http2Headers): Unit = js.native
 
   def connection: net.Socket | tls.TLSSocket = js.native

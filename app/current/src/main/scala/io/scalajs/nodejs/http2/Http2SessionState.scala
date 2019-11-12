@@ -13,5 +13,4 @@ trait Http2SessionState extends js.Object {
   def outboundQueueSize: Int        = js.native
   def deflateDynamicTableSize: Int  = js.native
   def inflateDynamicTableSize: Int  = js.native
-
 }

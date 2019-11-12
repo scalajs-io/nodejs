@@ -6,9 +6,7 @@ import org.scalatest.{FunSpec, MustMatchers}
   * Crypto Test
   */
 class CryptoTest extends FunSpec with MustMatchers {
-
   describe("Crypto") {
-
     val text = "Hello World"
 
     it("should be able to create an MD5 hash from a string") {
@@ -50,7 +48,6 @@ class CryptoTest extends FunSpec with MustMatchers {
       finalEncryptedValue mustNot equal(stringToEncrypt)
       finalDecryptedValue must equal(stringToEncrypt)
     }
-
   }
 
   describe("Crypto module") {

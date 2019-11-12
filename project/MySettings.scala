@@ -5,7 +5,6 @@ import sbtrelease.ReleasePlugin.autoImport._
 import sbtrelease.ReleaseStateTransformations._
 
 object MySettings {
-
   private val lintSettings = Def.setting({
     val isScala212 = scalaVersion.value.startsWith("2.12")
     val lints = (Seq(
@@ -132,5 +131,4 @@ object MySettings {
       releaseStepCommand("sonatypeReleaseAll")
     )
   )
-
 }

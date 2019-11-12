@@ -13,7 +13,6 @@ import scala.scalajs.js.{typedarray, |}
   * fs package object
   */
 package object fs {
-
   type Path             = typedarray.Uint8Array | String | URL
   type Time             = Int | String | js.Date
   type BufferLike       = typedarray.TypedArray[_, _] | typedarray.DataView

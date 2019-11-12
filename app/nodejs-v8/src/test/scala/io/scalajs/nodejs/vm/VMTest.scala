@@ -9,9 +9,7 @@ import scala.scalajs.js
   * VM Tests
   */
 class VMTest extends FunSpec {
-
   describe("VM") {
-
     it("should compile and execute JavaScript code") {
       val sandbox = new Sandbox(animal = "cat", count = 2, name = "kitty")
       val expectedSet = Seq(
@@ -41,21 +39,17 @@ class VMTest extends FunSpec {
       VM.runInNewContext("""count += 1; name = "kitty"""", sandbox)
       assert(sandbox.animal === "cat" && sandbox.count === 3 && sandbox.name === "kitty")
     }
-
   }
-
 }
 
 /**
   * VM Test Companion
   */
 object VMTest {
-
   /**
     * Sandbox Object
     */
   class Sandbox(var animal: String, var count: Int, var name: String) extends js.Object
 
   case class ExpectedData(animal: String, count: Int, name: String)
-
 }

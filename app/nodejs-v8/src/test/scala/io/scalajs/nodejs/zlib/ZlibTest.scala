@@ -6,9 +6,7 @@ import org.scalatest.FunSpec
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 
 class ZlibTest extends FunSpec {
-
   describe("Zlib") {
-
     it("should compress strings and buffers") {
       val original = Buffer.from("This is a compression example")
 
@@ -20,5 +18,4 @@ class ZlibTest extends FunSpec {
       }
     }
   }
-
 }

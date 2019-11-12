@@ -7,9 +7,7 @@ import org.scalatest.FunSpec
   * OS Tests
   */
 class OSTest extends FunSpec {
-
   describe("OS") {
-
     it("supports arch()") {
       assert(OS.arch().nonEmpty)
     }

@@ -3,7 +3,6 @@ package io.scalajs.nodejs.internal
 import scala.reflect.macros.whitebox
 
 object CompilerSwitches {
-
   private val nodejsVersionPattern = "^nodeJs([0-9]{1,2})\\.([0-9]{1,2})\\.([0-9]{1,2})$".r
 
   private def compare(predicate: (Int, Int, Int) => Boolean): String => Boolean = { version: String =>

@@ -11,5 +11,4 @@ trait ServerHttp2Session extends Http2Session {
 
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def origin(origins: Origin*): Unit = js.native
-
 }

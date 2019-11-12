@@ -14,7 +14,6 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 trait Readline extends IEventEmitter {
-
   /**
     * Clears current line of given TTY stream in a specified direction. <tt>dir</tt> should have one of following values:
     * <ul>
@@ -53,7 +52,6 @@ trait Readline extends IEventEmitter {
     * @example readline.moveCursor(stream, dx, dy)
     */
   def moveCursor(stream: IWritable, dx: Int, dy: Int, callback: js.Function = js.native): Unit = js.native
-
 }
 
 /**

@@ -27,7 +27,6 @@ import scala.scalajs.js.annotation.{JSGlobal, JSImport}
 @js.native
 @JSImport("console", "Console")
 class Console protected () extends js.Object {
-
   def this(stdout: IWritable, stderr: IWritable = js.native, ignoreErrors: Boolean = true) = this()
 
   def this(options: ConsoleOptions) = this()

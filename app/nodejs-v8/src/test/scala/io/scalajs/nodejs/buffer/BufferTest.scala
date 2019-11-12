@@ -7,7 +7,6 @@ import scala.scalajs.js
 import scala.scalajs.js.typedarray.{ArrayBuffer, DataView, Uint8Array}
 
 class BufferTest extends FunSpec {
-
   describe("Buffer") {
     describe("instance members") {
       it("should sort buffers") {
@@ -116,7 +115,6 @@ class BufferTest extends FunSpec {
         assert(Buffer.isEncoding("utf8"))
         assert(Buffer.isEncoding("UTF-8"))
       }
-
     }
 
     describe("module members") {
@@ -151,5 +149,4 @@ class BufferTest extends FunSpec {
       }
     }
   }
-
 }

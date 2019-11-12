@@ -34,7 +34,6 @@ import scala.scalajs.js.{Any, |}
 @js.native
 @JSImport("http", "ClientRequest")
 class ClientRequest extends stream.Writable {
-
   def aborted: Int | Boolean = js.native
 
   def connection: net.Socket = js.native
@@ -109,16 +108,13 @@ class ClientRequest extends stream.Writable {
     * </ul>
     */
   def setTimeout(timeout: Int, callback: js.Function = js.native): Unit = js.native
-
 }
 
 /**
   * Client Request Companion
   */
 object ClientRequest {
-
   implicit final class ClientRequestExtensions(val client: ClientRequest) extends AnyVal {
-
     /**
       * Emitted when the request has been aborted by the client. This event is only emitted on the first call to abort().
       */
@@ -193,5 +189,4 @@ object ClientRequest {
       promiseWithError0[Error](client.write(chunk, encoding, _))
     }
   }
-
 }

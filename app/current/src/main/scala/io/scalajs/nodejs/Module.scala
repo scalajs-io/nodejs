@@ -13,7 +13,6 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 trait Module extends js.Object {
-
   /**
     * The module objects required by this one.
     * @example module.children
@@ -62,7 +61,6 @@ trait Module extends js.Object {
     * explicitly exported in order to be used.
     */
   def require[T <: js.Any](id: String): T = js.native
-
 }
 
 /**
@@ -71,7 +69,6 @@ trait Module extends js.Object {
 @js.native
 @JSImport("module", JSImport.Namespace)
 object Module extends Module {
-
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   var builtinModules: js.Array[String] = js.native
 

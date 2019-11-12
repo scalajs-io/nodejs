@@ -10,7 +10,6 @@ import scala.scalajs.js
   */
 @js.native
 trait FSConstants extends js.Object {
-
   /////////////////////////////////////////////////////////////////////////////////
   //      File Access Constants
   //

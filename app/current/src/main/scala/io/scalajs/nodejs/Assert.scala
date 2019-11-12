@@ -17,7 +17,6 @@ import scala.scalajs.js.|
   */
 @js.native
 trait Assert extends IEventEmitter {
-
   /**
     * An alias of assert.ok() .
     * @param expression the expression to evaluate

@@ -16,7 +16,6 @@ import scala.scalajs.js.|
   */
 @js.native
 trait Crypto extends js.Object {
-
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
   /////////////////////////////////////////////////////////////////////////////////
@@ -385,7 +384,6 @@ object Constants extends js.Object {
 
   val defaultCoreCipherList: String = js.native
   val defaultCipherList: String     = js.native
-
 }
 
 class CreatePrivateKeyOptions(

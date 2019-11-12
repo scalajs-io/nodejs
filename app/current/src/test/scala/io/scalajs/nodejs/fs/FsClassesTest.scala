@@ -12,5 +12,4 @@ class FsClassesTest extends FunSpec {
       assert(new ReadStream("package.json").pending)
     }
   }
-
 }

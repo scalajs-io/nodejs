@@ -5,7 +5,6 @@ import scala.scalajs.js.|
 
 @js.native
 trait Address extends js.Object {
-
   def address: String = js.native
 
   def port: Int = js.native
@@ -18,5 +17,4 @@ trait Address extends js.Object {
     * "udp4" or "udp6" (UDP v4 or v6)
     */
   def addressType: String | Int = js.native
-
 }

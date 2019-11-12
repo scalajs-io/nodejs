@@ -5,7 +5,6 @@ import org.scalatest.FunSpec
 import scala.scalajs.js
 
 class UtilTest extends FunSpec {
-
   it("have formatWithOptions added in v10.0.0") {
     assert(Util.formatWithOptions(new InspectOptions(compact = true), "See object %O", new js.Object {
       val foo: Int = 42
@@ -23,5 +22,4 @@ class UtilTest extends FunSpec {
   it("have inspect.custom added in v10.12.0") {
     assert(Util.inspect.custom !== null)
   }
-
 }

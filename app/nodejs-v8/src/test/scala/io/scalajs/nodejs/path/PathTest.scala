@@ -6,9 +6,7 @@ import org.scalatest.FunSpec
   * Path Tests
   */
 class PathTest extends FunSpec {
-
   describe("Path") {
-
     it("supports basename()") {
       assert(Path.basename("/foo/bar/baz/asdf/quux.html") === "quux.html")
       assert(Path.basename("/foo/bar/baz/asdf/quux.html", ".html") === "quux")
@@ -38,6 +36,5 @@ class PathTest extends FunSpec {
     it("supports join()") {
       assert(Path.join("/foo", "bar", "baz/asdf", "quux", "..") === "/foo/bar/baz/asdf")
     }
-
   }
 }

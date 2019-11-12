@@ -10,7 +10,6 @@ import scala.scalajs.js
   * net package object
   */
 package object net {
-
   type ConnectOptions = http.ConnectionOptions
 
   /**
@@ -18,7 +17,6 @@ package object net {
     * @param server the given [[Server server]]
     */
   implicit final class ServerEvents(val server: Server) extends AnyVal {
-
     /**
       * Emitted when a new connection is made. socket is an instance of net.Socket.
       * @example server.on("close", function () { ... })
@@ -39,7 +37,6 @@ package object net {
       * Emitted when the server has been bound after calling server.listen.
       */
     @inline def onListening(callback: js.Function): server.type = server.on("listening", callback)
-
   }
 
   /**
@@ -47,7 +44,6 @@ package object net {
     * @param socket the given [[Socket socket]]
     */
   implicit final class SocketExtensions(val socket: Socket) extends AnyVal {
-
     /////////////////////////////////////////////////////////////////////////////////
     //      Futures
     /////////////////////////////////////////////////////////////////////////////////
@@ -148,7 +144,5 @@ package object net {
       * @example socket.on("timeout", function(???) { ... })
       */
     @inline def onTimeout(callback: js.Function): socket.type = socket.on("timeout", callback)
-
   }
-
 }

@@ -17,7 +17,6 @@ import scala.scalajs.js.annotation.JSImport
 @js.native
 @JSImport("http", "IncomingMessage")
 class IncomingMessage extends stream.Readable {
-
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def aborted: Boolean = js.native
 
@@ -92,26 +91,21 @@ class IncomingMessage extends stream.Readable {
     * @example message.url
     */
   def url: js.UndefOr[String] = js.native
-
 }
 
 /**
   * Incoming Message Companion
   */
 object IncomingMessage {
-
   /**
     * Incoming Message Extensions
     */
   implicit final class IncomingMessageExtensions(val message: IncomingMessage) extends AnyVal {
-
     @inline
     def onClose(callback: js.Function): message.type = message.on("close", callback)
 
     @inline
     def setTimeout(duration: FiniteDuration, callback: js.Function): Unit =
       message.setTimeout(duration.toMillis.toDouble, callback)
-
   }
-
 }

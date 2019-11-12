@@ -9,11 +9,8 @@ import scala.scalajs.js
   * Http Tests
   */
 class HttpTest extends FunSpec {
-
   describe("Http") {
-
     it("should provide an HTTP server") {
-
       val server = Http.createServer((request: ClientRequest, response: ServerResponse) => {
         response.writeHead(statusCode = 200, headers = js.Dictionary("Content-Type" -> "text/plain"))
         response.write("Hello World")
@@ -24,7 +21,6 @@ class HttpTest extends FunSpec {
       // don't listen on a port
       //server.listen(58888)
       //setTimeout(() => server.close(), 100.millis)
-
     }
 
     it("should provide statusCode") {
@@ -32,5 +28,4 @@ class HttpTest extends FunSpec {
       assert(Http.STATUS_CODES.`500` === "Internal Server Error")
     }
   }
-
 }

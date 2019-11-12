@@ -13,7 +13,6 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 trait Zlib extends IEventEmitter with UncategorizedConstants with ZlibConstants {
-
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def createBrotliCompress(options: BrotliOptions = js.native): BrotliCompress = js.native
 
@@ -167,7 +166,6 @@ trait Zlib extends IEventEmitter with UncategorizedConstants with ZlibConstants 
     * @example zlib.unzipSync(buf[, options])
     */
   def unzipSync(buffer: Data, options: CompressionOptions = js.native): Unit = js.native
-
 }
 
 /**

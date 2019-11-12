@@ -12,7 +12,6 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 trait TTY extends js.Object {
-
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
   /////////////////////////////////////////////////////////////////////////////////
@@ -23,7 +22,6 @@ trait TTY extends js.Object {
     * @since 0.5.8
     */
   def isatty(fd: FileDescriptor): Boolean = js.native
-
 }
 
 /**

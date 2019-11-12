@@ -17,7 +17,6 @@ import scala.scalajs.js.annotation.JSImport
 @js.native
 @JSImport("http", "Agent")
 class Agent(options: AgentOptions = js.native) extends js.Object {
-
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
   /////////////////////////////////////////////////////////////////////////////////
@@ -98,12 +97,10 @@ class Agent(options: AgentOptions = js.native) extends js.Object {
   * Agent Companion
   */
 object Agent {
-
   /**
     * Agent Extensions
     */
   implicit final class AgentExtensions(val agent: Agent) extends AnyVal {
-
     /**
       * Produces a socket/stream to be used for HTTP requests. By default, this function is the same
       * as net.createConnection(). However, custom Agents may override this method in case greater
@@ -113,7 +110,5 @@ object Agent {
     def createConnectionFuture(options: ConnectionOptions): Future[js.Any] = {
       promiseWithError1[Error, js.Any](agent.createConnection(options, _))
     }
-
   }
-
 }

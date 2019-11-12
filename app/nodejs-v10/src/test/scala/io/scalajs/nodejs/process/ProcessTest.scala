@@ -3,7 +3,6 @@ package io.scalajs.nodejs.process
 import org.scalatest.FunSpec
 
 class ProcessTest extends FunSpec {
-
   describe("Process") {
     it("hrtime.bigint") {
       // TODO: js.BigInt
@@ -11,5 +10,4 @@ class ProcessTest extends FunSpec {
       assert(value.toString().matches("^\\d+$"))
     }
   }
-
 }

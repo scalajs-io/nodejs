@@ -17,7 +17,6 @@ class FsTest extends AsyncFunSpec {
   final val testResources = "./app/current/src/test/resources/"
 
   describe("Fs") {
-
     it("supports watching files") {
       val promise = Promise[(String, String)]()
       val watcher = Fs.watch(s"${testResources}", (eventType, file) => {
@@ -112,7 +111,5 @@ class FsTest extends AsyncFunSpec {
         succeed
       }
     }
-
   }
-
 }

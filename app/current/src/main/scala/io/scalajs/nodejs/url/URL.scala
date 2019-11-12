@@ -17,7 +17,6 @@ import scala.scalajs.js.|
 @js.native
 @JSImport("url", "URL")
 class URL(input: String, base: String | URL = js.native) extends js.Object {
-
   /**
     * The auth property is the username and password portion of the URL, also referred to as "userinfo".
     * This string subset follows the protocol and double slashes (if present) and precedes the host component,
@@ -101,7 +100,6 @@ class URL(input: String, base: String | URL = js.native) extends js.Object {
     * @return a JSON representation of the URL
     */
   def toJSON(): String = js.native
-
 }
 
 /**
@@ -110,7 +108,6 @@ class URL(input: String, base: String | URL = js.native) extends js.Object {
 @js.native
 @JSImport("url", JSImport.Namespace)
 object URL extends IEventEmitter {
-
   /**
     * Take a parsed URL object, and return a formatted URL string.
     * @example url.format(urlObj)
@@ -176,5 +173,4 @@ object URL extends IEventEmitter {
 
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def pathToFileURL(url: String): URL = js.native
-
 }

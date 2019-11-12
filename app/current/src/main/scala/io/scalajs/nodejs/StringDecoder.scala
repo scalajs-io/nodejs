@@ -14,7 +14,6 @@ import scala.scalajs.js.|
 @js.native
 @JSImport("string_decoder", "StringDecoder")
 class StringDecoder(encoding: String = js.native) extends IEventEmitter {
-
   /**
     * Returns any trailing bytes that were left in the buffer.
     * @example decoder.end()
@@ -26,5 +25,4 @@ class StringDecoder(encoding: String = js.native) extends IEventEmitter {
     * @example decoder.write(buffer)
     */
   def write(buffer: TypedArray[_, _] | DataView): String = js.native
-
 }

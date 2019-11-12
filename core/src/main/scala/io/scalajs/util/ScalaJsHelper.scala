@@ -6,7 +6,6 @@ import scala.scalajs.js
   * ScalaJS Convenience Helper Functions
   */
 object ScalaJsHelper {
-
   ////////////////////////////////////////////////////////////////////////
   //    Convenience Functions
   ////////////////////////////////////////////////////////////////////////
@@ -26,7 +25,6 @@ object ScalaJsHelper {
     * @param obj the given [[js.Dynamic object]]
     */
   implicit final class JsAnyExtensions(val obj: js.Any) extends AnyVal {
-
     @inline
     def asUndefOr[T]: js.UndefOr[T] = obj.asInstanceOf[js.UndefOr[T]]
 

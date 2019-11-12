@@ -3,7 +3,6 @@ package io.scalajs.nodejs.process
 import org.scalatest.FunSpec
 
 class EnvironmentTest extends FunSpec {
-
   describe("Environment") {
     it("have PATH as member") {
       assert(Process.env.PATH.nonEmpty)

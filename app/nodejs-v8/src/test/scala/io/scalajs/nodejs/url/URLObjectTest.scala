@@ -8,9 +8,7 @@ import org.scalatest.FunSpec
   * URLObject Tests
   */
 class URLObjectTest extends FunSpec {
-
   describe("URLObject") {
-
     val originalUrl = "https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=node"
     val urlObject   = new URL(originalUrl)
 
@@ -28,7 +26,5 @@ class URLObjectTest extends FunSpec {
     it("should reconstituted the URL to match the original") {
       assert(URL.format(urlObject) === originalUrl)
     }
-
   }
-
 }

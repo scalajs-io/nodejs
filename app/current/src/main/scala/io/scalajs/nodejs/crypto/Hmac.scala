@@ -17,7 +17,6 @@ import scala.scalajs.js
   */
 @js.native
 sealed trait Hmac extends Transform {
-
   /**
     * Calculates the HMAC digest of all of the data passed using hmac.update(). The encoding can be 'hex', 'binary'
     * or 'base64'. If encoding is provided a string is returned; otherwise a Buffer is returned;
@@ -69,5 +68,4 @@ sealed trait Hmac extends Transform {
     * @param data the given [[Buffer data]]
     */
   def update(data: BufferLike): Hmac = js.native
-
 }

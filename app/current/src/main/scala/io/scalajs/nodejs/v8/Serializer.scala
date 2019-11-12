@@ -10,7 +10,6 @@ import scala.scalajs.js.|
 @js.native
 @JSImport("v8", "Serializer")
 class Serializer() extends js.Object {
-
   def writeHeader(): Unit = js.native
 
   def writeValue(value: js.Any): Unit = js.native

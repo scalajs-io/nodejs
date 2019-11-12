@@ -31,5 +31,4 @@ class CertificateTest extends FunSpec with MustMatchers {
       assert(instance.verifySpkac(Buffer.from("foo")) === false)
     }
   }
-
 }

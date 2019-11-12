@@ -9,9 +9,7 @@ import scala.scalajs.js
   * Query String Test
   */
 class QueryStringTest extends FunSpec {
-
   describe("QueryString") {
-
     it("should escape(...)") {
       val result = QueryString.escape("""https://www.google.com/#q=node?key=1234""")
       assert(result === "https%3A%2F%2Fwww.google.com%2F%23q%3Dnode%3Fkey%3D1234")
@@ -47,7 +45,5 @@ class QueryStringTest extends FunSpec {
   * Query String Test Companion
   */
 object QueryStringTest {
-
   class MyParams(val foo: String, val bar: String) extends js.Object
-
 }

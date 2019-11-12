@@ -11,7 +11,6 @@ import scala.scalajs.js.|
   */
 @js.native
 trait ClusterSettings extends js.Object {
-
   /** <Array> list of string arguments passed to the Node.js executable. (Default=process.execArgv) */
   var execArgv: js.Array[String] = js.native
 

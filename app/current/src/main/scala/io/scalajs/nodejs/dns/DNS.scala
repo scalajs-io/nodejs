@@ -14,7 +14,6 @@ import scala.scalajs.js.|
   */
 @js.native
 trait DNS extends IResolver {
-
   /**
     * Resolves a hostname (e.g. 'nodejs.org') into the first found A (IPv4) or AAAA (IPv6) record. options can be an
     * object or integer. If options is not provided, then IPv4 and IPv6 addresses are both valid. If options is an
@@ -78,7 +77,6 @@ trait DNS extends IResolver {
 @js.native
 @JSImport("dns", JSImport.Namespace)
 object DNS extends DNS {
-
   @js.native
   object promises extends js.Object {
     type Resolver = PromisesResolver
@@ -159,5 +157,4 @@ object DNS extends DNS {
 
   /** DNS query cancelled. */
   val CANCELLED: String = js.native
-
 }

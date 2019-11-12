@@ -10,26 +10,22 @@ import scala.scalajs.js
   */
 @js.native
 trait FSWatcher extends IEventEmitter {
-
   /**
     * Stop watching for changes on the given fs.FSWatcher.
     * @example watcher.close()
     * @since 0.5.8
     */
   def close(): Unit = js.native
-
 }
 
 /**
   * File System Watcher Companion
   */
 object FSWatcher {
-
   /**
     * File System Watcher Extensions
     */
   implicit final class FSWatcherExtensions(val watcher: FSWatcher) extends AnyVal {
-
     /**
       * Emitted when something changes in a watched directory or file. See more details in fs.watch().
       *
@@ -53,9 +49,7 @@ object FSWatcher {
       */
     @inline
     def onError(listener: Error => Any): watcher.type = watcher.on("error", listener)
-
   }
-
 }
 
 /**

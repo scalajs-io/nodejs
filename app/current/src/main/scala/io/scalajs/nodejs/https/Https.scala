@@ -14,7 +14,6 @@ import scala.scalajs.js.|
   */
 @js.native
 trait Https extends js.Object {
-
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
   /////////////////////////////////////////////////////////////////////////////////
@@ -52,7 +51,6 @@ trait Https extends js.Object {
   def request(url: String | URL): Unit                                                    = js.native
   def request(options: RequestOptions): Unit                                              = js.native
   def request(options: RequestOptions, callback: js.Function1[ServerResponse, Any]): Unit = js.native
-
 }
 
 /**

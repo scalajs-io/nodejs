@@ -12,7 +12,6 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 trait Net extends IEventEmitter {
-
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
   /////////////////////////////////////////////////////////////////////////////////
@@ -70,7 +69,6 @@ trait Net extends IEventEmitter {
     * @example net.isIPv6(input)
     */
   def isIPv6(input: String): Boolean = js.native
-
 }
 
 /**

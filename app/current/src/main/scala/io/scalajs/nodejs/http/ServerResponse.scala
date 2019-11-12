@@ -13,7 +13,6 @@ import scala.scalajs.js.|
   */
 @js.native
 trait ServerResponse extends stream.Writable {
-
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
   /////////////////////////////////////////////////////////////////////////////////
@@ -148,12 +147,10 @@ trait ServerResponse extends stream.Writable {
   * Server Response
   */
 object ServerResponse {
-
   /**
     * Server Response Events
     */
   implicit final class ServerResponseExtensions(val response: ServerResponse) extends AnyVal {
-
     @inline
     def onData(handler: Buffer => Any): response.type = response.on("data", handler)
 
@@ -182,7 +179,5 @@ object ServerResponse {
 
     @inline
     def notFound(): Unit = response.sendStatus(404)
-
   }
-
 }

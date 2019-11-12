@@ -6,7 +6,6 @@ import scala.scalajs.js
   * repl package object
   */
 package object repl {
-
   type REPLContext = js.Dynamic
 
   /**
@@ -14,7 +13,6 @@ package object repl {
     * @param server the given [[REPLServer instance]]
     */
   implicit final class REPLServerEvents(val server: REPLServer) extends AnyVal {
-
     @inline
     def contextAs[T]: T = server.context.asInstanceOf[T]
 
@@ -36,7 +34,6 @@ package object repl {
       */
     @inline
     def onReset(listener: REPLContext => Any): REPLServer = server.on("reset", listener)
-
   }
 
   /**
@@ -48,7 +45,6 @@ package object repl {
     * </ul>
     */
   implicit final class EnvironmentVariableOptions(private val env: process.Environment) extends AnyVal {
-
     /**
       * When a valid path is given, persistent REPL history will be saved to the specified file rather
       * than .node_repl_history in the user's home directory. Setting this value to "" will disable persistent
@@ -70,7 +66,5 @@ package object repl {
       */
     @inline
     def NODE_REPL_MODE: Option[String] = env("NODE_REPL_MODE").toOption
-
   }
-
 }

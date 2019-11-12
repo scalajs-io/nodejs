@@ -6,7 +6,6 @@ import org.scalatest.{BeforeAndAfterEach, FunSpec}
 import scala.scalajs.js
 
 class ConsoleTest extends FunSpec with BeforeAndAfterEach {
-
   private val logFileName = "x.nodejs10.ConsoleTest"
 
   override def afterEach(): Unit = {

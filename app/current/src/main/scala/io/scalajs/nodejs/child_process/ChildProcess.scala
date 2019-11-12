@@ -89,5 +89,4 @@ object ChildProcess extends scala.scalajs.js.Object {
       args: js.Array[String] = js.native,
       options: SpawnSyncOptions = js.native
   ): SpawnSyncResult = js.native
-
 }

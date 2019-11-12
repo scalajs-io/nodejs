@@ -11,7 +11,6 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 trait OS extends js.Object {
-
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
   /////////////////////////////////////////////////////////////////////////////////
@@ -154,7 +153,6 @@ trait OS extends js.Object {
     * @return a [[UserInfoObject user information object]]
     */
   def userInfo(options: UserInfoOptions = js.native): UserInfoObject = js.native
-
 }
 
 /**

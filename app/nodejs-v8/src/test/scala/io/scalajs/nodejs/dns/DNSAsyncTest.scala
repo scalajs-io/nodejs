@@ -12,7 +12,6 @@ class DNSAsyncTest extends AsyncFunSpec {
   private val domain = "google.com"
 
   describe("DNS") {
-
     it("supports lookup") {
       val promise = Promise[String]()
       DNS.lookup(domain, (err, ipAddress) => {

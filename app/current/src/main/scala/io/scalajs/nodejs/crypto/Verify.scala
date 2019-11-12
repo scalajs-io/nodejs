@@ -18,7 +18,6 @@ import scala.scalajs.js.|
   */
 @js.native
 trait Verify extends Writable {
-
   /**
     * Updates the Verify content with the given data.
     * This can be called many times with new data as it is streamed.
@@ -49,5 +48,4 @@ trait Verify extends Writable {
   def verify(obj: KeyObject, signature: String, signatureEncoding: String): Boolean = js.native
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def verify(obj: KeyObject, signature: BufferLike): Boolean = js.native
-
 }

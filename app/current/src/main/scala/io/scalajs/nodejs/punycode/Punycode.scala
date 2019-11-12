@@ -11,7 +11,6 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 trait Punycode extends js.Object {
-
   /**
     * The punycode.decode() method converts a Punycode string of ASCII-only characters to the equivalent
     * string of Unicode codepoints.
@@ -55,7 +54,6 @@ trait Punycode extends js.Object {
     * @return a string identifying the current Punycode.js version number.
     */
   def version: String = js.native
-
 }
 
 /**
@@ -64,7 +62,6 @@ trait Punycode extends js.Object {
   */
 @js.native
 trait UCS2 extends js.Object {
-
   /**
     * The punycode.ucs2.decode() method returns an array containing the numeric codepoint values of each Unicode
     * symbol in the string.
@@ -79,7 +76,6 @@ trait UCS2 extends js.Object {
     * @return a string based on an array of numeric code point values
     */
   def encode(codePoints: js.Array[Int]): String = js.native
-
 }
 
 @js.native

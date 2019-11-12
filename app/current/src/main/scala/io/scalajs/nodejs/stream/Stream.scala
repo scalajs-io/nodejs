@@ -234,19 +234,16 @@ sealed trait IReadable extends LegacyStream {
     * @example readable.wrap(stream)
     */
   def wrap(stream: LegacyStream): Unit = js.native
-
 }
 
 /**
   * Readable Companion
   */
 object IReadable {
-
   /**
     * Readable Events
     */
   implicit final class ReadableExtesions(val readable: IReadable) extends AnyVal {
-
     /**
       * Emitted when the stream and any of its underlying resources (a file descriptor, for example) have been closed.
       * The event indicates that no more events will be emitted, and no further computation will occur.
@@ -418,12 +415,10 @@ sealed trait IWritable extends LegacyStream {
   * Writable Companion
   */
 object IWritable {
-
   /**
     * Writable Events
     */
   implicit final class WritableExtension(val writable: IWritable) extends AnyVal {
-
     /**
       * Emitted when the stream and any of its underlying resources (a file descriptor, for example) have been closed.
       * The event indicates that no more events will be emitted, and no further computation will occur.
@@ -486,7 +481,6 @@ object IWritable {
       promiseWithError0[Error](writable.write(chunk, encoding, _))
     }
   }
-
 }
 
 /**

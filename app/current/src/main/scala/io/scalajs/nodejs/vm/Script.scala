@@ -13,7 +13,6 @@ import scala.scalajs.js.|
 @js.native
 @JSImport("vm", "Script")
 class Script private[this] () extends js.Object {
-
   def this(code: String, options: ScriptOptions = js.native) = this()
   def this(code: String, filename: String) = this()
 
@@ -46,7 +45,6 @@ class Script private[this] () extends js.Object {
     * @example script.runInThisContext([options])
     */
   def runInThisContext(options: RunInContextOptions = js.native): Script = js.native
-
 }
 
 class ScriptOptions(var filename: js.UndefOr[String] = js.undefined,

@@ -34,7 +34,6 @@ import scala.scalajs.js
 // TODO: BigIntStats if Scala.js added BigInt support
 @js.native
 trait Stats extends js.Object {
-
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
   /////////////////////////////////////////////////////////////////////////////////
@@ -111,5 +110,4 @@ trait Stats extends js.Object {
   def isFIFO(): Boolean = js.native
 
   def isSocket(): Boolean = js.native
-
 }

@@ -9,7 +9,6 @@ class EventEmitterTest extends AsyncFunSpec {
   override implicit val executionContext = ExecutionContext.Implicits.global
 
   describe("EventEmitter") {
-
     it("should handle custom events with arguments") {
       val promise   = Promise[js.Array[Int]]()
       val myEmitter = new EventEmitter()

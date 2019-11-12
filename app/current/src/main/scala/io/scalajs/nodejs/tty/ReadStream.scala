@@ -15,7 +15,6 @@ import scala.scalajs.js.annotation.JSImport
 @js.native
 @JSImport("tty", "ReadStream")
 class ReadStream(fd: FileDescriptor) extends net.Socket {
-
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
   /////////////////////////////////////////////////////////////////////////////////
@@ -39,5 +38,4 @@ class ReadStream(fd: FileDescriptor) extends net.Socket {
     * @since 0.7.7
     */
   def setRawMode(mode: Boolean): Unit = js.native
-
 }

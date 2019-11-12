@@ -13,7 +13,6 @@ import scala.scalajs.js.|
   */
 @js.native
 trait Process extends IEventEmitter {
-
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
   /////////////////////////////////////////////////////////////////////////////////
@@ -388,7 +387,6 @@ trait Process extends IEventEmitter {
     * @example process.uptime()
     */
   def uptime(): Int = js.native
-
 }
 
 @js.native
@@ -459,7 +457,6 @@ trait ComponentVersion extends js.Object {
   */
 @js.native
 trait Warning extends js.Object {
-
   /**
     * The name of the warning (currently Warning by default).
     */

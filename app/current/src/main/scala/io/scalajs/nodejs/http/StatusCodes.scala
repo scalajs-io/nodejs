@@ -67,5 +67,4 @@ trait StatusCodes extends js.Object {
   val `509`: String = js.native
   val `510`: String = js.native
   val `511`: String = js.native
-
 }

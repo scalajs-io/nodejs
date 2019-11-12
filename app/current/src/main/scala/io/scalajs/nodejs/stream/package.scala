@@ -6,7 +6,6 @@ import scala.scalajs.js
 import scala.scalajs.js.|
 
 package object stream {
-
   type Stream = IReadable | IWritable
 
   type ErrorCallback = js.Function1[io.scalajs.nodejs.Error, Any]
@@ -29,5 +28,4 @@ package object stream {
       }
     }
   }
-
 }

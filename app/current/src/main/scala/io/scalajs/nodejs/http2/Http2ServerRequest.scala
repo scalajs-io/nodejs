@@ -9,7 +9,6 @@ import scala.scalajs.js.|
 @js.native
 @JSImport("http2", "Http2ServerRequest")
 class Http2ServerRequest extends Http2TimeoutOps {
-
   def authority: String = js.native
 
   def destroy(error: io.scalajs.nodejs.Error = js.native): Unit = js.native

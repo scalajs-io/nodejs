@@ -13,7 +13,6 @@ import scala.scalajs.js.|
   */
 @js.native
 trait VM extends js.Object {
-
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def compileFunction(code: String,
                       params: js.Array[String],
@@ -79,7 +78,6 @@ trait VM extends js.Object {
     * @example script.runInThisContext([options])
     */
   def runInThisContext(code: String, options: VMRunInContextOptions = js.native): Script = js.native
-
 }
 
 /**

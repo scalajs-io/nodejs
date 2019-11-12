@@ -17,7 +17,6 @@ import scala.scalajs.js.annotation.JSImport
 @js.native
 @JSImport("dgram", "Socket")
 class Socket private[this] () extends IEventEmitter {
-
   /**
     * Tells the kernel to join a multicast group at the given multicastAddress and multicastInterface using the
     * IP_ADD_MEMBERSHIP socket option. If the multicastInterface argument is not specified, the operating system

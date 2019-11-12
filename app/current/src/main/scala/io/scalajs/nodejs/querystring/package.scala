@@ -6,7 +6,6 @@ import scala.scalajs.js
   * query string package object
   */
 package object querystring {
-
   /**
     * Query String Enrichment
     * @param qs the given [[QueryString]]
@@ -19,7 +18,5 @@ package object querystring {
                                 options: QueryDecodeOptions = null): T = {
       qs.parse(str, sep, eq, options).asInstanceOf[T]
     }
-
   }
-
 }

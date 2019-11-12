@@ -83,5 +83,4 @@ trait ProcessConfigVariable extends js.Object {
   var v8_use_siphash: Int                      = js.native
   var v8_use_snapshot: Int                     = js.native
   var want_separate_host_toolset: Int          = js.native
-
 }

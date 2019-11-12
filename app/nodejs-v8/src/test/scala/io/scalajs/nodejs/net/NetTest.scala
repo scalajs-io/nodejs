@@ -6,9 +6,7 @@ import org.scalatest.FunSpec
   * Network (Net) Tests
   */
 class NetTest extends FunSpec {
-
   describe("Net") {
-
     /*
     it("provides client-server connectivity") {
       val port = 53889
@@ -65,7 +63,5 @@ class NetTest extends FunSpec {
       // Exposing the function "mood" to the local REPL's context.
       local.context.mood = mood
     }*/
-
   }
-
 }

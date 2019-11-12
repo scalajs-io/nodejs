@@ -13,7 +13,6 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 trait Cluster extends IEventEmitter {
-
   /////////////////////////////////////////////////////////////////////////////////
   //      Constants
   /////////////////////////////////////////////////////////////////////////////////
@@ -107,7 +106,6 @@ trait Cluster extends IEventEmitter {
     * @example cluster.setupMaster([settings])
     */
   def setupMaster(settings: ClusterSettings): Unit = js.native
-
 }
 
 /**

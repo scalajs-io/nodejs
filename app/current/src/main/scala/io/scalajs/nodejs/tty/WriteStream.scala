@@ -17,7 +17,6 @@ import scala.scalajs.js.annotation.JSImport
 @js.native
 @JSImport("tty", "WriteStream")
 class WriteStream(fd: FileDescriptor) extends net.Socket {
-
   /**
     * A number specifying the number of columns the TTY currently has. This property is updated whenever
     * the 'resize' event is emitted.
@@ -68,5 +67,4 @@ class WriteStream(fd: FileDescriptor) extends net.Socket {
   def moveCursor(dx: Int, dy: Int): Unit = js.native
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def moveCursor(dx: Int, dy: Int, callback: js.Function): Boolean = js.native
-
 }

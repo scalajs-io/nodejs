@@ -17,7 +17,6 @@ import scala.scalajs.js.|
 @js.native
 @JSImport("fs", "ReadStream")
 class WriteStream(path: Path) extends stream.Writable {
-
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
   /////////////////////////////////////////////////////////////////////////////////
@@ -43,19 +42,16 @@ class WriteStream(path: Path) extends stream.Writable {
     * @see https://github.com/nodejs/node-v0.x-archive/blob/cfcb1de130867197cbc9c6012b7e84e08e53d032/lib/fs.js#L1597-L1620
     */
   def close(callback: js.Function1[Unit, Any]): Unit = js.native
-
 }
 
 /**
   * Write Stream Companion
   */
 object WriteStream {
-
   /**
     * Write Stream Events
     */
   implicit final class WriteStreamEvents(val stream: WriteStream) extends AnyVal {
-
     /**
       * Emitted when the WriteStream's underlying file descriptor has been closed using the fs.close() method.
       * @param listener the event handler
@@ -74,17 +70,13 @@ object WriteStream {
       */
     @inline
     def onOpen(listener: FileDescriptor => Any): stream.type = stream.on("open", listener)
-
   }
 
   /**
     * Write Stream Extensions
     */
   implicit final class WriteStreamExtensions(val stream: WriteStream) extends AnyVal {
-
     @inline
     def closeFuture: Future[Unit] = promiseCallback1[Unit](stream.close)
-
   }
-
 }

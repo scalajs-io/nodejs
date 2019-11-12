@@ -11,7 +11,6 @@ class Resolver extends IResolver {
 
 @js.native
 trait IResolver extends js.Object {
-
   def getServers(): js.Array[String] = js.native
 
   def resolve(hostname: String, rrtype: RRType, callback: DnsCallback1[ResolveResult]): Unit =

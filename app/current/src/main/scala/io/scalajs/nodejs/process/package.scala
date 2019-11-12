@@ -152,5 +152,4 @@ package object process {
     def onSIGSEGV(listener: () => Any): Process  = process.on("SIGSEGV", listener)
     def onSIGILL(listener: () => Any): Process   = process.on("SIGILL", listener)
   }
-
 }

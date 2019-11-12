@@ -13,7 +13,6 @@ import scala.scalajs.js.|
   */
 @js.native
 trait TLSCertificate extends js.Object {
-
   def raw: Buffer = js.native
 
   def subject: Subject                  = js.native

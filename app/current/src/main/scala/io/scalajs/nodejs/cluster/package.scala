@@ -10,7 +10,6 @@ import scala.scalajs.js
   * cluster package object
   */
 package object cluster {
-
   type Message = js.Any
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -22,7 +21,6 @@ package object cluster {
     * @param cluster the given [[Cluster cluster]]
     */
   implicit final class ClusterEvents(private val cluster: Cluster) extends AnyVal {
-
     /**
       * Emitted after the worker IPC channel has disconnected. This can occur when a worker exits gracefully, is killed,
       * or is disconnected manually (such as with worker.disconnect()).
@@ -96,7 +94,6 @@ package object cluster {
       */
     @inline
     def onSetup(callback: ClusterSettings => Any): Cluster = cluster.on("setup", callback)
-
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -108,7 +105,6 @@ package object cluster {
     * @param worker the given [[Worker worker]]
     */
   implicit final class WorkerEvents(private val worker: Worker) extends AnyVal {
-
     /////////////////////////////////////////////////////////////////////////////////
     //      Worker Extensions
     /////////////////////////////////////////////////////////////////////////////////
@@ -175,7 +171,5 @@ package object cluster {
       */
     @inline
     def onOnline(callback: () => Any): Worker = worker.on("online", callback)
-
   }
-
 }

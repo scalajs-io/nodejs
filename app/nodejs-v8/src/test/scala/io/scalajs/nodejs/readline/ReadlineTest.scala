@@ -13,7 +13,6 @@ class ReadlineTest extends AsyncFunSpec {
   override implicit val executionContext = ExecutionContext.Implicits.global
 
   describe("Readline") {
-
     it("should read/stream files from disk") {
       val promise = Promise[Unit]()
       var lineNo  = 0
@@ -48,7 +47,5 @@ class ReadlineTest extends AsyncFunSpec {
       rl.close()
       promise.future.map(_ => succeed)
     }
-
   }
-
 }

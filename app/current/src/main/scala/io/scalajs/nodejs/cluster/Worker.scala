@@ -12,7 +12,6 @@ import scala.scalajs.js
   */
 @js.native
 trait Worker extends IEventEmitter {
-
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
   /////////////////////////////////////////////////////////////////////////////////
@@ -98,5 +97,4 @@ trait Worker extends IEventEmitter {
     * @example worker.send(message[, sendHandle][, callback])
     */
   def send(message: Message, sendHandle: Handle = js.native, callback: js.Function = js.native): Unit = js.native
-
 }

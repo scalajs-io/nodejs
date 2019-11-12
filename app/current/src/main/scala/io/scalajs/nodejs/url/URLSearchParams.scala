@@ -14,7 +14,6 @@ import scala.scalajs.js.annotation.JSImport
 @js.native
 @JSImport("url", "URLSearchParams")
 class URLSearchParams() extends js.Object {
-
   /**
     * Parse the string as a query string, and use it to instantiate a new URLSearchParams object.
     * A leading '?', if present, is ignored.
@@ -117,5 +116,4 @@ class URLSearchParams() extends js.Object {
     * Returns an ES6 Iterator over the values of each name-value pair.
     */
   def values(): js.Iterator[String] = js.native
-
 }

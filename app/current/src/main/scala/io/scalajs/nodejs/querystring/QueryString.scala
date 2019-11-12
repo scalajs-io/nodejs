@@ -16,7 +16,6 @@ object QueryString extends QueryString
   */
 @js.native
 trait QueryString extends js.Object {
-
   /**
     * The querystring.escape() method performs URL percent-encoding on the given str in a manner that is optimized
     * for the specific requirements of URL query strings.
@@ -68,5 +67,4 @@ trait QueryString extends js.Object {
     * @return
     */
   def unescape(str: String): String = js.native
-
 }

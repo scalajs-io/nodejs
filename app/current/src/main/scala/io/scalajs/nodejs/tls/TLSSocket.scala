@@ -19,7 +19,6 @@ import scala.scalajs.js.|
 @js.native
 @JSImport("tls", "TLSSocket")
 class TLSSocket(socket: stream.IDuplex, options: TLSSocketOptions = js.native) extends net.Socket {
-
   def authorizationError: js.UndefOr[Boolean] = js.native
 
   def authorized: Boolean = js.native
@@ -71,7 +70,6 @@ class TLSSocket(socket: stream.IDuplex, options: TLSSocketOptions = js.native) e
     js.native
 
   def setMaxSendFragment(size: Int): Boolean = js.native
-
 }
 
 /**

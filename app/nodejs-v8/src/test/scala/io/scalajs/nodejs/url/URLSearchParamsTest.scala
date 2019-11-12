@@ -5,9 +5,7 @@ import org.scalatest.FunSpec
 import scala.scalajs.js
 
 class URLSearchParamsTest extends FunSpec {
-
   describe("URLSearchParams") {
-
     it("should parse the string as a query string") {
       val params = new URLSearchParams("user=abc&query=xyz")
       assert(params.get("user") === "abc")
@@ -34,7 +32,5 @@ class URLSearchParamsTest extends FunSpec {
       assert(array(0) === "a=b")
       assert(array(1) === "c=d")
     }
-
   }
-
 }

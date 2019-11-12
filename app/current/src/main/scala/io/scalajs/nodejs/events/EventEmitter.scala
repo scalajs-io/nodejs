@@ -22,7 +22,6 @@ class EventEmitter extends IEventEmitter
   */
 @js.native
 trait IEventEmitter extends js.Object {
-
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
   /////////////////////////////////////////////////////////////////////////////////
@@ -142,7 +141,6 @@ trait IEventEmitter extends js.Object {
 @js.native
 @JSImport("events", JSImport.Namespace)
 object EventEmitter extends IEventEmitter {
-
   /**
     * By default, a maximum of 10 listeners can be registered for any single event. This limit can be changed
     * for individual EventEmitter instances using the emitter.setMaxListeners(n) method. To change the default

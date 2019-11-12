@@ -13,7 +13,6 @@ import scala.scalajs.js.|
 @js.native
 @JSImport("buffer", "Buffer")
 class Buffer private[this] () extends Uint8Array( /* dummy to trick constructor */ -1) {
-
   /**
     * The index operator `[index]` can be used to get and set the octet at position `index` in `buf`.
     * The values refer to individual bytes, so the legal value range is between `0x00` and `0xFF` (hex) or

@@ -5,7 +5,6 @@ import org.scalatest.FunSpec
 import scala.scalajs.js
 
 class Http2HeadersTest extends FunSpec {
-
   describe("Http2Headers") {
     it("should treat JS name") {
       val headers = Http2Headers.forIncoming(

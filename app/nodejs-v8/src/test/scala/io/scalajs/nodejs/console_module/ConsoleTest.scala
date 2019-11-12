@@ -7,7 +7,6 @@ import org.scalatest.{BeforeAndAfterEach, FunSpec}
 import scala.scalajs.js.JavaScriptException
 
 class ConsoleTest extends FunSpec with BeforeAndAfterEach {
-
   private val logFileName                  = "x.nodejs8.ConsoleTest"
   private var failingWritable: WriteStream = null
 

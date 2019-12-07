@@ -14,6 +14,7 @@ import scala.scalajs.js.annotation.{JSGlobal, JSImport}
 @js.native
 @JSImport("errors", "Error")
 class Error(message0: String = js.native) extends js.Object {
+
   /**
     * The `error.code` property is a string label that identifies the kind of error.
     * `error.code` is the most stable way to identify an error.

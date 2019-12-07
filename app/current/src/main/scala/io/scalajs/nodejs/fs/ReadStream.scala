@@ -52,10 +52,12 @@ class ReadStream(path: Path) extends stream.Readable {
   * Read Stream Companion
   */
 object ReadStream {
+
   /**
     * Read Stream Events
     */
   implicit final class ReadStreamEvents(val stream: ReadStream) extends AnyVal {
+
     /**
       * Emitted when the ReadStream's underlying file descriptor has been closed using the fs.close() method.
       * @param listener the event handler

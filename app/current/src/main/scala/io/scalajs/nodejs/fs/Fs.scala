@@ -23,6 +23,7 @@ import scala.scalajs.js.|
   */
 @js.native
 trait Fs extends IEventEmitter with FSConstants {
+
   /**
     * Returns an object containing commonly used constants for file system operations
     * @return an [[FSConstants object]] containing commonly used constants for file system operations

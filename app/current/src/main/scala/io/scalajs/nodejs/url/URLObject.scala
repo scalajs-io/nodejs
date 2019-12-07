@@ -8,6 +8,7 @@ import scala.scalajs.js
 @js.native
 @deprecated("Use URL instead", "Node.js v11.0.0")
 trait URLObject extends js.Object {
+
   /**
     * The auth property is the username and password portion of the URL, also referred to as "userinfo".
     * This string subset follows the protocol and double slashes (if present) and precedes the host component,

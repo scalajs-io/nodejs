@@ -6,6 +6,7 @@ import scala.scalajs.js
   * JSON Helper
   */
 object JSONHelper {
+
   /**
     * JSON Conversions
     * @param value the given JavaScript value

@@ -17,6 +17,7 @@ package object net {
     * @param server the given [[Server server]]
     */
   implicit final class ServerEvents(val server: Server) extends AnyVal {
+
     /**
       * Emitted when a new connection is made. socket is an instance of net.Socket.
       * @example server.on("close", function () { ... })

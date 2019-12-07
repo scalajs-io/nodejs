@@ -17,6 +17,7 @@ import scala.scalajs.js
   */
 @js.native
 sealed trait Cipher extends Transform {
+
   /**
     * Returns any remaining enciphered contents. If output_encoding parameter is one of 'binary', 'base64' or 'hex',
     * a string is returned. If an output_encoding is not provided, a Buffer is returned.

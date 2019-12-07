@@ -16,6 +16,7 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 trait Util extends js.Object {
+
   /**
     * This is used to create a function which conditionally writes to stderr based on the existence of a NODE_DEBUG
     * environment variable. If the section name appears in that environment variable, then the returned function will

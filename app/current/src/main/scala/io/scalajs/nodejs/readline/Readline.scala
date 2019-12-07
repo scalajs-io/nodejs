@@ -14,6 +14,7 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 trait Readline extends IEventEmitter {
+
   /**
     * Clears current line of given TTY stream in a specified direction. <tt>dir</tt> should have one of following values:
     * <ul>

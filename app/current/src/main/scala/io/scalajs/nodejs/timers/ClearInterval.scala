@@ -8,6 +8,7 @@ import scala.scalajs.js
   */
 @js.native
 trait ClearInterval extends js.Object {
+
   /**
     * Stops an interval, as created by setInterval, from triggering.
     * @example clearInterval(intervalObject)

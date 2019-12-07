@@ -45,6 +45,7 @@ package object repl {
     * </ul>
     */
   implicit final class EnvironmentVariableOptions(private val env: process.Environment) extends AnyVal {
+
     /**
       * When a valid path is given, persistent REPL history will be saved to the specified file rather
       * than .node_repl_history in the user's home directory. Setting this value to "" will disable persistent

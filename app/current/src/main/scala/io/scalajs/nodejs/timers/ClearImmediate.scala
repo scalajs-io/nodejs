@@ -8,6 +8,7 @@ import scala.scalajs.js
   */
 @js.native
 trait ClearImmediate extends js.Object {
+
   /**
     * Stops an immediate, as created by setImmediate, from triggering.
     * @param handle the immediate handle

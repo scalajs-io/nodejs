@@ -12,10 +12,12 @@ import scala.scalajs.js.|
   * https package object
   */
 package object https {
+
   /**
     * Https Extensions
     */
   implicit final class HttpExtensions(val https: Https) extends AnyVal {
+
     /**
       * Like http.get() but for HTTPS.
       */

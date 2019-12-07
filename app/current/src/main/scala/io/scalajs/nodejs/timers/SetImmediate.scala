@@ -9,6 +9,7 @@ import scala.scalajs.js
   */
 @js.native
 trait SetImmediate extends js.Object {
+
   /**
     * Schedules "immediate" execution of callback after I/O events' callbacks and before timers set
     * by setTimeout and setInterval are triggered. Returns an immediateObject for possible use with

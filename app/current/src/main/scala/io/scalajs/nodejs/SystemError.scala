@@ -10,6 +10,7 @@ import scala.scalajs.js.|
 @js.native
 @JSImport("errors", "SystemError")
 class SystemError(message0: String = js.native) extends Error(message0) {
+
   /**
     * The error.errno property is a number or a string. The number is a negative value which corresponds
     * to the error code defined in libuv Error handling. See uv-errno.h header file (deps/uv/include/uv-errno.h

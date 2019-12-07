@@ -10,6 +10,7 @@ import scala.scalajs.js
   */
 @js.native
 trait Timeout extends js.Object {
+
   /**
     * Indicates whether the timeout has been called
     * @return true, if the timeout has already been called
@@ -29,6 +30,7 @@ trait Timeout extends js.Object {
   * Timeout Companion
   */
 object Timeout {
+
   /**
     * Timeout Enrichment
     * @param handle the given [[Timeout timeout]] handle

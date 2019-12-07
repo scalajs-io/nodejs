@@ -18,6 +18,7 @@ import scala.scalajs.js.|
   */
 @js.native
 trait Verify extends Writable {
+
   /**
     * Updates the Verify content with the given data.
     * This can be called many times with new data as it is streamed.

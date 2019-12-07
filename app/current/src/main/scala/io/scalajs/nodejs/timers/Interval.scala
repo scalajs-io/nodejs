@@ -9,6 +9,7 @@ import scala.scalajs.js
   */
 @js.native
 trait Interval extends js.Object {
+
   /**
     * Indicates whether the interval has been called
     * @return true, if the interval has already been called
@@ -20,6 +21,7 @@ trait Interval extends js.Object {
   * Interval Companion
   */
 object Interval {
+
   /**
     * Interval Enrichment
     * @param handle the given [[Interval interval]] handle

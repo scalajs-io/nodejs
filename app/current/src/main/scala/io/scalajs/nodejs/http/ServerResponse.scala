@@ -147,6 +147,7 @@ trait ServerResponse extends stream.Writable {
   * Server Response
   */
 object ServerResponse {
+
   /**
     * Server Response Events
     */

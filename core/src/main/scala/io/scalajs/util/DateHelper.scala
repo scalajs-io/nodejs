@@ -7,6 +7,7 @@ import scala.scalajs.js
   * Date Helper
   */
 object DateHelper {
+
   /**
     * Date Enrichment
     * @param date0 the given [[js.Date date]]

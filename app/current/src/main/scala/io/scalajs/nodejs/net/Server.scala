@@ -98,11 +98,13 @@ class Server(options: ServerOptions = js.native) extends IEventEmitter {
   * Server Companion
   */
 object Server extends {
+
   /**
     * Server Events
     * @param server the given [[Server]]
     */
   implicit final class ServerEvents(val server: Server) extends AnyVal {
+
     /**
       * Emitted when the server closes. Note that if connections exist, this event is not emitted until all
       * connections are ended.

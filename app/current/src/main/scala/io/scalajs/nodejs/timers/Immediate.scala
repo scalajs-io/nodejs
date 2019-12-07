@@ -26,6 +26,7 @@ trait Immediate extends js.Object {
   * Immediate Companion
   */
 object Immediate {
+
   /**
     * Immediate Enrichment
     * @param immediate the given [[Immediate immediate]] handle

@@ -46,6 +46,7 @@ class VMTest extends FunSpec {
   * VM Test Companion
   */
 object VMTest {
+
   /**
     * Sandbox Object
     */

@@ -9,6 +9,7 @@ import scala.scalajs.js
   */
 @js.native
 trait UnRef extends js.Object {
+
   /**
     * The opaque value returned by setTimeout and setInterval also has the method timer.unref() which allows
     * the creation of a timer that is active but if it is the only item left in the event loop, it won't keep

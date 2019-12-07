@@ -26,13 +26,12 @@ class FsTest extends AsyncFunSpec {
       })
       assert(watcher !== null)
 
-      setImmediate(
-        () =>
-          Fs.writeFile(s"${testResources}1.txt", "Hello", error => {
-            if (isDefined(error)) {
-              promise.failure(error.toException)
-            }
-          })
+      setImmediate(() =>
+        Fs.writeFile(s"${testResources}1.txt", "Hello", error => {
+          if (isDefined(error)) {
+            promise.failure(error.toException)
+          }
+        })
       )
 
       promise.future.map {

@@ -97,6 +97,7 @@ class IncomingMessage extends stream.Readable {
   * Incoming Message Companion
   */
 object IncomingMessage {
+
   /**
     * Incoming Message Extensions
     */

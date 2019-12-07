@@ -16,6 +16,7 @@ package object buffer {
     * Buffer Extensions
     */
   implicit final class BufferExtensions(val buffer: Buffer) extends AnyVal {
+
     /**
       * Syntactic sugar for concatenating a buffer
       *
@@ -102,6 +103,7 @@ package object buffer {
   @js.native
   @JSImport("buffer", "constants")
   object constants extends js.Object {
+
     /**
       * The largest size allowed for a single `Buffer` instance.
       *

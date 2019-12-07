@@ -48,10 +48,12 @@ class WriteStream(path: Path) extends stream.Writable {
   * Write Stream Companion
   */
 object WriteStream {
+
   /**
     * Write Stream Events
     */
   implicit final class WriteStreamEvents(val stream: WriteStream) extends AnyVal {
+
     /**
       * Emitted when the WriteStream's underlying file descriptor has been closed using the fs.close() method.
       * @param listener the event handler

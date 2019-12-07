@@ -8,6 +8,7 @@ import scala.scalajs.js
   */
 @js.native
 trait SetTimeout extends js.Object {
+
   /**
     * Schedules execution of a one-time callback after delay milliseconds. Returns a timeoutObject for possible
     * use with clearTimeout. Additional optional arguments may be passed to the callback.

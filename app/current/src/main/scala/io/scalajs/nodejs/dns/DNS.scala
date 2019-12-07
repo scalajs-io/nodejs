@@ -14,6 +14,7 @@ import scala.scalajs.js.|
   */
 @js.native
 trait DNS extends IResolver {
+
   /**
     * Resolves a hostname (e.g. 'nodejs.org') into the first found A (IPv4) or AAAA (IPv6) record. options can be an
     * object or integer. If options is not provided, then IPv4 and IPv6 addresses are both valid. If options is an

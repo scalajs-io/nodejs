@@ -17,6 +17,7 @@ import scala.scalajs.js.annotation.JSImport
 @js.native
 @JSImport("tty", "WriteStream")
 class WriteStream(fd: FileDescriptor) extends net.Socket {
+
   /**
     * A number specifying the number of columns the TTY currently has. This property is updated whenever
     * the 'resize' event is emitted.

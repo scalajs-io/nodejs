@@ -115,6 +115,7 @@ class ClientRequest extends stream.Writable {
   */
 object ClientRequest {
   implicit final class ClientRequestExtensions(val client: ClientRequest) extends AnyVal {
+
     /**
       * Emitted when the request has been aborted by the client. This event is only emitted on the first call to abort().
       */

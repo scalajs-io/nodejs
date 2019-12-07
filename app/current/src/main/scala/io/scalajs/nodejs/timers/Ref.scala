@@ -8,6 +8,7 @@ import scala.scalajs.js
   */
 @js.native
 trait Ref extends js.Object {
+
   /**
     * If a timer was previously unref()d, then ref() can be called to explicitly request the timer hold the
     * program open. If the timer is already refd calling ref again will have no effect.

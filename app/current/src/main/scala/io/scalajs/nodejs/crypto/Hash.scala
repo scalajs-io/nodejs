@@ -16,6 +16,7 @@ import scala.scalajs.js
   */
 @js.native
 sealed trait Hash extends Transform {
+
   /**
     * Calculates the digest of all of the data passed to be hashed (using the hash.update() method). The encoding can
     * be 'hex', 'binary' or 'base64'. If encoding is provided a string will be returned; otherwise a Buffer is returned.

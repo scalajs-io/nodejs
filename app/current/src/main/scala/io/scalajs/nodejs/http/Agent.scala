@@ -97,10 +97,12 @@ class Agent(options: AgentOptions = js.native) extends js.Object {
   * Agent Companion
   */
 object Agent {
+
   /**
     * Agent Extensions
     */
   implicit final class AgentExtensions(val agent: Agent) extends AnyVal {
+
     /**
       * Produces a socket/stream to be used for HTTP requests. By default, this function is the same
       * as net.createConnection(). However, custom Agents may override this method in case greater

@@ -10,6 +10,7 @@ import scala.scalajs.js
   */
 @js.native
 trait Interface extends IEventEmitter {
+
   /**
     * Closes the Interface instance, relinquishing control on the input and output streams.
     * The 'close' event will also be emitted.
@@ -94,11 +95,13 @@ class Key(
   * Readline Interface Companion
   */
 object Interface {
+
   /**
     * Readline Interface Events
     * @param readline the given [[Interface Readline Interface]]
     */
   implicit final class ReadlineEvents(val readline: Interface) extends AnyVal {
+
     /**
       * Emitted when close() is called. Also emitted when the input stream receives its 'end' event.
       * The Interface instance should be considered "finished" once this is emitted. For example, when

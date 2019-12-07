@@ -14,6 +14,7 @@ import scala.scalajs.js.annotation.JSImport
 @js.native
 @JSImport("net", "Socket")
 class Socket(options: SocketOptions = js.native) extends stream.Duplex with HasHandle {
+
   /**
     * net.Socket has the property that socket.write() always works. This is to help users get up and running quickly.
     * The computer cannot always keep up with the amount of data that is written to a socket - the network connection

@@ -6,6 +6,7 @@ import scala.scalajs.js
   * query string package object
   */
 package object querystring {
+
   /**
     * Query String Enrichment
     * @param qs the given [[QueryString]]

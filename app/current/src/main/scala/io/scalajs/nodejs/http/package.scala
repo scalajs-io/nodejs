@@ -10,10 +10,12 @@ import scala.scalajs.js
   * http package object
   */
 package object http {
+
   /**
     * Http Extensions
     */
   implicit final class HttpExtensions(val http: Http) extends AnyVal {
+
     /**
       * @see [[Http.createServer()]]
       */
@@ -62,6 +64,7 @@ package object http {
     * Server Events
     */
   implicit final class ServerEvents(val server: Server) extends AnyVal {
+
     /**
       * Emitted each time a request with an http Expect: 100-continue is received. If this event isn't listened for,
       * the server will automatically respond with a 100 Continue as appropriate.

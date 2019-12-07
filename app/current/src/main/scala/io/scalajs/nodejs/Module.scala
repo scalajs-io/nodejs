@@ -13,6 +13,7 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 trait Module extends js.Object {
+
   /**
     * The module objects required by this one.
     * @example module.children

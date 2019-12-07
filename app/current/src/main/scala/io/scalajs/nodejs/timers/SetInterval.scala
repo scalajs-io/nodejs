@@ -8,6 +8,7 @@ import scala.scalajs.js
   */
 @js.native
 trait SetInterval extends js.Object {
+
   /**
     * Schedules repeated execution of callback every delay milliseconds. Returns a intervalObject for possible
     * use with clearInterval. Additional optional arguments may be passed to the callback.

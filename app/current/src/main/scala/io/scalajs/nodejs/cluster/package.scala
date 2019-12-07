@@ -21,6 +21,7 @@ package object cluster {
     * @param cluster the given [[Cluster cluster]]
     */
   implicit final class ClusterEvents(private val cluster: Cluster) extends AnyVal {
+
     /**
       * Emitted after the worker IPC channel has disconnected. This can occur when a worker exits gracefully, is killed,
       * or is disconnected manually (such as with worker.disconnect()).

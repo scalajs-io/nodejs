@@ -8,6 +8,7 @@ import scala.scalajs.runtime.wrapJavaScriptException
   * Promise Helper
   */
 object PromiseHelper {
+
   /**
     * Converts a JavaScript-style callback to a Scala.js promise
     * @param f the given callback function
@@ -130,9 +131,7 @@ object PromiseHelper {
   @inline
   def promiseWithErrorAsBoolean[Z](f: js.Function1[Z, Any] => Unit): Future[Boolean] = {
     val task = Promise[Boolean]()
-    f(
-      (err: Z) => if (err == null || js.isUndefined(err)) task.success(true) else task.success(false)
-    )
+    f((err: Z) => if (err == null || js.isUndefined(err)) task.success(true) else task.success(false))
     task.future
   }
 
@@ -144,9 +143,8 @@ object PromiseHelper {
   @inline
   def promiseWithError0[Z](f: js.Function1[Z, Any] => Unit): Future[Unit] = {
     val task = Promise[Unit]()
-    f(
-      (err: Z) =>
-        if (err == null || js.isUndefined(err)) task.success({}) else task.failure(wrapJavaScriptException(err))
+    f((err: Z) =>
+      if (err == null || js.isUndefined(err)) task.success({}) else task.failure(wrapJavaScriptException(err))
     )
     task.future
   }
@@ -159,9 +157,8 @@ object PromiseHelper {
   @inline
   def promiseWithError1[Z, A](f: js.Function2[Z, A, Any] => Unit): Future[A] = {
     val task = Promise[A]()
-    f(
-      (err: Z, a: A) =>
-        if (err == null || js.isUndefined(err)) task.success(a) else task.failure(wrapJavaScriptException(err))
+    f((err: Z, a: A) =>
+      if (err == null || js.isUndefined(err)) task.success(a) else task.failure(wrapJavaScriptException(err))
     )
     task.future
   }
@@ -174,9 +171,8 @@ object PromiseHelper {
   @inline
   def promiseWithError2[Z, A, B](f: js.Function3[Z, A, B, Any] => Unit): Future[(A, B)] = {
     val task = Promise[(A, B)]()
-    f(
-      (err: Z, a: A, b: B) =>
-        if (err == null || js.isUndefined(err)) task.success((a, b)) else task.failure(wrapJavaScriptException(err))
+    f((err: Z, a: A, b: B) =>
+      if (err == null || js.isUndefined(err)) task.success((a, b)) else task.failure(wrapJavaScriptException(err))
     )
     task.future
   }
@@ -189,9 +185,8 @@ object PromiseHelper {
   @inline
   def promiseWithError3[Z, A, B, C](f: js.Function4[Z, A, B, C, Any] => Unit): Future[(A, B, C)] = {
     val task = Promise[(A, B, C)]()
-    f(
-      (err: Z, a: A, b: B, c: C) =>
-        if (err == null || js.isUndefined(err)) task.success((a, b, c)) else task.failure(wrapJavaScriptException(err))
+    f((err: Z, a: A, b: B, c: C) =>
+      if (err == null || js.isUndefined(err)) task.success((a, b, c)) else task.failure(wrapJavaScriptException(err))
     )
     task.future
   }
@@ -204,10 +199,9 @@ object PromiseHelper {
   @inline
   def promiseWithError4[Z, A, B, C, D](f: js.Function5[Z, A, B, C, D, Any] => Unit): Future[(A, B, C, D)] = {
     val task = Promise[(A, B, C, D)]()
-    f(
-      (err: Z, a: A, b: B, c: C, d: D) =>
-        if (err == null || js.isUndefined(err)) task.success((a, b, c, d))
-        else task.failure(wrapJavaScriptException(err))
+    f((err: Z, a: A, b: B, c: C, d: D) =>
+      if (err == null || js.isUndefined(err)) task.success((a, b, c, d))
+      else task.failure(wrapJavaScriptException(err))
     )
     task.future
   }
@@ -220,10 +214,9 @@ object PromiseHelper {
   @inline
   def promiseWithError5[Z, A, B, C, D, E](f: js.Function6[Z, A, B, C, D, E, Any] => Unit): Future[(A, B, C, D, E)] = {
     val task = Promise[(A, B, C, D, E)]()
-    f(
-      (err: Z, a: A, b: B, c: C, d: D, e: E) =>
-        if (err == null || js.isUndefined(err)) task.success((a, b, c, d, e))
-        else task.failure(wrapJavaScriptException(err))
+    f((err: Z, a: A, b: B, c: C, d: D, e: E) =>
+      if (err == null || js.isUndefined(err)) task.success((a, b, c, d, e))
+      else task.failure(wrapJavaScriptException(err))
     )
     task.future
   }
@@ -238,10 +231,9 @@ object PromiseHelper {
       f: js.Function7[Z, A, B, C, D, E, F, Any] => Unit
   ): Future[(A, B, C, D, E, F)] = {
     val task = Promise[(A, B, C, D, E, F)]()
-    f(
-      (err: Z, a: A, b: B, c: C, d: D, e: E, f: F) =>
-        if (err == null || js.isUndefined(err)) task.success((a, b, c, d, e, f))
-        else task.failure(wrapJavaScriptException(err))
+    f((err: Z, a: A, b: B, c: C, d: D, e: E, f: F) =>
+      if (err == null || js.isUndefined(err)) task.success((a, b, c, d, e, f))
+      else task.failure(wrapJavaScriptException(err))
     )
     task.future
   }

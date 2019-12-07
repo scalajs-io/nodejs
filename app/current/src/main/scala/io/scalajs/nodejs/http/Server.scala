@@ -27,11 +27,13 @@ class Server extends net.Server {
   * Server Companion
   */
 object Server {
+
   /**
     * Server Events
     * @param server the given [[Server]]
     */
   implicit final class ServerEvents(val server: Server) extends AnyVal {
+
     /**
       * Emitted each time a request with an HTTP Expect: 100-continue is received. If this event is not listened for,
       * the server will automatically respond with a 100 Continue as appropriate.

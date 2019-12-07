@@ -14,6 +14,7 @@ import scala.scalajs.js.annotation.JSImport
 @js.native
 @JSImport("tls", "Server")
 class Server extends net.Server {
+
   /**
     * The server.addContext() method adds a secure context that will be used if the client request's SNI hostname
     * matches the supplied hostname (or wildcard).

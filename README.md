@@ -55,11 +55,11 @@ Add below line to your SBT project.
 
 ```sbt
 // For Node.js v8 LTS
-libraryDependencies += "net.exoego" %%% "scala-js-nodejs-v8" % "0.9.0"
+libraryDependencies += "net.exoego" %%% "scala-js-nodejs-v8" % "0.9.1"
 // For Node.js v10 LTS
-libraryDependencies += "net.exoego" %%% "scala-js-nodejs-v10" % "0.9.0"
+libraryDependencies += "net.exoego" %%% "scala-js-nodejs-v10" % "0.9.1"
 // For Node.js v12 (supposed to be next LTS)
-libraryDependencies += "net.exoego" %%% "scala-js-nodejs-v12" % "0.9.0"
+libraryDependencies += "net.exoego" %%% "scala-js-nodejs-v12" % "0.9.1"
 ```
 
 ## Example of code

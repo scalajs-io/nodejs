@@ -1,7 +1,5 @@
 package io.scalajs.nodejs.path
 
-import com.thoughtworks.enableIf
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
@@ -134,7 +132,6 @@ trait Path extends js.Object {
     */
   def resolve(args: String*): String = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def toNamespacedPath(path: String): String = js.native
 }
 

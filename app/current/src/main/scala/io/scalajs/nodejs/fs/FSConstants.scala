@@ -1,8 +1,6 @@
 package io.scalajs.nodejs
 package fs
 
-import com.thoughtworks.enableIf
-
 import scala.scalajs.js
 
 /**
@@ -194,9 +192,7 @@ trait FSConstants extends js.Object {
   /////////////////////////////////////////////////////////////////////////////////
   //      File Copy Constants
   /////////////////////////////////////////////////////////////////////////////////
-  val COPYFILE_EXCL: Int = js.native
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
-  val COPYFILE_FICLONE: Int = js.native
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
+  val COPYFILE_EXCL: Int          = js.native
+  val COPYFILE_FICLONE: Int       = js.native
   val COPYFILE_FICLONE_FORCE: Int = js.native
 }

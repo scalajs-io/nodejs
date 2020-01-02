@@ -1,7 +1,5 @@
 package io.scalajs.nodejs.vm
 
-import com.thoughtworks.enableIf
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.typedarray.{DataView, Uint8Array}
@@ -13,13 +11,10 @@ import scala.scalajs.js.|
   */
 @js.native
 trait VM extends js.Object {
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def compileFunction(code: String,
                       params: js.Array[String],
                       options: CompileFunctionOptions = js.native): js.Function = js.native
-
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
-  def compileFunction(code: String): js.Function = js.native
+  def compileFunction(code: String): js.Function                                = js.native
 
   /**
     * If given a sandbox object, the vm.createContext() method will

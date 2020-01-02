@@ -1,6 +1,5 @@
 package io.scalajs.nodejs
 
-import com.thoughtworks.enableIf
 import io.scalajs.nodejs.http.{RequestOptions, ServerResponse}
 import io.scalajs.util.PromiseHelper._
 import io.scalajs.nodejs.url.URL
@@ -50,7 +49,6 @@ package object https {
       promiseCallback1[ServerResponse](https.request(url, _))
     }
 
-    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
     @inline
     def requestFuture(url: String | URL, options: RequestOptions): Future[ServerResponse] = {
       promiseCallback1[ServerResponse](https.request(url, options, _))

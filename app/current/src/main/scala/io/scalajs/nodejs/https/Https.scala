@@ -1,6 +1,5 @@
 package io.scalajs.nodejs.https
 
-import com.thoughtworks.enableIf
 import io.scalajs.nodejs.http.{ClientRequest, RequestOptions, ServerResponse}
 import io.scalajs.nodejs.url.URL
 
@@ -37,13 +36,11 @@ trait Https extends js.Object {
   def createServer(options: ServerOptions): Server                               = js.native
   def createServer(): Server                                                     = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def get(url: String | URL, options: RequestOptions, callback: js.Function1[ServerResponse, Any]): ClientRequest =
     js.native
   def get(url: String | URL, callback: js.Function1[ServerResponse, Any]): ClientRequest = js.native
   def get(options: RequestOptions, callback: js.Function): ClientRequest                 = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def request(url: String | URL,
               options: RequestOptions,
               callback: js.Function1[ServerResponse, Any] = js.native): Unit              = js.native

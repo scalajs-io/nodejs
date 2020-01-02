@@ -1,6 +1,5 @@
 package io.scalajs.nodejs.console_module
 
-import com.thoughtworks.enableIf
 import io.scalajs.nodejs.stream.IWritable
 
 import scala.scalajs.js
@@ -144,7 +143,6 @@ class Console protected () extends js.Object {
     * @param tabularData
     * @param properties Alternate properties for constructing the table.
     */
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def table(tabularData: js.Any, properties: js.Array[String] = js.native): Unit = js.native
 
   /**
@@ -164,7 +162,6 @@ class Console protected () extends js.Object {
   /**
     * Stops a timer that was previously started by calling [[time()]] and prints the result to `.stdout`.`
     */
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def timeLog(label: String, data: js.Any*): Unit = js.native
 
   /**

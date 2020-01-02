@@ -1,6 +1,5 @@
 package io.scalajs.nodejs.crypto
 
-import com.thoughtworks.enableMembersIf
 import io.scalajs.nodejs.buffer.Buffer
 
 import scala.scalajs.js
@@ -31,7 +30,6 @@ trait ECDH extends js.Object {
 }
 
 @js.native
-@enableMembersIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
 @JSImport("crypto", "ECDH")
 object ECDH extends js.Object {
   def convertKey(key: String, curve: String, inputEncoding: String, outputEncoding: String, format: String): String =

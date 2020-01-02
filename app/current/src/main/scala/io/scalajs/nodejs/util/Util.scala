@@ -1,7 +1,5 @@
 package io.scalajs.nodejs.util
 
-import com.thoughtworks.{enableIf, enableMembersIf}
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
@@ -37,10 +35,8 @@ trait Util extends js.Object {
     */
   def format(format: String, args: js.Any*): String = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def formatWithOptions(inspectOptions: InspectOptions, format: String, args: js.Any*): String = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def getSystemErrorName(err: Int): String = js.native
 
   /**
@@ -58,10 +54,8 @@ trait Util extends js.Object {
 
   val promisify: PromisifyObject = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   val types: UtilTypes = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def isDeepStrictEqual(val1: js.Any, val2: js.Any): Boolean = js.native
 }
 
@@ -77,7 +71,6 @@ trait InspectObject extends js.Function2[js.Any, InspectOptions, String] with js
   var defaultOptions: InspectOptions = js.native
   var styles: js.Dictionary[String]  = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   val custom: js.Symbol = js.native
 }
 
@@ -86,7 +79,6 @@ trait PromisifyObject extends js.Function1[js.Function, js.Function] {
   val custom: js.Symbol = js.native
 }
 
-@enableMembersIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
 @js.native
 trait UtilTypes extends js.Object {
   def isAnyArrayBuffer(value: js.Any): Boolean            = js.native

@@ -1,6 +1,5 @@
 package io.scalajs.nodejs.cluster
 
-import com.thoughtworks.enableIf
 import io.scalajs.nodejs.{GID, UID}
 
 import scala.scalajs.js
@@ -34,10 +33,8 @@ trait ClusterSettings extends js.Object {
 
   var inspectPort: Int | js.Function = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   var cwd: String = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   var windowsHide: Boolean = js.native
 }
 

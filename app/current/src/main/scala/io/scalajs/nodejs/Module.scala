@@ -70,7 +70,6 @@ trait Module extends js.Object {
 @js.native
 @JSImport("module", JSImport.Namespace)
 object Module extends Module {
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   var builtinModules: js.Array[String] = js.native
 
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)

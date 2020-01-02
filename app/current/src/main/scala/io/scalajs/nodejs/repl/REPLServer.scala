@@ -18,7 +18,6 @@ trait REPLServer extends IEventEmitter with Interface {
     */
   val context: REPLContext = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def clearBufferedCommand(): Unit = js.native
 
   /**

@@ -15,21 +15,13 @@ import scala.scalajs.js.typedarray.Uint8Array
 @js.native
 @JSImport("stream", JSImport.Namespace)
 object Stream extends js.Object {
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def finished(stream: Stream, options: FinishedOptions, callback: ErrorCallback): Wait = js.native
+  def finished(stream: Stream, callback: ErrorCallback): Wait                           = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
-  def finished(stream: Stream, callback: ErrorCallback): Wait = js.native
-
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
-  def pipeline(a: Stream, b: Stream, callback: ErrorCallback): Wait = js.native
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
-  def pipeline(a: Stream, b: Stream, c: Stream, callback: ErrorCallback): Wait = js.native
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
-  def pipeline(a: Stream, b: Stream, c: Stream, d: Stream, callback: ErrorCallback): Wait = js.native
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
+  def pipeline(a: Stream, b: Stream, callback: ErrorCallback): Wait                                  = js.native
+  def pipeline(a: Stream, b: Stream, c: Stream, callback: ErrorCallback): Wait                       = js.native
+  def pipeline(a: Stream, b: Stream, c: Stream, d: Stream, callback: ErrorCallback): Wait            = js.native
   def pipeline(a: Stream, b: Stream, c: Stream, d: Stream, e: Stream, callback: ErrorCallback): Wait = js.native
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def pipeline(a: Stream, b: Stream, c: Stream, d: Stream, e: Stream, f: Stream, callback: ErrorCallback): Wait =
     js.native
 }
@@ -173,13 +165,10 @@ sealed trait IReadable extends LegacyStream {
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def readableEnded: Boolean = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def readableFlowing: Boolean = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def readableHighWaterMark: Double = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def readableLength: Int = js.native
 
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
@@ -404,10 +393,8 @@ sealed trait IWritable extends LegacyStream {
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def writable: Boolean = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def writableHighWaterMark: Double = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def writableLength: Int = js.native
 
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)

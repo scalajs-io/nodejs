@@ -52,7 +52,6 @@ trait Crypto extends js.Object {
   @deprecated("Use crypto.createCipheriv() instead.", "Node.js v10.0")
   def createCipher(algorithm: String, password: Buffer | String): Cipher = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def createCipheriv(algorithm: String,
                      key: String | BufferLike,
                      iv: String | BufferLike,
@@ -76,17 +75,15 @@ trait Crypto extends js.Object {
     */
   @deprecated("Use crypto.createDecipheriv() instead.", "Node.js v10.0")
   def createDecipher(algorithm: String, password: Buffer | String): Decipher = js.native
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
+
   def createDecipheriv(algorithm: String,
                        key: String | BufferLike,
                        iv: String | BufferLike,
                        options: TransformOptions = js.native): Decipher = js.native
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def createDecipheriv(algorithm: String,
                        key: KeyObject,
                        iv: String | BufferLike,
-                       options: TransformOptions): Decipher = js.native
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+                       options: TransformOptions): Decipher                                  = js.native
   def createDecipheriv(algorithm: String, key: KeyObject, iv: String | BufferLike): Decipher = js.native
 
   def createDiffieHellman(prime: String, primeEncoding: String, generator: Int | BufferLike): DiffieHellman = js.native
@@ -151,14 +148,12 @@ trait Crypto extends js.Object {
     */
   def createVerify(algorithm: String, options: WritableOptions = js.native): Verify = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def generateKeyPair(
       `type`: String,
       options: GenerateKeyPairOptions,
       callback: Callback2[String | Buffer | KeyObject, String | Buffer | KeyObject]
   ): Unit = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def generateKeyPairSync(`type`: String, options: GenerateKeyPairOptions): KeyPair = js.native
 
   /**
@@ -171,7 +166,6 @@ trait Crypto extends js.Object {
 
   def getDiffieHellman(groupName: String): DiffieHellmanGroup = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def getFips(): Boolean = js.native
 
   def getHashes(): js.Array[String] = js.native
@@ -227,16 +221,12 @@ trait Crypto extends js.Object {
   def randomFillSync(buffer: Buffer, offset: Int): Buffer            = js.native
   def randomFillSync(buffer: Buffer): Buffer                         = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def randomFillSync(buffer: scala.scalajs.js.typedarray.DataView,
                      offset: Int,
                      size: Int): scala.scalajs.js.typedarray.DataView = js.native
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def randomFillSync(buffer: scala.scalajs.js.typedarray.DataView, offset: Int): scala.scalajs.js.typedarray.DataView =
     js.native
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def randomFillSync(buffer: scala.scalajs.js.typedarray.DataView): scala.scalajs.js.typedarray.DataView = js.native
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def randomFillSync[T <: scala.scalajs.js.typedarray.TypedArray[_, T]](buffer: T,
                                                                         offset: Int = js.native,
                                                                         size: Int = js.native): T = js.native
@@ -245,36 +235,29 @@ trait Crypto extends js.Object {
   def randomFill(buffer: Buffer, offset: Int, callback: Callback1[Buffer]): Buffer            = js.native
   def randomFill(buffer: Buffer, callback: Callback1[Buffer]): Buffer                         = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def randomFill(buffer: scala.scalajs.js.typedarray.DataView,
                  offset: Int,
                  size: Int,
                  callback: Callback1[scala.scalajs.js.typedarray.DataView]): scala.scalajs.js.typedarray.DataView =
     js.native
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def randomFill(buffer: scala.scalajs.js.typedarray.DataView,
                  offset: Int,
                  callback: Callback1[scala.scalajs.js.typedarray.DataView]): scala.scalajs.js.typedarray.DataView =
     js.native
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def randomFill(buffer: scala.scalajs.js.typedarray.DataView,
                  callback: Callback1[scala.scalajs.js.typedarray.DataView]): scala.scalajs.js.typedarray.DataView =
     js.native
-
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def randomFill[T <: scala.scalajs.js.typedarray.TypedArray[_, T]](buffer: T,
                                                                     offset: Int = js.native,
                                                                     size: Int = js.native,
                                                                     callback: Callback1[T]): T = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def scrypt(password: String | BufferLike,
              salt: String | BufferLike,
              keylen: Int,
              options: ScryptOptions = js.native,
              callback: Callback1[Buffer]): Unit = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def scryptSync(password: String | BufferLike,
                  salt: String | BufferLike,
                  keylen: Int,
@@ -282,7 +265,6 @@ trait Crypto extends js.Object {
 
   def setEngine(engine: String, fips: Int = js.native): Unit = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def setFips(enable: Boolean): Unit = js.native
 
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)

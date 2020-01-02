@@ -1,7 +1,7 @@
 organization in ThisBuild := "net.exoego"
 
 lazy val root = (project in file("."))
-  .aggregate(core, current, nodejs_v10, nodejs_v8)
+  .aggregate(core, current, nodejs_v10)
   .settings(MySettings.commonSettings)
   .settings(MySettings.publishingSettings)
   .settings(MySettings.nonPublishingSetting)
@@ -51,28 +51,6 @@ lazy val nodejs_v10 = (project in file("./app/nodejs-v10"))
     ),
     name := "scala-js-nodejs-v10",
     description := "NodeJS v10.16.0 API for Scala.js",
-    homepage := Some(url("https://github.com/exoego/scala-js-nodejs")),
-    libraryDependencies ++= Dependencies.app.value
-  )
-  .dependsOn(core)
-
-lazy val nodejs_v8 = (project in file("./app/nodejs-v8"))
-  .enablePlugins(ScalaJSPlugin)
-  .settings(MySettings.commonSettings)
-  .settings(MySettings.commonScalaJsSettings)
-  .settings(MySettings.commonMacroParadiseSetting)
-  .settings(MySettings.publishingSettings)
-  .settings(
-    unmanagedSourceDirectories in Compile ++= {
-      val symlinkDir = baseDirectory.value / "src" / "main"
-      val hasSymlink = symlinkDir.exists && symlinkDir.isDirectory
-      Seq((baseDirectory in current).value / "src" / "main" / "scala").filter(_ => !hasSymlink)
-    },
-    scalacOptions ++= Seq(
-      "-Xmacro-settings:nodeJs8.16.0"
-    ),
-    name := "scala-js-nodejs-v8",
-    description := "NodeJS v8.16.0 API for Scala.js",
     homepage := Some(url("https://github.com/exoego/scala-js-nodejs")),
     libraryDependencies ++= Dependencies.app.value
   )

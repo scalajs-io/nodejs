@@ -6,7 +6,7 @@ import org.scalatest.{AsyncFunSpec, BeforeAndAfterEach}
 import scala.concurrent.{ExecutionContext, Future}
 import scala.util.{Failure, Success}
 
-class FsAsyncTest extends AsyncFunSpec with BeforeAndAfterEach {
+class FsV8AsyncTest extends AsyncFunSpec with BeforeAndAfterEach {
   private val file = "x.File.txt"
 
   override def afterEach(): Unit = {

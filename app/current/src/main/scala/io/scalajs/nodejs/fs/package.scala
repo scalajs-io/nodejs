@@ -19,11 +19,9 @@ package object fs {
   type Output           = String | Buffer
   type FileWriteOptions = FileAppendOptions
 
-  type ReaddirArrays = js.Array[String] | js.Array[Buffer]
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
+  type ReaddirArrays  = js.Array[String] | js.Array[Buffer]
   type ReaddirArrays2 = ReaddirArrays | js.Array[fs.Dirent]
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   type Dirent = Fs.Dirent
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -131,7 +129,6 @@ package object fs {
     }
 
     @inline
-    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
     def lstatFuture(path: Path, options: StatOptions): Future[Stats] = {
       promiseWithError1[FileIOError, Stats](instance.lstat(path, options, _))
     }
@@ -151,20 +148,17 @@ package object fs {
       promiseWithError0[FileIOError](instance.mkdir(path, _))
     }
 
-    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
     @inline
     def mkdirFuture(path: Path, options: MkdirOptions): Future[Unit] = {
       promiseWithError0[FileIOError](instance.mkdir(path, options, _))
     }
 
-    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
     @inline
     def mkdirRecursiveFuture(path: Path): Future[Unit] = {
       val recursiveEnabled = new MkdirOptions(recursive = true)
       promiseWithError0[FileIOError](instance.mkdir(path, recursiveEnabled, _))
     }
 
-    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
     @inline
     def mkdirRecursiveFuture(path: Path, options: MkdirOptions): Future[Unit] = {
       val recursiveEnabled = new MkdirOptions(
@@ -237,7 +231,6 @@ package object fs {
       promiseWithError1[FileIOError, js.Array[Buffer]](callback)
     }
 
-    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
     @inline
     def readdirDirentFuture(path: Buffer | String): Future[js.Array[Dirent]] = {
       val callback: FsCallback1[js.Array[Dirent]] => Unit = { callback =>
@@ -285,19 +278,16 @@ package object fs {
       promiseWithError1[FileIOError, Output](instance.realpath(file, options, _))
     }
 
-    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
     @inline
     def realpathNativeFuture(file: Path, options: FileEncodingOptions): Future[Output] = {
       promiseWithError1[FileIOError, Output](instance.realpath.native(file, options, _))
     }
 
-    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
     @inline
     def realpathNativeFuture(file: Path, encoding: String): Future[Output] = {
       promiseWithError1[FileIOError, Output](instance.realpath.native(file, encoding, _))
     }
 
-    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
     @inline
     def realpathNativeFuture(file: Path): Future[String] = {
       promiseWithError1[FileIOError, String](instance.realpath.native(file, _))
@@ -333,7 +323,6 @@ package object fs {
     @inline
     def statFuture(path: Path): Future[Stats] = promiseWithError1[FileIOError, Stats](instance.stat(path, _))
 
-    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
     @inline
     def statFuture(path: Path, options: StatOptions): Future[Stats] = {
       promiseWithError1[FileIOError, Stats](instance.stat(path, options, _))
@@ -399,7 +388,6 @@ package object fs {
       promiseWithError2[FileIOError, Int, Buffer](instance.write(fd, buffer, offset, length, position, _))
     }
 
-    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
     @inline
     def writeFuture(fd: FileDescriptor,
                     buffer: BufferLike,
@@ -429,13 +417,11 @@ package object fs {
       promiseWithError0[FileIOError](instance.writeFile(file, data, options, _))
     }
 
-    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
     @inline
     def writeFileFuture(file: String, data: BufferLike): Future[Unit] = {
       promiseWithError0[FileIOError](instance.writeFile(file, data, _))
     }
 
-    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
     @inline
     def writeFileFuture(file: String, data: BufferLike, options: FileWriteOptions): Future[Unit] = {
       promiseWithError0[FileIOError](instance.writeFile(file, data, options, _))

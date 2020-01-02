@@ -13,7 +13,7 @@ env:
   - TRAVIS_NODE_VERSION="12.10.0" JOB_NAME="test"
 
 script:
-  - sbt ++$TRAVIS_SCALA_VERSION nodejs_v8/test nodejs_v10/test current/test
+  - sbt ++$TRAVIS_SCALA_VERSION test
 
 matrix:
   include:
@@ -23,12 +23,8 @@ matrix:
       script: sbt ++$TRAVIS_SCALA_VERSION scalafmtSbtCheck scalafmtCheck test:scalafmtCheck current/doc core/doc
     - scala: 2.13.1
       jdk: openjdk11
-      env: TRAVIS_NODE_VERSION="8.17.0" JOB_NAME="test"
-      script: sbt ++$TRAVIS_SCALA_VERSION nodejs_v8/test
-    - scala: 2.13.1
-      jdk: openjdk11
       env: TRAVIS_NODE_VERSION="10.18.0" JOB_NAME="test"
-      script: sbt ++$TRAVIS_SCALA_VERSION nodejs_v8/test nodejs_v10/test
+      script: sbt ++$TRAVIS_SCALA_VERSION nodejs_v10/test
 
 install:
   - rm -rf ~/.nvm &&

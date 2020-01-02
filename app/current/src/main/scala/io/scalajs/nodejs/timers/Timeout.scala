@@ -19,7 +19,6 @@ trait Timeout extends js.Object {
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def hasRef(): Boolean = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def refresh(): Timeout = js.native
 
   def ref(): Timeout   = js.native

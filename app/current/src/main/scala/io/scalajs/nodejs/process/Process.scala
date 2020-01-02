@@ -273,7 +273,6 @@ trait Process extends IEventEmitter {
     */
   def initgroups(user: String | Int, extra_group: String | Int): js.Array[Int] = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def hasUncaughtExceptionCaptureCallback(): Boolean = js.native
 
   /**
@@ -365,7 +364,6 @@ trait Process extends IEventEmitter {
     */
   def setuid(id: String | Int): Unit = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def setUncaughtExceptionCaptureCallback(callback: js.Function = js.native): Unit = js.native
 
   /**
@@ -436,20 +434,13 @@ trait ComponentVersion extends js.Object {
   var icu: String         = js.native
   var unicode: String     = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
-  var v8: String = js.native
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
-  var brotli: String = js.native
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
+  var v8: String      = js.native
+  var brotli: String  = js.native
   var nghttp2: String = js.native
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
-  var napi: String = js.native
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
-  var llhttp: String = js.native
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
-  var cldr: String = js.native
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
-  var tz: String = js.native
+  var napi: String    = js.native
+  var llhttp: String  = js.native
+  var cldr: String    = js.native
+  var tz: String      = js.native
 }
 
 /**
@@ -490,7 +481,6 @@ class WarningOptions(
 @js.native
 trait HrTime extends js.Function1[js.Array[Int], js.Array[Int]] with js.Function0[js.Array[Int]] {
   // TODO: js.BigInt
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def bigint(): js.Any = js.native
 }
 

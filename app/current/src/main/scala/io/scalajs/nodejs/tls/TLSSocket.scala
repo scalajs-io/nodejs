@@ -44,7 +44,6 @@ class TLSSocket(socket: stream.IDuplex, options: TLSSocketOptions = js.native) e
     */
   def getPeerCertificate(detailed: String): TLSCertificate = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def getPeerFinished(): js.UndefOr[Buffer] = js.native
 
   /**

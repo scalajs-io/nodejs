@@ -43,7 +43,6 @@ class WriteStream(fd: FileDescriptor) extends net.Socket {
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def cursorTo(x: Int, y: Int, callback: js.Function): Boolean = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def getColorDepth(env: io.scalajs.nodejs.process.Environment = js.native): Int = js.native
 
   def getWindowSize(): js.Tuple2[Int, Int] = js.native

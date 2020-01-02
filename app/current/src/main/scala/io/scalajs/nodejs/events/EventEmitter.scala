@@ -73,7 +73,6 @@ trait IEventEmitter extends js.Object {
     */
   def listeners(eventName: String): js.Array[js.Function] = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def off(eventName: String, listner: js.Function): this.type = js.native
 
   /**
@@ -131,7 +130,6 @@ trait IEventEmitter extends js.Object {
     */
   def setMaxListeners(n: Int): this.type = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def rawListeners(eventName: String): js.Array[js.Function] = js.native
 }
 

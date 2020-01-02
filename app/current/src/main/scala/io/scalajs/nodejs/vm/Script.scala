@@ -1,7 +1,5 @@
 package io.scalajs.nodejs.vm
 
-import com.thoughtworks.enableIf
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.typedarray.{DataView, Uint8Array}
@@ -16,7 +14,6 @@ class Script private[this] () extends js.Object {
   def this(code: String, options: ScriptOptions = js.native) = this()
   def this(code: String, filename: String) = this()
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def createCachedData(): io.scalajs.nodejs.buffer.Buffer = js.native
 
   /**

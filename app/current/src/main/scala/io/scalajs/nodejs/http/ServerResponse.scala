@@ -139,7 +139,6 @@ trait ServerResponse extends stream.Writable {
   def writeHead(statusCode: Int, headers: js.Object | js.Dictionary[_]): Unit = js.native
   def writeHead(statusCode: Int): Unit                                        = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def writeProcessing(): Unit = js.native
 }
 

@@ -1,7 +1,5 @@
 package io.scalajs.nodejs.http2
 
-import com.thoughtworks.enableIf
-
 import scala.scalajs.js
 
 @js.native
@@ -86,8 +84,7 @@ trait Http2Constants extends js.Object {
   val HTTP2_HEADER_WWW_AUTHENTICATE: String                 = js.native
   val HTTP2_HEADER_X_CONTENT_TYPE_OPTIONS: String           = js.native
   val HTTP2_HEADER_X_FRAME_OPTIONS: String                  = js.native
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
-  val HTTP2_HEADER_PROTOCOL: String = js.native
+  val HTTP2_HEADER_PROTOCOL: String                         = js.native
 
   val HTTP2_METHOD_ACL: String               = js.native
   val HTTP2_METHOD_BASELINE_CONTROL: String  = js.native
@@ -197,44 +194,43 @@ trait Http2Constants extends js.Object {
   val MAX_MAX_FRAME_SIZE: Int      = js.native
   val MIN_MAX_FRAME_SIZE: Int      = js.native
 
-  val NGHTTP2_CANCEL: Int                          = js.native
-  val NGHTTP2_COMPRESSION_ERROR: Int               = js.native
-  val NGHTTP2_CONNECT_ERROR: Int                   = js.native
-  val NGHTTP2_DEFAULT_WEIGHT: Int                  = js.native
-  val NGHTTP2_ENHANCE_YOUR_CALM: Int               = js.native
-  val NGHTTP2_ERR_FRAME_SIZE_ERROR: Int            = js.native
-  val NGHTTP2_FLAG_ACK: Int                        = js.native
-  val NGHTTP2_FLAG_END_HEADERS: Int                = js.native
-  val NGHTTP2_FLAG_END_STREAM: Int                 = js.native
-  val NGHTTP2_FLAG_NONE: Int                       = js.native
-  val NGHTTP2_FLAG_PADDED: Int                     = js.native
-  val NGHTTP2_FLAG_PRIORITY: Int                   = js.native
-  val NGHTTP2_FLOW_CONTROL_ERROR: Int              = js.native
-  val NGHTTP2_FRAME_SIZE_ERROR: Int                = js.native
-  val NGHTTP2_HTTP_1_1_REQUIRED: Int               = js.native
-  val NGHTTP2_INADEQUATE_SECURITY: Int             = js.native
-  val NGHTTP2_INTERNAL_ERROR: Int                  = js.native
-  val NGHTTP2_NO_ERROR: Int                        = js.native
-  val NGHTTP2_PROTOCOL_ERROR: Int                  = js.native
-  val NGHTTP2_REFUSED_STREAM: Int                  = js.native
-  val NGHTTP2_SESSION_CLIENT: Int                  = js.native
-  val NGHTTP2_SESSION_SERVER: Int                  = js.native
-  val NGHTTP2_SETTINGS_ENABLE_PUSH: Int            = js.native
-  val NGHTTP2_SETTINGS_HEADER_TABLE_SIZE: Int      = js.native
-  val NGHTTP2_SETTINGS_INITIAL_WINDOW_SIZE: Int    = js.native
-  val NGHTTP2_SETTINGS_MAX_CONCURRENT_STREAMS: Int = js.native
-  val NGHTTP2_SETTINGS_MAX_FRAME_SIZE: Int         = js.native
-  val NGHTTP2_SETTINGS_MAX_HEADER_LIST_SIZE: Int   = js.native
-  val NGHTTP2_SETTINGS_TIMEOUT: Int                = js.native
-  val NGHTTP2_STREAM_CLOSED: Int                   = js.native
-  val NGHTTP2_STREAM_STATE_CLOSED: Int             = js.native
-  val NGHTTP2_STREAM_STATE_HALF_CLOSED_LOCAL: Int  = js.native
-  val NGHTTP2_STREAM_STATE_HALF_CLOSED_REMOTE: Int = js.native
-  val NGHTTP2_STREAM_STATE_IDLE: Int               = js.native
-  val NGHTTP2_STREAM_STATE_OPEN: Int               = js.native
-  val NGHTTP2_STREAM_STATE_RESERVED_LOCAL: Int     = js.native
-  val NGHTTP2_STREAM_STATE_RESERVED_REMOTE: Int    = js.native
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
+  val NGHTTP2_CANCEL: Int                           = js.native
+  val NGHTTP2_COMPRESSION_ERROR: Int                = js.native
+  val NGHTTP2_CONNECT_ERROR: Int                    = js.native
+  val NGHTTP2_DEFAULT_WEIGHT: Int                   = js.native
+  val NGHTTP2_ENHANCE_YOUR_CALM: Int                = js.native
+  val NGHTTP2_ERR_FRAME_SIZE_ERROR: Int             = js.native
+  val NGHTTP2_FLAG_ACK: Int                         = js.native
+  val NGHTTP2_FLAG_END_HEADERS: Int                 = js.native
+  val NGHTTP2_FLAG_END_STREAM: Int                  = js.native
+  val NGHTTP2_FLAG_NONE: Int                        = js.native
+  val NGHTTP2_FLAG_PADDED: Int                      = js.native
+  val NGHTTP2_FLAG_PRIORITY: Int                    = js.native
+  val NGHTTP2_FLOW_CONTROL_ERROR: Int               = js.native
+  val NGHTTP2_FRAME_SIZE_ERROR: Int                 = js.native
+  val NGHTTP2_HTTP_1_1_REQUIRED: Int                = js.native
+  val NGHTTP2_INADEQUATE_SECURITY: Int              = js.native
+  val NGHTTP2_INTERNAL_ERROR: Int                   = js.native
+  val NGHTTP2_NO_ERROR: Int                         = js.native
+  val NGHTTP2_PROTOCOL_ERROR: Int                   = js.native
+  val NGHTTP2_REFUSED_STREAM: Int                   = js.native
+  val NGHTTP2_SESSION_CLIENT: Int                   = js.native
+  val NGHTTP2_SESSION_SERVER: Int                   = js.native
+  val NGHTTP2_SETTINGS_ENABLE_PUSH: Int             = js.native
+  val NGHTTP2_SETTINGS_HEADER_TABLE_SIZE: Int       = js.native
+  val NGHTTP2_SETTINGS_INITIAL_WINDOW_SIZE: Int     = js.native
+  val NGHTTP2_SETTINGS_MAX_CONCURRENT_STREAMS: Int  = js.native
+  val NGHTTP2_SETTINGS_MAX_FRAME_SIZE: Int          = js.native
+  val NGHTTP2_SETTINGS_MAX_HEADER_LIST_SIZE: Int    = js.native
+  val NGHTTP2_SETTINGS_TIMEOUT: Int                 = js.native
+  val NGHTTP2_STREAM_CLOSED: Int                    = js.native
+  val NGHTTP2_STREAM_STATE_CLOSED: Int              = js.native
+  val NGHTTP2_STREAM_STATE_HALF_CLOSED_LOCAL: Int   = js.native
+  val NGHTTP2_STREAM_STATE_HALF_CLOSED_REMOTE: Int  = js.native
+  val NGHTTP2_STREAM_STATE_IDLE: Int                = js.native
+  val NGHTTP2_STREAM_STATE_OPEN: Int                = js.native
+  val NGHTTP2_STREAM_STATE_RESERVED_LOCAL: Int      = js.native
+  val NGHTTP2_STREAM_STATE_RESERVED_REMOTE: Int     = js.native
   val NGHTTP2_SETTINGS_ENABLE_CONNECT_PROTOCOL: Int = js.native
 
   val PADDING_STRATEGY_ALIGNED: Int  = js.native

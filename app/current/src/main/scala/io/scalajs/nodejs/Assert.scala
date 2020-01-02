@@ -1,6 +1,5 @@
 package io.scalajs.nodejs
 
-import com.thoughtworks.enableIf
 import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
@@ -32,7 +31,6 @@ trait Assert extends IEventEmitter {
     */
   def deepStrictEqual(actual: js.Any, expected: js.Any, message: String = js.native): Unit = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def doesNotReject(asyncFn: js.Function | js.Promise[_],
                     error: js.RegExp | js.Function = js.native,
                     message: String = js.native): Unit = js.native
@@ -100,7 +98,6 @@ trait Assert extends IEventEmitter {
              error: js.RegExp | js.Function | js.Object | Error,
              message: String = js.native): Unit = js.native
 
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   def rejects(asyncFn: js.Function | js.Promise[_],
               error: js.RegExp | js.Function | js.Object | Error = js.native,
               message: String = js.native): Unit = js.native
@@ -112,6 +109,5 @@ trait Assert extends IEventEmitter {
 @js.native
 @JSImport("assert", JSImport.Namespace)
 object Assert extends Assert {
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs10)
   val strict: Assert = js.native
 }

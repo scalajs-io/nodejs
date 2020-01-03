@@ -28,8 +28,6 @@ package object fs {
   //      Implicit conversions and classes
   /////////////////////////////////////////////////////////////////////////////////
 
-  private val isWindows = process.Process.platform == "win32"
-
   /**
     * File System Extensions
     * @param instance the given [[Fs file system]] instance

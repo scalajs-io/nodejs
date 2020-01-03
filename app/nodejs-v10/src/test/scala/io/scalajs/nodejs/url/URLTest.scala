@@ -1,7 +1,6 @@
 package io.scalajs.nodejs
 package url
 
-import org.scalatest._
 import org.scalatest.funspec.AnyFunSpec
 
 class URLTest extends AnyFunSpec {

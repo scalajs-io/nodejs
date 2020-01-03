@@ -285,14 +285,14 @@ trait Fs extends IEventEmitter with FSConstants {
     */
   def fstat(fd: FileDescriptor, callback: FsCallback1[Stats]): Unit = js.native
 
-  def fstat(fd: FileDescriptor, options: StatOptions, callback: FsCallback1[Stats]): Unit = js.native
+  def fstat(fd: FileDescriptor, options: StatOptions, callback: FsCallback1[StatsVariant]): Unit = js.native
 
   /**
     * Synchronous fstat(2).
     * @param fd the file descriptor
     * @return an instance of [[fs.Stats]].
     */
-  def fstatSync(fd: FileDescriptor, options: StatOptions = js.native): Stats = js.native
+  def fstatSync(fd: FileDescriptor, options: StatOptions = js.native): StatsVariant = js.native
 
   /**
     * Asynchronous fsync(2). No arguments other than a possible exception are given to the completion callback.
@@ -399,7 +399,7 @@ trait Fs extends IEventEmitter with FSConstants {
     */
   def linkSync(existingPath: Path, newPath: Path): Unit = js.native
 
-  def lstat(path: Path, options: StatOptions, callback: FsCallback1[Stats]): Unit = js.native
+  def lstat(path: Path, options: StatOptions, callback: FsCallback1[StatsVariant]): Unit = js.native
 
   /**
     * Asynchronous lstat(2).
@@ -417,7 +417,7 @@ trait Fs extends IEventEmitter with FSConstants {
     */
   def lstatSync(path: Path): Stats = js.native
 
-  def lstatSync(path: Path, options: StatOptions): Stats = js.native
+  def lstatSync(path: Path, options: StatOptions): StatsVariant = js.native
 
   /**
     * Asynchronous mkdir(2). No arguments other than a possible exception are given to the completion callback.
@@ -798,7 +798,7 @@ trait Fs extends IEventEmitter with FSConstants {
     */
   def stat(path: Path, callback: FsCallback1[Stats]): Stats = js.native
 
-  def stat(path: Path, options: StatOptions, callback: FsCallback1[Stats]): Stats = js.native
+  def stat(path: Path, options: StatOptions, callback: FsCallback1[StatsVariant]): StatsVariant = js.native
 
   /**
     * Synchronous stat(2). Returns an instance of [[fs.Stats]].
@@ -806,7 +806,7 @@ trait Fs extends IEventEmitter with FSConstants {
     */
   def statSync(path: Path): Stats = js.native
 
-  def statSync(path: Path, options: StatOptions): Stats = js.native
+  def statSync(path: Path, options: StatOptions): StatsVariant = js.native
 
   /**
     * Asynchronous symlink(2). No arguments other than a possible exception are given to the completion callback.
@@ -1131,7 +1131,7 @@ object Fs extends Fs {
     def lchmod(path: Path, mode: FileMode): js.Promise[Unit]                               = js.native
     def lchown(path: Path, uid: UID, gid: GID): js.Promise[Unit]                           = js.native
     def link(existingPath: Path, newPath: Path): js.Promise[Unit]                          = js.native
-    def lstat(path: Path, options: StatOptions): js.Promise[Stats]                         = js.native
+    def lstat(path: Path, options: StatOptions): js.Promise[StatsVariant]                  = js.native
     def mkdir(path: Path, options: MkdirOptions = js.native): js.Promise[Unit]             = js.native
     def mkdir(path: Path, mode: FileMode): js.Promise[Unit]                                = js.native
     def mkdtemp(prefix: String, options: FileEncodingOptions): js.Promise[String]          = js.native
@@ -1147,7 +1147,7 @@ object Fs extends Fs {
     def rmdir(path: Path): js.Promise[Unit]                                                                  = js.native
     @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
     def rmdir(path: Path, options: RmdirOptions): js.Promise[Unit]                      = js.native
-    def stat(path: Path, options: StatOptions = js.native): js.Promise[Stats]           = js.native
+    def stat(path: Path, options: StatOptions = js.native): js.Promise[StatsVariant]    = js.native
     def symlink(target: Path, path: Path, `type`: String = js.native): js.Promise[Unit] = js.native
     def truncate(path: Path, length: Int = js.native): js.Promise[Unit]                 = js.native
     def unlink(path: Path): js.Promise[Unit]                                            = js.native
@@ -1173,7 +1173,7 @@ object Fs extends Fs {
     def readFile(encoding: String): js.Promise[String]                                                 = js.native
     def readFile(options: ReadFileOptions): js.Promise[Output]                                         = js.native
     def stat(): js.Promise[Stats]                                                                      = js.native
-    def stat(options: StatOptions): js.Promise[Stats]                                                  = js.native
+    def stat(options: StatOptions): js.Promise[StatsVariant]                                           = js.native
     def sync(): js.Promise[Unit]                                                                       = js.native
     def truncate(): js.Promise[Unit]                                                                   = js.native
     def truncate(length: Int): js.Promise[Unit]                                                        = js.native

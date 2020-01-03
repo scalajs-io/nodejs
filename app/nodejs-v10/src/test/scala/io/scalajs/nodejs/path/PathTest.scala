@@ -1,9 +1,9 @@
 package io.scalajs.nodejs
 package path
 
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
-class PathTest extends FunSpec {
+class PathTest extends AnyFunSpec {
   describe("Path") {
     it("supports basename()") {
       assert(Path.basename("/foo/bar/baz/asdf/quux.html") === "quux.html")

@@ -1,14 +1,14 @@
 package io.scalajs.nodejs.vm
 
 import io.scalajs.nodejs.vm.VMTest.{ExpectedData, Sandbox}
-import org.scalatest.FunSpec
 
 import scala.scalajs.js
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * VM Tests
   */
-class VMTest extends FunSpec {
+class VMTest extends AnyFunSpec {
   describe("VM") {
     it("should compile and execute JavaScript code") {
       val sandbox = new Sandbox(animal = "cat", count = 2, name = "kitty")

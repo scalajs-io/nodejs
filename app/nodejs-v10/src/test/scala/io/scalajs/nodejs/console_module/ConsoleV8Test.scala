@@ -2,11 +2,12 @@ package io.scalajs.nodejs.console_module
 
 import io.scalajs.nodejs.TestEnvironment
 import io.scalajs.nodejs.fs.{Fs, WriteStream}
-import org.scalatest.{BeforeAndAfterEach, FunSpec}
+import org.scalatest.BeforeAndAfterEach
 
 import scala.scalajs.js.JavaScriptException
+import org.scalatest.funspec.AnyFunSpec
 
-class ConsoleV8Test extends FunSpec with BeforeAndAfterEach {
+class ConsoleV8Test extends AnyFunSpec with BeforeAndAfterEach {
   private val logFileName                  = "x.nodejs8.ConsoleTest"
   private var failingWritable: WriteStream = null
 

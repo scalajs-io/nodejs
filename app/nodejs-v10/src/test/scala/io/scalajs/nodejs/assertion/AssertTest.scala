@@ -1,11 +1,11 @@
 package io.scalajs.nodejs.assertion
 
-import org.scalatest.FunSpec
 import io.scalajs.nodejs.{Assert => NodeAssert}
 
 import scala.scalajs.js
+import org.scalatest.funspec.AnyFunSpec
 
-class AssertTest extends FunSpec {
+class AssertTest extends AnyFunSpec {
   it("have strict from v9.9.0") {
     assert(NodeAssert.strict !== js.undefined)
   }

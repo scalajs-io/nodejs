@@ -1,14 +1,14 @@
 package io.scalajs.nodejs.querystring
 
 import io.scalajs.nodejs.querystring.QueryStringTest.MyParams
-import org.scalatest.FunSpec
 
 import scala.scalajs.js
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * Query String Test
   */
-class QueryStringTest extends FunSpec {
+class QueryStringTest extends AnyFunSpec {
   describe("QueryString") {
     it("should escape(...)") {
       val result = QueryString.escape("""https://www.google.com/#q=node?key=1234""")

@@ -3,9 +3,9 @@ package io.scalajs.nodejs.fs
 import io.scalajs.nodejs.setImmediate
 import io.scalajs.util.NodeJSConverters._
 import io.scalajs.util.ScalaJsHelper._
-import org.scalatest.AsyncFunSpec
 
 import scala.concurrent.{ExecutionContext, Promise}
+import org.scalatest.funspec.AsyncFunSpec
 
 /**
   * File System (Fs) Tests

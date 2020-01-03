@@ -1,11 +1,11 @@
 package io.scalajs.nodejs.zlib
 
 import io.scalajs.nodejs.buffer.Buffer
-import org.scalatest.FunSpec
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
+import org.scalatest.funspec.AnyFunSpec
 
-class ZlibTest extends FunSpec {
+class ZlibTest extends AnyFunSpec {
   describe("Zlib") {
     it("should compress strings and buffers") {
       val original = Buffer.from("This is a compression example")

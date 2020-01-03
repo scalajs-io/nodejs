@@ -1,12 +1,12 @@
 package io.scalajs.nodejs.os
 
 import io.scalajs.util.ScalaJsHelper._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * OS Tests
   */
-class OSTest extends FunSpec {
+class OSTest extends AnyFunSpec {
   describe("OS") {
     it("supports arch()") {
       assert(OS.arch().nonEmpty)

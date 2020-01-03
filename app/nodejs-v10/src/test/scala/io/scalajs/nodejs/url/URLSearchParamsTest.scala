@@ -1,10 +1,9 @@
 package io.scalajs.nodejs.url
 
-import org.scalatest.FunSpec
-
 import scala.scalajs.js
+import org.scalatest.funspec.AnyFunSpec
 
-class URLSearchParamsTest extends FunSpec {
+class URLSearchParamsTest extends AnyFunSpec {
   describe("URLSearchParams") {
     it("should parse the string as a query string") {
       val params = new URLSearchParams("user=abc&query=xyz")

@@ -1,8 +1,8 @@
 package io.scalajs.nodejs.process
 
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
-class EnvironmentTest extends FunSpec {
+class EnvironmentTest extends AnyFunSpec {
   describe("Environment") {
     it("have PATH as member") {
       assert(Process.env.PATH.nonEmpty)

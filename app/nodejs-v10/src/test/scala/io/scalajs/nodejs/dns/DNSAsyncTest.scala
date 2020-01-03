@@ -1,10 +1,9 @@
 package io.scalajs.nodejs
 package dns
 
-import org.scalatest.AsyncFunSpec
-
 import scala.concurrent.{ExecutionContext, Promise}
 import scala.scalajs.js
+import org.scalatest.funspec.AsyncFunSpec
 
 /**
   * DNS Tests

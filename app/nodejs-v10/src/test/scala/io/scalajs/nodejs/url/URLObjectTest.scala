@@ -2,12 +2,12 @@ package io.scalajs.nodejs
 package url
 
 import io.scalajs.util.JSONHelper._
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * URLObject Tests
   */
-class URLObjectTest extends FunSpec {
+class URLObjectTest extends AnyFunSpec {
   describe("URLObject") {
     val originalUrl = "https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=node"
     val urlObject   = new URL(originalUrl)

@@ -1,12 +1,12 @@
 package io.scalajs.nodejs.cluster
 
 import io.scalajs.nodejs.setTimeout
-import org.scalatest.FunSpec
 
 import scala.concurrent.duration._
 import scala.scalajs.js
+import org.scalatest.funspec.AnyFunSpec
 
-class ClusterTest extends FunSpec {
+class ClusterTest extends AnyFunSpec {
   describe("Cluster") {
     it("cluster should be master") {
       assert(Cluster.isMaster)

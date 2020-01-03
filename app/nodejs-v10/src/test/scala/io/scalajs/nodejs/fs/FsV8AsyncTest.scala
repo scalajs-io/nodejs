@@ -1,10 +1,11 @@
 package io.scalajs.nodejs.fs
 
 import io.scalajs.nodejs.buffer.Buffer
-import org.scalatest.{AsyncFunSpec, BeforeAndAfterEach}
+import org.scalatest.BeforeAndAfterEach
 
 import scala.concurrent.{ExecutionContext, Future}
 import scala.util.{Failure, Success}
+import org.scalatest.funspec.AsyncFunSpec
 
 class FsV8AsyncTest extends AsyncFunSpec with BeforeAndAfterEach {
   private val file = "x.File.txt"

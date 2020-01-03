@@ -1,9 +1,9 @@
 package io.scalajs.nodejs
 
 import io.scalajs.nodejs.buffer.Buffer
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
-class StringDecoderTest extends FunSpec {
+class StringDecoderTest extends AnyFunSpec {
   describe("StringDecoder") {
     it("should decode strings or buffer") {
       val decoder = new StringDecoder("utf8")

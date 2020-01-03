@@ -1,14 +1,13 @@
 package io.scalajs.nodejs
 package http
 
-import org.scalatest.FunSpec
-
 import scala.scalajs.js
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * Http Tests
   */
-class HttpTest extends FunSpec {
+class HttpTest extends AnyFunSpec {
   describe("Http") {
     it("should provide an HTTP server") {
       val server = Http.createServer((request: ClientRequest, response: ServerResponse) => {

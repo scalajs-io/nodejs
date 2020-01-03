@@ -3,9 +3,9 @@ package fs
 
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.url.URL
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
-class FsClassesTest extends FunSpec {
+class FsClassesTest extends AnyFunSpec {
   val dirname = process.Process.cwd()
 
   describe("ReadStream") {

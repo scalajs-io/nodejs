@@ -1,13 +1,12 @@
 package io.scalajs.nodejs.buffer
 
-import org.scalatest.FunSpec
-
 import scala.scalajs.js
+import org.scalatest.funspec.AnyFunSpec
 
 /**
   * Buffer Tests
   */
-class BufferTest extends FunSpec {
+class BufferTest extends AnyFunSpec {
   it("should support writeBigInt64BE, writeBigInt64LE, writeBigInt64BE and writeBigInt64BE") {
     val buf = Buffer.allocUnsafe(8)
     val v   = js.BigInt("0x0102030405060708")

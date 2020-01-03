@@ -2,9 +2,9 @@ package io.scalajs.nodejs.readline
 
 import io.scalajs.nodejs.fs.Fs
 import io.scalajs.nodejs.process.Process
-import org.scalatest.AsyncFunSpec
 
 import scala.concurrent.{ExecutionContext, Promise}
+import org.scalatest.funspec.AsyncFunSpec
 
 /**
   * Readline Tests

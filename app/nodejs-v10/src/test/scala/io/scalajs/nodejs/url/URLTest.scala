@@ -1,9 +1,9 @@
 package io.scalajs.nodejs
 package url
 
-import org.scalatest._
+import org.scalatest.funspec.AnyFunSpec
 
-class URLTest extends FunSpec {
+class URLTest extends AnyFunSpec {
   describe("URL") {
     it("Gets and sets the serialized query portion of the URL") {
       val myURL = new URL("https://example.org/abc?123")

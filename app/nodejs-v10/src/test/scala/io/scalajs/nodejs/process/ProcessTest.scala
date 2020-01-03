@@ -2,9 +2,9 @@ package io.scalajs.nodejs.process
 
 import io.scalajs.nodejs.os.OS
 import io.scalajs.nodejs.TestEnvironment
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 
-class ProcessTest extends FunSpec {
+class ProcessTest extends AnyFunSpec {
   describe("Process") {
     val versionPrefix =
       if (TestEnvironment.isExecutedInExactNode8) "v8."

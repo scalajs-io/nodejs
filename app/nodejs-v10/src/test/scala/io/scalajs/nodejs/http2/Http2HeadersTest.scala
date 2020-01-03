@@ -1,10 +1,9 @@
 package io.scalajs.nodejs.http2
 
-import org.scalatest.FunSpec
-
 import scala.scalajs.js
+import org.scalatest.funspec.AnyFunSpec
 
-class Http2HeadersTest extends FunSpec {
+class Http2HeadersTest extends AnyFunSpec {
   describe("Http2Headers") {
     it("should treat JS name") {
       val headers = Http2Headers.forIncoming(

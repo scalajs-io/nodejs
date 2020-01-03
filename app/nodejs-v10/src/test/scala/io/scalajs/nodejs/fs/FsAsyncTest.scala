@@ -1,8 +1,9 @@
 package io.scalajs.nodejs.fs
 
-import org.scalatest.{AsyncFunSpec, BeforeAndAfterEach}
+import org.scalatest.BeforeAndAfterEach
 
 import scala.concurrent.ExecutionContext
+import org.scalatest.funspec.AsyncFunSpec
 
 class FsAsyncTest extends AsyncFunSpec with BeforeAndAfterEach {
   override implicit val executionContext = ExecutionContext.Implicits.global

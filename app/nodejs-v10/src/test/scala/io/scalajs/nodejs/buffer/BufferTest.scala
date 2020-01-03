@@ -1,12 +1,12 @@
 package io.scalajs.nodejs.buffer
 
 import io.scalajs.nodejs.{TestEnvironment, buffer}
-import org.scalatest.FunSpec
 
 import scala.scalajs.js
 import scala.scalajs.js.typedarray.{ArrayBuffer, DataView, Uint8Array}
+import org.scalatest.funspec.AnyFunSpec
 
-class BufferTest extends FunSpec {
+class BufferTest extends AnyFunSpec {
   describe("Buffer") {
     describe("instance members") {
       it("should sort buffers") {

@@ -1,9 +1,8 @@
 package io.scalajs.nodejs.events
 
-import org.scalatest.AsyncFunSpec
-
 import scala.concurrent.{ExecutionContext, Promise}
 import scala.scalajs.js
+import org.scalatest.funspec.AsyncFunSpec
 
 class EventEmitterTest extends AsyncFunSpec {
   override implicit val executionContext = ExecutionContext.Implicits.global

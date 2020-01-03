@@ -1,10 +1,9 @@
 package io.scalajs.nodejs.util
 
-import org.scalatest.FunSpec
-
 import scala.scalajs.js
+import org.scalatest.funspec.AnyFunSpec
 
-class UtilTest extends FunSpec {
+class UtilTest extends AnyFunSpec {
   it("have inspect object") {
     assert(Util.inspect !== null)
     assert(Util.inspect(js.Array(1, 2, 3)) === "[ 1, 2, 3 ]")

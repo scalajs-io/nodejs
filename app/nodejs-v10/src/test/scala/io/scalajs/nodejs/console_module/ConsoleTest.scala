@@ -1,11 +1,12 @@
 package io.scalajs.nodejs.console_module
 
 import io.scalajs.nodejs.fs.Fs
-import org.scalatest.{BeforeAndAfterEach, FunSpec}
+import org.scalatest.BeforeAndAfterEach
 
 import scala.scalajs.js
+import org.scalatest.funspec.AnyFunSpec
 
-class ConsoleTest extends FunSpec with BeforeAndAfterEach {
+class ConsoleTest extends AnyFunSpec with BeforeAndAfterEach {
   private val logFileName = "x.nodejs10.ConsoleTest"
 
   override def afterEach(): Unit = {

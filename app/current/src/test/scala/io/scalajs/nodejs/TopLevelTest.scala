@@ -1,10 +1,9 @@
 package io.scalajs.nodejs
 
-import org.scalatest.FunSuite
-
 import scala.scalajs.js
+import org.scalatest.funsuite.AnyFunSuite
 
-class TopLevelTest extends FunSuite {
+class TopLevelTest extends AnyFunSuite {
   test("queueMicrotask") {
     assert(queueMicrotask.isInstanceOf[js.Function])
     queueMicrotask(() => println("printed from queueMicrotask"))

@@ -24,6 +24,8 @@ package object fs {
 
   type Dirent = Fs.Dirent
 
+  type StatsVariant = Stats | BigIntStats
+
   /////////////////////////////////////////////////////////////////////////////////
   //      Implicit conversions and classes
   /////////////////////////////////////////////////////////////////////////////////
@@ -89,8 +91,8 @@ package object fs {
     def fdatasyncFuture(fd: FileDescriptor): Future[Unit] = promiseWithError0[FileIOError](instance.fdatasync(fd, _))
 
     @inline
-    def fstatFuture(fd: FileDescriptor, options: StatOptions): Future[Stats] = {
-      promiseWithError1[FileIOError, Stats](instance.fstat(fd, options, _))
+    def fstatFuture(fd: FileDescriptor, options: StatOptions): Future[StatsVariant] = {
+      promiseWithError1[FileIOError, StatsVariant](instance.fstat(fd, options, _))
     }
 
     @inline
@@ -129,8 +131,8 @@ package object fs {
     }
 
     @inline
-    def lstatFuture(path: Path, options: StatOptions): Future[Stats] = {
-      promiseWithError1[FileIOError, Stats](instance.lstat(path, options, _))
+    def lstatFuture(path: Path, options: StatOptions): Future[StatsVariant] = {
+      promiseWithError1[FileIOError, StatsVariant](instance.lstat(path, options, _))
     }
 
     @inline
@@ -324,8 +326,8 @@ package object fs {
     def statFuture(path: Path): Future[Stats] = promiseWithError1[FileIOError, Stats](instance.stat(path, _))
 
     @inline
-    def statFuture(path: Path, options: StatOptions): Future[Stats] = {
-      promiseWithError1[FileIOError, Stats](instance.stat(path, options, _))
+    def statFuture(path: Path, options: StatOptions): Future[StatsVariant] = {
+      promiseWithError1[FileIOError, StatsVariant](instance.stat(path, options, _))
     }
 
     @inline

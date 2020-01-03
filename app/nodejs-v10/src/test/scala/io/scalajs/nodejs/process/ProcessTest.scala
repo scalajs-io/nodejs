@@ -43,7 +43,6 @@ class ProcessTest extends FunSpec {
     }
 
     it("hrtime.bigint") {
-      // TODO: js.BigInt
       val value = Process.hrtime.bigint()
       assert(value.toString().matches("^\\d+$"))
     }

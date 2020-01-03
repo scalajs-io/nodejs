@@ -480,8 +480,7 @@ class WarningOptions(
 
 @js.native
 trait HrTime extends js.Function1[js.Array[Int], js.Array[Int]] with js.Function0[js.Array[Int]] {
-  // TODO: js.BigInt
-  def bigint(): js.Any = js.native
+  def bigint(): js.BigInt = js.native
 }
 
 @enableMembersIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)

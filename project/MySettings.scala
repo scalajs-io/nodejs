@@ -1,4 +1,4 @@
-import org.scalajs.sbtplugin.ScalaJSPlugin.AutoImport.{ModuleKind, scalaJSModuleKind}
+import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
 import sbt._
 import sbt.Keys._
 import sbtrelease.ReleasePlugin.autoImport._
@@ -56,8 +56,12 @@ object MySettings {
   )
 
   lazy val commonScalaJsSettings = Seq(
-    scalacOptions += "-P:scalajs:sjsDefinedByDefault",
-    scalaJSModuleKind := ModuleKind.CommonJSModule,
+    scalacOptions ++= Seq("-P:scalajs:sjsDefinedByDefault").filter { _ =>
+      Option(System.getenv("SCALAJS_VERSION")).getOrElse("1.0.0").startsWith("0.6.")
+    },
+    scalaJSLinkerConfig ~= {
+      _.withModuleKind(ModuleKind.CommonJSModule)
+    },
     logBuffered in Test := true
   )
 

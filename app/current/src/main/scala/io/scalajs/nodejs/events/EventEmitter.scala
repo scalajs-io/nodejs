@@ -26,7 +26,7 @@ trait IEventEmitter extends js.Object {
   //      Properties
   /////////////////////////////////////////////////////////////////////////////////
 
-  var domain: String = js.native
+  var domain: Domain = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
@@ -151,3 +151,6 @@ object EventEmitter extends IEventEmitter {
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def once(emitter: IEventEmitter, eventName: String): js.Promise[js.Array[js.Any]] = js.native
 }
+
+@js.native
+trait Domain extends js.Object

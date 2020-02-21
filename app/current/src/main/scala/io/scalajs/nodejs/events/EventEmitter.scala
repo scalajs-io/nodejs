@@ -28,8 +28,6 @@ trait IEventEmitter extends js.Object {
 
   var domain: String = js.native
 
-  var usingDomains: Boolean = js.native
-
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
   /////////////////////////////////////////////////////////////////////////////////
@@ -139,6 +137,8 @@ trait IEventEmitter extends js.Object {
 @js.native
 @JSImport("events", JSImport.Namespace)
 object EventEmitter extends IEventEmitter {
+
+  var usingDomains: Boolean = js.native
 
   /**
     * By default, a maximum of 10 listeners can be registered for any single event. This limit can be changed

@@ -3,6 +3,7 @@ package io.scalajs.nodejs.crypto
 import io.scalajs.nodejs.buffer.Buffer
 
 import scala.scalajs.js
+import scala.scalajs.js.typedarray.{DataView, TypedArray}
 import scala.scalajs.js.|
 
 @js.native
@@ -24,6 +25,7 @@ class KeyObjectExportOptions(
 class PublicEncryptKeyObject(
     var key: String | Buffer | KeyObject,
     var oaepHash: String = "sha1",
+    var oaepLabel: js.UndefOr[Buffer | TypedArray[_, _] | DataView] = js.undefined,
     var passphrase: js.UndefOr[String | Buffer] = js.undefined,
     var padding: js.UndefOr[Int] = js.undefined
 ) extends js.Object
@@ -41,5 +43,6 @@ class PrivateEncryptKeyObject(
 
 class PrivateDecryptKeyObject(
     var oaepHash: String = "sha1",
+    var oaepLabel: js.UndefOr[Buffer | TypedArray[_, _] | DataView] = js.undefined,
     var padding: js.UndefOr[Int] = js.undefined
 ) extends js.Object

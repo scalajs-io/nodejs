@@ -1,7 +1,7 @@
 package io.scalajs.nodejs
 package fs
 
-import com.thoughtworks.enableIf
+import com.thoughtworks.{enableIf, enableMembersIf}
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.events.IEventEmitter
 
@@ -558,6 +558,15 @@ trait Fs extends IEventEmitter with FSConstants {
 
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def openSync(path: Path): FileDescriptor = js.native
+
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+  def opendir(path: Path, options: OpendirOptions, callback: FsCallback1[Fs.Dir]): Unit = js.native
+
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+  def opendir(path: Path, callback: FsCallback1[Fs.Dir]): Unit = js.native
+
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+  def opendirSync(path: Path, options: OpendirOptions = js.native): Fs.Dir = js.native
 
   /**
     * Read data from the file specified by fd.
@@ -1138,7 +1147,9 @@ object Fs extends Fs {
     def mkdtemp(prefix: String, encoding: String = js.native): js.Promise[String]          = js.native
     def open(path: Path, flags: Flags, mode: FileMode = js.native): js.Promise[FileHandle] = js.native
     @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
-    def open(path: Path): js.Promise[FileHandle]                                                             = js.native
+    def open(path: Path): js.Promise[FileHandle] = js.native
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+    def opendir(path: Path, options: OpendirOptions = js.native): js.Promise[Dir]                            = js.native
     def readdir(path: Path, options: ReaddirOptions): js.Promise[js.Array[String] | js.Array[Dirent]]        = js.native
     def readdir(path: Path, options: String | FileEncodingOptions = js.native): js.Promise[js.Array[String]] = js.native
     def readlink(path: Path): js.Promise[String]                                                             = js.native
@@ -1206,6 +1217,20 @@ object Fs extends Fs {
     def isSymbolicLink(): Boolean    = js.native
     val name: String | Buffer        = js.native
   }
+
+  @enableMembersIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+  @js.native
+  trait Dir extends js.Object {
+    def close(): js.Promise[Unit]                                 = js.native
+    def close(callback: js.Function1[js.Error, Any]): Unit        = js.native
+    def closeSync(): Unit                                         = js.native
+    def path: String                                              = js.native
+    def read(): js.Promise[Dirent]                                = js.native
+    def read(callback: js.Function2[js.Error, Dirent, Any]): Unit = js.native
+    def readSync(): Dirent                                        = js.native
+
+    // TODO: Implement AsyncIterable[Dirent]
+  }
 }
 
 @js.native
@@ -1229,6 +1254,9 @@ class FileEncodingOptions(var encoding: js.UndefOr[String] = js.undefined) exten
 
 class ReaddirOptions(var encoding: js.UndefOr[String] = js.undefined,
                      var withFileTypes: js.UndefOr[Boolean] = js.undefined)
+    extends js.Object
+
+class OpendirOptions(var encoding: js.UndefOr[String] = js.undefined, var bufferSize: js.UndefOr[Double] = js.undefined)
     extends js.Object
 
 class ReadFileOptions(var flag: js.UndefOr[String] = js.undefined) extends js.Object

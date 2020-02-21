@@ -32,6 +32,7 @@ package object fs {
 
   /**
     * File System Extensions
+    *
     * @param instance the given [[Fs file system]] instance
     */
   implicit final class FsExtensions(private val instance: Fs) extends AnyVal {
@@ -192,6 +193,18 @@ package object fs {
     @inline
     def openFuture(path: Path): Future[FileDescriptor] = {
       promiseWithError1[FileIOError, FileDescriptor](instance.open(path, _))
+    }
+
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+    @inline
+    def opendirFuture(path: Path, options: OpendirOptions): Future[Fs.Dir] = {
+      promiseWithError1[FileIOError, Fs.Dir](instance.opendir(path, options, _))
+    }
+
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+    @inline
+    def opendirFuture(path: Path): Future[Fs.Dir] = {
+      promiseWithError1[FileIOError, Fs.Dir](instance.opendir(path, _))
     }
 
     @inline
@@ -445,6 +458,29 @@ package object fs {
       promiseWithError2[FileIOError, Int, js.Array[typedarray.ArrayBufferView]](
         instance.writev(fd, buffers, position, _)
       )
+    }
+  }
+
+  /**
+    * Dir Extensions
+    *
+    * @param instance the given [[Fs.Dir]] instance
+    */
+  implicit final class FsDirExtensions(private val instance: Fs.Dir) extends AnyVal {
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+    @inline
+    def readFuture(): Future[Option[Fs.Dirent]] = {
+      promiseWithError1[js.Error, Option[Fs.Dirent]](f => {
+        instance.read((err, dir) => {
+          f(err, Option(dir))
+        })
+      })
+    }
+
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+    @inline
+    def closeFuture(): Future[Unit] = {
+      promiseWithError0[js.Error](instance.close _)
     }
   }
 }

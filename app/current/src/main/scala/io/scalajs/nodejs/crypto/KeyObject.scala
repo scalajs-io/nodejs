@@ -20,3 +20,26 @@ class KeyObjectExportOptions(
     var cipher: js.UndefOr[String] = js.undefined,
     var passphrase: js.UndefOr[String | Buffer] = js.undefined
 ) extends js.Object
+
+class PublicEncryptKeyObject(
+    var key: String | Buffer | KeyObject,
+    var oaepHash: String = "sha1",
+    var passphrase: js.UndefOr[String | Buffer] = js.undefined,
+    var padding: js.UndefOr[Int] = js.undefined
+) extends js.Object
+
+class PublicDecryptKeyObject(
+    var passphrase: js.UndefOr[String | Buffer] = js.undefined,
+    var padding: js.UndefOr[Int] = js.undefined
+) extends js.Object
+
+class PrivateEncryptKeyObject(
+    var key: String | Buffer | KeyObject,
+    var passphrase: js.UndefOr[String | Buffer] = js.undefined,
+    var padding: js.UndefOr[Int] = js.undefined
+) extends js.Object
+
+class PrivateDecryptKeyObject(
+    var oaepHash: String = "sha1",
+    var padding: js.UndefOr[Int] = js.undefined
+) extends js.Object

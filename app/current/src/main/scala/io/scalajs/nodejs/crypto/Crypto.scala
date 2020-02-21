@@ -200,19 +200,19 @@ trait Crypto extends js.Object {
 
   def privateDecrypt(privateKey: String | Buffer, buffer: BufferLike): Buffer = js.native
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
-  def privateDecrypt(privateKey: KeyObject, buffer: BufferLike): Buffer = js.native
+  def privateDecrypt(privateKey: PrivateDecryptKeyObject, buffer: BufferLike): Buffer = js.native
 
   def privateEncrypt(privateKey: String | Buffer, buffer: BufferLike): Buffer = js.native
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
-  def privateEncrypt(privateKey: KeyObject, buffer: BufferLike): Buffer = js.native
+  def privateEncrypt(privateKey: PrivateEncryptKeyObject, buffer: BufferLike): Buffer = js.native
 
   def publicDecrypt(key: String | Buffer, buffer: BufferLike): Buffer = js.native
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
-  def publicDecrypt(key: KeyObject, buffer: BufferLike): Buffer = js.native
+  def publicDecrypt(key: PublicDecryptKeyObject, buffer: BufferLike): Buffer = js.native
 
   def publicEncrypt(key: String | Buffer, buffer: BufferLike): Buffer = js.native
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
-  def publicEncrypt(key: KeyObject, buffer: BufferLike): Buffer = js.native
+  def publicEncrypt(key: PublicEncryptKeyObject, buffer: BufferLike): Buffer = js.native
 
   def randomBytes(size: Int): Buffer                            = js.native
   def randomBytes(size: Int, callback: Callback1[Buffer]): Unit = js.native

@@ -21,9 +21,6 @@ script:
 matrix:
   include:
     - scala: 2.13.1
-      env: TRAVIS_NODE_VERSION="12.16.1" JOB_NAME="format and doc"
-      script: sbt ++$TRAVIS_SCALA_VERSION scalafmtSbtCheck scalafmtCheck test:scalafmtCheck current/doc core/doc
-    - scala: 2.13.1
       env: TRAVIS_NODE_VERSION="10.19.0" JOB_NAME="test"
       script: sbt ++$TRAVIS_SCALA_VERSION nodejs_v10/test
 

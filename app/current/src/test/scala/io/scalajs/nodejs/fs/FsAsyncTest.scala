@@ -5,6 +5,8 @@ import org.scalatest.BeforeAndAfterEach
 import scala.concurrent.ExecutionContext
 import org.scalatest.funspec.AsyncFunSpec
 
+import scala.scalajs.js.JavaScriptException
+
 class FsAsyncTest extends AsyncFunSpec with BeforeAndAfterEach {
   override implicit val executionContext = ExecutionContext.Implicits.global
 
@@ -54,5 +56,24 @@ class FsAsyncTest extends AsyncFunSpec with BeforeAndAfterEach {
         assert(!dirExistsAfterRmdir)
       }
     }
+
+    it("support opendir") {
+      for {
+        dir              <- Fs.opendirFuture("core/src")
+        maybeFirstEntry  <- dir.readFuture()
+        maybeSecondEntry <- dir.readFuture()
+        _                <- dir.closeFuture()
+      } yield {
+        assert(dir.path === "core/src")
+        assert(maybeFirstEntry.map(_.name) === Some("main"))
+        assert(maybeSecondEntry === None)
+
+        val ex = intercept[JavaScriptException] {
+          assert(dir.readSync() === null)
+        }
+        assert(ex.getMessage().contains("ERR_DIR_CLOSED"))
+      }
+    }
+
   }
 }

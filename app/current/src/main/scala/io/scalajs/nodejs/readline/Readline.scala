@@ -1,6 +1,5 @@
 package io.scalajs.nodejs.readline
 
-import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.nodejs.stream.{IReadable, IWritable}
 
 import scala.scalajs.js
@@ -13,7 +12,7 @@ import scala.scalajs.js.annotation.JSImport
   * @see https://nodejs.org/api/readline.html
   */
 @js.native
-trait Readline extends IEventEmitter {
+trait Readline extends js.Object {
 
   /**
     * Clears current line of given TTY stream in a specified direction. <tt>dir</tt> should have one of following values:

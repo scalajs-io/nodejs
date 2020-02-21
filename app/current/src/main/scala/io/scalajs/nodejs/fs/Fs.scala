@@ -3,7 +3,6 @@ package fs
 
 import com.thoughtworks.{enableIf, enableMembersIf}
 import io.scalajs.nodejs.buffer.Buffer
-import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
@@ -22,7 +21,7 @@ import scala.scalajs.js.|
   * or allow them to bubble up.
   */
 @js.native
-trait Fs extends IEventEmitter with FSConstants {
+trait Fs extends js.Object with FSConstants {
 
   /**
     * Returns an object containing commonly used constants for file system operations

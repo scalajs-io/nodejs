@@ -138,7 +138,7 @@ trait IEventEmitter extends js.Object {
   */
 @js.native
 @JSImport("events", JSImport.Namespace)
-object EventEmitter extends IEventEmitter {
+object EventEmitter extends js.Object {
 
   /**
     * By default, a maximum of 10 listeners can be registered for any single event. This limit can be changed

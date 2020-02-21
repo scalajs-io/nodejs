@@ -1,6 +1,5 @@
 package io.scalajs.nodejs.repl
 
-import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.nodejs.stream
 
 import scala.scalajs.js
@@ -12,7 +11,7 @@ import scala.scalajs.js.annotation.JSImport
   * @see https://nodejs.org/api/repl.html#repl_repl
   */
 @js.native
-trait REPL extends IEventEmitter {
+trait REPL extends js.Object {
   var REPL_MODE_SLOPPY: js.Symbol = js.native
   var REPL_MODE_STRICT: js.Symbol = js.native
 

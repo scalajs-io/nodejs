@@ -1,7 +1,5 @@
 package io.scalajs.nodejs.net
 
-import io.scalajs.nodejs.events.IEventEmitter
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
@@ -11,7 +9,7 @@ import scala.scalajs.js.annotation.JSImport
   * @see https://nodejs.org/api/net.html
   */
 @js.native
-trait Net extends IEventEmitter {
+trait Net extends js.Object {
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods
   /////////////////////////////////////////////////////////////////////////////////

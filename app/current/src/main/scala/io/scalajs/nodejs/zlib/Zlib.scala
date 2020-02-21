@@ -1,7 +1,6 @@
 package io.scalajs.nodejs.zlib
 
 import com.thoughtworks.enableIf
-import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
@@ -12,7 +11,7 @@ import scala.scalajs.js.annotation.JSImport
   * @see https://nodejs.org/docs/latest/api/zlib.html
   */
 @js.native
-trait Zlib extends IEventEmitter with UncategorizedConstants with ZlibConstants {
+trait Zlib extends js.Object with UncategorizedConstants with ZlibConstants {
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def createBrotliCompress(options: BrotliOptions = js.native): BrotliCompress = js.native
 

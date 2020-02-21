@@ -47,7 +47,7 @@ class BufferTest extends AnyFunSpec {
         import scala.scalajs.js.typedarray.Int8Array
         val nodeBuffer = Buffer.from(js.Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9))
         val typedarray = new Int8Array(nodeBuffer.buffer, nodeBuffer.byteOffset, nodeBuffer.length)
-        assert(typedarray.mkString === new Int8Array(js.Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)).mkString)
+        assert(typedarray.mkString === new Int8Array(js.Array[Byte](0, 1, 2, 3, 4, 5, 6, 7, 8, 9)).mkString)
       }
 
       it("should support byteLength for specific types") {

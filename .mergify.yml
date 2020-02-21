@@ -3,6 +3,7 @@ pull_request_rules:
     conditions:
       - "author=scala-steward"
       - "status-success=Travis CI - Pull Request"
+      - "status-success=format"
     actions:
       merge:
         method: merge

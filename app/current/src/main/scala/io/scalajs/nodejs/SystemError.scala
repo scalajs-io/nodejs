@@ -1,15 +1,13 @@
 package io.scalajs.nodejs
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
 
 /**
   * System Error
   */
 @js.native
-@JSImport("errors", "SystemError")
-class SystemError(message0: String = js.native) extends Error(message0) {
+trait SystemError extends Error {
 
   /**
     * The error.errno property is a number or a string. The number is a negative value which corresponds
@@ -44,13 +42,6 @@ class SystemError(message0: String = js.native) extends Error(message0) {
   val dest: String    = js.native
   val info: js.Object = js.native
 }
-
-/**
-  * System Error Singleton
-  */
-@js.native
-@JSImport("errors", JSImport.Namespace)
-object SystemError extends Error
 
 object SystemErrorCodes {
   @inline final val E2BIG           = "E2BIG"

@@ -36,4 +36,19 @@ package object child_process {
 
     // TODO: spawn, fork
   }
+
+  implicit final class ChildProcessClassExtension(private val cp: ChildProcess) extends AnyVal {
+    @inline
+    def onClose(listener: (Int, String) => Any): ChildProcess = cp.on("close", listener)
+
+    @inline
+    def onDisconnect(listener: () => Any): ChildProcess = cp.on("disconnect", listener)
+
+    @inline
+    def onError(listener: (js.Error) => Any): ChildProcess = cp.on("error", listener)
+
+    @inline
+    def onMessage(listener: (js.Any, js.UndefOr[net.Socket | net.Server]) => Any): ChildProcess =
+      cp.on("message", listener)
+  }
 }

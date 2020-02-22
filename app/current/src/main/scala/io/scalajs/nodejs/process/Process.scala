@@ -5,7 +5,7 @@ import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.nodejs.tty.{ReadStream, WriteStream}
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSGlobal
+import scala.scalajs.js.annotation.{JSBracketAccess, JSGlobal}
 import scala.scalajs.js.|
 
 /**
@@ -82,10 +82,7 @@ trait Process extends IEventEmitter {
     */
   def exitCode: Int = js.native
 
-  /**
-    * TODO find documentation for this property
-    */
-  def features: js.Dictionary[Boolean] = js.native
+  def features: Features = js.native
 
   /**
     * Alternate way to retrieve require.main. The difference is that if the main module changes at runtime,
@@ -480,4 +477,25 @@ trait ResourceUsage extends js.Object {
   var signalsCount: Int               = js.native
   var voluntaryContextSwitches: Int   = js.native
   var involuntaryContextSwitches: Int = js.native
+}
+
+@js.native
+trait Features extends js.Object {
+  @deprecated("Use named members", "v0.10.0")
+  @JSBracketAccess
+  def apply(key: String): Boolean = js.native
+
+  val debug: Boolean    = js.native
+  val uv: Boolean       = js.native
+  val ipv6: Boolean     = js.native
+  val tls_alpn: Boolean = js.native
+  val tls_sni: Boolean  = js.native
+  val tls_ocsp: Boolean = js.native
+  val tls: Boolean      = js.native
+
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+  val inspector: Boolean = js.native
+
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+  val cached_builtins: Boolean = js.native
 }

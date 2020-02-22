@@ -1,6 +1,6 @@
 package io.scalajs.nodejs.os
 
-import io.scalajs.util.ScalaJsHelper._
+import io.scalajs.nodejs.TestHelper._
 import org.scalatest.funspec.AnyFunSpec
 
 /**

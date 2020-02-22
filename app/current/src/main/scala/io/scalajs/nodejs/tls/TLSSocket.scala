@@ -61,6 +61,9 @@ class TLSSocket(socket: stream.IDuplex, options: TLSSocketOptions = js.native) e
     */
   def getSession(): js.UndefOr[Buffer] = js.native
 
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+  def getSharedSigalgs(): js.Array[String] = js.native
+
   def getTLSTicket(): Buffer = js.native
 
   def isSessionReused(): Boolean = js.native

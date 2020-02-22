@@ -1,5 +1,6 @@
 package io.scalajs.nodejs.http2
 
+import com.thoughtworks.enableIf
 import io.scalajs.nodejs.{net, tls}
 
 import scala.scalajs.js
@@ -10,6 +11,13 @@ import scala.scalajs.js.|
 @JSImport("http2", "Http2ServerRequest")
 class Http2ServerRequest extends Http2TimeoutOps {
   def authority: String = js.native
+
+  /**
+    * Added in Node.js v12.10.0
+    * @see v12.10.0
+    */
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+  def complete: Boolean = js.native
 
   def destroy(error: io.scalajs.nodejs.Error = js.native): Unit = js.native
 

@@ -1,7 +1,6 @@
 package io.scalajs.nodejs
 package http
 
-import com.thoughtworks.enableIf
 import io.scalajs.nodejs.buffer.Buffer
 
 import scala.scalajs.js
@@ -55,12 +54,6 @@ trait ServerResponse extends stream.Writable {
   var statusMessage: js.UndefOr[String] = js.native
 
   def socket: net.Socket = js.native
-
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
-  def writableEnded: Boolean = js.native
-
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
-  def writableFinished: Boolean = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods

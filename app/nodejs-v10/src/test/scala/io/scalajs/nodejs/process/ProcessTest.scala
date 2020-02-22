@@ -23,7 +23,7 @@ class ProcessTest extends AnyFunSpec {
       assert(Process.env.PATH === Process.env("PATH"))
       assert(Process.execArgv.length === 0)
       assert(Process.execPath.endsWith("node"))
-      assert(Process.features.contains("debug"))
+      assert(Process.features.uv)
       assert(Process.moduleLoadList.length > 0)
       assert(Process.title.isInstanceOf[String])
       assert(Process.version.startsWith(versionPrefix))

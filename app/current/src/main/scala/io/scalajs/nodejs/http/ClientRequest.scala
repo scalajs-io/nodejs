@@ -36,8 +36,10 @@ import scala.scalajs.js.{Any, |}
 class ClientRequest extends stream.Writable {
   def aborted: Int | Boolean = js.native
 
+  @deprecated("Use request.socket", "Node.js v13.0.0")
   def connection: net.Socket = js.native
 
+  @deprecated("Use request.writableEnded", "Node.js v13.0.0")
   def finished: Boolean = js.native
 
   var maxHeadersCount: Int | Null = js.native

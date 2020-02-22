@@ -5,6 +5,7 @@ import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Future
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * net package object
@@ -90,7 +91,7 @@ package object net {
       * @param callback the callback
       * @example socket.on("connect", function() { ... })
       */
-    @inline def onConnect(callback: js.Function): socket.type = socket.on("connect", callback)
+    @inline def onConnect(callback: () => Any): socket.type = socket.on("connect", callback)
 
     /**
       * Emitted when data is received. The argument data will be a Buffer or String. Encoding of data is set by
@@ -100,7 +101,7 @@ package object net {
       * @param callback - <Buffer>
       * @example socket.on("data", function(buffer) { ... })
       */
-    @inline def onData(callback: Buffer => Any): socket.type = socket.on("data", callback)
+    @inline def onData(callback: Buffer | String => Any): socket.type = socket.on("data", callback)
 
     /**
       * Emitted when the write buffer becomes empty. Can be used to throttle uploads.
@@ -109,7 +110,7 @@ package object net {
       * @param callback the callback
       * @example socket.on("drain", function(???) { ... })
       */
-    @inline def onDrain(callback: js.Function): socket.type = socket.on("drain", callback)
+    @inline def onDrain(callback: () => Any): socket.type = socket.on("drain", callback)
 
     /**
       * Emitted when the other end of the socket sends a FIN packet.
@@ -121,7 +122,9 @@ package object net {
       * @param callback the callback
       * @example socket.on("end", function(???) { ... })
       */
-    @inline def onEnd(callback: js.Function): socket.type = socket.on("end", callback)
+    @inline def onEnd(callback: () => Any): socket.type = socket.on("end", callback)
+
+    @inline def onError(callback: (Error) => Any): socket.type = socket.on("error", callback)
 
     /**
       * Emitted after resolving the hostname but before connecting. Not applicable to UNIX sockets.
@@ -135,6 +138,8 @@ package object net {
       * @example socket.on("lookup", function(err, address, family, host) { ... })
       */
     @inline def onLookup(callback: (Error, String, String, String) => Any): socket.type = socket.on("lookup", callback)
+
+    @inline def onReady(callback: () => Any): socket.type = socket.on("ready", callback)
 
     /**
       * Emitted if the socket times out from inactivity. This is only to notify that the socket has been idle. The user

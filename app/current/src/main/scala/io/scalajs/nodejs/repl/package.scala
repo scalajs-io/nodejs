@@ -12,7 +12,7 @@ package object repl {
     * REPL Server events
     * @param server the given [[REPLServer instance]]
     */
-  implicit final class REPLServerEvents(val server: REPLServer) extends AnyVal {
+  implicit final class REPLServerExtensions[X <: REPLServer](private val server: X) extends AnyVal {
     @inline
     def contextAs[T]: T = server.context.asInstanceOf[T]
 
@@ -23,7 +23,7 @@ package object repl {
       * @param listener The listener callback
       */
     @inline
-    def onExit(listener: () => Any): REPLServer = server.on("exit", listener)
+    def onExit(listener: () => Any): X = server.on("exit", listener)
 
     /**
       * The 'reset' event is emitted when the REPL's context is reset. This occurs whenever the .clear command
@@ -33,7 +33,7 @@ package object repl {
       * @param listener The listener callback
       */
     @inline
-    def onReset(listener: REPLContext => Any): REPLServer = server.on("reset", listener)
+    def onReset(listener: REPLContext => Any): X = server.on("reset", listener)
   }
 
   /**

@@ -76,6 +76,13 @@ object ReadStream {
       */
     @inline
     def onOpen(listener: FileDescriptor => Any): stream.type = stream.on("open", listener)
+
+    /**
+      * Added in Node.js v9.11.0
+      * @see https://nodejs.org/api/fs.html#fs_event_ready
+      */
+    @inline
+    def onReady(listener: () => Any): stream.type = stream.on("ready", listener)
   }
 
   /**

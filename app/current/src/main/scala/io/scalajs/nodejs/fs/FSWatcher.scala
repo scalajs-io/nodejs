@@ -46,6 +46,13 @@ object FSWatcher {
     def onChange(listener: (String, js.Any) => Any): watcher.type = watcher.on("change", listener)
 
     /**
+      * Added in Node.js v10.0.0
+      * @see https://nodejs.org/api/fs.html#fs_event_close
+      */
+    @inline
+    def onClose(listener: () => Any): watcher.type = watcher.on("close", listener)
+
+    /**
       * Emitted when an error occurs.
       * @param listener the event handler
       * @since 0.5.8

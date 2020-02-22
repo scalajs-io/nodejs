@@ -19,8 +19,7 @@ trait OS extends js.Object {
     * are described in OS Constants.
     * @see https://nodejs.org/api/os.html#os_os_constants_1
     */
-  // TODO: Implement as object
-  def constants: js.Dictionary[js.Any] = js.native
+  def constants: OSConstants = js.native
 
   /**
     * A constant defining the appropriate End-of-line marker for the operating system.

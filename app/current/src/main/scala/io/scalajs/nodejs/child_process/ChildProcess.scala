@@ -18,9 +18,6 @@ trait ChildProcess extends IEventEmitter {
   def kill(signal: js.UndefOr[KillSignal] = js.native): Unit = js.native
   def ref(): Unit                                            = js.native
   def unref(): Unit                                          = js.native
-  // TODO: Are those available in limited scenario?
-  //def disconnect(): Unit = js.native
-  //def send(message: js.Any, sendHandle: Handle = js.native, options: SendOptions  = js.native, callback: js.Function1[nodejs.Error, Any] = js.native): Boolean = js.native
 
   val channel: js.UndefOr[js.Object] = js.native
   val connected: Boolean             = js.native
@@ -30,6 +27,15 @@ trait ChildProcess extends IEventEmitter {
   val stdin: stream.IWritable        = js.native
   val stdio: js.Array[IEventEmitter] = js.native
   val stdout: stream.IReadable       = js.native
+}
+
+@js.native
+trait ForkedChildProcess extends ChildProcess {
+  def disconnect(): Unit = js.native
+  def send(message: js.Any,
+           sendHandle: Handle = js.native,
+           options: SendOptions = js.native,
+           callback: js.Function1[nodejs.Error, Any] = js.native): Boolean = js.native
 }
 
 /**
@@ -76,7 +82,7 @@ object ChildProcess extends scala.scalajs.js.Object {
       modulePath: String,
       args: js.Array[String] = js.native,
       options: ForkOptions = js.native
-  ): ChildProcess = js.native
+  ): ForkedChildProcess = js.native
 
   def spawn(
       command: String,

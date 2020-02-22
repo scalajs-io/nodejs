@@ -122,13 +122,13 @@ object Interface {
       * and receives the SIGCONT event. (See events SIGTSTP and SIGCONT)
       */
     @inline
-    def onPause(callback: js.Function) = readline.on("pause", callback)
+    def onPause(callback: () => Any) = readline.on("pause", callback)
 
     /**
       * Emitted whenever the input stream is resumed.
       */
     @inline
-    def onResume(callback: js.Function) = readline.on("resume", callback)
+    def onResume(callback: () => Any) = readline.on("resume", callback)
 
     /**
       * Emitted whenever the input stream is sent to the background with {{{ ^Z }}}, respectively known as SIGTSTP,
@@ -136,14 +136,14 @@ object Interface {
       * program to the background.
       */
     @inline
-    def onSIGCONT(callback: js.Function) = readline.on("SIGCONT", callback)
+    def onSIGCONT(callback: () => Any) = readline.on("SIGCONT", callback)
 
     /**
       * Emitted whenever the input stream receives a {{{ ^C }}}, respectively known as SIGINT. If there is no
       * SIGINT event listener present when the input stream receives a SIGINT, pause will be triggered.
       */
     @inline
-    def onSIGINT(callback: js.Function) = readline.on("SIGINT", callback)
+    def onSIGINT(callback: () => Any) = readline.on("SIGINT", callback)
 
     /**
       * Emitted whenever the input stream receives a {{{ ^Z }}}, respectively known as SIGTSTP. If there is no
@@ -153,6 +153,6 @@ object Interface {
       * stream was paused before the program was sent to the background.
       */
     @inline
-    def onSIGTSTP(callback: js.Function) = readline.on("SIGTSTP", callback)
+    def onSIGTSTP(callback: () => Any) = readline.on("SIGTSTP", callback)
   }
 }

@@ -56,7 +56,7 @@ object ReadStream {
   /**
     * Read Stream Events
     */
-  implicit final class ReadStreamExtension[R <: ReadStream](private val stream: R) extends AnyVal {
+  implicit final class ReadStreamExtensions[R <: ReadStream](private val stream: R) extends AnyVal {
 
     /**
       * Emitted when the ReadStream's underlying file descriptor has been closed using the fs.close() method.

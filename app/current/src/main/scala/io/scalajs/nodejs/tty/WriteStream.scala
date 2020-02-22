@@ -21,7 +21,8 @@ class WriteStream(fd: FileDescriptor) extends net.Socket {
   /**
     * A number specifying the number of columns the TTY currently has. This property is updated whenever
     * the 'resize' event is emitted.
-    * @see [[WriteStreamEvents.onResize]]
+    *
+    * @see [[WriteStreamExtensions.onResize]]
     * @since 0.7.7
     */
   def columns: Int = js.native
@@ -58,7 +59,8 @@ class WriteStream(fd: FileDescriptor) extends net.Socket {
   /**
     * A number specifying the number of rows the TTY currently has. This property is updated whenever the
     * 'resize' event is emitted.
-    * @see [[WriteStreamEvents.onResize]]
+    *
+    * @see [[WriteStreamExtensions.onResize]]
     * @since 0.7.7
     */
   def rows: Int = js.native

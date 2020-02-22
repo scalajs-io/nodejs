@@ -417,7 +417,7 @@ object IWritable {
   /**
     * Writable Events
     */
-  implicit final class WritableExtension[W <: IWritable](private val writable: W) extends AnyVal {
+  implicit final class WritableExtensions[W <: IWritable](private val writable: W) extends AnyVal {
 
     /**
       * Emitted when the stream and any of its underlying resources (a file descriptor, for example) have been closed.

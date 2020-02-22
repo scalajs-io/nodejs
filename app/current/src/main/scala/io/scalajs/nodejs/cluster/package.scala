@@ -20,7 +20,7 @@ package object cluster {
     * Cluster Events
     * @param cluster the given [[Cluster cluster]]
     */
-  implicit final class ClusterEvents(private val cluster: Cluster) extends AnyVal {
+  implicit final class ClusterExtensions(private val cluster: Cluster) extends AnyVal {
 
     /**
       * Emitted after the worker IPC channel has disconnected. This can occur when a worker exits gracefully, is killed,
@@ -105,7 +105,7 @@ package object cluster {
     * Worker Events and Extensions
     * @param worker the given [[Worker worker]]
     */
-  implicit final class WorkerEvents(private val worker: Worker) extends AnyVal {
+  implicit final class WorkerExtensions(private val worker: Worker) extends AnyVal {
     /////////////////////////////////////////////////////////////////////////////////
     //      Worker Extensions
     /////////////////////////////////////////////////////////////////////////////////

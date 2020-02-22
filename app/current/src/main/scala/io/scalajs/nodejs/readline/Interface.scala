@@ -100,7 +100,7 @@ object Interface {
     * Readline Interface Events
     * @param readline the given [[Interface Readline Interface]]
     */
-  implicit final class InterfaceEvents[T <: Interface](private val readline: T) extends AnyVal {
+  implicit final class InterfaceExtensions[T <: Interface](private val readline: T) extends AnyVal {
 
     /**
       * Emitted when close() is called. Also emitted when the input stream receives its 'end' event.

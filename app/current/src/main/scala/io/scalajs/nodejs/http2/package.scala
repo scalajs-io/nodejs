@@ -10,7 +10,7 @@ package object http2 {
   type Origin = String | URL | HasOrigin
   type Path   = String | Buffer | URL
 
-  implicit final class Http2SessionExtension[T <: Http2Session](private val instance: T) extends AnyVal {
+  implicit final class Http2SessionExtensions[T <: Http2Session](private val instance: T) extends AnyVal {
     @inline def onClose(handler: () => Any): T                           = instance.on("close", handler)
     @inline def onConnect(handler: (Http2Session, net.Socket) => Any): T = instance.on("connect", handler)
     @inline def onError(handler: (Error) => Any): T                      = instance.on("error", handler)
@@ -40,14 +40,14 @@ package object http2 {
     @inline def onWantTrailers(handler: () => Any): T              = instance.on("wantTrailers", handler)
   }
 
-  implicit final class ClientHttp2StreamExtension[T <: ClientHttp2Stream](private val instance: T) extends AnyVal {
+  implicit final class ClientHttp2StreamExtensions[T <: ClientHttp2Stream](private val instance: T) extends AnyVal {
     @inline def onContinue(handler: () => Any): T                  = instance.on("continue", handler)
     @inline def onHeaders(handler: (Http2Headers, Int) => Any): T  = instance.on("headers", handler)
     @inline def onPush(handler: (Http2Headers, Int) => Any): T     = instance.on("push", handler)
     @inline def onResponse(handler: (Http2Headers, Int) => Any): T = instance.on("response", handler)
   }
 
-  implicit final class Http2SeverExtension[T <: Http2Server](private val instance: T) extends AnyVal {
+  implicit final class Http2SeverExtensions[T <: Http2Server](private val instance: T) extends AnyVal {
     @inline def onCheckContinue(handler: (Http2ServerRequest, Http2ServerResponse) => Any): T =
       instance.on("checkContinue", handler)
     @inline def onRequest(handler: (Http2ServerRequest, Http2ServerResponse) => Any): T =
@@ -59,7 +59,7 @@ package object http2 {
     @inline def onTimeout(handler: () => Any): T = instance.on("timeout", handler)
   }
 
-  implicit final class Http2SecureSeverExtension[T <: Http2SecureServer](private val instance: T) extends AnyVal {
+  implicit final class Http2SecureSeverExtensions[T <: Http2SecureServer](private val instance: T) extends AnyVal {
     @inline def onCheckContinue(handler: (Http2ServerRequest, Http2ServerResponse) => Any): T =
       instance.on("checkContinue", handler)
     @inline def onRequest(handler: (Http2ServerRequest, Http2ServerResponse) => Any): T =
@@ -72,12 +72,12 @@ package object http2 {
     @inline def onUnknownProtocol(handler: () => Any): T = instance.on("unknownProtocol", handler)
   }
 
-  implicit final class Http2ServerRequestExtension[T <: Http2ServerRequest](private val instance: T) extends AnyVal {
+  implicit final class Http2ServerRequestExtensions[T <: Http2ServerRequest](private val instance: T) extends AnyVal {
     @inline def onAborted(handler: (stream.IReadable) => Any): T = instance.on("aborted", handler)
     @inline def onClose(handler: () => Any): T                   = instance.on("close", handler)
   }
 
-  implicit final class Http2ServerResponseExtension[T <: Http2ServerResponse](private val instance: T) extends AnyVal {
+  implicit final class Http2ServerResponseExtensions[T <: Http2ServerResponse](private val instance: T) extends AnyVal {
     @inline def onClose(handler: () => Any): T                   = instance.on("close", handler)
     @inline def onAborted(handler: (stream.IReadable) => Any): T = instance.on("aborted", handler)
   }

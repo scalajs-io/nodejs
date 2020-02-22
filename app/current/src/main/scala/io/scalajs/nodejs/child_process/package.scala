@@ -16,7 +16,7 @@ package object child_process {
   ]
   type KillSignal = Int | String
 
-  implicit final class ChildProcessExtensions(private val cp: ChildProcess.type) extends AnyVal {
+  implicit final class ChildProcessObjectExtensions(private val cp: ChildProcess.type) extends AnyVal {
     @inline
     def execFuture(
         command: String,
@@ -37,7 +37,7 @@ package object child_process {
     // TODO: spawn, fork
   }
 
-  implicit final class ChildProcessClassExtension(private val cp: ChildProcess) extends AnyVal {
+  implicit final class ChildProcessExtensions(private val cp: ChildProcess) extends AnyVal {
     @inline
     def onClose(listener: (Int, String) => Any): ChildProcess = cp.on("close", listener)
 

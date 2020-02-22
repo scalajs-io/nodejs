@@ -1,6 +1,7 @@
 package io.scalajs.nodejs
 package http
 
+import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Future
@@ -16,15 +17,10 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 @JSImport("http", "Agent")
-class Agent(options: AgentOptions = js.native) extends js.Object {
+class Agent(options: AgentOptions = js.native) extends IEventEmitter {
   /////////////////////////////////////////////////////////////////////////////////
   //      Properties
   /////////////////////////////////////////////////////////////////////////////////
-
-  /**
-    * The agent's domain name
-    */
-  def domain: String = js.native
 
   /**
     * An object which contains arrays of sockets currently awaiting use by the Agent when HTTP KeepAlive is used. Do not modify.
@@ -112,5 +108,7 @@ object Agent {
     def createConnectionFuture(options: ConnectionOptions): Future[js.Any] = {
       promiseWithError1[Error, js.Any](agent.createConnection(options, _))
     }
+
+    @inline def onKeylog(handler: () => Any): agent.type = agent.on("keylog", handler)
   }
 }

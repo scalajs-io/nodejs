@@ -9,7 +9,7 @@ package object tty {
     * Write Stream Events
     * @param stream the given [[WriteStream stream]]
     */
-  implicit final class WriteStreamEvents[W <: WriteStream](private val stream: W) extends AnyVal {
+  implicit final class WriteStreamExtensions[W <: WriteStream](private val stream: W) extends AnyVal {
 
     /**
       * The 'resize' event is emitted whenever either of the writeStream.columns or writeStream.rows properties have

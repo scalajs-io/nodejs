@@ -9,7 +9,7 @@ package object stream {
   type ErrorCallback = js.Function1[io.scalajs.nodejs.Error, Any]
   type Wait          = js.Function0[js.Promise[Unit]]
 
-  implicit final class StreamModuleExtension(private val stream: Stream.type) extends AnyVal {
+  implicit final class StreamModuleExtensions(private val stream: Stream.type) extends AnyVal {
     def pipelineFromSeq(streams: Seq[Stream], errorCallback: ErrorCallback): Wait = {
       streams match {
         case Seq(a, b)             => stream.pipeline(a, b, errorCallback)

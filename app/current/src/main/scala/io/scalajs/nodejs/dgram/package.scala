@@ -12,7 +12,7 @@ package object dgram {
   type Message       = BufferMessage | StringMessage
   type BufferMessage = Uint8Array | js.Array[Uint8Array]
 
-  implicit final class SocketExtension[T <: Socket](private val instance: T) extends AnyVal {
+  implicit final class SocketExtensions[T <: Socket](private val instance: T) extends AnyVal {
     @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
     @inline def onConnect(handler: () => Any): T = instance.on("connect", handler)
 

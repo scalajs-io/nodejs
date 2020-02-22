@@ -52,7 +52,7 @@ object WriteStream {
   /**
     * Write Stream Events
     */
-  implicit final class WriteStreamExtension[T <: WriteStream](private val stream: T) extends AnyVal {
+  implicit final class WriteStreamExtensions[T <: WriteStream](private val stream: T) extends AnyVal {
 
     /**
       * Emitted when the WriteStream's underlying file descriptor has been closed using the fs.close() method.

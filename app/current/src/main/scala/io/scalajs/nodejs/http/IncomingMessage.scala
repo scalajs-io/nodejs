@@ -101,7 +101,7 @@ object IncomingMessage {
   /**
     * Incoming Message Extensions
     */
-  implicit final class IncomingMessageExtension[T <: IncomingMessage](private val message: T) extends AnyVal {
+  implicit final class IncomingMessageExtensions[T <: IncomingMessage](private val message: T) extends AnyVal {
     @inline
     def onAborted(callback: () => Any): T = message.on("aborted", callback)
 

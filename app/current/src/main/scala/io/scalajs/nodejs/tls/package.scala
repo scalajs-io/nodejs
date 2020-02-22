@@ -17,7 +17,7 @@ package object tls {
   type ALPNProtocols =
     Buffer | TypedArray[_, _] | DataView | js.Array[String] | js.Array[TypedArray[_, _]] | js.Array[DataView]
 
-  implicit final class ServerExtension[T <: Server](private val instance: T) extends AnyVal {
+  implicit final class ServerExtensions[T <: Server](private val instance: T) extends AnyVal {
     @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
     @inline def onKeylog(handler: (Buffer, TLSSocket) => Any): T = instance.on("keylog", handler)
 
@@ -31,7 +31,7 @@ package object tls {
     @inline def onTlsClientError(handler: (Error, tls.TLSSocket) => Any): T = instance.on("tlsClientError", handler)
   }
 
-  implicit final class TLSSocketExtension[T <: TLSSocket](private val instance: T) extends AnyVal {
+  implicit final class TLSSocketExtensions[T <: TLSSocket](private val instance: T) extends AnyVal {
     @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
     @inline def onKeylog(handler: (Buffer, TLSSocket) => Any): T = instance.on("keylog", handler)
 

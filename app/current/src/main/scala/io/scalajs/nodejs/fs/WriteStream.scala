@@ -52,7 +52,7 @@ object WriteStream {
   /**
     * Write Stream Events
     */
-  implicit final class WriteStreamEvents(val stream: WriteStream) extends AnyVal {
+  implicit final class WriteStreamExtension[T <: WriteStream](private val stream: T) extends AnyVal {
 
     /**
       * Emitted when the WriteStream's underlying file descriptor has been closed using the fs.close() method.
@@ -60,7 +60,7 @@ object WriteStream {
       * @since 0.1.93
       */
     @inline
-    def onClose(listener: () => Any): stream.type = stream.on("close", listener)
+    def onClose(listener: () => Any): T = stream.on("close", listener)
 
     /**
       * Emitted when the WriteStream's file is opened.
@@ -71,20 +71,15 @@ object WriteStream {
       * @since 0.1.93
       */
     @inline
-    def onOpen(listener: FileDescriptor => Any): stream.type = stream.on("open", listener)
+    def onOpen(listener: FileDescriptor => Any): T = stream.on("open", listener)
 
     /**
       * Added in Node.js v9.11.0
       * @see https://nodejs.org/api/fs.html#fs_event_ready_1
       */
     @inline
-    def onReady(listener: () => Any): stream.type = stream.on("ready", listener)
-  }
+    def onReady(listener: () => Any): T = stream.on("ready", listener)
 
-  /**
-    * Write Stream Extensions
-    */
-  implicit final class WriteStreamExtensions(val stream: WriteStream) extends AnyVal {
     @inline
     def closeFuture: Future[Unit] = promiseCallback1[Unit](stream.close)
   }

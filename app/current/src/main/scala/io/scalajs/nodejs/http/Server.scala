@@ -32,7 +32,7 @@ object Server {
     * Server Events
     * @param server the given [[Server]]
     */
-  implicit final class ServerEvents(val server: Server) extends AnyVal {
+  implicit final class ServerEvents[T <: Server](private val server: T) extends AnyVal {
 
     /**
       * Emitted each time a request with an HTTP Expect: 100-continue is received. If this event is not listened for,
@@ -45,7 +45,7 @@ object Server {
       * - response <http.ServerResponse>
       */
     @inline
-    def onCheckContinue(callback: (IncomingMessage, ServerResponse) => Any): server.type = {
+    def onCheckContinue(callback: (IncomingMessage, ServerResponse) => Any): T = {
       server.on("checkContinue", callback)
     }
 
@@ -57,7 +57,7 @@ object Server {
       * - response <http.ServerResponse>
       */
     @inline
-    def onCheckExpectation(callback: (IncomingMessage, ServerResponse) => Any): server.type = {
+    def onCheckExpectation(callback: (IncomingMessage, ServerResponse) => Any): T = {
       server.on("checkExpectation", callback)
     }
 
@@ -71,13 +71,13 @@ object Server {
       * - socket <stream.Duplex>
       */
     @inline
-    def onClientError(callback: (nodejs.Error, Duplex) => Any): server.type = server.on("clientError", callback)
+    def onClientError(callback: (nodejs.Error, Duplex) => Any): T = server.on("clientError", callback)
 
     /**
       * Emitted when the server closes.
       */
     @inline
-    def onClose(handler: () => Any): server.type = server.on("close", handler)
+    def onClose(handler: () => Any): T = server.on("close", handler)
 
     /**
       * Emitted each time a client requests an HTTP CONNECT method. If this event is not listened for, then clients
@@ -90,7 +90,7 @@ object Server {
       * - head <Buffer> The first packet of the tunneling stream (may be empty)
       */
     @inline
-    def onConnect(handler: (IncomingMessage, Duplex, Buffer) => Any): server.type = server.on("connect", handler)
+    def onConnect(handler: (IncomingMessage, Duplex, Buffer) => Any): T = server.on("connect", handler)
 
     /**
       * When a new TCP stream is established. socket is an object of type net.Socket. Usually users will not want
@@ -99,7 +99,7 @@ object Server {
       * - socket <stream.Duplex>
       */
     @inline
-    def onConnection(handler: Duplex => Any): server.type = server.on("connection", handler)
+    def onConnection(handler: Duplex => Any): T = server.on("connection", handler)
 
     /**
       * Emitted each time there is a request. Note that there may be multiple requests per connection (in the case
@@ -108,7 +108,7 @@ object Server {
       * - response <http.ServerResponse>
       */
     @inline
-    def onRequest(handler: (IncomingMessage, ServerResponse) => Any): server.type = server.on("request", handler)
+    def onRequest(handler: (IncomingMessage, ServerResponse) => Any): T = server.on("request", handler)
 
     /**
       * Emitted each time a client requests an HTTP upgrade. If this event is not listened for, then clients
@@ -121,6 +121,6 @@ object Server {
       * - head <Buffer> The first packet of the upgraded stream (may be empty)
       */
     @inline
-    def onUpgrade(handler: (IncomingMessage, Duplex, Buffer) => Any): server.type = server.on("upgrade", handler)
+    def onUpgrade(handler: (IncomingMessage, Duplex, Buffer) => Any): T = server.on("upgrade", handler)
   }
 }

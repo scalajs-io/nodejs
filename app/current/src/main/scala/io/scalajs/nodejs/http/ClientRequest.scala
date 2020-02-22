@@ -110,13 +110,13 @@ class ClientRequest extends stream.Writable {
   * Client Request Companion
   */
 object ClientRequest {
-  implicit final class ClientRequestExtensions(val client: ClientRequest) extends AnyVal {
+  implicit final class ClientRequestExtensions[T <: ClientRequest](private val client: T) extends AnyVal {
 
     /**
       * Emitted when the request has been aborted by the client. This event is only emitted on the first call to abort().
       */
     @inline
-    def onAbort(callback: () => Any): client.type = client.on("abort", callback)
+    def onAbort(callback: () => Any): T = client.on("abort", callback)
 
     /**
       * Emitted each time a server responds to a request with a CONNECT method. If this event is not being listened for,
@@ -126,17 +126,17 @@ object ClientRequest {
       * - head <Buffer>
       */
     @inline
-    def onConnect(callback: (IncomingMessage, Duplex, Buffer) => Any): client.type = client.on("connect", callback)
+    def onConnect(callback: (IncomingMessage, Duplex, Buffer) => Any): T = client.on("connect", callback)
 
     /**
       * Emitted when the server sends a '100 Continue' HTTP response, usually because the request
       * contained 'Expect: 100-continue'. This is an instruction that the client should send the request body.
       */
     @inline
-    def onContinue(callback: () => Any): client.type = client.on("continue", callback)
+    def onContinue(callback: () => Any): T = client.on("continue", callback)
 
     @inline
-    def onInformation(callback: Information => Any): client.type = client.on("information", callback)
+    def onInformation(callback: Information => Any): T = client.on("information", callback)
 
     /**
       * Emitted when a response is received to this request. This event is emitted only once.
@@ -144,17 +144,17 @@ object ClientRequest {
       * - response <http.IncomingMessage>
       */
     @inline
-    def onResponse(callback: IncomingMessage => Any): client.type = client.on("response", callback)
+    def onResponse(callback: IncomingMessage => Any): T = client.on("response", callback)
 
     /**
       * Emitted after a socket is assigned to this request.
       * - socket <net.Socket>
       */
     @inline
-    def onSocket(callback: Duplex => Any): client.type = client.on("socket", callback)
+    def onSocket(callback: Duplex => Any): T = client.on("socket", callback)
 
     @inline
-    def onTimeout(callback: () => Any): client.type = client.on("timeout", callback)
+    def onTimeout(callback: () => Any): T = client.on("timeout", callback)
 
     /**
       * Emitted each time a server responds to a request with an upgrade. If this event isn't being listened for,
@@ -164,7 +164,7 @@ object ClientRequest {
       * - head <Buffer>
       */
     @inline
-    def onUpgrade(callback: (IncomingMessage, Socket, Buffer) => Any): client.type = client.on("upgrade", callback)
+    def onUpgrade(callback: (IncomingMessage, Socket, Buffer) => Any): T = client.on("upgrade", callback)
 
     @inline
     def endFuture(data: Uint8Array): Future[Unit] = {

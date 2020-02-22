@@ -101,12 +101,12 @@ object IncomingMessage {
   /**
     * Incoming Message Extensions
     */
-  implicit final class IncomingMessageExtensions(val message: IncomingMessage) extends AnyVal {
+  implicit final class IncomingMessageExtension[T <: IncomingMessage](private val message: T) extends AnyVal {
     @inline
-    def onAborted(callback: () => Any): message.type = message.on("aborted", callback)
+    def onAborted(callback: () => Any): T = message.on("aborted", callback)
 
     @inline
-    def onClose(callback: () => Any): message.type = message.on("close", callback)
+    def onClose(callback: () => Any): T = message.on("close", callback)
 
     @inline
     def setTimeout(duration: FiniteDuration, callback: js.Function): Unit =

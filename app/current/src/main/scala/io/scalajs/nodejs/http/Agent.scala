@@ -97,7 +97,7 @@ object Agent {
   /**
     * Agent Extensions
     */
-  implicit final class AgentExtensions(val agent: Agent) extends AnyVal {
+  implicit final class AgentExtensions[T <: Agent](private val agent: T) extends AnyVal {
 
     /**
       * Produces a socket/stream to be used for HTTP requests. By default, this function is the same
@@ -109,6 +109,6 @@ object Agent {
       promiseWithError1[Error, js.Any](agent.createConnection(options, _))
     }
 
-    @inline def onKeylog(handler: () => Any): agent.type = agent.on("keylog", handler)
+    @inline def onKeylog(handler: () => Any): T = agent.on("keylog", handler)
   }
 }

@@ -144,15 +144,15 @@ object ServerResponse {
   /**
     * Server Response Events
     */
-  implicit final class ServerResponseExtensions(val response: ServerResponse) extends AnyVal {
+  implicit final class ServerResponseExtensions[T <: ServerResponse](private val response: T) extends AnyVal {
     @inline
-    def onData(handler: Buffer => Any): response.type = response.on("data", handler)
+    def onData(handler: Buffer => Any): T = response.on("data", handler)
 
     @inline
-    def onClose(handler: () => Any): response.type = response.on("close", handler)
+    def onClose(handler: () => Any): T = response.on("close", handler)
 
     @inline
-    def onFinish(handler: () => Any): response.type = response.on("finish", handler)
+    def onFinish(handler: () => Any): T = response.on("finish", handler)
 
     /**
       * Sets the content-type for the response

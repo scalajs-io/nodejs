@@ -1,16 +1,9 @@
 package io.scalajs.nodejs
 package http
 
-import io.scalajs.nodejs.buffer.Buffer
-import io.scalajs.nodejs.net.Socket
-import io.scalajs.nodejs.stream.Duplex
-import io.scalajs.util.PromiseHelper._
-
-import scala.concurrent.Future
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.typedarray.Uint8Array
-import scala.scalajs.js.{Any, |}
+import scala.scalajs.js.|
 
 /**
   * http.ClientRequest - This object is created internally and returned from http.request(). It represents an in-progress
@@ -104,88 +97,6 @@ class ClientRequest extends stream.Writable {
     * </ul>
     */
   def setTimeout(timeout: Int, callback: js.Function = js.native): Unit = js.native
-}
-
-/**
-  * Client Request Companion
-  */
-object ClientRequest {
-  implicit final class ClientRequestExtensions[T <: ClientRequest](private val client: T) extends AnyVal {
-
-    /**
-      * Emitted when the request has been aborted by the client. This event is only emitted on the first call to abort().
-      */
-    @inline
-    def onAbort(callback: () => Any): T = client.on("abort", callback)
-
-    /**
-      * Emitted each time a server responds to a request with a CONNECT method. If this event is not being listened for,
-      * clients receiving a CONNECT method will have their connections closed.
-      * - response <http.IncomingMessage>
-      * - socket <stream.Duplex>
-      * - head <Buffer>
-      */
-    @inline
-    def onConnect(callback: (IncomingMessage, Duplex, Buffer) => Any): T = client.on("connect", callback)
-
-    /**
-      * Emitted when the server sends a '100 Continue' HTTP response, usually because the request
-      * contained 'Expect: 100-continue'. This is an instruction that the client should send the request body.
-      */
-    @inline
-    def onContinue(callback: () => Any): T = client.on("continue", callback)
-
-    @inline
-    def onInformation(callback: Information => Any): T = client.on("information", callback)
-
-    /**
-      * Emitted when a response is received to this request. This event is emitted only once.
-      * The response argument will be an instance of http.IncomingMessage.
-      * - response <http.IncomingMessage>
-      */
-    @inline
-    def onResponse(callback: IncomingMessage => Any): T = client.on("response", callback)
-
-    /**
-      * Emitted after a socket is assigned to this request.
-      * - socket <net.Socket>
-      */
-    @inline
-    def onSocket(callback: Duplex => Any): T = client.on("socket", callback)
-
-    @inline
-    def onTimeout(callback: () => Any): T = client.on("timeout", callback)
-
-    /**
-      * Emitted each time a server responds to a request with an upgrade. If this event isn't being listened for,
-      * clients receiving an upgrade header will have their connections closed.
-      * - response <http.IncomingMessage>
-      * - socket <net.Socket>
-      * - head <Buffer>
-      */
-    @inline
-    def onUpgrade(callback: (IncomingMessage, Socket, Buffer) => Any): T = client.on("upgrade", callback)
-
-    @inline
-    def endFuture(data: Uint8Array): Future[Unit] = {
-      promiseWithError0[Error](client.end(data, _))
-    }
-
-    @inline
-    def endFuture(data: String, encoding: String): Future[Unit] = {
-      promiseWithError0[Error](client.end(data, encoding, _))
-    }
-
-    @inline
-    def writeFuture(chunk: Uint8Array): Future[Unit] = {
-      promiseWithError0[Error](client.write(chunk, _))
-    }
-
-    @inline
-    def writeFuture(chunk: String, encoding: String): Future[Unit] = {
-      promiseWithError0[Error](client.write(chunk, encoding, _))
-    }
-  }
 }
 
 trait Information extends js.Object {

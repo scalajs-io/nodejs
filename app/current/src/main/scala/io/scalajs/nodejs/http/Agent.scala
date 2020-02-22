@@ -2,9 +2,7 @@ package io.scalajs.nodejs
 package http
 
 import io.scalajs.nodejs.events.IEventEmitter
-import io.scalajs.util.PromiseHelper._
 
-import scala.concurrent.Future
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
@@ -87,28 +85,4 @@ class Agent(options: AgentOptions = js.native) extends IEventEmitter {
   def destroy(): Unit = js.native
 
   def getName(options: GetNameOptions): String = js.native
-}
-
-/**
-  * Agent Companion
-  */
-object Agent {
-
-  /**
-    * Agent Extensions
-    */
-  implicit final class AgentExtensions[T <: Agent](private val agent: T) extends AnyVal {
-
-    /**
-      * Produces a socket/stream to be used for HTTP requests. By default, this function is the same
-      * as net.createConnection(). However, custom Agents may override this method in case greater
-      * flexibility is desired.
-      */
-    @inline
-    def createConnectionFuture(options: ConnectionOptions): Future[js.Any] = {
-      promiseWithError1[Error, js.Any](agent.createConnection(options, _))
-    }
-
-    @inline def onKeylog(handler: () => Any): T = agent.on("keylog", handler)
-  }
 }

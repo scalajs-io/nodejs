@@ -1,8 +1,6 @@
 package io.scalajs.nodejs
 package http
 
-import io.scalajs.nodejs.buffer.Buffer
-
 import scala.scalajs.js
 import scala.scalajs.js.|
 
@@ -134,47 +132,4 @@ trait ServerResponse extends stream.Writable {
   def writeHead(statusCode: Int): Unit                                        = js.native
 
   def writeProcessing(): Unit = js.native
-}
-
-/**
-  * Server Response
-  */
-object ServerResponse {
-
-  /**
-    * Server Response Events
-    */
-  implicit final class ServerResponseExtensions[T <: ServerResponse](private val response: T) extends AnyVal {
-    @inline
-    def onData(handler: Buffer => Any): T = response.on("data", handler)
-
-    @inline
-    def onClose(handler: () => Any): T = response.on("close", handler)
-
-    @inline
-    def onFinish(handler: () => Any): T = response.on("finish", handler)
-
-    /**
-      * Sets the content-type for the response
-      * @param contentType the given MIME type
-      */
-    @inline
-    def setContentType(contentType: String): Unit = response.setHeader("Content-Type", contentType)
-
-    /////////////////////////////////////////////////////////////////////////////////
-    //      Response Shortcuts
-    /////////////////////////////////////////////////////////////////////////////////
-
-    @inline
-    def badRequest(): Unit = response.sendStatus(400)
-
-    @inline
-    def forbidden(): Unit = response.sendStatus(403)
-
-    @inline
-    def internalServerError(): Unit = response.sendStatus(500)
-
-    @inline
-    def notFound(): Unit = response.sendStatus(404)
-  }
 }

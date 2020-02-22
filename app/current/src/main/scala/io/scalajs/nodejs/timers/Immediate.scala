@@ -1,7 +1,6 @@
 package io.scalajs.nodejs.timers
 
 import com.thoughtworks.enableIf
-import io.scalajs.nodejs.clearImmediate
 
 import scala.scalajs.js
 
@@ -18,19 +17,4 @@ trait Immediate extends js.Object {
   def ref(): Immediate = js.native
 
   def unref(): Immediate = js.native
-}
-
-/**
-  * Immediate Companion
-  */
-object Immediate {
-
-  /**
-    * Immediate Enrichment
-    * @param immediate the given [[Immediate immediate]] handle
-    */
-  implicit final class ImmediateEnrichment(val immediate: Immediate) extends AnyVal {
-    @inline
-    def clear(): Unit = clearImmediate(immediate)
-  }
 }

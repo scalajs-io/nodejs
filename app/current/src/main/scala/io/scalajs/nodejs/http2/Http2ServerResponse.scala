@@ -1,6 +1,5 @@
 package io.scalajs.nodejs.http2
 
-import com.thoughtworks.enableIf
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.{net, tls, stream}
 
@@ -12,13 +11,6 @@ import scala.scalajs.js.|
 @JSImport("http2", "Http2ServerResponse")
 class Http2ServerResponse extends stream.Writable with Http2TimeoutOps {
   def addTrailers(headers: Http2Headers): Unit = js.native
-
-  /**
-    * Added in Node.js v12.9.0
-    * @see v12.9.0
-    */
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
-  def writableEnded: Boolean = js.native
 
   @deprecated("Use response.socket", "Node.js v13.0.0")
   def connection: net.Socket | tls.TLSSocket = js.native

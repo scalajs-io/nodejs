@@ -63,7 +63,7 @@ package object http {
   /**
     * Server Events
     */
-  implicit final class ServerEvents(val server: Server) extends AnyVal {
+  implicit final class ServerExtensions[T <: Server](private val server: T) extends AnyVal {
 
     /**
       * Emitted each time a request with an http Expect: 100-continue is received. If this event isn't listened for,
@@ -77,7 +77,7 @@ package object http {
       * @example server.on("checkContinue", function (request, response) { ... })
       */
     @inline
-    def onCheckContinue(callback: (ClientRequest, ServerResponse) => Any): server.type =
+    def onCheckContinue(callback: (ClientRequest, ServerResponse) => Any): T =
       server.on("checkContinue", callback)
 
     /**
@@ -91,10 +91,10 @@ package object http {
       * @example server.on("clientError", function (exception, socket) { ... })
       */
     @inline
-    def onClientError(callback: (SystemError, Socket) => Any): server.type = server.on("clientError", callback)
+    def onClientError(callback: (SystemError, Socket) => Any): T = server.on("clientError", callback)
 
     @inline
-    def onConnect(callback: js.Function): server.type = server.on("connect", callback)
+    def onConnect(callback: js.Function): T = server.on("connect", callback)
 
     @inline
     def closeFuture(): Future[Unit] = promiseWithError0[SystemError](server.close)
@@ -106,9 +106,9 @@ package object http {
     def listenFuture(options: ListenerOptions): Future[Unit] = promiseWithError0[SystemError](server.listen(options, _))
 
     @inline
-    def onRequest(callback: js.Function): server.type = server.on("request", callback)
+    def onRequest(callback: js.Function): T = server.on("request", callback)
 
     @inline
-    def onUpgrade(callback: js.Function): server.type = server.on("upgrade", callback)
+    def onUpgrade(callback: js.Function): T = server.on("upgrade", callback)
   }
 }

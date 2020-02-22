@@ -27,7 +27,7 @@ object FSWatcher {
   /**
     * File System Watcher Extensions
     */
-  implicit final class FSWatcherExtensions(val watcher: FSWatcher) extends AnyVal {
+  implicit final class FSWatcherExtensions[T <: FSWatcher](private val watcher: T) extends AnyVal {
 
     /**
       * Emitted when something changes in a watched directory or file. See more details in fs.watch().
@@ -43,7 +43,14 @@ object FSWatcher {
       * @since 0.5.8
       */
     @inline
-    def onChange(listener: (String, js.Any) => Any): watcher.type = watcher.on("change", listener)
+    def onChange(listener: (String, js.Any) => Any): T = watcher.on("change", listener)
+
+    /**
+      * Added in Node.js v10.0.0
+      * @see https://nodejs.org/api/fs.html#fs_event_close
+      */
+    @inline
+    def onClose(listener: () => Any): T = watcher.on("close", listener)
 
     /**
       * Emitted when an error occurs.
@@ -51,7 +58,7 @@ object FSWatcher {
       * @since 0.5.8
       */
     @inline
-    def onError(listener: Error => Any): watcher.type = watcher.on("error", listener)
+    def onError(listener: Error => Any): T = watcher.on("error", listener)
   }
 }
 

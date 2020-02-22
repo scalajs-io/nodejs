@@ -9,7 +9,7 @@ package object tty {
     * Write Stream Events
     * @param stream the given [[WriteStream stream]]
     */
-  implicit final class WriteStreamEvents(val stream: WriteStream) extends AnyVal {
+  implicit final class WriteStreamEvents[W <: WriteStream](private val stream: W) extends AnyVal {
 
     /**
       * The 'resize' event is emitted whenever either of the writeStream.columns or writeStream.rows properties have
@@ -17,6 +17,6 @@ package object tty {
       * @param listener the given event handler
       * @since 0.7.7
       */
-    def onResize(listener: () => Any): stream.type = stream.on("resize", listener)
+    @inline def onResize(listener: () => Any): W = stream.on("resize", listener)
   }
 }

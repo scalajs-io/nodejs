@@ -5,6 +5,7 @@ import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Future
 import scala.scalajs.js
+import scala.scalajs.js.|
 
 /**
   * net package object
@@ -16,35 +17,35 @@ package object net {
     * net.Server Events
     * @param server the given [[Server server]]
     */
-  implicit final class ServerEvents(val server: Server) extends AnyVal {
+  implicit final class ServerExtensions[T <: Server](private val server: T) extends AnyVal {
 
     /**
       * Emitted when a new connection is made. socket is an instance of net.Socket.
       * @example server.on("close", function () { ... })
       */
-    @inline def onClose(callback: () => Any): server.type = server.on("close", callback)
+    @inline def onClose(callback: () => Any): T = server.on("close", callback)
 
     /**
       * Emitted when a new connection is made. socket is an instance of net.Socket.
       */
-    @inline def onConnection(callback: js.Function): server.type = server.on("connection", callback)
+    @inline def onConnection(callback: js.Function): T = server.on("connection", callback)
 
     /**
       * Emitted when an error occurs. The 'close' event will be called directly following this event.
       */
-    @inline def onError(callback: Error => Any): server.type = server.on("error", callback)
+    @inline def onError(callback: Error => Any): T = server.on("error", callback)
 
     /**
       * Emitted when the server has been bound after calling server.listen.
       */
-    @inline def onListening(callback: js.Function): server.type = server.on("listening", callback)
+    @inline def onListening(callback: js.Function): T = server.on("listening", callback)
   }
 
   /**
     * net.Socket Extensions
     * @param socket the given [[Socket socket]]
     */
-  implicit final class SocketExtensions(val socket: Socket) extends AnyVal {
+  implicit final class SocketExtensions[T <: Socket](private val socket: T) extends AnyVal {
     /////////////////////////////////////////////////////////////////////////////////
     //      Futures
     /////////////////////////////////////////////////////////////////////////////////
@@ -83,14 +84,14 @@ package object net {
       * @param callback - had_error <Boolean> true if the socket had a transmission error.
       * @example socket.on("close", function(had_error) { ... })
       */
-    @inline def onClose(callback: Boolean => Any): socket.type = socket.on("close", callback)
+    @inline def onClose(callback: Boolean => Any): T = socket.on("close", callback)
 
     /**
       * Emitted when a socket connection is successfully established. See connect().
       * @param callback the callback
       * @example socket.on("connect", function() { ... })
       */
-    @inline def onConnect(callback: js.Function): socket.type = socket.on("connect", callback)
+    @inline def onConnect(callback: () => Any): T = socket.on("connect", callback)
 
     /**
       * Emitted when data is received. The argument data will be a Buffer or String. Encoding of data is set by
@@ -100,7 +101,7 @@ package object net {
       * @param callback - <Buffer>
       * @example socket.on("data", function(buffer) { ... })
       */
-    @inline def onData(callback: Buffer => Any): socket.type = socket.on("data", callback)
+    @inline def onData(callback: Buffer | String => Any): T = socket.on("data", callback)
 
     /**
       * Emitted when the write buffer becomes empty. Can be used to throttle uploads.
@@ -109,7 +110,7 @@ package object net {
       * @param callback the callback
       * @example socket.on("drain", function(???) { ... })
       */
-    @inline def onDrain(callback: js.Function): socket.type = socket.on("drain", callback)
+    @inline def onDrain(callback: () => Any): T = socket.on("drain", callback)
 
     /**
       * Emitted when the other end of the socket sends a FIN packet.
@@ -121,7 +122,9 @@ package object net {
       * @param callback the callback
       * @example socket.on("end", function(???) { ... })
       */
-    @inline def onEnd(callback: js.Function): socket.type = socket.on("end", callback)
+    @inline def onEnd(callback: () => Any): T = socket.on("end", callback)
+
+    @inline def onError(callback: (Error) => Any): T = socket.on("error", callback)
 
     /**
       * Emitted after resolving the hostname but before connecting. Not applicable to UNIX sockets.
@@ -134,7 +137,9 @@ package object net {
       *                 </ul>
       * @example socket.on("lookup", function(err, address, family, host) { ... })
       */
-    @inline def onLookup(callback: (Error, String, String, String) => Any): socket.type = socket.on("lookup", callback)
+    @inline def onLookup(callback: (Error, String, String, String) => Any): T = socket.on("lookup", callback)
+
+    @inline def onReady(callback: () => Any): T = socket.on("ready", callback)
 
     /**
       * Emitted if the socket times out from inactivity. This is only to notify that the socket has been idle. The user
@@ -144,6 +149,6 @@ package object net {
       * @param callback the callback
       * @example socket.on("timeout", function(???) { ... })
       */
-    @inline def onTimeout(callback: js.Function): socket.type = socket.on("timeout", callback)
+    @inline def onTimeout(callback: js.Function): T = socket.on("timeout", callback)
   }
 }

@@ -56,7 +56,7 @@ object ReadStream {
   /**
     * Read Stream Events
     */
-  implicit final class ReadStreamEvents(val stream: ReadStream) extends AnyVal {
+  implicit final class ReadStreamExtension[R <: ReadStream](private val stream: R) extends AnyVal {
 
     /**
       * Emitted when the ReadStream's underlying file descriptor has been closed using the fs.close() method.
@@ -64,7 +64,7 @@ object ReadStream {
       * @since 0.1.93
       */
     @inline
-    def onClose(listener: () => Any): stream.type = stream.on("close", listener)
+    def onClose(listener: () => Any): R = stream.on("close", listener)
 
     /**
       * Emitted when the ReadStream's file is opened.
@@ -75,13 +75,15 @@ object ReadStream {
       * @since 0.1.93
       */
     @inline
-    def onOpen(listener: FileDescriptor => Any): stream.type = stream.on("open", listener)
-  }
+    def onOpen(listener: FileDescriptor => Any): R = stream.on("open", listener)
 
-  /**
-    * Read Stream Extensions
-    */
-  implicit final class ReadStreamExtensions(val stream: ReadStream) extends AnyVal {
+    /**
+      * Added in Node.js v9.11.0
+      * @see https://nodejs.org/api/fs.html#fs_event_ready
+      */
+    @inline
+    def onReady(listener: () => Any): R = stream.on("ready", listener)
+
     @inline
     def closeFuture: Future[Unit] = promiseCallback1[Unit](stream.close)
   }

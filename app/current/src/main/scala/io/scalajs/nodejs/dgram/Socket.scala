@@ -131,3 +131,11 @@ trait RemoteAddress extends js.Object {
   var family: String  = js.native
   var port: Int       = js.native
 }
+
+@js.native
+trait RemoteAddressInfo extends js.Object {
+  var address: String = js.native
+  var family: String  = js.native
+  var port: Int       = js.native
+  var size: Int       = js.native
+}

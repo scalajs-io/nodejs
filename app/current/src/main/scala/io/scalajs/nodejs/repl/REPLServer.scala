@@ -65,30 +65,3 @@ class DefinedCommand(
     var action: js.Function1[String, Any],
     var help: js.UndefOr[String] = js.undefined
 ) extends js.Object
-
-/**
-  * REPL Server Companion
-  */
-object REPLServer {
-
-  /**
-    * REPL Server Extensions
-    * @param server the given [[REPLServer REPL Server]]
-    */
-  implicit final class REPLServerExtensions[T <: REPLServer](val server: T) extends AnyVal {
-
-    /**
-      * Emitted when the user exits the REPL in any of the defined ways. Namely, typing .exit at the repl,
-      * pressing Ctrl+C twice to signal SIGINT, or pressing Ctrl+D to signal 'end' on the input stream.
-      */
-    @inline
-    def onExit(callback: js.Function): server.type = server.on("exit", callback)
-
-    /**
-      * Emitted when the REPL's context is reset. This happens when you type .clear. If you start the repl
-      * with { useGlobal: true } then this event will never be emitted.
-      */
-    @inline
-    def onReset(callback: js.Function): server.type = server.on("reset", callback)
-  }
-}

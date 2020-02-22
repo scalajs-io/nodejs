@@ -443,28 +443,6 @@ trait ComponentVersion extends js.Object {
   var tz: String      = js.native
 }
 
-/**
-  * Warning
-  */
-@js.native
-trait Warning extends js.Object {
-
-  /**
-    * The name of the warning (currently Warning by default).
-    */
-  var name: String = js.native
-
-  /**
-    * A system-provided description of the warning.
-    */
-  var message: String = js.native
-
-  /**
-    * A stack trace to the location in the code where the warning was issued.
-    */
-  var stack: js.Any = js.native
-}
-
 @js.native
 trait CpuUsage extends js.Object {
   val user: Int   = js.native

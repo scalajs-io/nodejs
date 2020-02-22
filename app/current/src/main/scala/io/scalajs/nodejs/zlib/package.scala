@@ -23,7 +23,7 @@ package object zlib {
   /**
     * Zlib Extensions
     */
-  implicit final class ZlibExtensions(val zlib: Zlib) extends AnyVal {
+  implicit final class ZlibExtensions[T <: Zlib](private val zlib: T) extends AnyVal {
 
     /**
       * Asynchronously compresses a Buffer or string with Deflate.

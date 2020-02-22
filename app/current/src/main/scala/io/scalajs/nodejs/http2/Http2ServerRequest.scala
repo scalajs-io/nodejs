@@ -1,7 +1,7 @@
 package io.scalajs.nodejs.http2
 
 import com.thoughtworks.enableIf
-import io.scalajs.nodejs.{net, tls}
+import io.scalajs.nodejs.{net, tls, stream}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
@@ -9,7 +9,7 @@ import scala.scalajs.js.|
 
 @js.native
 @JSImport("http2", "Http2ServerRequest")
-class Http2ServerRequest extends Http2TimeoutOps {
+class Http2ServerRequest extends stream.Readable with Http2TimeoutOps {
   def authority: String = js.native
 
   /**

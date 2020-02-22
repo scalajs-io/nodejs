@@ -3,7 +3,7 @@ package http
 
 import io.scalajs.nodejs
 import io.scalajs.nodejs.buffer.Buffer
-import io.scalajs.nodejs.net.Socket
+import io.scalajs.nodejs.stream.Duplex
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
@@ -32,7 +32,7 @@ object Server {
     * Server Events
     * @param server the given [[Server]]
     */
-  implicit final class ServerEvents(val server: Server) extends AnyVal {
+  implicit final class ServerEvents[T <: Server](private val server: T) extends AnyVal {
 
     /**
       * Emitted each time a request with an HTTP Expect: 100-continue is received. If this event is not listened for,
@@ -44,7 +44,8 @@ object Server {
       * - request <http.IncomingMessage>
       * - response <http.ServerResponse>
       */
-    def onCheckContinue(callback: (IncomingMessage, ServerResponse) => Any): server.type = {
+    @inline
+    def onCheckContinue(callback: (IncomingMessage, ServerResponse) => Any): T = {
       server.on("checkContinue", callback)
     }
 
@@ -52,11 +53,11 @@ object Server {
       * Emitted each time a request with an http Expect header is received, where the value is not 100-continue.
       * If this event isn't listened for, the server will automatically respond with a 417 Expectation Failed as appropriate.
       * <b>Note</b> that when this event is emitted and handled, the request event will not be emitted.
-      * - request <http.ClientRequest>
+      * - request <http.IncomingMessage>
       * - response <http.ServerResponse>
       */
     @inline
-    def onCheckExpectation(callback: (ClientRequest, ServerResponse) => Any): server.type = {
+    def onCheckExpectation(callback: (IncomingMessage, ServerResponse) => Any): T = {
       server.on("checkExpectation", callback)
     }
 
@@ -67,16 +68,16 @@ object Server {
       *
       * Default behavior is to destroy the socket immediately on malformed request.
       * - exception <Error>
-      * - socket <net.Socket>
+      * - socket <stream.Duplex>
       */
     @inline
-    def onClientError(callback: (nodejs.Error, Socket) => Any): server.type = server.on("clientError", callback)
+    def onClientError(callback: (nodejs.Error, Duplex) => Any): T = server.on("clientError", callback)
 
     /**
       * Emitted when the server closes.
       */
     @inline
-    def onClose(handler: () => Any): server.type = server.on("close", handler)
+    def onClose(handler: () => Any): T = server.on("close", handler)
 
     /**
       * Emitted each time a client requests an HTTP CONNECT method. If this event is not listened for, then clients
@@ -85,20 +86,20 @@ object Server {
       * After this event is emitted, the request's socket will not have a 'data' event listener, meaning you will need
       * to bind to it in order to handle data sent to the server on that socket.
       * - request <http.IncomingMessage> Arguments for the HTTP request, as it is in the 'request' event
-      * - socket <net.Socket> Network socket between the server and client
+      * - socket <stream.Duplex> Network socket between the server and client
       * - head <Buffer> The first packet of the tunneling stream (may be empty)
       */
     @inline
-    def onConnect(handler: (IncomingMessage, Socket, Buffer) => Any): server.type = server.on("connect", handler)
+    def onConnect(handler: (IncomingMessage, Duplex, Buffer) => Any): T = server.on("connect", handler)
 
     /**
       * When a new TCP stream is established. socket is an object of type net.Socket. Usually users will not want
       * to access this event. In particular, the socket will not emit 'readable' events because of how the protocol
       * parser attaches to the socket. The socket can also be accessed at request.connection.
-      * - socket <net.Socket>
+      * - socket <stream.Duplex>
       */
     @inline
-    def onConnection(handler: Socket => Any): server.type = server.on("connection", handler)
+    def onConnection(handler: Duplex => Any): T = server.on("connection", handler)
 
     /**
       * Emitted each time there is a request. Note that there may be multiple requests per connection (in the case
@@ -107,7 +108,7 @@ object Server {
       * - response <http.ServerResponse>
       */
     @inline
-    def onRequest(handler: (IncomingMessage, ServerResponse) => Any): server.type = server.on("request", handler)
+    def onRequest(handler: (IncomingMessage, ServerResponse) => Any): T = server.on("request", handler)
 
     /**
       * Emitted each time a client requests an HTTP upgrade. If this event is not listened for, then clients
@@ -116,10 +117,10 @@ object Server {
       * After this event is emitted, the request's socket will not have a 'data' event listener, meaning you will
       * need to bind to it in order to handle data sent to the server on that socket.
       * - request <http.IncomingMessage> Arguments for the HTTP request, as it is in the 'request' event
-      * - socket <net.Socket> Network socket between the server and client
+      * - socket <stream.Duplex> Network socket between the server and client
       * - head <Buffer> The first packet of the upgraded stream (may be empty)
       */
     @inline
-    def onUpgrade(handler: (IncomingMessage, Socket, Buffer) => Any): server.type = server.on("upgrade", handler)
+    def onUpgrade(handler: (IncomingMessage, Duplex, Buffer) => Any): T = server.on("upgrade", handler)
   }
 }

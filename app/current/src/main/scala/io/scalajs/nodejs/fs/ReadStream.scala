@@ -3,10 +3,7 @@ package fs
 
 import com.thoughtworks.enableIf
 import io.scalajs.nodejs.buffer.Buffer
-import io.scalajs.nodejs.stream
-import io.scalajs.util.PromiseHelper.promiseCallback1
 
-import scala.concurrent.Future
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
@@ -46,45 +43,4 @@ class ReadStream(path: Path) extends stream.Readable {
 
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   val pending: Boolean = js.native
-}
-
-/**
-  * Read Stream Companion
-  */
-object ReadStream {
-
-  /**
-    * Read Stream Events
-    */
-  implicit final class ReadStreamExtensions[R <: ReadStream](private val stream: R) extends AnyVal {
-
-    /**
-      * Emitted when the ReadStream's underlying file descriptor has been closed using the fs.close() method.
-      * @param listener the event handler
-      * @since 0.1.93
-      */
-    @inline
-    def onClose(listener: () => Any): R = stream.on("close", listener)
-
-    /**
-      * Emitted when the ReadStream's file is opened.
-      * @param listener the event handler
-      *                 <ul>
-      *                 <li>fd: Integer - file descriptor used by the ReadStream.</li>
-      *                 </ul>
-      * @since 0.1.93
-      */
-    @inline
-    def onOpen(listener: FileDescriptor => Any): R = stream.on("open", listener)
-
-    /**
-      * Added in Node.js v9.11.0
-      * @see https://nodejs.org/api/fs.html#fs_event_ready
-      */
-    @inline
-    def onReady(listener: () => Any): R = stream.on("ready", listener)
-
-    @inline
-    def closeFuture: Future[Unit] = promiseCallback1[Unit](stream.close)
-  }
 }

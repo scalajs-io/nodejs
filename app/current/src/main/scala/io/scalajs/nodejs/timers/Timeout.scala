@@ -1,7 +1,6 @@
 package io.scalajs.nodejs.timers
 
 import com.thoughtworks.enableIf
-import io.scalajs.nodejs.clearTimeout
 
 import scala.scalajs.js
 
@@ -23,19 +22,4 @@ trait Timeout extends js.Object {
 
   def ref(): Timeout   = js.native
   def unref(): Timeout = js.native
-}
-
-/**
-  * Timeout Companion
-  */
-object Timeout {
-
-  /**
-    * Timeout Enrichment
-    * @param handle the given [[Timeout timeout]] handle
-    */
-  implicit final class TimeoutEnrichment(val handle: Timeout) extends AnyVal {
-    @inline
-    def clear(): Unit = clearTimeout(handle)
-  }
 }

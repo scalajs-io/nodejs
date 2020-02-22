@@ -20,49 +20,6 @@ trait FSWatcher extends IEventEmitter {
 }
 
 /**
-  * File System Watcher Companion
-  */
-object FSWatcher {
-
-  /**
-    * File System Watcher Extensions
-    */
-  implicit final class FSWatcherExtensions[T <: FSWatcher](private val watcher: T) extends AnyVal {
-
-    /**
-      * Emitted when something changes in a watched directory or file. See more details in fs.watch().
-      *
-      * The filename argument may not be provided depending on operating system support. If filename is provided,
-      * it will be provided as a Buffer if fs.watch() is called with it's encoding option set to 'buffer', otherwise
-      * filename will be a string.
-      * @param listener the event handler
-      *                 <ul>
-      *                 <li>event: String - The type of fs change</li>
-      *                 <li>filename: String> | Buffer - The filename that changed (if relevant/available)</li>
-      *                 </ul>
-      * @since 0.5.8
-      */
-    @inline
-    def onChange(listener: (String, js.Any) => Any): T = watcher.on("change", listener)
-
-    /**
-      * Added in Node.js v10.0.0
-      * @see https://nodejs.org/api/fs.html#fs_event_close
-      */
-    @inline
-    def onClose(listener: () => Any): T = watcher.on("close", listener)
-
-    /**
-      * Emitted when an error occurs.
-      * @param listener the event handler
-      * @since 0.5.8
-      */
-    @inline
-    def onError(listener: Error => Any): T = watcher.on("error", listener)
-  }
-}
-
-/**
   * FS Watcher Options
   * @param encoding   Specifies the character encoding to be used for the filename passed to the listener (default: "utf8")
   * @param persistent Indicates whether the process should continue to run as long as files are being watched (default: true)

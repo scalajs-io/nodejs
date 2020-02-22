@@ -4,7 +4,6 @@ import com.thoughtworks.enableIf
 import io.scalajs.nodejs.net.Socket
 import io.scalajs.nodejs.stream
 
-import scala.concurrent.duration.FiniteDuration
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
@@ -91,25 +90,4 @@ class IncomingMessage extends stream.Readable {
     * @example message.url
     */
   def url: js.UndefOr[String] = js.native
-}
-
-/**
-  * Incoming Message Companion
-  */
-object IncomingMessage {
-
-  /**
-    * Incoming Message Extensions
-    */
-  implicit final class IncomingMessageExtensions[T <: IncomingMessage](private val message: T) extends AnyVal {
-    @inline
-    def onAborted(callback: () => Any): T = message.on("aborted", callback)
-
-    @inline
-    def onClose(callback: () => Any): T = message.on("close", callback)
-
-    @inline
-    def setTimeout(duration: FiniteDuration, callback: js.Function): Unit =
-      message.setTimeout(duration.toMillis.toDouble, callback)
-  }
 }

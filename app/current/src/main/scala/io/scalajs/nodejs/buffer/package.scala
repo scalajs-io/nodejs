@@ -48,12 +48,17 @@ package object buffer {
   /**
     * Buffer Extensions
     */
+  @deprecated("Use io.scalajs.nodejs.buffer package object instead", "v0.10.0")
   implicit final class BufferObjExtensions(val unused: Buffer.type) extends AnyVal {
+    @deprecated("Use io.scalajs.nodejs.buffer.transcode instead", "v0.10.0")
     def transcode(source: Uint8Array, fromEnc: String, toEnc: String): Buffer =
       BufferNamespace.transcode(source, fromEnc, toEnc)
+    @deprecated("Use io.scalajs.nodejs.buffer.INSPECT_MAX_BYTES instead", "v0.10.0")
     def INSPECT_MAX_BYTES = BufferNamespace.INSPECT_MAX_BYTES
-    def kMaxLength        = BufferNamespace.kMaxLength
-    def constants         = io.scalajs.nodejs.buffer.constants
+    @deprecated("Use io.scalajs.nodejs.buffer.kMaxLength instead", "v0.10.0")
+    def kMaxLength = BufferNamespace.kMaxLength
+    @deprecated("Use io.scalajs.nodejs.buffer.constants instead", "v0.10.0")
+    def constants = io.scalajs.nodejs.buffer.constants
   }
 
   /**

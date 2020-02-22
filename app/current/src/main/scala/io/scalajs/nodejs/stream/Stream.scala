@@ -155,11 +155,6 @@ sealed trait IReadable extends LegacyStream {
   def readable: Boolean = js.native
 
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
-  @deprecated("Wrong name. Use readableEncoding", "0.9.1")
-  @JSName("readableEncoding")
-  def setReadableEncoding: String = js.native
-
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def readableEncoding: String = js.native
 
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)

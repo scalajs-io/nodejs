@@ -1,7 +1,6 @@
 package io.scalajs.nodejs
 package http
 
-import com.thoughtworks.enableIf
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.net.Socket
 import io.scalajs.util.PromiseHelper._
@@ -45,12 +44,6 @@ class ClientRequest extends stream.Writable {
   def path: String = js.native
 
   def socket: net.Socket = js.native
-
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
-  def writableEnded: Boolean = js.native
-
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
-  def writableFinished: Boolean = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Methods

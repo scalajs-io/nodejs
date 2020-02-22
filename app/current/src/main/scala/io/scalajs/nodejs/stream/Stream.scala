@@ -388,6 +388,12 @@ sealed trait IWritable extends LegacyStream {
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def writable: Boolean = js.native
 
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+  def writableEnded: Boolean = js.native
+
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+  def writableFinished: Boolean = js.native
+
   def writableHighWaterMark: Double = js.native
 
   def writableLength: Int = js.native

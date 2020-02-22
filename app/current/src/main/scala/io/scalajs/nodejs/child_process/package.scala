@@ -33,8 +33,6 @@ package object child_process {
     ): Future[(Output, Output)] = {
       promiseWithError2[nodejs.Error, Output, Output](cp.execFile(file, args.orNull, options.orNull, _))
     }
-
-    // TODO: spawn, fork
   }
 
   implicit final class ChildProcessExtensions(private val cp: ChildProcess) extends AnyVal {

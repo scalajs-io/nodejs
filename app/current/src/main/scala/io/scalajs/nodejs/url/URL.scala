@@ -1,8 +1,6 @@
 package io.scalajs.nodejs
 package url
 
-import io.scalajs.nodejs.events.IEventEmitter
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
@@ -107,7 +105,7 @@ class URL(input: String, base: String | URL = js.native) extends js.Object {
   */
 @js.native
 @JSImport("url", JSImport.Namespace)
-object URL extends IEventEmitter {
+object URL extends js.Object {
 
   /**
     * Take a parsed URL object, and return a formatted URL string.

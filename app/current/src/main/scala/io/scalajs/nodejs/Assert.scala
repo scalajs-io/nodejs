@@ -1,7 +1,5 @@
 package io.scalajs.nodejs
 
-import io.scalajs.nodejs.events.IEventEmitter
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
@@ -15,7 +13,7 @@ import scala.scalajs.js.|
   * methods implemented and exposed by the module.
   */
 @js.native
-trait Assert extends IEventEmitter {
+trait Assert extends js.Object {
 
   /**
     * An alias of assert.ok() .

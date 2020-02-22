@@ -136,7 +136,7 @@ trait IEventEmitter extends js.Object {
   */
 @js.native
 @JSImport("events", JSImport.Namespace)
-object EventEmitter extends IEventEmitter {
+object EventEmitter extends js.Object {
 
   var usingDomains: Boolean = js.native
 

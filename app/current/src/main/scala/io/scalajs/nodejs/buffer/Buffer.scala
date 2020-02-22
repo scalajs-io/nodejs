@@ -142,15 +142,6 @@ class Buffer private[this] () extends Uint8Array( /* dummy to trick constructor 
   def keys(): js.Iterator[Int] = js.native
 
   /**
-    * The largest size allowed for a single Buffer instance.
-    * On 32-bit architectures, this value is (2^30)-1 (~1GB). On 64-bit architectures, this value is (2^31)-1 (~2GB).
-    * Note that this is a property on the buffer module returned by require('buffer'), not on the Buffer global or
-    * a Buffer instance.
-    * @return the largest size allowed
-    */
-  def kMaxLength: Int = js.native
-
-  /**
     * Identical to buf.indexOf(), except buf is searched from back to front instead of front to back.
     * @param value      What to search for
     * @param byteOffset Where to begin searching in buf. Default: 0

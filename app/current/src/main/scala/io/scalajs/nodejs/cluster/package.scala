@@ -148,7 +148,7 @@ package object cluster {
       *                 </ul>
       */
     @inline
-    def onExit(callback: (Worker, Int, String) => Any): Worker = worker.on("exit", callback)
+    def onExit(callback: (Int, String) => Any): Worker = worker.on("exit", callback)
 
     /**
       * Similar to the cluster.on('listening') event, but specific to this worker.
@@ -164,7 +164,7 @@ package object cluster {
       * @param callback the event handler
       */
     @inline
-    def onMessage(callback: Message => Any): Worker = worker.on("message", callback)
+    def onMessage(callback: Message => Any, handle: js.UndefOr[js.Object]): Worker = worker.on("message", callback)
 
     /**
       * Similar to the cluster.on('online') event, but specific to this worker.

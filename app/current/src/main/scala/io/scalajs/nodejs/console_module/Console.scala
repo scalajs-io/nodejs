@@ -177,15 +177,6 @@ class Console protected () extends js.Object {
 
   /**
     * This method does not display anything unless used in the inspector.
-    *
-    * The `console.markTimeline()` method is the deprecated form of [[timeStamp()]].
-    * @param label
-    */
-  @deprecated("Use timeStamp instead", "NodeJS 8.0.0")
-  def markTimeline(label: String = js.native): Unit = js.native
-
-  /**
-    * This method does not display anything unless used in the inspector.
     * The `console.profile()` method starts a JavaScript CPU profile with an optional label until [[profileEnd()]] is called.
     * The profile is then added to the **Profile** panel of the inspector.
     */
@@ -205,20 +196,6 @@ class Console protected () extends js.Object {
     * The `console.timeStamp()` method adds an event with the label `'label'` to the **Timeline** panel of the inspector.
     */
   def timeStamp(label: String = js.native): Unit = js.native
-
-  /**
-    * This method does not display anything unless used in the inspector.
-    * The `console.timeline()` method is the deprecated form of [[time()]].
-    */
-  @deprecated("Use time instead", "NodeJS 8.0.0")
-  def timeline(label: String = js.native): Unit = js.native
-
-  /**
-    * This method does not display anything unless used in the inspector.
-    * The `console.timelineEnd()` method is the deprecated form of [[timeEnd()]].
-    */
-  @deprecated("Use time instead", "NodeJS 8.0.0")
-  def timelineEnd(label: String = js.native): Unit = js.native
 }
 
 /**

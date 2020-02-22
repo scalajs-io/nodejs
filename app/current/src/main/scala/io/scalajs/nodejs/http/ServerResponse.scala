@@ -21,6 +21,7 @@ trait ServerResponse extends stream.Writable {
     * Boolean value that indicates whether the response has completed. Starts as false.
     * After response.end() executes, the value will be true.
     */
+  @deprecated("Use response.writableEnd", "Node.js v13.0.0")
   def finished: Boolean = js.native
 
   /**

@@ -109,8 +109,6 @@ package object buffer {
       *
       * On 32-bit architectures, this value is `(2^30)-1` (~1GB).
       * On 64-bit architectures, this value is `(2^31)-1` (~2GB).
-      *
-      * This value is also available as [[Buffer.kMaxLength]].
       */
     val MAX_LENGTH: Int = js.native
 

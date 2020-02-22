@@ -3,6 +3,7 @@ package http
 
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.net.Socket
+import io.scalajs.nodejs.stream.Duplex
 import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Future
@@ -118,20 +119,14 @@ object ClientRequest {
     def onAbort(callback: () => Any): client.type = client.on("abort", callback)
 
     /**
-      * Emitted when the request has been aborted by the server and the network socket has closed.
-      */
-    @inline
-    def onAborted(callback: () => Any): client.type = client.on("aborted", callback)
-
-    /**
       * Emitted each time a server responds to a request with a CONNECT method. If this event is not being listened for,
       * clients receiving a CONNECT method will have their connections closed.
       * - response <http.IncomingMessage>
-      * - socket <net.Socket>
+      * - socket <stream.Duplex>
       * - head <Buffer>
       */
     @inline
-    def onConnect(callback: (IncomingMessage, Socket, Buffer) => Any): client.type = client.on("connect", callback)
+    def onConnect(callback: (IncomingMessage, Duplex, Buffer) => Any): client.type = client.on("connect", callback)
 
     /**
       * Emitted when the server sends a '100 Continue' HTTP response, usually because the request
@@ -139,6 +134,9 @@ object ClientRequest {
       */
     @inline
     def onContinue(callback: () => Any): client.type = client.on("continue", callback)
+
+    @inline
+    def onInformation(callback: Information => Any): client.type = client.on("information", callback)
 
     /**
       * Emitted when a response is received to this request. This event is emitted only once.
@@ -153,7 +151,10 @@ object ClientRequest {
       * - socket <net.Socket>
       */
     @inline
-    def onSocket(callback: Socket => Any): client.type = client.on("socket", callback)
+    def onSocket(callback: Duplex => Any): client.type = client.on("socket", callback)
+
+    @inline
+    def onTimeout(callback: () => Any): client.type = client.on("timeout", callback)
 
     /**
       * Emitted each time a server responds to a request with an upgrade. If this event isn't being listened for,
@@ -185,4 +186,14 @@ object ClientRequest {
       promiseWithError0[Error](client.write(chunk, encoding, _))
     }
   }
+}
+
+trait Information extends js.Object {
+  val httpVersion: String
+  val httpVersionMajor: Int
+  val httpVersionMinor: Int
+  val statusCode: Int
+  val statusMessage: String
+  val headers: js.Object
+  val rawHeaders: js.Array[String]
 }

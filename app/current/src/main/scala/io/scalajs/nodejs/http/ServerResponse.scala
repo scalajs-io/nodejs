@@ -149,7 +149,10 @@ object ServerResponse {
     def onData(handler: Buffer => Any): response.type = response.on("data", handler)
 
     @inline
-    def onFinish(handler: js.Function): response.type = response.on("finish", handler)
+    def onClose(handler: () => Any): response.type = response.on("close", handler)
+
+    @inline
+    def onFinish(handler: () => Any): response.type = response.on("finish", handler)
 
     /**
       * Sets the content-type for the response

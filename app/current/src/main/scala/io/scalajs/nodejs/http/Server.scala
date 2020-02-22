@@ -3,7 +3,7 @@ package http
 
 import io.scalajs.nodejs
 import io.scalajs.nodejs.buffer.Buffer
-import io.scalajs.nodejs.net.Socket
+import io.scalajs.nodejs.stream.Duplex
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
@@ -44,6 +44,7 @@ object Server {
       * - request <http.IncomingMessage>
       * - response <http.ServerResponse>
       */
+    @inline
     def onCheckContinue(callback: (IncomingMessage, ServerResponse) => Any): server.type = {
       server.on("checkContinue", callback)
     }
@@ -52,11 +53,11 @@ object Server {
       * Emitted each time a request with an http Expect header is received, where the value is not 100-continue.
       * If this event isn't listened for, the server will automatically respond with a 417 Expectation Failed as appropriate.
       * <b>Note</b> that when this event is emitted and handled, the request event will not be emitted.
-      * - request <http.ClientRequest>
+      * - request <http.IncomingMessage>
       * - response <http.ServerResponse>
       */
     @inline
-    def onCheckExpectation(callback: (ClientRequest, ServerResponse) => Any): server.type = {
+    def onCheckExpectation(callback: (IncomingMessage, ServerResponse) => Any): server.type = {
       server.on("checkExpectation", callback)
     }
 
@@ -67,10 +68,10 @@ object Server {
       *
       * Default behavior is to destroy the socket immediately on malformed request.
       * - exception <Error>
-      * - socket <net.Socket>
+      * - socket <stream.Duplex>
       */
     @inline
-    def onClientError(callback: (nodejs.Error, Socket) => Any): server.type = server.on("clientError", callback)
+    def onClientError(callback: (nodejs.Error, Duplex) => Any): server.type = server.on("clientError", callback)
 
     /**
       * Emitted when the server closes.
@@ -85,20 +86,20 @@ object Server {
       * After this event is emitted, the request's socket will not have a 'data' event listener, meaning you will need
       * to bind to it in order to handle data sent to the server on that socket.
       * - request <http.IncomingMessage> Arguments for the HTTP request, as it is in the 'request' event
-      * - socket <net.Socket> Network socket between the server and client
+      * - socket <stream.Duplex> Network socket between the server and client
       * - head <Buffer> The first packet of the tunneling stream (may be empty)
       */
     @inline
-    def onConnect(handler: (IncomingMessage, Socket, Buffer) => Any): server.type = server.on("connect", handler)
+    def onConnect(handler: (IncomingMessage, Duplex, Buffer) => Any): server.type = server.on("connect", handler)
 
     /**
       * When a new TCP stream is established. socket is an object of type net.Socket. Usually users will not want
       * to access this event. In particular, the socket will not emit 'readable' events because of how the protocol
       * parser attaches to the socket. The socket can also be accessed at request.connection.
-      * - socket <net.Socket>
+      * - socket <stream.Duplex>
       */
     @inline
-    def onConnection(handler: Socket => Any): server.type = server.on("connection", handler)
+    def onConnection(handler: Duplex => Any): server.type = server.on("connection", handler)
 
     /**
       * Emitted each time there is a request. Note that there may be multiple requests per connection (in the case
@@ -116,10 +117,10 @@ object Server {
       * After this event is emitted, the request's socket will not have a 'data' event listener, meaning you will
       * need to bind to it in order to handle data sent to the server on that socket.
       * - request <http.IncomingMessage> Arguments for the HTTP request, as it is in the 'request' event
-      * - socket <net.Socket> Network socket between the server and client
+      * - socket <stream.Duplex> Network socket between the server and client
       * - head <Buffer> The first packet of the upgraded stream (may be empty)
       */
     @inline
-    def onUpgrade(handler: (IncomingMessage, Socket, Buffer) => Any): server.type = server.on("upgrade", handler)
+    def onUpgrade(handler: (IncomingMessage, Duplex, Buffer) => Any): server.type = server.on("upgrade", handler)
   }
 }

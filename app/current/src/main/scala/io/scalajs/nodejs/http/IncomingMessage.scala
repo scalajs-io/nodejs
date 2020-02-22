@@ -103,7 +103,10 @@ object IncomingMessage {
     */
   implicit final class IncomingMessageExtensions(val message: IncomingMessage) extends AnyVal {
     @inline
-    def onClose(callback: js.Function): message.type = message.on("close", callback)
+    def onAborted(callback: () => Any): message.type = message.on("aborted", callback)
+
+    @inline
+    def onClose(callback: () => Any): message.type = message.on("close", callback)
 
     @inline
     def setTimeout(duration: FiniteDuration, callback: js.Function): Unit =

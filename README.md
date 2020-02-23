@@ -1,13 +1,13 @@
 # scala-js-nodejs
 
-Scala.js type facades for Node.js v8 and later.
+Scala.js type facades for Node.js v10 and v12.
 
 ## Support matrix
 
 |            |   ScalaJS 0.6.28+  |   ScalaJS 1.x  |
 | ---------- | :----------------: | :------------: |
-| Scala 2.13 | :heavy_check_mark: | :construction: |
-| Scala 2.12 | :heavy_check_mark: | :construction: |
+| Scala 2.13 | :heavy_check_mark: | :heavy_check_mark: from v0.10.0 |
+| Scala 2.12 | :heavy_check_mark: | :heavy_check_mark: from v0.10.0 |
 | Scala 2.11 |         N/A        |       N/A      |
 | Scala 2.10 |         N/A        |       N/A      |
 
@@ -16,7 +16,7 @@ Scala.js type facades for Node.js v8 and later.
 
 ## Supported Modules
 
-The following core Node.js modules (v8.7.0+) have been implemented:
+The following core Node.js modules (v10.0.0+) have been implemented:
 
 | Node Module                                                  | v10 & v12 support  |
 | ------------------------------------------------------------ | ------------------ |
@@ -54,12 +54,10 @@ The following core Node.js modules (v8.7.0+) have been implemented:
 Add below line to your SBT project.
 
 ```sbt
-// For Node.js v8 LTS
-libraryDependencies += "net.exoego" %%% "scala-js-nodejs-v8" % "0.9.1"
 // For Node.js v10 LTS
-libraryDependencies += "net.exoego" %%% "scala-js-nodejs-v10" % "0.9.1"
+libraryDependencies += "net.exoego" %%% "scala-js-nodejs-v10" % "0.10.0"
 // For Node.js v12 (supposed to be next LTS)
-libraryDependencies += "net.exoego" %%% "scala-js-nodejs-v12" % "0.9.1"
+libraryDependencies += "net.exoego" %%% "scala-js-nodejs-v12" % "0.10.0"
 ```
 
 ## Example of code

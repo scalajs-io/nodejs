@@ -282,6 +282,7 @@ trait Crypto extends js.Object {
 @js.native
 @JSImport("crypto", JSImport.Namespace)
 object Crypto extends Crypto {
+  @deprecated("Legacy API, not recommended to create new instance. Use Certificate object.", "v0.10.0")
   type Certificate   = io.scalajs.nodejs.crypto.Certificate
   type Cipher        = io.scalajs.nodejs.crypto.Cipher
   type Decipher      = io.scalajs.nodejs.crypto.Decipher

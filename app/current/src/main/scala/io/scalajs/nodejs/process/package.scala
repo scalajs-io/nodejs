@@ -13,9 +13,6 @@ package object process {
   type ExitCode         = Int
   type SendHandle       = net.Socket | net.Server
 
-  @deprecated("Use io.scalajs.nodejs.Error", "v0.10.0")
-  type Warning = Error
-
   /**
     * Process Object Extensions
     * @param process the given [[Process process]]

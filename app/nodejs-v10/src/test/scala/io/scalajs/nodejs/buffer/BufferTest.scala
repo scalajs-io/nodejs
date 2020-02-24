@@ -122,30 +122,18 @@ class BufferTest extends AnyFunSpec {
         // package object method
         assert(buffer.transcode(Buffer.from("hello"), "utf8", "ascii").toString("ascii") === "hello")
         assert(buffer.transcode(Buffer.from("€"), "utf8", "ascii").toString("ascii") === "?")
-
-        // extension method
-        assert(Buffer.transcode(Buffer.from("hello"), "utf8", "ascii").toString("ascii") === "hello")
-        assert(Buffer.transcode(Buffer.from("€"), "utf8", "ascii").toString("ascii") === "?")
       }
 
       it("should support fields") {
         // package object method
         assert(buffer.INSPECT_MAX_BYTES > 0)
         assert(buffer.kMaxLength > 0)
-
-        // extension method
-        assert(Buffer.INSPECT_MAX_BYTES > 0)
-        assert(Buffer.kMaxLength > 0)
       }
 
       it("should support constants") {
         // package object method
         assert(buffer.constants.MAX_LENGTH > 0)
         assert(buffer.constants.MAX_STRING_LENGTH > 0)
-
-        // extension method
-        assert(Buffer.constants.MAX_LENGTH > 0)
-        assert(Buffer.constants.MAX_STRING_LENGTH > 0)
       }
     }
   }

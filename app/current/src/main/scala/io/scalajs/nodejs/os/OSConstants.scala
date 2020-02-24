@@ -1,14 +1,9 @@
 package io.scalajs.nodejs.os
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSBracketAccess
 
 @js.native
 trait OSConstants extends js.Object {
-  @deprecated("Use named members", "v0.10.0")
-  @JSBracketAccess
-  def apply(key: String): js.Any = js.native
-
   val UV_UDP_REUSEADDR: Int         = js.native
   val dlopen: OSDlopenConstants     = js.native
   val errno: OSErrnoConstants       = js.native

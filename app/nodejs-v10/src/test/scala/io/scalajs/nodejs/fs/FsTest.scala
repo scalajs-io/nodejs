@@ -1,7 +1,6 @@
 package io.scalajs.nodejs.fs
 
 import io.scalajs.nodejs.setImmediate
-import io.scalajs.util.NodeJSConverters._
 import io.scalajs.nodejs.TestHelper._
 
 import scala.concurrent.{ExecutionContext, Promise}

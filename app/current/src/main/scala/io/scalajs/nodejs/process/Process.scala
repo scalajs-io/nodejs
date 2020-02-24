@@ -5,7 +5,7 @@ import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.nodejs.tty.{ReadStream, WriteStream}
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSBracketAccess, JSGlobal}
+import scala.scalajs.js.annotation.JSGlobal
 import scala.scalajs.js.|
 
 /**
@@ -481,10 +481,6 @@ trait ResourceUsage extends js.Object {
 
 @js.native
 trait Features extends js.Object {
-  @deprecated("Use named members", "v0.10.0")
-  @JSBracketAccess
-  def apply(key: String): Boolean = js.native
-
   val debug: Boolean    = js.native
   val uv: Boolean       = js.native
   val ipv6: Boolean     = js.native

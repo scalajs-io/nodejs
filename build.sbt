@@ -30,6 +30,7 @@ lazy val current = (project in file("./app/current"))
       "-Xmacro-settings:nodeJs12.5.0"
     ),
     name := "scala-js-nodejs-v12",
+    description := "NodeJS v12 API for Scala.js",
     libraryDependencies ++= Dependencies.app.value
   )
   .dependsOn(core)
@@ -51,7 +52,6 @@ lazy val nodejs_v10 = (project in file("./app/nodejs-v10"))
     ),
     name := "scala-js-nodejs-v10",
     description := "NodeJS v10.16.0 API for Scala.js",
-    homepage := Some(url("https://github.com/exoego/scala-js-nodejs")),
     libraryDependencies ++= Dependencies.app.value
   )
   .dependsOn(core)

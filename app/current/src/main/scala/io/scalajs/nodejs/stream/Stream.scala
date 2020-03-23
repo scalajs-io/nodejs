@@ -308,13 +308,6 @@ sealed trait IWritable extends LegacyStream {
   def write(chunk: String, encoding: String, callback: js.Function1[Error, Any]): Boolean        = js.native
 }
 
-/**
-  * Represents a chunk of data
-  * @param chunk    the chunk of data
-  * @param encoding the data's optional encoding
-  */
-class Chunk(var encoding: js.UndefOr[String] = js.undefined) extends js.Object
-
 class WritableOptions(var highWaterMark: js.UndefOr[Int] = js.undefined,
                       var decodeStrings: js.UndefOr[Boolean] = js.undefined,
                       var defaultEncoding: js.UndefOr[String] = js.undefined,

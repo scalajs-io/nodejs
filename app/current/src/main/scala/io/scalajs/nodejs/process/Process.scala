@@ -301,9 +301,7 @@ trait Process extends IEventEmitter {
     */
   def nextTick(callback: js.Function0[Any], args: js.Any*): Unit = js.native
 
-  /**
-    * TODO find documentation
-    */
+  @deprecated("Use process.stdin instead", "Node.js v0.3.3")
   def openStdin(): ReadStream = js.native
 
   /**

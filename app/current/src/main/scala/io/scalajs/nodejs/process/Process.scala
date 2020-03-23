@@ -411,10 +411,9 @@ trait ReleaseInfo extends js.Object {
 /**
   * Transfer Options
   */
-@js.native
-trait TransferOptions extends js.Object {
-  // TODO what are the transfer options?
-}
+class TransferOptions(
+    var keepOpen: js.UndefOr[Boolean] = js.undefined
+) extends js.Object {}
 
 /**
   * Version Information

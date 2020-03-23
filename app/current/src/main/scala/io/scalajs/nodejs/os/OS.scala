@@ -133,8 +133,7 @@ trait OS extends js.Object {
     * Returns the system uptime in seconds.
     * @example os.uptime()
     */
-  // TODO: Return type should be Int after dropping Node.js 8 (Windows returns decimal until Node.js 10))
-  def uptime(): Double = js.native
+  def uptime(): Int = js.native
 
   /**
     * The os.userInfo() method returns information about the currently effective user -- on POSIX platforms,

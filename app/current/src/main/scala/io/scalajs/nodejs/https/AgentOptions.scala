@@ -9,5 +9,5 @@ class AgentOptions(
     var maxFreeSockets: js.UndefOr[Int] = js.undefined,
     var timeout: js.UndefOr[Int] = js.undefined,
     var maxCachedSessions: js.UndefOr[Int],
-    var Int: js.UndefOr[String]
+    var servername: js.UndefOr[String]
 ) extends js.Object

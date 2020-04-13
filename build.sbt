@@ -4,7 +4,7 @@ import sbt._
 
 val apiVersion = "0.6.0"
 val scalaVersion_2_11_x = "2.11.12"
-val scalaVersion_2_12_x = "2.12.8"
+val scalaVersion_2_12_x = "2.12.10"
 val scalaVersion_2_13_x = "2.13.0"
 
 val supportedScalaVersions = List(scalaVersion_2_11_x, scalaVersion_2_12_x, scalaVersion_2_13_x)
@@ -291,6 +291,16 @@ lazy val body_parser = (project in file("app/npmjs/express/body-parser")).
     name := "body-parser",
     organization := "io.scalajs.npm",
     description := "Express.js Body Parser binding for Scala.js"
+  )
+
+lazy val connect_timeout = (project in file("app/npmjs/express/connect-timeout")).
+  dependsOn(express).
+  enablePlugins(ScalaJSPlugin).
+  settings(commonSettings ++ publishingSettings: _*).
+  settings(
+    name := "connect-timeout",
+    organization := "io.scalajs.npm",
+    description := "Times out a request in the Connect/Express application framework."
   )
 
 lazy val express = (project in file("app/npmjs/express/express")).
@@ -1018,7 +1028,7 @@ lazy val complete_platform = (project in file("app/bundles/complete")).
     amcharts, core, dom_html, jquery, nodejs, phaser, pixijs, facebook, linkedin, angular_platform,
     // npm packages
     async, aws_sdk, bcrypt, bignum, body_parser, brake, buffermaker, cassandra_driver, chalk, cheerio,
-    colors, combined_stream, cookie, cookie_parser, csv_parse, csvtojson, drama, engine_io, escape_html,
+    colors, combined_stream, connect_timeout, cookie, cookie_parser, csv_parse, csvtojson, drama, engine_io, escape_html,
     express, express_csv, express_fileupload, express_ws, feedparser, filed, form_data, github_api_node,
     glob, gzip_uncompressed_size, html_to_json, htmlparser2, ip, jsdom, jvm_io, jwt_simple, kafka_node,
     md5, memory_fs, mkdirp, moment, moment_duration_format, moment_range, moment_timezone,
@@ -1030,7 +1040,7 @@ lazy val complete_platform = (project in file("app/bundles/complete")).
     amcharts, core, dom_html, jquery, nodejs, phaser, pixijs, facebook, linkedin, angular_platform,
     // npm packages
     async, aws_sdk, bcrypt, bignum, body_parser, brake, buffermaker, cassandra_driver, chalk, cheerio,
-    colors, combined_stream, cookie, cookie_parser, csv_parse, csvtojson, drama, engine_io, escape_html,
+    colors, combined_stream, connect_timeout, cookie, cookie_parser, csv_parse, csvtojson, drama, engine_io, escape_html,
     express, express_csv, express_fileupload, express_ws, feedparser, filed, form_data, github_api_node,
     glob, gzip_uncompressed_size, html_to_json, htmlparser2, ip, jsdom, jvm_io, jwt_simple, kafka_node,
     md5, memory_fs, mkdirp, moment, moment_duration_format, moment_range, moment_timezone,

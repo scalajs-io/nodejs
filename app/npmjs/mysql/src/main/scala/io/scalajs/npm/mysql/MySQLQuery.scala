@@ -39,13 +39,13 @@ object MySQLQuery {
     */
   implicit class QueryExtensions(val query: MySQLQuery) extends AnyVal {
 
-    def onEnd(callback: js.Function) = query.on("end", callback)
+    def onEnd(callback: js.Function): query.type = query.on("end", callback)
 
-    def onError(callback: js.Function) = query.on("error", callback)
+    def onError(callback: js.Function): query.type = query.on("error", callback)
 
-    def onFields(callback: js.Function) = query.on("fields", callback)
+    def onFields(callback: js.Function): query.type = query.on("fields", callback)
 
-    def onResult(callback: js.Function) = query.on("result", callback)
+    def onResult(callback: js.Function): query.type = query.on("result", callback)
 
   }
 

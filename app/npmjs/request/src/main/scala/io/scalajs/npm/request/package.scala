@@ -15,7 +15,7 @@ package object request {
 
   type RequestBody = js.Any
 
-  type RequestCallBack = js.Function3[RequestError, IncomingMessage, RequestBody, Any]
+  type RequestCallBack[A <: js.Any] = js.Function3[RequestError, IncomingMessage, A, Any]
 
   type RequestError = SystemError
 
@@ -26,68 +26,73 @@ package object request {
   implicit class RequestExtensions(val client: Request) extends AnyVal {
 
     @inline
-    def deleteFuture(options: RequestOptions): Future[(IncomingMessage, RequestBody)] = {
-      promiseWithError2[RequestError, IncomingMessage, RequestBody](client.del(options, _))
+    def deleteFuture[A <: js.Any](options: RequestOptions): Future[(IncomingMessage, A)] = {
+      promiseWithError2[RequestError, IncomingMessage, A](client.del(options, _))
     }
 
     @inline
-    def deleteFuture(url: String): Future[(IncomingMessage, RequestBody)] = {
-      promiseWithError2[RequestError, IncomingMessage, RequestBody](client.del(url, _))
+    def deleteFuture[A <: js.Any](url: String): Future[(IncomingMessage, A)] = {
+      promiseWithError2[RequestError, IncomingMessage, A](client.del(url, _))
     }
 
     @inline
-    def getFuture(options: RequestOptions): Future[(IncomingMessage, RequestBody)] = {
-      promiseWithError2[RequestError, IncomingMessage, RequestBody](client.get(options, _))
+    def getFuture[A <: js.Any](options: RequestOptions): Future[(IncomingMessage, A)] = {
+      promiseWithError2[RequestError, IncomingMessage, A](client.get(options, _))
     }
 
     @inline
-    def getFuture(url: String): Future[(IncomingMessage, RequestBody)] = {
-      promiseWithError2[RequestError, IncomingMessage, RequestBody](client.get(url, _))
+    def getFuture[A <: js.Any](url: String): Future[(IncomingMessage, A)] = {
+      promiseWithError2[RequestError, IncomingMessage, A](client.get(url, _))
     }
 
     @inline
-    def headFuture(options: RequestOptions): Future[(IncomingMessage, RequestBody)] = {
-      promiseWithError2[RequestError, IncomingMessage, RequestBody](client.head(options, _))
+    def getFuture[A <: js.Any](url: String, options: RequestOptions): Future[(IncomingMessage, A)] = {
+      promiseWithError2[RequestError, IncomingMessage, A](client.get(url, options, _))
     }
 
     @inline
-    def headFuture(url: String): Future[(IncomingMessage, RequestBody)] = {
-      promiseWithError2[RequestError, IncomingMessage, RequestBody](client.head(url, _))
+    def headFuture[A <: js.Any](options: RequestOptions): Future[(IncomingMessage, A)] = {
+      promiseWithError2[RequestError, IncomingMessage, A](client.head(options, _))
     }
 
     @inline
-    def patchFuture(options: RequestOptions): Future[(IncomingMessage, RequestBody)] = {
-      promiseWithError2[RequestError, IncomingMessage, RequestBody](client.patch(options, _))
+    def headFuture[A <: js.Any](url: String): Future[(IncomingMessage, A)] = {
+      promiseWithError2[RequestError, IncomingMessage, A](client.head(url, _))
     }
 
     @inline
-    def patchFuture(url: String): Future[(IncomingMessage, RequestBody)] = {
-      promiseWithError2[RequestError, IncomingMessage, RequestBody](client.patch(url, _))
+    def patchFuture[A <: js.Any](options: RequestOptions): Future[(IncomingMessage, A)] = {
+      promiseWithError2[RequestError, IncomingMessage, A](client.patch(options, _))
     }
 
     @inline
-    def postFuture(options: RequestOptions): Future[(IncomingMessage, RequestBody)] = {
-      promiseWithError2[RequestError, IncomingMessage, RequestBody](client.post(options, _))
+    def patchFuture[A <: js.Any](url: String): Future[(IncomingMessage, A)] = {
+      promiseWithError2[RequestError, IncomingMessage, A](client.patch(url, _))
     }
 
     @inline
-    def postFuture(url: String): Future[(IncomingMessage, RequestBody)] = {
-      promiseWithError2[RequestError, IncomingMessage, RequestBody](client.post(url, _))
+    def postFuture[A <: js.Any](options: RequestOptions): Future[(IncomingMessage, A)] = {
+      promiseWithError2[RequestError, IncomingMessage, A](client.post(options, _))
     }
 
     @inline
-    def postFuture(url: String, options: RequestOptions): Future[(IncomingMessage, RequestBody)] = {
-      promiseWithError2[RequestError, IncomingMessage, RequestBody](client.post(url, options, _))
+    def postFuture[A <: js.Any](url: String): Future[(IncomingMessage, A)] = {
+      promiseWithError2[RequestError, IncomingMessage, A](client.post(url, _))
     }
 
     @inline
-    def putFuture(options: RequestOptions): Future[(IncomingMessage, RequestBody)] = {
-      promiseWithError2[RequestError, IncomingMessage, RequestBody](client.put(options, _))
+    def postFuture[A <: js.Any](url: String, options: RequestOptions): Future[(IncomingMessage, A)] = {
+      promiseWithError2[RequestError, IncomingMessage, A](client.post(url, options, _))
     }
 
     @inline
-    def putFuture(url: String): Future[(IncomingMessage, RequestBody)] = {
-      promiseWithError2[RequestError, IncomingMessage, RequestBody](client.put(url, _))
+    def putFuture[A <: js.Any](options: RequestOptions): Future[(IncomingMessage, A)] = {
+      promiseWithError2[RequestError, IncomingMessage, A](client.put(options, _))
+    }
+
+    @inline
+    def putFuture[A <: js.Any](url: String): Future[(IncomingMessage, A)] = {
+      promiseWithError2[RequestError, IncomingMessage, A](client.put(url, _))
     }
 
   }

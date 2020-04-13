@@ -17,11 +17,13 @@ import scala.scalajs.js.|
 @js.native
 trait Request extends IEventEmitter {
 
-  def apply(form: RequestOptions | MultipartForm): Readable = js.native
+  def apply(options: RequestOptions | MultipartForm): Readable = js.native
 
   def apply(url: String): Readable = js.native
 
-  def apply(url: String, callback: RequestCallBack): Unit = js.native
+  def apply[A <: js.Any](url: String, callback: RequestCallBack[A]): Unit = js.native
+
+  def apply[A <: js.Any](url: String, options: RequestOptions, callback: RequestCallBack[A]): Unit = js.native
 
   /**
     * Function that creates a new cookie.
@@ -43,7 +45,7 @@ trait Request extends IEventEmitter {
     * @param options  the given [[RequestOptions request options]]
     * @param callback the callback function
     */
-  def del(options: RequestOptions, callback: RequestCallBack): Unit = js.native
+  def del[A <: js.Any](options: RequestOptions, callback: RequestCallBack[A]): Unit = js.native
 
   /**
     * Same as request(), but defaults to method: "DELETE".
@@ -57,14 +59,14 @@ trait Request extends IEventEmitter {
     * @param url      the requested URL
     * @param callback the callback function
     */
-  def del(url: String, callback: RequestCallBack): Unit = js.native
+  def del[A <: js.Any](url: String, callback: RequestCallBack[A]): Unit = js.native
 
   /**
     * Same as Request(), but defaults to method: "DELETE".
     * @param options  the given [[RequestOptions request options]]
     * @param callback the callback function
     */
-  def delete(options: RequestOptions, callback: RequestCallBack): Unit = js.native
+  def delete[A <: js.Any](options: RequestOptions, callback: RequestCallBack[A]): Unit = js.native
 
   /**
     * Same as request(), but defaults to method: "DELETE".
@@ -78,24 +80,26 @@ trait Request extends IEventEmitter {
     * @param url      the requested URL
     * @param callback the callback function
     */
-  def delete(url: String, callback: RequestCallBack): Unit = js.native
+  def delete[A <: js.Any](url: String, callback: RequestCallBack[A]): Unit = js.native
 
   def form(values: js.Any): this.type = js.native
 
-  def get(options: RequestOptions | MultipartForm, callback: RequestCallBack): Unit = js.native
+  def get[A <: js.Any](options: RequestOptions | MultipartForm, callback: RequestCallBack[A]): Unit = js.native
 
   def get(options: RequestOptions | MultipartForm): Readable = js.native
 
   def get(url: String): Readable = js.native
 
-  def get(url: String, callback: RequestCallBack): Unit = js.native
+  def get[A <: js.Any](url: String, callback: RequestCallBack[A]): Unit = js.native
+
+  def get[A <: js.Any](url: String, options: RequestOptions, callback: RequestCallBack[A]): Unit = js.native
 
   /**
     * Same as Request(), but defaults to method: "HEAD".
     * @param options  the given [[RequestOptions request options]]
     * @param callback the callback function
     */
-  def head(options: RequestOptions, callback: RequestCallBack): Unit = js.native
+  def head[A <: js.Any](options: RequestOptions, callback: RequestCallBack[A]): Unit = js.native
 
   /**
     * Same as request(), but defaults to method: "HEAD".
@@ -109,7 +113,7 @@ trait Request extends IEventEmitter {
     * @param url      the requested URL
     * @param callback the callback function
     */
-  def head(url: String, callback: RequestCallBack): Unit = js.native
+  def head[A <: js.Any](url: String, callback: RequestCallBack[A]): Unit = js.native
 
   /**
     * Function that creates a new cookie jar.
@@ -123,7 +127,7 @@ trait Request extends IEventEmitter {
     * @param options  the given [[RequestOptions request options]]
     * @param callback the callback function
     */
-  def patch(options: RequestOptions, callback: RequestCallBack): Unit = js.native
+  def patch[A <: js.Any](options: RequestOptions, callback: RequestCallBack[A]): Unit = js.native
 
   /**
     * Same as Request(), but defaults to method: "PATCH".
@@ -137,14 +141,14 @@ trait Request extends IEventEmitter {
     * @param url      the requested URL
     * @param callback the callback function
     */
-  def patch(url: String, callback: RequestCallBack): Unit = js.native
+  def patch[A <: js.Any](url: String, callback: RequestCallBack[A]): Unit = js.native
 
   /**
     * POST a form with a callback
     * @param options  the given [[RequestOptions request options]]
     * @param callback the callback function
     */
-  def post(options: RequestOptions, callback: RequestCallBack): Unit = js.native
+  def post[A <: js.Any](options: RequestOptions, callback: RequestCallBack[A]): Unit = js.native
 
   /**
     * Use Request as a Writable stream to easily POST Readable streams (like files, other HTTP requests, or otherwise).
@@ -158,7 +162,7 @@ trait Request extends IEventEmitter {
     * @param url the requested URL
     * @return
     */
-  def post(url: String, callback: RequestCallBack): Unit = js.native
+  def post[A <: js.Any](url: String, callback: RequestCallBack[A]): Unit = js.native
 
   /**
     * Use Request as a Writable stream to easily POST Readable streams (like files, other HTTP requests, or otherwise).
@@ -166,14 +170,14 @@ trait Request extends IEventEmitter {
     * @param options  the given [[RequestOptions request options]]
     * @param callback the callback -> (error, response, body)
     */
-  def post(url: String, options: RequestOptions, callback: RequestCallBack): Unit = js.native
+  def post[A <: js.Any](url: String, options: RequestOptions, callback: RequestCallBack[A]): Unit = js.native
 
   /**
     * Same as Request(), but defaults to method: "PUT".
     * @param options  the given [[RequestOptions request options]]
     * @param callback the callback function
     */
-  def put(options: RequestOptions, callback: RequestCallBack): Unit = js.native
+  def put[A <: js.Any](options: RequestOptions, callback: RequestCallBack[A]): Unit = js.native
 
   /**
     * Same as Request(), but defaults to method: "PUT".
@@ -187,7 +191,7 @@ trait Request extends IEventEmitter {
     * @param url      the requested URL
     * @param callback the callback function
     */
-  def put(url: String, callback: RequestCallBack): Unit = js.native
+  def put[A <: js.Any](url: String, callback: RequestCallBack[A]): Unit = js.native
 
 }
 

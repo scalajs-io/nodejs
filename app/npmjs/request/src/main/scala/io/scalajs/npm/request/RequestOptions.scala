@@ -1,11 +1,9 @@
 package io.scalajs.npm.request
 
 import io.scalajs.FlexibleOptions
-import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.npm.toughcookie.CookieJar
 
 import scala.scalajs.js
-import scala.scalajs.js.|
 
 /**
   * Request Options
@@ -24,8 +22,8 @@ import scala.scalajs.js.|
   */
 class RequestOptions(var url: js.UndefOr[String] = js.undefined,
                      var uri: js.UndefOr[String] = js.undefined,
-                     var json: js.UndefOr[js.Any] = js.undefined,
-                     var body: js.UndefOr[Buffer | String] = js.undefined,
+                     var json: js.UndefOr[Boolean] = js.undefined,
+                     var body: js.Any = js.undefined,
                      var form: js.Any = js.undefined,
                      var formData: js.Any = js.undefined,
                      var jar: js.UndefOr[CookieJar] = js.undefined,

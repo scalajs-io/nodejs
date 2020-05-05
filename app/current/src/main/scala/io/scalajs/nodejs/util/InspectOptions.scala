@@ -34,5 +34,5 @@ class InspectOptions(var showHidden: js.UndefOr[Boolean] = false,
                      var breakLength: Int = 80,
                      var compact: js.UndefOr[Boolean | Int] = 3,
                      var sorted: js.UndefOr[Boolean | js.Function2[String, String, Int]] = js.undefined,
-                     var getters: js.UndefOr[Boolean | String] = false)
-    extends js.Object
+                     var getters: js.UndefOr[Boolean | String] = false
+) extends js.Object

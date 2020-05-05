@@ -12,10 +12,12 @@ trait ServerHttp2Stream extends Http2Stream {
 
   def pushStream(headers: Http2Headers,
                  options: Http2PushStreamOptions,
-                 callback: js.Function3[io.scalajs.nodejs.Error, ServerHttp2Stream, Http2Headers, Any]): Unit =
+                 callback: js.Function3[io.scalajs.nodejs.Error, ServerHttp2Stream, Http2Headers, Any]
+  ): Unit =
     js.native
   def pushStream(headers: Http2Headers,
-                 callback: js.Function3[io.scalajs.nodejs.Error, ServerHttp2Stream, Http2Headers, Any]): Unit =
+                 callback: js.Function3[io.scalajs.nodejs.Error, ServerHttp2Stream, Http2Headers, Any]
+  ): Unit =
     js.native
 
   def respond(headers: Http2Headers, options: Http2ResponseOptions): Unit = js.native

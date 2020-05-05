@@ -10,5 +10,5 @@ class NetworkInterface(val address: String,
                        val family: String,
                        val mac: String,
                        val scopeid: js.UndefOr[Int],
-                       val internal: Boolean)
-    extends js.Object
+                       val internal: Boolean
+) extends js.Object

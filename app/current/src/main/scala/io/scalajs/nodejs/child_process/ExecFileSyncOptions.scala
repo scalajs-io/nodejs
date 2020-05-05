@@ -40,5 +40,5 @@ class ExecFileSyncOptions(var cwd: js.UndefOr[String] = js.undefined,
                           var killSignal: js.UndefOr[KillSignal] = js.undefined,
                           var uid: js.UndefOr[UID] = js.undefined,
                           var gid: js.UndefOr[GID] = js.undefined,
-                          var windowsHide: js.UndefOr[Boolean] = js.undefined)
-    extends js.Object
+                          var windowsHide: js.UndefOr[Boolean] = js.undefined
+) extends js.Object

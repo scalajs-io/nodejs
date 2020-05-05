@@ -87,5 +87,5 @@ sealed trait Cipher extends Transform {
 
 class SetAADOptions(transform: js.UndefOr[js.Function] = js.undefined,
                     flush: js.UndefOr[js.Function] = js.undefined,
-                    var plaintextLength: js.UndefOr[Int] = js.undefined)
-    extends TransformOptions(transform, flush) {}
+                    var plaintextLength: js.UndefOr[Int] = js.undefined
+) extends TransformOptions(transform, flush) {}

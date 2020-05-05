@@ -62,7 +62,8 @@ class Buffer private[this] () extends Uint8Array( /* dummy to trick constructor 
               targetStart: Int = js.native,
               targetEnd: Int = js.native,
               sourceStart: Int = js.native,
-              sourceEnd: Int = js.native): Int = js.native
+              sourceEnd: Int = js.native
+  ): Int = js.native
 
   /**
     * Copies data from a region of `buf` to a region in `target` even if the `target` memory region overlaps with `buf`.
@@ -79,7 +80,8 @@ class Buffer private[this] () extends Uint8Array( /* dummy to trick constructor 
   def copy(target: Buffer,
            targetStart: Int = js.native,
            sourceStart: Int = js.native,
-           sourceEnd: Int = js.native): Int = js.native
+           sourceEnd: Int = js.native
+  ): Int = js.native
 
   /**
     * Creates and returns an [[Iterator]] of `[index, byte]` pairs from the contents of `buf`.
@@ -111,7 +113,8 @@ class Buffer private[this] () extends Uint8Array( /* dummy to trick constructor 
   def fill(value: Uint8Array | Int | String,
            offset: Int = js.native,
            end: Int = js.native,
-           encoding: String = js.native): this.type = js.native
+           encoding: String = js.native
+  ): this.type = js.native
 
   /**
     * Returns the index of the first occurrence of value in buf or -1 if buf does not contain value

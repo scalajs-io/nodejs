@@ -31,7 +31,8 @@ trait Assert extends js.Object {
 
   def doesNotReject(asyncFn: js.Function | js.Promise[_],
                     error: js.RegExp | js.Function = js.native,
-                    message: String = js.native): Unit = js.native
+                    message: String = js.native
+  ): Unit = js.native
 
   /**
     * Asserts that the function block does not throw an error. See assert.throws() for more details.
@@ -94,11 +95,13 @@ trait Assert extends js.Object {
     */
   def throws(block: js.Function,
              error: js.RegExp | js.Function | js.Object | Error,
-             message: String = js.native): Unit = js.native
+             message: String = js.native
+  ): Unit = js.native
 
   def rejects(asyncFn: js.Function | js.Promise[_],
               error: js.RegExp | js.Function | js.Object | Error = js.native,
-              message: String = js.native): Unit = js.native
+              message: String = js.native
+  ): Unit = js.native
 }
 
 /**

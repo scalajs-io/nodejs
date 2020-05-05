@@ -55,7 +55,8 @@ trait Crypto extends js.Object {
   def createCipheriv(algorithm: String,
                      key: String | BufferLike,
                      iv: String | BufferLike,
-                     options: TransformOptions = js.native): Cipher = js.native
+                     options: TransformOptions = js.native
+  ): Cipher = js.native
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def createCipheriv(algorithm: String, key: KeyObject, iv: String | BufferLike, options: TransformOptions): Cipher =
     js.native
@@ -79,18 +80,21 @@ trait Crypto extends js.Object {
   def createDecipheriv(algorithm: String,
                        key: String | BufferLike,
                        iv: String | BufferLike,
-                       options: TransformOptions = js.native): Decipher = js.native
+                       options: TransformOptions = js.native
+  ): Decipher = js.native
   def createDecipheriv(algorithm: String,
                        key: KeyObject,
                        iv: String | BufferLike,
-                       options: TransformOptions): Decipher                                  = js.native
+                       options: TransformOptions
+  ): Decipher                                                                                = js.native
   def createDecipheriv(algorithm: String, key: KeyObject, iv: String | BufferLike): Decipher = js.native
 
   def createDiffieHellman(prime: String, primeEncoding: String, generator: Int | BufferLike): DiffieHellman = js.native
   def createDiffieHellman(prime: String,
                           primeEncoding: String,
                           generator: String,
-                          generatorEncoding: String): DiffieHellman                                       = js.native
+                          generatorEncoding: String
+  ): DiffieHellman                                                                                        = js.native
   def createDiffieHellman(prime: BufferLike, generator: String, generatorEncoding: String): DiffieHellman = js.native
   def createDiffieHellman(prime: BufferLike, generator: Int | BufferLike): DiffieHellman                  = js.native
   def createDiffieHellman(primeLength: Int, generator: Int | String | BufferLike): DiffieHellman          = js.native
@@ -175,7 +179,8 @@ trait Crypto extends js.Object {
              iterations: Int,
              keylen: Int,
              digest: String,
-             callback: Callback1[Buffer]): Buffer = js.native
+             callback: Callback1[Buffer]
+  ): Buffer = js.native
 
   /**
     * Provides a synchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. A selected HMAC digest
@@ -196,7 +201,8 @@ trait Crypto extends js.Object {
                  salt: String | BufferLike,
                  iterations: Int,
                  keylen: Int,
-                 digest: String): Buffer = js.native
+                 digest: String
+  ): Buffer = js.native
 
   def privateDecrypt(privateKey: String | Buffer, buffer: BufferLike): Buffer = js.native
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
@@ -223,13 +229,15 @@ trait Crypto extends js.Object {
 
   def randomFillSync(buffer: scala.scalajs.js.typedarray.DataView,
                      offset: Int,
-                     size: Int): scala.scalajs.js.typedarray.DataView = js.native
+                     size: Int
+  ): scala.scalajs.js.typedarray.DataView = js.native
   def randomFillSync(buffer: scala.scalajs.js.typedarray.DataView, offset: Int): scala.scalajs.js.typedarray.DataView =
     js.native
   def randomFillSync(buffer: scala.scalajs.js.typedarray.DataView): scala.scalajs.js.typedarray.DataView = js.native
   def randomFillSync[T <: scala.scalajs.js.typedarray.TypedArray[_, T]](buffer: T,
                                                                         offset: Int = js.native,
-                                                                        size: Int = js.native): T = js.native
+                                                                        size: Int = js.native
+  ): T = js.native
 
   def randomFill(buffer: Buffer, offset: Int, size: Int, callback: Callback1[Buffer]): Buffer = js.native
   def randomFill(buffer: Buffer, offset: Int, callback: Callback1[Buffer]): Buffer            = js.native
@@ -238,30 +246,36 @@ trait Crypto extends js.Object {
   def randomFill(buffer: scala.scalajs.js.typedarray.DataView,
                  offset: Int,
                  size: Int,
-                 callback: Callback1[scala.scalajs.js.typedarray.DataView]): scala.scalajs.js.typedarray.DataView =
+                 callback: Callback1[scala.scalajs.js.typedarray.DataView]
+  ): scala.scalajs.js.typedarray.DataView =
     js.native
   def randomFill(buffer: scala.scalajs.js.typedarray.DataView,
                  offset: Int,
-                 callback: Callback1[scala.scalajs.js.typedarray.DataView]): scala.scalajs.js.typedarray.DataView =
+                 callback: Callback1[scala.scalajs.js.typedarray.DataView]
+  ): scala.scalajs.js.typedarray.DataView =
     js.native
   def randomFill(buffer: scala.scalajs.js.typedarray.DataView,
-                 callback: Callback1[scala.scalajs.js.typedarray.DataView]): scala.scalajs.js.typedarray.DataView =
+                 callback: Callback1[scala.scalajs.js.typedarray.DataView]
+  ): scala.scalajs.js.typedarray.DataView =
     js.native
   def randomFill[T <: scala.scalajs.js.typedarray.TypedArray[_, T]](buffer: T,
                                                                     offset: Int = js.native,
                                                                     size: Int = js.native,
-                                                                    callback: Callback1[T]): T = js.native
+                                                                    callback: Callback1[T]
+  ): T = js.native
 
   def scrypt(password: String | BufferLike,
              salt: String | BufferLike,
              keylen: Int,
              options: ScryptOptions = js.native,
-             callback: Callback1[Buffer]): Unit = js.native
+             callback: Callback1[Buffer]
+  ): Unit = js.native
 
   def scryptSync(password: String | BufferLike,
                  salt: String | BufferLike,
                  keylen: Int,
-                 options: ScryptOptions = js.native): Buffer = js.native
+                 options: ScryptOptions = js.native
+  ): Buffer = js.native
 
   def setEngine(engine: String, fips: Int = js.native): Unit = js.native
 

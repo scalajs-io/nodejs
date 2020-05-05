@@ -316,8 +316,8 @@ class WritableOptions(var highWaterMark: js.UndefOr[Int] = js.undefined,
                       var writev: js.UndefOr[js.Function] = js.undefined,
                       var destroy: js.UndefOr[js.Function] = js.undefined,
                       var `final`: js.UndefOr[js.Function] = js.undefined,
-                      var autoDestroy: js.UndefOr[Boolean] = js.undefined)
-    extends js.Object
+                      var autoDestroy: js.UndefOr[Boolean] = js.undefined
+) extends js.Object
 
 /**
   * Duplex Interface
@@ -341,9 +341,9 @@ sealed trait ITransform extends IDuplex
   */
 class DuplexOptions(var allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
                     var readableObjectMode: js.UndefOr[Boolean] = js.undefined,
-                    var writableObjectMode: js.UndefOr[Boolean] = js.undefined)
-    extends js.Object
+                    var writableObjectMode: js.UndefOr[Boolean] = js.undefined
+) extends js.Object
 
 class TransformOptions(var transform: js.UndefOr[js.Function] = js.undefined,
-                       var flush: js.UndefOr[js.Function] = js.undefined)
-    extends js.Object
+                       var flush: js.UndefOr[js.Function] = js.undefined
+) extends js.Object

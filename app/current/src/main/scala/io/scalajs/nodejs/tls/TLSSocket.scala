@@ -103,8 +103,8 @@ class TLSSocketOptions(var enableTrace: js.UndefOr[Boolean] = js.undefined,
                        var SNICallback: js.UndefOr[js.Function2[String, js.Function, Any]] = js.undefined,
                        var session: js.UndefOr[Buffer] = js.undefined,
                        var requestOCSP: js.UndefOr[Boolean] = js.undefined,
-                       var secureContext: js.UndefOr[SecureContext] = js.undefined)
-    extends js.Object
+                       var secureContext: js.UndefOr[SecureContext] = js.undefined
+) extends js.Object
 
 class RenegotiateOptions(
     var rejectUnauthorized: js.UndefOr[Boolean] = js.undefined,

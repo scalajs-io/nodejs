@@ -16,7 +16,8 @@ package object querystring {
     def parseAs[T <: js.Object](str: String,
                                 sep: String = null,
                                 eq: String = null,
-                                options: QueryDecodeOptions = null): T = {
+                                options: QueryDecodeOptions = null
+    ): T = {
       qs.parse(str, sep, eq, options).asInstanceOf[T]
     }
   }

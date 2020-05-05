@@ -35,7 +35,8 @@ trait ForkedChildProcess extends ChildProcess {
   def send(message: js.Any,
            sendHandle: Handle = js.native,
            options: SendOptions = js.native,
-           callback: js.Function1[nodejs.Error, Any] = js.native): Boolean = js.native
+           callback: js.Function1[nodejs.Error, Any] = js.native
+  ): Boolean = js.native
 }
 
 /**

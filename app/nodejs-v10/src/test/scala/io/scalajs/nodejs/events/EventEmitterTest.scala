@@ -11,9 +11,12 @@ class EventEmitterTest extends AsyncFunSpec {
     it("should handle custom events with arguments") {
       val promise   = Promise[js.Array[Int]]()
       val myEmitter = new EventEmitter()
-      myEmitter.on("custom-event", (args: js.Array[Int]) => {
-        promise.success(args)
-      })
+      myEmitter.on(
+        "custom-event",
+        (args: js.Array[Int]) => {
+          promise.success(args)
+        }
+      )
       myEmitter.emit("custom-event", js.Array(1, 2, 3))
 
       promise.future.map { array =>
@@ -25,10 +28,13 @@ class EventEmitterTest extends AsyncFunSpec {
       val promise   = Promise[Unit]()
       val myEmitter = new EventEmitter()
       var n         = 0
-      myEmitter.once("event", () => {
-        n += 1
-        promise.success(())
-      })
+      myEmitter.once(
+        "event",
+        () => {
+          n += 1
+          promise.success(())
+        }
+      )
       myEmitter.emit("event")
       myEmitter.emit("event")
 
@@ -42,12 +48,18 @@ class EventEmitterTest extends AsyncFunSpec {
       val myEmitter = new EventEmitter()
       var n         = 0
       myEmitter
-        .on("event", () => {
-          n += 1
-        })
-        .on("end", () => {
-          promise.success(())
-        })
+        .on(
+          "event",
+          () => {
+            n += 1
+          }
+        )
+        .on(
+          "end",
+          () => {
+            promise.success(())
+          }
+        )
       myEmitter.emit("event")
       myEmitter.emit("event")
       myEmitter.emit("end")

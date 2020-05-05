@@ -16,8 +16,8 @@ object Dependencies {
   val app = Def.setting(
     Seq(
       scalaReflect.value,
-      "org.scalatest"             %%% "scalatest" % scalatestVersion % "test",
-      "com.thoughtworks.enableIf" %% "enableif"   % "1.1.7"
+      "org.scalatest"            %%% "scalatest" % scalatestVersion % "test",
+      "com.thoughtworks.enableIf" %% "enableif"  % "1.1.7"
     )
   )
 }

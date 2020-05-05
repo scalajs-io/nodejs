@@ -45,10 +45,13 @@ class ClusterTest extends AnyFunSpec {
           worker.onOnline(() => info(s"Worker #$n is online..."))
 
           // shutdown worker after 5 seconds
-          setTimeout(() => {
-            info(s"Shutting down worker ${worker.id}...")
-            worker.disconnect()
-          }, 0.5.seconds.toMillis.toInt)
+          setTimeout(
+            () => {
+              info(s"Shutting down worker ${worker.id}...")
+              worker.disconnect()
+            },
+            0.5.seconds.toMillis.toInt
+          )
         }
 
         Cluster.onExit((worker, code, signal) => info(s"worker ${worker.process.pid} died"))

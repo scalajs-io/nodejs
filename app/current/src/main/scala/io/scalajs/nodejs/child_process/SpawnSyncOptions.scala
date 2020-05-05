@@ -46,5 +46,5 @@ class SpawnSyncOptions(var cwd: js.UndefOr[String] = js.undefined,
                        var uid: js.UndefOr[UID] = js.undefined,
                        var gid: js.UndefOr[GID] = js.undefined,
                        var windowsHide: js.UndefOr[Boolean] = js.undefined,
-                       var windowsVerbatimArguments: js.UndefOr[Boolean] = js.undefined)
-    extends js.Object
+                       var windowsVerbatimArguments: js.UndefOr[Boolean] = js.undefined
+) extends js.Object

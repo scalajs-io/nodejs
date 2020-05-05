@@ -43,7 +43,8 @@ trait Https extends js.Object {
 
   def request(url: String | URL,
               options: RequestOptions,
-              callback: js.Function1[ServerResponse, Any] = js.native): Unit              = js.native
+              callback: js.Function1[ServerResponse, Any] = js.native
+  ): Unit                                                                                 = js.native
   def request(url: String | URL, callback: js.Function1[ServerResponse, Any]): Unit       = js.native
   def request(url: String | URL): Unit                                                    = js.native
   def request(options: RequestOptions): Unit                                              = js.native

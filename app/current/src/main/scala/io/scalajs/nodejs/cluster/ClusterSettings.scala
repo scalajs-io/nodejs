@@ -49,7 +49,8 @@ object ClusterSettings {
             stdio: js.Array[js.Any] = null,
             inspectPort: Int | js.Function = null,
             cwd: String = null,
-            windowsHide: Boolean = false): ClusterSettings = {
+            windowsHide: Boolean = false
+  ): ClusterSettings = {
     val settings = js.Dynamic.literal()
     settings.updateDynamic("execArgv")(execArgv)
     settings.updateDynamic("exec")(exec)

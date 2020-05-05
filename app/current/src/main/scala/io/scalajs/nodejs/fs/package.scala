@@ -49,7 +49,8 @@ package object fs {
     @inline
     def appendFileFuture(file: Buffer | FileDescriptor | String,
                          data: Buffer | String,
-                         options: FileAppendOptions = null): Future[Unit] = {
+                         options: FileAppendOptions = null
+    ): Future[Unit] = {
       promiseWithError0[FileIOError](instance.appendFile(file, data, options, _))
     }
 
@@ -212,7 +213,8 @@ package object fs {
                    buffer: Buffer,
                    offset: Int | Null,
                    length: Int | Null,
-                   position: Int | Null): Future[(Int, Buffer)] = {
+                   position: Int | Null
+    ): Future[(Int, Buffer)] = {
       promiseWithError2[FileIOError, Int, Buffer](Fs.read(fd, buffer, offset, length, position, _))
     }
 
@@ -397,7 +399,8 @@ package object fs {
                     buffer: typedarray.Uint8Array,
                     offset: Int | Null = null,
                     length: Int | Null = null,
-                    position: Int | Null = null): Future[(FileType, Buffer)] = {
+                    position: Int | Null = null
+    ): Future[(FileType, Buffer)] = {
       promiseWithError2[FileIOError, Int, Buffer](instance.write(fd, buffer, offset, length, position, _))
     }
 
@@ -406,7 +409,8 @@ package object fs {
                     buffer: BufferLike,
                     offset: Int | Null,
                     length: Int | Null,
-                    position: Int | Null): Future[(FileType, Buffer)] = {
+                    position: Int | Null
+    ): Future[(FileType, Buffer)] = {
       promiseWithError2[FileIOError, Int, Buffer](instance.write(fd, buffer, offset, length, position, _))
     }
 
@@ -454,7 +458,8 @@ package object fs {
     @inline
     def writevFuture(fd: FileDescriptor,
                      buffers: js.Array[typedarray.ArrayBufferView],
-                     position: Int): Future[(Int, js.Array[typedarray.ArrayBufferView])] = {
+                     position: Int
+    ): Future[(Int, js.Array[typedarray.ArrayBufferView])] = {
       promiseWithError2[FileIOError, Int, js.Array[typedarray.ArrayBufferView]](
         instance.writev(fd, buffers, position, _)
       )

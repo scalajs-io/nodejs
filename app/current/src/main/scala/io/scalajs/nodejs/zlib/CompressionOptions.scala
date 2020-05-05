@@ -23,5 +23,5 @@ class CompressionOptions(var flush: js.UndefOr[CompressionFlush] = js.undefined,
                          var memLevel: js.UndefOr[CompressionLevel] = js.undefined,
                          var strategy: js.UndefOr[CompressionStrategy] = js.undefined,
                          var dictionary: js.UndefOr[TypedArray[_, _] | DataView | ArrayBuffer] = js.undefined,
-                         var info: js.UndefOr[Boolean] = js.undefined)
-    extends js.Object
+                         var info: js.UndefOr[Boolean] = js.undefined
+) extends js.Object

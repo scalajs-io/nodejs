@@ -73,43 +73,46 @@ package object stream {
     @inline def onResume(listener: () => Any): R = readable.on("resume", listener)
 
     @inline
-    def iteratorAsString: scala.Iterator[String] = new scala.Iterator[String] {
-      private var result: String = readable.readAsString()
+    def iteratorAsString: scala.Iterator[String] =
+      new scala.Iterator[String] {
+        private var result: String = readable.readAsString()
 
-      override def hasNext: Boolean = result != null
+        override def hasNext: Boolean = result != null
 
-      override def next(): String = {
-        val value = result
-        result = readable.readAsString()
-        value
+        override def next(): String = {
+          val value = result
+          result = readable.readAsString()
+          value
+        }
       }
-    }
 
     @inline
-    def iteratorAsBuffer: scala.Iterator[Buffer] = new scala.Iterator[Buffer] {
-      private var result: Buffer = readable.readAsBuffer()
+    def iteratorAsBuffer: scala.Iterator[Buffer] =
+      new scala.Iterator[Buffer] {
+        private var result: Buffer = readable.readAsBuffer()
 
-      override def hasNext: Boolean = result != null
+        override def hasNext: Boolean = result != null
 
-      override def next(): Buffer = {
-        val value = result
-        result = readable.readAsBuffer()
-        value
+        override def next(): Buffer = {
+          val value = result
+          result = readable.readAsBuffer()
+          value
+        }
       }
-    }
 
     @inline
-    def iteratorAsObject: scala.Iterator[js.Any] = new scala.Iterator[js.Any] {
-      private var result: js.Any = readable.readAsObject()
+    def iteratorAsObject: scala.Iterator[js.Any] =
+      new scala.Iterator[js.Any] {
+        private var result: js.Any = readable.readAsObject()
 
-      override def hasNext: Boolean = result != null
+        override def hasNext: Boolean = result != null
 
-      override def next(): js.Any = {
-        val value = result
-        result = readable.readAsBuffer()
-        value
+        override def next(): js.Any = {
+          val value = result
+          result = readable.readAsBuffer()
+          value
+        }
       }
-    }
 
     @inline
     def readAsObjectOption(): Option[js.Any] = Option(readable.readAsObject())

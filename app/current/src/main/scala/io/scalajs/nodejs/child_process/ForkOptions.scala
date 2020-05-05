@@ -29,5 +29,5 @@ class ForkOptions(var cwd: js.UndefOr[String] = js.undefined,
                   var silent: js.UndefOr[Boolean] = js.undefined,
                   var stdio: js.UndefOr[String | Array[String]] = js.undefined,
                   var uid: js.UndefOr[UID] = js.undefined,
-                  var gid: js.UndefOr[GID] = js.undefined)
-    extends js.Object
+                  var gid: js.UndefOr[GID] = js.undefined
+) extends js.Object

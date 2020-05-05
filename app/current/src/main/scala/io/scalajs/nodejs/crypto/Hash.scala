@@ -54,5 +54,5 @@ sealed trait Hash extends Transform {
 
 class CreateHashOptions(transform: js.UndefOr[js.Function] = js.undefined,
                         flush: js.UndefOr[js.Function] = js.undefined,
-                        var outputLength: js.UndefOr[Int] = js.undefined)
-    extends TransformOptions(transform, flush)
+                        var outputLength: js.UndefOr[Int] = js.undefined
+) extends TransformOptions(transform, flush)

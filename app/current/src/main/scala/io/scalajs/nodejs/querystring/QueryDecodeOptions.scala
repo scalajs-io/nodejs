@@ -11,5 +11,5 @@ import scala.scalajs.js
   *                           into a collection of key and value pairs.
   */
 class QueryDecodeOptions(var decodeURIComponent: js.UndefOr[js.Function] = js.undefined,
-                         var maxKeys: js.UndefOr[Int] = js.undefined)
-    extends js.Object
+                         var maxKeys: js.UndefOr[Int] = js.undefined
+) extends js.Object

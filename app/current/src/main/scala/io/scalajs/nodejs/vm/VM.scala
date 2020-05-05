@@ -13,8 +13,9 @@ import scala.scalajs.js.|
 trait VM extends js.Object {
   def compileFunction(code: String,
                       params: js.Array[String],
-                      options: CompileFunctionOptions = js.native): js.Function = js.native
-  def compileFunction(code: String): js.Function                                = js.native
+                      options: CompileFunctionOptions = js.native
+  ): js.Function                                 = js.native
+  def compileFunction(code: String): js.Function = js.native
 
   /**
     * If given a sandbox object, the vm.createContext() method will
@@ -52,7 +53,8 @@ trait VM extends js.Object {
     */
   def runInContext(code: String,
                    contextifiedSandbox: ScriptContext,
-                   options: VMRunInContextOptions = js.native): js.Any = js.native
+                   options: VMRunInContextOptions = js.native
+  ): js.Any = js.native
 
   /**
     * First contextifies the given sandbox, runs the compiled code contained by the vm.Script object within the created
@@ -122,5 +124,5 @@ class VMRunInContextOptions(var filename: js.UndefOr[String] = js.undefined,
                             var breakOnSigint: js.UndefOr[Boolean] = js.undefined,
                             var cachedData: js.UndefOr[Uint8Array | DataView] = js.undefined,
                             var produceCachedData: js.UndefOr[Boolean] = js.undefined,
-                            var importModuleDynamically: js.UndefOr[js.Function] = js.undefined)
-    extends js.Object
+                            var importModuleDynamically: js.UndefOr[js.Function] = js.undefined
+) extends js.Object

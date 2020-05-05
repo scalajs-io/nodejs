@@ -89,7 +89,8 @@ trait Fs extends js.Object with FSConstants {
   def appendFile(file: Path | FileDescriptor,
                  data: Buffer | String,
                  options: FileAppendOptions,
-                 callback: FsCallback0): Unit = js.native
+                 callback: FsCallback0
+  ): Unit = js.native
 
   /**
     * Asynchronously append data to a file, creating the file if it does not yet exist. data can be a string or a buffer.
@@ -582,14 +583,16 @@ trait Fs extends js.Object with FSConstants {
            offset: Int | Null,
            length: Int | Null,
            position: Int | Null,
-           callback: FsCallback2[Int, Buffer]): Unit = js.native
+           callback: FsCallback2[Int, Buffer]
+  ): Unit = js.native
 
   def read(fd: FileDescriptor,
            buffer: BufferLike,
            offset: Int | Null,
            length: Int | Null,
            position: Int | Null,
-           callback: FsCallback2[Int, Buffer]): Unit = js.native
+           callback: FsCallback2[Int, Buffer]
+  ): Unit = js.native
 
   /**
     * Synchronous version of fs.read().
@@ -1007,14 +1010,16 @@ trait Fs extends js.Object with FSConstants {
             offset: Int | Null,
             length: Int | Null,
             position: Int | Null,
-            callback: FsCallback2[Int, Buffer]): Unit = js.native
+            callback: FsCallback2[Int, Buffer]
+  ): Unit = js.native
 
   def write(fd: FileDescriptor,
             buffer: BufferLike,
             offset: Int | Null,
             length: Int | Null,
             position: Int | Null,
-            callback: FsCallback2[Int, Buffer]): Unit = js.native
+            callback: FsCallback2[Int, Buffer]
+  ): Unit = js.native
 
   /**
     * Write string to the file specified by fd. If string is not a string, then the value will be coerced to one.
@@ -1038,7 +1043,8 @@ trait Fs extends js.Object with FSConstants {
             string: String,
             position: Int,
             encoding: String,
-            callback: FsCallback2[Int, String]): Unit                                                    = js.native
+            callback: FsCallback2[Int, String]
+  ): Unit                                                                                                = js.native
   def write(fd: FileDescriptor, string: String, position: Int, callback: FsCallback2[Int, String]): Unit = js.native
   def write(fd: FileDescriptor, string: String, callback: FsCallback2[Int, String]): Unit                = js.native
 
@@ -1064,7 +1070,8 @@ trait Fs extends js.Object with FSConstants {
     */
   def writeFileSync(file: Path | FileDescriptor,
                     data: typedarray.Uint8Array,
-                    options: FileWriteOptions = js.native): Unit =
+                    options: FileWriteOptions = js.native
+  ): Unit =
     js.native
   def writeFileSync(file: Path | FileDescriptor, data: String, options: FileWriteOptions): Unit =
     js.native
@@ -1087,7 +1094,8 @@ trait Fs extends js.Object with FSConstants {
                 buffer: typedarray.Uint8Array,
                 offset: Int,
                 length: Int,
-                position: Int = js.native): Unit =
+                position: Int = js.native
+  ): Unit =
     js.native
   def writeSync(fd: FileDescriptor, buffer: typedarray.Uint8Array, offset: Int): Unit                  = js.native
   def writeSync(fd: FileDescriptor, buffer: typedarray.Uint8Array): Unit                               = js.native
@@ -1113,7 +1121,8 @@ trait Fs extends js.Object with FSConstants {
   def writev(fd: FileDescriptor,
              buffers: js.Array[typedarray.ArrayBufferView],
              position: Int,
-             fsCallback2: FsCallback2[Int, js.Array[typedarray.ArrayBufferView]]): Unit = js.native
+             fsCallback2: FsCallback2[Int, js.Array[typedarray.ArrayBufferView]]
+  ): Unit = js.native
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def writevSync(fd: FileDescriptor, buffers: js.Array[typedarray.ArrayBufferView], position: Int = js.native): Unit =
     js.native
@@ -1131,7 +1140,8 @@ object Fs extends Fs {
 
     def appendFile(file: Path | FileDescriptor,
                    data: String | Buffer,
-                   options: FileAppendOptions | String = js.native): js.Promise[Unit] = js.native
+                   options: FileAppendOptions | String = js.native
+    ): js.Promise[Unit] = js.native
 
     def chmod(path: Path, mode: FileMode): js.Promise[Unit]                                = js.native
     def chown(path: Path, uid: UID, gid: GID): js.Promise[Unit]                            = js.native
@@ -1178,24 +1188,27 @@ object Fs extends Fs {
     def read[T <: js.typedarray.TypedArray[_, _]](buffer: T,
                                                   offset: Int | Null,
                                                   length: Int | Null,
-                                                  position: Int | Null): js.Promise[BufferIOResult[T]] = js.native
-    def readFile(): js.Promise[Buffer]                                                                 = js.native
-    def readFile(encoding: String): js.Promise[String]                                                 = js.native
-    def readFile(options: ReadFileOptions): js.Promise[Output]                                         = js.native
-    def stat(): js.Promise[Stats]                                                                      = js.native
-    def stat(options: StatOptions): js.Promise[StatsVariant]                                           = js.native
-    def sync(): js.Promise[Unit]                                                                       = js.native
-    def truncate(): js.Promise[Unit]                                                                   = js.native
-    def truncate(length: Int): js.Promise[Unit]                                                        = js.native
-    def utimes(atime: Time, mtime: Time): js.Promise[Unit]                                             = js.native
+                                                  position: Int | Null
+    ): js.Promise[BufferIOResult[T]]                           = js.native
+    def readFile(): js.Promise[Buffer]                         = js.native
+    def readFile(encoding: String): js.Promise[String]         = js.native
+    def readFile(options: ReadFileOptions): js.Promise[Output] = js.native
+    def stat(): js.Promise[Stats]                              = js.native
+    def stat(options: StatOptions): js.Promise[StatsVariant]   = js.native
+    def sync(): js.Promise[Unit]                               = js.native
+    def truncate(): js.Promise[Unit]                           = js.native
+    def truncate(length: Int): js.Promise[Unit]                = js.native
+    def utimes(atime: Time, mtime: Time): js.Promise[Unit]     = js.native
     def write[T <: js.typedarray.TypedArray[_, _]](buffer: T,
                                                    offset: Int | Null,
                                                    length: Int | Null,
-                                                   position: Int | Null): js.Promise[BufferIOResult[T]] = js.native
+                                                   position: Int | Null
+    ): js.Promise[BufferIOResult[T]] = js.native
     def write(buffer: js.typedarray.DataView,
               offset: Int | Null,
               length: Int | Null,
-              position: Int | Null): js.Promise[BufferIOResult[js.typedarray.DataView]]                   = js.native
+              position: Int | Null
+    ): js.Promise[BufferIOResult[js.typedarray.DataView]]                                                 = js.native
     def write(string: String, position: Int | Null, encoding: String): js.Promise[BufferIOResult[String]] = js.native
     def writeFile(data: String | BufferLike, options: FileWriteOptions): js.Promise[Unit]                 = js.native
     def writeFile(data: String | BufferLike): js.Promise[Unit]                                            = js.native
@@ -1243,8 +1256,8 @@ trait BufferIOResult[T] extends js.Object {
   */
 class FileAppendOptions(var encoding: js.UndefOr[String] = js.undefined,
                         var mode: js.UndefOr[FileMode] = js.undefined,
-                        var flag: js.UndefOr[String] = js.undefined)
-    extends js.Object
+                        var flag: js.UndefOr[String] = js.undefined
+) extends js.Object
 
 /**
   * File Encoding Options
@@ -1252,8 +1265,8 @@ class FileAppendOptions(var encoding: js.UndefOr[String] = js.undefined,
 class FileEncodingOptions(var encoding: js.UndefOr[String] = js.undefined) extends js.Object
 
 class ReaddirOptions(var encoding: js.UndefOr[String] = js.undefined,
-                     var withFileTypes: js.UndefOr[Boolean] = js.undefined)
-    extends js.Object
+                     var withFileTypes: js.UndefOr[Boolean] = js.undefined
+) extends js.Object
 
 class OpendirOptions(var encoding: js.UndefOr[String] = js.undefined, var bufferSize: js.UndefOr[Double] = js.undefined)
     extends js.Object
@@ -1268,8 +1281,8 @@ class FileInputOptions(var flags: js.UndefOr[String] = js.undefined,
                        var emitClose: js.UndefOr[Boolean] = js.undefined,
                        var start: js.UndefOr[Int] = js.undefined,
                        var end: js.UndefOr[Int] = js.undefined,
-                       var highWaterMark: js.UndefOr[Int] = js.undefined)
-    extends js.Object
+                       var highWaterMark: js.UndefOr[Int] = js.undefined
+) extends js.Object
 
 class FileOutputOptions(var flags: js.UndefOr[String] = js.undefined,
                         var defaultEncoding: js.UndefOr[String] = js.undefined,
@@ -1277,8 +1290,8 @@ class FileOutputOptions(var flags: js.UndefOr[String] = js.undefined,
                         var mode: js.UndefOr[FileMode] = js.undefined,
                         var autoClose: js.UndefOr[Boolean] = js.undefined,
                         var emitClose: js.UndefOr[Boolean] = js.undefined,
-                        var start: js.UndefOr[Int] = js.undefined)
-    extends js.Object
+                        var start: js.UndefOr[Int] = js.undefined
+) extends js.Object
 
 /**
   * File Watcher Options
@@ -1286,8 +1299,8 @@ class FileOutputOptions(var flags: js.UndefOr[String] = js.undefined,
   * @param interval   <Integer>
   */
 class FileWatcherOptions(var persistent: js.UndefOr[Boolean] = js.undefined,
-                         var interval: js.UndefOr[Int] = js.undefined)
-    extends js.Object
+                         var interval: js.UndefOr[Int] = js.undefined
+) extends js.Object
 
 class StatOptions(var bigint: js.UndefOr[Boolean] = js.undefined) extends js.Object
 
@@ -1296,8 +1309,8 @@ class MkdirOptions(var recursive: js.UndefOr[Boolean] = js.undefined, var mode: 
 
 class RmdirOptions(var emfileWait: js.UndefOr[Int] = 1000,
                    var maxBusyTries: js.UndefOr[Int] = 3,
-                   var recursive: js.UndefOr[Boolean] = js.undefined)
-    extends js.Object
+                   var recursive: js.UndefOr[Boolean] = js.undefined
+) extends js.Object
 
 @js.native
 trait RealpathObject extends js.Object {

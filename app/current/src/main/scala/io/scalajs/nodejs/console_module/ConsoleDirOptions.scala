@@ -13,5 +13,5 @@ import scala.scalajs.js
   */
 class ConsoleDirOptions(var showHidden: js.UndefOr[Boolean] = js.undefined,
                         var depth: js.UndefOr[Int] = js.undefined,
-                        var colors: js.UndefOr[Boolean] = js.undefined)
-    extends js.Object
+                        var colors: js.UndefOr[Boolean] = js.undefined
+) extends js.Object

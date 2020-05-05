@@ -211,7 +211,8 @@ trait Process extends IEventEmitter {
   def emitWarning(warning: String,
                   `type`: String = js.native,
                   code: String = js.native,
-                  ctor: js.Function = js.native): Unit            = js.native
+                  ctor: js.Function = js.native
+  ): Unit                                                         = js.native
   def emitWarning(warning: String, options: WarningOptions): Unit = js.native
 
   /**
@@ -316,7 +317,8 @@ trait Process extends IEventEmitter {
   def send(message: js.Any,
            sendHandle: SendHandle,
            options: TransferOptions,
-           callback: js.Function = js.native): Boolean                                 = js.native
+           callback: js.Function = js.native
+  ): Boolean                                                                           = js.native
   def send(message: js.Any, sendHandle: SendHandle, options: TransferOptions): Boolean = js.native
   def send(message: js.Any, sendHandle: SendHandle, callback: js.Function): Boolean    = js.native
   def send(message: js.Any, sendHandle: SendHandle): Boolean                           = js.native

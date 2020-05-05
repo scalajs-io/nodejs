@@ -54,7 +54,8 @@ trait Http2Session extends IEventEmitter {
   def state: Http2SessionState = js.native
 
   def settings(settings: Http2Settings = js.native,
-               callback: js.Function3[Error, Http2Settings, Int, Any] = js.native): Unit = js.native
+               callback: js.Function3[Error, Http2Settings, Int, Any] = js.native
+  ): Unit = js.native
 
   def `type`: Int = js.native
 

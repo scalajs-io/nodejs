@@ -17,10 +17,13 @@ class DNSAsyncTest extends AsyncFunSpec {
   describe("DNS") {
     it("supports lookup") {
       val promise = Promise[String]()
-      DNS.lookup(domain, (err, ipAddress) => {
-        assert(err === null)
-        promise.success(ipAddress)
-      })
+      DNS.lookup(
+        domain,
+        (err, ipAddress) => {
+          assert(err === null)
+          promise.success(ipAddress)
+        }
+      )
       promise.future.map { ipAddress =>
         assert(ipAddress.nonEmpty)
       }
@@ -28,10 +31,14 @@ class DNSAsyncTest extends AsyncFunSpec {
 
     it("supports lookupService:SSH") {
       val promise = Promise[(String, String)]()
-      DNS.lookupService("127.0.0.1", 22, (err, hostname, service) => {
-        assert(err === null)
-        promise.success((hostname, service))
-      })
+      DNS.lookupService(
+        "127.0.0.1",
+        22,
+        (err, hostname, service) => {
+          assert(err === null)
+          promise.success((hostname, service))
+        }
+      )
       promise.future.map {
         case (host, service) =>
           assert(host === "localhost")

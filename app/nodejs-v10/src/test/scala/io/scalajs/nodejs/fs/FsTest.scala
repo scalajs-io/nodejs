@@ -18,19 +18,26 @@ class FsTest extends AsyncFunSpec {
   describe("Fs") {
     it("supports watching files") {
       val promise = Promise[(String, String)]()
-      val watcher = Fs.watch(s"${testResources}", (eventType, file) => {
-        if (!promise.isCompleted) {
-          promise.success((eventType, file))
+      val watcher = Fs.watch(
+        s"${testResources}",
+        (eventType, file) => {
+          if (!promise.isCompleted) {
+            promise.success((eventType, file))
+          }
         }
-      })
+      )
       assert(watcher !== null)
 
       setImmediate(() =>
-        Fs.writeFile(s"${testResources}1.txt", "Hello", error => {
-          if (isDefined(error)) {
-            promise.failure(error.toException)
+        Fs.writeFile(
+          s"${testResources}1.txt",
+          "Hello",
+          error => {
+            if (isDefined(error)) {
+              promise.failure(error.toException)
+            }
           }
-        })
+        )
       )
 
       promise.future.map {
@@ -98,13 +105,16 @@ class FsTest extends AsyncFunSpec {
 
     it("support access") {
       val promise = Promise[Unit]()
-      Fs.access("./package.json", err => {
-        if (isDefined(err)) {
-          promise.failure(err.toException())
-        } else {
-          promise.success(())
+      Fs.access(
+        "./package.json",
+        err => {
+          if (isDefined(err)) {
+            promise.failure(err.toException())
+          } else {
+            promise.success(())
+          }
         }
-      })
+      )
       promise.future.map { _ =>
         succeed
       }

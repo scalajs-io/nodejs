@@ -30,7 +30,8 @@ class Http2ServerResponse extends stream.Writable with Http2TimeoutOps {
   def writeContinue(): Unit = js.native
 
   def createPushResponse(headers: Http2Headers,
-                         callback: js.Function2[io.scalajs.nodejs.Error, ServerHttp2Stream, Any]): Unit = js.native
+                         callback: js.Function2[io.scalajs.nodejs.Error, ServerHttp2Stream, Any]
+  ): Unit = js.native
 
   def getHeader(name: String): String                                 = js.native
   def getHeaderNames(name: String): js.Array[String]                  = js.native

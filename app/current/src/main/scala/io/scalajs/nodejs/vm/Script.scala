@@ -49,8 +49,8 @@ class ScriptOptions(var filename: js.UndefOr[String] = js.undefined,
                     var columnOffset: js.UndefOr[Int] = js.undefined,
                     var cachedData: js.UndefOr[Uint8Array | DataView] = js.undefined,
                     var produceCachedData: js.UndefOr[Boolean] = js.undefined,
-                    var importModuleDynamically: js.UndefOr[js.Function] = js.undefined)
-    extends js.Object
+                    var importModuleDynamically: js.UndefOr[js.Function] = js.undefined
+) extends js.Object
 
 class RunInContextOptions(
     var displayErrors: js.UndefOr[Boolean] = js.undefined,

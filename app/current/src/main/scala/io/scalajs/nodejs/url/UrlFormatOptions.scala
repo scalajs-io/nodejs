@@ -14,5 +14,5 @@ import scala.scalajs.js
 class UrlFormatOptions(var auth: js.UndefOr[Boolean] = js.undefined,
                        var fragment: js.UndefOr[Boolean] = js.undefined,
                        var search: js.UndefOr[Boolean] = js.undefined,
-                       var unicode: js.UndefOr[Boolean] = js.undefined)
-    extends js.Object
+                       var unicode: js.UndefOr[Boolean] = js.undefined
+) extends js.Object

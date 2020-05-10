@@ -4,7 +4,7 @@ import org.portablescala.sbtplatformdeps.PlatformDepsPlugin.autoImport._
 
 object Dependencies {
   val scalaReflect     = Def.setting("org.scala-lang" % "scala-reflect" % scalaVersion.value)
-  val scalatestVersion = "3.1.1"
+  val scalatestVersion = "3.1.2"
 
   val core = Def.setting(
     Seq(

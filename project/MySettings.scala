@@ -57,7 +57,7 @@ object MySettings {
 
   lazy val commonScalaJsSettings = Seq(
     scalacOptions ++= Seq("-P:scalajs:sjsDefinedByDefault").filter { _ =>
-      Option(System.getenv("SCALAJS_VERSION")).getOrElse("1.0.1").startsWith("0.6.")
+      Option(System.getenv("SCALAJS_VERSION")).getOrElse("1.1.0").startsWith("0.6.")
     },
     scalaJSLinkerConfig ~= {
       _.withModuleKind(ModuleKind.CommonJSModule)

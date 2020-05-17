@@ -9,4 +9,4 @@ jobs:
       - uses: actions/checkout@v1
       - uses: olafurpg/setup-scala@v5
       - name: Check Scalafmt/Scaladoc
-        run: sbt ++2.13.1 scalafmtSbtCheck scalafmtCheck test:scalafmtCheck current/doc core/doc
+        run: sbt ++2.13.2 scalafmtSbtCheck scalafmtCheck test:scalafmtCheck current/doc core/doc

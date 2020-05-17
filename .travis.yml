@@ -3,7 +3,7 @@ language: scala
 
 scala:
   - 2.12.11
-  - 2.13.1
+  - 2.13.2
 
 jdk:
   - openjdk11
@@ -20,7 +20,7 @@ script:
 
 matrix:
   include:
-    - scala: 2.13.1
+    - scala: 2.13.2
       env: TRAVIS_NODE_VERSION="10.19.0" JOB_NAME="test"
       script: sbt ++$TRAVIS_SCALA_VERSION nodejs_v10/test
 

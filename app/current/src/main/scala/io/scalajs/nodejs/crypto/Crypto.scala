@@ -111,6 +111,7 @@ trait Crypto extends js.Object {
     * will display the available digest algorithms.
     * @param algorithm the given algorithm (e.g. 'sha256', 'sha512')
     */
+  @deprecated("Use CreateHashOptions instead.", "v0.12.0")
   def createHash(algorithm: String, options: TransformOptions): Hash              = js.native
   def createHash(algorithm: String, options: CreateHashOptions = js.native): Hash = js.native
 
@@ -151,6 +152,9 @@ trait Crypto extends js.Object {
     * @param algorithm the given algorithm (e.g. 'RSA-SHA256')
     */
   def createVerify(algorithm: String, options: WritableOptions = js.native): Verify = js.native
+
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs14)
+  def diffieHellman(options: DiffieHellmanOptions): Buffer = js.native
 
   def generateKeyPair(
       `type`: String,

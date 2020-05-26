@@ -16,13 +16,15 @@ import scala.scalajs.js.|
   *                       setting to `'auto'` will make color support depend on the value of the `isTTY` property and the value returned by `getColorDepth()` on the respective stream.
   *                       This option can not be used, if `inspectOptions.colors` is set as well. Defaults to `'auto'`.
   * @param inspectOptions Specifies options that are passed along to [[io.scalajs.nodejs.util.Util.inspect()]].
-  *
-  *                       **Node:** This is available after Node.js v11.7.0.
+  *                       Node.js v11.7.0.
+  * @param groupIndentation Set group indentation. Default: 2.
+  *                       Node.js v14.2.0.
   */
 class ConsoleOptions(
     var stdout: IWritable,
     var stderr: js.UndefOr[IWritable] = js.undefined,
     var ignoreErrors: Boolean = true,
     var colorMode: Boolean | String = "auto",
-    var inspectOptions: js.UndefOr[InspectOptions] = js.undefined
+    var inspectOptions: js.UndefOr[InspectOptions] = js.undefined,
+    var groupIndentation: js.UndefOr[Int] = js.undefined
 ) extends js.Object

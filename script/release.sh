@@ -2,7 +2,7 @@
 
 cat ./version.sbt
 
-export SCALAJS_VERSION=0.6.32
+export SCALAJS_VERSION=0.6.33
 sbt clean +publishSigned sonatypeBundleUpload sonatypeReleaseAll
 unset SCALAJS_VERSION
 sbt clean +publishSigned sonatypeBundleUpload sonatypeReleaseAll

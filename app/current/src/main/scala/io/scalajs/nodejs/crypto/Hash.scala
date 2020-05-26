@@ -1,5 +1,6 @@
 package io.scalajs.nodejs.crypto
 
+import com.thoughtworks.enableIf
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.stream.{Transform, TransformOptions}
 
@@ -16,6 +17,25 @@ import scala.scalajs.js
   */
 @js.native
 sealed trait Hash extends Transform {
+
+  /**
+    * Creates a new Hash object that contains a deep copy of the internal state of the current Hash object.
+    * An error is thrown when an attempt is made to copy the Hash object after its hash.digest() method has been called.
+    *
+    *  Added in: v13.1.0
+    */
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs14)
+  def copy(): Hash = js.native
+
+  /**
+    * Creates a new Hash object that contains a deep copy of the internal state of the current Hash object.
+    * The optional options argument controls stream behavior. For XOF hash functions such as 'shake256', the outputLength option can be used to specify the desired output length in bytes.
+    * An error is thrown when an attempt is made to copy the Hash object after its hash.digest() method has been called.
+    *
+    *  Added in: v13.1.0
+    */
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs14)
+  def copy(options: TransformOptions): Hash = js.native
 
   /**
     * Calculates the digest of all of the data passed to be hashed (using the hash.update() method). The encoding can

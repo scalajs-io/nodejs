@@ -9,19 +9,20 @@ jdk:
   - openjdk11
 
 env:
-  global:
-    - TRAVIS_NODE_VERSION="12.16.1" JOB_NAME="test"
   matrix:
-    - SCALAJS_VERSION="0.6.32"
-    - SCALAJS_VERSION=""
+    - TRAVIS_NODE_VERSION="12.16.1" SCALAJS_VERSION="0.6.32"
+    - TRAVIS_NODE_VERSION="12.16.1" SCALAJS_VERSION=""
 
 script:
   - sbt ++$TRAVIS_SCALA_VERSION test
 
-matrix:
+jobs:
   include:
-    - scala: 2.13.2
-      env: TRAVIS_NODE_VERSION="10.19.0" JOB_NAME="test"
+    - name: "Node.10 Scala.js 0.6"
+      env:  TRAVIS_NODE_VERSION="10.19.0" SCALAJS_VERSION="0.6.32"
+      script: sbt ++$TRAVIS_SCALA_VERSION nodejs_v10/test
+    - name: "Node.10 Scala.js 1.x"
+      env:  TRAVIS_NODE_VERSION="10.19.0" SCALAJS_VERSION=""
       script: sbt ++$TRAVIS_SCALA_VERSION nodejs_v10/test
 
 install:

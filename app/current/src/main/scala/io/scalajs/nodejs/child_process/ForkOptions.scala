@@ -12,6 +12,11 @@ import scala.scalajs.js.|
   * @param env      Environment key-value pairs
   * @param execPath Executable used to create the child process
   * @param execArgv List of string arguments passed to the executable (Default: process.execArgv)
+  * @param serialization
+  *                  From Node.js v13.2.0, v12.16.0.
+  *                  Specify the kind of serialization used for sending messages between processes.
+  *                  Possible values are 'json' and 'advanced'. See Advanced Serialization for more details.
+  *                  Default: 'json'.
   * @param silent   If true, stdin, stdout, and stderr of the child will be piped to the parent,
   *                 otherwise they will be inherited from the parent, see the 'pipe' and 'inherit' options
   *                 for child_process.spawn()'s stdio for more details (Default: false)
@@ -26,6 +31,7 @@ class ForkOptions(var cwd: js.UndefOr[String] = js.undefined,
                   var env: js.UndefOr[js.Object] = js.undefined,
                   var execPath: js.UndefOr[String] = js.undefined,
                   var execArgv: js.UndefOr[Array[String]] = js.undefined,
+                  var serialization: js.UndefOr[String] = js.undefined,
                   var silent: js.UndefOr[Boolean] = js.undefined,
                   var stdio: js.UndefOr[String | Array[String]] = js.undefined,
                   var uid: js.UndefOr[UID] = js.undefined,

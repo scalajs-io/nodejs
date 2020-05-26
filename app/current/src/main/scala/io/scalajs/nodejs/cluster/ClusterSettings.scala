@@ -23,6 +23,15 @@ trait ClusterSettings extends js.Object {
   /** <Boolean> whether or not to send output to parent's stdio. (Default=false) */
   var silent: Boolean = js.native
 
+  /**
+    * Specify the kind of serialization used for sending messages between processes.
+    * Possible values are 'json' and 'advanced'. See Advanced Serialization for more details.
+    * Default: 'json'.
+    *
+    * From Node.js v13.2.0, v12.16.0.
+    */
+  var serialization: String = js.native
+
   /** <Number> Sets the user identity of the process. (See setuid(2).) */
   var uid: UID = js.native
 
@@ -46,6 +55,7 @@ object ClusterSettings {
             exec: String = null,
             args: js.Array[String] = null,
             silent: Boolean = false,
+            serialization: String = "json",
             stdio: js.Array[js.Any] = null,
             inspectPort: Int | js.Function = null,
             cwd: String = null,
@@ -56,6 +66,7 @@ object ClusterSettings {
     settings.updateDynamic("exec")(exec)
     settings.updateDynamic("args")(args)
     settings.updateDynamic("silent")(silent)
+    settings.updateDynamic("serialization")(serialization)
     settings.updateDynamic("stdio")(stdio)
     settings.updateDynamic("inspectPort")(inspectPort.asInstanceOf[js.Any])
     settings.updateDynamic("cwd")(cwd)

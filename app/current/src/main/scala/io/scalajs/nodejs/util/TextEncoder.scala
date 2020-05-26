@@ -5,6 +5,7 @@ import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.typedarray.Uint8Array
 @js.native
 @JSImport("util", "TextEncoder")
+// TODO: The class can be  available on the global object when Node.js v10 is drooped
 class TextEncoder() extends js.Object {
   def this(encoding: String) = this()
 

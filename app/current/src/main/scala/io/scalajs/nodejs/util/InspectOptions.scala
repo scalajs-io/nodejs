@@ -22,6 +22,7 @@ import scala.scalajs.js.|
   * @param compact        For Node.js v9.9.0+
   * @param sorted         For Node.js v10.12.0+
   * @param getters        For Node.js v11.5.0+
+  * @param maxStringLength Fot Node.js v14.0.0+ Specifies the maximum number of characters to include when formatting. Set to null or Infinity to show all elements.                       @
   *
   * @see [[https://nodejs.org/api/util.html#util_util_inspect_object_options]]
   */
@@ -34,5 +35,6 @@ class InspectOptions(var showHidden: js.UndefOr[Boolean] = false,
                      var breakLength: Int = 80,
                      var compact: js.UndefOr[Boolean | Int] = 3,
                      var sorted: js.UndefOr[Boolean | js.Function2[String, String, Int]] = js.undefined,
-                     var getters: js.UndefOr[Boolean | String] = false
+                     var getters: js.UndefOr[Boolean | String] = false,
+                     var maxStringLength: js.UndefOr[Int] = js.undefined
 ) extends js.Object

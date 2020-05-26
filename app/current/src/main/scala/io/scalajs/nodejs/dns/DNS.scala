@@ -1,5 +1,7 @@
 package io.scalajs.nodejs.dns
 
+import com.thoughtworks.enableIf
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
@@ -82,6 +84,26 @@ object DNS extends DNS {
   object promises extends js.Object {
     type Resolver = PromisesResolver
   }
+
+  /////////////////////////////////////////////////////////////////////////////////
+  //      getaddrinfo flags
+  /////////////////////////////////////////////////////////////////////////////////
+  /** Returned address types are determined by the types of addresses supported by the current system.
+    * For example, IPv4 addresses are only returned if the current system has at least one IPv4 address configured.
+    * Loopback addresses are not considered.
+    */
+  val ADDRCONFIG: Int = js.native
+
+  /** If the IPv6 family was specified, but no IPv6 addresses were found, then return IPv4 mapped IPv6 addresses.
+    * It is not supported on some operating systems (e.g FreeBSD 10.1).
+    */
+  val V4MAPPED: Int = js.native
+
+  /** If dns.V4MAPPED is specified, return resolved IPv6 addresses as well as IPv4 mapped IPv6 addresses.
+    * From Node.js v14.0.0.
+    */
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs14)
+  val ALL: Int = js.native
 
   /////////////////////////////////////////////////////////////////////////////////
   //      Error Codes

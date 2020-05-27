@@ -1,6 +1,7 @@
 package io.scalajs.nodejs.readline
 
 import io.scalajs.nodejs.events.IEventEmitter
+import net.exoego.scalajs.types.util.Factory
 
 import scala.scalajs.js
 
@@ -84,9 +85,10 @@ trait Interface extends IEventEmitter {
   // TODO: [Symbol.asyncIterator]()
 }
 
-class Key(
-    var ctrl: js.UndefOr[Boolean] = js.undefined,
-    var meta: js.UndefOr[Boolean] = js.undefined,
-    var shift: js.UndefOr[Boolean] = js.undefined,
-    var name: js.UndefOr[String] = js.undefined
-) extends js.Object
+@Factory
+trait Key extends js.Object {
+  var ctrl: js.UndefOr[Boolean]  = js.undefined
+  var meta: js.UndefOr[Boolean]  = js.undefined
+  var shift: js.UndefOr[Boolean] = js.undefined
+  var name: js.UndefOr[String]   = js.undefined
+}

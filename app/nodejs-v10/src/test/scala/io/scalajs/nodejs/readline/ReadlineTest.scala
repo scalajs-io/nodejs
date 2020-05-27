@@ -18,7 +18,7 @@ class ReadlineTest extends AsyncFunSpec {
       var lineNo  = 0
       val file    = "./package.json"
       val reader = Readline.createInterface(
-        new ReadlineOptions(
+        ReadlineOptions(
           input = Fs.createReadStream(file),
           output = Process.stdout,
           terminal = false
@@ -37,7 +37,7 @@ class ReadlineTest extends AsyncFunSpec {
 
     it("has REPL-like functionality") {
       val promise = Promise[Unit]()
-      val rl      = Readline.createInterface(new ReadlineOptions(input = Process.stdin, output = Process.stdout))
+      val rl      = Readline.createInterface(ReadlineOptions(input = Process.stdin, output = Process.stdout))
       rl.setPrompt("OHAI> ")
       rl.prompt()
 

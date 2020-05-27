@@ -1,6 +1,7 @@
 package io.scalajs.nodejs.os
 
 import io.scalajs.nodejs.{GID, UID}
+import net.exoego.scalajs.types.util.Factory
 
 import scala.scalajs.js
 
@@ -8,5 +9,11 @@ import scala.scalajs.js
   * User Information Object
   * @example {{{ {"uid":501,"gid":20,"username":"ldaniels","homedir":"/Users/ldaniels","shell":"/bin/bash"} }}}
   */
-class UserInfoObject(val uid: UID, val gid: GID, val username: String, val homedir: String, val shell: String)
-    extends js.Object
+@Factory
+trait UserInfoObject extends js.Object {
+  var uid: UID
+  var gid: GID
+  var username: String
+  var homedir: String
+  var shell: String
+}

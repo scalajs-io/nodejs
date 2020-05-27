@@ -24,7 +24,7 @@ class FsAsyncTest extends AsyncFunSpec with BeforeAndAfterEach {
     it("should support recursive-mkdir") {
       for {
         dirExistsBeforeMkdir <- Fs.existsFuture(dir)
-        _                    <- Fs.mkdirFuture(dir, new MkdirOptions(recursive = true))
+        _                    <- Fs.mkdirFuture(dir, MkdirOptions(recursive = true))
         dirStat              <- Fs.statFuture(dir)
         dirExistsAfterMkdir  <- Fs.existsFuture(dir)
       } yield {

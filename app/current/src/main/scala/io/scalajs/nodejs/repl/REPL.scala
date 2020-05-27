@@ -1,6 +1,7 @@
 package io.scalajs.nodejs.repl
 
 import io.scalajs.nodejs.stream
+import net.exoego.scalajs.types.util.Factory
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
@@ -19,20 +20,21 @@ trait REPL extends js.Object {
   def start(prompt: String): REPLServer                    = js.native
 }
 
-class StartOptions(
-    var prompt: js.UndefOr[String] = js.undefined,
-    var input: js.UndefOr[stream.IReadable] = js.undefined,
-    var output: js.UndefOr[stream.IWritable] = js.undefined,
-    var terminal: js.UndefOr[Boolean] = js.undefined,
-    var eval: js.UndefOr[js.Function4[String, js.Object, String, js.Function, Any]] = js.undefined,
-    var useColors: js.UndefOr[Boolean] = js.undefined,
-    var useGlobal: js.UndefOr[Boolean] = js.undefined,
-    var ignoreUndefined: js.UndefOr[Boolean] = js.undefined,
-    var writer: js.UndefOr[js.Function1[js.Any, Any]] = js.undefined,
-    var completer: js.UndefOr[js.Function] = js.undefined,
-    var replMode: js.UndefOr[js.Symbol] = js.undefined,
-    var breakEvalOnSigint: js.UndefOr[Boolean] = js.undefined
-) extends js.Object
+@Factory
+trait StartOptions extends js.Object {
+  var prompt: js.UndefOr[String]                                                  = js.undefined
+  var input: js.UndefOr[stream.IReadable]                                         = js.undefined
+  var output: js.UndefOr[stream.IWritable]                                        = js.undefined
+  var terminal: js.UndefOr[Boolean]                                               = js.undefined
+  var eval: js.UndefOr[js.Function4[String, js.Object, String, js.Function, Any]] = js.undefined
+  var useColors: js.UndefOr[Boolean]                                              = js.undefined
+  var useGlobal: js.UndefOr[Boolean]                                              = js.undefined
+  var ignoreUndefined: js.UndefOr[Boolean]                                        = js.undefined
+  var writer: js.UndefOr[js.Function1[js.Any, Any]]                               = js.undefined
+  var completer: js.UndefOr[js.Function]                                          = js.undefined
+  var replMode: js.UndefOr[js.Symbol]                                             = js.undefined
+  var breakEvalOnSigint: js.UndefOr[Boolean]                                      = js.undefined
+}
 
 /**
   * REPL Singleton

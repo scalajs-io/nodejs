@@ -1,14 +1,18 @@
 package io.scalajs.nodejs.os
 
+import net.exoego.scalajs.types.util.Factory
+
 import scala.scalajs.js
 
 /**
   * Represents a Network Interface
   */
-class NetworkInterface(val address: String,
-                       val netmask: String,
-                       val family: String,
-                       val mac: String,
-                       val scopeid: js.UndefOr[Int],
-                       val internal: Boolean
-) extends js.Object
+@Factory
+trait NetworkInterface extends js.Object {
+  var address: String
+  var netmask: String
+  var family: String
+  var mac: String
+  var scopeid: js.UndefOr[Int] = js.undefined
+  var internal: Boolean
+}

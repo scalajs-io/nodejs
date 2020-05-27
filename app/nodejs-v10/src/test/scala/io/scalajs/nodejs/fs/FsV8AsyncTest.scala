@@ -70,7 +70,7 @@ class FsV8AsyncTest extends AsyncFunSpec with BeforeAndAfterEach {
     it("should support appendFileFuture") {
       for {
         _              <- Fs.appendFileFuture("x.AppendFile.txt", "yay")
-        _              <- Fs.appendFileFuture("x.AppendFile.sh", "echo 0", new FileAppendOptions(mode = Fs.constants.X_OK))
+        _              <- Fs.appendFileFuture("x.AppendFile.sh", "echo 0", FileAppendOptions(mode = Fs.constants.X_OK))
         defaultStat    <- Fs.statFuture("x.AppendFile.txt")
         executableStat <- Fs.statFuture("x.AppendFile.sh")
         _              <- Fs.unlinkFuture("x.AppendFile.txt")

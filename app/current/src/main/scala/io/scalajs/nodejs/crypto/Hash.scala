@@ -72,6 +72,7 @@ sealed trait Hash extends Transform {
   def update(data: BufferLike): Hash                    = js.native
 }
 
+// TODO: Use Fatory macro
 class CreateHashOptions(transform: js.UndefOr[js.Function] = js.undefined,
                         flush: js.UndefOr[js.Function] = js.undefined,
                         var outputLength: js.UndefOr[Int] = js.undefined

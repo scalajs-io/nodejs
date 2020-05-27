@@ -1,5 +1,7 @@
 package io.scalajs.nodejs.util
 
+import net.exoego.scalajs.types.util.Factory
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.typedarray.{ArrayBuffer, ArrayBufferView}
@@ -16,6 +18,7 @@ class TextDecoder() extends js.Object {
   def decode(buffer: ArrayBuffer | ArrayBufferView, options: TextDecodeOptions = js.native): String = js.native
 }
 
-class TextDecodeOptions(
-    stream: js.UndefOr[Boolean] = js.undefined
-) extends js.Object {}
+@Factory
+trait TextDecodeOptions extends js.Object {
+  var stream: js.UndefOr[Boolean]
+}

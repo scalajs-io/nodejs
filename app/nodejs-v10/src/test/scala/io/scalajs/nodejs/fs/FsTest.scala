@@ -56,7 +56,7 @@ class FsTest extends AsyncFunSpec {
       val file2 = s"${testResources}fileA2.txt"
       val file3 = s"${testResources}fileC2.txt"
 
-      val readable = Fs.createReadStream(file1, new FileInputOptions(encoding = "utf8"))
+      val readable = Fs.createReadStream(file1, FileInputOptions(encoding = "utf8"))
       val writable = Fs.createWriteStream(file2)
       readable.onData[String](chunk => {
         writable.end(chunk)

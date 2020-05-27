@@ -1,40 +1,60 @@
 package io.scalajs.nodejs.util
 
+import com.thoughtworks.enableIf
+import net.exoego.scalajs.types.util.Factory
+
 import scala.scalajs.js
 import scala.scalajs.js.|
 
-/**
-  * Inspect Options
-  * @param showHidden     If true, the object's non-enumerable symbols and properties will be included in the
-  *                       formatted result. Defaults to false.
-  * @param depth          Specifies the number of times to recurse while formatting the object. This is useful
-  *                       for inspecting large complicated objects. Defaults to 2. To make it recurse indefinitely pass null.
-  * @param colors         If true, the output will be styled with ANSI color codes. Defaults to false. Colors are customizable,
-  *                       see Customizing util.inspect colors.
-  * @param customInspect  If false, then custom inspect(depth, opts) functions exported on the object being inspected
-  *                       will not be called. Defaults to true.
-  * @param showProxy      If true, then objects and functions that are Proxy objects will be introspected to show their
-  *                       target and handler objects. Defaults to false.
-  * @param maxArrayLength Specifies the maximum number of array and TypedArray elements to include when formatting.
-  *                       Defaults to 100. Set to null to show all array elements. Set to 0 or negative to show no array elements.
-  * @param breakLength    The length at which an object's keys are split across multiple lines. Set to Infinity to
-  *                       format an object as a single line. Defaults to 60 for legacy compatibility.
-  * @param compact        For Node.js v9.9.0+
-  * @param sorted         For Node.js v10.12.0+
-  * @param getters        For Node.js v11.5.0+
-  * @param maxStringLength Fot Node.js v14.0.0+ Specifies the maximum number of characters to include when formatting. Set to null or Infinity to show all elements.                       @
-  *
-  * @see [[https://nodejs.org/api/util.html#util_util_inspect_object_options]]
+/** @see [[https://nodejs.org/api/util.html#util_util_inspect_object_options]]
   */
-class InspectOptions(var showHidden: js.UndefOr[Boolean] = false,
-                     var depth: Int = 2,
-                     var colors: Boolean = false,
-                     var customInspect: Boolean = true,
-                     var showProxy: Boolean = false,
-                     var maxArrayLength: js.UndefOr[Int] = 100,
-                     var breakLength: Int = 80,
-                     var compact: js.UndefOr[Boolean | Int] = 3,
-                     var sorted: js.UndefOr[Boolean | js.Function2[String, String, Int]] = js.undefined,
-                     var getters: js.UndefOr[Boolean | String] = false,
-                     var maxStringLength: js.UndefOr[Int] = js.undefined
-) extends js.Object
+@Factory
+trait InspectOptions extends js.Object {
+
+  /** If true, the object's non-enumerable symbols and properties will be included in the
+    * formatted result. Defaults to false.
+    */
+  var showHidden: js.UndefOr[Boolean] = js.undefined
+
+  /** Specifies the number of times to recurse while formatting the object. This is useful
+    * for inspecting large complicated objects. Defaults to 2. To make it recurse indefinitely pass null.
+    */
+  var depth: js.UndefOr[Int] = js.undefined
+
+  /** If true, the output will be styled with ANSI color codes. Defaults to false. Colors are customizable,
+    * see Customizing util.inspect colors.
+    */
+  var colors: js.UndefOr[Boolean] = js.undefined
+
+  /** If false, then custom inspect(depth, opts) functions exported on the object being inspected
+    * will not be called. Defaults to true. */
+  var customInspect: js.UndefOr[Boolean] = js.undefined
+
+  /** If true, then objects and functions that are Proxy objects will be introspected to show their
+    * target and handler objects. Defaults to false.
+    */
+  var showProxy: js.UndefOr[Boolean] = js.undefined
+
+  /** Specifies the maximum number of array and TypedArray elements to include when formatting.
+    * Defaults to 100. Set to null to show all array elements. Set to 0 or negative to show no array elements.
+    */
+  var maxArrayLength: js.UndefOr[Int] = js.undefined
+
+  /** The length at which an object's keys are split across multiple lines. Set to Infinity to
+    * format an object as a single line. Defaults to 60 for legacy compatibility.
+    */
+  var breakLength: js.UndefOr[Int] = js.undefined
+
+  var compact: js.UndefOr[Boolean | Int] = js.undefined
+
+  var sorted: js.UndefOr[Boolean | js.Function2[String, String, Int]] = js.undefined
+
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+  var getters: js.UndefOr[Boolean | String] = js.undefined
+
+  /** Fot Node.js v14.0.0+ Specifies the maximum number of characters to include when formatting.
+    * Set to null or Infinity to show all elements.
+    */
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs14)
+  var maxStringLength: js.UndefOr[Int] = js.undefined
+}

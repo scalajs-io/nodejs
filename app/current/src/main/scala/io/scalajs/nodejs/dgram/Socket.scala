@@ -4,6 +4,7 @@ package dgram
 import com.thoughtworks.enableIf
 import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.nodejs.net.Address
+import _root_.net.exoego.scalajs.types.util.Factory
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
@@ -118,12 +119,13 @@ class Socket private[this] () extends IEventEmitter {
   def unref(): this.type                                      = js.native
 }
 
-class BindOptions(
-    var port: js.UndefOr[Int] = js.undefined,
-    var address: js.UndefOr[String] = js.undefined,
-    var exclusive: js.UndefOr[Boolean] = js.undefined,
-    var fd: js.UndefOr[Int] = js.undefined
-) extends js.Object {}
+@Factory
+trait BindOptions extends js.Object {
+  var port: js.UndefOr[Int]          = js.undefined
+  var address: js.UndefOr[String]    = js.undefined
+  var exclusive: js.UndefOr[Boolean] = js.undefined
+  var fd: js.UndefOr[Int]            = js.undefined
+}
 
 @js.native
 trait RemoteAddress extends js.Object {

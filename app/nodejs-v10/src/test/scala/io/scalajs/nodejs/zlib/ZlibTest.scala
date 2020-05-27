@@ -12,7 +12,7 @@ class ZlibTest extends AnyFunSpec {
 
       for {
         compressed   <- Zlib.deflateFuture(original)
-        uncompressed <- Zlib.unzipFuture(compressed, new CompressionOptions(finishFlush = Zlib.Z_SYNC_FLUSH))
+        uncompressed <- Zlib.unzipFuture(compressed, CompressionOptions(finishFlush = Zlib.Z_SYNC_FLUSH))
       } {
         assert(original.compare(uncompressed) === 0)
       }

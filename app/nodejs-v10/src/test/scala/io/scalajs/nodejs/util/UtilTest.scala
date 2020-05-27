@@ -7,7 +7,7 @@ class UtilTest extends AnyFunSpec {
   it("have inspect object") {
     assert(Util.inspect !== null)
     assert(Util.inspect(js.Array(1, 2, 3)) === "[ 1, 2, 3 ]")
-    val inspectOptions = new InspectOptions(maxArrayLength = 1)
+    val inspectOptions = InspectOptions(maxArrayLength = 1)
     assert(Util.inspect(js.Array(1, 2, 3), inspectOptions) === "[ 1, ... 2 more items ]")
     assert(Util.inspect.defaultOptions !== null)
     assert(Util.inspect.styles !== null)
@@ -29,7 +29,7 @@ class UtilTest extends AnyFunSpec {
   it("have formatWithOptions added in v10.0.0") {
     assert(
       Util.formatWithOptions(
-        new InspectOptions(compact = true),
+        InspectOptions(compact = true),
         "See object %O",
         new js.Object {
           val foo: Int = 42

@@ -21,7 +21,7 @@ class PathTest extends AnyFunSpec {
     }
 
     it("supports format()") {
-      assert(Path.format(new PathObject(root = "/", base = "file.txt")) === "/file.txt")
+      assert(Path.format(PathObject(root = "/", base = "file.txt")) === "/file.txt")
     }
 
     it("supports isAbsolute()") {

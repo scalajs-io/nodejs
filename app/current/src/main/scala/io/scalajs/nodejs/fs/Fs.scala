@@ -3,6 +3,7 @@ package fs
 
 import com.thoughtworks.{enableIf, enableMembersIf}
 import io.scalajs.nodejs.buffer.Buffer
+import _root_.net.exoego.scalajs.types.util.Factory
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
@@ -1251,66 +1252,82 @@ trait BufferIOResult[T] extends js.Object {
   val buffer: T      = js.native
 }
 
-/**
-  * File Append Options
-  */
-class FileAppendOptions(var encoding: js.UndefOr[String] = js.undefined,
-                        var mode: js.UndefOr[FileMode] = js.undefined,
-                        var flag: js.UndefOr[String] = js.undefined
-) extends js.Object
+@Factory
+trait FileAppendOptions extends js.Object {
+  var encoding: js.UndefOr[String] = js.undefined
+  var mode: js.UndefOr[FileMode]   = js.undefined
+  var flag: js.UndefOr[String]     = js.undefined
+}
 
-/**
-  * File Encoding Options
-  */
-class FileEncodingOptions(var encoding: js.UndefOr[String] = js.undefined) extends js.Object
+@Factory
+trait FileEncodingOptions {
+  var encoding: js.UndefOr[String] = js.undefined
+}
 
-class ReaddirOptions(var encoding: js.UndefOr[String] = js.undefined,
-                     var withFileTypes: js.UndefOr[Boolean] = js.undefined
-) extends js.Object
+@Factory
+trait ReaddirOptions extends js.Object {
+  var encoding: js.UndefOr[String]       = js.undefined
+  var withFileTypes: js.UndefOr[Boolean] = js.undefined
+}
 
-class OpendirOptions(var encoding: js.UndefOr[String] = js.undefined, var bufferSize: js.UndefOr[Double] = js.undefined)
-    extends js.Object
+@Factory
+trait OpendirOptions extends js.Object {
+  var encoding: js.UndefOr[String]   = js.undefined
+  var bufferSize: js.UndefOr[Double] = js.undefined
+}
 
-class ReadFileOptions(var flag: js.UndefOr[String] = js.undefined) extends js.Object
+@Factory
+trait ReadFileOptions extends js.Object {
+  var flag: js.UndefOr[String] = js.undefined
+}
 
-class FileInputOptions(var flags: js.UndefOr[String] = js.undefined,
-                       var encoding: js.UndefOr[String] = js.undefined,
-                       var fd: js.UndefOr[FileDescriptor] = js.undefined,
-                       var mode: js.UndefOr[FileMode] = js.undefined,
-                       var autoClose: js.UndefOr[Boolean] = js.undefined,
-                       var emitClose: js.UndefOr[Boolean] = js.undefined,
-                       var start: js.UndefOr[Int] = js.undefined,
-                       var end: js.UndefOr[Int] = js.undefined,
-                       var highWaterMark: js.UndefOr[Int] = js.undefined
-) extends js.Object
+@Factory
+trait FileInputOptions extends js.Object {
+  var flags: js.UndefOr[String]      = js.undefined
+  var encoding: js.UndefOr[String]   = js.undefined
+  var fd: js.UndefOr[FileDescriptor] = js.undefined
+  var mode: js.UndefOr[FileMode]     = js.undefined
+  var autoClose: js.UndefOr[Boolean] = js.undefined
+  var emitClose: js.UndefOr[Boolean] = js.undefined
+  var start: js.UndefOr[Int]         = js.undefined
+  var end: js.UndefOr[Int]           = js.undefined
+  var highWaterMark: js.UndefOr[Int] = js.undefined
+}
 
-class FileOutputOptions(var flags: js.UndefOr[String] = js.undefined,
-                        var defaultEncoding: js.UndefOr[String] = js.undefined,
-                        var fd: js.UndefOr[FileDescriptor] = js.undefined,
-                        var mode: js.UndefOr[FileMode] = js.undefined,
-                        var autoClose: js.UndefOr[Boolean] = js.undefined,
-                        var emitClose: js.UndefOr[Boolean] = js.undefined,
-                        var start: js.UndefOr[Int] = js.undefined
-) extends js.Object
+@Factory
+trait FileOutputOptions extends js.Object {
+  var flags: js.UndefOr[String]           = js.undefined
+  var defaultEncoding: js.UndefOr[String] = js.undefined
+  var fd: js.UndefOr[FileDescriptor]      = js.undefined
+  var mode: js.UndefOr[FileMode]          = js.undefined
+  var autoClose: js.UndefOr[Boolean]      = js.undefined
+  var emitClose: js.UndefOr[Boolean]      = js.undefined
+  var start: js.UndefOr[Int]              = js.undefined
+}
 
-/**
-  * File Watcher Options
-  * @param persistent <Boolean>
-  * @param interval   <Integer>
-  */
-class FileWatcherOptions(var persistent: js.UndefOr[Boolean] = js.undefined,
-                         var interval: js.UndefOr[Int] = js.undefined
-) extends js.Object
+@Factory
+trait FileWatcherOptions extends js.Object {
+  var persistent: js.UndefOr[Boolean] = js.undefined
+  var interval: js.UndefOr[Int]       = js.undefined
+}
 
-class StatOptions(var bigint: js.UndefOr[Boolean] = js.undefined) extends js.Object
+@Factory
+trait StatOptions {
+  var bigint: js.UndefOr[Boolean] = js.undefined
+}
 
-class MkdirOptions(var recursive: js.UndefOr[Boolean] = js.undefined, var mode: js.UndefOr[FileMode] = js.undefined)
-    extends js.Object
+@Factory
+trait MkdirOptions extends js.Object {
+  var recursive: js.UndefOr[Boolean] = js.undefined
+  var mode: js.UndefOr[FileMode]     = js.undefined
+}
 
-class RmdirOptions(var emfileWait: js.UndefOr[Int] = 1000,
-                   var maxBusyTries: js.UndefOr[Int] = 3,
-                   var recursive: js.UndefOr[Boolean] = js.undefined
-) extends js.Object
+@Factory
+trait RmdirOptions extends js.Object {
+  var emfileWait: js.UndefOr[Int]    = js.undefined
+  var maxBusyTries: js.UndefOr[Int]  = js.undefined
+  var recursive: js.UndefOr[Boolean] = js.undefined
+}
 
 @js.native
 trait RealpathObject extends js.Object {

@@ -1,5 +1,7 @@
 package io.scalajs.nodejs.vm
 
+import net.exoego.scalajs.types.util.Factory
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.typedarray.{DataView, Uint8Array}
@@ -84,45 +86,50 @@ trait VM extends js.Object {
 @JSImport("vm", JSImport.Namespace)
 object VM extends VM
 
-class CompileFunctionOptions(
-    var filename: js.UndefOr[String] = js.undefined,
-    var lineOffset: js.UndefOr[Int] = js.undefined,
-    var columnOffset: js.UndefOr[Int] = js.undefined,
-    var cachedData: js.UndefOr[Uint8Array | DataView] = js.undefined,
-    @deprecated("Use script.createCachedData", "Node.js v10")
-    var produceCachedData: js.UndefOr[Boolean] = js.undefined,
-    var parsingContext: js.UndefOr[js.Object] = js.undefined,
-    var contextExtensions: js.UndefOr[js.Array[js.Object]] = js.undefined
-) extends js.Object
+@Factory
+trait CompileFunctionOptions {
+  var filename: js.UndefOr[String]                  = js.undefined
+  var lineOffset: js.UndefOr[Int]                   = js.undefined
+  var columnOffset: js.UndefOr[Int]                 = js.undefined
+  var cachedData: js.UndefOr[Uint8Array | DataView] = js.undefined
+  @deprecated("Use script.createCachedData", "Node.js v10")
+  var produceCachedData: js.UndefOr[Boolean]             = js.undefined
+  var parsingContext: js.UndefOr[js.Object]              = js.undefined
+  var contextExtensions: js.UndefOr[js.Array[js.Object]] = js.undefined
+}
 
-class CreateContextOptions(
-    var name: js.UndefOr[String] = js.undefined,
-    var origin: js.UndefOr[String] = js.undefined,
-    var codeGeneration: js.UndefOr[CodeGeneration] = js.undefined
-) extends js.Object
+@Factory
+trait CreateContextOptions extends js.Object {
+  var name: js.UndefOr[String]                   = js.undefined
+  var origin: js.UndefOr[String]                 = js.undefined
+  var codeGeneration: js.UndefOr[CodeGeneration] = js.undefined
+}
 
-class VMRunInNewContextOptions(
-    var filename: js.UndefOr[String] = js.undefined,
-    var lineOffset: js.UndefOr[Int] = js.undefined,
-    var columnOffset: js.UndefOr[Int] = js.undefined,
-    var displayErrors: js.UndefOr[Boolean] = js.undefined,
-    var timeout: js.UndefOr[Int] = js.undefined,
-    var breakOnSigint: js.UndefOr[Boolean] = js.undefined,
-    var contextName: js.UndefOr[String] = js.undefined,
-    var contextOrigin: js.UndefOr[String] = js.undefined,
-    var contextCodeGeneration: js.UndefOr[CodeGeneration] = js.undefined,
-    var cachedData: js.UndefOr[Uint8Array | DataView] = js.undefined,
-    var produceCachedData: js.UndefOr[Boolean] = js.undefined,
-    var importModuleDynamically: js.UndefOr[js.Function] = js.undefined
-) extends js.Object
+@Factory
+trait VMRunInNewContextOptions extends js.Object {
+  var filename: js.UndefOr[String]                      = js.undefined
+  var lineOffset: js.UndefOr[Int]                       = js.undefined
+  var columnOffset: js.UndefOr[Int]                     = js.undefined
+  var displayErrors: js.UndefOr[Boolean]                = js.undefined
+  var timeout: js.UndefOr[Int]                          = js.undefined
+  var breakOnSigint: js.UndefOr[Boolean]                = js.undefined
+  var contextName: js.UndefOr[String]                   = js.undefined
+  var contextOrigin: js.UndefOr[String]                 = js.undefined
+  var contextCodeGeneration: js.UndefOr[CodeGeneration] = js.undefined
+  var cachedData: js.UndefOr[Uint8Array | DataView]     = js.undefined
+  var produceCachedData: js.UndefOr[Boolean]            = js.undefined
+  var importModuleDynamically: js.UndefOr[js.Function]  = js.undefined
+}
 
-class VMRunInContextOptions(var filename: js.UndefOr[String] = js.undefined,
-                            var lineOffset: js.UndefOr[Int] = js.undefined,
-                            var columnOffset: js.UndefOr[Int] = js.undefined,
-                            var displayErrors: js.UndefOr[Boolean] = js.undefined,
-                            var timeout: js.UndefOr[Int] = js.undefined,
-                            var breakOnSigint: js.UndefOr[Boolean] = js.undefined,
-                            var cachedData: js.UndefOr[Uint8Array | DataView] = js.undefined,
-                            var produceCachedData: js.UndefOr[Boolean] = js.undefined,
-                            var importModuleDynamically: js.UndefOr[js.Function] = js.undefined
-) extends js.Object
+@Factory
+trait VMRunInContextOptions extends js.Object {
+  var filename: js.UndefOr[String]                     = js.undefined
+  var lineOffset: js.UndefOr[Int]                      = js.undefined
+  var columnOffset: js.UndefOr[Int]                    = js.undefined
+  var displayErrors: js.UndefOr[Boolean]               = js.undefined
+  var timeout: js.UndefOr[Int]                         = js.undefined
+  var breakOnSigint: js.UndefOr[Boolean]               = js.undefined
+  var cachedData: js.UndefOr[Uint8Array | DataView]    = js.undefined
+  var produceCachedData: js.UndefOr[Boolean]           = js.undefined
+  var importModuleDynamically: js.UndefOr[js.Function] = js.undefined
+}

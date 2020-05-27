@@ -1,6 +1,7 @@
 package io.scalajs.nodejs.events
 
 import com.thoughtworks.enableIf
+import net.exoego.scalajs.types.util.Factory
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
@@ -15,7 +16,22 @@ import scala.scalajs.js.annotation.JSImport
   */
 @js.native
 @JSImport("events", "EventEmitter")
-class EventEmitter extends IEventEmitter
+class EventEmitter() extends IEventEmitter {
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+  def this(options: EventEmitterOptions) = this()
+}
+
+@Factory
+trait EventEmitterOptions extends js.Object {
+
+  /** It enables automatic capturing of promise rejection.
+    * Default: false.
+    *
+    * Experimental !
+    */
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+  var captureRejections: Boolean
+}
 
 /**
   * EventEmitter Interface
@@ -148,8 +164,29 @@ object EventEmitter extends js.Object {
     */
   var defaultMaxListeners: Int = js.native
 
+  /** Change the default captureRejections option on all new EventEmitter objects.
+    *
+   * experimental!
+    */
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+  var captureRejections: Boolean = js.native
+
+  /** experimental! */
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+  var captureRejectionSymbol: js.Symbol = js.native
+
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def once(emitter: IEventEmitter, eventName: String): js.Promise[js.Array[js.Any]] = js.native
+  // TODO: Return AsyncIterator
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+  def on(emitter: IEventEmitter, eventName: String): js.Any = js.native
+
+  // TODO: Return AsyncIterator
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+  def on(emitter: IEventEmitter, eventName: js.Symbol): js.Any = js.native
+
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+  var errorMonitor: js.Symbol = js.native
 }
 
 @js.native

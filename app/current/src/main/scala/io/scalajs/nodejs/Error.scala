@@ -1,5 +1,7 @@
 package io.scalajs.nodejs
 
+import com.thoughtworks.enableIf
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
 
@@ -247,7 +249,6 @@ object ErrorCodes {
   @inline final val ERR_SOCKET_BAD_PORT                             = "ERR_SOCKET_BAD_PORT"
   @inline final val ERR_SOCKET_BAD_TYPE                             = "ERR_SOCKET_BAD_TYPE"
   @inline final val ERR_SOCKET_BUFFER_SIZE                          = "ERR_SOCKET_BUFFER_SIZE"
-  @inline final val ERR_SOCKET_CANNOT_SEND                          = "ERR_SOCKET_CANNOT_SEND"
   @inline final val ERR_SOCKET_CLOSED                               = "ERR_SOCKET_CLOSED"
   @inline final val ERR_SOCKET_DGRAM_IS_CONNECTED                   = "ERR_SOCKET_DGRAM_IS_CONNECTED"
   @inline final val ERR_SOCKET_DGRAM_NOT_CONNECTED                  = "ERR_SOCKET_DGRAM_NOT_CONNECTED"
@@ -306,4 +307,14 @@ object ErrorCodes {
   @inline final val ERR_ZLIB_INITIALIZATION_FAILED                  = "ERR_ZLIB_INITIALIZATION_FAILED"
   @inline final val HPE_HEADER_OVERFLOW                             = "HPE_HEADER_OVERFLOW"
   @inline final val MODULE_NOT_FOUND                                = "MODULE_NOT_FOUND"
+
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.ltNodeJs14)
+  @inline final val ERR_SOCKET_CANNOT_SEND = "ERR_SOCKET_CANNOT_SEND"
+
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs14)
+  @inline final val ERR_DIR_CONCURRENT_OPERATION = "ERR_DIR_CONCURRENT_OPERATION"
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs14)
+  @inline final val ERR_TLS_INVALID_CONTEXT = "ERR_TLS_INVALID_CONTEXT"
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs14)
+  @inline final val ERR_TLS_INVALID_STATE = "ERR_TLS_INVALID_STATE"
 }

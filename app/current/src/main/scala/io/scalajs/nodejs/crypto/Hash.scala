@@ -3,6 +3,7 @@ package io.scalajs.nodejs.crypto
 import com.thoughtworks.enableIf
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.stream.{Transform, TransformOptions}
+import net.exoego.scalajs.types.util.Factory
 
 import scala.scalajs.js
 
@@ -72,8 +73,7 @@ sealed trait Hash extends Transform {
   def update(data: BufferLike): Hash                    = js.native
 }
 
-// TODO: Use Fatory macro
-class CreateHashOptions(transform: js.UndefOr[js.Function] = js.undefined,
-                        flush: js.UndefOr[js.Function] = js.undefined,
-                        var outputLength: js.UndefOr[Int] = js.undefined
-) extends TransformOptions(transform, flush)
+@Factory
+trait CreateHashOptions extends TransformOptions {
+  var outputLength: js.UndefOr[Int] = js.undefined
+}

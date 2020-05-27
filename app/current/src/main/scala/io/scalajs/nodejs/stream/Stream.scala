@@ -356,7 +356,8 @@ trait DuplexOptions extends js.Object {
   var writableObjectMode: js.UndefOr[Boolean] = js.undefined
 }
 
-// TODO: Use Factory macro
-class TransformOptions(var transform: js.UndefOr[js.Function] = js.undefined,
-                       var flush: js.UndefOr[js.Function] = js.undefined
-) extends js.Object
+@Factory
+trait TransformOptions extends js.Object {
+  var transform: js.UndefOr[js.Function] = js.undefined
+  var flush: js.UndefOr[js.Function]     = js.undefined
+}

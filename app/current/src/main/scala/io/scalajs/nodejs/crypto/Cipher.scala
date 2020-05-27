@@ -2,6 +2,7 @@ package io.scalajs.nodejs.crypto
 
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.stream.{Transform, TransformOptions}
+import net.exoego.scalajs.types.util.Factory
 
 import scala.scalajs.js
 
@@ -85,8 +86,7 @@ sealed trait Cipher extends Transform {
   def update(data: BufferLike): Buffer                                            = js.native
 }
 
-// TODO: Use Factory macro
-class SetAADOptions(transform: js.UndefOr[js.Function] = js.undefined,
-                    flush: js.UndefOr[js.Function] = js.undefined,
-                    var plaintextLength: js.UndefOr[Int] = js.undefined
-) extends TransformOptions(transform, flush) {}
+@Factory
+trait SetAADOptions extends TransformOptions {
+  var plaintextLength: js.UndefOr[Int] = js.undefined
+}

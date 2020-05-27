@@ -85,6 +85,7 @@ sealed trait Cipher extends Transform {
   def update(data: BufferLike): Buffer                                            = js.native
 }
 
+// TODO: Use Factory macro
 class SetAADOptions(transform: js.UndefOr[js.Function] = js.undefined,
                     flush: js.UndefOr[js.Function] = js.undefined,
                     var plaintextLength: js.UndefOr[Int] = js.undefined

@@ -2,6 +2,7 @@ package io.scalajs.nodejs
 package stream
 
 import com.thoughtworks.enableIf
+import _root_.net.exoego.scalajs.types.util.Factory
 
 import scala.scalajs.js.|
 import io.scalajs.nodejs.buffer.Buffer
@@ -223,21 +224,25 @@ sealed trait IReadable extends LegacyStream {
   def wrap(stream: LegacyStream): Unit = js.native
 }
 
-class ReadableOptions(
-    var highWaterMark: js.UndefOr[Int] = js.undefined,
-    var encoding: js.UndefOr[String] = js.undefined,
-    var objectMode: js.UndefOr[Boolean] = js.undefined,
-    var emitClose: js.UndefOr[Boolean] = js.undefined,
-    var read: js.UndefOr[js.Function] = js.undefined,
-    var destroy: js.UndefOr[js.Function] = js.undefined,
-    var autoDestroy: js.UndefOr[Boolean] = js.undefined
-) extends js.Object
+@Factory
+trait ReadableOptions extends js.Object {
+  var highWaterMark: js.UndefOr[Int]   = js.undefined
+  var encoding: js.UndefOr[String]     = js.undefined
+  var objectMode: js.UndefOr[Boolean]  = js.undefined
+  var emitClose: js.UndefOr[Boolean]   = js.undefined
+  var read: js.UndefOr[js.Function]    = js.undefined
+  var destroy: js.UndefOr[js.Function] = js.undefined
+  var autoDestroy: js.UndefOr[Boolean] = js.undefined
+}
 
-/**
-  * Readable Pipe Options
-  * @param end End the writer when the reader ends. Defaults to true.
-  */
-class ReadablePipeOptions(var end: js.UndefOr[Boolean] = js.undefined) extends js.Object
+@Factory
+trait ReadablePipeOptions extends js.Object {
+
+  /** End the writer when the reader ends.
+    *  Defaults to true.
+    */
+  var end: js.UndefOr[Boolean] = js.undefined
+}
 
 /**
   * Readable State
@@ -307,17 +312,19 @@ sealed trait IWritable extends LegacyStream {
   def write(chunk: String, encoding: String, callback: js.Function1[Error, Any]): Boolean        = js.native
 }
 
-class WritableOptions(var highWaterMark: js.UndefOr[Int] = js.undefined,
-                      var decodeStrings: js.UndefOr[Boolean] = js.undefined,
-                      var defaultEncoding: js.UndefOr[String] = js.undefined,
-                      var objectMode: js.UndefOr[Boolean] = js.undefined,
-                      var emitClose: js.UndefOr[Boolean] = js.undefined,
-                      var write: js.UndefOr[js.Function] = js.undefined,
-                      var writev: js.UndefOr[js.Function] = js.undefined,
-                      var destroy: js.UndefOr[js.Function] = js.undefined,
-                      var `final`: js.UndefOr[js.Function] = js.undefined,
-                      var autoDestroy: js.UndefOr[Boolean] = js.undefined
-) extends js.Object
+@Factory
+trait WritableOptions extends js.Object {
+  var highWaterMark: js.UndefOr[Int]      = js.undefined
+  var decodeStrings: js.UndefOr[Boolean]  = js.undefined
+  var defaultEncoding: js.UndefOr[String] = js.undefined
+  var objectMode: js.UndefOr[Boolean]     = js.undefined
+  var emitClose: js.UndefOr[Boolean]      = js.undefined
+  var write: js.UndefOr[js.Function]      = js.undefined
+  var writev: js.UndefOr[js.Function]     = js.undefined
+  var destroy: js.UndefOr[js.Function]    = js.undefined
+  var `final`: js.UndefOr[js.Function]    = js.undefined
+  var autoDestroy: js.UndefOr[Boolean]    = js.undefined
+}
 
 /**
   * Duplex Interface
@@ -330,20 +337,26 @@ sealed trait IDuplex extends IReadable with IWritable {
 @js.native
 sealed trait ITransform extends IDuplex
 
-/**
-  * Duplex Options
-  * @param allowHalfOpen      If set to false, then the stream will automatically end the readable side
-  *                           when the writable side ends and vice versa (Default: true).
-  * @param readableObjectMode Sets objectMode for readable side of the stream. Has no effect if objectMode is true
-  *                           (Default: false).
-  * @param writableObjectMode Sets objectMode for writable side of the stream. Has no effect if objectMode is true
-  *                           (Default: false).
-  */
-class DuplexOptions(var allowHalfOpen: js.UndefOr[Boolean] = js.undefined,
-                    var readableObjectMode: js.UndefOr[Boolean] = js.undefined,
-                    var writableObjectMode: js.UndefOr[Boolean] = js.undefined
-) extends js.Object
+@Factory
+trait DuplexOptions extends js.Object {
 
+  /** If set to false, then the stream will automatically end the readable side
+    *  when the writable side ends and vice versa (Default: true).
+    */
+  var allowHalfOpen: js.UndefOr[Boolean] = js.undefined
+
+  /** Sets objectMode for readable side of the stream. Has no effect if objectMode is true
+    *  (Default: false).
+    */
+  var readableObjectMode: js.UndefOr[Boolean] = js.undefined
+
+  /** Sets objectMode for writable side of the stream. Has no effect if objectMode is true
+    *  (Default: false).
+    */
+  var writableObjectMode: js.UndefOr[Boolean] = js.undefined
+}
+
+// TODO: Use Factory macro
 class TransformOptions(var transform: js.UndefOr[js.Function] = js.undefined,
                        var flush: js.UndefOr[js.Function] = js.undefined
 ) extends js.Object

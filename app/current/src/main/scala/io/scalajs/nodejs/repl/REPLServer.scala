@@ -3,6 +3,7 @@ package io.scalajs.nodejs.repl
 import com.thoughtworks.enableIf
 import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.nodejs.readline.Interface
+import net.exoego.scalajs.types.util.Factory
 
 import scala.scalajs.js
 import scala.scalajs.js.|
@@ -61,7 +62,8 @@ trait REPLServer extends IEventEmitter with Interface {
     js.native
 }
 
-class DefinedCommand(
-    var action: js.Function1[String, Any],
-    var help: js.UndefOr[String] = js.undefined
-) extends js.Object
+@Factory
+trait DefinedCommand extends js.Object {
+  var action: js.Function1[String, Any]
+  var help: js.UndefOr[String] = js.undefined
+}

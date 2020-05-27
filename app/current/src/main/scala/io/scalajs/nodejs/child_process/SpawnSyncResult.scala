@@ -1,14 +1,17 @@
 package io.scalajs.nodejs.child_process
 
+import net.exoego.scalajs.types.util.Factory
+
 import scala.scalajs.js
 import scala.scalajs.js.|
 
-class SpawnSyncResult(
-    val pid: Int,
-    val output: js.Array[Output],
-    val stdout: Output,
-    val stderr: Output,
-    val status: Int | Null,
-    val signal: String | Null,
-    val error: js.UndefOr[js.Error]
-) extends js.Object
+@Factory
+trait SpawnSyncResult {
+  var pid: Int
+  var output: js.Array[Output]
+  var stdout: Output
+  var stderr: Output
+  var status: Int | Null
+  var signal: String | Null
+  var error: js.UndefOr[js.Error] = js.undefined
+}

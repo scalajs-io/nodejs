@@ -157,13 +157,13 @@ package object fs {
 
     @inline
     def mkdirRecursiveFuture(path: Path): Future[Unit] = {
-      val recursiveEnabled = new MkdirOptions(recursive = true)
+      val recursiveEnabled = MkdirOptions(recursive = true)
       promiseWithError0[FileIOError](instance.mkdir(path, recursiveEnabled, _))
     }
 
     @inline
     def mkdirRecursiveFuture(path: Path, options: MkdirOptions): Future[Unit] = {
-      val recursiveEnabled = new MkdirOptions(
+      val recursiveEnabled = MkdirOptions(
         recursive = true,
         mode = options.mode
       )
@@ -239,7 +239,7 @@ package object fs {
       val callback: FsCallback1[js.Array[Buffer]] => Unit = { callback =>
         instance.readdir(
           path,
-          new FileEncodingOptions(encoding = "buffer"),
+          FileEncodingOptions(encoding = "buffer"),
           callback.asInstanceOf[FsCallback1[ReaddirArrays]]
         )
       }
@@ -251,7 +251,7 @@ package object fs {
       val callback: FsCallback1[js.Array[Dirent]] => Unit = { callback =>
         instance.readdir(
           path,
-          new ReaddirOptions(withFileTypes = true),
+          ReaddirOptions(withFileTypes = true),
           callback.asInstanceOf[FsCallback1[ReaddirArrays2]]
         )
       }
@@ -325,14 +325,14 @@ package object fs {
     @inline
     def rmdirRecursiveFuture(path: Path, options: RmdirOptions): Future[Unit] = {
       val recursiveEnabled =
-        new RmdirOptions(recursive = true, maxBusyTries = options.maxBusyTries, emfileWait = options.emfileWait)
+        RmdirOptions(recursive = true, maxBusyTries = options.maxBusyTries, emfileWait = options.emfileWait)
       promiseWithError0[FileIOError](instance.rmdir(path, recursiveEnabled, _))
     }
 
     @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
     @inline
     def rmdirRecursiveFuture(path: Path): Future[Unit] = {
-      promiseWithError0[FileIOError](instance.rmdir(path, new RmdirOptions(recursive = true), _))
+      promiseWithError0[FileIOError](instance.rmdir(path, RmdirOptions(recursive = true), _))
     }
 
     @inline

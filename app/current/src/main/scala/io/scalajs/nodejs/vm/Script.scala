@@ -1,5 +1,7 @@
 package io.scalajs.nodejs.vm
 
+import net.exoego.scalajs.types.util.Factory
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.typedarray.{DataView, Uint8Array}
@@ -44,28 +46,35 @@ class Script private[this] () extends js.Object {
   def runInThisContext(options: RunInContextOptions = js.native): Script = js.native
 }
 
-class ScriptOptions(var filename: js.UndefOr[String] = js.undefined,
-                    var lineOffset: js.UndefOr[Int] = js.undefined,
-                    var columnOffset: js.UndefOr[Int] = js.undefined,
-                    var cachedData: js.UndefOr[Uint8Array | DataView] = js.undefined,
-                    var produceCachedData: js.UndefOr[Boolean] = js.undefined,
-                    var importModuleDynamically: js.UndefOr[js.Function] = js.undefined
-) extends js.Object
+@Factory
+trait ScriptOptions extends js.Object {
+  var filename: js.UndefOr[String]                     = js.undefined
+  var lineOffset: js.UndefOr[Int]                      = js.undefined
+  var columnOffset: js.UndefOr[Int]                    = js.undefined
+  var cachedData: js.UndefOr[Uint8Array | DataView]    = js.undefined
+  var produceCachedData: js.UndefOr[Boolean]           = js.undefined
+  var importModuleDynamically: js.UndefOr[js.Function] = js.undefined
+}
 
-class RunInContextOptions(
-    var displayErrors: js.UndefOr[Boolean] = js.undefined,
-    var timeout: js.UndefOr[Int] = js.undefined,
-    var breakOnSigint: js.UndefOr[Boolean] = js.undefined
-) extends js.Object
+@Factory
+trait RunInContextOptions extends js.Object {
+  var displayErrors: js.UndefOr[Boolean] = js.undefined
+  var timeout: js.UndefOr[Int]           = js.undefined
+  var breakOnSigint: js.UndefOr[Boolean] = js.undefined
+}
 
-class RunInNewContextOptions(
-    var displayErrors: js.UndefOr[Boolean] = js.undefined,
-    var timeout: js.UndefOr[Int] = js.undefined,
-    var breakOnSigint: js.UndefOr[Boolean] = js.undefined,
-    var contextName: js.UndefOr[String] = js.undefined,
-    var contextOrigin: js.UndefOr[String] = js.undefined,
-    var contextCodeGeneration: js.UndefOr[CodeGeneration] = js.undefined
-) extends js.Object
+@Factory
+trait RunInNewContextOptions extends js.Object {
+  var displayErrors: js.UndefOr[Boolean]                = js.undefined
+  var timeout: js.UndefOr[Int]                          = js.undefined
+  var breakOnSigint: js.UndefOr[Boolean]                = js.undefined
+  var contextName: js.UndefOr[String]                   = js.undefined
+  var contextOrigin: js.UndefOr[String]                 = js.undefined
+  var contextCodeGeneration: js.UndefOr[CodeGeneration] = js.undefined
+}
 
-class CodeGeneration(var strings: js.UndefOr[Boolean] = js.undefined, var wasm: js.UndefOr[Boolean] = js.undefined)
-    extends js.Object
+@Factory
+trait CodeGeneration extends js.Object {
+  var strings: js.UndefOr[Boolean] = js.undefined
+  var wasm: js.UndefOr[Boolean]    = js.undefined
+}

@@ -3,9 +3,9 @@ package io.scalajs.nodejs.crypto
 import com.thoughtworks.enableIf
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.stream.{TransformOptions, WritableOptions}
+import net.exoego.scalajs.types.util.Factory
 
 import scala.scalajs.js
-
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
 
@@ -385,37 +385,42 @@ object Constants extends js.Object {
   val defaultCipherList: String     = js.native
 }
 
-class CreatePrivateKeyOptions(
-    val key: String | Buffer,
-    var format: js.UndefOr[String] = js.undefined,
-    var `type`: js.UndefOr[String] = js.undefined,
-    var passphrase: js.UndefOr[String | Buffer] = js.undefined
-) extends js.Object
+@Factory
+trait CreatePrivateKeyOptions extends js.Object {
+  val key: String | Buffer
+  var format: js.UndefOr[String]              = js.undefined
+  var `type`: js.UndefOr[String]              = js.undefined
+  var passphrase: js.UndefOr[String | Buffer] = js.undefined
+}
 
-class CreatePublicKeyOptions(
-    val key: String | Buffer,
-    var format: js.UndefOr[String] = js.undefined,
-    var `type`: js.UndefOr[String] = js.undefined
-) extends js.Object
+@Factory
+trait CreatePublicKeyOptions extends js.Object {
+  val key: String | Buffer
 
-class GenerateKeyPairOptions(
-    val modulusLength: Int,
-    var publicExponent: js.UndefOr[Int] = js.undefined,
-    var divisorLength: js.UndefOr[Int] = js.undefined,
-    var namedCurve: js.UndefOr[String] = js.undefined,
-    var publicKeyEncoding: js.UndefOr[KeyObjectExportOptions] = js.undefined,
-    var privateKeyEncoding: js.UndefOr[KeyObjectExportOptions] = js.undefined
-) extends js.Object
+  var format: js.UndefOr[String] = js.undefined
+  var `type`: js.UndefOr[String] = js.undefined
+}
 
-class ScryptOptions(
-    var cost: js.UndefOr[Int] = js.undefined,
-    var blockSize: js.UndefOr[Int] = js.undefined,
-    var parallelization: js.UndefOr[Int] = js.undefined,
-    var N: js.UndefOr[Int] = js.undefined,
-    var r: js.UndefOr[Int] = js.undefined,
-    var p: js.UndefOr[Int] = js.undefined,
-    var maxmem: js.UndefOr[Int] = js.undefined
-) extends js.Object
+@Factory
+trait GenerateKeyPairOptions extends js.Object {
+  val modulusLength: Int
+  var publicExponent: js.UndefOr[Int]                        = js.undefined
+  var divisorLength: js.UndefOr[Int]                         = js.undefined
+  var namedCurve: js.UndefOr[String]                         = js.undefined
+  var publicKeyEncoding: js.UndefOr[KeyObjectExportOptions]  = js.undefined
+  var privateKeyEncoding: js.UndefOr[KeyObjectExportOptions] = js.undefined
+}
+
+@Factory
+trait ScryptOptions extends js.Object {
+  var cost: js.UndefOr[Int]            = js.undefined
+  var blockSize: js.UndefOr[Int]       = js.undefined
+  var parallelization: js.UndefOr[Int] = js.undefined
+  var N: js.UndefOr[Int]               = js.undefined
+  var r: js.UndefOr[Int]               = js.undefined
+  var p: js.UndefOr[Int]               = js.undefined
+  var maxmem: js.UndefOr[Int]          = js.undefined
+}
 
 @js.native
 trait KeyPair extends js.Object {

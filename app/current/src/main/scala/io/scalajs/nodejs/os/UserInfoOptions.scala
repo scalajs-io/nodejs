@@ -1,12 +1,13 @@
 package io.scalajs.nodejs.os
 
+import net.exoego.scalajs.types.util.Factory
+
 import scala.scalajs.js
 
-/**
-  * User Info Options
-  */
-class UserInfoOptions(var encoding: js.UndefOr[String] = js.undefined,
-                      var username: js.UndefOr[String] = js.undefined,
-                      var shell: js.UndefOr[String] = js.undefined,
-                      var homedir: js.UndefOr[String] = js.undefined
-) extends js.Object
+@Factory
+trait UserInfoOptions extends js.Object {
+  var encoding: js.UndefOr[String] = js.undefined
+  var username: js.UndefOr[String] = js.undefined
+  var shell: js.UndefOr[String]    = js.undefined
+  var homedir: js.UndefOr[String]  = js.undefined
+}

@@ -3,6 +3,7 @@ package io.scalajs.nodejs.process
 import com.thoughtworks.{enableIf, enableMembersIf}
 import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.nodejs.tty.{ReadStream, WriteStream}
+import net.exoego.scalajs.types.util.Factory
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
@@ -408,12 +409,10 @@ trait ReleaseInfo extends js.Object {
   var lts: js.UndefOr[String]    = js.native
 }
 
-/**
-  * Transfer Options
-  */
-class TransferOptions(
-    var keepOpen: js.UndefOr[Boolean] = js.undefined
-) extends js.Object {}
+@Factory
+trait TransferOptions extends js.Object {
+  var keepOpen: js.UndefOr[Boolean] = js.undefined
+}
 
 /**
   * Version Information
@@ -445,12 +444,13 @@ trait CpuUsage extends js.Object {
   val system: Int = js.native
 }
 
-class WarningOptions(
-    var `type`: js.UndefOr[String] = js.undefined,
-    var code: js.UndefOr[String] = js.undefined,
-    var detail: js.UndefOr[String] = js.undefined,
-    var ctor: js.UndefOr[js.Function] = js.undefined
-) extends js.Object {}
+@Factory
+trait WarningOptions extends js.Object {
+  var `type`: js.UndefOr[String]    = js.undefined
+  var code: js.UndefOr[String]      = js.undefined
+  var detail: js.UndefOr[String]    = js.undefined
+  var ctor: js.UndefOr[js.Function] = js.undefined
+}
 
 @js.native
 trait HrTime extends js.Function1[js.Array[Int], js.Array[Int]] with js.Function0[js.Array[Int]] {

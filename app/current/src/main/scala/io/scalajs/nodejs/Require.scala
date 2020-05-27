@@ -1,5 +1,7 @@
 package io.scalajs.nodejs
 
+import _root_.net.exoego.scalajs.types.util.Factory
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
 
@@ -23,6 +25,7 @@ trait RequireResolver extends js.Object {
   def paths(requiest: String): js.Array[String] = js.native
 }
 
-class ResolveOptions(
-    var paths: js.UndefOr[js.Array[String]] = js.undefined
-) extends js.Object
+@Factory
+trait ResolveOptions extends js.Object {
+  var paths: js.UndefOr[js.Array[String]] = js.undefined
+}

@@ -1,7 +1,10 @@
 package io.scalajs.nodejs.dns
 
+import net.exoego.scalajs.types.util.Factory
+
 import scala.scalajs.js
 
-class TtlOptions(
-    var ttl: js.UndefOr[Boolean] = js.undefined
-) extends js.Object {}
+@Factory
+trait TtlOptions extends js.Object {
+  var ttl: js.UndefOr[Boolean] = js.undefined
+}

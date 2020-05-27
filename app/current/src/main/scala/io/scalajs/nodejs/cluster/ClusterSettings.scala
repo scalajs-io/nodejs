@@ -1,5 +1,8 @@
 package io.scalajs.nodejs.cluster
 
+import com.thoughtworks.enableIf
+import net.exoego.scalajs.types.util.Factory
+
 import io.scalajs.nodejs.{GID, UID}
 
 import scala.scalajs.js
@@ -8,6 +11,7 @@ import scala.scalajs.js.|
 /**
   * Cluster Settings
   */
+@Factory
 @js.native
 trait ClusterSettings extends js.Object {
 
@@ -30,6 +34,7 @@ trait ClusterSettings extends js.Object {
     *
     * From Node.js v13.2.0, v12.16.0.
     */
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   var serialization: String = js.native
 
   /** <Number> Sets the user identity of the process. (See setuid(2).) */
@@ -45,32 +50,4 @@ trait ClusterSettings extends js.Object {
   var cwd: String = js.native
 
   var windowsHide: Boolean = js.native
-}
-
-/**
-  * Cluster Settings Companion
-  */
-object ClusterSettings {
-  def apply(execArgv: js.Array[String] = null,
-            exec: String = null,
-            args: js.Array[String] = null,
-            silent: Boolean = false,
-            serialization: String = "json",
-            stdio: js.Array[js.Any] = null,
-            inspectPort: Int | js.Function = null,
-            cwd: String = null,
-            windowsHide: Boolean = false
-  ): ClusterSettings = {
-    val settings = js.Dynamic.literal()
-    settings.updateDynamic("execArgv")(execArgv)
-    settings.updateDynamic("exec")(exec)
-    settings.updateDynamic("args")(args)
-    settings.updateDynamic("silent")(silent)
-    settings.updateDynamic("serialization")(serialization)
-    settings.updateDynamic("stdio")(stdio)
-    settings.updateDynamic("inspectPort")(inspectPort.asInstanceOf[js.Any])
-    settings.updateDynamic("cwd")(cwd)
-    settings.updateDynamic("windowsHide")(windowsHide)
-    settings.asInstanceOf[ClusterSettings]
-  }
 }

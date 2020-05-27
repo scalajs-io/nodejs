@@ -7,6 +7,25 @@ import scala.scalajs.js
 import org.scalatest.funspec.AnyFunSpec
 
 class ClusterTest extends AnyFunSpec {
+  describe("ClusterSettings") {
+    it("can be instantiated") {
+      val settings: ClusterSettings = ClusterSettings(
+        cwd = "/home/user",
+        exec = "ls",
+        execArgv = js.Array(),
+        args = js.Array(),
+        gid = 1,
+        uid = 2,
+        inspectPort = 3,
+        stdio = js.Array(),
+        windowsHide = false,
+        silent = true
+      )
+      assert(settings.silent === true)
+      assert(settings.gid === 1)
+    }
+  }
+
   describe("Cluster") {
     it("cluster should be master") {
       assert(Cluster.isMaster)

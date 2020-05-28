@@ -1,5 +1,7 @@
 package io.scalajs.nodejs
 
+import com.thoughtworks.enableIf
+import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.http.{RequestOptions, ServerResponse}
 import io.scalajs.util.PromiseHelper._
 import io.scalajs.nodejs.url.URL
@@ -53,5 +55,10 @@ package object https {
     def requestFuture(url: String | URL, options: RequestOptions): Future[ServerResponse] = {
       promiseCallback1[ServerResponse](https.request(url, options, _))
     }
+  }
+
+  implicit final class AgentExtensions[T <: Agent](private val instance: T) extends AnyVal {
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+    @inline def onKeylog(handler: (Buffer, tls.TLSSocket) => Any): T = instance.on("keylog", handler)
   }
 }

@@ -1,5 +1,6 @@
 package io.scalajs.nodejs.http2
 
+import com.thoughtworks.enableIf
 import io.scalajs.nodejs.buffer.Buffer
 import io.scalajs.nodejs.tls.{SecureContext, SecureData, SecureDataObjectForm}
 import net.exoego.scalajs.types.util.Factory
@@ -10,14 +11,15 @@ import scala.scalajs.js.|
 
 @Factory
 trait Http2SecureServerOptions extends js.Object {
-  var allowHTTP1: js.UndefOr[Boolean]                        = js.undefined
-  var maxDeflateDynamicTableSize: js.UndefOr[Int]            = js.undefined
-  var maxSessionMemory: js.UndefOr[Int]                      = js.undefined
-  var maxHeaderListPairs: js.UndefOr[Int]                    = js.undefined
-  var maxOutstandingPings: js.UndefOr[Int]                   = js.undefined
-  var maxSendHeaderBlockLength: js.UndefOr[Int]              = js.undefined
-  var paddingStrategy: js.UndefOr[Int]                       = js.undefined
-  var peerMaxConcurrentStreams: js.UndefOr[Int]              = js.undefined
+  var allowHTTP1: js.UndefOr[Boolean]             = js.undefined
+  var maxDeflateDynamicTableSize: js.UndefOr[Int] = js.undefined
+  var maxSessionMemory: js.UndefOr[Int]           = js.undefined
+  var maxHeaderListPairs: js.UndefOr[Int]         = js.undefined
+  var maxOutstandingPings: js.UndefOr[Int]        = js.undefined
+  var maxSendHeaderBlockLength: js.UndefOr[Int]   = js.undefined
+  var paddingStrategy: js.UndefOr[Int]            = js.undefined
+  var peerMaxConcurrentStreams: js.UndefOr[Int]   = js.undefined
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.ltNodeJs14)
   var selectPadding: js.UndefOr[js.Function2[Int, Int, Int]] = js.undefined
   var settings: js.UndefOr[Http2Settings]                    = js.undefined
   var options: js.UndefOr[js.Array[String]]                  = js.undefined
@@ -35,6 +37,10 @@ trait Http2SecureServerOptions extends js.Object {
   // Options for net.createServers
   var allowHalfOpen: js.UndefOr[Boolean]  = js.undefined
   var pauseOnConnect: js.UndefOr[Boolean] = js.undefined
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12) var maxSessionRejectedStreams: js.UndefOr[Int] =
+    js.undefined
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12) var maxSessionInvalidFrames: js.UndefOr[Int] =
+    js.undefined
   // Options for tls.createSecureContext
   var ca: js.UndefOr[SecureData]                                   = js.undefined
   var cert: js.UndefOr[SecureData]                                 = js.undefined

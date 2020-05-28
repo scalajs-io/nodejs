@@ -19,6 +19,9 @@ class Http2ServerRequest extends stream.Readable with Http2TimeoutOps {
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def complete: Boolean = js.native
 
+  @deprecated("Use socket", "Node.js v13.0.0")
+  def connection: net.Socket | tls.TLSSocket = js.native
+
   def destroy(error: io.scalajs.nodejs.Error = js.native): Unit = js.native
 
   def headers: Http2Headers = js.native

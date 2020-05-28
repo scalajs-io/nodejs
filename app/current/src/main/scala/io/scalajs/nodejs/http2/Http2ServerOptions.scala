@@ -1,5 +1,6 @@
 package io.scalajs.nodejs.http2
 
+import com.thoughtworks.enableIf
 import io.scalajs.nodejs.http
 import net.exoego.scalajs.types.util.Factory
 
@@ -14,7 +15,6 @@ trait Http2ServerOptions extends js.Object {
   var maxSendHeaderBlockLength: js.UndefOr[Int]                                 = js.undefined
   var paddingStrategy: js.UndefOr[Int]                                          = js.undefined
   var peerMaxConcurrentStreams: js.UndefOr[Int]                                 = js.undefined
-  var selectPadding: js.UndefOr[js.Function2[Int, Int, Int]]                    = js.undefined
   var settings: js.UndefOr[Http2Settings]                                       = js.undefined
   var Http1IncomingMessage: js.UndefOr[js.ConstructorTag[http.IncomingMessage]] = js.undefined
   var Http1ServerResponse: js.UndefOr[js.ConstructorTag[http.ServerResponse]]   = js.undefined
@@ -22,4 +22,11 @@ trait Http2ServerOptions extends js.Object {
   var Http2ServerResponse: js.UndefOr[js.ConstructorTag[Http2ServerResponse]]   = js.undefined
   var allowHalfOpen: js.UndefOr[Boolean]                                        = js.undefined
   var pauseOnConnect: js.UndefOr[Boolean]                                       = js.undefined
+
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.ltNodeJs14) var selectPadding
+      : js.UndefOr[js.Function2[Int, Int, Int]] = js.undefined
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12) var maxSessionRejectedStreams: js.UndefOr[Int] =
+    js.undefined
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12) var maxSessionInvalidFrames: js.UndefOr[Int] =
+    js.undefined
 }

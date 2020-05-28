@@ -1,6 +1,8 @@
 package io.scalajs.nodejs
 package http
 
+import com.thoughtworks.enableIf
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
@@ -27,12 +29,13 @@ import scala.scalajs.js.|
 @js.native
 @JSImport("http", "ClientRequest")
 class ClientRequest extends stream.Writable {
+  // TODO: Remove Int when dropping Node.js v10
   def aborted: Int | Boolean = js.native
 
   @deprecated("Use request.socket", "Node.js v13.0.0")
   def connection: net.Socket = js.native
 
-  @deprecated("Use request.writableEnded", "Node.js v13.0.0")
+  @deprecated("Use request.writableEnded", "Node.js v13.4.0, v12.16.0")
   def finished: Boolean = js.native
 
   var maxHeadersCount: Int | Null = js.native
@@ -50,6 +53,7 @@ class ClientRequest extends stream.Writable {
     * to be dropped and the socket to be destroyed.
     * @see [[https://nodejs.org/api/http.html#http_request_abort]]
     */
+  @deprecated("Use destroy()", "Node.js v14.1.0")
   def abort(): Unit = js.native
 
   /**
@@ -97,6 +101,9 @@ class ClientRequest extends stream.Writable {
     * </ul>
     */
   def setTimeout(timeout: Int, callback: js.Function = js.native): Unit = js.native
+
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
+  def reusedSocket: Boolean = js.native
 }
 
 trait Information extends js.Object {

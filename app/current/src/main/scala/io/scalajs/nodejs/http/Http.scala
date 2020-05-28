@@ -66,6 +66,12 @@ trait Http extends js.Object {
   def request(url: String | URL): Unit                                                    = js.native
   def request(options: RequestOptions): Unit                                              = js.native
   def request(options: RequestOptions, callback: js.Function1[ServerResponse, Any]): Unit = js.native
+
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs14)
+  def validateHeaderName(name: String): Unit = js.native
+
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs14)
+  def validateHeaderValue(name: String, value: js.Any): Unit = js.native
 }
 
 /**

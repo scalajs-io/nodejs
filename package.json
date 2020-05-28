@@ -12,8 +12,8 @@
     ]
   },
   "dependencies": {
-    "remark-cli": "^7.0.0",
-    "remark-preset-lint-recommended": "^3.0.3",
+    "remark-cli": "^8.0.0",
+    "remark-preset-lint-recommended": "^4.0.0",
     "source-map-support": "^0.5.13"
   }
 }

@@ -2,6 +2,7 @@ package io.scalajs.nodejs
 package fs
 
 import _root_.net.exoego.scalajs.types.util.Factory
+import com.thoughtworks.enableIf
 import io.scalajs.nodejs.events.IEventEmitter
 
 import scala.scalajs.js
@@ -18,6 +19,24 @@ trait FSWatcher extends IEventEmitter {
     * @since 0.5.8
     */
   def close(): Unit = js.native
+
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs14)
+  def ref(): FSWatcher = js.native
+
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs14)
+  def unref(): FSWatcher = js.native
+}
+
+/**
+  * A successful call to fs.watchFile() method will return a new fs.StatWatcher object.
+  */
+@js.native
+trait FSStatWatcher extends IEventEmitter {
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs14)
+  def ref(): FSStatWatcher = js.native
+
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs14)
+  def unref(): FSStatWatcher = js.native
 }
 
 @Factory

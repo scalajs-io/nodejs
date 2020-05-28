@@ -324,8 +324,8 @@ package object fs {
     @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
     @inline
     def rmdirRecursiveFuture(path: Path, options: RmdirOptions): Future[Unit] = {
-      val recursiveEnabled =
-        RmdirOptions(recursive = true, maxBusyTries = options.maxBusyTries, emfileWait = options.emfileWait)
+      val recursiveEnabled = js.Object.assign(js.Object(), options).asInstanceOf[RmdirOptions]
+      recursiveEnabled.recursive = true
       promiseWithError0[FileIOError](instance.rmdir(path, recursiveEnabled, _))
     }
 

@@ -10,5 +10,7 @@ jobs:
       - uses: olafurpg/setup-scala@v5
       - name: Check Scalafmt/Scaladoc
         run: sbt ++2.13.2 scalafmtSbtCheck scalafmtCheck test:scalafmtCheck current/doc core/doc
+      - name: Install NPM deps
+        run: npm install
       - name: Check README
         run: npm run lint-md

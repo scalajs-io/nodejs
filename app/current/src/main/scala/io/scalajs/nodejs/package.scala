@@ -102,4 +102,11 @@ package object nodejs {
     @inline
     def toException(): Exception = js.JavaScriptException(error.message)
   }
+
+  @js.native
+  @JSGlobal("module")
+  object moduleObject extends io.scalajs.nodejs.Module
+
+  @deprecated("Use io.scalajs.nodejs.module.Module", "v0.13.0")
+  val Module = io.scalajs.nodejs.module.Module
 }

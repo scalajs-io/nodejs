@@ -1,9 +1,6 @@
 package io.scalajs.nodejs
 
-import com.thoughtworks.enableIf
-
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSImport
 
 /**
   * In each module, the module free variable is a reference to the object representing the current module.
@@ -27,7 +24,7 @@ trait Module extends js.Object {
     * the local exports variable, which is probably not what you want to do.
     * @example module.exports
     */
-  var exports: js.Dictionary[js.Any] = js.native
+  var exports: js.Object = js.native
 
   /**
     * The fully resolved filename to the module.
@@ -62,19 +59,5 @@ trait Module extends js.Object {
     * explicitly exported in order to be used.
     */
   def require[T <: js.Any](id: String): T = js.native
-}
 
-/**
-  * Module Companion
-  */
-@js.native
-@JSImport("module", JSImport.Namespace)
-object Module extends Module {
-  var builtinModules: js.Array[String] = js.native
-
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
-  def createRequire(filename: String): Require = js.native
-
-  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
-  def createRequire(filename: io.scalajs.nodejs.url.URL): Require = js.native
 }

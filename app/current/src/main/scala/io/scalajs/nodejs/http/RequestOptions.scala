@@ -43,6 +43,7 @@ trait RequestOptions extends js.Object {
   var secureProtocol: js.UndefOr[String]                                   = js.undefined
   var sessionIdContext: js.UndefOr[String]                                 = js.undefined
   var insecureHTTPParser: js.UndefOr[Int]                                  = js.undefined
+  var highWaterMark: js.UndefOr[Int]                                       = js.undefined
 
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs14)
   var maxHeaderSize: js.UndefOr[Int] = js.undefined

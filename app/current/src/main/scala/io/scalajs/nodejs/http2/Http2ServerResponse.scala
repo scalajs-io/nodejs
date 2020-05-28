@@ -40,6 +40,7 @@ class Http2ServerResponse extends stream.Writable with Http2TimeoutOps {
   def removeHeader(name: String): Unit                                = js.native
   def setHeader(name: String, value: String | js.Array[String]): Unit = js.native
 
+  @deprecated("Use writableEnd", "Node.js v13.4.0, v12.16.0")
   def finished: Boolean    = js.native
   def headersSent: Boolean = js.native
   def sendDate: Boolean    = js.native

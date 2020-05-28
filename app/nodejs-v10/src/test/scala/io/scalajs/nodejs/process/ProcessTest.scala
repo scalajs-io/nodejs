@@ -10,6 +10,7 @@ class ProcessTest extends AnyFunSpec {
       if (TestEnvironment.isExecutedInExactNode8) "v8."
       else if (TestEnvironment.isExecutedInExactNode10) "v10."
       else if (TestEnvironment.isExecutedInExactNode12) "v12."
+      else if (TestEnvironment.isExecutedInExactNode14) "v14."
       else "Unknown node.js version"
 
     it("contains the following properties") {

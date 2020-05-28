@@ -7,7 +7,6 @@ import _root_.net.exoego.scalajs.types.util.Factory
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.typedarray
 import scala.scalajs.js.|
 
 /**
@@ -430,9 +429,11 @@ trait Fs extends js.Object with FSConstants {
   /**
     * Asynchronous mkdir(2). No arguments other than a possible exception are given to the completion callback.
     * mode defaults to 0o777.
+    *
+    * After v13.11.0, in recursive mode, the `callback`` now receives the first created path as an 2nd argument.
     * @example fs.mkdir(path[, mode], callback)
     */
-  def mkdir(path: Path, mode: MkdirOptions, callback: FsCallback0): Unit = js.native
+  def mkdir(path: Path, mode: MkdirOptions, callback: FsCallback0 | FsRecursiveCallback0): Unit = js.native
 
   /**
     * Asynchronous mkdir(2). No arguments other than a possible exception are given to the completion callback.
@@ -448,7 +449,10 @@ trait Fs extends js.Object with FSConstants {
     */
   def mkdirSync(path: Path, mode: FileMode = js.native): Unit = js.native
 
-  def mkdirSync(path: Path, mode: MkdirOptions): Unit = js.native
+  /**
+    * @return After Node.js v13.11.0, in recursive mode, the first created path is returned now. Otherwise undefined
+    */
+  def mkdirSync(path: Path, mode: MkdirOptions): js.UndefOr[Path] = js.native
 
   /**
     * Creates a unique temporary directory.
@@ -595,6 +599,9 @@ trait Fs extends js.Object with FSConstants {
            callback: FsCallback2[Int, Buffer]
   ): Unit = js.native
 
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs14)
+  def read(fd: FileDescriptor, options: ReadOptions, callback: FsCallback2[Int, Buffer]): Unit = js.native
+
   /**
     * Synchronous version of fs.read().
     * @param fd       is the file descriptor
@@ -608,6 +615,17 @@ trait Fs extends js.Object with FSConstants {
   def readSync(fd: FileDescriptor, buffer: Buffer, offset: Int, length: Int, position: Int): Int = js.native
 
   def readSync(fd: FileDescriptor, buffer: BufferLike, offset: Int, length: Int, position: Int): Int = js.native
+
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs14)
+  def readv(fd: FileDescriptor,
+            buffers: js.Array[js.typedarray.ArrayBufferView],
+            options: ReadOptions,
+            callback: FsCallback2[Int, js.Array[js.typedarray.ArrayBufferView]]
+  ): Unit = js.native
+
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs14)
+  def readvSync(fd: FileDescriptor, buffers: js.Array[js.typedarray.ArrayBufferView], options: ReadOptions): Unit =
+    js.native
 
   /**
     * Asynchronous readdir(3). Reads the contents of a directory.
@@ -974,7 +992,7 @@ trait Fs extends js.Object with FSConstants {
     * @param options  the [[FSWatcherOptions optional settings]]
     * @param listener the callback
     */
-  def watchFile(filename: Path, options: FileWatcherOptions, listener: js.Function2[Stats, Stats, Any]): Unit =
+  def watchFile(filename: Path, options: FileWatcherOptions, listener: js.Function2[Stats, Stats, Any]): FSStatWatcher =
     js.native
 
   /**
@@ -987,7 +1005,7 @@ trait Fs extends js.Object with FSConstants {
     * @param filename the filename (Buffer | String)
     * @param listener the callback
     */
-  def watchFile(filename: Path, listener: js.Function2[Stats, Stats, Any]): Unit = js.native
+  def watchFile(filename: Path, listener: js.Function2[Stats, Stats, Any]): FSStatWatcher = js.native
 
   /**
     * Write buffer to the file specified by fd.
@@ -1007,7 +1025,7 @@ trait Fs extends js.Object with FSConstants {
     * @example {{{ fs.write(fd, buffer[, offset[, length[, position]]], callback) }}}
     **/
   def write(fd: FileDescriptor,
-            buffer: typedarray.Uint8Array,
+            buffer: js.typedarray.Uint8Array,
             offset: Int | Null,
             length: Int | Null,
             position: Int | Null,
@@ -1054,9 +1072,9 @@ trait Fs extends js.Object with FSConstants {
     * The encoding option is ignored if data is a buffer. It defaults to 'utf8'
     * @example fs.writeFile(file, data[, options], callback)
     */
-  def writeFile(file: String, data: typedarray.Uint8Array, options: FileWriteOptions, callback: FsCallback0): Unit =
+  def writeFile(file: String, data: js.typedarray.Uint8Array, options: FileWriteOptions, callback: FsCallback0): Unit =
     js.native
-  def writeFile(file: String, data: typedarray.Uint8Array, callback: FsCallback0): Unit = js.native
+  def writeFile(file: String, data: js.typedarray.Uint8Array, callback: FsCallback0): Unit = js.native
   def writeFile(file: String, data: String, options: FileWriteOptions, callback: FsCallback0): Unit =
     js.native
   def writeFile(file: String, data: String, callback: FsCallback0): Unit = js.native
@@ -1070,7 +1088,7 @@ trait Fs extends js.Object with FSConstants {
     * @example fs.writeFileSync(file, data[, options])
     */
   def writeFileSync(file: Path | FileDescriptor,
-                    data: typedarray.Uint8Array,
+                    data: js.typedarray.Uint8Array,
                     options: FileWriteOptions = js.native
   ): Unit =
     js.native
@@ -1092,14 +1110,14 @@ trait Fs extends js.Object with FSConstants {
     * @example {{{ fs.writeSync(fd, buffer[, offset[, length[, position]]]) }}}
     */
   def writeSync(fd: FileDescriptor,
-                buffer: typedarray.Uint8Array,
+                buffer: js.typedarray.Uint8Array,
                 offset: Int,
                 length: Int,
                 position: Int = js.native
   ): Unit =
     js.native
-  def writeSync(fd: FileDescriptor, buffer: typedarray.Uint8Array, offset: Int): Unit                  = js.native
-  def writeSync(fd: FileDescriptor, buffer: typedarray.Uint8Array): Unit                               = js.native
+  def writeSync(fd: FileDescriptor, buffer: js.typedarray.Uint8Array, offset: Int): Unit               = js.native
+  def writeSync(fd: FileDescriptor, buffer: js.typedarray.Uint8Array): Unit                            = js.native
   def writeSync(fd: FileDescriptor, buffer: BufferLike, offset: Int, length: Int, position: Int): Unit = js.native
   def writeSync(fd: FileDescriptor, buffer: BufferLike, offset: Int, length: Int): Unit                = js.native
   def writeSync(fd: FileDescriptor, buffer: BufferLike, offset: Int): Unit                             = js.native
@@ -1120,13 +1138,15 @@ trait Fs extends js.Object with FSConstants {
 
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   def writev(fd: FileDescriptor,
-             buffers: js.Array[typedarray.ArrayBufferView],
+             buffers: js.Array[js.typedarray.ArrayBufferView],
              position: Int,
-             fsCallback2: FsCallback2[Int, js.Array[typedarray.ArrayBufferView]]
+             fsCallback2: FsCallback2[Int, js.Array[js.typedarray.ArrayBufferView]]
   ): Unit = js.native
   @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
-  def writevSync(fd: FileDescriptor, buffers: js.Array[typedarray.ArrayBufferView], position: Int = js.native): Unit =
-    js.native
+  def writevSync(fd: FileDescriptor,
+                 buffers: js.Array[js.typedarray.ArrayBufferView],
+                 position: Int = js.native
+  ): Unit = js.native
 }
 
 /**
@@ -1190,7 +1210,10 @@ object Fs extends Fs {
                                                   offset: Int | Null,
                                                   length: Int | Null,
                                                   position: Int | Null
-    ): js.Promise[BufferIOResult[T]]                           = js.native
+    ): js.Promise[BufferIOResult[T]] = js.native
+    @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs14)
+    def readd[T <: js.typedarray.TypedArray[_, _]](options: ReadOptions): js.Promise[BufferIOResult[T]] = js.native
+
     def readFile(): js.Promise[Buffer]                         = js.native
     def readFile(encoding: String): js.Promise[String]         = js.native
     def readFile(options: ReadFileOptions): js.Promise[Output] = js.native
@@ -1265,6 +1288,14 @@ trait FileEncodingOptions {
 }
 
 @Factory
+trait ReadOptions extends js.Object {
+  var buffer: js.UndefOr[BufferLike] = js.undefined
+  var offset: js.UndefOr[Int]        = js.undefined
+  var length: js.UndefOr[Int]        = js.undefined
+  var position: js.UndefOr[Int]      = js.undefined
+}
+
+@Factory
 trait ReaddirOptions extends js.Object {
   var encoding: js.UndefOr[String]       = js.undefined
   var withFileTypes: js.UndefOr[Boolean] = js.undefined
@@ -1272,7 +1303,8 @@ trait ReaddirOptions extends js.Object {
 
 @Factory
 trait OpendirOptions extends js.Object {
-  var encoding: js.UndefOr[String]   = js.undefined
+  var encoding: js.UndefOr[String] = js.undefined
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs12)
   var bufferSize: js.UndefOr[Double] = js.undefined
 }
 
@@ -1292,6 +1324,9 @@ trait FileInputOptions extends js.Object {
   var start: js.UndefOr[Int]         = js.undefined
   var end: js.UndefOr[Int]           = js.undefined
   var highWaterMark: js.UndefOr[Int] = js.undefined
+
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs14)
+  var fs: js.UndefOr[js.Object] = js.undefined
 }
 
 @Factory
@@ -1303,6 +1338,9 @@ trait FileOutputOptions extends js.Object {
   var autoClose: js.UndefOr[Boolean]      = js.undefined
   var emitClose: js.UndefOr[Boolean]      = js.undefined
   var start: js.UndefOr[Int]              = js.undefined
+
+  @enableIf(io.scalajs.nodejs.internal.CompilerSwitches.gteNodeJs14)
+  var fs: js.UndefOr[js.Object] = js.undefined
 }
 
 @Factory
@@ -1324,8 +1362,19 @@ trait MkdirOptions extends js.Object {
 
 @Factory
 trait RmdirOptions extends js.Object {
-  var emfileWait: js.UndefOr[Int]    = js.undefined
-  var maxBusyTries: js.UndefOr[Int]  = js.undefined
+  @deprecated(
+    "Tha option has been removed, and EMFILE errors use the same retry logic as other errors.",
+    "Node.js v13.3.0, v12.16.0"
+  )
+  var emfileWait: js.UndefOr[Int] = js.undefined
+  @deprecated("Use maxRetries", "Node.js v13.3.0, v12.16.0")
+  var maxBusyTries: js.UndefOr[Int] = js.undefined
+  var maxRetries: js.UndefOr[Int]   = js.undefined
+  @deprecated(
+    "Tha option has been removed, and EMFILE errors use the same retry logic as other errors.",
+    "Node.js v13.3.0, v12.16.0"
+  )
+  var retryDelay: js.UndefOr[Int]    = js.undefined
   var recursive: js.UndefOr[Boolean] = js.undefined
 }
 

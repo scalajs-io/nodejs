@@ -31,6 +31,8 @@ class ConsoleV8Test extends AnyFunSpec with BeforeAndAfterEach {
 
   it("should support ignoreErrors") {
     assume(TestEnvironment.isExecutedInNode10OrNewer)
+    // https://github.com/nodejs/node/issues/33628
+    assume(TestEnvironment.isExecutedInNode14OrNewer === false)
     val strictConsole = new Console(
       stdout = failingWritable,
       stderr = failingWritable,

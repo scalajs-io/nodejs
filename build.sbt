@@ -33,6 +33,11 @@ def createNodeVersionSpecificProject(nodeFullVersion: String) = {
     .settings(MySettings.commonMacroParadiseSetting)
     .settings(MySettings.publishingSettings)
     .settings(
+      unmanagedSourceDirectories in Compile ++= {
+        val symlinkDir = baseDirectory.value / "src" / "main"
+        val hasSymlink = symlinkDir.exists && symlinkDir.isDirectory
+        Seq(file("app") / "nodejs-v14" / "src" / "main" / "scala").filter(_ => majorVersion != "14" && !hasSymlink)
+      },
       scalacOptions ++= Seq(
         s"-Xmacro-settings:nodeJs${nodeFullVersion}"
       ),

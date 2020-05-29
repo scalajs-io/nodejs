@@ -13,7 +13,7 @@ import org.scalatest.funspec.AsyncFunSpec
 class FsTest extends AsyncFunSpec {
   override implicit val executionContext = ExecutionContext.Implicits.global
 
-  final val testResources = "./app/current/src/test/resources/"
+  final val testResources = "./app/nodejs-v12/src/test/resources/"
 
   describe("Fs") {
     it("supports watching files") {

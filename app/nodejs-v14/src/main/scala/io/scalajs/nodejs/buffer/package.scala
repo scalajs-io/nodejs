@@ -85,7 +85,7 @@ package object buffer {
   @JSImport("buffer", JSImport.Namespace)
   private object BufferNamespace extends js.Object {
     val INSPECT_MAX_BYTES: Int                                                = js.native
-    val kMaxLength: Int                                                       = js.native
+    val kMaxLength: Double                                                    = js.native
     def transcode(source: Uint8Array, fromEnc: String, toEnc: String): Buffer = js.native
   }
 
@@ -99,7 +99,7 @@ package object buffer {
       * On 32-bit architectures, this value is `(2^30)-1` (~1GB).
       * On 64-bit architectures, this value is `(2^31)-1` (~2GB).
       */
-    val MAX_LENGTH: Int = js.native
+    val MAX_LENGTH: Double = js.native
 
     /**
       * The largest length allowed for a single `String` instance.

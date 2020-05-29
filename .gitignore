@@ -1,4 +1,3 @@
-# Created by .ignore support plugin (hsz.mobi)
 ### Scala template
 *.class
 *.log
@@ -21,16 +20,6 @@ project/plugins/project/
 # ENSIME specific
 .ensime_cache/
 .ensime
-### SBT template
-# Simple Build Tool
-# http://www.scala-sbt.org/release/docs/Getting-Started/Directories.html#configuring-version-control
-
-target/
-lib_managed/
-src_managed/
-project/boot/
-.history
-.cache
 
 # Ignroe symlinks
 app/nodejs-v10/src/main

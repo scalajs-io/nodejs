@@ -32,3 +32,6 @@ project/boot/
 .history
 .cache
 
+# Ignroe symlinks
+app/nodejs-v10/src/main
+app/nodejs-v12/src/main

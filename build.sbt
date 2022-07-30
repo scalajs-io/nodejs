@@ -2,12 +2,11 @@ import org.scalajs.sbtplugin.ScalaJSPlugin
 import sbt.Keys._
 import sbt._
 
-val apiVersion = "0.6.0"
-val scalaVersion_2_11_x = "2.11.12"
-val scalaVersion_2_12_x = "2.12.10"
-val scalaVersion_2_13_x = "2.13.0"
+val apiVersion = "0.7.0"
+val scalaVersion_2_12_x = "2.12.16"
+val scalaVersion_2_13_x = "2.13.8"
 
-val supportedScalaVersions = List(scalaVersion_2_11_x, scalaVersion_2_12_x, scalaVersion_2_13_x)
+val supportedScalaVersions = List(scalaVersion_2_12_x, scalaVersion_2_13_x)
 
 /////////////////////////////////////////////////////////////////////////////////
 //      Common Settings
@@ -22,14 +21,11 @@ val commonSettings = Seq(
   version := apiVersion,
   crossScalaVersions := supportedScalaVersions,
   scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
-  scalacOptions += "-P:scalajs:sjsDefinedByDefault",
-  scalacOptions += "-P:scalajs:suppressMissingJSGlobalDeprecations",
-  scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
   autoCompilerPlugins := true,
   scalaJSLinkerConfig ~= (_.withModuleKind(ModuleKind.CommonJSModule)),
   libraryDependencies ++= Seq(
     "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-    "org.scalatest" %%% "scalatest" % "3.1.0-SNAP13" % "test"
+    "org.scalatest" %%% "scalatest" % "3.3.0-SNAP3" % "test"
   )) ++ publishingSettings
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -1063,6 +1059,7 @@ lazy val complete_platform = (project in file("app/bundles/complete")).
 /////////////////////////////////////////////////////////////////////////////////
 
 lazy val publishingSettings = Seq(
+  /*
   sonatypeProfileName := "org.xerial",
   publishMavenStyle := true,
   publishTo := {
@@ -1099,7 +1096,7 @@ lazy val publishingSettings = Seq(
           <timezone>+7</timezone>
         </developer>
       </developers>
-)
+*/)
 
 // loads the Scalajs-io root project at sbt startup
 onLoad in Global := (Command.process("project complete_platform", _: State)) compose (onLoad in Global).value

@@ -34,3 +34,4 @@ project/boot/
 .history
 .cache
 
+.bsp/sbt.json
